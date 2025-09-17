@@ -1,0 +1,24 @@
+@import 'tailwindcss';
+
+:root {
+    --background: #ffffff;
+    --foreground: #171717;
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --font-sans: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+    --font-mono: var(--font-geist-mono);
+
+    --font-lato: var(--font-lato);
+    --font-playball: var(--font-playball);
+    --font-quicksand: var(--font-quicksand);
+    --font-librebodoni: var(--font-librebodoni);
+}
+
+body {
+    color: var(--foreground);
+    font-family: var(--font-lato);
+}
