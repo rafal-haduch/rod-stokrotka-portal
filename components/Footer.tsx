@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer className="relative w-full">
+        <div className="relative w-full">
             {/* trawa nad stopką */}
             <div className="absolute -top-full left-0 w-full h-full bg-[url('/grass.png')] bg-repeat-x bg-bottom pointer-events-none"></div>
 
@@ -12,13 +12,13 @@ export default function Footer() {
                 {/* tekst stopki */}
                 <div className="relative z-10">
                     <p className="text-center text-sm">
-                        © 2025 Ogrody Działkowe Stokrotka
+                        © 2025 Ogrody Działkowe Stokrotka Sanok
                     </p>
                     <p className="text-center text-sm">
                         Realizacja: Rafał Haduch
                     </p>
                 </div>
             </div>
-        </footer>
+        </div>
     );
 }

@@ -1,7 +1,10 @@
 export default function ContactPage() {
     return (
-        <main>
-            <h1>Contact Page</h1>
-        </main>
+        <article className="prose mx-auto">
+            <h1>Kontakt</h1>
+            <section>
+                <p>Treść.</p>
+            </section>
+        </article>
     );
 }

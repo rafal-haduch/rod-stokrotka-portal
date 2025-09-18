@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'Stokrotka',
     description: 'Strona internetowa rodzinnych ogrodów działkowych Stokrotka.',
     icons: {
-        icon: '/favicon.ico',
+        icon: '/logo.png',
         //apple: '/apple-touch-icon.png', // opcjonalnie dla Apple
     },
 };
@@ -68,13 +68,20 @@ export default function RootLayout({
             lang="pl"
             className={`${lato.variable} ${playball.variable} ${quicksand.variable} ${libreBodoni.variable}`}
         >
-            <body className="bg-blue-300 text-gray-900 font-sans">
+            <body className=" bg-blue-300 text-gray-900">
                 <Navbar />
-                <Hero />
+
+                <header>
+                    <Hero />
+                </header>
+
                 <main className="bg-gray-50 max-w-7xl mx-auto min-h-screen px-4 py-8 space-y-16">
                     {children}
                 </main>
-                <Footer />
+
+                <footer>
+                    <Footer />
+                </footer>
             </body>
         </html>
     );

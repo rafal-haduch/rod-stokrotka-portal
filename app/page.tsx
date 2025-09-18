@@ -1,9 +1,10 @@
-import Image from 'next/image';
-
-export default function Home() {
+export default function HomePage() {
     return (
-        <main>
-            <h1>Home Page</h1>
-        </main>
+        <article className="prose mx-auto">
+            <h1>Strona Główna</h1>
+            <section>
+                <p>Treść.</p>
+            </section>
+        </article>
     );
 }
