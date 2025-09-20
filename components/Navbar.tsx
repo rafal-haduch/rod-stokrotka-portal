@@ -3,10 +3,10 @@ import Link from 'next/link';
 export default function Navbar() {
     const navLink = [
         { name: 'STRONA GŁÓWNA', href: '/' },
-        { name: 'O OGRODZIE', href: '/about-garden' },
+        { name: 'O NAS', href: '/about-garden' },
         { name: 'REGULAMIN', href: '/regulations' },
         { name: 'STATUT', href: '/statute' },
-        { name: 'PLAN DZIAŁEK', href: '/development-plan' },
+        { name: 'MAPA OGRODU', href: '/development-plan' },
         { name: 'KONTAKT', href: '/contact' },
         { name: 'PŁATNOŚCI', href: '/payments' },
         { name: 'OGŁOSZENIA', href: '/announcements' },
@@ -17,21 +17,21 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className="sticky top-0 bg-gradient-to-tr from-blue-600 via-blue-400 to-blue-600 mx-auto flex items-center justify-between py-2 px-2 flex-wrap border-b-3 border-gray-50 rounded-b-2xl">
+        <nav className="sticky top-0 z-1  bg-gradient-to-tr from-blue-600 via-blue-400 to-blue-600 mx-auto flex items-center justify-between py-2 px-2 flex-wrap border-b-3 border-gray-50 rounded-b-2xl">
             {/* Logo */}
             <div className="flex-shrink-0">
                 <Link href="/" className="cursor-pointer">
                     <img
                         src="/logo.png"
                         alt="Logo ogrodu Stokrotka."
-                        className="w-20"
+                        className="w-40"
                     />
                 </Link>
             </div>
 
             {/* Nav */}
             <div className="flex-1">
-                <menu className="flex flex-wrap justify-center gap-6 px-10 [font-family:var(--font-quicksand)] font-bold text-amber-50">
+                <menu className="flex flex-wrap justify-center gap-x-8 gap-y-3  [font-family:var(--font-aboreto)] font-bold text-amber-50">
                     {navLink.map((item) => (
                         <li
                             key={item.href}
@@ -44,12 +44,17 @@ export default function Navbar() {
             </div>
 
             {/* Sign In */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 pr-5">
                 <Link
                     href="/sign-in"
-                    className="text-amber-300 font-bold hover:underline cursor-pointer"
+                    className="text-amber-200 font-bold hover:underline cursor-pointer flex flex-col items-center"
                 >
-                    ZALOGUJ
+                    <img
+                        src="/person_icon.svg"
+                        alt="Ikona osoby"
+                        className="w-10 h-10"
+                    />
+                    <span>ZALOGUJ</span>
                 </Link>
             </div>
         </nav>

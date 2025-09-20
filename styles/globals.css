@@ -2,7 +2,7 @@
 
 :root {
     --background: #ffffff;
-    --foreground: #171717;
+    --foreground: #474747;
     --white: #ffffff;
     --blue-bg: rgb(57, 182, 255);
 }
@@ -17,22 +17,28 @@
     --font-mono: var(--font-geist-mono);
 
     --font-lato: var(--font-lato);
-    --font-playball: var(--font-playball);
-    --font-quicksand: var(--font-quicksand);
+    --font-bonheurroyale: var(--font-bonheurroyale);
+    --font-aboreto: var(--font-aboreto);
     --font-librebodoni: var(--font-librebodoni);
 }
 
 h1 {
-    font-family: var(--font-playball);
+    font-family: var(--font-bonheurroyale);
     font-size: 3.75rem; /* text-6xl */
+    font-weight: bold;
     text-align: center;
 }
 
 h2 {
     font-family: var(--font-librebodoni);
-    font-size: 1.875remm; /* text-3xl */
+    font-size: 1.875rem; /* text-3xl */
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
 }
 
 p {
     font-family: var(--font-lato);
+    font-size: 1.25rem; /*text-xl*/
+    color: var(--color-foreground);
 }

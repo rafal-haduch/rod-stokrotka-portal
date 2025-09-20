@@ -4,12 +4,14 @@ import '../styles/globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
+import PreFooter from '@/components/PreFooter';
 
 export const metadata: Metadata = {
     title: 'Stokrotka',
-    description: 'Strona internetowa rodzinnych ogrodów działkowych Stokrotka.',
+    description:
+        'Strona internetowa rodzinnych ogrodów działkowych Stokrotka w Sanoku.',
     icons: {
-        icon: '/logo.png',
+        icon: '/favicon.png',
         //apple: '/apple-touch-icon.png', // opcjonalnie dla Apple
     },
 };
@@ -17,7 +19,7 @@ export const metadata: Metadata = {
 const lato = localFont({
     src: [
         {
-            path: '../fonts/Lato-Regular.ttf',
+            path: '../fonts/Nunito-Regular.ttf',
             weight: '400',
             style: 'normal',
         },
@@ -25,32 +27,32 @@ const lato = localFont({
     variable: '--font-lato',
 });
 
-const playball = localFont({
+const bonheurRoyale = localFont({
     src: [
         {
-            path: '../fonts/Playball-Regular.ttf',
+            path: '../fonts/FleurDeLeah-Regular.ttf',
             weight: '400',
             style: 'normal',
         },
     ],
-    variable: '--font-playball',
+    variable: '--font-bonheurroyale',
 });
 
-const quicksand = localFont({
+const aboreto = localFont({
     src: [
         {
-            path: '../fonts/QuickSand-Regular.ttf',
+            path: '../fonts/Aboreto-Regular.ttf',
             weight: '400',
             style: 'normal',
         },
     ],
-    variable: '--font-quicksand',
+    variable: '--font-aboreto',
 });
 
 const libreBodoni = localFont({
     src: [
         {
-            path: '../fonts/LibreBodoni-Regular.ttf',
+            path: '../fonts/Merriweather_24pt-Regular.ttf',
             weight: '400',
             style: 'normal',
         },
@@ -66,7 +68,7 @@ export default function RootLayout({
     return (
         <html
             lang="pl"
-            className={`${lato.variable} ${playball.variable} ${quicksand.variable} ${libreBodoni.variable}`}
+            className={`${lato.variable} ${bonheurRoyale.variable} ${aboreto.variable} ${libreBodoni.variable}`}
         >
             <body className=" bg-blue-300 text-gray-900">
                 <Navbar />
@@ -79,17 +81,9 @@ export default function RootLayout({
                     {children}
                 </main>
 
-                <footer>
-                    <Footer />
-                </footer>
+                <PreFooter />
+                <Footer />
             </body>
         </html>
     );
-}
-
-import { type ClassValue, clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
-export function cn(...inputs: ClassValue[]) {
-    return twMerge(clsx(inputs));
 }
