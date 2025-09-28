@@ -3,17 +3,17 @@ import Link from 'next/link';
 export default function Navbar() {
     const navLink = [
         { name: 'STRONA GŁÓWNA', href: '/' },
-        { name: 'O NAS', href: '/about-garden' },
-        { name: 'REGULAMIN', href: '/regulations' },
-        { name: 'STATUT', href: '/statute' },
-        { name: 'MAPA OGRODU', href: '/development-plan' },
+        { name: 'O NAS', href: '/about-us' },
+        { name: 'MAPA OGRODU', href: '/garden-map' },
+        { name: 'ZARZĄD', href: '/management' },
         { name: 'KONTAKT', href: '/contact' },
+        { name: 'DOKUMENTY', href: '/documents' },
         { name: 'PŁATNOŚCI', href: '/payments' },
-        { name: 'OGŁOSZENIA', href: '/announcements' },
         { name: 'INFORMACJE', href: '/information' },
+        { name: 'OGŁOSZENIA', href: '/announcements' },
         { name: 'REALIZACJE', href: '/completed-projects' },
         { name: 'WSPOMNIENIA', href: '/memories' },
-        { name: 'PORADY OGRODNICZE', href: '/gardening-guide' },
+        { name: 'PORADY OGRODOWE', href: '/gardening-guide' },
     ];
 
     return (

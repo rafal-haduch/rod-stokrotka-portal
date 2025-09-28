@@ -12,7 +12,7 @@ export default function Footer() {
                 {/* tekst stopki */}
                 <div className="relative text-center flex flex-col text-gray-200">
                     <span className="text-xl">
-                        © 2025 Ogród ,,Stokrotka" Sanok
+                        © 2025 Rodzinny Ogród Działkowy ,,Stokrotka" Sanok
                     </span>
                     <span className="">Realizacja: Rafał Haduch</span>
                 </div>
