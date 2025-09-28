@@ -2,7 +2,7 @@
 
 :root {
     --background: #ffffff;
-    --foreground: #474747;
+    --foreground: #3a3a3a;
     --white: #ffffff;
     --blue-bg: rgb(57, 182, 255);
 }
@@ -22,23 +22,33 @@
     --font-librebodoni: var(--font-librebodoni);
 }
 
-h1 {
-    font-family: var(--font-bonheurroyale);
-    font-size: 3.75rem; /* text-6xl */
-    font-weight: bold;
-    text-align: center;
-}
+@layer base {
+    /* Reset domyślnych marginesów i paddingów */
+    * {
+        @apply m-0 p-0 box-border;
+    }
 
-h2 {
-    font-family: var(--font-librebodoni);
-    font-size: 1.875rem; /* text-3xl */
-    text-transform: uppercase;
-    font-weight: bold;
-    text-align: center;
-}
+    body {
+        @apply bg-background text-foreground;
+        font-family: var(--font-sans);
+    }
 
-p {
-    font-family: var(--font-lato);
-    font-size: 1.25rem; /*text-xl*/
-    color: var(--color-foreground);
+    article {
+        @apply px-20 mx-auto;
+    }
+
+    h1 {
+        font-family: var(--font-bonheurroyale);
+        @apply text-6xl font-bold text-center;
+    }
+
+    h2 {
+        font-family: var(--font-librebodoni);
+        @apply text-3xl font-bold uppercase text-center mb-6;
+    }
+
+    p {
+        font-family: var(--font-lato);
+        @apply text-xl text-foreground;
+    }
 }
