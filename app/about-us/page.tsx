@@ -1,4 +1,6 @@
+import ImageSeparator from '@/components/ImageSeparator';
 import LineSeparator from '@/components/LineSeparator';
+import WorkInProgress from '@/components/WorkInProgress';
 
 export default function AboutGardenPage() {
     return (
@@ -7,8 +9,9 @@ export default function AboutGardenPage() {
             <LineSeparator />
             <h2>Kilka słów o naszym ogrodzie</h2>
             <section>
-                <p>Treść.</p>
+                <WorkInProgress />
             </section>
+            <ImageSeparator />
         </article>
     );
 }

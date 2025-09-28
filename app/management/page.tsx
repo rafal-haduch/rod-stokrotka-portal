@@ -6,7 +6,7 @@ export default function ManagementPage() {
         <article>
             <h1>Zarząd</h1>
             <LineSeparator />
-            <h2>Skład zarządu ROD ,,Stokrotka'' w Sanoku</h2>
+            <h2>Obecny skład zarządu ROD ,,Stokrotka''</h2>
             <section className="text-center mb-10">
                 <p>
                     1. Imię Nazwisko - prezes <br />

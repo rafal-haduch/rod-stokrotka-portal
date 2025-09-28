@@ -8,16 +8,16 @@ export default function Navbar() {
         { name: 'ZARZĄD', href: '/management' },
         { name: 'KONTAKT', href: '/contact' },
         { name: 'DOKUMENTY', href: '/documents' },
-        { name: 'PŁATNOŚCI', href: '/payments' },
+        { name: 'OPŁATY', href: '/fees' },
         { name: 'INFORMACJE', href: '/information' },
         { name: 'OGŁOSZENIA', href: '/announcements' },
-        { name: 'REALIZACJE', href: '/completed-projects' },
+        { name: 'INWESTYCJE', href: '/investments' },
         { name: 'WSPOMNIENIA', href: '/memories' },
         { name: 'PORADY OGRODOWE', href: '/gardening-guide' },
     ];
 
     return (
-        <nav className="sticky top-0 z-1  bg-gradient-to-tr from-blue-600 via-blue-400 to-blue-600 mx-auto flex items-center justify-between py-2 px-2 flex-wrap border-b-3 border-gray-50 rounded-b-2xl">
+        <nav className="sticky top-0 z-1  bg-gradient-to-tr from-blue-600 via-blue-400 to-blue-600 mx-auto py-2 px-4 flex items-center justify-between flex-wrap border-b-3 border-gray-50 rounded-b-2xl">
             {/* Logo */}
             <div className="flex-shrink-0">
                 <Link href="/" className="cursor-pointer">

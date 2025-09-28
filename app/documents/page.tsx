@@ -7,7 +7,7 @@ export default function DocumentsPage() {
         <article>
             <h1>Dokumenty</h1>
             <LineSeparator />
-            <h2>Dokumenty związane z ROD ,,Stokrotka" Sanok</h2>
+            <h2>Oficjalne dokumenty ROD ,,Stokrotka" Sanok</h2>
             <section className="flex justify-center">
                 <ListOfDocuments />
             </section>

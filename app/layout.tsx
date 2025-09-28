@@ -20,7 +20,7 @@ export default function RootLayout({
             lang="pl"
             className={`${lato.variable} ${bonheurRoyale.variable} ${aboreto.variable} ${libreBodoni.variable}`}
         >
-            <body className=" bg-blue-300 text-gray-900">
+            <body className=" bg-sky-200 text-gray-900">
                 <Navbar />
 
                 <header>
