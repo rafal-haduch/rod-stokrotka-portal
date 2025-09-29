@@ -4,6 +4,7 @@ export default function ImageSeparator() {
             <img
                 src="/image-separator.png"
                 alt="Obrazek stokrotki z liśćmi separujący sekcje strony"
+                aria-hidden="true"
                 className="h-20 object-contain"
             />
         </div>

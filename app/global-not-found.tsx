@@ -1,7 +1,7 @@
 import LineSeparator from '@/components/LineSeparator';
 import '../styles/globals.css';
 import ImageSeparator from '@/components/ImageSeparator';
-import { lato, bonheurRoyale, aboreto, libreBodoni } from './fonts';
+import { lato, bonheurRoyale, aboreto, libreBodoni } from '../fonts/fonts';
 import { metadata } from './metadata';
 import Link from 'next/link';
 

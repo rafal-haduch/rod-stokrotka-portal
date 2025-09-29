@@ -29,12 +29,16 @@
     }
 
     body {
-        @apply bg-background text-foreground;
         font-family: var(--font-sans);
+        @apply bg-sky-200 text-gray-900;
+    }
+
+    main {
+        @apply bg-gray-100 max-w-7xl mx-auto min-h-screen py-8 px-2 sm:px-4 md:px-10;
     }
 
     article {
-        @apply px-20 mx-auto;
+        @apply mx-auto;
     }
 
     h1 {

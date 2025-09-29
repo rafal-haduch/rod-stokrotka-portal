@@ -7,26 +7,34 @@ import WorkInProgress from '@/components/WorkInProgress';
 export default function HomePage() {
     return (
         <article>
-            <h1>Strona Główna</h1>
+            <header>
+                <h1>Strona Główna</h1>
+            </header>
+
             <LineSeparator />
-            <h2>
-                Strona internetowa Stowarzyszenia Ogrodowego ,,Stokrotka" w
-                Sanoku
-            </h2>
-            <section className="mx-40">
-                <p className="text-center">
+
+            <section>
+                <h2>
+                    Strona internetowa Stowarzyszenia Ogrodowego <br />{' '}
+                    ,,Stokrotka" w Sanoku
+                </h2>
+                <p className="text-center px-4 sm:px-20 md:px-30 lg:px-80">
                     Zachęcamy naszych Działkowiczów do zaglądania na stronę
                     internetową, aby być na bieżąco z ogłoszeniami związanymi z
                     naszym ogrodem. Znajdą tutaj Państwo także wszelkie
-                    przydatne informacje o ogrodzie i nie tylko!{' '}
+                    przydatne informacje o ogrodzie i nie tylko!
                 </p>
             </section>
+
             <ImageSeparator />
+
             <section>
                 <h2>Galeria naszego ogrodu</h2>
                 <Slider />
             </section>
+
             <ImageSeparator />
+
             <section className="text-center">
                 <h2>Ostatnie Ogłoszenia</h2>
                 <WorkInProgress />
@@ -37,6 +45,7 @@ export default function HomePage() {
                     Zobacz więcej...
                 </Link>
             </section>
+
             <ImageSeparator />
         </article>
     );

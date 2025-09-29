@@ -12,6 +12,11 @@ export default function AboutGardenPage() {
                 <WorkInProgress />
             </section>
             <ImageSeparator />
+            <section>
+                <h2>Nasz ogród w liczbach</h2>
+                <WorkInProgress />
+            </section>
+            <ImageSeparator />
         </article>
     );
 }

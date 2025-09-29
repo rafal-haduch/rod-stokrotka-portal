@@ -44,7 +44,7 @@ export default function Navbar() {
             </div>
 
             {/* Sign In */}
-            <div className="flex-shrink-0 pr-5">
+            <div className="flex-shrink-0 pr-1">
                 <Link
                     href="/sign-in"
                     className="text-amber-200 font-bold hover:underline cursor-pointer flex flex-col items-center"
@@ -54,7 +54,7 @@ export default function Navbar() {
                         alt="Ikona osoby"
                         className="w-10 h-10"
                     />
-                    <span>ZALOGUJ</span>
+                    <span>LOGOWANIE</span>
                 </Link>
             </div>
         </nav>

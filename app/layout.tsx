@@ -1,12 +1,10 @@
-import type { Metadata } from 'next';
-import localFont from 'next/font/local';
+import { lato, bonheurRoyale, aboreto, libreBodoni } from '../fonts/fonts';
+import { metadata } from './metadata';
 import '../styles/globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Hero from '@/components/Hero';
 import PreFooter from '@/components/PreFooter';
-import { lato, bonheurRoyale, aboreto, libreBodoni } from './fonts';
-import { metadata } from './metadata';
+import HeroWrapper from '@/components/HeroWrapper';
 
 export { metadata };
 
@@ -20,17 +18,12 @@ export default function RootLayout({
             lang="pl"
             className={`${lato.variable} ${bonheurRoyale.variable} ${aboreto.variable} ${libreBodoni.variable}`}
         >
-            <body className=" bg-sky-200 text-gray-900">
+            <body>
                 <Navbar />
-
                 <header>
-                    <Hero />
+                    <HeroWrapper />
                 </header>
-
-                <main className="bg-gray-100 max-w-7xl mx-auto min-h-screen px-4 py-8 space-y-16">
-                    {children}
-                </main>
-
+                <main>{children}</main>
                 <PreFooter />
                 <Footer />
             </body>
