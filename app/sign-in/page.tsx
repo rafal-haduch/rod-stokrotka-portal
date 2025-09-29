@@ -1,9 +1,11 @@
+import LineSeparator from '@/components/LineSeparator';
+import LoginForm from './components/LoginForm';
+
 export default function SignInPage() {
     return (
         <article className="prose mx-auto">
-            <h1>Logowanie</h1>
             <section>
-                <p>Treść.</p>
+                <LoginForm />
             </section>
         </article>
     );
