@@ -1,9 +1,9 @@
 export default function PreFooter() {
     return (
-        <section className="max-w-7xl mx-auto">
+        <section className="mx-auto max-w-7xl">
             {/* Background Image and Text */}
             <div
-                className="w-full py-30 flex items-center justify-center text-white"
+                className="flex w-full items-center justify-center py-45 text-gray-100"
                 style={{
                     backgroundImage: "url('/pre-footer-bg.jpg')",
                     backgroundAttachment: 'fixed',
@@ -13,9 +13,6 @@ export default function PreFooter() {
             >
                 <h1 className="text-center text-9xl">Miłego dnia!</h1>
             </div>
-
-            {/* Bottom Space */}
-            <div className="w-full bg-sky-200 h-35"></div>
         </section>
     );
 }
