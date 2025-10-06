@@ -15,16 +15,13 @@ export default function LoginForm() {
     };
 
     return (
-        <div className="max-w-md mx-auto mt-10 p-8 bg-white rounded-xl shadow-lg">
-            <h1 className=" text-center">Zaloguj się</h1>
-            <hr className="my-8 border-t-3 border-green-500 w-3/4 mx-auto" />
+        <div className="mx-auto mt-10 max-w-md rounded-xl bg-gray-50 p-8 shadow-xl">
+            <h1 className="text-center">Zaloguj się</h1>
+            <hr className="mx-auto my-8 w-3/4 border-t-3 border-green-500" />
             <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Login */}
                 <div>
-                    <label
-                        htmlFor="login"
-                        className="block text-xl text-gray-700"
-                    >
+                    <label htmlFor="login" className="block text-xl text-gray-700">
                         Login
                     </label>
                     <input
@@ -33,31 +30,28 @@ export default function LoginForm() {
                         value={login}
                         onChange={(e) => setLogin(e.target.value)}
                         required
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-green-500 focus:outline-none"
                     />
                 </div>
 
                 {/* Password */}
                 <div>
-                    <label
-                        htmlFor="password"
-                        className="block text-xl text-gray-700"
-                    >
+                    <label htmlFor="password" className="block text-xl text-gray-700">
                         Hasło
                     </label>
-                    <div className="mt-1 relative">
+                    <div className="relative mt-1">
                         <input
                             type={showPassword ? 'text' : 'password'}
                             id="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 pr-10"
+                            className="block w-full rounded-md border border-gray-300 px-3 py-2 pr-10 shadow-sm focus:border-green-500 focus:ring-green-500 focus:outline-none"
                         />
                         <button
                             type="button"
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute inset-y-0 right-0 px-3 flex items-center text-gray-500"
+                            className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500"
                         >
                             {showPassword ? (
                                 <img src="/visibility-off_icon.svg" />
@@ -70,10 +64,7 @@ export default function LoginForm() {
 
                 {/* Forgot Password */}
                 <div className="flex justify-end text-sm">
-                    <a
-                        href="/forgot-password"
-                        className="text-green-500 hover:underline"
-                    >
+                    <a href="/forgot-password" className="text-green-500 hover:underline">
                         Zapomniałem hasła
                     </a>
                 </div>
@@ -81,7 +72,7 @@ export default function LoginForm() {
                 {/* Sign-in Button*/}
                 <button
                     type="submit"
-                    className="w-full py-2 px-4 bg-green-500 text-white rounded-lg border-2 border-green-500 hover:bg-transparent hover:text-green-500 transition font-medium"
+                    className="w-full rounded-lg border-2 border-green-500 bg-green-500 px-4 py-2 font-medium text-white transition hover:bg-transparent hover:text-green-500"
                 >
                     Zaloguj
                 </button>

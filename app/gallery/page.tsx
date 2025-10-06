@@ -5,9 +5,9 @@ import WorkInProgress from '@/components/WorkInProgress';
 export default function MemoriesPage() {
     return (
         <article>
-            <h1>Wspomnienia</h1>
+            <h1>Galeria</h1>
             <LineSeparator />
-            <h2>Galeria wspomnień z ROD ,,Stokrotka'' Sanok</h2>
+            <h2>Zdjęcia z wydarzeń na ROD ,,Stokrotka'' Sanok</h2>
             <section>
                 <WorkInProgress />
             </section>

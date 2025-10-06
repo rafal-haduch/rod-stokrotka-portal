@@ -7,7 +7,7 @@ export default function GardeningGuidePage() {
         <article>
             <h1>Porady Ogrodowe</h1>
             <LineSeparator />
-            <h2>Porady i wskazówki dla działkowiczów</h2>
+            <h2>Porady, wskazówki i inspiracje dla ogrodu</h2>
             <section>
                 <WorkInProgress />
             </section>
