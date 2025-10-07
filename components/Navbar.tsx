@@ -46,7 +46,7 @@ export default function Navbar() {
             className={cn(
                 'sticky top-0 z-50 mx-auto flex flex-wrap items-center justify-between',
                 'rounded-b-2xl border-b-3 border-gray-50',
-                'bg-gradient-to-tr from-blue-600 via-blue-400 to-blue-600',
+                'bg-gradient-to-br from-sky-300 via-blue-400 to-sky-300',
                 'px-4 py-2 [font-family:var(--font-aboreto)] font-bold'
             )}
         >
@@ -59,7 +59,7 @@ export default function Navbar() {
 
             {/* Desktop Menu */}
             {/* Nav */}
-            <ul className="hidden flex-wrap justify-center gap-x-8 gap-y-3 text-amber-50 xl:flex xl:flex-1">
+            <ul className="hidden flex-wrap justify-center gap-x-8 gap-y-3 text-gray-50 xl:flex xl:flex-1">
                 {navLink.map((item) => (
                     <li key={item.href} className="cursor-pointer hover:underline">
                         <Link href={item.href}>{item.name}</Link>

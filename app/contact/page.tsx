@@ -1,7 +1,10 @@
+'use client';
 import ImageSeparator from '@/components/ImageSeparator';
 import LineSeparator from '@/components/LineSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
 import ContactForm from './components/ContactForm';
+import { useInView } from '@/lib/use-in-view';
+import { cn } from '@/lib/cn';
 
 interface Stat {
     label: string;
@@ -24,11 +27,14 @@ const associationData: associationData[] = [
 ];
 
 export default function ContactPage() {
+    const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
+    const { ref: ref2, inView: visible2 } = useInView<HTMLHeadingElement>(0.3);
+
     return (
         <article>
             <h1>Kontakt</h1>
             <LineSeparator />
-            <h2>
+            <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
                 Dane Stowarzyszenia Ogrodowego <br />
                 ,,Stokrotka" Sanok
             </h2>
@@ -73,7 +79,9 @@ export default function ContactPage() {
             <ImageSeparator />
 
             <section>
-                <h2>Formularz kontaktowy</h2>
+                <h2 ref={ref2} className={cn(`h2-animate`, visible2 ? 'visible' : '')}>
+                    Formularz kontaktowy
+                </h2>
                 <ContactForm />
             </section>
 

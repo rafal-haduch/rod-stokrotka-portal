@@ -1,8 +1,8 @@
 export default function Footer() {
     return (
-        <footer className="flex w-full flex-col gap-4 border-t-3 border-gray-50 bg-gradient-to-tr from-blue-600 via-blue-400 to-blue-600 py-6 text-center text-white">
+        <footer className="flex w-full flex-col gap-4 bg-green-500 py-6 text-center text-white">
             <span className="text-xl">© 2025 Rodzinny Ogród Działkowy ,,Stokrotka" Sanok</span>
-            <span>Realizacja: Rafał Haduch</span>
+            <span>Realizacja strony: Rafał Haduch</span>
         </footer>
     );
 }

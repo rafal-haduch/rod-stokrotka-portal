@@ -1,6 +1,7 @@
 'use client';
 
 import LineSeparator from '@/components/LineSeparator';
+import { useInView } from '@/lib/use-in-view';
 import { useState } from 'react';
 
 export default function ContactForm() {

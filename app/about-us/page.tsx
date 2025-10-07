@@ -23,15 +23,14 @@ export default function AboutGardenPage() {
             </h2>
             <section>
                 <p className="mb-4 text-gray-700">
-                    Stowarzyszenie Ogrodowe „Stokrotka” w Sanoku to miejsce, gdzie pasja do
-                    ogrodnictwa łączy się z troską o lokalną społeczność i środowisko. Choć dokładna
-                    data założenia ogrodu nie jest obecnie dostępna, wiadomo, że początkowo ogrody
-                    działkowe były przydzielane pracownikom zakładów pracy w okresie PRL. Z czasem,
-                    w wyniku zmian społeczno-politycznych, ogrody te przekształciły się w Rodzinne
-                    Ogrody Działkowe (ROD) pod auspicjami Polskiego Związku Działkowców (PZD).
-                    Jednakże, od 2015 roku, nasza społeczność postanowiła działać niezależnie,
-                    rejestrując się jako Stowarzyszenie Ogrodowe „Stokrotka” w Krajowym Rejestrze
-                    Sądowym
+                    Ogród „Stokrotka” w Sanoku to miejsce, gdzie pasja do ogrodnictwa łączy się z
+                    troską o lokalną społeczność i środowisko. Choć dokładna data założenia ogrodu
+                    nie jest obecnie dostępna, wiadomo, że początkowo ogrody działkowe były
+                    przydzielane pracownikom zakładów pracy w okresie PRL. Z czasem, w wyniku zmian
+                    społeczno-politycznych, ogrody te przekształciły się w Rodzinne Ogrody Działkowe
+                    (ROD) pod auspicjami Polskiego Związku Działkowców (PZD). Jednakże, od 2015
+                    roku, nasza społeczność postanowiła działać niezależnie, rejestrując się jako
+                    Stowarzyszenie Ogrodowe „Stokrotka” w Krajowym Rejestrze Sądowym
                 </p>
                 <p className="mb-8 text-gray-700">
                     Naszym celem jest nie tylko umożliwienie mieszkańcom Sanoka prowadzenia upraw
@@ -40,7 +39,7 @@ export default function AboutGardenPage() {
                     ogród „Stokrotka” stał się przestrzenią, w której tradycja spotyka się z
                     nowoczesnością, a miłość do natury z chęcią wspólnego działania.
                 </p>
-                <h2 ref={ref2} className={cn(`h2-animate mt-10`, visible2 ? 'visible' : '')}>
+                <h2 ref={ref2} className={cn(`h2-animate mt-10, mb-4`, visible2 ? 'visible' : '')}>
                     Nasze cele
                 </h2>
                 <ul className="mb-4 list-inside list-disc space-y-3 text-base text-gray-700 md:text-lg">
