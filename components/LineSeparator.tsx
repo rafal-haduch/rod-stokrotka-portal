@@ -1,3 +1,3 @@
 export default function LineSeparator() {
-    return <hr className="my-8 border-t-3 border-green-500 w-1/3 mx-auto" />;
+    return <hr className="mx-auto my-8 w-2/3 max-w-sm border-t-3 border-green-500" />;
 }
