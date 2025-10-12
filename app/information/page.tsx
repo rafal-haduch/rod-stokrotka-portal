@@ -1,7 +1,8 @@
 import ImageSeparator from '@/components/ImageSeparator';
-import LineSeparator from '@/components/LineSeparator';
+import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import SectionLineSeparator from '@/components/SectionLineSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
+import Link from 'next/link';
 
 const myInformationPage = 'my-10';
 
@@ -9,7 +10,7 @@ export default function InformationPage() {
     return (
         <article>
             <h1>Informacje</h1>
-            <LineSeparator />
+            <MainHeaderLineSeparator />
             <h2>Najważniejsze informacje organizacyjne</h2>
             <section className="mx-auto max-w-3xl">
                 <h3 className="text-center">Harmonogram wywozu odpadów komunalnych na rok 2025:</h3>
@@ -48,17 +49,28 @@ export default function InformationPage() {
                 <p className="mb-4">
                     Serdecznie zapraszamy, do dołączenia do naszej grupy społecznościowej,
                     stworzonej na potrzeby lepszej komunikacji i integracji naszych członków. Aby
-                    dołączyć do niej konieczne jest posiadanie aplikacji WhatsApp. W przypadku chęci
-                    dołączenia kliknij w poniższy link, zeskanuj kod QR telefonem, lub napisz
-                    wiadomość na nasz adres mailowy bądź skontaktuj się bezpośrednio z Prezesem
-                    Stowarzyszenia.
+                    dołączyć do niej konieczne jest posiadanie aplikacji{' '}
+                    <a
+                        href="https://www.whatsapp.com/?lang=pl"
+                        target="blank"
+                        className="link-context"
+                    >
+                        WhatsApp
+                    </a>
+                    . W przypadku chęci dołączenia kliknij w poniższy link lub zeskanuj kod QR
+                    telefonem, bądź napisz wiadomość na nasz adres mailowy na stronie{' '}
+                    <Link href="/contact" className="link-context">
+                        Kontakt
+                    </Link>{' '}
+                    albo skontaktuj się bezpośrednio z Prezesem Stowarzyszenia.
                 </p>
                 <p className="mb-8 text-center">
                     Dołącz do grupy:
                     <br />
                     <a
                         href="https://www.whatsapp.com/?lang=pl"
-                        className="text-green-500 underline hover:text-green-600"
+                        target="blank"
+                        className="link-visible"
                     >
                         www.whatsapp.com
                     </a>
@@ -92,16 +104,14 @@ export default function InformationPage() {
                     rozłożyć ruch, zalecamy wjazd na górne działki od tamtej strony (obwodnica).
                     Szanujmy nasze wspólne dobro. W przeciwnym razie, wjazd na teren ogrodu może
                     zostać ponownie ograniczony! W takim przypadku, lub przy innych utrudnieniach
-                    wymagających zamknięcia bramy wjazdowej, pojawi się odpowiedni wpis na stronie w
-                    sekcji "Ogłoszenia" oraz informacja na grupie WhatsApp.
+                    wymagających zamknięcia bramy wjazdowej, pojawi się odpowiedni wpis na stronie{' '}
+                    <Link href="/announcements" className="link-context">
+                        Ogłoszenia
+                    </Link>{' '}
+                    oraz informacja na grupie WhatsApp.
                 </p>
             </section>
-            <SectionLineSeparator my={myInformationPage} />
-            <section>
-                <h3 className="consultation text-center">
-                    Najczęściej zadawane pytania przez Działkowiczów?
-                </h3>
-            </section>
+
             <ImageSeparator />
         </article>
     );

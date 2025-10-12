@@ -70,14 +70,14 @@ export default function GardenStats() {
                 {stats.map((stat, i) => (
                     <div
                         key={stat.label}
-                        className="flex w-xs flex-col items-center justify-center rounded-2xl border-4 border-green-500 bg-green-50 p-6 shadow-lg transition hover:scale-105 hover:shadow-xl md:w-1/3"
+                        className="flex w-xs flex-col items-center justify-center rounded-2xl border-4 border-green-500 bg-green-50 p-6 shadow-lg transition hover:scale-105 hover:shadow-xl md:max-w-sm"
                     >
                         <span className="text-5xl font-bold text-green-700">{counts[i]}</span>
                         <span className="mt-2 text-gray-700">{stat.label}</span>
                     </div>
                 ))}
             </div>
-            <div className="m-auto flex w-xs flex-col items-center justify-center rounded-2xl border-4 border-green-500 bg-green-50 p-6 shadow-lg transition hover:scale-105 hover:shadow-xl md:w-1/3">
+            <div className="m-auto flex w-xs flex-col items-center justify-center rounded-2xl border-4 border-green-500 bg-green-50 p-6 shadow-lg transition hover:scale-105 hover:shadow-xl md:max-w-md">
                 <span className="text-5xl font-bold text-green-700">Lata 80</span>
                 <span className="mt-2 text-gray-700">Data założenia</span>
             </div>

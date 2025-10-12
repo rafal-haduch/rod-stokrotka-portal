@@ -1,5 +1,5 @@
 import ImageSeparator from '@/components/ImageSeparator';
-import LineSeparator from '@/components/LineSeparator';
+import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import SectionLineSeparator from '@/components/SectionLineSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
 
@@ -7,7 +7,7 @@ export default function GardeningGuidePage() {
     return (
         <article>
             <h1>Porady Ogrodowe</h1>
-            <LineSeparator />
+            <MainHeaderLineSeparator />
             <h2>Porady, wskazówki i inspiracje dla ogrodu</h2>
             <section className="text-center">
                 <h3>Polecane strony</h3>

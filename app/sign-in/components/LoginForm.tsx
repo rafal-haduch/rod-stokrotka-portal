@@ -1,6 +1,6 @@
 'use client';
 
-import LineSeparator from '@/components/LineSeparator';
+import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import { useState } from 'react';
 
 export default function LoginForm() {
@@ -17,11 +17,11 @@ export default function LoginForm() {
     return (
         <div className="mx-auto mt-10 max-w-md rounded-xl bg-gray-50 p-8 shadow-xl">
             <h1 className="text-center">Zaloguj się</h1>
-            <hr className="mx-auto my-8 w-3/4 border-t-3 border-green-500" />
+            <hr className="mx-auto my-8 w-3/4 border-t-4 border-lime-400" />
             <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Login */}
                 <div>
-                    <label htmlFor="login" className="block text-xl text-gray-700">
+                    <label htmlFor="login" className="block text-xl">
                         Login
                     </label>
                     <input
@@ -36,7 +36,7 @@ export default function LoginForm() {
 
                 {/* Password */}
                 <div>
-                    <label htmlFor="password" className="block text-xl text-gray-700">
+                    <label htmlFor="password" className="block text-xl">
                         Hasło
                     </label>
                     <div className="relative mt-1">
@@ -63,17 +63,14 @@ export default function LoginForm() {
                 </div>
 
                 {/* Forgot Password */}
-                <div className="flex justify-end text-sm">
-                    <a href="/forgot-password" className="text-green-500 hover:underline">
+                <div className="flex justify-end text-lg">
+                    <a href="/forgot-password" className="text-lime-500 hover:underline">
                         Zapomniałem hasła
                     </a>
                 </div>
 
                 {/* Sign-in Button*/}
-                <button
-                    type="submit"
-                    className="w-full rounded-lg border-2 border-green-500 bg-green-500 px-4 py-2 font-medium text-white transition hover:bg-transparent hover:text-green-500"
-                >
+                <button type="submit" className="button-text w-full">
                     Zaloguj
                 </button>
             </form>

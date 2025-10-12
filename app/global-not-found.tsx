@@ -1,4 +1,4 @@
-import LineSeparator from '@/components/LineSeparator';
+import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import '../styles/globals.css';
 import ImageSeparator from '@/components/ImageSeparator';
 import { lato, bonheurRoyale, aboreto, libreBodoni } from '../fonts/fonts';
@@ -13,23 +13,25 @@ export default function GlobalNotFound() {
             lang="pl"
             className={`${lato.variable} ${bonheurRoyale.variable} ${aboreto.variable} ${libreBodoni.variable}`}
         >
-            <body className=" bg-blue-300 text-gray-900">
-                <main className="bg-gray-100 max-w-7xl mx-auto min-h-screen px-4 py-8 space-y-16">
-                    <article className="prose mx-auto px-20">
+            <body>
+                <main className="flex items-center">
+                    <article>
                         <h1>404 Not Found</h1>
-                        <LineSeparator />
-                        <h2 className="pb-6">
-                            Nie znaleziono szukanej treści.
-                        </h2>
-                        <section className="text-center">
+                        <MainHeaderLineSeparator />
+                        <h2>Nie znaleziono szukanej treści</h2>
+                        <section className="max-w-xl text-center">
                             <p>
-                                Upsss... coś poszło nie tak. Wygląda na to, że
-                                treść której szukasz nie istnieje.
-                                <br />{' '}
-                                <Link href="/">Powróć na stronę główną.</Link>
+                                Upsss... coś poszło nie tak. Wygląda na to, że treść której szukasz
+                                nie istnieje.{' '}
+                                <Link
+                                    href="/"
+                                    className="text-blue-500 underline hover:text-blue-800"
+                                >
+                                    Kliknij tutaj
+                                </Link>{' '}
+                                aby powrócić na stronę główną.
                             </p>
                         </section>
-                        <ImageSeparator />
                     </article>
                 </main>
             </body>

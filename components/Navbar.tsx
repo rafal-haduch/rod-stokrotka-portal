@@ -1,5 +1,4 @@
 'use client';
-
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/cn';
@@ -21,9 +20,11 @@ const navLink = [
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isClient, setIsClient] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
+        setIsClient(true);
         const mediaQuery = window.matchMedia('(min-width: 1280px)');
 
         const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
@@ -45,9 +46,9 @@ export default function Navbar() {
         <nav
             className={cn(
                 'sticky top-0 z-50 mx-auto flex flex-wrap items-center justify-between',
-                'rounded-b-2xl border-b-3 border-gray-50',
-                'bg-gradient-to-br from-sky-300 via-blue-400 to-sky-300',
-                'px-4 py-2 [font-family:var(--font-aboreto)] font-bold'
+                'border-b-4 border-lime-400',
+                'bg-gradient-to-b from-lime-200 to-lime-300',
+                'px-4 py-2'
             )}
         >
             {/* Logo - always visible */}
@@ -59,9 +60,12 @@ export default function Navbar() {
 
             {/* Desktop Menu */}
             {/* Nav */}
-            <ul className="hidden flex-wrap justify-center gap-x-8 gap-y-3 text-gray-50 xl:flex xl:flex-1">
+            <ul className="hidden flex-wrap justify-center gap-x-6 gap-y-3 [font-family:var(--font-aboreto)] font-bold text-green-600 xl:flex xl:flex-1">
                 {navLink.map((item) => (
-                    <li key={item.href} className="cursor-pointer hover:underline">
+                    <li
+                        key={item.href}
+                        className="cursor-pointer hover:text-green-800 hover:underline"
+                    >
                         <Link href={item.href}>{item.name}</Link>
                     </li>
                 ))}
@@ -69,56 +73,63 @@ export default function Navbar() {
             {/* Login */}
             <Link
                 href="/sign-in"
-                className="hidden cursor-pointer flex-col items-center text-amber-200 hover:underline xl:flex"
+                className="hidden cursor-pointer flex-col items-center text-white hover:underline xl:flex"
             >
-                <img src="/login_icon.svg" alt="Ikona osoby" className="h-10 w-10" />
-                <span>LOGOWANIE</span>
+                <img src="/login_white_24.svg" alt="Ikona logowania" className="h-10 w-10" />
+                <span className="text-xl font-bold">LOGOWANIE</span>
             </Link>
 
             {/* Mobile Menu */}
             {/* Nav */}
-            <ul
-                className={cn(
-                    'fixed inset-0 z-40 flex h-screen w-screen origin-top flex-col items-center justify-center gap-4',
-                    'rounded-b-2xl border-b-3 border-gray-50',
-                    'bg-gradient-to-r from-blue-400 via-blue-600 to-blue-400 pt-20 text-xl text-amber-50',
-                    'transition-transform duration-500',
-                    isOpen ? 'scale-y-100' : 'scale-y-0',
-                    isVisible ? '' : 'hidden'
-                )}
-            >
-                {/* TODO: change animation */}
-                {navLink.map((item, i) => (
-                    <li key={item.href} className="hover:underline">
+            {isClient && (
+                <ul
+                    className={cn(
+                        'fixed inset-0 z-40 flex h-screen w-screen origin-top flex-col items-center justify-center gap-4',
+                        '[font-family:var(--font-aboreto)] font-bold',
+                        'border-b-4 border-lime-400',
+                        'bg-gradient-to-r from-lime-200 via-lime-300 to-lime-200 pt-20 text-xl text-green-600',
+                        'transition-transform duration-500',
+                        isClient && isOpen ? 'scale-y-100' : 'scale-y-0',
+                        isClient && isVisible ? '' : 'hidden'
+                    )}
+                >
+                    {/* TODO: change animation */}
+                    {navLink.map((item, i) => (
+                        <li key={item.href} className="hover:underline">
+                            <Link
+                                href={item.href}
+                                onClick={() => setIsOpen(false)}
+                                className={cn(
+                                    'block w-full transform text-center transition-all duration-500 ease-out',
+                                    isClient && isOpen
+                                        ? 'translate-x-0 opacity-100'
+                                        : '-translate-x-[120vw] opacity-0'
+                                )}
+                            >
+                                <span>{item.name}</span>
+                            </Link>
+                        </li>
+                    ))}
+                    {/* Login */}
+                    <li>
                         <Link
-                            href={item.href}
+                            href="/sign-in"
                             onClick={() => setIsOpen(false)}
                             className={cn(
-                                'block w-full transform text-center transition-all duration-500 ease-out',
-                                isOpen
-                                    ? 'translate-x-0 opacity-100'
-                                    : '-translate-x-[120vw] opacity-0'
+                                'mt-4 flex items-center text-white transition-opacity duration-300 hover:underline',
+                                isClient && isOpen ? 'opacity-100 delay-300' : 'opacity-0 delay-0'
                             )}
                         >
-                            <span>{item.name}</span>
+                            <img
+                                src="/login_white_24.svg"
+                                alt="Ikona osoby"
+                                className="h-10 w-10"
+                            />
+                            <span>LOGOWANIE</span>
                         </Link>
                     </li>
-                ))}
-                {/* Login */}
-                <li>
-                    <Link
-                        href="/sign-in"
-                        onClick={() => setIsOpen(false)}
-                        className={cn(
-                            'mt-4 flex items-center text-amber-200 transition-opacity duration-300 hover:underline',
-                            isOpen ? 'opacity-100 delay-300' : 'opacity-0 delay-0'
-                        )}
-                    >
-                        <img src="/login_icon.svg" alt="Ikona osoby" className="h-10 w-10" />
-                        <span>LOGOWANIE</span>
-                    </Link>
-                </li>
-            </ul>
+                </ul>
+            )}
 
             {/* Hamburger */}
             <button
@@ -128,19 +139,19 @@ export default function Navbar() {
             >
                 <span
                     className={cn(
-                        'absolute h-1 w-8 bg-white transition-transform duration-300 ease-in-out',
+                        'absolute h-1 w-8 bg-green-600 transition-transform duration-300 ease-in-out',
                         isOpen ? 'translate-y-0 rotate-45' : '-translate-y-2'
                     )}
                 ></span>
                 <span
                     className={cn(
-                        'absolute h-1 w-8 bg-white transition-opacity duration-200 ease-in-out',
+                        'absolute h-1 w-8 bg-green-600 transition-opacity duration-200 ease-in-out',
                         isOpen ? 'opacity-0' : 'opacity-100'
                     )}
                 ></span>
                 <span
                     className={cn(
-                        'absolute h-1 w-8 bg-white transition-transform duration-300 ease-in-out',
+                        'absolute h-1 w-8 bg-green-600 transition-transform duration-300 ease-in-out',
                         isOpen ? 'translate-y-0 -rotate-45' : 'translate-y-2'
                     )}
                 ></span>

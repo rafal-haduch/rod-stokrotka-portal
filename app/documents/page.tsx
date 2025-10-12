@@ -1,6 +1,6 @@
 'use client';
 import ImageSeparator from '@/components/ImageSeparator';
-import LineSeparator from '@/components/LineSeparator';
+import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import ListOfDocuments from './components/ListOfDocuments';
 import { useInView } from '@/lib/use-in-view';
 import { cn } from '@/lib/cn';
@@ -11,7 +11,7 @@ export default function DocumentsPage() {
     return (
         <article>
             <h1>Dokumenty</h1>
-            <LineSeparator />
+            <MainHeaderLineSeparator />
             <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
                 Oficjalne dokumenty ROD ,,Stokrotka" Sanok
             </h2>

@@ -3,11 +3,12 @@
 import Link from 'next/link';
 import { useInView } from '@/lib/use-in-view';
 import { cn } from '@/lib/cn';
-import LineSeparator from '@/components/LineSeparator';
+import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import Slider from './_components/Slider';
 import ImageSeparator from '@/components/ImageSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
 import GardenMap from '@/components/GardenMap';
+import SectionLineSeparator from '@/components/SectionLineSeparator';
 
 export default function HomePage() {
     const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
@@ -21,18 +22,18 @@ export default function HomePage() {
                 <h1>Strona Główna</h1>
             </header>
 
-            <LineSeparator />
+            <MainHeaderLineSeparator />
 
             <section>
                 <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
                     Strona internetowa Stowarzyszenia Ogrodowego <br /> ,,Stokrotka" w Sanoku
                 </h2>
-                <p className="px-4 sm:px-20 md:px-30">
+                <p className="">
                     Zachęcamy Działkowiczów do regularnego odwiedzania naszej strony internetowej.
                     To tutaj publikujemy wszelkie ogłoszenia, informacje organizacyjne oraz
                     aktualności dotyczące życia naszego ogrodu. Znajdą tu Państwo również przydatne
-                    materiały, dokumenty i porady ogrodnicze, które pomogą w codziennej pielęgnacji
-                    działek i lepszym poznaniu wspólnoty ROD „Stokrotka” Sanok.
+                    materiały i dokumenty, ciekawe zdjęcia, a także porady ogrodowe, które pomogą w
+                    codziennej pielęgnacji działek.
                 </p>
             </section>
 
@@ -43,15 +44,13 @@ export default function HomePage() {
                     Ostatnie Ogłoszenia
                 </h2>
                 <WorkInProgress />
-                <Link
-                    href="/announcements"
-                    className="mt-4 inline-block rounded-lg border-2 border-green-500 bg-green-500 px-6 py-3 text-white transition hover:bg-transparent hover:text-green-500"
-                >
-                    Zobacz więcej...
+                <Link href="/announcements" className="button-icon mx-auto max-w-3xs">
+                    <span>Zobacz więcej </span>
+                    <img src="/arrow-right_green_24.svg" />
                 </Link>
             </section>
 
-            <ImageSeparator />
+            <SectionLineSeparator />
 
             <section>
                 <h2 ref={ref3} className={cn(`h2-animate`, visible3 ? 'visible' : '')}>
@@ -60,7 +59,7 @@ export default function HomePage() {
                 <Slider />
             </section>
 
-            <ImageSeparator />
+            <SectionLineSeparator />
 
             <section>
                 <h2 ref={ref4} className={cn(`h2-animate`, visible4 ? 'visible' : '')}>

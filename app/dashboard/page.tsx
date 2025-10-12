@@ -1,4 +1,4 @@
-import LineSeparator from '@/components/LineSeparator';
+import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
 
 export default function Dashboard() {
@@ -10,7 +10,7 @@ export default function Dashboard() {
 		*/
         <article>
             <h1>Panel użytkownika</h1>
-            <LineSeparator />
+            <MainHeaderLineSeparator />
             <h2>Imię i nazwisko</h2>
             <section>
                 <WorkInProgress />

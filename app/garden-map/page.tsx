@@ -1,7 +1,7 @@
 'use client';
 
 import ImageSeparator from '@/components/ImageSeparator';
-import LineSeparator from '@/components/LineSeparator';
+import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import { cn } from '@/lib/cn';
 import { useInView } from '@/lib/use-in-view';
 
@@ -11,7 +11,7 @@ export default function DevelopmentPlanPage() {
     return (
         <article>
             <h1>Mapa Ogrodu</h1>
-            <LineSeparator />
+            <MainHeaderLineSeparator />
             <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
                 Podgląd zagospodarowania terenu
             </h2>
@@ -20,10 +20,9 @@ export default function DevelopmentPlanPage() {
                 <a
                     href="/#"
                     download="/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
-                    className="group inline-flex items-center gap-1 rounded-lg border-2 border-green-500 bg-green-500 px-6 py-3 text-white transition hover:bg-transparent hover:text-green-500"
+                    className="button-icon"
                 >
-                    <img src="/download_icon_white.svg" className="group-hover:hidden" />
-                    <img src="/download_icon_green.svg" className="hidden group-hover:block" />
+                    <img src="/download_green_24.svg" />
                     Pobierz szczegółowy plan
                 </a>
                 <ImageSeparator />

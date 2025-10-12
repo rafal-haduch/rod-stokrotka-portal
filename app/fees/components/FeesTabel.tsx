@@ -20,19 +20,19 @@ const payments: PlotFees[] = [
 
 export default function FeesTable() {
     return (
-        <table className="mx-auto w-full max-w-2xl border border-gray-300 text-center text-sm">
-            <thead className="bg-gray-100">
+        <table className="text-md mx-auto w-full max-w-2xl border border-lime-400 text-center">
+            <thead className="bg-lime-200">
                 <tr>
-                    <th className="border border-gray-300 px-3 py-2">Nr działki</th>
-                    <th className="border border-gray-300 px-3 py-2">Status</th>
+                    <th className="border border-lime-400 px-3 py-2">Numer działki</th>
+                    <th className="border border-lime-400 px-3 py-2">Status</th>
                 </tr>
             </thead>
             <tbody>
                 {payments.map(({ nr, status }) => (
-                    <tr key={nr} className="hover:bg-gray-50">
-                        <td className="border border-gray-300 px-3 py-1">{nr}</td>
+                    <tr key={nr} className="hover:bg-gray-100">
+                        <td className="border border-lime-400 px-3 py-1">{nr}</td>
                         <td
-                            className={`border border-gray-300 px-3 py-1 font-medium ${
+                            className={`border border-lime-400 px-3 py-1 font-medium ${
                                 status === 'Opłacone' ? 'text-green-600' : 'text-red-600'
                             }`}
                         >
