@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useInView } from '@/lib/use-in-view';
 import { cn } from '@/lib/cn';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import Slider from './_components/Slider';
+import Slider from './_components';
 import ImageSeparator from '@/components/ImageSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
 import GardenMap from '@/components/GardenMap';
