@@ -9,7 +9,7 @@ export default function Dashboard() {
 		else showUserSections(); 
 		*/
         <article>
-            <h1>Panel użytkownika</h1>
+            <h1>Moje Konto</h1>
             <MainHeaderLineSeparator />
             <h2>Imię i nazwisko</h2>
             <section>

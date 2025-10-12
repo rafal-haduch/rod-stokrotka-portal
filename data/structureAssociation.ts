@@ -4,10 +4,10 @@ interface associationBoard {
 }
 
 export const associationBoard: associationBoard[] = [
-    { person: 'Imie Nazwisko', position: 'prezes' },
-    { person: 'Imie Nazwisko', position: 'wiceprezes' },
-    { person: 'Imie Nazwisko', position: 'sekretarz' },
-    { person: 'Imie Nazwisko', position: 'skarbnik' },
+    { person: 'Maciej Uruski', position: 'prezes' },
+    { person: 'Zbigniew Gajda', position: 'wiceprezes' },
+    { person: 'Katarzyna Wojdyła', position: 'sekretarz' },
+    { person: 'Urszula Martuszewska', position: 'skarbnik' },
 ];
 
 interface auditCommittee {
@@ -17,9 +17,9 @@ interface auditCommittee {
 
 //TODO: position of the person on the audit committee
 export const auditCommittee: auditCommittee[] = [
-    { person: 'Imie Nazwisko', position: 'przewodniczący' },
-    { person: 'Imie Nazwisko', position: '?' },
-    { person: 'Imie Nazwisko', position: '?' },
+    { person: 'Krystyna Wojtowicz', position: 'przewodnicząca' },
+    { person: 'Renata Olbert', position: '?' },
+    { person: 'Piotr Kaliniecki', position: '?' },
 ];
 
 export const asOf = '17.05.2025';

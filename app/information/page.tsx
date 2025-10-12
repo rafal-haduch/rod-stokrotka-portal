@@ -13,7 +13,7 @@ export default function InformationPage() {
             <MainHeaderLineSeparator />
             <h2>Najważniejsze informacje organizacyjne</h2>
             <section className="mx-auto max-w-3xl">
-                <h3 className="text-center">Harmonogram wywozu odpadów komunalnych na rok 2025:</h3>
+                <h3 className="text-center">Harmonogram wywozu odpadów komunalnych 2025</h3>
                 <table className="text-md mx-auto w-full max-w-2xl table-fixed border border-lime-400 text-center">
                     <thead>
                         <tr className="bg-lime-200">
@@ -54,11 +54,10 @@ export default function InformationPage() {
             </section>
             <SectionLineSeparator my={myInformationPage} />
             <section className="mx-auto max-w-3xl">
-                <h3 className="text-center">Nasza grupa na komunikatorze WhatsApp</h3>
+                <h3 className="text-center">Nasza grupa na WhatsApp</h3>
                 <p className="mb-4">
-                    Serdecznie zapraszamy, do dołączenia do naszej grupy społecznościowej,
-                    stworzonej na potrzeby lepszej komunikacji i integracji naszych członków. Aby
-                    dołączyć do niej konieczne jest posiadanie aplikacji{' '}
+                    Zapraszamy do naszej grupy społecznościowej na WhatsApp, ułatwiającej
+                    komunikację i integrację członków. Dołączenie wymaga aplikacji{' '}
                     <a
                         href="https://www.whatsapp.com/?lang=pl"
                         target="blank"
@@ -67,7 +66,7 @@ export default function InformationPage() {
                         WhatsApp
                     </a>
                     . W przypadku chęci dołączenia kliknij w poniższy link lub zeskanuj kod QR
-                    telefonem, bądź napisz wiadomość na nasz adres mailowy na stronie{' '}
+                    telefonem, bądź skontaktuj się mailowo przez stronę{' '}
                     <Link href="/contact" className="link-context">
                         Kontakt
                     </Link>{' '}
@@ -96,24 +95,23 @@ export default function InformationPage() {
             <section className="mx-auto max-w-3xl">
                 <h3 className="text-center">Walne zebranie Zarządu i Działkowców</h3>
                 <p>
-                    Co rok na początku sezonu (zazwyczaj koniec kwietnia / początek maja), odbywa
-                    się spotkanie wszystkich członków ogrodu Stokrotka w Sanoku. Obecność jest
-                    obowiązkowa! Na zebraniu przeprowadzane jest głosowanie w sprawie wprowadzania
-                    zmian, dyskusje na tematy związane z ogrodem oraz propozycje wszelkich pomysłów
-                    od Działkowców.
+                    Corocznie na początku sezonu (koniec kwietnia / początek maja) odbywa się
+                    spotkanie wszystkich członków ogrodu Stokrotka w Sanoku. Obecność jest
+                    obowiązkowa. Omawiane są zmiany, dyskusje o ogrodzie oraz propozycje
+                    Działkowców.
                 </p>
             </section>
             <SectionLineSeparator my={myInformationPage} />
             <section className="mx-auto max-w-3xl">
                 <h3 className="text-center">Wjazd na teren ogrodu</h3>
                 <p>
-                    Aktualnie po zebraniu walnym 2025 wjazd na teren ogrodu został przywrócony.
-                    Uprzejmie prosimy jednak o ograniczenie prędkości przy poruszaniu się po
-                    utwardzonej drodze, a także unikania wjazdu w okresach intensywnych opadów. Aby
-                    rozłożyć ruch, zalecamy wjazd na górne działki od tamtej strony (obwodnica).
-                    Szanujmy nasze wspólne dobro. W przeciwnym razie, wjazd na teren ogrodu może
-                    zostać ponownie ograniczony! W takim przypadku, lub przy innych utrudnieniach
-                    wymagających zamknięcia bramy wjazdowej, pojawi się odpowiedni wpis na stronie{' '}
+                    Aktualnie po walnym zebraniu 2025 wjazd na teren ogrodu został przywrócony.
+                    Prosimy jednak o ograniczenie prędkości (max 15 km/h) oraz unikanie wjazdu w
+                    okresach intensywnych opadów. Zalecamy wjazd na górne działki od strony
+                    obwodnicy, aby rozłożyć ruch.. Szanujmy nasze wspólne dobro - w przeciwnym
+                    razie, wjazd na teren ogrodu może zostać ponownie ograniczony. W takim
+                    przypadku, lub przy innych utrudnieniach wymagających zamknięcia bramy
+                    wjazdowej, pojawi się odpowiedni wpis na stronie{' '}
                     <Link href="/announcements" className="link-context">
                         Ogłoszenia
                     </Link>{' '}

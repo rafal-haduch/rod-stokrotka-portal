@@ -18,21 +18,20 @@ export default function PaymentsPage() {
             <h1>Opłaty</h1>
             <MainHeaderLineSeparator />
             <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
-                Informacje dotyczące płatności za użytkowanie ogrodu
+                Informacje o płatnościach za użytkowanie ogrodu
             </h2>
             <section className="space-y-6 text-center">
                 <p className="">
-                    Termin uiszczenia opłat jest do 30.06 każdego roku. Uprzejmie prosimy o
-                    pilnowanie tego terminu. <br />
+                    Termin uiszczenia opłat upływa 30 czerwca każdego roku. Uprzejmie prosimy o
+                    przestrzeganie terminu. <br />
                     <span className="font-bold text-red-500">
                         Notoryczne opóźnienia mogą skutkować naliczaniem odsetek zgodnie z
                         regulaminem ogrodu!
                     </span>
                 </p>
                 <p>
-                    Zachęcamy także wszystkich Działkowców do dokonywania wpłat przelewem bankowym.
-                    <br />
-                    To najwygodniejszy i najszybszy sposób rozliczenia należności.
+                    Zachęcamy do dokonywania wpłat przelewem bankowym – to najszybszy i
+                    najwygodniejszy sposób rozliczenia należności.
                 </p>
                 <p className="">
                     Numer konta bankowego Stowarzyszenia Ogrodowego ,,Stokrotka'' Sanok (Santander
@@ -55,8 +54,7 @@ export default function PaymentsPage() {
                 </p>
                 <TableOfFeeTypes />
                 <p>
-                    W przypadku chęci opłacenia składek gotówką, rozpiskę dyżurów Skarbnika znajdą
-                    Państwo na stronie{' '}
+                    W przypadku płatności gotówką, dyżury Skarbnika znajdą Państwo na stronie{' '}
                     <Link
                         href="/information"
                         className="text-blue-600 hover:text-blue-800 hover:underline"

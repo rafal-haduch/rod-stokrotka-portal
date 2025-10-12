@@ -12,14 +12,15 @@ export default function SignInPage() {
             <SectionLineSeparator />
             <section>
                 <h2>Jak się zalogować?</h2>
+                <p className="mb-4">
+                    Logowanie jest dostępne wyłącznie dla członków Stowarzyszenia Ogrodowego
+                    „Stokrotka” w Sanoku. Konta zakłada administrator strony. Login i hasło do
+                    pierwszego logowania można uzyskać bezpośrednio u Prezesa stowarzyszenia.
+                </p>
                 <p>
-                    Logowanie jest dostępne tylko dla członków Stowarzyszenia Ogrodowego
-                    ,,Stokrotka'' Sanok. Konta są tworzone przez administratora strony. Login i
-                    hasło do pierwszego logowania jest możliwe do uzyskania bezpośrednio przez
-                    prezesa stowarzyszenia. Po pierwszym zalogowaniu pokażą się instrukcje dalszego
-                    postępowania (np. ustawienie własnego hasła). W przypadku utraty dostępu do
-                    konta bądź jakichkolwiek problemów, należy skontaktować się z prezesem lub
-                    administratorem strony.
+                    Po pierwszym zalogowaniu wyświetlą się instrukcje dalszego postępowania, np.
+                    zmiana hasła. W razie utraty dostępu lub innych problemów prosimy o kontakt z
+                    Prezesem lub administratorem strony.
                 </p>
             </section>
             <ImageSeparator />

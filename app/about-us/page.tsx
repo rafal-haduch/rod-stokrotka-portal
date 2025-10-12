@@ -20,47 +20,37 @@ export default function AboutGardenPage() {
                 Kilka słów o naszym ogrodzie
             </h2>
             <section>
-                <h3>Historia, teraźniejszość i przyszłość ogrodu</h3>
+                <h3>Historia i teraźniejszość</h3>
                 <p className="mb-4">
-                    Choć dokładna data założenia ogrodu nie jest obecnie dostępna, wiadomo, że
-                    początkowo ogrody działkowe były przydzielane pracownikom zakładów pracy w
-                    okresie PRL. Z czasem, w wyniku zmian społeczno-politycznych, ogrody te
+                    Dokładna data założenia ogrodu nie jest znana, ale wiadomo, że początkowo
+                    działki były przydzielane pracownikom zakładów pracy w okresie PRL. Z czasem
                     przekształciły się w Rodzinne Ogrody Działkowe (ROD) pod auspicjami Polskiego
-                    Związku Działkowców (PZD). Jednakże, od 2015 roku, nasza społeczność postanowiła
-                    działać niezależnie, rejestrując się jako Stowarzyszenie Ogrodowe „Stokrotka” w
-                    Krajowym Rejestrze Sądowym.
+                    Związku Działkowców (PZD). Od 2015 roku nasza społeczność działa niezależnie,
+                    jako Stowarzyszenie Ogrodowe „Stokrotka” w Krajowym Rejestrze Sądowym.
                 </p>
                 <p className="mb-4">
                     Ogród „Stokrotka” w Sanoku to miejsce, gdzie pasja do ogrodnictwa łączy się z
-                    troską o lokalną społeczność i środowisko. Naszym celem jest nie tylko
-                    umożliwienie mieszkańcom okolic Sanoka prowadzenia upraw ogrodniczych, ale także
-                    integracja społeczna, edukacja ekologiczna oraz aktywne uczestnictwo w życiu
-                    lokalnej wspólnoty. Dzięki zaangażowaniu naszych członków, ogród „Stokrotka”
-                    stał się przestrzenią, w której tradycja spotyka się z nowoczesnością, a miłość
-                    do natury z chęcią wspólnego działania.
+                    troską o lokalną społeczność i środowisko. Naszym celem jest umożliwienie
+                    mieszkańcom okolic Sanoka prowadzenia upraw ogrodniczych oraz wspieranie
+                    integracji społecznej, edukacji ekologicznej i aktywnego uczestnictwa w życiu
+                    wspólnoty.
                 </p>
                 <p className="mb-8">
-                    Ale na tym nie koniec. Chcemy dalej wspólnie rozwijać ogród, aby urozmaicić go i
-                    odpowiednio wyposarzyć. Przed nami sporo planów wymagających pracy i inwestycji,
-                    ale liczymy, że nam się uda i nasz ogród będzie również miejscem do wspólnych
-                    integracji i zabaw, po których zostanie wiele dobrych wspomnień.
+                    Chcemy dalej rozwijać ogród, wzbogacając jego infrastrukturę i oferując
+                    przestrzeń do wspólnych działań, zabaw i integracji, które zostawią wiele miłych
+                    wspomnień.
                 </p>
                 <h3>Nasza misja jako ROD</h3>
                 <ul className="mb-4 list-inside list-disc space-y-3">
+                    <li>Umożliwianie prowadzenia upraw ogrodniczych i zapewnienie rekreacji.</li>
+                    <li>Poprawa warunków socjalnych członków społeczności lokalnej.</li>
+                    <li>Integracja wielopokoleniowej rodziny i społeczności lokalnej.</li>
                     <li>
-                        Zaspokajanie wypoczynku i rekreacyjnych potrzeb społeczeństwa poprzez
-                        umożliwianie prowadzenia upraw ogrodniczych.
+                        Wychowanie dzieci w zdrowych warunkach oraz wsparcie aktywności seniorów.
                     </li>
-                    <li>Poprawa warunków socjalnych członków społeczności lokalnych.</li>
-                    <li>Integracja wielopokoleniowej rodziny.</li>
-                    <li>
-                        Wychowanie dzieci w zdrowych warunkach oraz zachowanie aktywności i zdrowia
-                        emerytów i rencistów.
-                    </li>
-                    <li>Integracja społeczna osób w wieku emerytalnym oraz niepełnosprawnych.</li>
-                    <li>Przywracanie społeczności i przyrodzie terenów zdegradowanych.</li>
-                    <li>Ochrona środowiska i przyrody.</li>
-                    <li>Kształtowanie zdrowego otoczenia człowieka.</li>
+                    <li>Wsparcie osób niepełnosprawnych i starszych w integracji społecznej.</li>
+                    <li>Rewitalizacja terenów zdegradowanych dla ludzi i przyrody.</li>
+                    <li>Ochrona środowiska naturalnego i kształtowanie zdrowego otoczenia.</li>
                 </ul>
             </section>
             <SectionLineSeparator />

@@ -1,5 +1,4 @@
 'use client';
-
 import Link from 'next/link';
 import { useInView } from '@/lib/use-in-view';
 import { cn } from '@/lib/cn';
@@ -29,11 +28,11 @@ export default function HomePage() {
                     Strona internetowa Stowarzyszenia Ogrodowego <br /> ,,Stokrotka" w Sanoku
                 </h2>
                 <p className="">
-                    Zachęcamy Działkowiczów do regularnego odwiedzania naszej strony internetowej.
-                    To tutaj publikujemy wszelkie ogłoszenia, informacje organizacyjne oraz
-                    aktualności dotyczące życia naszego ogrodu. Znajdą tu Państwo również przydatne
-                    materiały i dokumenty, ciekawe zdjęcia, a także porady ogrodowe, które pomogą w
-                    codziennej pielęgnacji działek.
+                    Zachęcamy Działkowiczów do odwiedzania naszej strony internetowej. To tutaj
+                    publikujemy wszelkie ogłoszenia, informacje organizacyjne oraz aktualności
+                    dotyczące życia naszego ogrodu. Znajdą tu Państwo również przydatne materiały i
+                    dokumenty, ciekawe zdjęcia, a także porady ogrodowe, które pomogą w pielęgnacji
+                    działek.
                 </p>
             </section>
 
