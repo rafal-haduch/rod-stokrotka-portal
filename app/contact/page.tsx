@@ -1,31 +1,11 @@
 'use client';
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import WorkInProgress from '@/components/WorkInProgress';
 import ContactForm from './components/ContactForm';
 import { useInView } from '@/lib/use-in-view';
 import { cn } from '@/lib/cn';
 import SectionLineSeparator from '@/components/SectionLineSeparator';
-
-interface Stat {
-    label: string;
-    value: number;
-}
-
-const stats: Stat[] = [
-    { label: 'Liczba działek', value: 62 },
-    { label: 'Liczba członków', value: 62 },
-];
-interface associationData {
-    label: string;
-    data: string;
-}
-
-const associationData: associationData[] = [
-    { label: 'KRS', data: '0000539144 ' },
-    { label: 'NIP', data: '6871959648 ' },
-    { label: 'REGON', data: '360573323 ' },
-];
+import { associationData, associationEmail, associationPhoneNumber } from '@/data';
 
 export default function ContactPage() {
     const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
@@ -40,15 +20,14 @@ export default function ContactPage() {
                 ,,Stokrotka" Sanok
             </h2>
             <section className="grid grid-cols-1 justify-items-center gap-8 text-center md:mx-auto md:w-3/5 md:grid-cols-2 md:[grid-template-areas:'name_name''left_right''email_email']">
-                {/* NAZWA – pełna szerokość */}
+                {/* Name - full width */}
                 <div className="text-center md:[grid-area:name]">
                     <p>
                         Nazwa pełna: <br />
                         <span className="font-bold">STOWARZYSZENIE OGRODOWE ,,STOKROTKA"</span>
                     </p>
                 </div>
-
-                {/* LEWA KOLUMNA */}
+                {/* Left Col */}
                 <div className="max-w-sm space-y-4 text-center md:[grid-area:left]">
                     <p>
                         Forma prawna: <br />
@@ -65,8 +44,7 @@ export default function ContactPage() {
                         ))}
                     </ul>
                 </div>
-
-                {/* PRAWA KOLUMNA */}
+                {/* Right Col */}
                 <div className="max-w-sm space-y-4 text-center md:[grid-area:right]">
                     <p>
                         Adres siedziby: <br />
@@ -79,13 +57,14 @@ export default function ContactPage() {
                     </p>
                     <p>
                         Numer telefonu: <br />
-                        <span className="font-bold">123 123 123</span>
+                        <span className="font-bold">{associationPhoneNumber}</span>
                     </p>
                 </div>
+                {/* E-mail - full width */}
                 <div className='className="mb-6 text-center md:[grid-area:email]'>
                     <p>
                         Adres e-mail: <br />
-                        <span className="font-bold">rod.stokrotka.sanok@gmail.com</span>
+                        <span className="font-bold">{associationEmail}</span>
                     </p>
                 </div>
             </section>

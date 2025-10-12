@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PreFooter from '@/components/PreFooter';
 import HeroWrapper from '@/components/HeroWrapper';
+import ClientLayout from './client-layout';
 
 export { metadata };
 
@@ -20,12 +21,14 @@ export default function RootLayout({
         >
             <body>
                 <Navbar />
-                <header>
-                    <HeroWrapper />
-                </header>
-                <main>{children}</main>
-                <PreFooter />
-                <Footer />
+                <ClientLayout>
+                    <header>
+                        <HeroWrapper />
+                    </header>
+                    <main>{children}</main>
+                    <PreFooter />
+                    <Footer />
+                </ClientLayout>
             </body>
         </html>
     );

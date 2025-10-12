@@ -1,9 +1,7 @@
 'use client';
-
 import GardenMap from '@/components/GardenMap';
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import WorkInProgress from '@/components/WorkInProgress';
 import GardenStats from './components/GardenStats';
 import { useInView } from '@/lib/use-in-view';
 import { cn } from '@/lib/cn';
@@ -13,7 +11,6 @@ export default function AboutGardenPage() {
     const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
     const { ref: ref2, inView: visible2 } = useInView<HTMLHeadingElement>(0.3);
     const { ref: ref3, inView: visible3 } = useInView<HTMLHeadingElement>(0.3);
-    const { ref: ref4, inView: visible4 } = useInView<HTMLHeadingElement>(0.3);
 
     return (
         <article>
@@ -68,14 +65,14 @@ export default function AboutGardenPage() {
             </section>
             <SectionLineSeparator />
             <section>
-                <h2 ref={ref3} className={cn(`h2-animate`, visible3 ? 'visible' : '')}>
+                <h2 ref={ref2} className={cn(`h2-animate`, visible2 ? 'visible' : '')}>
                     Nasz ogród w liczbach
                 </h2>
                 <GardenStats />
             </section>
             <SectionLineSeparator />
             <section>
-                <h2 ref={ref4} className={cn(`h2-animate`, visible4 ? 'visible' : '')}>
+                <h2 ref={ref3} className={cn(`h2-animate`, visible3 ? 'visible' : '')}>
                     Nasz ogród na mapie
                 </h2>
                 <GardenMap />

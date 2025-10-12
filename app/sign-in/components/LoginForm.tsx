@@ -1,17 +1,18 @@
 'use client';
-
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import { useState } from 'react';
+import Popup from '@/components/Popup';
 
 export default function LoginForm() {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         // add here sign-in logic, f.e. fetch into API
         console.log({ login, password });
+        setShowPopup(true);
     };
 
     return (
@@ -29,11 +30,10 @@ export default function LoginForm() {
                         id="login"
                         value={login}
                         onChange={(e) => setLogin(e.target.value)}
-                        required
+                        //required
                         className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-green-500 focus:outline-none"
                     />
                 </div>
-
                 {/* Password */}
                 <div>
                     <label htmlFor="password" className="block text-xl">
@@ -45,7 +45,7 @@ export default function LoginForm() {
                             id="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            required
+                            //required
                             className="block w-full rounded-md border border-gray-300 px-3 py-2 pr-10 shadow-sm focus:border-green-500 focus:ring-green-500 focus:outline-none"
                         />
                         <button
@@ -61,19 +61,24 @@ export default function LoginForm() {
                         </button>
                     </div>
                 </div>
-
                 {/* Forgot Password */}
                 <div className="flex justify-end text-lg">
                     <a href="/forgot-password" className="text-lime-500 hover:underline">
                         Zapomniałem hasła
                     </a>
                 </div>
-
-                {/* Sign-in Button*/}
+                {/* Sign-in Button */}
                 <button type="submit" className="button-text w-full">
                     Zaloguj
                 </button>
             </form>
+            {/* Popup function unavailable */}
+            {showPopup && (
+                <Popup
+                    message="Funkcja logowania nie jest jeszcze dostępna. Trwają prace nad jej przygotowaniem."
+                    onClose={() => setShowPopup(false)}
+                />
+            )}
         </div>
     );
 }

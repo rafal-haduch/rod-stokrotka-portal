@@ -1,22 +1,6 @@
 'use client';
+import { plotsFeesStatus } from '@/data';
 import React from 'react';
-
-type FeesStatus = 'Opłacone' | 'Nieopłacone' | '...';
-
-interface PlotFees {
-    nr: string;
-    status: FeesStatus;
-}
-
-const payments: PlotFees[] = [
-    { nr: '100', status: 'Opłacone' },
-    { nr: '101', status: 'Nieopłacone' },
-    { nr: '102', status: 'Opłacone' },
-    { nr: '103', status: 'Nieopłacone' },
-    { nr: '104', status: 'Opłacone' },
-    { nr: '...', status: '...' },
-    // ... kolejne działki
-];
 
 export default function FeesTable() {
     return (
@@ -28,15 +12,15 @@ export default function FeesTable() {
                 </tr>
             </thead>
             <tbody>
-                {payments.map(({ nr, status }) => (
-                    <tr key={nr} className="hover:bg-gray-100">
-                        <td className="border border-lime-400 px-3 py-1">{nr}</td>
+                {plotsFeesStatus.map((item) => (
+                    <tr key={item.nr} className="hover:bg-gray-100">
+                        <td className="border border-lime-400 px-3 py-1">{item.nr}</td>
                         <td
                             className={`border border-lime-400 px-3 py-1 font-medium ${
-                                status === 'Opłacone' ? 'text-green-600' : 'text-red-600'
+                                item.status === 'Opłacone' ? 'text-green-600' : 'text-red-600'
                             }`}
                         >
-                            {status}
+                            {item.status}
                         </td>
                     </tr>
                 ))}

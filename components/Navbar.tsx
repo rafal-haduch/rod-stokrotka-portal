@@ -1,24 +1,12 @@
 'use client';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/cn';
-
-const navLink = [
-    { name: 'STRONA GŁÓWNA', href: '/' },
-    { name: 'O NAS', href: '/about-us' },
-    { name: 'MAPA OGRODU', href: '/garden-map' },
-    { name: 'ZARZĄD', href: '/management' },
-    { name: 'KONTAKT', href: '/contact' },
-    { name: 'DOKUMENTY', href: '/documents' },
-    { name: 'OPŁATY', href: '/fees' },
-    { name: 'INFORMACJE', href: '/information' },
-    { name: 'OGŁOSZENIA', href: '/announcements' },
-    { name: 'INWESTYCJE', href: '/investments' },
-    { name: 'GALERIA', href: '/gallery' },
-    { name: 'PORADY OGRODOWE', href: '/gardening-guide' },
-];
+import { navLinks } from '@/data';
 
 export default function Navbar() {
+    const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const [isClient, setIsClient] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
@@ -61,10 +49,13 @@ export default function Navbar() {
             {/* Desktop Menu */}
             {/* Nav */}
             <ul className="hidden flex-wrap justify-center gap-x-6 gap-y-3 [font-family:var(--font-aboreto)] font-bold text-green-600 xl:flex xl:flex-1">
-                {navLink.map((item) => (
+                {navLinks.map((item) => (
                     <li
                         key={item.href}
-                        className="cursor-pointer hover:text-green-800 hover:underline"
+                        className={cn(
+                            'cursor-pointer transition-colors hover:text-green-800 hover:underline',
+                            pathname === item.href ? 'text-green-700 underline' : ''
+                        )}
                     >
                         <Link href={item.href}>{item.name}</Link>
                     </li>
@@ -94,13 +85,14 @@ export default function Navbar() {
                     )}
                 >
                     {/* TODO: change animation */}
-                    {navLink.map((item, i) => (
+                    {navLinks.map((item, i) => (
                         <li key={item.href} className="hover:underline">
                             <Link
                                 href={item.href}
                                 onClick={() => setIsOpen(false)}
                                 className={cn(
                                     'block w-full transform text-center transition-all duration-500 ease-out',
+                                    pathname === item.href ? 'text-green-700 underline' : '',
                                     isClient && isOpen
                                         ? 'translate-x-0 opacity-100'
                                         : '-translate-x-[120vw] opacity-0'

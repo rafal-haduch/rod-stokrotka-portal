@@ -1,7 +1,7 @@
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import SectionLineSeparator from '@/components/SectionLineSeparator';
-import WorkInProgress from '@/components/WorkInProgress';
+import { treasurersDuties, wasteCollectionSchedule } from '@/data';
 import Link from 'next/link';
 
 const myInformationPage = 'my-10';
@@ -14,17 +14,30 @@ export default function InformationPage() {
             <h2>Najważniejsze informacje organizacyjne</h2>
             <section className="mx-auto max-w-3xl">
                 <h3 className="text-center">Harmonogram wywozu odpadów komunalnych na rok 2025:</h3>
-                <ul className="text-center">
-                    <li>
-                        <p>1 maj, godzina: 14:30</p>
-                    </li>
-                    <li>
-                        <p>1 czerwiec, godzina: 14:30</p>
-                    </li>
-                    <li>
-                        <p>1 sierpień, godzina: 14:30</p>
-                    </li>
-                </ul>
+                <table className="text-md mx-auto w-full max-w-2xl table-fixed border border-lime-400 text-center">
+                    <thead>
+                        <tr className="bg-lime-200">
+                            <th className="w-1/3 border border-lime-400 px-3 py-2">Miesiąc</th>
+                            <th className="w-1/3 border border-lime-400 px-3 py-2">Mieszane</th>
+                            <th className="w-1/3border border-lime-400 px-1 py-2 sm:px-3">
+                                Segregowane
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {wasteCollectionSchedule.map((item, i) => (
+                            <tr key={i} className="hover:bg-gray-100">
+                                <th className="border border-lime-400 font-medium">{item.month}</th>
+                                <th className="border border-lime-400 font-medium">
+                                    {item.mixedWasteCollectionDay.join(', ')}
+                                </th>
+                                <th className="border border-lime-400 font-medium">
+                                    {item.sortedWasteCollectionDay.join(', ')}
+                                </th>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </section>
             <SectionLineSeparator my={myInformationPage} />
             <section className="mx-auto max-w-3xl">
@@ -32,15 +45,11 @@ export default function InformationPage() {
                     Dyżury Skarbnika (działka 25) i Sekretarza (działka 24) na 2025 rok:
                 </h3>
                 <ul className="text-center">
-                    <li>
-                        <p>10 czerwiec, w godzinach: 16:00-18:00</p>
-                    </li>
-                    <li>
-                        <p>17 czerwiec, w godzinach: 16:00-18:00</p>
-                    </li>
-                    <li>
-                        <p>26 czerwiec, w godzinach: 16:00-18:00</p>
-                    </li>
+                    {treasurersDuties.map((item, i) => (
+                        <li key={i}>
+                            <span>{item.date}</span>
+                        </li>
+                    ))}
                 </ul>
             </section>
             <SectionLineSeparator my={myInformationPage} />

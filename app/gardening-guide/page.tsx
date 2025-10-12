@@ -2,6 +2,7 @@ import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import SectionLineSeparator from '@/components/SectionLineSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
+import { recommendedSites } from '@/data';
 
 export default function GardeningGuidePage() {
     return (
@@ -11,26 +12,20 @@ export default function GardeningGuidePage() {
             <h2>Porady, wskazówki i inspiracje dla ogrodu</h2>
             <section className="text-center">
                 <h3>Polecane strony</h3>
-                <ul className="space-y-4">
-                    <li>
-                        <span>Strona 1 </span>
-                        <a href="https://www.google.com">www.google.com</a>
-                    </li>
-                    <li>
-                        <span>Strona 2 </span>
-                        <a href="https://www.google.com">www.google.com</a>
-                    </li>
-                    <li>
-                        <span>Strona 3 </span>
-                        <a href="https://www.google.com">www.google.com</a>
-                    </li>
-                    <li>
-                        <span>Strona 4 </span>
-                        <a href="https://www.google.com">www.google.com</a>
-                    </li>
+                <ul className="space-y-6 sm:space-y-4">
+                    {recommendedSites.map((item) => (
+                        <li key={item.name}>
+                            <p>
+                                {item.name}:{' '}
+                                <a href={item.url} className="link-visible" target="blank">
+                                    {item.linkContext}
+                                </a>
+                            </p>
+                        </li>
+                    ))}
                 </ul>
             </section>
-            <SectionLineSeparator my="my-10" />
+            <SectionLineSeparator />
             <section className="text-center">
                 <h3>Wybrane artykuły</h3>
                 <WorkInProgress />

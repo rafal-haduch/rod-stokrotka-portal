@@ -54,7 +54,6 @@ export default function PaymentsPage() {
                     </span>
                 </p>
                 <TableOfFeeTypes />
-
                 <p>
                     W przypadku chęci opłacenia składek gotówką, rozpiskę dyżurów Skarbnika znajdą
                     Państwo na stronie{' '}
