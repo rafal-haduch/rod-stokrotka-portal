@@ -55,10 +55,7 @@ export default function PaymentsPage() {
                 <TableOfFeeTypes />
                 <p>
                     W przypadku płatności gotówką, dyżury Skarbnika znajdą Państwo na stronie{' '}
-                    <Link
-                        href="/information"
-                        className="text-blue-600 hover:text-blue-800 hover:underline"
-                    >
+                    <Link href="/information" className="link-context">
                         Informacje
                     </Link>
                     .

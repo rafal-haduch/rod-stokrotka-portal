@@ -1,25 +1,25 @@
-interface associationBoard {
+interface structureAssociation {
     person: string;
     position: string;
 }
 
-export const associationBoard: associationBoard[] = [
+export const associationBoard: structureAssociation[] = [
     { person: 'Maciej Uruski', position: 'prezes' },
     { person: 'Zbigniew Gajda', position: 'wiceprezes' },
     { person: 'Katarzyna Wojdyła', position: 'sekretarz' },
     { person: 'Urszula Martuszewska', position: 'skarbnik' },
 ];
 
-interface auditCommittee {
-    person: string;
-    position: string;
-}
-
-//TODO: position of the person on the audit committee
-export const auditCommittee: auditCommittee[] = [
+export const auditCommittee: structureAssociation[] = [
     { person: 'Krystyna Wojtowicz', position: 'przewodnicząca' },
-    { person: 'Renata Olbert', position: '?' },
-    { person: 'Piotr Kaliniecki', position: '?' },
+    { person: 'Renata Olbert', position: 'członek komisji' },
+    { person: 'Piotr Kaliniecki', position: 'członek komisji' },
+];
+
+export const arbitrationCommission: structureAssociation[] = [
+    { person: 'Marzena Kalbarczyk', position: 'przewodnicząca' },
+    { person: 'Bogdan Jagielski', position: 'członek komisji' },
+    { person: 'Halina Cecuła', position: 'członek komisji' },
 ];
 
 export const asOf = '17.05.2025';

@@ -27,13 +27,20 @@ export default function HomePage() {
                 <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
                     Strona internetowa Stowarzyszenia Ogrodowego <br /> ,,Stokrotka" w Sanoku
                 </h2>
-                <p className="">
-                    Zachęcamy Działkowiczów do odwiedzania naszej strony internetowej. To tutaj
-                    publikujemy wszelkie ogłoszenia, informacje organizacyjne oraz aktualności
-                    dotyczące życia naszego ogrodu. Znajdą tu Państwo również przydatne materiały i
-                    dokumenty, ciekawe zdjęcia, a także porady ogrodowe, które pomogą w pielęgnacji
-                    działek.
+                <p className="mb-8">
+                    Zachęcamy Działkowiczów do odwiedzania naszej strony internetowej poświęconej
+                    ogrodowi ,,Stokrotka'' w Sanoku. To tutaj publikujemy wszelkie ogłoszenia,
+                    informacje organizacyjne oraz aktualności dotyczące życia naszego ogrodu. Znajdą
+                    tu Państwo również przydatne materiały i dokumenty, ciekawe zdjęcia, a także
+                    porady ogrodowe, które pomogą w pielęgnacji działek.
                 </p>
+                <Link
+                    href="/about-us"
+                    title="Dowiedz się więcej o nas"
+                    className="button-text mx-auto"
+                >
+                    <span>Dowiedz się więcej o nas</span>
+                </Link>
             </section>
 
             <ImageSeparator />
@@ -43,9 +50,17 @@ export default function HomePage() {
                     Ostatnie Ogłoszenia
                 </h2>
                 <WorkInProgress />
-                <Link href="/announcements" className="button-icon mx-auto max-w-3xs">
+                <Link
+                    href="/announcements"
+                    title="Zobacz więcej ogłoszeń"
+                    className="button-icon mx-auto"
+                >
                     <span>Zobacz więcej </span>
-                    <img src="/arrow-right_green_24.svg" />
+                    <img
+                        src="/arrow-right_green_24.svg"
+                        alt="Przejdź (Strzałka w prawo)"
+                        className="inline-block"
+                    />
                 </Link>
             </section>
 
@@ -56,6 +71,14 @@ export default function HomePage() {
                     Galeria ogrodu
                 </h2>
                 <Slider />
+                <Link href="/gallery" title="Zobacz więcej zdjęć" className="button-icon mx-auto">
+                    <span>Zobacz więcej </span>
+                    <img
+                        src="/arrow-right_green_24.svg"
+                        alt="Przejdź (Strzałka w prawo)"
+                        className="inline-block"
+                    />
+                </Link>
             </section>
 
             <SectionLineSeparator />

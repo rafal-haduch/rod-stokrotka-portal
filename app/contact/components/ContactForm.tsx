@@ -23,7 +23,7 @@ export default function ContactForm() {
                 {/* User Name */}
                 <div>
                     <label htmlFor="name" className="block text-xl text-gray-700">
-                        Imię i nazwisko
+                        Imię i nazwisko (opcjonalnie numer działki)
                     </label>
                     <input
                         type="text"
@@ -74,7 +74,7 @@ export default function ContactForm() {
                             onChange={(e) => setContent(e.target.value)}
                             //required
                             rows={6}
-                            className="block w-full resize-y overflow-y-auto rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-green-500 focus:outline-none"
+                            className="block w-full overflow-y-auto rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-green-500 focus:outline-none"
                         />
                     </div>
                 </div>

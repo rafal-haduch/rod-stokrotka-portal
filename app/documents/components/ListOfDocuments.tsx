@@ -110,7 +110,7 @@ export default function ListOfDocuments() {
             <li className="flex w-full py-2">
                 {/* Link for mobile, text for larger ones */}
                 <a
-                    href="/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
+                    href="/Protokół_Zebrania_17.05.2025.pdf"
                     download
                     className="flex w-fit items-center hover:underline sm:hidden"
                 >
@@ -123,11 +123,19 @@ export default function ListOfDocuments() {
                 </div>
                 {/* Buttons */}
                 <div className="ml-auto flex gap-4">
-                    <a href="/regulamin.pdf" target="_blank" className="button-icon hidden lg:flex">
+                    <a
+                        href="/Protokol_Zebrania_17.05.2025.pdf"
+                        target="_blank"
+                        className="button-icon hidden lg:flex"
+                    >
                         <img src="/open_green_24.svg" />
                         Otwórz
                     </a>
-                    <a href="regulamin.pdf" className="button-icon hidden sm:flex">
+                    <a
+                        href="/#"
+                        download="/Protokol_Zebrania_17.05.2025"
+                        className="button-icon hidden sm:flex"
+                    >
                         <img src="/download_green_24.svg" />
                         Pobierz
                     </a>

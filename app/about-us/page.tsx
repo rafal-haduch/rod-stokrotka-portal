@@ -22,11 +22,13 @@ export default function AboutGardenPage() {
             <section>
                 <h3>Historia i teraźniejszość</h3>
                 <p className="mb-4">
-                    Dokładna data założenia ogrodu nie jest znana, ale wiadomo, że początkowo
-                    działki były przydzielane pracownikom zakładów pracy w okresie PRL. Z czasem
-                    przekształciły się w Rodzinne Ogrody Działkowe (ROD) pod auspicjami Polskiego
-                    Związku Działkowców (PZD). Od 2015 roku nasza społeczność działa niezależnie,
-                    jako Stowarzyszenie Ogrodowe „Stokrotka” w Krajowym Rejestrze Sądowym.
+                    Dokładna data założenia ogrodu nie jest obecnie znana, jednakże posiadamy
+                    dokument o decyzji dotyczącej ustalenia miejsca naszych ogródków działkowych,
+                    wystawiony 27.10.1977 roku. Początkowo działki były przydzielane pracownikom
+                    zakładów pracy w okresie PRL. Z czasem przekształciły się w Rodzinne Ogrody
+                    Działkowe (ROD) pod auspicjami Polskiego Związku Działkowców (PZD). Od 2015 roku
+                    nasza społeczność działa niezależnie, jako Stowarzyszenie Ogrodowe „Stokrotka” w
+                    Krajowym Rejestrze Sądowym.
                 </p>
                 <p className="mb-4">
                     Ogród „Stokrotka” w Sanoku to miejsce, gdzie pasja do ogrodnictwa łączy się z

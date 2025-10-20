@@ -2,7 +2,7 @@
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import SectionLineSeparator from '@/components/SectionLineSeparator';
-import { asOf, associationBoard, auditCommittee } from '@/data';
+import { asOf, associationBoard, auditCommittee, arbitrationCommission } from '@/data';
 import { cn } from '@/lib/cn';
 import { useInView } from '@/lib/use-in-view';
 
@@ -28,9 +28,19 @@ export default function ManagementPage() {
                         </li>
                     ))}
                 </ul>
-                <h3>Komisja rewizyjna:</h3>
+                <h3>Komisja Rewizyjna:</h3>
                 <ul className="mb-10">
                     {auditCommittee.map((item, i) => (
+                        <li key={i}>
+                            <span>
+                                {i + 1}. {item.person} - {item.position}
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+                <h3>Komisja Rozjemcza:</h3>
+                <ul className="mb-20">
+                    {arbitrationCommission.map((item, i) => (
                         <li key={i}>
                             <span>
                                 {i + 1}. {item.person} - {item.position}

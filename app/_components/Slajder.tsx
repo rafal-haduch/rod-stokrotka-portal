@@ -29,7 +29,7 @@ export default function Slider() {
     }, []);
 
     return (
-        <div className="relative z-0 mx-auto w-full max-w-3xl overflow-hidden rounded-lg shadow-xl shadow-neutral-400">
+        <div className="relative z-0 mx-auto mb-16 w-full max-w-3xl overflow-hidden rounded-lg shadow-xl shadow-neutral-400">
             {/* Slides */}
             <div
                 className="flex transition-transform duration-500"

@@ -11,4 +11,4 @@ export const associationData: associationData[] = [
 
 export const associationEmail = 'rod.stokrotka.sanok@gmail.com';
 
-export const associationPhoneNumber = '123 123 123';
+export const associationPhoneNumber = '--- --- ---';

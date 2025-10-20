@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/cn';
@@ -42,7 +43,14 @@ export default function Navbar() {
             {/* Logo - always visible */}
             <div className="z-50 flex-shrink-0">
                 <Link href="/" className="cursor-pointer">
-                    <img src="/logo.png" alt="Logo ogrodu Stokrotka." className="h-20 w-auto" />
+                    <Image
+                        src="/logo.png"
+                        alt="Logo Ogordu Stokrotka Sanok."
+                        width={150}
+                        height={80}
+                        priority
+                        className="h-auto w-full object-cover"
+                    />
                 </Link>
             </div>
 

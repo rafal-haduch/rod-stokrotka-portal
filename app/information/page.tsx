@@ -57,7 +57,7 @@ export default function InformationPage() {
                 <h3 className="text-center">Nasza grupa na WhatsApp</h3>
                 <p className="mb-4">
                     Zapraszamy do naszej grupy społecznościowej na WhatsApp, ułatwiającej
-                    komunikację i integrację członków. Dołączenie wymaga aplikacji{' '}
+                    komunikację i integrację Działkowiczów. Dołączenie wymaga aplikacji{' '}
                     <a
                         href="https://www.whatsapp.com/?lang=pl"
                         target="blank"
@@ -65,31 +65,25 @@ export default function InformationPage() {
                     >
                         WhatsApp
                     </a>
-                    . W przypadku chęci dołączenia kliknij w poniższy link lub zeskanuj kod QR
-                    telefonem, bądź skontaktuj się mailowo przez stronę{' '}
+                    . W przypadku chęci dołączenia prosimy skontaktować się przez stronę{' '}
                     <Link href="/contact" className="link-context">
                         Kontakt
                     </Link>{' '}
-                    albo skontaktuj się bezpośrednio z Prezesem Stowarzyszenia.
+                    lub bezpośrednio z Prezesem Stowarzyszenia.
                 </p>
-                <p className="mb-8 text-center">
-                    Dołącz do grupy:
-                    <br />
-                    <a
-                        href="https://www.whatsapp.com/?lang=pl"
-                        target="blank"
-                        className="link-visible"
-                    >
-                        www.whatsapp.com
-                    </a>
+            </section>
+            <SectionLineSeparator my={myInformationPage} />
+            <section className="mx-auto max-w-3xl">
+                <h3 className="text-center">Kontakt i pytania</h3>
+                <p className="mb-4">
+                    Jeżeli mają Państwo jakiekolwiek pytania i potrzebują się skontaktować z
+                    zarządem Stowarzyszenia Ogrodowego Stokrotka Sanok, to najlepszą formą jest
+                    napisanie wiadomości przez formularz kontaktowy na stronie{' '}
+                    <Link href="/contact" className="link-context">
+                        Kontakt
+                    </Link>{' '}
+                    lub w przypadku pilnych spraw bezpośrednio z Prezesem Stowarzyszenia.
                 </p>
-                <img
-                    src="/CodeQR.png"
-                    width={200}
-                    height={200}
-                    alt="Kod QR do dołączenia do grupy na WhatsApp"
-                    className="mx-auto"
-                />
             </section>
             <SectionLineSeparator my={myInformationPage} />
             <section className="mx-auto max-w-3xl">
@@ -108,10 +102,10 @@ export default function InformationPage() {
                     Aktualnie po walnym zebraniu 2025 wjazd na teren ogrodu został przywrócony.
                     Prosimy jednak o ograniczenie prędkości (max 15 km/h) oraz unikanie wjazdu w
                     okresach intensywnych opadów. Zalecamy wjazd na górne działki od strony
-                    obwodnicy, aby rozłożyć ruch.. Szanujmy nasze wspólne dobro - w przeciwnym
-                    razie, wjazd na teren ogrodu może zostać ponownie ograniczony. W takim
-                    przypadku, lub przy innych utrudnieniach wymagających zamknięcia bramy
-                    wjazdowej, pojawi się odpowiedni wpis na stronie{' '}
+                    obwodnicy, aby rozłożyć ruch. Szanujmy nasze wspólne dobro - w przeciwnym razie,
+                    wjazd na teren ogrodu może zostać ponownie ograniczony. W takim przypadku, lub
+                    przy innych utrudnieniach wymagających zamknięcia bramy wjazdowej, pojawi się
+                    odpowiedni wpis na stronie{' '}
                     <Link href="/announcements" className="link-context">
                         Ogłoszenia
                     </Link>{' '}

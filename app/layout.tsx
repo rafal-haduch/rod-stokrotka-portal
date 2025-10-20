@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import PreFooter from '@/components/PreFooter';
 import HeroWrapper from '@/components/HeroWrapper';
 import ClientLayout from './client-layout';
+import JsonLdOrganization from '@/components/JsonLdOrganization';
 
 export { metadata };
 
@@ -20,6 +21,7 @@ export default function RootLayout({
             className={`${lato.variable} ${bonheurRoyale.variable} ${aboreto.variable} ${libreBodoni.variable}`}
         >
             <body>
+                <JsonLdOrganization />
                 <Navbar />
                 <ClientLayout>
                     <header>
