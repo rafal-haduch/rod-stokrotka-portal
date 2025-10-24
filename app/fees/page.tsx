@@ -8,6 +8,8 @@ import Link from 'next/link';
 import FeesTable from './components/FeesTabel';
 import TableOfFeeTypes from './components/TableOfFeeTypes';
 import SectionLineSeparator from '@/components/SectionLineSeparator';
+import { paymentStatusAsOf } from '@/data';
+import NoArrears from './components/NoArrears';
 
 export default function PaymentsPage() {
     const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
@@ -64,9 +66,22 @@ export default function PaymentsPage() {
             <SectionLineSeparator />
             <section className="mt-8 overflow-x-auto">
                 <h2 ref={ref2} className={cn(`h2-animate`, visible2 ? 'visible' : '')}>
-                    Bilans wpłat (stan na: 07.10.2025)
+                    Bilans wpłat za 2025 rok
                 </h2>
+                <p className="mb-6">
+                    Tabelka z bilansem wpłat za dany rok pojawi się na stronie po upływie terminu
+                    uiszczenia opłat i będzie widoczna do końca roku kalendarzowego.
+                </p>
+                <h3 className="text-center">Stan na: {paymentStatusAsOf}</h3>
                 <FeesTable />
+                <p className="sm:text-center">
+                    *w przypadku błędu prosimy skontaktować się ze Skarbnikiem lub Prezesem.
+                </p>
+            </section>
+            <SectionLineSeparator />
+            <section>
+                <h2>Zaległości wpłat za 2024 rok</h2>
+                <NoArrears />
             </section>
             <ImageSeparator />
         </article>
