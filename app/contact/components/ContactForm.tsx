@@ -80,7 +80,7 @@ export default function ContactForm() {
                 </div>
                 {/* Send Button */}
                 <button type="submit" className="button-icon w-full">
-                    <img src="/send_green_24.svg" />
+                    <img src="/icons/send_green_24.svg" />
                     <span>Wyślij</span>
                 </button>
             </form>

@@ -9,11 +9,11 @@ export default function ListOfDocuments() {
                     download
                     className="flex w-fit items-center hover:underline sm:hidden"
                 >
-                    <img src="/file_icon.svg" />
+                    <img src="/icons/file_icon.svg" />
                     <span>Regulamin.pdf</span>
                 </a>
                 <div className="mr-6 hidden items-center sm:flex sm:gap-2">
-                    <img src="/file_icon.svg" />
+                    <img src="/icons/file_icon.svg" />
                     <span>Regulamin.pdf</span>
                 </div>
                 {/* Buttons */}
@@ -23,7 +23,7 @@ export default function ListOfDocuments() {
                         target="_blank"
                         className="button-icon hidden lg:flex"
                     >
-                        <img src="/open_green_24.svg" />
+                        <img src="/icons/open_green_24.svg" />
                         Otwórz
                     </a>
                     <a
@@ -31,7 +31,7 @@ export default function ListOfDocuments() {
                         download="/Regulamin_ROD_Stokrotka.pdf"
                         className="button-icon hidden sm:flex"
                     >
-                        <img src="/download_green_24.svg" />
+                        <img src="/icons/download_green_24.svg" />
                         Pobierz
                     </a>
                 </div>
@@ -44,11 +44,11 @@ export default function ListOfDocuments() {
                     download
                     className="flex w-fit items-center hover:underline sm:hidden"
                 >
-                    <img src="/file_icon.svg" />
+                    <img src="/icons/file_icon.svg" />
                     <span>Statut.pdf</span>
                 </a>
                 <div className="mr-6 hidden items-center sm:flex sm:gap-2">
-                    <img src="/file_icon.svg" />
+                    <img src="/icons/file_icon.svg" />
                     <span>Statut.pdf</span>
                 </div>
                 {/* Buttons */}
@@ -58,7 +58,7 @@ export default function ListOfDocuments() {
                         target="_blank"
                         className="button-icon hidden lg:flex"
                     >
-                        <img src="/open_green_24.svg" />
+                        <img src="/icons/open_green_24.svg" />
                         Otwórz
                     </a>
                     <a
@@ -66,7 +66,7 @@ export default function ListOfDocuments() {
                         download="/Statut_ROD_Stokrotka.pdf"
                         className="button-icon hidden sm:flex"
                     >
-                        <img src="/download_green_24.svg" />
+                        <img src="/icons/download_green_24.svg" />
                         Pobierz
                     </a>
                 </div>
@@ -79,11 +79,11 @@ export default function ListOfDocuments() {
                     download
                     className="flex w-fit items-center hover:underline sm:hidden"
                 >
-                    <img src="/file_icon.svg" />
+                    <img src="/icons/file_icon.svg" />
                     <span>Plan_Zagospodarowania.pdf</span>
                 </a>
                 <div className="mr-6 hidden items-center sm:flex sm:gap-2">
-                    <img src="/file_icon.svg" />
+                    <img src="/icons/file_icon.svg" />
                     <span>Plan_Zagospodarowania.pdf</span>
                 </div>
                 {/* Buttons */}
@@ -93,7 +93,7 @@ export default function ListOfDocuments() {
                         target="_blank"
                         className="button-icon hidden lg:flex"
                     >
-                        <img src="/open_green_24.svg" />
+                        <img src="/icons/open_green_24.svg" />
                         Otwórz
                     </a>
                     <a
@@ -101,7 +101,7 @@ export default function ListOfDocuments() {
                         download="/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
                         className="button-icon hidden sm:flex"
                     >
-                        <img src="/download_green_24.svg" />
+                        <img src="/icons/download_green_24.svg" />
                         Pobierz
                     </a>
                 </div>
@@ -114,11 +114,11 @@ export default function ListOfDocuments() {
                     download
                     className="flex w-fit items-center hover:underline sm:hidden"
                 >
-                    <img src="/file_icon.svg" />
+                    <img src="/icons/file_icon.svg" />
                     <span>Protokół_Zebrania_17.05.2025.pdf</span>
                 </a>
                 <div className="mr-6 hidden items-center sm:flex sm:gap-2">
-                    <img src="/file_icon.svg" />
+                    <img src="/icons/file_icon.svg" />
                     <span>Protokół_Zebrania_17.05.2025.pdf</span>
                 </div>
                 {/* Buttons */}
@@ -128,7 +128,7 @@ export default function ListOfDocuments() {
                         target="_blank"
                         className="button-icon hidden lg:flex"
                     >
-                        <img src="/open_green_24.svg" />
+                        <img src="/icons/open_green_24.svg" />
                         Otwórz
                     </a>
                     <a
@@ -136,7 +136,7 @@ export default function ListOfDocuments() {
                         download="/Protokol_Zebrania_17.05.2025"
                         className="button-icon hidden sm:flex"
                     >
-                        <img src="/download_green_24.svg" />
+                        <img src="/icons/download_green_24.svg" />
                         Pobierz
                     </a>
                 </div>

@@ -3,9 +3,9 @@
 import { useEffect, useState } from 'react';
 
 const slides = [
-    { id: 1, src: '/slide1.jpg', alt: 'Slide 1' },
-    { id: 2, src: '/slide2.jpg', alt: 'Slide 2' },
-    { id: 3, src: '/slide3.jpg', alt: 'Slide 3' },
+    { id: 1, src: '/images/gallery/slider/slide1.jpg', alt: 'Slide 1' },
+    { id: 2, src: '/images/gallery/slider/slide2.jpg', alt: 'Slide 2' },
+    { id: 3, src: '/images/gallery/slider/slide3.jpg', alt: 'Slide 3' },
 ];
 
 export default function Slider() {

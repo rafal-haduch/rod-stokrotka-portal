@@ -16,13 +16,13 @@ export default function DevelopmentPlanPage() {
                 Podgląd zagospodarowania terenu
             </h2>
             <section className="flex flex-col items-center">
-                <img src="/mapa-ogrodu.png" className="w-xl" />
+                <img src="/images/ui/mapa-ogrodu.png" className="w-xl" />
                 <a
                     href="/#"
                     download="/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
                     className="button-icon"
                 >
-                    <img src="/download_green_24.svg" />
+                    <img src="/icons/download_green_24.svg" />
                     Pobierz szczegółowy plan
                 </a>
                 <ImageSeparator />

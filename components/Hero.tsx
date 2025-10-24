@@ -6,7 +6,7 @@ export default function Hero() {
         <section className="mx-auto max-w-7xl bg-gray-50">
             <Link href="/" title="Powrót na stronę główną">
                 <Image
-                    src="/hero.jpg"
+                    src="/images/ui/hero.jpg"
                     alt="Panorama ogrodu ROD Stokrotka w Sanoku."
                     width={1920}
                     height={600}

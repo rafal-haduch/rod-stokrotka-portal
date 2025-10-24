@@ -57,7 +57,7 @@ export default function HomePage() {
                 >
                     <span>Zobacz więcej </span>
                     <img
-                        src="/arrow-right_green_24.svg"
+                        src="/icons/arrow-right_green_24.svg"
                         alt="Przejdź (Strzałka w prawo)"
                         className="inline-block"
                     />
@@ -74,7 +74,7 @@ export default function HomePage() {
                 <Link href="/gallery" title="Zobacz więcej zdjęć" className="button-icon mx-auto">
                     <span>Zobacz więcej </span>
                     <img
-                        src="/arrow-right_green_24.svg"
+                        src="/icons/arrow-right_green_24.svg"
                         alt="Przejdź (Strzałka w prawo)"
                         className="inline-block"
                     />

@@ -44,7 +44,7 @@ export default function Navbar() {
             <div className="z-50 flex-shrink-0">
                 <Link href="/" className="cursor-pointer">
                     <Image
-                        src="/logo.png"
+                        src="/images/ui/logo.png"
                         alt="Logo Ogordu Stokrotka Sanok."
                         width={150}
                         height={80}
@@ -74,7 +74,7 @@ export default function Navbar() {
                 href="/sign-in"
                 className="hidden cursor-pointer flex-col items-center text-white hover:underline xl:flex"
             >
-                <img src="/login_white_24.svg" alt="Ikona logowania" className="h-10 w-10" />
+                <img src="/icons/login_white_24.svg" alt="Ikona logowania" className="h-10 w-10" />
                 <span className="text-xl font-bold">LOGOWANIE</span>
             </Link>
 
@@ -121,8 +121,8 @@ export default function Navbar() {
                             )}
                         >
                             <img
-                                src="/login_white_24.svg"
-                                alt="Ikona osoby"
+                                src="/icons/login_white_24.svg"
+                                alt="Ikona logowania"
                                 className="h-10 w-10"
                             />
                             <span>LOGOWANIE</span>
