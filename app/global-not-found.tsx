@@ -1,6 +1,5 @@
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import '../styles/globals.css';
-import ImageSeparator from '@/components/ImageSeparator';
 import { lato, bonheurRoyale, aboreto, libreBodoni } from '../fonts/fonts';
 import { metadata } from './metadata';
 import Link from 'next/link';
