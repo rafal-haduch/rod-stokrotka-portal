@@ -29,7 +29,7 @@ export async function POST(req) {
             from: process.env.MAIL_ASSOCIATION,
             to: process.env.MAIL_ASSOCIATION,
             replyTo: email,
-            subject: `Formularz kontaktowy - ${name}, ${subject}.`,
+            subject: `Formularz kontaktowy:  ${name}, ${subject}.`,
             text: message,
         });
     } catch (err) {
@@ -48,22 +48,22 @@ export async function POST(req) {
         await transporter.sendMail({
             from: process.env.MAIL_ASSOCIATION,
             to: email,
-            subject:
-                'Potwierdzenie otrzymania wiadomości z formularza kontaktowego - ROD Stokrotka Sanok',
-            html: `
-                <p>Dziękujemy za kontakt z Zarządem Stowarzyszenia Ogrodowego "Stokrotka" w Sanoku.</br>
-                </br>
-                <p>To jest automatyczna odpowiedź potwierdzająca, że dotarła do nas Twoja wiadomość:</p>
-                <p style="margin-left:15px; font-style:italic; color:#555;">
+            subject: 'Potwierdzenie otrzymania wiadomości - ROD Stokrotka Sanok',
+            html: `<p>
+                Dziękujemy za kontakt z Zarządem Stowarzyszenia Ogrodowego "Stokrotka" w Sanoku.<br/>
+                Postaramy się odpowiedzieć najszybciej, jak to możliwe.<br/>
+                <br/>
+                To jest automatyczna odpowiedź potwierdzająca, że dotarła do nas Twoja wiadomość:
+                </p>
+                <p style="margin-left:20px; margin-right:40px; font-style:italic; color:#555;">
                 <strong>Temat: </strong>${subject}<br/><br/>
-                <strong>Treść: </strong>
-                ${message}
+                <strong>Treść: </strong>${message}
                 </p>
                 <p>
-                Postaramy się odpowiedzieć najszybciej, jak to możliwe.<br/>
-                Pozdrawiamy,<br/>
-                <strong>Zarząd Stowarzyszenia Ogrodowego "Stokrotka" Sanok</strong>
-                `,
+                <strong>Pozdrawiamy,<br/>
+                Zarząd Stowarzyszenia Ogrodowego "Stokrotka" <br/>
+                Sanok</strong>
+                </p>`,
         });
     } catch (err) {
         console.error('Błąd przy wysyłce potwierdzenia do nadawcy:', err);

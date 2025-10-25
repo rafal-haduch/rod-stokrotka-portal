@@ -1,14 +1,49 @@
+import type { Metadata } from 'next';
 import { lato, bonheurRoyale, aboreto, libreBodoni } from '../fonts/fonts';
-import { metadata } from './metadata';
 import '../styles/globals.css';
+import DynamicClientLayout from '../components/DynamicClientLayout';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PreFooter from '@/components/PreFooter';
-import HeroWrapper from '@/components/HeroWrapper';
-import ClientLayout from './client-layout';
 import JsonLdOrganization from '@/components/JsonLdOrganization';
 
-export { metadata };
+export const metadata: Metadata = {
+    title: 'ROD Stokrotka Sanok',
+    description:
+        'Strona internetowa Stowarzyszenia Ogrodowego "Stokrotka" w Sanoku. Publikujemy tutaj ogłoszenia, informacje organizacyjne i aktualności.',
+    icons: {
+        icon: '/favicon.png',
+    },
+    openGraph: {
+        title: 'ROD Stokrotka Sanok',
+        description: 'Strona internetowa Stowarzyszenia Ogrodowego Stokrotka w Sanoku',
+        url: 'https://rod-stokrotka-sanok.vercel.app',
+        siteName: 'ROD Stokrotka Sanok',
+        images: [
+            {
+                url: '/logo.png',
+                width: 1200,
+                height: 630,
+            },
+        ],
+        locale: 'pl_PL',
+        type: 'website',
+    },
+    keywords: [
+        'ROD',
+        'Stokrotka',
+        'Sanok',
+        'ogród',
+        'stowarzyszenie',
+        'stowarzyszenie ogrodowe',
+        'działki',
+        'ogród działkowy',
+        'ROD Sanok',
+        'ogrody działkowe',
+        'ROD Stokrotka Sanok',
+        'ogród społeczny',
+    ],
+};
 
 export default function RootLayout({
     children,
@@ -23,14 +58,11 @@ export default function RootLayout({
             <body>
                 <JsonLdOrganization />
                 <Navbar />
-                <ClientLayout>
-                    <header>
-                        <HeroWrapper />
-                    </header>
+                <DynamicClientLayout>
                     <main>{children}</main>
-                    <PreFooter />
-                    <Footer />
-                </ClientLayout>
+                </DynamicClientLayout>
+                <PreFooter />
+                <Footer />
             </body>
         </html>
     );
