@@ -24,8 +24,8 @@ export default function PaymentsPage() {
             </h2>
             <section className="space-y-6 text-center">
                 <p className="">
-                    Termin uiszczenia opłat upływa 30 czerwca każdego roku. Uprzejmie prosimy o
-                    przestrzeganie terminu. <br />
+                    Termin uiszczenia opłat upływa 30 czerwca każdego roku. Uprzejmie prosimy o jego
+                    przestrzeganie. <br />
                     <span className="font-bold text-red-500">
                         Notoryczne opóźnienia mogą skutkować naliczaniem odsetek zgodnie z
                         regulaminem ogrodu!
