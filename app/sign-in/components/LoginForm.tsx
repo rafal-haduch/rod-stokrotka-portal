@@ -75,6 +75,7 @@ export default function LoginForm() {
             {/* Popup function unavailable */}
             {showPopup && (
                 <Popup
+                    type="info"
                     message="Funkcja logowania nie jest jeszcze dostępna. Trwają prace nad jej przygotowaniem."
                     onClose={() => setShowPopup(false)}
                 />
