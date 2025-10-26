@@ -1,0 +1,135 @@
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+// TODO: change alt
+const images = [
+    { src: '/images/gallery/garden-photos/img1.jpg', alt: 'Wejście do ogrodu' },
+    { src: '/images/gallery/garden-photos/img2.jpg', alt: 'Altana przy działce' },
+    { src: '/images/gallery/garden-photos/img3.jpg', alt: 'Kwiaty wiosną' },
+    { src: '/images/gallery/garden-photos/img4.jpg', alt: 'Zachód' },
+    { src: '/images/gallery/garden-photos/img5.jpg', alt: 'Zachód' },
+    { src: '/images/gallery/garden-photos/img6.jpg', alt: 'Zachód' },
+    { src: '/images/gallery/garden-photos/img7.jpg', alt: 'Zachód' },
+    { src: '/images/gallery/garden-photos/img8.jpg', alt: 'Zachód' },
+    { src: '/images/gallery/garden-photos/img9.jpg', alt: 'Zachód' },
+    { src: '/images/gallery/garden-photos/img10.jpg', alt: 'Zachód' },
+    { src: '/images/gallery/garden-photos/img11.jpg', alt: 'Zachód' },
+    { src: '/images/gallery/garden-photos/img12.jpg', alt: 'Zachód' },
+    { src: '/images/gallery/garden-photos/img13.jpg', alt: 'Zachód' },
+];
+
+export default function GalleryPreview() {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    const prevImg = () => {
+        setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    };
+
+    const nextImg = () => {
+        setActiveIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    };
+
+    const scroll = (direction: 'left' | 'right') => {
+        const container = scrollRef.current;
+        if (!container) return;
+        const scrollAmount = 200; // px
+        container.scrollBy({
+            left: direction === 'left' ? -scrollAmount : scrollAmount,
+            behavior: 'smooth',
+        });
+    };
+
+    useEffect(() => {
+        const container = scrollRef.current;
+        if (!container) return;
+        const activeThumbnail = container.children[activeIndex] as HTMLElement;
+        if (!activeThumbnail) return;
+
+        const containerRect = container.getBoundingClientRect();
+        const thumbnailRect = activeThumbnail.getBoundingClientRect();
+
+        // Jeśli miniatura wychodzi poza widok, przewiń tak, by ją wyrównać
+        if (thumbnailRect.left < containerRect.left) {
+            container.scrollBy({
+                left: thumbnailRect.left - containerRect.left - 10,
+                behavior: 'smooth',
+            });
+        } else if (thumbnailRect.right > containerRect.right) {
+            container.scrollBy({
+                left: thumbnailRect.right - containerRect.right + 10,
+                behavior: 'smooth',
+            });
+        }
+    }, [activeIndex]);
+
+    return (
+        <div className="mb-8 flex flex-col items-center gap-4">
+            {/* Główne zdjęcie */}
+            <div className="relative aspect-video w-full max-w-3xl">
+                {/* Strzałki */}
+                <button
+                    onClick={() => prevImg()}
+                    className="absolute top-1/2 left-4 z-10 h-20 -translate-y-1/2 rounded-full bg-white/60 p-2 shadow hover:cursor-pointer hover:bg-white"
+                >
+                    <ChevronLeft size={20} />
+                </button>
+                <button
+                    onClick={() => nextImg()}
+                    className="absolute top-1/2 right-4 z-10 h-20 -translate-y-1/2 rounded-full bg-white/60 p-2 shadow hover:cursor-pointer hover:bg-white"
+                >
+                    <ChevronRight size={20} />
+                </button>
+                <Image
+                    src={images[activeIndex].src}
+                    alt={images[activeIndex].alt || ''}
+                    fill
+                    className="rounded-2xl object-cover shadow-lg"
+                />
+            </div>
+
+            {/* Pasek miniatur z przewijaniem */}
+            <div className="relative w-full max-w-3xl rounded-lg bg-slate-200 px-6 py-4">
+                {/* Strzałki */}
+                <button
+                    onClick={() => scroll('left')}
+                    className="absolute top-1/2 left-0 z-10 -translate-y-1/2 rounded-full bg-white/70 p-2 shadow hover:cursor-pointer hover:bg-white"
+                >
+                    <ChevronLeft size={20} />
+                </button>
+                <button
+                    onClick={() => scroll('right')}
+                    className="absolute top-1/2 right-0 z-10 -translate-y-1/2 rounded-full bg-white/70 p-2 shadow hover:cursor-pointer hover:bg-white"
+                >
+                    <ChevronRight size={20} />
+                </button>
+
+                {/* Miniatury */}
+                <div
+                    ref={scrollRef}
+                    className="no-scrollbar flex gap-2 overflow-x-auto scroll-smooth"
+                >
+                    {images.map((img, i) => (
+                        <button
+                            key={i}
+                            onClick={() => setActiveIndex(i)}
+                            className={`relative h-16 w-24 shrink-0 border-4 hover:cursor-pointer ${
+                                i === activeIndex ? 'border-teal-300' : 'border-transparent'
+                            } overflow-hidden rounded-lg`}
+                        >
+                            <Image
+                                src={img.src}
+                                alt={img.alt || ''}
+                                fill
+                                className="object-cover"
+                            />
+                        </button>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}

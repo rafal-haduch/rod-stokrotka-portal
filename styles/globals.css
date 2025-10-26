@@ -97,6 +97,15 @@
 }
 
 @layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE, Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
     .text-outline-shadow {
         text-shadow:
             1px 1px 0 #ffffff,

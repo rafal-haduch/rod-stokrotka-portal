@@ -6,6 +6,7 @@ import WorkInProgress from '@/components/WorkInProgress';
 import { cn } from '@/lib/cn';
 import { useInView } from '@/lib/use-in-view';
 import Link from 'next/link';
+import GalleryPreview from './components/GalleryPreview';
 
 export default function MemoriesPage() {
     const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
@@ -19,8 +20,8 @@ export default function MemoriesPage() {
                 <h2 ref={ref1} className={cn('h2-animate', visible1 ? 'visible' : '')}>
                     Zdjęcia z naszego ogrodu
                 </h2>
-                <WorkInProgress />
-                <Link href="/about-us" className="button-text mx-auto">
+                <GalleryPreview />
+                <Link href="/gallery/photos" className="button-text mx-auto">
                     <span>Zobacz wszystkie</span>
                 </Link>
             </section>
