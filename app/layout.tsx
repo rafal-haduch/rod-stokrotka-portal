@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description:
         'Strona internetowa Stowarzyszenia Ogrodowego "Stokrotka" w Sanoku. Publikujemy tutaj ogłoszenia, informacje organizacyjne i aktualności.',
     icons: {
-        icon: '/favicon.png',
+        icon: '/favicon.ico',
     },
     openGraph: {
         title: 'ROD Stokrotka Sanok',

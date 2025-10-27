@@ -13,7 +13,7 @@ export default function InformationPage() {
             <MainHeaderLineSeparator />
             <h2>Najważniejsze informacje organizacyjne</h2>
             <section className="mx-auto max-w-3xl">
-                <h3 className="text-center">Harmonogram wywozu odpadów komunalnych 2025</h3>
+                <h3 className="text-center">Harmonogram wywozu odpadów komunalnych na 2025 rok</h3>
                 <table className="text-md mx-auto w-full max-w-2xl table-fixed border border-lime-400 text-center">
                     <thead>
                         <tr className="bg-lime-200">
@@ -42,7 +42,7 @@ export default function InformationPage() {
             <SectionLineSeparator my={myInformationPage} />
             <section className="mx-auto max-w-3xl">
                 <h3 className="text-center">
-                    Dyżury Skarbnika (działka 25) i Sekretarza (działka 24) na 2025 rok:
+                    Dyżury Skarbnika (działka 25) i Sekretarza (działka 24) na 2025 rok
                 </h3>
                 <ul className="text-center">
                     {treasurersDuties.map((item, i) => (
@@ -87,7 +87,7 @@ export default function InformationPage() {
             </section>
             <SectionLineSeparator my={myInformationPage} />
             <section className="mx-auto max-w-3xl">
-                <h3 className="text-center">Walne zebranie Zarządu i Działkowców</h3>
+                <h3 className="text-center">Walne zebranie Członków ROD Stokrotka Sanok</h3>
                 <p>
                     Corocznie na początku sezonu (koniec kwietnia / początek maja) odbywa się
                     spotkanie wszystkich członków ogrodu Stokrotka w Sanoku. Obecność jest

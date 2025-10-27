@@ -3,34 +3,18 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-// TODO: change alt
-const images = [
-    { src: '/images/gallery/garden-photos/img1.jpg', alt: 'Wejście do ogrodu' },
-    { src: '/images/gallery/garden-photos/img2.jpg', alt: 'Altana przy działce' },
-    { src: '/images/gallery/garden-photos/img3.jpg', alt: 'Kwiaty wiosną' },
-    { src: '/images/gallery/garden-photos/img4.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img5.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img6.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img7.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img8.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img9.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img10.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img11.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img12.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img13.jpg', alt: 'Zachód' },
-];
+import { galleryPreviewImg } from '@/data';
 
 export default function GalleryPreview() {
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0);
     const scrollRef = useRef<HTMLDivElement>(null);
 
     const prevImg = () => {
-        setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+        setCurrentIndex((i) => (i > 0 ? i - 1 : galleryPreviewImg.length - 1));
     };
 
     const nextImg = () => {
-        setActiveIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+        setCurrentIndex((i) => (i < galleryPreviewImg.length - 1 ? i + 1 : 0));
     };
 
     const scroll = (direction: 'left' | 'right') => {
@@ -46,7 +30,7 @@ export default function GalleryPreview() {
     useEffect(() => {
         const container = scrollRef.current;
         if (!container) return;
-        const activeThumbnail = container.children[activeIndex] as HTMLElement;
+        const activeThumbnail = container.children[currentIndex] as HTMLElement;
         if (!activeThumbnail) return;
 
         const containerRect = container.getBoundingClientRect();
@@ -64,7 +48,7 @@ export default function GalleryPreview() {
                 behavior: 'smooth',
             });
         }
-    }, [activeIndex]);
+    }, [currentIndex]);
 
     return (
         <div className="mb-8 flex flex-col items-center gap-4">
@@ -84,8 +68,8 @@ export default function GalleryPreview() {
                     <ChevronRight size={20} />
                 </button>
                 <Image
-                    src={images[activeIndex].src}
-                    alt={images[activeIndex].alt || ''}
+                    src={galleryPreviewImg[currentIndex].src}
+                    alt={galleryPreviewImg[currentIndex].alt || ''}
                     fill
                     className="rounded-2xl object-cover shadow-lg"
                 />
@@ -112,12 +96,12 @@ export default function GalleryPreview() {
                     ref={scrollRef}
                     className="no-scrollbar flex gap-2 overflow-x-auto scroll-smooth"
                 >
-                    {images.map((img, i) => (
+                    {galleryPreviewImg.map((img, i) => (
                         <button
                             key={i}
-                            onClick={() => setActiveIndex(i)}
+                            onClick={() => setCurrentIndex(i)}
                             className={`relative h-16 w-24 shrink-0 border-4 hover:cursor-pointer ${
-                                i === activeIndex ? 'border-teal-300' : 'border-transparent'
+                                i === currentIndex ? 'border-teal-300' : 'border-transparent'
                             } overflow-hidden rounded-lg`}
                         >
                             <Image

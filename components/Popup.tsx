@@ -23,8 +23,16 @@ export default function Popup({ type, message, onClose }: PopupProps) {
                     {type === 'error' ? 'Wystąpił błąd!' : ''}
                 </h2>
                 <p className="mb-6 text-gray-700">{message}</p>
-                <button onClick={onClose} className="button-text mx-auto">
-                    Zamknij
+                <button
+                    onClick={onClose}
+                    className={cn(
+                        `button-text mx-auto`,
+                        type == 'error'
+                            ? 'border-red-500 bg-red-200 text-red-500 hover:bg-red-300'
+                            : ''
+                    )}
+                >
+                    {type === 'info' ? 'Zamknij' : 'Ok'}
                 </button>
             </div>
         </div>

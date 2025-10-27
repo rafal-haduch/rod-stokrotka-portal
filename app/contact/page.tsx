@@ -75,6 +75,13 @@ export default function ContactPage() {
                 <h2 ref={ref2} className={cn(`h2-animate`, visible2 ? 'visible' : '')}>
                     Formularz kontaktowy
                 </h2>
+                <p className="text-center">
+                    Masz pytanie lub potrzebujesz skontaktować się z Zarządem ROD Storkotka w
+                    Sanoku? <br />
+                    Wypełnij formularz poniżej – to najszybszy i najwygodniejszy sposób kontaktu.
+                    <br />
+                    Odpowiedź otrzymasz na podany adres e-mail.
+                </p>
                 <ContactForm />
             </section>
 

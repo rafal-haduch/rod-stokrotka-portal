@@ -1,5 +1,6 @@
 export * from './associationData';
 export * from './navLinks';
+export * from './photos';
 export * from './recommendedSites';
 export * from './structureAssociation';
 export * from './typesOfFees';
