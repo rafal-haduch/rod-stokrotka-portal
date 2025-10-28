@@ -22,20 +22,20 @@ export default function PaymentsPage() {
             <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
                 Informacje o płatnościach za użytkowanie ogrodu
             </h2>
-            <section className="space-y-6 text-center">
-                <p className="">
-                    Termin uiszczenia opłat upływa 30 czerwca każdego roku. Uprzejmie prosimy o jego
-                    przestrzeganie. <br />
-                    <span className="font-bold text-red-500">
-                        Notoryczne opóźnienia mogą skutkować naliczaniem odsetek zgodnie z
-                        regulaminem ogrodu!
-                    </span>
-                </p>
+            <section className="space-y-6 text-left sm:text-center">
                 <p>
+                    Termin uiszczenia opłat upływa 30 czerwca każdego roku. Uprzejmie prosimy o
+                    przestrzeganie go.
+                </p>
+                <p className="font-bold text-red-500">
+                    Notoryczne opóźnienia mogą skutkować naliczaniem odsetek zgodnie z regulaminem
+                    ogrodu!
+                </p>
+                <p className="mb-15">
                     Zachęcamy do dokonywania wpłat przelewem bankowym – to najszybszy i
                     najwygodniejszy sposób rozliczenia należności.
                 </p>
-                <p className="">
+                <p>
                     Numer konta bankowego Stowarzyszenia Ogrodowego ,,Stokrotka'' Sanok (Santander
                     Bank Polska):
                 </p>

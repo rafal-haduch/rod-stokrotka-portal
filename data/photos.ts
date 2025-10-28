@@ -1,58 +1,41 @@
+import { PhotoWithoutTitle } from '@/types/PhotoWithoutTitle';
 import { PhotoWithTitle } from '@/types/PhotoWithTitle';
 
-//home/slider:
-export const slides = [
-    { id: 1, src: '/images/gallery/slider/slide1.jpg', alt: 'Slide 1' },
-    { id: 2, src: '/images/gallery/slider/slide2.jpg', alt: 'Slide 2' },
-    { id: 3, src: '/images/gallery/slider/slide3.jpg', alt: 'Slide 3' },
+// baseURL/ <MainSlider/>
+export const mainSliderPhotos: PhotoWithoutTitle[] = [
+    { src: '/images/gallery/slider/slide1.jpg', alt: 'Slide 1' },
+    { src: '/images/gallery/slider/slide2.jpg', alt: 'Slide 2' },
+    { src: '/images/gallery/slider/slide3.jpg', alt: 'Slide 3' },
 ];
 
-// gallery/preview:
-// TODO: change alt, remove to new file and change if need props
-export const galleryPreviewImg = [
-    { src: '/images/gallery/garden-photos/img1.jpg', alt: 'Wejście do ogrodu' },
-    { src: '/images/gallery/garden-photos/img2.jpg', alt: 'Altana przy działce' },
-    { src: '/images/gallery/garden-photos/img3.jpg', alt: 'Kwiaty wiosną' },
-    { src: '/images/gallery/garden-photos/img4.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img5.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img6.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img7.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img8.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img9.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img10.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img11.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img12.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img13.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img14.jpg', alt: 'Zachód' },
+// baseURL/gallery <GalleryPreview/>:
+// TODO: change alt
+export const communityGardenPhotosPreview: PhotoWithoutTitle[] = [
+    { src: '/images/community-garden-photos-preview/photo-1.jpg', alt: 'alt' },
+    { src: '/images/community-garden-photos-preview/photo-2.jpg', alt: 'alt' },
+    { src: '/images/community-garden-photos-preview/photo-3.jpg', alt: 'alt' },
+    { src: '/images/community-garden-photos-preview/photo-4.jpg', alt: 'alt' },
+    { src: '/images/community-garden-photos-preview/photo-5.jpg', alt: 'alt' },
+    { src: '/images/community-garden-photos-preview/photo-6.jpg', alt: 'alt' },
+    { src: '/images/community-garden-photos-preview/photo-7.jpg', alt: 'alt' },
+    { src: '/images/community-garden-photos-preview/photo-8.jpg', alt: 'alt' },
 ];
 
-// gallery/photos:
-export const photoGalleryImg: PhotoWithTitle[] = [
-    { src: '/images/gallery/garden-photos/img1.jpg', alt: 'Wejście do ogrodu' },
-    { src: '/images/gallery/garden-photos/img2.jpg', alt: 'Altana przy działce' },
-    { src: '/images/gallery/garden-photos/img3.jpg', alt: 'Kwiaty wiosną' },
-    { src: '/images/gallery/garden-photos/img4.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img5.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img6.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img7.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img8.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img9.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img10.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img11.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img12.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img13.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img14.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img1.jpg', alt: 'Wejście do ogrodu' },
-    { src: '/images/gallery/garden-photos/img2.jpg', alt: 'Altana przy działce' },
-    { src: '/images/gallery/garden-photos/img3.jpg', alt: 'Kwiaty wiosną' },
-    { src: '/images/gallery/garden-photos/img4.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img5.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img6.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img7.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img8.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img9.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img10.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img11.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img12.jpg', alt: 'Zachód' },
-    { src: '/images/gallery/garden-photos/img13.jpg', alt: 'Zachód' },
+// baseURL/gallery/community-garden-photos <PhotoGallery/>:
+export const communityGardenPhotos: PhotoWithTitle[] = [
+    { src: '/images/gallery/community-garden-photos/img1.jpg', alt: 'alt' },
+    { src: '/images/gallery/community-garden-photos/img2.jpg', alt: 'alt' },
+    { src: '/images/gallery/community-garden-photos/img3.jpg', alt: 'alt' },
+    { src: '/images/gallery/community-garden-photos/img4.jpg', alt: 'alt' },
+    { src: '/images/gallery/community-garden-photos/img5.jpg', alt: 'alt' },
+    { src: '/images/gallery/community-garden-photos/img6.jpg', alt: 'alt' },
+    { src: '/images/gallery/community-garden-photos/img7.jpg', alt: 'alt' },
+    { src: '/images/gallery/community-garden-photos/img8.jpg', alt: 'alt' },
+    { src: '/images/gallery/community-garden-photos/img9.jpg', alt: 'alt' },
+    { src: '/images/gallery/community-garden-photos/img10.jpg', alt: 'alt' },
+    { src: '/images/gallery/community-garden-photos/img11.jpg', alt: 'alt' },
+    { src: '/images/gallery/community-garden-photos/img12.jpg', alt: 'alt' },
+    { src: '/images/gallery/community-garden-photos/img13.jpg', alt: 'alt' },
+    { src: '/images/gallery/community-garden-photos/img14.jpg', alt: 'alt' },
+    { src: '/images/gallery/community-garden-photos/img15.jpg', alt: 'alt' },
 ];

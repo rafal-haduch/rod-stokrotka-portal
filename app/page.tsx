@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useInView } from '@/lib/use-in-view';
 import { cn } from '@/lib/cn';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import Slider from './components/Slajder';
+import MainSlider from './components/MainSlider';
 import ImageSeparator from '@/components/ImageSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
 import GardenMap from '@/components/GardenMap';
@@ -71,7 +71,7 @@ export default function HomePage() {
                 <h2 ref={ref3} className={cn(`h2-animate`, visible3 ? 'visible' : '')}>
                     Galeria ogrodu
                 </h2>
-                <Slider />
+                <MainSlider />
                 <Link href="/gallery" title="Zobacz więcej zdjęć" className="button-icon mx-auto">
                     <span>Zobacz więcej </span>
                     <img

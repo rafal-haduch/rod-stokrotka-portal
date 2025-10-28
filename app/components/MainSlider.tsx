@@ -1,18 +1,18 @@
 'use client';
 
-import { slides } from '@/data';
+import { mainSliderPhotos } from '@/data';
 import { useEffect, useState } from 'react';
 
-export default function Slider() {
+export default function MainSlider() {
     const [current, setCurrent] = useState(0);
 
     const prevSlide = () => {
-        setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-        console.log(slides.length);
+        setCurrent((prev) => (prev === 0 ? mainSliderPhotos.length - 1 : prev - 1));
+        console.log(mainSliderPhotos.length);
     };
 
     const nextSlide = () => {
-        setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+        setCurrent((prev) => (prev === mainSliderPhotos.length - 1 ? 0 : prev + 1));
     };
 
     useEffect(() => {
@@ -30,9 +30,9 @@ export default function Slider() {
                 className="flex transition-transform duration-500"
                 style={{ transform: `translateX(-${current * 100}%)` }}
             >
-                {slides.map((slide) => (
+                {mainSliderPhotos.map((slide, index) => (
                     <img
-                        key={slide.id}
+                        key={index}
                         src={slide.src}
                         alt={slide.alt}
                         className="w-full flex-shrink-0"

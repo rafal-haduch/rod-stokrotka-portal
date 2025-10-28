@@ -1,4 +1,6 @@
 export * from './associationData';
+export * from './memoriesData';
+export * from './memoryPhotos';
 export * from './navLinks';
 export * from './photos';
 export * from './recommendedSites';
