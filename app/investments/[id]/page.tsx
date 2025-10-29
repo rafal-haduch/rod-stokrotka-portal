@@ -1,25 +1,13 @@
-// app/gallery/memories/[slug]/page.tsx
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import PhotoGallery from '@/components/PhotoGallery';
-import { memoriesData } from '@/data';
+import { memoriesData } from '@/data/memoriesData';
+import { SlugPagesProps } from '@/types/SlugePagesProps';
 
-type Props = {
-    params: { slug: string };
-};
-
-// // BUG:
-// Error: Route "/gallery/memories/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
-//     at MemoryPage (app\gallery\memories\[slug]\page.tsx:12:40)
-//   10 |
-//   11 | export default async function MemoryPage({ params }: Props) {
-// > 12 |     const memory = memoriesData[params.slug]; // Next.js teraz akceptuje params w async
-//      |                                        ^
-//   13 |
-//   14 |     if (!memory) {
-//   15 |         return (
-export default async function MemoryPage({ params }: Props) {
-    const memory = memoriesData[params.slug]; // Next.js teraz akceptuje params w async
+export default async function InvestmentPage({ params }: SlugPagesProps) {
+    // params jako slug musi byc w async
+    const { id } = await params;
+    const memory = memoriesData[id];
 
     if (!memory) {
         return (

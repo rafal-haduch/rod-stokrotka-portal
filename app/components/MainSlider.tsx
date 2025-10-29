@@ -1,6 +1,6 @@
 'use client';
 
-import { mainSliderPhotos } from '@/data';
+import { mainSliderPhotos } from '@/data/photos';
 import { useEffect, useState } from 'react';
 
 export default function MainSlider() {

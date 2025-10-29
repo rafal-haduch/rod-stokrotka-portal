@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/cn';
-import { navLinks } from '@/data';
+import { navLinks } from '@/data/navLinks';
 
 export default function Navbar() {
     const pathname = usePathname();

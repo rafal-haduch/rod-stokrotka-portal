@@ -3,14 +3,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
-import { memoriesList } from '@/data';
+import { memoriesList } from '@/data/memoriesData';
 
 // TODO: if 1 items center
 export default function MemoriesList() {
     return (
         <div className="grid gap-6 md:grid-cols-2">
             {memoriesList.map((m) => (
-                <MemoryCard key={m.slug} memory={m} />
+                <MemoryCard key={m.id} memory={m} />
             ))}
         </div>
     );
@@ -19,11 +19,11 @@ export default function MemoriesList() {
 function MemoryCard({
     memory,
 }: {
-    memory: { slug: string; title: string; date: string; cover: string };
+    memory: { id: string; title: string; date: string; cover: string };
 }) {
     return (
         <Link
-            href={`/gallery/memories/${memory.slug}`}
+            href={`/gallery/memory/${memory.id}`}
             className="group block overflow-hidden rounded-xl shadow transition hover:shadow-lg"
         >
             <div className="relative h-64">

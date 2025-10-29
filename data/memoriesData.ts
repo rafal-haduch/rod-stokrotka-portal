@@ -24,9 +24,9 @@ export const memoriesData: Record<string, Memory> = {
 };
 
 // lista skrócona, generowana automatycznie -> used in baseURL/gallery <MemoriesList/>
-export const memoriesList = Object.entries(memoriesData).map(([slug, memory]) => ({
-    slug,
+export const memoriesList = Object.entries(memoriesData).map(([id, memory]) => ({
+    id,
     title: memory.title,
     date: memory.date,
-    cover: `/images/covers-memories/memory-${slug}.jpg`,
+    cover: `/images/covers-memories/memory-${id}.jpg`,
 }));

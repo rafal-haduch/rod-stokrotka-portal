@@ -1,6 +1,6 @@
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import PhotoGallery from '../../../components/PhotoGallery';
-import { communityGardenPhotos } from '@/data';
+import { communityGardenPhotos } from '@/data/photos';
 import ImageSeparator from '@/components/ImageSeparator';
 
 export default function CommunityGardenPhotosPage() {
