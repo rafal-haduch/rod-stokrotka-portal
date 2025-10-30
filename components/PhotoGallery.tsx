@@ -73,7 +73,7 @@ export default function PhotoGallery(props: PhotoGalleryProps) {
                 <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/90">
                     <button
                         onClick={closeLightbox}
-                        className="absolute top-2 right-2 text-white hover:opacity-80"
+                        className="absolute top-2 right-2 text-white hover:cursor-pointer hover:opacity-80"
                     >
                         <X size={32} />
                     </button>
@@ -88,14 +88,14 @@ export default function PhotoGallery(props: PhotoGalleryProps) {
                         </div>
                         <button
                             onClick={showPrev}
-                            className="absolute left-2 transform text-white hover:opacity-80"
+                            className="absolute left-2 transform text-white hover:cursor-pointer hover:opacity-80"
                         >
                             <ChevronLeft size={40} />
                         </button>
 
                         <button
                             onClick={showNext}
-                            className="absolute right-2 transform text-white hover:opacity-80"
+                            className="absolute right-2 transform text-white hover:cursor-pointer hover:opacity-80"
                         >
                             <ChevronRight size={40} />
                         </button>

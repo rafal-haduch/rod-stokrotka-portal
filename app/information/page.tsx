@@ -1,7 +1,8 @@
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import SectionLineSeparator from '@/components/SectionLineSeparator';
-import { treasurersDuties, wasteCollectionSchedule } from '@/data';
+import { treasurersDuties } from '@/data/treasurersDuties';
+import { wasteCollectionSchedule } from '@/data/wasteCollectionSchedule';
 import Link from 'next/link';
 
 const myInformationPage = 'my-10';

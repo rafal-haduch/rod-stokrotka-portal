@@ -22,6 +22,8 @@ export const routeTitles: RouteTitles[] = [
     { pathname: '/announcements', title: 'OGŁOSZENIA' },
     { pathname: '/investments', title: 'INWESTYCJE' },
     { pathname: '/gallery', title: 'GALERIA' },
+    { pathname: '/gallery/community-garden-photos', title: 'ZDJĘCIA Z NASZEGO OGRODU' },
+    { pathname: '/community-garden-photos', title: 'ZDJĘCIA Z NASZEGO OGRODU' },
     { pathname: '/gardening-guide', title: 'PORADY OGRODOWE' },
 ];
 
@@ -51,7 +53,10 @@ export default function DynamicClientLayout({ children }: { children: React.Reac
     }, [pathname]);
 
     const hideHeroRoutes = ['/sign-in', '/dashboard', '/gallery/community-garden-photos'];
-    const showHero = !hideHeroRoutes.includes(pathname) && !pathname.startsWith('/gallery/memory/');
+    const showHero =
+        !hideHeroRoutes.includes(pathname) &&
+        !pathname.startsWith('/gallery/memory/') &&
+        !pathname.startsWith('/investment/');
 
     return (
         <>

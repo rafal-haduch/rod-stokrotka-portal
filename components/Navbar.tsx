@@ -134,27 +134,30 @@ export default function Navbar() {
             {/* Hamburger */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="relative z-50 flex h-8 w-8 flex-col items-center justify-center xl:hidden"
+                className="relative z-50 flex flex-col items-center justify-center hover:cursor-pointer xl:hidden"
                 aria-label="Toggle menu"
             >
-                <span
-                    className={cn(
-                        'absolute h-1 w-8 bg-green-600 transition-transform duration-300 ease-in-out',
-                        isOpen ? 'translate-y-0 rotate-45' : '-translate-y-2'
-                    )}
-                ></span>
-                <span
-                    className={cn(
-                        'absolute h-1 w-8 bg-green-600 transition-opacity duration-200 ease-in-out',
-                        isOpen ? 'opacity-0' : 'opacity-100'
-                    )}
-                ></span>
-                <span
-                    className={cn(
-                        'absolute h-1 w-8 bg-green-600 transition-transform duration-300 ease-in-out',
-                        isOpen ? 'translate-y-0 -rotate-45' : 'translate-y-2'
-                    )}
-                ></span>
+                <div className="relative flex h-8 w-8 flex-col items-center justify-center">
+                    <span
+                        className={cn(
+                            'absolute h-1 w-8 bg-green-600 transition-transform duration-300 ease-in-out',
+                            isOpen ? 'translate-y-0 rotate-45' : '-translate-y-2'
+                        )}
+                    />
+                    <span
+                        className={cn(
+                            'absolute h-1 w-8 bg-green-600 transition-opacity duration-200 ease-in-out',
+                            isOpen ? 'opacity-0' : 'opacity-100'
+                        )}
+                    />
+                    <span
+                        className={cn(
+                            'absolute h-1 w-8 bg-green-600 transition-transform duration-300 ease-in-out',
+                            isOpen ? 'translate-y-0 -rotate-45' : 'translate-y-2'
+                        )}
+                    />
+                </div>
+                <span className="text-lg text-green-600">{isOpen ? 'Zamknij' : 'Menu'}</span>
             </button>
         </nav>
     );

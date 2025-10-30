@@ -2,7 +2,7 @@ import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import SectionLineSeparator from '@/components/SectionLineSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
-import { recommendedSites } from '@/data';
+import { recommendedSites } from '@/data/recommendedSites';
 
 export default function GardeningGuidePage() {
     return (

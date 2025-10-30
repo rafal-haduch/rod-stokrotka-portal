@@ -2,7 +2,12 @@
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import SectionLineSeparator from '@/components/SectionLineSeparator';
-import { asOf, associationBoard, auditCommittee, arbitrationCommission } from '@/data';
+import {
+    asOf,
+    associationBoard,
+    auditCommittee,
+    arbitrationCommission,
+} from '@/data/structureAssociation';
 import { cn } from '@/lib/cn';
 import { useInView } from '@/lib/use-in-view';
 

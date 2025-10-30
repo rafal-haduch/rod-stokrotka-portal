@@ -1,6 +1,6 @@
 'use client';
 import Popup from '@/components/Popup';
-import { associationEmail } from '@/data';
+import { associationEmail } from '@/data/associationData';
 import { useState } from 'react';
 
 export default function ContactForm() {

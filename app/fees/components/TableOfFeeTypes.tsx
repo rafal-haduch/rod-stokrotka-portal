@@ -1,4 +1,4 @@
-import { typesOfFees } from '@/data';
+import { typesOfFees } from '@/data/typesOfFees';
 
 export default function TableOfFeeTypes() {
     return (

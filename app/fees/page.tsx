@@ -8,7 +8,7 @@ import Link from 'next/link';
 import FeesTable from './components/FeesTabel';
 import TableOfFeeTypes from './components/TableOfFeeTypes';
 import SectionLineSeparator from '@/components/SectionLineSeparator';
-import { paymentStatusAsOf } from '@/data';
+import { paymentStatusAsOf } from '@/data/plotFeesStatus';
 import NoArrears from './components/NoArrears';
 
 export default function PaymentsPage() {

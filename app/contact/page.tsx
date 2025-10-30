@@ -5,7 +5,7 @@ import ContactForm from './components/ContactForm';
 import { useInView } from '@/lib/use-in-view';
 import { cn } from '@/lib/cn';
 import SectionLineSeparator from '@/components/SectionLineSeparator';
-import { associationData, associationEmail, associationPhoneNumber } from '@/data';
+import { associationData, associationEmail, associationPhoneNumber } from '@/data/associationData';
 
 export default function ContactPage() {
     const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);

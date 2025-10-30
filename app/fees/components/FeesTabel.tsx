@@ -1,5 +1,5 @@
 'use client';
-import { plotsFeesStatus } from '@/data';
+import { plotsFeesStatus } from '@/data/plotFeesStatus';
 import React from 'react';
 
 export default function FeesTable() {
