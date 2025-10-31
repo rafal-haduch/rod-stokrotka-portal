@@ -1,9 +1,12 @@
 import nodemailer from 'nodemailer';
-//NOTE: Remove it before deploying to production.
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 export async function POST(req) {
-    const { name, email, subject, message } = await req.json();
+    const { nickname, name, email, subject, message } = await req.json();
+
+    // NOTE: Anti-bot protection
+    if (nickname?.trim()) {
+        return new Response(JSON.stringify({ ok: true }), { status: 200 });
+    }
 
     if (!name?.trim() || !email?.trim() || !subject?.trim() || !message?.trim()) {
         return new Response(

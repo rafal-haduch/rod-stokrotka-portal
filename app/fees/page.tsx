@@ -66,7 +66,7 @@ export default function PaymentsPage() {
             <SectionLineSeparator />
             <section className="mt-8 overflow-x-auto">
                 <h2 ref={ref2} className={cn(`h2-animate`, visible2 ? 'visible' : '')}>
-                    Bilans wpłat na 2025 rok
+                    Bilans wpłat za 2025 rok
                 </h2>
                 <p className="mb-6">
                     Tabelka z bilansem wpłat za dany rok pojawi się na stronie po upływie terminu

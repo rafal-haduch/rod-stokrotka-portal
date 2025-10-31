@@ -12,15 +12,16 @@ export default function CommunityGardenPhotosPage() {
             </header>
 
             <section aria-labelledby="user-photos">
-                <h2>Galeria zdjęć przesłanych przez naszych działkowiczów</h2>
-                <p className="mb-10 sm:text-center">
+                <h2>Galeria zdjęć przesłanych przez naszych działkowców</h2>
+                <p className="mb-10 text-left sm:text-center">
                     Chcesz podzielić się zdjęciami swojego ogrodu?
-                    <br /> Prześlij je do Administratora strony – po weryfikacji zostaną one
+                    <br /> Prześlij je do administratora strony – po weryfikacji zostaną one
                     opublikowane w galerii poniżej.
                     <br /> Z góry dziękujemy!
                 </p>
+                <PhotoGallery photos={communityGardenPhotos} />
             </section>
-            <PhotoGallery photos={communityGardenPhotos} />
+
             <ImageSeparator />
         </article>
     );

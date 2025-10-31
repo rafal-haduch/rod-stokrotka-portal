@@ -26,14 +26,14 @@ export default function HomePage() {
 
             <section>
                 <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
-                    Strona internetowa Stowarzyszenia Ogrodowego <br /> ,,Stokrotka" w Sanoku
+                    Strona internetowa ROD ,,Stokrotka'' w Sanoku
                 </h2>
-                <p className="mb-8">
-                    Zachęcamy Działkowiczów do odwiedzania naszej strony internetowej poświęconej
-                    ogrodowi ,,Stokrotka'' w Sanoku. To tutaj publikujemy wszelkie ogłoszenia,
+                <p className="mb-8 text-left sm:text-center">
+                    Zachęcamy Działkowców do odwiedzania naszej strony internetowej poświęconej
+                    Stowarzyszeniu Ogrodowemu „Stokrotka” w Sanoku. Tutaj publikujemy ogłoszenia,
                     informacje organizacyjne oraz aktualności dotyczące życia naszego ogrodu. Znajdą
-                    tu Państwo również przydatne materiały i dokumenty, ciekawe zdjęcia, a także
-                    porady ogrodowe, które pomogą w pielęgnacji działek.
+                    tu Państwo również przydatne materiały i dokumenty, ciekawe zdjęcia oraz porady
+                    ogrodowe, które pomogą w pielęgnacji działek.
                 </p>
                 <Link
                     href="/about-us"
@@ -69,7 +69,7 @@ export default function HomePage() {
 
             <section>
                 <h2 ref={ref3} className={cn(`h2-animate`, visible3 ? 'visible' : '')}>
-                    Galeria ogrodu
+                    Galeria ogrodu „Stokrotka” w Sanoku
                 </h2>
                 <MainSlider />
                 <Link href="/gallery" title="Zobacz więcej zdjęć" className="button-icon mx-auto">

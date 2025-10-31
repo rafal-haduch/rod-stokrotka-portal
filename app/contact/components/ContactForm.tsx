@@ -1,17 +1,41 @@
 'use client';
 import Popup from '@/components/Popup';
-import { associationEmail } from '@/data/associationData';
-import { useState } from 'react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export default function ContactForm() {
+    const [isMobile, setIsMobile] = useState(true);
+    const [expanded, setExpanded] = useState(false);
+    const shortText = (
+        <>
+            Potrzebujesz skontaktować się z Zarządem ROD Stokrotka w Sanoku? <br />
+        </>
+    );
+    const fullText = (
+        <>
+            {shortText}
+            Wypełnij formularz poniżej – to najszybszy i najwygodniejszy sposób kontaktu. <br />
+            Odpowiedź otrzymasz na podany adres e-mail.
+        </>
+    );
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
+    const [nickname, setNickname] = useState('');
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [errorMsg, setErrorMsg] = useState('');
 
     const [showPopup, setShowPopup] = useState(false);
+
+    // Check screen width
+    useEffect(() => {
+        const checkScreen = () => setIsMobile(window.innerWidth < 830);
+        checkScreen();
+        window.addEventListener('resize', checkScreen);
+        return () => window.removeEventListener('resize', checkScreen);
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -20,7 +44,7 @@ export default function ContactForm() {
             const res = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, subject, message }),
+                body: JSON.stringify({ nickname, name, email, subject, message }),
             });
 
             const data = await res.json();
@@ -33,6 +57,7 @@ export default function ContactForm() {
 
             // success
             setStatus('success');
+            setNickname('');
             setName('');
             setEmail('');
             setSubject('');
@@ -46,8 +71,39 @@ export default function ContactForm() {
     };
 
     return (
-        <div className="mx-auto mt-10 max-w-3xl rounded-xl bg-gray-50 p-8 shadow-xl">
-            <form onSubmit={handleSubmit} className="space-y-4">
+        <>
+            <p className="text-lfet sm:text-center">
+                {isMobile ? (expanded ? fullText : shortText) : fullText}
+            </p>
+
+            {isMobile && (
+                <button
+                    className="mx-auto flex items-center justify-center text-green-500 hover:cursor-pointer"
+                    onClick={() => setExpanded(!expanded)}
+                >
+                    {expanded ? <ChevronUp size={64} /> : <ChevronDown size={64} />}
+                </button>
+            )}
+
+            <form
+                onSubmit={handleSubmit}
+                className="mx-auto mt-10 max-w-3xl space-y-4 rounded-xl bg-gray-50 p-8 shadow-xl"
+            >
+                {/* NOTE: Nickname - anti-bot protection*/}
+                <div className="hidden">
+                    <label htmlFor="nickname" className="block text-xl text-gray-700">
+                        Nazwa działkowca
+                    </label>
+                    <input
+                        type="text"
+                        id="nickname"
+                        value={nickname}
+                        onChange={(e) => setNickname(e.target.value)}
+                        placeholder="np. Ogrodnik"
+                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-green-500 focus:outline-none"
+                    />
+                </div>
+
                 {/* User Name */}
                 <div>
                     <label htmlFor="name" className="block text-xl text-gray-700">
@@ -58,11 +114,12 @@ export default function ContactForm() {
                         id="name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        //required
+                        required
                         placeholder="np. Jan Kowalski - 123"
                         className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-green-500 focus:outline-none"
                     />
                 </div>
+
                 {/* User E-mail */}
                 <div>
                     <label htmlFor="email" className="block text-xl text-gray-700">
@@ -73,11 +130,12 @@ export default function ContactForm() {
                         id="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        //required
+                        required
                         placeholder="np. jankowalski@gmail.com"
                         className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-green-500 focus:outline-none"
                     />
                 </div>
+
                 {/* Subject */}
                 <div>
                     <label className="block text-xl text-gray-700">Temat wiadomości</label>
@@ -87,12 +145,13 @@ export default function ContactForm() {
                             id="title"
                             value={subject}
                             onChange={(e) => setSubject(e.target.value)}
-                            //required
+                            required
                             placeholder="np. Pytanie w sprawie działki"
                             className="block w-full rounded-md border border-gray-300 px-3 py-2 pr-10 shadow-sm focus:border-green-500 focus:ring-green-500 focus:outline-none"
                         />
                     </div>
                 </div>
+
                 {/* Message */}
                 <div>
                     <label htmlFor="content" className="block text-xl text-gray-700">
@@ -103,12 +162,13 @@ export default function ContactForm() {
                             id="content"
                             value={message}
                             onChange={(e) => setMessage(e.target.value)}
-                            //required
+                            required
                             rows={6}
                             className="block w-full resize-none overflow-y-auto rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-green-500 focus:outline-none"
                         />
                     </div>
                 </div>
+
                 {/* Send Button */}
                 <button
                     type="submit"
@@ -119,7 +179,8 @@ export default function ContactForm() {
                     <span>{status === 'loading' ? 'Wysyłanie...' : 'Wyślij'}</span>
                 </button>
             </form>
-            {/* Popups */}
+
+            {/* Popups loading */}
             {status === 'loading' && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
                     <div className="w-full max-w-sm rounded-xl bg-white p-6 text-center shadow-2xl">
@@ -132,6 +193,8 @@ export default function ContactForm() {
                     </div>
                 </div>
             )}
+
+            {/* Popups success */}
             {status === 'success' && (
                 <Popup
                     type="success"
@@ -139,18 +202,11 @@ export default function ContactForm() {
                     onClose={() => setStatus('idle')}
                 />
             )}
+
+            {/* Popups failed */}
             {status === 'error' && (
                 <Popup type="error" message={` ${errorMsg}`} onClose={() => setStatus('idle')} />
             )}
-            {/* Popup function unavailable */}
-            {showPopup && (
-                <Popup
-                    type="info"
-                    message={`Funkcja wysyłania wiadomości przez formularz kontaktowy nie jest jeszcze dostępna. Trwają prace nad jej przygotowaniem. 
-                        W przypadku chęci skontaktowania się mailowo z Zarządem Stowarzyszenia prosimy we własnym zakresie napisać wiadomość na adres: ${associationEmail}`}
-                    onClose={() => setShowPopup(false)}
-                />
-            )}
-        </div>
+        </>
     );
 }

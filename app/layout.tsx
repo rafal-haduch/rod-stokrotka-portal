@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { lato, bonheurRoyale, aboreto, libreBodoni } from '../fonts/fonts';
 import '../styles/globals.css';
+import { lato, bonheurRoyale, aboreto, libreBodoni } from '../fonts/fonts';
 import DynamicClientLayout from '../components/DynamicClientLayout';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -10,7 +10,7 @@ import JsonLdOrganization from '@/components/JsonLdOrganization';
 export const metadata: Metadata = {
     title: 'ROD Stokrotka Sanok',
     description:
-        'Strona internetowa Stowarzyszenia Ogrodowego "Stokrotka" w Sanoku. Publikujemy tutaj ogłoszenia, informacje organizacyjne i aktualności.',
+        'Strona internetowa Stowarzyszenia Ogrodowego "Stokrotka" w Sanoku. Publikujemy tutaj ogłoszenia, informacje organizacyjne i aktualności dotyczące życia naszego ogrodu.',
     icons: {
         icon: '/favicon.ico',
     },
@@ -40,6 +40,12 @@ export const metadata: Metadata = {
         'ogród działkowy',
         'ROD Sanok',
         'ogrody działkowe',
+        'ogrody działkowe Stokrotka',
+        'ogrody działkowe Stokrotka Sanok',
+        'działka Stokrotka',
+        'działka Stokrotka',
+        'ogród Stokrotka',
+        'ogród Stokrotka Sanok',
         'ROD Stokrotka Sanok',
         'ogród społeczny',
     ],

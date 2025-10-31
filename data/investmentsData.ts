@@ -22,5 +22,5 @@ export const investmentsList = Object.entries(investmentsData).map(([id, memory]
     id,
     title: memory.title,
     date: memory.date,
-    cover: `/images/covers-investment/investment-${id}.jpg`,
+    cover: `/images/covers-investments/investment-${id}.jpg`,
 }));

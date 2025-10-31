@@ -17,18 +17,19 @@ export default function AboutGardenPage() {
             <h1>O Nas</h1>
             <MainHeaderLineSeparator />
             <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
-                Kilka słów o naszym ogrodzie
+                Kilka słów o ogrodzie ,,Stokrotka'' w Sanoku
             </h2>
             <section>
                 <h3>Historia i teraźniejszość</h3>
                 <p className="mb-4">
-                    Dokładna data założenia ogrodu nie jest obecnie znana, jednakże posiadamy
-                    dokument o decyzji dotyczącej ustalenia miejsca naszych ogródków działkowych,
-                    wystawiony 27.10.1977 roku. Początkowo działki były przydzielane pracownikom
-                    zakładów pracy w okresie PRL. Z czasem przekształciły się w Rodzinne Ogrody
-                    Działkowe (ROD) pod auspicjami Polskiego Związku Działkowców (PZD). Od 2015 roku
-                    nasza społeczność działa niezależnie, jako Stowarzyszenie Ogrodowe „Stokrotka” w
-                    Krajowym Rejestrze Sądowym.
+                    Dokładna data założenia naszego ogrodu nie jest obecnie znana, jednakże
+                    posiadamy dokument o decyzji dotyczącej ustalenia miejsca naszych ogródków
+                    działkowych, wystawiony <span className="font-bold"> 27.10.1977 roku. </span>
+                    Początkowo działki były przydzielane pracownikom zakładów pracy w okresie PRL. Z
+                    czasem przekształciły się w Rodzinne Ogrody Działkowe (ROD) pod auspicjami
+                    Polskiego Związku Działkowców (PZD). Od 2015 roku nasza społeczność działa
+                    niezależnie, jako Stowarzyszenie Ogrodowe „Stokrotka” w Krajowym Rejestrze
+                    Sądowym.
                 </p>
                 <p className="mb-4">
                     Ogród „Stokrotka” w Sanoku to miejsce, gdzie pasja do ogrodnictwa łączy się z
