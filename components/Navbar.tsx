@@ -1,11 +1,12 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { cn } from '@/lib/cn';
 import { LogIn } from 'lucide-react';
+
+import { cn } from '@/lib/cn';
 
 interface NavLink {
     name: string;

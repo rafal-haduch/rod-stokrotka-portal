@@ -1,20 +1,24 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import ImageSeparator from '@/components/ImageSeparator';
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
+import { Download, X } from 'lucide-react';
+
 import { cn } from '@/lib/cn';
 import { useInView } from '@/lib/use-in-view';
-import { Download, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
+
+import ImageSeparator from '@/components/ImageSeparator';
+import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 
 export default function DevelopmentPlanPage() {
+    // Lightbox and zoom control states
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [zoom, setZoom] = useState(1);
     const [offsetY, setOffsetY] = useState(0);
     const [dragging, setDragging] = useState(false);
     const [startPosY, setStartPosY] = useState(0);
     const [startOffsetY, setStartOffsetY] = useState(0);
+
     const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
 
     const openLightbox = () => {
@@ -23,13 +27,20 @@ export default function DevelopmentPlanPage() {
         setOffsetY(0);
     };
 
+    const closeLightbox = () => {
+        setIsLightboxOpen(false);
+        setZoom(1);
+        setOffsetY(0);
+    };
+
+    // Handle image zoom with mouse wheel
     const handleWheel = (e: React.WheelEvent) => {
         e.preventDefault();
         const delta = e.deltaY > 0 ? -0.1 : 0.1;
         setZoom((z) => Math.min(Math.max(z + delta, 1), 5));
     };
 
-    // Początek przeciągania
+    // Mouse drag start
     const handleMouseDown = (e: React.MouseEvent) => {
         if (zoom <= 1) return;
         setDragging(true);
@@ -37,22 +48,17 @@ export default function DevelopmentPlanPage() {
         setStartOffsetY(offsetY);
     };
 
-    // Ruch myszą
+    // Mouse dragging movement
     const handleMouseMove = (e: React.MouseEvent) => {
         if (!dragging) return;
         const deltaY = e.clientY - startPosY;
         setOffsetY(startOffsetY + deltaY);
     };
 
+    // Mouse drag end
     const handleMouseUp = () => setDragging(false);
 
-    const closeLightbox = () => {
-        setIsLightboxOpen(false);
-        setZoom(1);
-        setOffsetY(0);
-    };
-
-    // blokowanie scrolla
+    // Disable background scroll when lightbox is open
     useEffect(() => {
         document.body.style.overflow = isLightboxOpen ? 'hidden' : '';
         return () => {
@@ -66,11 +72,11 @@ export default function DevelopmentPlanPage() {
                 <h1>Mapa Ogrodu</h1>
                 <MainHeaderLineSeparator />
             </header>
+
             <section>
                 <h2 ref={ref1} className={cn('h2-animate', visible1 ? 'visible' : '')}>
                     Podgląd zagospodarowania terenu
                 </h2>
-
                 <Image
                     src="/images/ui/mapa-ogrodu.png"
                     alt="Podglądowa mapa ogrodu"
@@ -79,7 +85,6 @@ export default function DevelopmentPlanPage() {
                     onClick={openLightbox}
                     className="mx-auto w-xl hover:cursor-pointer"
                 />
-
                 <a
                     href="/documents/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
                     download
@@ -125,6 +130,7 @@ export default function DevelopmentPlanPage() {
                     </div>
                 )}
             </section>
+
             <ImageSeparator />
         </article>
     );

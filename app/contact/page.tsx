@@ -1,12 +1,19 @@
 'use client';
 
-import ImageSeparator from '@/components/ImageSeparator';
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import ContactForm from './components/ContactForm';
 import { useInView } from '@/lib/use-in-view';
 import { cn } from '@/lib/cn';
+
+import {
+    associationData,
+    associationEmail,
+    associationPhoneNumber,
+} from '@/data/associationDetails';
+
+import ImageSeparator from '@/components/ImageSeparator';
+import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import SectionLineSeparator from '@/components/SectionLineSeparator';
-import { associationData, associationEmail, associationPhoneNumber } from '@/data/associationData';
+
+import ContactForm from './components/ContactForm';
 
 export default function ContactPage() {
     const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
@@ -14,23 +21,24 @@ export default function ContactPage() {
 
     return (
         <article>
-            <h1>Kontakt</h1>
-            <MainHeaderLineSeparator />
+            <header>
+                <h1>Kontakt</h1>
+                <MainHeaderLineSeparator />
+            </header>
 
             <section>
                 <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
                     Dane Stowarzyszenia Ogrodowego ,,Stokrotka" w Sanoku
                 </h2>
                 <div className="grid grid-cols-1 justify-items-center gap-8 text-center md:mx-auto md:w-3/5 md:grid-cols-2 md:[grid-template-areas:'name_name''left_right''email_email']">
-                    {/* Name - full width */}
+                    {/* Name (full width) */}
                     <div className="text-center md:[grid-area:name]">
                         <p>
                             Nazwa pełna: <br />
                             <span className="font-bold">STOWARZYSZENIE OGRODOWE ,,STOKROTKA"</span>
                         </p>
                     </div>
-
-                    {/* Left Col */}
+                    {/* Legal Form and Data (left col) */}
                     <div className="max-w-sm space-y-4 text-center md:[grid-area:left]">
                         <p>
                             Forma prawna: <br />
@@ -47,8 +55,7 @@ export default function ContactPage() {
                             ))}
                         </ul>
                     </div>
-
-                    {/* Right Col */}
+                    {/* Address and Phone Number (right col) */}
                     <div className="max-w-sm space-y-4 text-center md:[grid-area:right]">
                         <p>
                             Adres siedziby: <br />
@@ -64,8 +71,7 @@ export default function ContactPage() {
                             <span className="font-bold">{associationPhoneNumber}</span>
                         </p>
                     </div>
-
-                    {/* E-mail - full width */}
+                    {/* E-mail (full width) */}
                     <div className='className="mb-6 text-center md:[grid-area:email]'>
                         <p>
                             Adres e-mail: <br />

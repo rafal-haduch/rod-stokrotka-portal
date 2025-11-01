@@ -1,8 +1,8 @@
-import { Memory } from '@/types/Memory';
+import { MemoryInList, Memory } from '@/types/Memory';
 import { memory1Photos, memory2Photos, memory3Photos } from './memoryPhotos';
 
 // pełne dane -> used in baseURL/gallery/memories/[slug]
-export const memoriesData: Record<string, Memory> = {
+export const memoriesDataById: Record<string, Memory> = {
     '1': {
         title: 'Walne zebranie 2025',
         date: '17.05.2025',
@@ -24,9 +24,11 @@ export const memoriesData: Record<string, Memory> = {
 };
 
 // lista skrócona, generowana automatycznie -> used in baseURL/gallery <MemoriesList/>
-export const memoriesList = Object.entries(memoriesData).map(([id, memory]) => ({
-    id,
-    title: memory.title,
-    date: memory.date,
-    cover: `/images/covers-memories/memory-${id}.jpg`,
-}));
+export const memoriesSummaryList: MemoryInList[] = Object.entries(memoriesDataById).map(
+    ([id, memory]) => ({
+        id,
+        title: memory.title,
+        date: memory.date,
+        cover: `/images/covers-memories/memory-${id}.jpg`,
+    })
+);

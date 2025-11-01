@@ -2,15 +2,18 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, ChevronRight } from 'lucide-react';
-import { investmentsList } from '@/data/investmentsData';
-import SectionLineSeparator from '@/components/SectionLineSeparator';
-import { InvestmentsListData } from '@/types/Investment';
+import { ChevronRight } from 'lucide-react';
+
+import { investmentsSummaryList } from '@/data/investments';
+import { InvestmentInList } from '@/types/Investment';
+import NotFoundContent from '@/components/NotFoundContent';
 
 export default function InvestmentsList() {
+    if (investmentsSummaryList.length === 0) return <NotFoundContent />;
+
     return (
         <div className="flex flex-col gap-y-14">
-            {investmentsList.map((i, index) => (
+            {investmentsSummaryList.map((i, index) => (
                 <div key={i.id}>
                     <InvestmentCard investment={i} />
                 </div>
@@ -19,11 +22,11 @@ export default function InvestmentsList() {
     );
 }
 
-function InvestmentCard({ investment }: { investment: InvestmentsListData }) {
+function InvestmentCard({ investment }: { investment: InvestmentInList }) {
     return (
         <Link
             href={`/investments/${investment.id}`}
-            className="mx-auto flex max-w-lg flex-col items-center rounded-xl border-2 border-lime-500 bg-lime-50 px-4 py-4 hover:bg-lime-100 md:max-w-3xl md:flex-row md:items-start md:gap-6"
+            className="0 mx-auto flex max-w-lg flex-col items-center rounded-xl border-1 border-slate-200 bg-slate-50 px-4 py-4 shadow-lg hover:border-lime-500 hover:bg-lime-50 hover:shadow-xl md:max-w-3xl md:flex-row md:items-start md:gap-6 md:pr-8"
         >
             <div className="relative h-48 w-full shrink-0 md:h-40 md:w-64">
                 <Image

@@ -6,3 +6,10 @@ export type Memory = {
     text: string;
     photos: PhotoWithoutTitle[];
 };
+
+export type MemoryInList = {
+    id: string;
+    title: string;
+    date: string;
+    cover: string;
+};

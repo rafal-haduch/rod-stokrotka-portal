@@ -1,3 +1,3 @@
 export type SlugPagesProps = {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 };

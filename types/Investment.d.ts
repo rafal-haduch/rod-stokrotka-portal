@@ -1,13 +1,13 @@
 import { PhotoWithoutTitle } from './PhotoWithoutTitle';
 
-export type InvestmentData = {
+export type Investment = {
     title: string;
     date: string;
     text: string;
     photos: PhotoWithoutTitle[];
 };
 
-export type InvestmentsListData = {
+export type InvestmentInList = {
     id: string;
     title: string;
     date: string;

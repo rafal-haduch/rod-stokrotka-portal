@@ -3,24 +3,26 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
-import { memoriesList } from '@/data/memoriesData';
 
-// TODO: if 1 items center
+import { MemoryInList } from '@/types/Memory';
+import { memoriesSummaryList } from '@/data/memories';
+
+import NotFoundContent from '@/components/NotFoundContent';
+
 export default function MemoriesList() {
+    if (memoriesSummaryList.length === 0) return <NotFoundContent />;
+
     return (
         <div className="grid gap-6 md:grid-cols-2">
-            {memoriesList.map((m) => (
+            {memoriesSummaryList.map((m) => (
                 <MemoryCard key={m.id} memory={m} />
             ))}
         </div>
     );
 }
 
-function MemoryCard({
-    memory,
-}: {
-    memory: { id: string; title: string; date: string; cover: string };
-}) {
+// TODO: poprawić typ
+function MemoryCard({ memory }: { memory: MemoryInList }) {
     return (
         <Link
             href={`/gallery/memory/${memory.id}`}

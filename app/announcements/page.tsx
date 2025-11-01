@@ -1,16 +1,29 @@
+'use client';
+
+import { cn } from '@/lib/cn';
+import { useInView } from '@/lib/use-in-view';
+
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
 
 export default function AnnouncementsPage() {
+    const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
+
     return (
         <article>
-            <h1>Ogłoszenia</h1>
-            <MainHeaderLineSeparator />
-            <h2>Ogłoszenia Zarządu ROD ,,Stokrotka" Sanok</h2>
+            <header>
+                <h1>Ogłoszenia</h1>
+                <MainHeaderLineSeparator />
+            </header>
+
             <section>
+                <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
+                    Ogłoszenia Zarządu ROD ,,Stokrotka" w Sanoku
+                </h2>
                 <WorkInProgress />
             </section>
+
             <ImageSeparator />
         </article>
     );

@@ -8,8 +8,8 @@ export default function ImageSeparator() {
                 alt=""
                 width={450}
                 height={80}
-                priority={false}
                 className="h-auto object-cover"
+                priority={false}
             />
         </div>
     );

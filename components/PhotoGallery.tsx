@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+
 import { PhotoWithTitle } from '@/types/PhotoWithTitle';
 
 interface PhotoGalleryProps {

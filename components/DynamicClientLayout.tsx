@@ -1,10 +1,12 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+
+import { memoriesDataById } from '@/data/memories';
+import { investmentsDataById } from '@/data/investments';
+
 import Hero from './Hero';
-import { memoriesData } from '@/data/memoriesData';
-import { investmentsData } from '@/data/investmentsData';
 
 interface RouteTitles {
     pathname: string;
@@ -39,11 +41,11 @@ export default function DynamicClientLayout({ children }: { children: React.Reac
             pageTitle = staticRoute.title;
         } else if (pathname.startsWith('/gallery/memory/')) {
             const id = pathname.replace('/gallery/memory/', '');
-            const memory = memoriesData[id];
+            const memory = memoriesDataById[id];
             pageTitle = memory ? memory.title : '';
         } else if (pathname.startsWith('/investments/')) {
             const id = pathname.replace('/investments/', '');
-            const investment = investmentsData[id];
+            const investment = investmentsDataById[id];
             pageTitle = investment ? investment.title : '';
         }
 

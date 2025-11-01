@@ -1,15 +1,18 @@
 'use client';
 
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+
 import { useInView } from '@/lib/use-in-view';
 import { cn } from '@/lib/cn';
+
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import MainSlider from './components/MainSlider';
 import ImageSeparator from '@/components/ImageSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
 import GardenMap from '@/components/GardenMap';
 import SectionLineSeparator from '@/components/SectionLineSeparator';
-import { ArrowRight } from 'lucide-react';
+
+import MainSlider from './components/MainSlider';
 
 export default function HomePage() {
     const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
@@ -35,11 +38,7 @@ export default function HomePage() {
                     tu Państwo również przydatne materiały i dokumenty, ciekawe zdjęcia oraz porady
                     ogrodowe, które pomogą w pielęgnacji działek.
                 </p>
-                <Link
-                    href="/about-us"
-                    title="Dowiedz się więcej o nas"
-                    className="button-icon mx-auto"
-                >
+                <Link href="/about-us" className="button-icon mx-auto">
                     Dowiedz się więcej o nas
                     <ArrowRight />
                 </Link>
@@ -77,7 +76,7 @@ export default function HomePage() {
 
             <SectionLineSeparator />
 
-            <section>
+            <section aria-label="Lokalizacja ogrodu">
                 <h2 ref={ref4} className={cn(`h2-animate`, visible4 ? 'visible' : '')}>
                     Gdzie dokładnie jest ogród
                 </h2>

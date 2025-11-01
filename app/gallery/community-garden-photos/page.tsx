@@ -1,9 +1,17 @@
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import PhotoGallery from '../../../components/PhotoGallery';
+'use client';
+
+import { useInView } from '@/lib/use-in-view';
+import { cn } from '@/lib/cn';
+
 import { communityGardenPhotos } from '@/data/photos';
+
+import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
+import PhotoGallery from '@/components/PhotoGallery';
 import ImageSeparator from '@/components/ImageSeparator';
 
 export default function CommunityGardenPhotosPage() {
+    const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
+
     return (
         <article>
             <header>
@@ -12,7 +20,9 @@ export default function CommunityGardenPhotosPage() {
             </header>
 
             <section aria-labelledby="user-photos">
-                <h2>Galeria zdjęć przesłanych przez naszych działkowców</h2>
+                <h2 ref={ref1} className={cn('h2-animate', visible1 ? 'visible' : '')}>
+                    Galeria zdjęć przesłanych przez naszych działkowców
+                </h2>
                 <p className="mb-10 text-left sm:text-center">
                     Chcesz podzielić się zdjęciami swojego ogrodu?
                     <br /> Prześlij je do administratora strony – po weryfikacji zostaną one

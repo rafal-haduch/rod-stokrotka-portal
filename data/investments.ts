@@ -1,8 +1,8 @@
 import { investment1Photos, investment2Photos } from './investmentPhotos';
-import { InvestmentData, InvestmentsListData } from '@/types/Investment';
+import { Investment, InvestmentInList } from '@/types/Investment';
 
 // pełne dane -> used in baseURL/investments/[id]
-export const investmentsData: Record<string, InvestmentData> = {
+export const investmentsDataById: Record<string, Investment> = {
     '1': {
         title: 'Naprawa Ogrodzenia',
         date: '17.10.2025',
@@ -18,7 +18,7 @@ export const investmentsData: Record<string, InvestmentData> = {
 };
 
 // lista skrócona, generowana automatycznie -> used in baseURL/investments <InvestmentsList/>
-export const investmentsList: InvestmentsListData[] = Object.entries(investmentsData).map(
+export const investmentsSummaryList: InvestmentInList[] = Object.entries(investmentsDataById).map(
     ([id, memory]) => ({
         id,
         title: memory.title,

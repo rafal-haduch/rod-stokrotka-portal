@@ -1,12 +1,13 @@
-import SectionLineSeparator from '@/components/SectionLineSeparator';
-import { associationEmail } from '@/data/associationData';
-import { treasurersDuties } from '@/data/treasurersDuties';
-import { wasteCollectionSchedule } from '@/data/wasteCollectionSchedule';
 import Link from 'next/link';
 
-const myInformationPage = 'my-10';
+import SectionLineSeparator from '@/components/SectionLineSeparator';
+import { associationEmail } from '@/data/associationDetails';
+import { treasurersDuties } from '@/data/treasurersDuties';
+import { wasteCollectionSchedule } from '@/data/wasteCollectionSchedule';
 
 export default function InformationsList() {
+    const my = 'my-10';
+
     return (
         <div className="mx-auto max-w-3xl">
             <section>
@@ -23,7 +24,7 @@ export default function InformationsList() {
                     </thead>
                     <tbody>
                         {wasteCollectionSchedule.map((item, i) => (
-                            <tr key={i} className="hover:bg-gray-100">
+                            <tr key={i} className="hover:bg-lime-50">
                                 <th className="border border-lime-400 font-medium">{item.month}</th>
                                 <th className="border border-lime-400 font-medium">
                                     {item.mixedWasteCollectionDay.join(', ')}
@@ -37,7 +38,7 @@ export default function InformationsList() {
                 </table>
             </section>
 
-            <SectionLineSeparator my={myInformationPage} />
+            <SectionLineSeparator my={my} />
 
             <section>
                 <h3 className="text-center">
@@ -52,7 +53,7 @@ export default function InformationsList() {
                 </ul>
             </section>
 
-            <SectionLineSeparator my={myInformationPage} />
+            <SectionLineSeparator my={my} />
 
             <section>
                 <h3 className="text-center">Nasza grupa na WhatsApp</h3>
@@ -74,7 +75,7 @@ export default function InformationsList() {
                 </p>
             </section>
 
-            <SectionLineSeparator my={myInformationPage} />
+            <SectionLineSeparator my={my} />
 
             <section>
                 <h3 className="text-center">Kontakt i pytania</h3>
@@ -89,7 +90,7 @@ export default function InformationsList() {
                 </p>
             </section>
 
-            <SectionLineSeparator my={myInformationPage} />
+            <SectionLineSeparator my={my} />
 
             <section>
                 <h3 className="text-center">Walne zebranie Członków ROD Stokrotka w Sanoku</h3>
@@ -101,7 +102,7 @@ export default function InformationsList() {
                 </p>
             </section>
 
-            <SectionLineSeparator my={myInformationPage} />
+            <SectionLineSeparator my={my} />
 
             <section>
                 <h3 className="text-center">Wjazd na teren ogrodu</h3>
@@ -120,7 +121,7 @@ export default function InformationsList() {
                 </p>
             </section>
 
-            <SectionLineSeparator my={myInformationPage} />
+            <SectionLineSeparator my={my} />
 
             <section>
                 <h3 className="text-center">Prośba o przesyłanie zdjęć z naszego ogrodu</h3>

@@ -1,6 +1,7 @@
 export default function PreFooter() {
     return (
         <section
+            aria-hidden="true"
             className="mx-auto max-w-7xl bg-cover bg-fixed bg-center"
             style={{ backgroundImage: "url('/images/ui/pre-footer-bg.jpg')" }}
         >
