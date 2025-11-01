@@ -1,6 +1,6 @@
 'use client';
 import Popup from '@/components/Popup';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp, SendHorizontal } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export default function ContactForm() {
@@ -175,7 +175,7 @@ export default function ContactForm() {
                     disabled={status === 'loading'}
                     className="button-icon w-full"
                 >
-                    <img src="/icons/send_green_24.svg" />
+                    <SendHorizontal />
                     <span>{status === 'loading' ? 'Wysyłanie...' : 'Wyślij'}</span>
                 </button>
             </form>

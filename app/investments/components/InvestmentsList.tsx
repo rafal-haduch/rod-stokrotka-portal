@@ -2,46 +2,44 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronRight } from 'lucide-react';
 import { investmentsList } from '@/data/investmentsData';
+import SectionLineSeparator from '@/components/SectionLineSeparator';
+import { InvestmentsListData } from '@/types/Investment';
 
-// TODO: change layout this component
 export default function InvestmentsList() {
     return (
-        <div className="grid gap-6 md:grid-cols-2">
-            {investmentsList.map((i) => (
-                <InvestmentCard key={i.id} investment={i} />
+        <div className="flex flex-col gap-y-14">
+            {investmentsList.map((i, index) => (
+                <div key={i.id}>
+                    <InvestmentCard investment={i} />
+                </div>
             ))}
         </div>
     );
 }
 
-// REVIEW: use that type or change to type/interface
-function InvestmentCard({
-    investment,
-}: {
-    investment: { id: string; title: string; date: string; cover: string };
-}) {
+function InvestmentCard({ investment }: { investment: InvestmentsListData }) {
     return (
         <Link
             href={`/investments/${investment.id}`}
-            className="group block overflow-hidden rounded-xl shadow transition hover:shadow-lg"
+            className="mx-auto flex max-w-lg flex-col items-center rounded-xl border-2 border-lime-500 bg-lime-50 px-4 py-4 hover:bg-lime-100 md:max-w-3xl md:flex-row md:items-start md:gap-6"
         >
-            <div className="relative h-64">
+            <div className="relative h-48 w-full shrink-0 md:h-40 md:w-64">
                 <Image
                     src={investment.cover}
                     alt={investment.title}
                     fill
-                    className="object-cover transition group-hover:scale-105"
+                    className="rounded-md object-cover"
                 />
-                <div className="absolute inset-0 hidden items-center justify-center bg-black/50 transition-all duration-300 group-hover:flex group-hover:scale-105">
-                    <p className="tracking-wide text-amber-50">Zobacz więcej</p>
-                    <ArrowRight color="white" />
-                </div>
             </div>
-            <div className="bg-lime-100 p-4 text-center group-hover:bg-lime-200">
-                <p className="text-lg text-lime-600">{investment.date}</p>
-                <h3 className="text-xl font-semibold text-lime-500">{investment.title}</h3>
+            <div className="flex h-full w-full flex-col justify-center text-center md:text-left">
+                <h3 className="m-2 text-lime-500 md:mt-0">{investment.title}</h3>
+                <hr className="mx-auto mb-4 w-3/4 border-t-2 border-lime-500 md:w-full" />
+                <p className="mb-4">{investment.date}</p>
+                <div className="flex flex-row items-end-safe justify-end text-xl md:justify-start">
+                    Zobacz więcej <ChevronRight />
+                </div>
             </div>
         </Link>
     );

@@ -1,6 +1,7 @@
 'use client';
 
 import { mainSliderPhotos } from '@/data/photos';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export default function MainSlider() {
@@ -43,15 +44,15 @@ export default function MainSlider() {
             {/* Controls */}
             <button
                 onClick={prevSlide}
-                className="absolute top-1/2 left-2 min-w-12 -translate-y-1/2 transform rounded-full bg-black p-2 text-6xl text-white opacity-60 hover:cursor-pointer hover:opacity-100"
+                className="absolute top-1/2 left-2 min-w-12 -translate-y-1/2 transform rounded-full bg-black p-2 text-white opacity-60 hover:cursor-pointer hover:opacity-100"
             >
-                ‹
+                <ChevronLeft size={32} />
             </button>
             <button
                 onClick={nextSlide}
-                className="absolute top-1/2 right-2 min-w-12 -translate-y-1/2 transform rounded-full bg-black p-2 text-6xl text-white opacity-60 hover:cursor-pointer hover:opacity-100"
+                className="absolute top-1/2 right-2 min-w-12 -translate-y-1/2 transform rounded-full bg-black p-2 text-white opacity-60 hover:cursor-pointer hover:opacity-100"
             >
-                ›
+                <ChevronRight size={32} />
             </button>
         </div>
     );

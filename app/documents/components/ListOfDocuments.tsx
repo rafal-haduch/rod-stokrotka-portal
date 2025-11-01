@@ -1,37 +1,40 @@
+import { Download, ExternalLink, FileText } from 'lucide-react';
+
 export default function ListOfDocuments() {
     return (
-        <ul className="flex max-w-4xl flex-col text-lg sm:text-xl">
+        // TODO: change to map, and semantic tags
+        <ul className="flex max-w-4xl flex-col space-y-6 text-lg sm:space-y-1 sm:text-xl">
             {/* Regulations */}
             <li className="flex w-full py-2">
                 {/* Link for mobile, text for larger ones */}
                 <a
-                    href="/Regulamin_ROD_Stokrotka.pdf"
+                    href="/documents/Regulamin_ROD_Stokrotka.pdf"
                     download
                     className="flex w-fit items-center hover:underline sm:hidden"
                 >
-                    <img src="/icons/file_icon.svg" />
-                    <span>Regulamin.pdf</span>
+                    <FileText size={32} color="lightgreen" />
+                    Regulamin.pdf
                 </a>
                 <div className="mr-6 hidden items-center sm:flex sm:gap-2">
-                    <img src="/icons/file_icon.svg" />
-                    <span>Regulamin.pdf</span>
+                    <FileText size={32} color="lightgreen" />
+                    Regulamin.pdf
                 </div>
                 {/* Buttons */}
                 <div className="ml-auto flex gap-4">
                     <a
-                        href="Regulamin_ROD_Stokrotka.pdf"
+                        href="/documents/Regulamin_ROD_Stokrotka.pdf"
                         target="_blank"
                         className="button-icon hidden lg:flex"
                     >
-                        <img src="/icons/open_green_24.svg" />
+                        <ExternalLink />
                         Otwórz
                     </a>
                     <a
                         href="/#"
-                        download="/Regulamin_ROD_Stokrotka.pdf"
+                        download="/documents/Regulamin_ROD_Stokrotka.pdf"
                         className="button-icon hidden sm:flex"
                     >
-                        <img src="/icons/download_green_24.svg" />
+                        <Download />
                         Pobierz
                     </a>
                 </div>
@@ -40,33 +43,33 @@ export default function ListOfDocuments() {
             <li className="flex w-full py-2">
                 {/* Link for mobile, text for larger ones */}
                 <a
-                    href="/Statut_ROD_Stokrotka.pdf"
+                    href="/documents/Statut_ROD_Stokrotka.pdf"
                     download
                     className="flex w-fit items-center hover:underline sm:hidden"
                 >
-                    <img src="/icons/file_icon.svg" />
+                    <FileText size={32} color="lightgreen" />
                     <span>Statut.pdf</span>
                 </a>
                 <div className="mr-6 hidden items-center sm:flex sm:gap-2">
-                    <img src="/icons/file_icon.svg" />
+                    <FileText size={32} color="lightgreen" />
                     <span>Statut.pdf</span>
                 </div>
                 {/* Buttons */}
                 <div className="ml-auto flex gap-4">
                     <a
-                        href="/Statut_ROD_Stokrotka.pdf"
+                        href="/documents/Statut_ROD_Stokrotka.pdf"
                         target="_blank"
                         className="button-icon hidden lg:flex"
                     >
-                        <img src="/icons/open_green_24.svg" />
+                        <ExternalLink />
                         Otwórz
                     </a>
                     <a
                         href="/#"
-                        download="/Statut_ROD_Stokrotka.pdf"
+                        download="/documents/Statut_ROD_Stokrotka.pdf"
                         className="button-icon hidden sm:flex"
                     >
-                        <img src="/icons/download_green_24.svg" />
+                        <Download />
                         Pobierz
                     </a>
                 </div>
@@ -75,33 +78,33 @@ export default function ListOfDocuments() {
             <li className="flex w-full py-2">
                 {/* Link for mobile, text for larger ones */}
                 <a
-                    href="/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
+                    href="/documents/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
                     download
                     className="flex w-fit items-center hover:underline sm:hidden"
                 >
-                    <img src="/icons/file_icon.svg" />
+                    <FileText size={32} color="lightgreen" />
                     <span>Plan_Zagospodarowania.pdf</span>
                 </a>
                 <div className="mr-6 hidden items-center sm:flex sm:gap-2">
-                    <img src="/icons/file_icon.svg" />
+                    <FileText size={32} color="lightgreen" />
                     <span>Plan_Zagospodarowania.pdf</span>
                 </div>
                 {/* Buttons */}
                 <div className="ml-auto flex gap-4">
                     <a
-                        href="/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
+                        href="/documents/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
                         target="_blank"
                         className="button-icon hidden lg:flex"
                     >
-                        <img src="/icons/open_green_24.svg" />
+                        <ExternalLink />
                         Otwórz
                     </a>
                     <a
                         href="/#"
-                        download="/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
+                        download="/documents/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
                         className="button-icon hidden sm:flex"
                     >
-                        <img src="/icons/download_green_24.svg" />
+                        <Download />
                         Pobierz
                     </a>
                 </div>
@@ -110,33 +113,33 @@ export default function ListOfDocuments() {
             <li className="flex w-full py-2">
                 {/* Link for mobile, text for larger ones */}
                 <a
-                    href="/Protokół_Zebrania_17.05.2025.pdf"
+                    href="/documents/Protokół_Zebrania_17.05.2025.pdf"
                     download
                     className="flex w-fit items-center hover:underline sm:hidden"
                 >
-                    <img src="/icons/file_icon.svg" />
+                    <FileText size={32} color="lightgreen" />
                     <span>Protokół_Zebrania_17.05.2025.pdf</span>
                 </a>
                 <div className="mr-6 hidden items-center sm:flex sm:gap-2">
-                    <img src="/icons/file_icon.svg" />
+                    <FileText size={32} color="lightgreen" />
                     <span>Protokół_Zebrania_17.05.2025.pdf</span>
                 </div>
                 {/* Buttons */}
                 <div className="ml-auto flex gap-4">
                     <a
-                        href="/Protokol_Zebrania_17.05.2025.pdf"
+                        href="/documents/Protokol_Zebrania_17.05.2025.pdf"
                         target="_blank"
                         className="button-icon hidden lg:flex"
                     >
-                        <img src="/icons/open_green_24.svg" />
+                        <ExternalLink />
                         Otwórz
                     </a>
                     <a
                         href="/#"
-                        download="/Protokol_Zebrania_17.05.2025"
+                        download="/documents/Protokol_Zebrania_17.05.2025"
                         className="button-icon hidden sm:flex"
                     >
-                        <img src="/icons/download_green_24.svg" />
+                        <Download />
                         Pobierz
                     </a>
                 </div>

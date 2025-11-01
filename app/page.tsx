@@ -9,6 +9,7 @@ import ImageSeparator from '@/components/ImageSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
 import GardenMap from '@/components/GardenMap';
 import SectionLineSeparator from '@/components/SectionLineSeparator';
+import { ArrowRight } from 'lucide-react';
 
 export default function HomePage() {
     const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
@@ -20,9 +21,8 @@ export default function HomePage() {
         <article>
             <header>
                 <h1>Strona Główna</h1>
+                <MainHeaderLineSeparator />
             </header>
-
-            <MainHeaderLineSeparator />
 
             <section>
                 <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
@@ -38,15 +38,16 @@ export default function HomePage() {
                 <Link
                     href="/about-us"
                     title="Dowiedz się więcej o nas"
-                    className="button-text mx-auto"
+                    className="button-icon mx-auto"
                 >
-                    <span>Dowiedz się więcej o nas</span>
+                    Dowiedz się więcej o nas
+                    <ArrowRight />
                 </Link>
             </section>
 
-            <ImageSeparator />
+            <SectionLineSeparator />
 
-            <section className="text-center">
+            <section>
                 <h2 ref={ref2} className={cn(`h2-animate`, visible2 ? 'visible' : '')}>
                     Ostatnie Ogłoszenia
                 </h2>
@@ -56,12 +57,8 @@ export default function HomePage() {
                     title="Zobacz więcej ogłoszeń"
                     className="button-icon mx-auto"
                 >
-                    <span>Zobacz więcej </span>
-                    <img
-                        src="/icons/arrow-right_green_24.svg"
-                        alt="Przejdź (Strzałka w prawo)"
-                        className="inline-block"
-                    />
+                    Zobacz więcej
+                    <ArrowRight />
                 </Link>
             </section>
 
@@ -73,12 +70,8 @@ export default function HomePage() {
                 </h2>
                 <MainSlider />
                 <Link href="/gallery" title="Zobacz więcej zdjęć" className="button-icon mx-auto">
-                    <span>Zobacz więcej </span>
-                    <img
-                        src="/icons/arrow-right_green_24.svg"
-                        alt="Przejdź (Strzałka w prawo)"
-                        className="inline-block"
-                    />
+                    Zobacz więcej
+                    <ArrowRight />
                 </Link>
             </section>
 

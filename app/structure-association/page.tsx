@@ -11,12 +11,12 @@ import {
 import { cn } from '@/lib/cn';
 import { useInView } from '@/lib/use-in-view';
 
-export default function ManagementPage() {
+export default function StructureAssociation() {
     const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
 
     return (
         <article>
-            <h1>Zarząd</h1>
+            <h1>Władze</h1>
             <MainHeaderLineSeparator />
             <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
                 Obecna struktura Stowarzyszenia Ogrodowego
