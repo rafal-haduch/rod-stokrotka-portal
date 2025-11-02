@@ -5,7 +5,7 @@ interface PlotFees {
     status: FeeStatus;
 }
 
-export const paymentStatusAsOf = '20.10.2025';
+export const paymentStatusAsOf = '24.10.2025';
 
 export const plotsFeesStatus: PlotFees[] = [
     { nr: '0', status: 'Opłacone' },

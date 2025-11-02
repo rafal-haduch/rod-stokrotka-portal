@@ -33,7 +33,7 @@
     }
 
     main {
-        @apply mx-auto min-h-screen max-w-7xl bg-white px-6 py-8 shadow-2xl sm:px-10 md:px-15 lg:px-20;
+        @apply mx-auto min-h-screen max-w-7xl bg-white px-6 pt-8 sm:px-10 md:px-15 lg:px-20;
     }
 
     article {
@@ -42,27 +42,27 @@
 
     h1 {
         font-family: var(--font-bonheurroyale);
-        @apply text-center text-6xl font-bold text-slate-700;
+        @apply text-center text-6xl font-bold text-slate-800;
     }
 
     h2 {
         font-family: var(--font-librebodoni);
-        @apply mb-8 text-center text-2xl text-slate-700 uppercase sm:text-3xl;
+        @apply mb-8 text-center text-2xl text-slate-800 uppercase sm:text-3xl;
     }
 
     h3 {
         font-family: var(--font-lato);
-        @apply mb-6 text-xl font-bold text-slate-700 sm:text-2xl;
+        @apply mb-6 text-xl font-bold text-slate-800 sm:text-2xl;
     }
 
     p {
         font-family: var(--font-lato);
-        @apply text-lg text-slate-700 xl:text-xl;
+        @apply text-base text-slate-600 sm:text-lg;
     }
 
     ul {
         font-family: var(--font-lato);
-        @apply text-xl text-slate-700;
+        @apply text-base text-slate-600 sm:text-lg;
     }
 }
 
@@ -80,11 +80,11 @@
     }
 
     .button-text {
-        @apply mx-4 block w-fit rounded-lg border-3 border-lime-400 bg-lime-200 px-6 py-3 text-center text-xl whitespace-nowrap text-green-600 transition hover:cursor-pointer hover:bg-lime-50;
+        @apply mx-4 block w-fit rounded-lg border-2 border-lime-400 bg-lime-200 px-6 py-3 text-center text-xl whitespace-nowrap text-green-600 transition hover:cursor-pointer hover:bg-lime-50;
     }
 
     .button-icon {
-        @apply flex w-fit justify-center gap-1 rounded-lg border-3 border-lime-400 bg-lime-200 px-6 py-3 text-xl whitespace-nowrap text-green-600 transition hover:cursor-pointer hover:bg-lime-50;
+        @apply flex w-fit justify-center gap-1 rounded-lg border-2 border-lime-400 bg-lime-200 px-6 py-3 text-xl whitespace-nowrap text-green-600 transition hover:cursor-pointer hover:bg-lime-50;
     }
 
     .h2-animate {

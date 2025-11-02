@@ -30,7 +30,11 @@ export default function GardeningGuidePage() {
                         <li key={item.name}>
                             <p>
                                 {item.name}:{' '}
-                                <a href={item.url} className="link-visible" target="blank">
+                                <a
+                                    href={item.url}
+                                    className="link-visible inline-block whitespace-nowrap"
+                                    target="blank"
+                                >
                                     {item.linkContext}
                                 </a>
                             </p>

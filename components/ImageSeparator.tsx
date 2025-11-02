@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function ImageSeparator() {
     return (
-        <div className="flex w-full justify-center py-20" aria-hidden="true">
+        <div className="flex w-full justify-center py-10 sm:py-16" aria-hidden="true">
             <Image
                 src="/images/ui/image-separator.png"
                 alt=""

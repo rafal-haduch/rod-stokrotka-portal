@@ -54,7 +54,7 @@ export default function PaymentsPage() {
                     Bank Polska):
                     <br />
                     <br />
-                    <span className="text-2xl font-extrabold">
+                    <span className="text-lg font-bold sm:text-2xl">
                         78 1090 2750 0000 0001 5383 4747
                     </span>
                     <br />

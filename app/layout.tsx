@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+
 import '../styles/globals.css';
 import { lato, bonheurRoyale, aboreto, libreBodoni } from '../fonts/fonts';
-import DynamicClientLayout from '../components/DynamicClientLayout';
+
+import DynamicClientLayout from '@/components/DynamicClientLayout';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PreFooter from '@/components/PreFooter';
@@ -22,7 +24,7 @@ export const metadata: Metadata = {
         siteName: 'ROD Stokrotka Sanok',
         images: [
             {
-                url: '/og-image.png',
+                url: 'https://rod-stokrotka-sanok.vercel.app/og-image.png',
                 width: 1200,
                 height: 630,
             },

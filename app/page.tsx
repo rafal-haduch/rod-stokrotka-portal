@@ -67,7 +67,7 @@ export default function HomePage() {
                 <h2 ref={ref3} className={cn(`h2-animate`, visible3 ? 'visible' : '')}>
                     Galeria ogrodu „Stokrotka” w Sanoku
                 </h2>
-                <MainSlider />
+                <WorkInProgress />
                 <Link href="/gallery" title="Zobacz więcej zdjęć" className="button-icon mx-auto">
                     Zobacz więcej
                     <ArrowRight />

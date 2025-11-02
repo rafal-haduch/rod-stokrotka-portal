@@ -87,7 +87,7 @@ export default function ContactForm() {
 
             <form
                 onSubmit={handleSubmit}
-                className="mx-auto mt-10 max-w-3xl space-y-4 rounded-xl bg-gray-50 p-8 shadow-xl"
+                className="mx-auto max-w-3xl space-y-4 rounded-xl bg-gray-50 p-8 shadow-xl sm:mt-4"
             >
                 {/* NOTE: Nickname - anti-bot protection*/}
                 <div className="hidden">
