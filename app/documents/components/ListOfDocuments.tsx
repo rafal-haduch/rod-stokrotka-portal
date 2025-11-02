@@ -1,146 +1,151 @@
+import { Download, ExternalLink, FileText } from 'lucide-react';
+
+// TODO: change to map, and semantic tags
 export default function ListOfDocuments() {
     return (
-        <ul className="flex max-w-4xl flex-col text-lg sm:text-xl">
-            {/* Regulations */}
-            <li className="flex w-full py-2">
-                {/* Link for mobile, text for larger ones */}
-                <a
-                    href="/Regulamin_ROD_Stokrotka.pdf"
-                    download
-                    className="flex w-fit items-center hover:underline sm:hidden"
-                >
-                    <img src="/file_icon.svg" />
-                    <span>Regulamin.pdf</span>
-                </a>
-                <div className="mr-6 hidden items-center sm:flex sm:gap-2">
-                    <img src="/file_icon.svg" />
-                    <span>Regulamin.pdf</span>
-                </div>
-                {/* Buttons */}
-                <div className="ml-auto flex gap-4">
+        <div className="flex justify-center">
+            <ul className="flex max-w-4xl flex-col space-y-6 text-lg sm:space-y-1 sm:text-xl">
+                {/* Regulations */}
+                <li className="flex w-full py-2">
+                    {/* Link for mobile, text for larger ones */}
                     <a
-                        href="Regulamin_ROD_Stokrotka.pdf"
-                        target="_blank"
-                        className="button-icon hidden lg:flex"
+                        href="/documents/Regulamin_ROD_Stokrotka.pdf"
+                        download
+                        className="flex w-fit items-center hover:underline sm:hidden"
                     >
-                        <img src="/open_green_24.svg" />
-                        Otwórz
+                        <FileText size={32} color="lightgreen" />
+                        Regulamin.pdf
                     </a>
+                    <div className="mr-6 hidden items-center sm:flex sm:gap-2">
+                        <FileText size={32} color="lightgreen" />
+                        Regulamin.pdf
+                    </div>
+                    {/* Buttons */}
+                    <div className="ml-auto flex gap-4">
+                        <a
+                            href="/documents/Regulamin_ROD_Stokrotka.pdf"
+                            target="_blank"
+                            className="button-icon hidden lg:flex"
+                        >
+                            <ExternalLink />
+                            Otwórz
+                        </a>
+                        <a
+                            href="/#"
+                            download="/documents/Regulamin_ROD_Stokrotka.pdf"
+                            className="button-icon hidden sm:flex"
+                        >
+                            <Download />
+                            Pobierz
+                        </a>
+                    </div>
+                </li>
+                {/* Statute */}
+                <li className="flex w-full py-2">
+                    {/* Link for mobile, text for larger ones */}
                     <a
-                        href="/#"
-                        download="/Regulamin_ROD_Stokrotka.pdf"
-                        className="button-icon hidden sm:flex"
+                        href="/documents/Statut_ROD_Stokrotka.pdf"
+                        download
+                        className="flex w-fit items-center hover:underline sm:hidden"
                     >
-                        <img src="/download_green_24.svg" />
-                        Pobierz
+                        <FileText size={32} color="lightgreen" />
+                        <span>Statut.pdf</span>
                     </a>
-                </div>
-            </li>
-            {/* Statute */}
-            <li className="flex w-full py-2">
-                {/* Link for mobile, text for larger ones */}
-                <a
-                    href="/Statut_ROD_Stokrotka.pdf"
-                    download
-                    className="flex w-fit items-center hover:underline sm:hidden"
-                >
-                    <img src="/file_icon.svg" />
-                    <span>Statut.pdf</span>
-                </a>
-                <div className="mr-6 hidden items-center sm:flex sm:gap-2">
-                    <img src="/file_icon.svg" />
-                    <span>Statut.pdf</span>
-                </div>
-                {/* Buttons */}
-                <div className="ml-auto flex gap-4">
+                    <div className="mr-6 hidden items-center sm:flex sm:gap-2">
+                        <FileText size={32} color="lightgreen" />
+                        <span>Statut.pdf</span>
+                    </div>
+                    {/* Buttons */}
+                    <div className="ml-auto flex gap-4">
+                        <a
+                            href="/documents/Statut_ROD_Stokrotka.pdf"
+                            target="_blank"
+                            className="button-icon hidden lg:flex"
+                        >
+                            <ExternalLink />
+                            Otwórz
+                        </a>
+                        <a
+                            href="/#"
+                            download="/documents/Statut_ROD_Stokrotka.pdf"
+                            className="button-icon hidden sm:flex"
+                        >
+                            <Download />
+                            Pobierz
+                        </a>
+                    </div>
+                </li>
+                {/* Gardening Guide */}
+                <li className="flex w-full py-2">
+                    {/* Link for mobile, text for larger ones */}
                     <a
-                        href="/Statut_ROD_Stokrotka.pdf"
-                        target="_blank"
-                        className="button-icon hidden lg:flex"
+                        href="/documents/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
+                        download
+                        className="flex w-fit items-center hover:underline sm:hidden"
                     >
-                        <img src="/open_green_24.svg" />
-                        Otwórz
+                        <FileText size={32} color="lightgreen" />
+                        <span>Plan_Zagospodarowania.pdf</span>
                     </a>
+                    <div className="mr-6 hidden items-center sm:flex sm:gap-2">
+                        <FileText size={32} color="lightgreen" />
+                        <span>Plan_Zagospodarowania.pdf</span>
+                    </div>
+                    {/* Buttons */}
+                    <div className="ml-auto flex gap-4">
+                        <a
+                            href="/documents/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
+                            target="_blank"
+                            className="button-icon hidden lg:flex"
+                        >
+                            <ExternalLink />
+                            Otwórz
+                        </a>
+                        <a
+                            href="/#"
+                            download="/documents/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
+                            className="button-icon hidden sm:flex"
+                        >
+                            <Download />
+                            Pobierz
+                        </a>
+                    </div>
+                </li>
+                {/* Minutes of the 2025 Meeting */}
+                <li className="flex w-full py-2">
+                    {/* Link for mobile, text for larger ones */}
                     <a
-                        href="/#"
-                        download="/Statut_ROD_Stokrotka.pdf"
-                        className="button-icon hidden sm:flex"
+                        href="/documents/Protokół_Zebrania_17.05.2025.pdf"
+                        download
+                        className="flex w-fit items-center hover:underline sm:hidden"
                     >
-                        <img src="/download_green_24.svg" />
-                        Pobierz
+                        <FileText size={32} color="lightgreen" />
+                        <span>Protokół_Zebrania_17.05.2025.pdf</span>
                     </a>
-                </div>
-            </li>
-            {/* Gardening Guide */}
-            <li className="flex w-full py-2">
-                {/* Link for mobile, text for larger ones */}
-                <a
-                    href="/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
-                    download
-                    className="flex w-fit items-center hover:underline sm:hidden"
-                >
-                    <img src="/file_icon.svg" />
-                    <span>Plan_Zagospodarowania.pdf</span>
-                </a>
-                <div className="mr-6 hidden items-center sm:flex sm:gap-2">
-                    <img src="/file_icon.svg" />
-                    <span>Plan_Zagospodarowania.pdf</span>
-                </div>
-                {/* Buttons */}
-                <div className="ml-auto flex gap-4">
-                    <a
-                        href="/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
-                        target="_blank"
-                        className="button-icon hidden lg:flex"
-                    >
-                        <img src="/open_green_24.svg" />
-                        Otwórz
-                    </a>
-                    <a
-                        href="/#"
-                        download="/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
-                        className="button-icon hidden sm:flex"
-                    >
-                        <img src="/download_green_24.svg" />
-                        Pobierz
-                    </a>
-                </div>
-            </li>
-            {/* Minutes of the 2025 Meeting */}
-            <li className="flex w-full py-2">
-                {/* Link for mobile, text for larger ones */}
-                <a
-                    href="/Protokół_Zebrania_17.05.2025.pdf"
-                    download
-                    className="flex w-fit items-center hover:underline sm:hidden"
-                >
-                    <img src="/file_icon.svg" />
-                    <span>Protokół_Zebrania_17.05.2025.pdf</span>
-                </a>
-                <div className="mr-6 hidden items-center sm:flex sm:gap-2">
-                    <img src="/file_icon.svg" />
-                    <span>Protokół_Zebrania_17.05.2025.pdf</span>
-                </div>
-                {/* Buttons */}
-                <div className="ml-auto flex gap-4">
-                    <a
-                        href="/Protokol_Zebrania_17.05.2025.pdf"
-                        target="_blank"
-                        className="button-icon hidden lg:flex"
-                    >
-                        <img src="/open_green_24.svg" />
-                        Otwórz
-                    </a>
-                    <a
-                        href="/#"
-                        download="/Protokol_Zebrania_17.05.2025"
-                        className="button-icon hidden sm:flex"
-                    >
-                        <img src="/download_green_24.svg" />
-                        Pobierz
-                    </a>
-                </div>
-            </li>
-        </ul>
+                    <div className="mr-6 hidden items-center sm:flex sm:gap-2">
+                        <FileText size={32} color="lightgreen" />
+                        <span>Protokół_Zebrania_17.05.2025.pdf</span>
+                    </div>
+                    {/* Buttons */}
+                    <div className="ml-auto flex gap-4">
+                        <a
+                            href="/documents/Protokol_Zebrania_17.05.2025.pdf"
+                            target="_blank"
+                            className="button-icon hidden lg:flex"
+                        >
+                            <ExternalLink />
+                            Otwórz
+                        </a>
+                        <a
+                            href="/#"
+                            download="/documents/Protokol_Zebrania_17.05.2025"
+                            className="button-icon hidden sm:flex"
+                        >
+                            <Download />
+                            Pobierz
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
     );
 }

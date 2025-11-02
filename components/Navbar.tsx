@@ -1,10 +1,32 @@
 'use client';
+
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { LogIn } from 'lucide-react';
+
 import { cn } from '@/lib/cn';
-import { navLinks } from '@/data';
+
+interface NavLink {
+    name: string;
+    href: string;
+}
+
+const navLinks: NavLink[] = [
+    { name: 'STRONA GŁÓWNA', href: '/' },
+    { name: 'O NAS', href: '/about-us' },
+    { name: 'MAPA OGRODU', href: '/garden-map' },
+    { name: 'WŁADZE', href: '/structure-association' },
+    { name: 'KONTAKT', href: '/contact' },
+    { name: 'DOKUMENTY', href: '/documents' },
+    { name: 'OPŁATY', href: '/fees' },
+    { name: 'INFORMACJE', href: '/information' },
+    { name: 'OGŁOSZENIA', href: '/announcements' },
+    { name: 'INWESTYCJE', href: '/investments' },
+    { name: 'GALERIA', href: '/gallery' },
+    { name: 'PORADY OGRODOWE', href: '/gardening-guide' },
+] as const;
 
 export default function Navbar() {
     const pathname = usePathname();
@@ -44,7 +66,7 @@ export default function Navbar() {
             <div className="z-50 flex-shrink-0">
                 <Link href="/" className="cursor-pointer">
                     <Image
-                        src="/logo.png"
+                        src="/images/ui/logo.png"
                         alt="Logo Ogordu Stokrotka Sanok."
                         width={150}
                         height={80}
@@ -61,7 +83,7 @@ export default function Navbar() {
                     <li
                         key={item.href}
                         className={cn(
-                            'cursor-pointer transition-colors hover:text-green-800 hover:underline',
+                            'cursor-pointer transition-colors hover:text-green-800',
                             pathname === item.href ? 'text-green-700 underline' : ''
                         )}
                     >
@@ -74,7 +96,7 @@ export default function Navbar() {
                 href="/sign-in"
                 className="hidden cursor-pointer flex-col items-center text-white hover:underline xl:flex"
             >
-                <img src="/login_white_24.svg" alt="Ikona logowania" className="h-10 w-10" />
+                <LogIn size={42} />
                 <span className="text-xl font-bold">LOGOWANIE</span>
             </Link>
 
@@ -94,7 +116,7 @@ export default function Navbar() {
                 >
                     {/* TODO: change animation */}
                     {navLinks.map((item, i) => (
-                        <li key={item.href} className="hover:underline">
+                        <li key={item.href} className="hover:text-green-700">
                             <Link
                                 href={item.href}
                                 onClick={() => setIsOpen(false)}
@@ -116,15 +138,11 @@ export default function Navbar() {
                             href="/sign-in"
                             onClick={() => setIsOpen(false)}
                             className={cn(
-                                'mt-4 flex items-center text-white transition-opacity duration-300 hover:underline',
+                                'mt-4 flex items-center space-x-2 text-white transition-opacity duration-300 hover:underline',
                                 isClient && isOpen ? 'opacity-100 delay-300' : 'opacity-0 delay-0'
                             )}
                         >
-                            <img
-                                src="/login_white_24.svg"
-                                alt="Ikona osoby"
-                                className="h-10 w-10"
-                            />
+                            <LogIn size={42} />
                             <span>LOGOWANIE</span>
                         </Link>
                     </li>
@@ -134,27 +152,30 @@ export default function Navbar() {
             {/* Hamburger */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="relative z-50 flex h-8 w-8 flex-col items-center justify-center xl:hidden"
+                className="relative z-50 flex flex-col items-center justify-center hover:cursor-pointer xl:hidden"
                 aria-label="Toggle menu"
             >
-                <span
-                    className={cn(
-                        'absolute h-1 w-8 bg-green-600 transition-transform duration-300 ease-in-out',
-                        isOpen ? 'translate-y-0 rotate-45' : '-translate-y-2'
-                    )}
-                ></span>
-                <span
-                    className={cn(
-                        'absolute h-1 w-8 bg-green-600 transition-opacity duration-200 ease-in-out',
-                        isOpen ? 'opacity-0' : 'opacity-100'
-                    )}
-                ></span>
-                <span
-                    className={cn(
-                        'absolute h-1 w-8 bg-green-600 transition-transform duration-300 ease-in-out',
-                        isOpen ? 'translate-y-0 -rotate-45' : 'translate-y-2'
-                    )}
-                ></span>
+                <div className="relative flex h-8 w-8 flex-col items-center justify-center">
+                    <span
+                        className={cn(
+                            'absolute h-1 w-8 bg-green-600 transition-transform duration-300 ease-in-out',
+                            isOpen ? 'translate-y-0 rotate-45' : '-translate-y-2'
+                        )}
+                    />
+                    <span
+                        className={cn(
+                            'absolute h-1 w-8 bg-green-600 transition-opacity duration-200 ease-in-out',
+                            isOpen ? 'opacity-0' : 'opacity-100'
+                        )}
+                    />
+                    <span
+                        className={cn(
+                            'absolute h-1 w-8 bg-green-600 transition-transform duration-300 ease-in-out',
+                            isOpen ? 'translate-y-0 -rotate-45' : 'translate-y-2'
+                        )}
+                    />
+                </div>
+                <span className="text-lg text-green-600">{isOpen ? 'Zamknij' : 'Menu'}</span>
             </button>
         </nav>
     );

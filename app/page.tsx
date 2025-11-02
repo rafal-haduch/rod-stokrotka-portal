@@ -1,13 +1,18 @@
 'use client';
+
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+
 import { useInView } from '@/lib/use-in-view';
 import { cn } from '@/lib/cn';
+
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import Slider from './_components/Slajder';
 import ImageSeparator from '@/components/ImageSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
 import GardenMap from '@/components/GardenMap';
 import SectionLineSeparator from '@/components/SectionLineSeparator';
+
+import MainSlider from './components/MainSlider';
 
 export default function HomePage() {
     const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
@@ -19,33 +24,29 @@ export default function HomePage() {
         <article>
             <header>
                 <h1>Strona Główna</h1>
+                <MainHeaderLineSeparator />
             </header>
-
-            <MainHeaderLineSeparator />
 
             <section>
                 <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
-                    Strona internetowa Stowarzyszenia Ogrodowego <br /> ,,Stokrotka" w Sanoku
+                    Strona internetowa ROD ,,Stokrotka'' w Sanoku
                 </h2>
-                <p className="mb-8">
-                    Zachęcamy Działkowiczów do odwiedzania naszej strony internetowej poświęconej
-                    ogrodowi ,,Stokrotka'' w Sanoku. To tutaj publikujemy wszelkie ogłoszenia,
+                <p className="mb-8 text-left sm:text-center">
+                    Zachęcamy Działkowców do odwiedzania naszej strony internetowej poświęconej
+                    Stowarzyszeniu Ogrodowemu „Stokrotka” w Sanoku. Tutaj publikujemy ogłoszenia,
                     informacje organizacyjne oraz aktualności dotyczące życia naszego ogrodu. Znajdą
-                    tu Państwo również przydatne materiały i dokumenty, ciekawe zdjęcia, a także
-                    porady ogrodowe, które pomogą w pielęgnacji działek.
+                    tu Państwo również przydatne materiały i dokumenty, ciekawe zdjęcia oraz porady
+                    ogrodowe, które pomogą w pielęgnacji działek.
                 </p>
-                <Link
-                    href="/about-us"
-                    title="Dowiedz się więcej o nas"
-                    className="button-text mx-auto"
-                >
-                    <span>Dowiedz się więcej o nas</span>
+                <Link href="/about-us" className="button-icon mx-auto">
+                    Dowiedz się więcej o nas
+                    <ArrowRight />
                 </Link>
             </section>
 
-            <ImageSeparator />
+            <SectionLineSeparator />
 
-            <section className="text-center">
+            <section>
                 <h2 ref={ref2} className={cn(`h2-animate`, visible2 ? 'visible' : '')}>
                     Ostatnie Ogłoszenia
                 </h2>
@@ -55,12 +56,8 @@ export default function HomePage() {
                     title="Zobacz więcej ogłoszeń"
                     className="button-icon mx-auto"
                 >
-                    <span>Zobacz więcej </span>
-                    <img
-                        src="/arrow-right_green_24.svg"
-                        alt="Przejdź (Strzałka w prawo)"
-                        className="inline-block"
-                    />
+                    Zobacz więcej
+                    <ArrowRight />
                 </Link>
             </section>
 
@@ -68,22 +65,18 @@ export default function HomePage() {
 
             <section>
                 <h2 ref={ref3} className={cn(`h2-animate`, visible3 ? 'visible' : '')}>
-                    Galeria ogrodu
+                    Galeria ogrodu „Stokrotka” w Sanoku
                 </h2>
-                <Slider />
+                <MainSlider />
                 <Link href="/gallery" title="Zobacz więcej zdjęć" className="button-icon mx-auto">
-                    <span>Zobacz więcej </span>
-                    <img
-                        src="/arrow-right_green_24.svg"
-                        alt="Przejdź (Strzałka w prawo)"
-                        className="inline-block"
-                    />
+                    Zobacz więcej
+                    <ArrowRight />
                 </Link>
             </section>
 
             <SectionLineSeparator />
 
-            <section>
+            <section aria-label="Lokalizacja ogrodu">
                 <h2 ref={ref4} className={cn(`h2-animate`, visible4 ? 'visible' : '')}>
                     Gdzie dokładnie jest ogród
                 </h2>
