@@ -8,6 +8,7 @@ import PreFooter from '@/components/PreFooter';
 import JsonLdOrganization from '@/components/JsonLdOrganization';
 
 export const metadata: Metadata = {
+    metadataBase: new URL('https://rod-stokrotka-sanok.vercel.app'),
     title: 'ROD Stokrotka Sanok',
     description:
         'Strona internetowa Stowarzyszenia Ogrodowego "Stokrotka" w Sanoku. Publikujemy tutaj ogłoszenia, informacje organizacyjne i aktualności dotyczące życia naszego ogrodu.',
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
         siteName: 'ROD Stokrotka Sanok',
         images: [
             {
-                url: '/logo.png',
+                url: '/og-image.png',
                 width: 1200,
                 height: 630,
             },

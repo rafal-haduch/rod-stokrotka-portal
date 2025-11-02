@@ -3,9 +3,15 @@ import { PhotoWithTitle } from '@/types/PhotoWithTitle';
 
 // baseURL/ <MainSlider/>
 export const mainSliderPhotos: PhotoWithoutTitle[] = [
-    { src: '/images/main-slider/slide1.jpg', alt: 'Slide 1' },
-    { src: '/images/main-slider/slide2.jpg', alt: 'Slide 2' },
-    { src: '/images/main-slider/slide3.jpg', alt: 'Slide 3' },
+    { src: '/images/main-slider/placeholder-slide-1.jpg', alt: 'Slide 1' },
+    { src: '/images/main-slider/placeholder-slide-2.jpg', alt: 'Slide 2' },
+    { src: '/images/main-slider/placeholder-slide-3.jpg', alt: 'Slide 3' },
+    { src: '/images/main-slider/placeholder-slide-4.jpg', alt: 'Slide 4' },
+    { src: '/images/main-slider/placeholder-slide-5.jpg', alt: 'Slide 5' },
+    { src: '/images/main-slider/placeholder-slide-6.jpg', alt: 'Slide 6' },
+    { src: '/images/main-slider/placeholder-slide-7.jpg', alt: 'Slide 7' },
+    { src: '/images/main-slider/placeholder-slide-8.jpg', alt: 'Slide 8' },
+    { src: '/images/main-slider/placeholder-slide-9.jpg', alt: 'Slide 9' },
 ];
 
 // baseURL/gallery <GalleryPreview/>:

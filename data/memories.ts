@@ -6,19 +6,19 @@ export const memoriesDataById: Record<string, Memory> = {
     '1': {
         title: 'Walne zebranie 2025',
         date: '17.05.2025',
-        text: 'tekst opisowy',
+        text: 'Lorem ipsum dolor sit amet ut minim voluptua iusto facilisi dolore. Sit et diam gubergren takimata eirmod takimata blandit eros ut kasd sanctus vel et ex. In erat te eum voluptua consequat et esse magna labore ad elitr gubergren gubergren dignissim ea. Vero amet lorem erat. Kasd rebum tempor ipsum erat aliquyam consetetur est lorem.',
         photos: memory1Photos,
     },
     '2': {
         title: 'Zima 2025',
         date: '17.12.2025',
-        text: 'tekst opisowy',
+        text: 'Lorem ipsum dolor sit amet ut minim voluptua iusto facilisi dolore. Sit et diam gubergren takimata eirmod takimata blandit eros ut kasd sanctus vel et ex. In erat te eum voluptua consequat et esse magna labore ad elitr gubergren gubergren dignissim ea. Vero amet lorem erat. Kasd rebum tempor ipsum erat aliquyam consetetur est lorem.',
         photos: memory2Photos,
     },
     '3': {
         title: 'Sadzenie drzew',
         date: '17.06.2026',
-        text: 'tekst opisowy',
+        text: 'Lorem ipsum dolor sit amet ut minim voluptua iusto facilisi dolore. Sit et diam gubergren takimata eirmod takimata blandit eros ut kasd sanctus vel et ex. In erat te eum voluptua consequat et esse magna labore ad elitr gubergren gubergren dignissim ea. Vero amet lorem erat. Kasd rebum tempor ipsum erat aliquyam consetetur est lorem.',
         photos: memory3Photos,
     },
 };
