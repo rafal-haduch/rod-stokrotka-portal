@@ -1,6 +1,7 @@
 'use client';
 import Popup from '@/components/Popup';
 import { ChevronDown, ChevronUp, SendHorizontal } from 'lucide-react';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function ContactForm() {
@@ -87,7 +88,7 @@ export default function ContactForm() {
 
             <form
                 onSubmit={handleSubmit}
-                className="mx-auto max-w-3xl space-y-4 rounded-xl bg-gray-50 p-8 shadow-xl sm:mt-4"
+                className="mx-auto mb-8 max-w-3xl space-y-4 rounded-xl bg-gray-50 p-8 shadow-xl sm:mt-4"
             >
                 {/* NOTE: Nickname - anti-bot protection*/}
                 <div className="hidden">
@@ -179,6 +180,20 @@ export default function ContactForm() {
                     <span>{status === 'loading' ? 'Wysyłanie...' : 'Wyślij'}</span>
                 </button>
             </form>
+
+            <div>
+                <h3 className="text-left sm:text-center">Zgoda na przetwarzanie danych:</h3>
+                <p className="text-left sm:text-center">
+                    Wysyłając wiadomość, wyrażam zgodę na przetwarzanie moich danych osobowych
+                    podanych w formularzu kontaktowym przez Stowarzyszenie Ogrodowe „Stokrotka” w
+                    Sanoku w celu udzielenia odpowiedzi na wiadomość. Znam zasady przetwarzania
+                    danych opisane w{' '}
+                    <Link href="/privacy-policy" className="link-context">
+                        Polityce prywatności
+                    </Link>
+                    .
+                </p>
+            </div>
 
             {/* Popups loading */}
             {status === 'loading' && (

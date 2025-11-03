@@ -24,6 +24,7 @@ export const routeTitles: RouteTitles[] = [
     { pathname: '/information', title: 'INFORMACJE' },
     { pathname: '/announcements', title: 'OGŁOSZENIA' },
     { pathname: '/investments', title: 'INWESTYCJE' },
+    { pathname: '/privacy-policy', title: 'POLITYKA PRYWATNOŚCI' },
     { pathname: '/gallery', title: 'GALERIA' },
     { pathname: '/gallery/community-garden-photos', title: 'ZDJĘCIA Z NASZEGO OGRODU' },
     { pathname: '/community-garden-photos', title: 'ZDJĘCIA Z NASZEGO OGRODU' },
@@ -54,7 +55,12 @@ export default function DynamicClientLayout({ children }: { children: React.Reac
             : 'ROD Stokrotka Sanok';
     }, [pathname]);
 
-    const hideHeroRoutes = ['/sign-in', '/dashboard', '/gallery/community-garden-photos'];
+    const hideHeroRoutes = [
+        '/sign-in',
+        '/privacy-policy',
+        '/dashboard',
+        '/gallery/community-garden-photos',
+    ];
     const showHero =
         !hideHeroRoutes.includes(pathname) &&
         !pathname.startsWith('/gallery/memory/') &&
