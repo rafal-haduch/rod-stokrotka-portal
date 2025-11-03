@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 
 import '../styles/globals.css';
 import { lato, bonheurRoyale, aboreto, libreBodoni } from '../fonts/fonts';
@@ -72,6 +73,7 @@ export default function RootLayout({
                 </DynamicClientLayout>
                 <PreFooter />
                 <Footer />
+                <Analytics />
             </body>
         </html>
     );
