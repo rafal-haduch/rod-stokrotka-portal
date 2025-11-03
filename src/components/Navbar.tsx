@@ -78,7 +78,7 @@ export default function Navbar() {
 
             {/* Desktop Menu */}
             {/* Nav */}
-            <ul className="hidden flex-wrap justify-center gap-x-6 gap-y-3 [font-family:var(--font-aboreto)] font-bold text-green-600 xl:flex xl:flex-1">
+            <ul className="font-nav hidden flex-wrap justify-center gap-x-6 gap-y-3 font-bold text-green-600 xl:flex xl:flex-1">
                 {navLinks.map((item) => (
                     <li
                         key={item.href}
@@ -97,7 +97,7 @@ export default function Navbar() {
                 className="hidden cursor-pointer flex-col items-center text-white hover:underline xl:flex"
             >
                 <LogIn size={42} />
-                <span className="text-xl font-bold">LOGOWANIE</span>
+                <span className="font-nav text-xl font-bold">LOGOWANIE</span>
             </Link>
 
             {/* Mobile Menu */}
@@ -105,10 +105,9 @@ export default function Navbar() {
             {isClient && (
                 <ul
                     className={cn(
-                        'fixed inset-0 z-40 flex h-screen w-screen origin-top flex-col items-center justify-center gap-4',
-                        '[font-family:var(--font-aboreto)] font-bold',
-                        'border-b-4 border-lime-400',
-                        'bg-gradient-to-r from-lime-200 via-lime-300 to-lime-200 pt-20 text-xl text-green-600',
+                        'fixed inset-0 z-40 flex h-screen w-screen origin-top flex-col items-center justify-center gap-4 pt-20',
+                        'font-nav text-xl font-bold text-green-600',
+                        'border-b-4 border-lime-400 bg-gradient-to-r from-lime-200 via-lime-300 to-lime-200',
                         'transition-transform duration-500',
                         isClient && isOpen ? 'scale-y-100' : 'scale-y-0',
                         isClient && isVisible ? '' : 'hidden'

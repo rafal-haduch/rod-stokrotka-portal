@@ -1,13 +1,11 @@
 import localFont from 'next/font/local';
 
-export const lato = localFont({
-    src: [
-        { path: '../fonts/Nunito-Regular.ttf', weight: '400', style: 'normal' },
-    ],
-    variable: '--font-lato',
+export const nunito = localFont({
+    src: [{ path: '../fonts/Nunito-Regular.ttf', weight: '400', style: 'normal' }],
+    variable: '--font-nunito',
 });
 
-export const bonheurRoyale = localFont({
+export const fleurDeLeah = localFont({
     src: [
         {
             path: '../fonts/FleurDeLeah-Regular.ttf',
@@ -15,7 +13,7 @@ export const bonheurRoyale = localFont({
             style: 'normal',
         },
     ],
-    variable: '--font-bonheurroyale',
+    variable: '--font-fleurdeleah',
 });
 
 export const aboreto = localFont({
@@ -29,7 +27,7 @@ export const aboreto = localFont({
     variable: '--font-aboreto',
 });
 
-export const libreBodoni = localFont({
+export const merriweather = localFont({
     src: [
         {
             path: '../fonts/Merriweather_24pt-Regular.ttf',
@@ -37,5 +35,5 @@ export const libreBodoni = localFont({
             style: 'normal',
         },
     ],
-    variable: '--font-librebodoni',
+    variable: '--font-merriweather',
 });

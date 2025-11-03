@@ -1,13 +1,13 @@
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import '../styles/globals.css';
-import { lato, bonheurRoyale, aboreto, libreBodoni } from '../fonts/fonts';
+import { nunito, fleurDeLeah, aboreto, merriweather } from '../fonts/fonts';
 import Link from 'next/link';
 
 export default function GlobalNotFound() {
     return (
         <html
             lang="pl"
-            className={`${lato.variable} ${bonheurRoyale.variable} ${aboreto.variable} ${libreBodoni.variable}`}
+            className={`${nunito.variable} ${fleurDeLeah.variable} ${aboreto.variable} ${merriweather.variable}`}
         >
             <body>
                 <main className="flex items-center">

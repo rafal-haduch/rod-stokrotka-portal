@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/next';
 
 import '../styles/globals.css';
-import { lato, bonheurRoyale, aboreto, libreBodoni } from '../fonts/fonts';
+import { nunito, fleurDeLeah, aboreto, merriweather } from '../fonts/fonts';
 
 import DynamicClientLayout from '@/components/DynamicClientLayout';
 import Navbar from '@/components/Navbar';
@@ -63,7 +63,7 @@ export default function RootLayout({
     return (
         <html
             lang="pl"
-            className={`${lato.variable} ${bonheurRoyale.variable} ${aboreto.variable} ${libreBodoni.variable}`}
+            className={`${nunito.variable} ${fleurDeLeah.variable} ${aboreto.variable} ${merriweather.variable}`}
         >
             <body>
                 <JsonLdOrganization />

@@ -1,7 +1,9 @@
 'use client';
+
 import { useState } from 'react';
-import Popup from '@/components/Popup';
 import { Eye, EyeOff } from 'lucide-react';
+
+import Popup from '@/components/Popup';
 
 export default function LoginForm() {
     const [login, setLogin] = useState('');
@@ -12,9 +14,6 @@ export default function LoginForm() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // add here sign-in logic, f.e. fetch into API
-        console.log({ login, password });
-
         setShowPopup(true);
     };
 
@@ -63,21 +62,20 @@ export default function LoginForm() {
                     </div>
                 </div>
 
-                {/* Message placeholder */}
-                <div className="flex min-h-[2rem] items-center justify-center">
-                    {message && <p className="text-md text-center text-red-500">{message}</p>}
+                {/* Forgot Password */}
+                <div className="text-lg">
+                    <a href="/forgot-password" className="text-lime-500 hover:underline">
+                        Zapomniałem hasła
+                    </a>
                 </div>
-
                 {/* Sign-in Button */}
                 <button type="submit" className="button-text m-0 mb-4 w-full">
                     Zaloguj
                 </button>
 
-                {/* Forgot Password */}
-                <div className="flex justify-center text-lg">
-                    <a href="/forgot-password" className="text-lime-500 hover:underline">
-                        Zapomniałem hasła
-                    </a>
+                {/* Message placeholder */}
+                <div className="flex min-h-[2rem] items-center justify-center">
+                    {message && <p className="text-md text-center text-red-500">{message}</p>}
                 </div>
             </form>
             {/* Popup function unavailable */}

@@ -1,25 +1,19 @@
 @import 'tailwindcss';
 
 :root {
-    --background: #ffffff;
-    --foreground: #3a3a3a;
     --white: #ffffff;
-    --blue-bg: rgb(57, 182, 255);
 }
 
 @theme inline {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
     --color-white: var(--white);
-    --color-blue-bg: var(--blue-bg);
 
     --font-sans: var(--font-geist-sans), Arial, Helvetica, sans-serif;
     --font-mono: var(--font-geist-mono);
 
-    --font-lato: var(--font-lato);
-    --font-bonheurroyale: var(--font-bonheurroyale);
-    --font-aboreto: var(--font-aboreto);
-    --font-librebodoni: var(--font-librebodoni);
+    --font-heading: var(--font-fleurdeleah);
+    --font-subheading: var(--font-merriweather);
+    --font-body: var(--font-nunito);
+    --font-nav: var(--font-aboreto);
 }
 
 @layer base {
@@ -28,8 +22,8 @@
     }
 
     body {
-        font-family: var(--font-lato);
-        @apply bg-gray-50 text-slate-700;
+        font-family: var(--font-sans);
+        @apply bg-gray-50 text-neutral-600;
     }
 
     main {
@@ -41,28 +35,28 @@
     }
 
     h1 {
-        font-family: var(--font-bonheurroyale);
-        @apply text-center text-6xl font-bold text-slate-800;
+        font-family: var(--font-fleurdeleah);
+        @apply text-center text-6xl font-bold text-neutral-800;
     }
 
     h2 {
-        font-family: var(--font-librebodoni);
-        @apply mb-8 text-center text-2xl text-slate-800 uppercase sm:text-3xl;
+        font-family: var(--font-merriweather);
+        @apply mb-8 text-center text-2xl text-neutral-800 uppercase sm:text-3xl;
     }
 
     h3 {
-        font-family: var(--font-lato);
-        @apply mb-6 text-xl font-bold text-slate-800 sm:text-2xl;
+        font-family: var(--font-nunito);
+        @apply mb-4 text-xl font-bold text-neutral-700 sm:text-2xl;
     }
 
     p {
-        font-family: var(--font-lato);
-        @apply text-base text-slate-600 sm:text-lg;
+        font-family: var(--font-nunito);
+        @apply text-base text-neutral-600 sm:text-lg;
     }
 
     ul {
-        font-family: var(--font-lato);
-        @apply text-base text-slate-600 sm:text-lg;
+        font-family: var(--font-nunito);
+        @apply text-base text-neutral-600 sm:text-lg;
     }
 }
 
