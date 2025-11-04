@@ -12,8 +12,6 @@ import WorkInProgress from '@/components/WorkInProgress';
 import GardenMap from '@/components/GardenMap';
 import LineSeparator from '@/components/LineSeparator';
 
-import MainSlider from './components/MainSlider';
-
 export default function HomePage() {
     const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
     const { ref: ref2, inView: visible2 } = useInView<HTMLHeadingElement>(0.3);

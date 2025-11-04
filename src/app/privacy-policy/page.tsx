@@ -1,6 +1,7 @@
+import { associationEmail } from '@/data/associationDetails';
+
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import { associationEmail } from '@/data/associationDetails';
 
 export default function PrivacyPolicyPage() {
     return (

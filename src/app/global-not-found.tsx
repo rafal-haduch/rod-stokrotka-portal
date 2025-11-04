@@ -1,7 +1,9 @@
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
+import Link from 'next/link';
+
 import '../styles/globals.css';
 import { nunito, fleurDeLeah, aboreto, merriweather } from '../fonts/fonts';
-import Link from 'next/link';
+
+import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 
 export default function GlobalNotFound() {
     return (

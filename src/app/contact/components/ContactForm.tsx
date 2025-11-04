@@ -1,8 +1,10 @@
 'use client';
-import Popup from '@/components/Popup';
-import { ChevronDown, ChevronUp, SendHorizontal } from 'lucide-react';
-import Link from 'next/link';
+
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { ChevronDown, ChevronUp, SendHorizontal } from 'lucide-react';
+
+import Popup from '@/components/Popup';
 
 export default function ContactForm() {
     const [isMobile, setIsMobile] = useState(true);

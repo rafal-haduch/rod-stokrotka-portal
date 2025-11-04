@@ -1,11 +1,12 @@
 'use client';
 
+import { useInView } from '@/lib/hooks/useInView';
+import { cn } from '@/lib/utils/cn';
+
 import LineSeparator from '@/components/LineSeparator';
 import ImageSeparator from '@/components/ImageSeparator';
 
 import LoginForm from './components/LoginForm';
-import { useInView } from '@/lib/hooks/useInView';
-import { cn } from '@/lib/utils/cn';
 
 export default function SignInPage() {
     const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);

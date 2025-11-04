@@ -1,8 +1,9 @@
 'use client';
 
-import { mainSliderPhotos } from '@/data/photos';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+import { mainSliderPhotos } from '@/data/photos';
 
 export default function MainSlider() {
     const [current, setCurrent] = useState(0);

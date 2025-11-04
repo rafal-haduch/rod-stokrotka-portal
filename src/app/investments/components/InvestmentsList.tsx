@@ -4,8 +4,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 
-import { investmentsSummaryList } from '@/data/investments';
 import { InvestmentInList } from '@/types/Investment';
+import { investmentsSummaryList } from '@/data/investments';
+
 import NotFoundContent from '@/components/NotFoundContent';
 
 export default function InvestmentsList() {

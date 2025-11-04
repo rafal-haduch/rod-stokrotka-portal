@@ -1,9 +1,10 @@
 import Link from 'next/link';
 
-import LineSeparator from '@/components/LineSeparator';
 import { associationEmail } from '@/data/associationDetails';
 import { treasurersDuties } from '@/data/treasurersDuties';
 import { wasteCollectionSchedule } from '@/data/wasteCollectionSchedule';
+
+import LineSeparator from '@/components/LineSeparator';
 
 export default function InformationsList() {
     const my = 'my-10';

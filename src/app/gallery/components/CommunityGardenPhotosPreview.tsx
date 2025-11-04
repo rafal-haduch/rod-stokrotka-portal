@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 import { communityGardenPhotosPreview } from '@/data/photos';
 
 export default function CommunityGardenPhotosPreview() {
