@@ -10,7 +10,7 @@ import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import ImageSeparator from '@/components/ImageSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
 import GardenMap from '@/components/GardenMap';
-import SectionLineSeparator from '@/components/SectionLineSeparator';
+import LineSeparator from '@/components/LineSeparator';
 
 import MainSlider from './components/MainSlider';
 
@@ -44,7 +44,7 @@ export default function HomePage() {
                 </Link>
             </section>
 
-            <SectionLineSeparator />
+            <LineSeparator />
 
             <section>
                 <h2 ref={ref2} className={cn(`h2-animate`, visible2 ? 'visible' : '')}>
@@ -61,7 +61,7 @@ export default function HomePage() {
                 </Link>
             </section>
 
-            <SectionLineSeparator />
+            <LineSeparator />
 
             <section>
                 <h2 ref={ref3} className={cn(`h2-animate`, visible3 ? 'visible' : '')}>
@@ -74,7 +74,7 @@ export default function HomePage() {
                 </Link>
             </section>
 
-            <SectionLineSeparator />
+            <LineSeparator />
 
             <section aria-label="Lokalizacja ogrodu">
                 <h2 ref={ref4} className={cn(`h2-animate`, visible4 ? 'visible' : '')}>

@@ -9,7 +9,7 @@ import { paymentStatusAsOf } from '@/data/plotFeesStatus';
 
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import SectionLineSeparator from '@/components/SectionLineSeparator';
+import LineSeparator from '@/components/LineSeparator';
 
 import FeesTypesTable from './components/FeesTypesTable';
 import FeesTable from './components/FeesTabel';
@@ -75,7 +75,7 @@ export default function PaymentsPage() {
                 <FeesTypesTable />
             </section>
 
-            <SectionLineSeparator />
+            <LineSeparator />
 
             <section>
                 <h2 ref={ref2} className={cn(`h2-animate`, visible2 ? 'visible' : '')}>
@@ -89,7 +89,7 @@ export default function PaymentsPage() {
                 <FeesTable />
             </section>
 
-            <SectionLineSeparator />
+            <LineSeparator />
 
             <section>
                 <h2 ref={ref3} className={cn('h2-animate', visible3 ? 'visible' : '')}>

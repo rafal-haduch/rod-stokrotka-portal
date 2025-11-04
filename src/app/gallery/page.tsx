@@ -8,7 +8,7 @@ import { useInView } from '@/lib/use-in-view';
 
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import SectionLineSeparator from '@/components/SectionLineSeparator';
+import LineSeparator from '@/components/LineSeparator';
 
 import CommunityGardenPhotosPreview from './components/CommunityGardenPhotosPreview';
 import MemoriesList from './components/MemoriesList';
@@ -35,7 +35,7 @@ export default function GalleryPage() {
                 </Link>
             </section>
 
-            <SectionLineSeparator />
+            <LineSeparator />
 
             <section>
                 <h2 ref={ref2} className={cn('h2-animate', visible2 ? 'visible' : '')}>

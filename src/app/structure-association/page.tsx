@@ -12,7 +12,7 @@ import {
 
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import SectionLineSeparator from '@/components/SectionLineSeparator';
+import LineSeparator from '@/components/LineSeparator';
 
 export default function StructureAssociation() {
     const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
@@ -62,7 +62,7 @@ export default function StructureAssociation() {
                 <p className="mb-10">Stan na dzień: {asOf}</p>
             </section>
 
-            <SectionLineSeparator my="my-10" />
+            <LineSeparator my="my-10" />
 
             <section className="text-center">
                 <h3>Administrator strony:</h3>

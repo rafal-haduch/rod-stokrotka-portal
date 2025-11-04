@@ -7,7 +7,7 @@ import { recommendedSites } from '@/data/recommendedSites';
 
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import SectionLineSeparator from '@/components/SectionLineSeparator';
+import LineSeparator from '@/components/LineSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
 
 export default function GardeningGuidePage() {
@@ -43,7 +43,7 @@ export default function GardeningGuidePage() {
                 </ul>
             </section>
 
-            <SectionLineSeparator my="my-10" />
+            <LineSeparator my="my-10" />
 
             <section className="text-center">
                 <h3>Wybrane artykuły:</h3>

@@ -1,6 +1,6 @@
 'use client';
 
-import SectionLineSeparator from '@/components/SectionLineSeparator';
+import LineSeparator from '@/components/LineSeparator';
 import ImageSeparator from '@/components/ImageSeparator';
 
 import LoginForm from './components/LoginForm';
@@ -15,7 +15,7 @@ export default function SignInPage() {
             <section>
                 <LoginForm />
             </section>
-            <SectionLineSeparator />
+            <LineSeparator />
             <section>
                 <h2 ref={ref1} className={cn('h2-animate', visible1 ? 'visible' : '')}>
                     Jak się zalogować?

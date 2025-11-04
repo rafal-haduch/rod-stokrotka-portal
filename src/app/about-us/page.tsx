@@ -6,7 +6,7 @@ import { cn } from '@/lib/cn';
 import GardenMap from '@/components/GardenMap';
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import SectionLineSeparator from '@/components/SectionLineSeparator';
+import LineSeparator from '@/components/LineSeparator';
 
 import GardenStats from './components/GardenStats';
 
@@ -63,7 +63,7 @@ export default function AboutGardenPage() {
                 </ul>
             </section>
 
-            <SectionLineSeparator />
+            <LineSeparator />
 
             <section>
                 <h2 ref={ref2} className={cn(`h2-animate`, visible2 ? 'visible' : '')}>
@@ -72,7 +72,7 @@ export default function AboutGardenPage() {
                 <GardenStats />
             </section>
 
-            <SectionLineSeparator />
+            <LineSeparator />
 
             <section>
                 <h2 ref={ref3} className={cn(`h2-animate`, visible3 ? 'visible' : '')}>

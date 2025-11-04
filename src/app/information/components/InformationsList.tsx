@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import SectionLineSeparator from '@/components/SectionLineSeparator';
+import LineSeparator from '@/components/LineSeparator';
 import { associationEmail } from '@/data/associationDetails';
 import { treasurersDuties } from '@/data/treasurersDuties';
 import { wasteCollectionSchedule } from '@/data/wasteCollectionSchedule';
@@ -38,7 +38,7 @@ export default function InformationsList() {
                 </table>
             </section>
 
-            <SectionLineSeparator my={my} />
+            <LineSeparator my={my} />
 
             <section>
                 <h3 className="text-center">
@@ -53,7 +53,7 @@ export default function InformationsList() {
                 </ul>
             </section>
 
-            <SectionLineSeparator my={my} />
+            <LineSeparator my={my} />
 
             <section>
                 <h3 className="text-center">Nasza grupa na WhatsApp</h3>
@@ -75,7 +75,7 @@ export default function InformationsList() {
                 </p>
             </section>
 
-            <SectionLineSeparator my={my} />
+            <LineSeparator my={my} />
 
             <section>
                 <h3 className="text-center">Kontakt i pytania</h3>
@@ -90,7 +90,7 @@ export default function InformationsList() {
                 </p>
             </section>
 
-            <SectionLineSeparator my={my} />
+            <LineSeparator my={my} />
 
             <section>
                 <h3 className="text-center">Walne zebranie Członków ROD Stokrotka w Sanoku</h3>
@@ -102,7 +102,7 @@ export default function InformationsList() {
                 </p>
             </section>
 
-            <SectionLineSeparator my={my} />
+            <LineSeparator my={my} />
 
             <section>
                 <h3 className="text-center">Wjazd na teren ogrodu</h3>
@@ -121,7 +121,7 @@ export default function InformationsList() {
                 </p>
             </section>
 
-            <SectionLineSeparator my={my} />
+            <LineSeparator my={my} />
 
             <section>
                 <h3 className="text-center">Prośba o przesyłanie zdjęć z naszego ogrodu</h3>
