@@ -1,8 +1,8 @@
 'use client';
 
-import { cn } from '@/lib/cn';
-import { useInView } from '@/lib/use-in-view';
-import { toTitleCase } from '@/lib/toTitleCase';
+import { cn } from '@/lib/utils/cn';
+import { useInView } from '@/lib/hooks/useInView';
+import { toTitleCase } from '@/lib/utils/toTitleCase';
 
 import { Memory } from '@/types/Memory';
 

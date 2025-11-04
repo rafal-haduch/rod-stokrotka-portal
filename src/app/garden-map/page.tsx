@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Download, X } from 'lucide-react';
 
-import { cn } from '@/lib/cn';
-import { useInView } from '@/lib/use-in-view';
+import { cn } from '@/lib/utils/cn';
+import { useInView } from '@/lib/hooks/useInView';
 
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';

@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-import { useInView } from '@/lib/use-in-view';
-import { cn } from '@/lib/cn';
+import { useInView } from '@/lib/hooks/useInView';
+import { cn } from '@/lib/utils/cn';
 
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import ImageSeparator from '@/components/ImageSeparator';

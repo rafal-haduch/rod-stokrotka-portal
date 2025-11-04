@@ -1,7 +1,7 @@
 'use client';
 
-import { cn } from '@/lib/cn';
-import { useInView } from '@/lib/use-in-view';
+import { cn } from '@/lib/utils/cn';
+import { useInView } from '@/lib/hooks/useInView';
 
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';

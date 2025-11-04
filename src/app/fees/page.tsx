@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 
-import { cn } from '@/lib/cn';
-import { useInView } from '@/lib/use-in-view';
+import { cn } from '@/lib/utils/cn';
+import { useInView } from '@/lib/hooks/useInView';
 
 import { paymentStatusAsOf } from '@/data/plotFeesStatus';
 
