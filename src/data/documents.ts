@@ -12,9 +12,7 @@ export const importantDocuments: Document[] = [
     },
 ] as const;
 
-export const templatesAndForms: Document[] = [
-    { name: 'Przepisanie_Działki.pdf', href: '/documents/Regulamin.pdf' },
-] as const;
+export const templatesAndForms: Document[] = [] as const;
 
 export const minutesAndReports: Document[] = [
     {

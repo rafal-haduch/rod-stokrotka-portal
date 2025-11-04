@@ -1,8 +1,11 @@
 import { Download, ExternalLink, FileText } from 'lucide-react';
 
 import { Document } from '@/data/documents';
+import NotFoundContent from '@/components/NotFoundContent';
 
 export default function ListOfDocuments({ documents }: { documents: Document[] }) {
+    if (documents.length === 0) return <NotFoundContent />;
+
     return (
         <div className="flex justify-center">
             <ul className="flex max-w-4xl flex-col space-y-6 text-lg sm:space-y-1 sm:text-xl">
