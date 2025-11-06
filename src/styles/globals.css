@@ -1,12 +1,13 @@
 @import 'tailwindcss';
 
 :root {
-    --white: #ffffff;
+    --color-theme-1: theme(colors.lime.50);
+    --color-theme-2: theme(colors.lime.200);
+    --color-theme-3: theme(colors.lime.400);
+    --color-theme-4: theme(colors.lime.600);
 }
 
 @theme inline {
-    --color-white: var(--white);
-
     --font-sans: var(--font-geist-sans), Arial, Helvetica, sans-serif;
     --font-mono: var(--font-geist-mono);
 
@@ -14,6 +15,21 @@
     --font-subheading: var(--font-merriweather);
     --font-body: var(--font-nunito);
     --font-nav: var(--font-aboreto);
+
+    --color-color-theme-50: var(--color-theme-50);
+    --color-color-theme-100: var(--color-theme-100);
+    --color-color-theme-light: var(--color-theme-light);
+    --color-color-theme-medium: var(--color-theme-medium);
+    --color-color-theme-dark: var(--color-theme-dark);
+    --color-color-theme-hr: var(--color-theme-hr);
+    --color-color-theme-txt-light: var(--color-theme-txt-light);
+    --color-color-theme-txt-medium: var(--color-theme-txt-medium);
+    --color-color-theme-txt-dark: var(--color-theme-txt-dark);
+    --color-color-theme-txt-extra-dark: var(--color-theme-txt-extra-dark);
+    --color-color-theme-button-txt: var(--color-theme-button-txt);
+    --color-color-theme-button-txt-h: var(--color-theme-button-txt-h);
+    --color-color-theme-link: var(--color-theme-link);
+    --color-color-theme-link-h: var(--color-theme-link-h);
 }
 
 @layer base {
@@ -23,11 +39,11 @@
 
     body {
         font-family: var(--font-sans);
-        @apply bg-gray-50 text-neutral-600;
+        @apply bg-color-theme-100 text-neutral-600;
     }
 
     main {
-        @apply mx-auto min-h-screen max-w-7xl bg-white px-6 pt-8 sm:px-10 md:px-15 lg:px-20;
+        @apply bg-color-theme-50 mx-auto min-h-screen max-w-7xl px-6 pt-8 sm:px-10 md:px-15 lg:px-20;
     }
 
     article {
@@ -61,16 +77,100 @@
 }
 
 @layer components {
+    .theme-spring {
+        --color-theme-50: theme(colors.lime.50);
+        --color-theme-100: theme(colors.lime.100);
+        --color-theme-light: theme(colors.lime.200);
+        --color-theme-medium: theme(colors.lime.300);
+        --color-theme-dark: theme(colors.lime.400);
+
+        --color-theme-hr: theme(colors.lime.500);
+
+        --color-theme-txt-light: theme(colors.green.300);
+        --color-theme-txt-medium: theme(colors.green.500);
+        --color-theme-txt-dark: theme(colors.green.600);
+        --color-theme-txt-extra-dark: theme(colors.green.800);
+
+        --color-theme-button-txt: theme(colors.green.600);
+        --color-theme-button-txt-h: theme(colors.green.500);
+
+        --color-theme-link: theme(colors.lime.400);
+        --color-theme-link-h: theme(colors.lime.600);
+    }
+
+    .theme-summer {
+        --color-theme-50: theme(colors.yellow.50);
+        --color-theme-100: theme(colors.yellow.100);
+        --color-theme-light: theme(colors.yellow.200);
+        --color-theme-medium: theme(colors.yellow.300);
+        --color-theme-dark: theme(colors.yellow.400);
+
+        --color-theme-hr: theme(colors.yellow.300);
+
+        --color-theme-txt-light: theme(colors.amber.300);
+        --color-theme-txt-medium: theme(colors.amber.400);
+        --color-theme-txt-dark: theme(colors.amber.600);
+        --color-theme-txt-extra-dark: theme(colors.amber.700);
+
+        --color-theme-button-txt: theme(colors.yellow.600);
+        --color-theme-button-txt-h: theme(colors.yellow.500);
+
+        --color-theme-link: theme(colors.yellow.400);
+        --color-theme-link-h: theme(colors.yellow.600);
+    }
+
+    .theme-autumn {
+        --color-theme-50: theme(colors.orange.50);
+        --color-theme-100: theme(colors.orange.100);
+        --color-theme-light: theme(colors.orange.200);
+        --color-theme-medium: theme(colors.orange.400);
+        --color-theme-dark: theme(colors.orange.500);
+
+        --color-theme-hr: theme(colors.orange.400);
+
+        --color-theme-txt-light: theme(colors.orange.400);
+        --color-theme-txt-medium: theme(colors.orange.600);
+        --color-theme-txt-dark: theme(colors.red.700);
+        --color-theme-txt-extra-dark: theme(colors.red.800);
+
+        --color-theme-button-txt: theme(colors.orange.600);
+        --color-theme-button-txt-h: theme(colors.orange.500);
+
+        --color-theme-link: theme(colors.orange.400);
+        --color-theme-link-h: theme(colors.orange.600);
+    }
+
+    .theme-winter {
+        --color-theme-50: theme(colors.cyan.50);
+        --color-theme-100: theme(colors.cyan.100);
+        --color-theme-light: theme(colors.sky.200);
+        --color-theme-medium: theme(colors.sky.300);
+        --color-theme-dark: theme(colors.sky.400);
+
+        --color-theme-hr: theme(colors.cyan.400);
+
+        --color-theme-txt-light: theme(colors.teal.300);
+        --color-theme-txt-medium: theme(colors.teal.500);
+        --color-theme-txt-dark: theme(colors.teal.600);
+        --color-theme-txt-extra-dark: theme(colors.teal.800);
+
+        --color-theme-button-txt: theme(colors.sky.500);
+        --color-theme-button-txt-h: theme(colors.sky.400);
+
+        --color-theme-link: theme(colors.sky.400);
+        --color-theme-link-h: theme(colors.sky.600);
+    }
+
     .consultation {
         @apply font-extrabold text-pink-400;
     }
 
     .link-context {
-        @apply font-bold text-lime-500 hover:text-lime-600 hover:underline;
+        @apply text-color-theme-link hover:text-color-theme-link-h font-bold hover:underline;
     }
 
     .link-visible {
-        @apply text-blue-600 underline hover:text-blue-800;
+        @apply text-color-theme-link hover:text-color-theme-link-h underline;
     }
 
     .button-text {
@@ -78,7 +178,7 @@
     }
 
     .button-icon {
-        @apply flex w-fit justify-center gap-1 rounded-lg border-2 border-lime-400 bg-lime-200 px-6 py-3 text-xl whitespace-nowrap text-green-600 transition hover:cursor-pointer hover:bg-lime-50;
+        @apply bg-color-theme-light border-color-theme-dark text-color-theme-button-txt hover:bg-color-theme-100 hover:text-color-theme-button-txt-h flex w-fit justify-center gap-1 rounded-lg border-2 px-6 py-3 text-xl whitespace-nowrap transition hover:cursor-pointer;
     }
 
     .h2-animate {

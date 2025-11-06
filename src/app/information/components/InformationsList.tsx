@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import { cn } from '@/lib/utils/cn';
+
 import { associationEmail } from '@/data/associationDetails';
 import { treasurersDuties } from '@/data/treasurersDuties';
 import { wasteCollectionSchedule } from '@/data/wasteCollectionSchedule';
@@ -13,24 +15,65 @@ export default function InformationsList() {
         <div className="mx-auto max-w-3xl">
             <section>
                 <h3 className="text-center">Harmonogram wywozu odpadów komunalnych na 2025 rok</h3>
-                <table className="text-md mx-auto w-full max-w-2xl table-fixed border border-lime-400 text-center">
+                <table
+                    className={cn(
+                        'border-color-theme-medium',
+                        'text-md mx-auto w-full max-w-2xl table-fixed border text-center'
+                    )}
+                >
                     <thead>
-                        <tr className="bg-lime-200">
-                            <th className="w-1/3 border border-lime-400 px-3 py-2">Miesiąc</th>
-                            <th className="w-1/3 border border-lime-400 px-3 py-2">Mieszane</th>
-                            <th className="w-1/3border border-lime-400 px-1 py-2 sm:px-3">
+                        <tr className="bg-color-theme-light">
+                            <th
+                                className={cn(
+                                    'border-color-theme-medium',
+                                    'w-1/3 border px-3 py-2'
+                                )}
+                            >
+                                Miesiąc
+                            </th>
+                            <th
+                                className={cn(
+                                    'border-color-theme-medium',
+                                    'w-1/3 border px-3 py-2'
+                                )}
+                            >
+                                Mieszane
+                            </th>
+                            <th
+                                className={cn(
+                                    'border-color-theme-medium',
+                                    'w-1/3 border px-3 py-2'
+                                )}
+                            >
                                 Segregowane
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         {wasteCollectionSchedule.map((item, i) => (
-                            <tr key={i} className="hover:bg-lime-50">
-                                <th className="border border-lime-400 font-medium">{item.month}</th>
-                                <th className="border border-lime-400 font-medium">
+                            <tr key={i} className="hover:bg-color-theme-100">
+                                <th
+                                    className={cn(
+                                        'border-color-theme-medium',
+                                        'border font-medium'
+                                    )}
+                                >
+                                    {item.month}
+                                </th>
+                                <th
+                                    className={cn(
+                                        'border-color-theme-medium',
+                                        'border font-medium'
+                                    )}
+                                >
                                     {item.mixedWasteCollectionDay.join(', ')}
                                 </th>
-                                <th className="border border-lime-400 font-medium">
+                                <th
+                                    className={cn(
+                                        'border-color-theme-medium',
+                                        'border font-medium'
+                                    )}
+                                >
                                     {item.sortedWasteCollectionDay.join(', ')}
                                 </th>
                             </tr>

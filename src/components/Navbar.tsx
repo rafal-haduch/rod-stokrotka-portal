@@ -56,10 +56,10 @@ export default function Navbar() {
     return (
         <nav
             className={cn(
-                'sticky top-0 z-50 mx-auto flex flex-wrap items-center justify-between',
-                'border-b-4 border-lime-400',
-                'bg-gradient-to-b from-lime-200 to-lime-300',
-                'px-4 py-2'
+                'from-color-theme-light to-color-theme-medium border-color-theme-dark',
+                'sticky top-0 z-50 mx-auto flex flex-wrap items-center justify-between px-4 py-2',
+                'bg-gradient-to-b',
+                'border-b-4'
             )}
         >
             {/* Logo - always visible */}
@@ -78,13 +78,21 @@ export default function Navbar() {
 
             {/* Desktop Menu */}
             {/* Nav */}
-            <ul className="font-nav hidden flex-wrap justify-center gap-x-6 gap-y-3 font-bold text-green-600 xl:flex xl:flex-1">
+            <ul
+                className={cn(
+                    'font-nav text-color-theme-txt-dark',
+                    'hidden flex-wrap justify-center gap-x-6 gap-y-3 font-bold xl:flex xl:flex-1'
+                )}
+            >
                 {navLinks.map((item) => (
                     <li
                         key={item.href}
                         className={cn(
-                            'cursor-pointer transition-colors hover:text-green-800',
-                            pathname === item.href ? 'text-green-700 underline' : ''
+                            'hover:text-color-theme-txt-extra-dark',
+                            'cursor-pointer transition-colors',
+                            pathname === item.href
+                                ? 'text-color-theme-txt-extra-dark underline'
+                                : ''
                         )}
                     >
                         <Link href={item.href}>{item.name}</Link>
@@ -105,9 +113,10 @@ export default function Navbar() {
             {isClient && (
                 <ul
                     className={cn(
+                        'border-color-theme-medium from-color-theme-medium via-color-theme-light to-color-theme-medium text-color-theme-txt-dark',
                         'fixed inset-0 z-40 flex h-screen w-screen origin-top flex-col items-center justify-center gap-4 pt-20',
-                        'font-nav text-xl font-bold text-green-600',
-                        'border-b-4 border-lime-400 bg-gradient-to-r from-lime-200 via-lime-300 to-lime-200',
+                        'font-nav text-xl font-bold',
+                        'border-b-4 bg-gradient-to-r',
                         'transition-transform duration-500',
                         isClient && isOpen ? 'scale-y-100' : 'scale-y-0',
                         isClient && isVisible ? '' : 'hidden'
@@ -115,13 +124,15 @@ export default function Navbar() {
                 >
                     {/* TODO: change animation */}
                     {navLinks.map((item, i) => (
-                        <li key={item.href} className="hover:text-green-700">
+                        <li key={item.href} className="hover:text-color-theme-txt-extra-dark">
                             <Link
                                 href={item.href}
                                 onClick={() => setIsOpen(false)}
                                 className={cn(
                                     'block w-full transform text-center transition-all duration-500 ease-out',
-                                    pathname === item.href ? 'text-green-700 underline' : '',
+                                    pathname === item.href
+                                        ? 'text-color-theme-txt-extra-dark underline'
+                                        : '',
                                     isClient && isOpen
                                         ? 'translate-x-0 opacity-100'
                                         : '-translate-x-[120vw] opacity-0'
@@ -157,24 +168,29 @@ export default function Navbar() {
                 <div className="relative flex h-8 w-8 flex-col items-center justify-center">
                     <span
                         className={cn(
-                            'absolute h-1 w-8 bg-green-600 transition-transform duration-300 ease-in-out',
+                            'bg-color-theme-txt-dark',
+                            'absolute h-1 w-8 transition-transform duration-300 ease-in-out',
                             isOpen ? 'translate-y-0 rotate-45' : '-translate-y-2'
                         )}
                     />
                     <span
                         className={cn(
-                            'absolute h-1 w-8 bg-green-600 transition-opacity duration-200 ease-in-out',
+                            'bg-color-theme-txt-dark',
+                            'absolute h-1 w-8 transition-opacity duration-200 ease-in-out',
                             isOpen ? 'opacity-0' : 'opacity-100'
                         )}
                     />
                     <span
                         className={cn(
-                            'absolute h-1 w-8 bg-green-600 transition-transform duration-300 ease-in-out',
+                            'bg-color-theme-txt-dark',
+                            'absolute h-1 w-8 transition-transform duration-300 ease-in-out',
                             isOpen ? 'translate-y-0 -rotate-45' : 'translate-y-2'
                         )}
                     />
                 </div>
-                <span className="text-lg text-green-600">{isOpen ? 'Zamknij' : 'Menu'}</span>
+                <span className={cn('text-color-theme-txt-dark', 'text-lg')}>
+                    {isOpen ? 'Zamknij' : 'Menu'}
+                </span>
             </button>
         </nav>
     );

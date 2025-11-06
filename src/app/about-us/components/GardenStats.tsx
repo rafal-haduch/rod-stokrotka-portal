@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+import { cn } from '@/lib/utils/cn';
+
 interface GardenStat {
     label: string;
     value: number;
@@ -72,19 +74,31 @@ export default function GardenStats() {
                 {gardenStats.slice(0, 2).map((item, i) => (
                     <div
                         key={item.label}
-                        className="flex w-xs flex-col items-center justify-center rounded-2xl border-4 border-lime-400 bg-lime-50 p-6 shadow-lg transition hover:scale-105 hover:shadow-xl md:max-w-sm"
+                        className={cn(
+                            'border-color-theme-medium bg-color-theme-100',
+                            'flex w-xs flex-col items-center justify-center rounded-2xl border-4 p-6 shadow-lg transition hover:scale-105 hover:shadow-xl md:max-w-sm'
+                        )}
                     >
-                        <span className="text-5xl font-bold text-lime-600">{counts[i]}</span>
-                        <span className="mt-2 text-gray-700">{item.label}</span>
+                        <span className={cn('text-color-theme-txt-medium', 'text-5xl font-bold')}>
+                            {counts[i]}
+                        </span>
+                        <span className="mt-2 text-neutral-700">{item.label}</span>
                     </div>
                 ))}
             </div>
 
             {/* Dolny rząd  */}
             <div className="flex items-center justify-center">
-                <div className="flex w-xs flex-col items-center justify-center rounded-2xl border-4 border-lime-400 bg-lime-50 p-6 shadow-lg transition hover:scale-105 hover:shadow-xl md:max-w-sm">
-                    <span className="text-5xl font-bold text-lime-600">{counts[2]}</span>
-                    <span className="mt-2 text-gray-700">{gardenStats[2].label}</span>
+                <div
+                    className={cn(
+                        'border-color-theme-medium bg-color-theme-100',
+                        'flex w-xs flex-col items-center justify-center rounded-2xl border-4 p-6 shadow-lg transition hover:scale-105 hover:shadow-xl md:max-w-sm'
+                    )}
+                >
+                    <span className={cn('text-color-theme-txt-medium', 'text-5xl font-bold')}>
+                        {counts[2]}
+                    </span>
+                    <span className="mt-2 text-neutral-700">{gardenStats[2].label}</span>
                 </div>
             </div>
         </div>
