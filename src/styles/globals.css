@@ -37,6 +37,10 @@
         @apply m-0 box-border p-0;
     }
 
+    html {
+        color-scheme: light;
+    }
+
     body {
         font-family: var(--font-sans);
         @apply bg-color-theme-100 text-neutral-600;
@@ -77,6 +81,27 @@
 }
 
 @layer components {
+    .theme-default {
+        --color-theme-50: theme(colors.slate.50);
+        --color-theme-100: theme(colors.slate.100);
+        --color-theme-light: theme(colors.green.200);
+        --color-theme-medium: theme(colors.green.200);
+        --color-theme-dark: theme(colors.green.500);
+
+        --color-theme-hr: theme(colors.green.500);
+
+        --color-theme-txt-light: theme(colors.green.400);
+        --color-theme-txt-medium: theme(colors.green.500);
+        --color-theme-txt-dark: theme(colors.green.600);
+        --color-theme-txt-extra-dark: theme(colors.green.700);
+
+        --color-theme-button-txt: theme(colors.green.600);
+        --color-theme-button-txt-h: theme(colors.green.500);
+
+        --color-theme-link: theme(colors.green.400);
+        --color-theme-link-h: theme(colors.green.600);
+    }
+
     .theme-spring {
         --color-theme-50: theme(colors.lime.50);
         --color-theme-100: theme(colors.lime.100);
@@ -228,5 +253,11 @@
     100% {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        color-scheme: light;
     }
 }

@@ -55,13 +55,6 @@ export default function DynamicClientLayout({ children }: { children: React.Reac
             : 'ROD Stokrotka Sanok';
     }, [pathname]);
 
-    useEffect(() => {
-        //const s = getSeason();
-        const html = document.documentElement;
-        html.classList.remove('theme-spring', 'theme-summer', 'theme-autumn', 'theme-winter');
-        html.classList.add(`theme-autumn`);
-    }, []);
-
     const hideHeroRoutes = [
         '/sign-in',
         '/privacy-policy',

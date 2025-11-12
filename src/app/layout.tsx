@@ -9,6 +9,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PreFooter from '@/components/PreFooter';
 import JsonLdOrganization from '@/components/JsonLdOrganization';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://rod-stokrotka-sanok.vercel.app'),
@@ -65,14 +66,20 @@ export default function RootLayout({
             lang="pl"
             className={`${nunito.variable} ${fleurDeLeah.variable} ${aboreto.variable} ${merriweather.variable}`}
         >
+            <head>
+                <meta name="color-scheme" content="light" />
+                <meta name="supported-color-schemes" content="light" />
+            </head>
             <body>
                 <JsonLdOrganization />
-                <Navbar />
-                <DynamicClientLayout>
-                    <main>{children}</main>
-                </DynamicClientLayout>
-                <PreFooter />
-                <Footer />
+                <ThemeProvider>
+                    <Navbar />
+                    <DynamicClientLayout>
+                        <main>{children}</main>
+                    </DynamicClientLayout>
+                    <PreFooter />
+                    <Footer />
+                </ThemeProvider>
                 <Analytics />
             </body>
         </html>
