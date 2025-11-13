@@ -1,5 +1,5 @@
 import { typesOfFees } from '@/data/typesOfFees';
-import { cn } from '@/lib/utils/cn';
+import { cn } from '@/utils/cn';
 
 export default function FeesTypesTable() {
     return (

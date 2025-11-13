@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { plotsFeesStatus } from '@/data/plotFeesStatus';
-import { cn } from '@/lib/utils/cn';
+import { cn } from '@/utils/cn';
 
 export default function FeesTable() {
     return (

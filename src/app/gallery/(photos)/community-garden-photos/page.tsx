@@ -1,7 +1,7 @@
 'use client';
 
-import { useInView } from '@/lib/hooks/useInView';
-import { cn } from '@/lib/utils/cn';
+import { useInView } from '@/hooks/useInView';
+import { cn } from '@/utils/cn';
 
 import { communityGardenPhotos } from '@/data/photos';
 

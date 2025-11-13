@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { Power, PowerOff } from 'lucide-react';
 
-import { cn } from '@/lib/utils/cn';
-import { Theme } from '@/lib/hooks/setTheme';
+import { cn } from '@/utils/cn';
+import { Theme } from '@/utils/setTheme';
 import { useTheme } from './ThemeProvider';
 
 const themeOptions: Theme[] = [

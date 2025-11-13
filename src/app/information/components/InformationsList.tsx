@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { cn } from '@/lib/utils/cn';
+import { cn } from '@/utils/cn';
 
 import { associationEmail } from '@/data/associationDetails';
 import { treasurersDuties } from '@/data/treasurersDuties';

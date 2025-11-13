@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 import { ThemeType } from '@/types/Theme';
 
-import { setTheme, getSeason } from '@/lib/hooks/setTheme';
+import { setTheme, getSeason } from '@/utils/setTheme';
 import ThemePrompt from './ThemePrompt';
 
 interface ThemeContextValue {
