@@ -3,7 +3,7 @@
 import { useInView } from '@/hooks/useInView';
 import { cn } from '@/utils/cn';
 
-import { communityGardenPhotos } from '@/data/photos';
+import { gallery } from '@/data/photos';
 
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import PhotoGallery from '@/components/PhotoGallery';
@@ -29,7 +29,7 @@ export default function CommunityGardenPhotosPage() {
                     opublikowane w galerii poniżej.
                     <br /> Z góry dziękujemy!
                 </p>
-                <PhotoGallery photos={communityGardenPhotos} />
+                <PhotoGallery photos={gallery} />
             </section>
 
             <ImageSeparator />

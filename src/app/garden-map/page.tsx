@@ -78,7 +78,7 @@ export default function DevelopmentPlanPage() {
                     Podgląd zagospodarowania terenu
                 </h2>
                 <Image
-                    src="/images/ui/mapa-ogrodu.png"
+                    src="/assets/mapa-ogrodu.png"
                     alt="Podglądowa mapa ogrodu"
                     width={640}
                     height={1700}
@@ -116,7 +116,7 @@ export default function DevelopmentPlanPage() {
                             onMouseLeave={handleMouseUp}
                         >
                             <Image
-                                src="/images/ui/mapa-ogrodu.png"
+                                src="/assets/mapa-ogrodu.png"
                                 alt="Podglądowa mapa ogrodu"
                                 fill
                                 draggable={false}

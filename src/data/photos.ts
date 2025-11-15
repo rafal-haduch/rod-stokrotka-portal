@@ -1,47 +1,50 @@
 import { PhotoWithoutTitle } from '@/types/PhotoWithoutTitle';
 import { PhotoWithTitle } from '@/types/PhotoWithTitle';
+// TODO: change alts
 
-// baseURL/ <MainSlider/>
+// / <MainSlider/>
+const mainSliderPhotosURL = '/images/main-slider/' as const;
 export const mainSliderPhotos: PhotoWithoutTitle[] = [
-    { src: '/images/main-slider/placeholder-slide-1.jpg', alt: 'Slide 1' },
-    { src: '/images/main-slider/placeholder-slide-2.jpg', alt: 'Slide 2' },
-    { src: '/images/main-slider/placeholder-slide-3.jpg', alt: 'Slide 3' },
-    { src: '/images/main-slider/placeholder-slide-4.jpg', alt: 'Slide 4' },
-    { src: '/images/main-slider/placeholder-slide-5.jpg', alt: 'Slide 5' },
-    { src: '/images/main-slider/placeholder-slide-6.jpg', alt: 'Slide 6' },
-    { src: '/images/main-slider/placeholder-slide-7.jpg', alt: 'Slide 7' },
-    { src: '/images/main-slider/placeholder-slide-8.jpg', alt: 'Slide 8' },
-    { src: '/images/main-slider/placeholder-slide-9.jpg', alt: 'Slide 9' },
+    { src: `${mainSliderPhotosURL}placeholder-slide-1.jpg`, alt: 'alt' },
+    { src: `${mainSliderPhotosURL}placeholder-slide-2.jpg`, alt: 'alt' },
+    { src: `${mainSliderPhotosURL}placeholder-slide-3.jpg`, alt: 'alt' },
+    { src: `${mainSliderPhotosURL}placeholder-slide-4.jpg`, alt: 'alt' },
+    { src: `${mainSliderPhotosURL}placeholder-slide-5.jpg`, alt: 'alt' },
+    { src: `${mainSliderPhotosURL}placeholder-slide-6.jpg`, alt: 'alt' },
+    { src: `${mainSliderPhotosURL}placeholder-slide-7.jpg`, alt: 'alt' },
+    { src: `${mainSliderPhotosURL}placeholder-slide-8.jpg`, alt: 'alt' },
+    { src: `${mainSliderPhotosURL}placeholder-slide-9.jpg`, alt: 'alt' },
 ];
 
-// baseURL/gallery <GalleryPreview/>:
-// TODO: change alt
-export const communityGardenPhotosPreview: PhotoWithoutTitle[] = [
-    { src: '/images/community-garden-photos-preview/photo-1.jpg', alt: 'alt' },
-    { src: '/images/community-garden-photos-preview/photo-2.jpg', alt: 'alt' },
-    { src: '/images/community-garden-photos-preview/photo-3.jpg', alt: 'alt' },
-    { src: '/images/community-garden-photos-preview/photo-4.jpg', alt: 'alt' },
-    { src: '/images/community-garden-photos-preview/photo-5.jpg', alt: 'alt' },
-    { src: '/images/community-garden-photos-preview/photo-6.jpg', alt: 'alt' },
-    { src: '/images/community-garden-photos-preview/photo-7.jpg', alt: 'alt' },
-    { src: '/images/community-garden-photos-preview/photo-8.jpg', alt: 'alt' },
+// /gallery <GalleryPreview/>:
+const galleryPreviewURL = '/images/gallery-preview-slider/' as const;
+export const galleryPreview: PhotoWithoutTitle[] = [
+    { src: `${galleryPreviewURL}photo-1.jpg`, alt: 'alt' },
+    { src: `${galleryPreviewURL}photo-2.jpg`, alt: 'alt' },
+    { src: `${galleryPreviewURL}photo-3.jpg`, alt: 'alt' },
+    { src: `${galleryPreviewURL}photo-4.jpg`, alt: 'alt' },
+    { src: `${galleryPreviewURL}photo-5.jpg`, alt: 'alt' },
+    { src: `${galleryPreviewURL}photo-6.jpg`, alt: 'alt' },
+    { src: `${galleryPreviewURL}photo-7.jpg`, alt: 'alt' },
+    { src: `${galleryPreviewURL}photo-8.jpg`, alt: 'alt' },
 ];
 
-// baseURL/gallery/community-garden-photos <PhotoGallery/>:
-export const communityGardenPhotos: PhotoWithTitle[] = [
-    { src: '/images/gallery/community-garden-photos/photo-1.jpg', alt: 'alt' },
-    { src: '/images/gallery/community-garden-photos/photo-2.jpg', alt: 'alt' },
-    { src: '/images/gallery/community-garden-photos/photo-3.jpg', alt: 'alt' },
-    { src: '/images/gallery/community-garden-photos/photo-4.jpg', alt: 'alt' },
-    { src: '/images/gallery/community-garden-photos/photo-5.jpg', alt: 'alt' },
-    { src: '/images/gallery/community-garden-photos/photo-6.jpg', alt: 'alt' },
-    { src: '/images/gallery/community-garden-photos/photo-7.jpg', alt: 'alt' },
-    { src: '/images/gallery/community-garden-photos/photo-8.jpg', alt: 'alt' },
-    { src: '/images/gallery/community-garden-photos/photo-9.jpg', alt: 'alt' },
-    { src: '/images/gallery/community-garden-photos/photo-10.jpg', alt: 'alt' },
-    { src: '/images/gallery/community-garden-photos/photo-11.jpg', alt: 'alt' },
-    { src: '/images/gallery/community-garden-photos/photo-12.jpg', alt: 'alt' },
-    { src: '/images/gallery/community-garden-photos/photo-13.jpg', alt: 'alt' },
-    { src: '/images/gallery/community-garden-photos/photo-14.jpg', alt: 'alt' },
-    { src: '/images/gallery/community-garden-photos/photo-15.jpg', alt: 'alt' },
+// /gallery/community-garden-photos <PhotoGallery/>:
+const galleryURL = '/images/external-photo-source/gallery/' as const;
+export const gallery: PhotoWithTitle[] = [
+    { src: `${galleryURL}photo-1.jpg`, alt: 'alt' },
+    { src: `${galleryURL}photo-2.jpg`, alt: 'alt' },
+    { src: `${galleryURL}photo-3.jpg`, alt: 'alt' },
+    { src: `${galleryURL}photo-4.jpg`, alt: 'alt' },
+    { src: `${galleryURL}photo-5.jpg`, alt: 'alt' },
+    { src: `${galleryURL}photo-6.jpg`, alt: 'alt' },
+    { src: `${galleryURL}photo-7.jpg`, alt: 'alt' },
+    { src: `${galleryURL}photo-8.jpg`, alt: 'alt' },
+    { src: `${galleryURL}photo-9.jpg`, alt: 'alt' },
+    { src: `${galleryURL}photo-10.jpg`, alt: 'alt' },
+    { src: `${galleryURL}photo-11.jpg`, alt: 'alt' },
+    { src: `${galleryURL}photo-12.jpg`, alt: 'alt' },
+    { src: `${galleryURL}photo-13.jpg`, alt: 'alt' },
+    { src: `${galleryURL}photo-14.jpg`, alt: 'alt' },
+    { src: `${galleryURL}photo-15.jpg`, alt: 'alt' },
 ];

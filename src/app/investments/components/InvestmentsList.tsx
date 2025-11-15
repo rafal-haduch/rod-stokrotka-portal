@@ -1,21 +1,20 @@
-'use client';
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 
-import { InvestmentInList } from '@/types/Investment';
-import { investmentsSummaryList } from '@/data/investments';
+import { getAllInvestments } from '@/utils/investments';
 
 import NotFoundContent from '@/components/NotFoundContent';
 
 export default function InvestmentsList() {
-    if (investmentsSummaryList.length === 0) return <NotFoundContent />;
+    const investments = getAllInvestments();
+
+    if (investments.length === 0) return <NotFoundContent />;
 
     return (
         <div className="flex flex-col gap-y-14">
-            {investmentsSummaryList.map((i, index) => (
-                <div key={i.id}>
+            {investments.map((i) => (
+                <div key={i.slug}>
                     <InvestmentCard investment={i} />
                 </div>
             ))}
@@ -23,12 +22,9 @@ export default function InvestmentsList() {
     );
 }
 
-function InvestmentCard({ investment }: { investment: InvestmentInList }) {
+function InvestmentCard({ investment }: { investment: any }) {
     return (
-        <Link
-            href={`/investments/${investment.id}`}
-            className="0 mx-auto flex max-w-lg flex-col items-center rounded-xl border-1 border-slate-200 bg-slate-50 px-4 py-4 shadow-lg hover:border-lime-500 hover:bg-lime-50 hover:shadow-xl md:max-w-3xl md:flex-row md:items-start md:gap-6 md:pr-8"
-        >
+        <Link href={`/investments/${investment.slug}`} className="...">
             <div className="relative h-48 w-full shrink-0 md:h-40 md:w-64">
                 <Image
                     src={investment.cover}

@@ -66,7 +66,7 @@ export default function Navbar() {
             <div className="z-50 flex-shrink-0">
                 <Link href="/" className="cursor-pointer">
                     <Image
-                        src="/images/ui/logo.png"
+                        src="/assets/logo.png"
                         alt="Logo Ogordu Stokrotka Sanok."
                         width={150}
                         height={80}

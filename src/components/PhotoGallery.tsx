@@ -5,9 +5,10 @@ import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { PhotoWithTitle } from '@/types/PhotoWithTitle';
+import { PhotoWithoutTitle } from '@/types/PhotoWithoutTitle';
 
 interface PhotoGalleryProps {
-    photos: PhotoWithTitle[];
+    photos: PhotoWithTitle[] | PhotoWithoutTitle[];
 }
 
 export default function PhotoGallery(props: PhotoGalleryProps) {

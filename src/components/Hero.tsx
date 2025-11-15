@@ -6,8 +6,8 @@ export default function Hero() {
         <section aria-label="Baner z logo ogrodu" className="mx-auto max-w-7xl bg-gray-50">
             <Link href="/" title="Powrót na stronę główną">
                 <Image
-                    src="/images/ui/hero.jpg"
-                    alt="Panorama ogrodu ROD Stokrotka w Sanoku."
+                    src="/assets/hero.jpg"
+                    alt="Baner ogrodu ROD Stokrotka w Sanoku."
                     width={1920}
                     height={600}
                     priority

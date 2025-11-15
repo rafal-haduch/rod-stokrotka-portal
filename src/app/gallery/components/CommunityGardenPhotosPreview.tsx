@@ -4,18 +4,18 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import { communityGardenPhotosPreview } from '@/data/photos';
+import { galleryPreview } from '@/data/photos';
 
 export default function CommunityGardenPhotosPreview() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const scrollRef = useRef<HTMLDivElement>(null);
 
     const prevImg = () => {
-        setCurrentIndex((i) => (i > 0 ? i - 1 : communityGardenPhotosPreview.length - 1));
+        setCurrentIndex((i) => (i > 0 ? i - 1 : galleryPreview.length - 1));
     };
 
     const nextImg = () => {
-        setCurrentIndex((i) => (i < communityGardenPhotosPreview.length - 1 ? i + 1 : 0));
+        setCurrentIndex((i) => (i < galleryPreview.length - 1 ? i + 1 : 0));
     };
 
     const scroll = (direction: 'left' | 'right') => {
@@ -69,8 +69,8 @@ export default function CommunityGardenPhotosPreview() {
                     <ChevronRight size={20} />
                 </button>
                 <Image
-                    src={communityGardenPhotosPreview[currentIndex].src}
-                    alt={communityGardenPhotosPreview[currentIndex].alt || ''}
+                    src={galleryPreview[currentIndex].src}
+                    alt={galleryPreview[currentIndex].alt || ''}
                     fill
                     className="rounded-2xl object-cover shadow-lg"
                 />
@@ -97,7 +97,7 @@ export default function CommunityGardenPhotosPreview() {
                     ref={scrollRef}
                     className="no-scrollbar flex gap-2 overflow-x-auto scroll-smooth"
                 >
-                    {communityGardenPhotosPreview.map((img, i) => (
+                    {galleryPreview.map((img, i) => (
                         <button
                             key={i}
                             onClick={() => setCurrentIndex(i)}
