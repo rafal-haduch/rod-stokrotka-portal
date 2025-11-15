@@ -103,8 +103,8 @@
     }
 
     .theme-spring {
-        --color-theme-50: theme(colors.lime.50);
-        --color-theme-100: theme(colors.lime.100);
+        --color-theme-50: theme(colors.gray.50);
+        --color-theme-100: theme(colors.gray.100);
         --color-theme-light: theme(colors.lime.200);
         --color-theme-medium: theme(colors.lime.300);
         --color-theme-dark: theme(colors.lime.400);

@@ -8,7 +8,8 @@ export default function ThemePrompt() {
     useEffect(() => {
         const pref = localStorage.getItem('seasonalThemesEnabled');
         if (pref === null) {
-            setShowPrompt(true);
+            // HACK: comment for hotfix main prod
+            //setShowPrompt(true);
         }
     }, []);
 

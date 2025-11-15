@@ -22,14 +22,16 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     // Inicjalizacja
     useEffect(() => {
-        const pref = localStorage.getItem('seasonalThemesEnabled');
-        if (pref === null) {
-            localStorage.setItem('seasonalThemesEnabled', 'true');
-        }
-        const enabled = pref === null ? true : pref === 'true';
-        setSeasonalThemesEnabled(enabled);
+        // HACK: comment for hotfix main prod
+        // const pref = localStorage.getItem('seasonalThemesEnabled');
+        // if (pref === null) {
+        //     localStorage.setItem('seasonalThemesEnabled', 'true');
+        // }
+        // const enabled = pref === null ? true : pref === 'true';
+        // setSeasonalThemesEnabled(enabled);
 
-        const theme = enabled ? getSeason() : 'default';
+        //const theme = enabled ? getSeason() : 'default';
+        const theme = 'spring';
         setActiveThemeState(theme);
         setTheme(theme);
     }, []);
