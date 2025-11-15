@@ -53,7 +53,7 @@ export default function PhotoGallery(props: PhotoGalleryProps) {
         <div className="w-full">
             {/* Siatka zdjęć */}
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                {photos.map((src, i) => (
+                {photos.map((img, i) => (
                     <div
                         key={i}
                         className="relative aspect-square cursor-pointer overflow-hidden rounded-lg"

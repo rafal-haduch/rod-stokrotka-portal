@@ -1,9 +1,4 @@
-'use client';
-
 import Link from 'next/link';
-
-import { cn } from '@/utils/cn';
-import { useInView } from '@/hooks/useInView';
 
 import { paymentStatusAsOf } from '@/data/plotFeesStatus';
 
@@ -14,12 +9,9 @@ import LineSeparator from '@/components/LineSeparator';
 import FeesTypesTable from './components/FeesTypesTable';
 import FeesTable from './components/FeesTabel';
 import NoArrears from './components/NoArrears';
+import AnimateOnView from '@/components/AnimatedH2';
 
 export default function PaymentsPage() {
-    const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
-    const { ref: ref2, inView: visible2 } = useInView<HTMLHeadingElement>(0.3);
-    const { ref: ref3, inView: visible3 } = useInView<HTMLHeadingElement>(0.3);
-
     return (
         <article>
             <header>
@@ -28,9 +20,9 @@ export default function PaymentsPage() {
             </header>
 
             <section>
-                <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
-                    Informacje o płatnościach za użytkowanie ogrodu
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Informacje o płatnościach za użytkowanie ogrodu</h2>
+                </AnimateOnView>
                 <p className="mb-6 text-left sm:text-center">
                     Termin uiszczenia opłat upływa 30 czerwca każdego roku. Uprzejmie prosimy o
                     przestrzeganie go.
@@ -78,13 +70,9 @@ export default function PaymentsPage() {
             <LineSeparator />
 
             <section>
-                <h2 ref={ref2} className={cn(`h2-animate`, visible2 ? 'visible' : '')}>
-                    Bilans wpłat za 2025 rok
-                </h2>
-                <p className="mb-6 text-left sm:text-center">
-                    Tabelka z bilansem wpłat za dany rok pojawi się na stronie po upływie terminu
-                    uiszczenia opłat i będzie widoczna do końca roku kalendarzowego.
-                </p>
+                <AnimateOnView className="h2-animate">
+                    <h2>Bilans opłat za 2025 rok</h2>
+                </AnimateOnView>
                 <h3 className="text-center">Stan na: {paymentStatusAsOf}</h3>
                 <FeesTable />
             </section>
@@ -92,9 +80,9 @@ export default function PaymentsPage() {
             <LineSeparator />
 
             <section>
-                <h2 ref={ref3} className={cn('h2-animate', visible3 ? 'visible' : '')}>
-                    Zaległości wpłat za 2024 rok
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Zaległości wpłat za 2024 rok</h2>
+                </AnimateOnView>
                 <NoArrears />
             </section>
 

@@ -1,18 +1,12 @@
-'use client';
-
-import { useInView } from '@/hooks/useInView';
-import { cn } from '@/utils/cn';
-
 import { recommendedSites } from '@/data/recommendedSites';
 
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import LineSeparator from '@/components/LineSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
+import AnimateOnView from '@/components/AnimatedH2';
 
 export default function GardeningGuidePage() {
-    const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
-
     return (
         <article>
             <header>
@@ -21,9 +15,9 @@ export default function GardeningGuidePage() {
             </header>
 
             <section className="text-center">
-                <h2 ref={ref1} className={cn('h2-animate', visible1 ? 'visible' : '')}>
-                    Porady, wskazówki i inspiracje dla ogrodu
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Porady, wskazówki i inspiracje dla ogrodu</h2>
+                </AnimateOnView>
                 <h3>Polecane strony:</h3>
                 <ul className="space-y-6 sm:space-y-4">
                     {recommendedSites.map((item) => (

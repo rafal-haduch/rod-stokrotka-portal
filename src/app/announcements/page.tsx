@@ -1,15 +1,9 @@
-'use client';
-
-import { cn } from '@/utils/cn';
-import { useInView } from '@/hooks/useInView';
-
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
+import AnimateOnView from '@/components/AnimatedH2';
 
 export default function AnnouncementsPage() {
-    const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
-
     return (
         <article>
             <header>
@@ -18,9 +12,9 @@ export default function AnnouncementsPage() {
             </header>
 
             <section>
-                <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
-                    Ogłoszenia Zarządu ROD ,,Stokrotka" w Sanoku
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Ogłoszenia Zarządu ROD ,,Stokrotka" w Sanoku</h2>
+                </AnimateOnView>
                 <WorkInProgress />
             </section>
 

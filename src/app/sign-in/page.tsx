@@ -1,16 +1,10 @@
-'use client';
-
-import { useInView } from '@/hooks/useInView';
-import { cn } from '@/utils/cn';
-
 import LineSeparator from '@/components/LineSeparator';
 import ImageSeparator from '@/components/ImageSeparator';
 
 import LoginForm from './components/LoginForm';
+import AnimateOnView from '@/components/AnimatedH2';
 
 export default function SignInPage() {
-    const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
-
     return (
         <article className="prose mx-auto">
             <section>
@@ -18,9 +12,9 @@ export default function SignInPage() {
             </section>
             <LineSeparator />
             <section>
-                <h2 ref={ref1} className={cn('h2-animate', visible1 ? 'visible' : '')}>
-                    Jak się zalogować?
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Jak się zalogować?</h2>
+                </AnimateOnView>
                 <div className="space-y-4 text-left sm:text-center">
                     <p>
                         Logowanie jest dostępne wyłącznie dla członków Stowarzyszenia Ogrodowego

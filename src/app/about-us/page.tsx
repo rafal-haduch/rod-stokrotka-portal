@@ -1,5 +1,3 @@
-'use client';
-
 import { useInView } from '@/hooks/useInView';
 import { cn } from '@/utils/cn';
 
@@ -9,12 +7,9 @@ import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import LineSeparator from '@/components/LineSeparator';
 
 import GardenStats from './components/GardenStats';
+import AnimateOnView from '@/components/AnimatedH2';
 
 export default function AboutGardenPage() {
-    const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
-    const { ref: ref2, inView: visible2 } = useInView<HTMLHeadingElement>(0.3);
-    const { ref: ref3, inView: visible3 } = useInView<HTMLHeadingElement>(0.3);
-
     return (
         <article>
             <header>
@@ -23,9 +18,9 @@ export default function AboutGardenPage() {
             </header>
 
             <section>
-                <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
-                    Kilka słów o ogrodzie ,,Stokrotka'' w Sanoku
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Kilka słów o ogrodzie ,,Stokrotka'' w Sanoku</h2>
+                </AnimateOnView>
                 <h3>Historia i teraźniejszość</h3>
                 <p className="mb-4">
                     Dokładna data założenia naszego ogrodu nie jest obecnie znana jednakże posiadamy
@@ -66,18 +61,18 @@ export default function AboutGardenPage() {
             <LineSeparator />
 
             <section>
-                <h2 ref={ref2} className={cn(`h2-animate`, visible2 ? 'visible' : '')}>
-                    Nasz ogród w liczbach
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Nasz ogród w liczbach</h2>
+                </AnimateOnView>
                 <GardenStats />
             </section>
 
             <LineSeparator />
 
             <section>
-                <h2 ref={ref3} className={cn(`h2-animate`, visible3 ? 'visible' : '')}>
-                    Nasz ogród na mapie
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Nasz ogród na mapie</h2>
+                </AnimateOnView>
                 <GardenMap />
             </section>
 

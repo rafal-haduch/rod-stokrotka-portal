@@ -1,8 +1,3 @@
-'use client';
-
-import { cn } from '@/utils/cn';
-import { useInView } from '@/hooks/useInView';
-
 import {
     asOf,
     associationBoard,
@@ -13,10 +8,9 @@ import {
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import LineSeparator from '@/components/LineSeparator';
+import AnimateOnView from '@/components/AnimatedH2';
 
 export default function StructureAssociation() {
-    const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
-
     return (
         <article>
             <header>
@@ -25,10 +19,12 @@ export default function StructureAssociation() {
             </header>
 
             <section className="text-center">
-                <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
-                    Obecna struktura Stowarzyszenia Ogrodowego
-                    <br /> ,,Stokrotka'' w Sanoku
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>
+                        Obecna struktura Stowarzyszenia Ogrodowego
+                        <br /> ,,Stokrotka'' w Sanoku
+                    </h2>
+                </AnimateOnView>
                 <h3>Zarząd:</h3>
                 <ul className="mb-10">
                     {associationBoard.map((item, i) => (

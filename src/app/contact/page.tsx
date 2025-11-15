@@ -1,8 +1,3 @@
-'use client';
-
-import { useInView } from '@/hooks/useInView';
-import { cn } from '@/utils/cn';
-
 import {
     associationData,
     associationEmail,
@@ -14,11 +9,9 @@ import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import LineSeparator from '@/components/LineSeparator';
 
 import ContactForm from './components/ContactForm';
+import AnimateOnView from '@/components/AnimatedH2';
 
 export default function ContactPage() {
-    const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
-    const { ref: ref2, inView: visible2 } = useInView<HTMLHeadingElement>(0.3);
-
     return (
         <article>
             <header>
@@ -27,9 +20,9 @@ export default function ContactPage() {
             </header>
 
             <section>
-                <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
-                    Dane Stowarzyszenia Ogrodowego ,,Stokrotka" w Sanoku
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Dane Stowarzyszenia Ogrodowego ,,Stokrotka" w Sanoku</h2>
+                </AnimateOnView>
                 <div className="grid grid-cols-1 justify-items-center gap-8 text-center md:mx-auto md:w-3/5 md:grid-cols-2 md:[grid-template-areas:'name_name''left_right''email_email']">
                     {/* Name (full width) */}
                     <div className="text-center md:[grid-area:name]">
@@ -84,9 +77,9 @@ export default function ContactPage() {
             <LineSeparator />
 
             <section>
-                <h2 ref={ref2} className={cn(`h2-animate`, visible2 ? 'visible' : '')}>
-                    Formularz kontaktowy
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Formularz kontaktowy</h2>
+                </AnimateOnView>
                 <ContactForm />
             </section>
 

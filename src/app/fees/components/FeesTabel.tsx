@@ -4,6 +4,7 @@ import React from 'react';
 
 import { plotsFeesStatus } from '@/data/plotFeesStatus';
 import { cn } from '@/utils/cn';
+import { Check, X } from 'lucide-react';
 
 export default function FeesTable() {
     return (
@@ -17,7 +18,7 @@ export default function FeesTable() {
                 <thead className="bg-color-theme-light">
                     <tr>
                         <th className={cn('border-color-theme-medium', 'border px-3 py-2')}>
-                            Numer działki
+                            Kod działki
                         </th>
                         <th className={cn('border-color-theme-medium', 'border px-3 py-2')}>
                             Status
@@ -37,14 +38,21 @@ export default function FeesTable() {
                                     item.status === 'Opłacone' ? 'text-green-600' : 'text-red-600'
                                 )}
                             >
-                                {item.status}
+                                {item.status === 'Opłacone' ? (
+                                    <Check className="mx-auto" />
+                                ) : (
+                                    <X className="mx-auto" />
+                                )}
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <p className="sm:text-center">
-                *w przypadku błędu prosimy skontaktować się ze Skarbnikiem lub Prezesem.
+            <p className="mb-6 text-left sm:text-center">
+                *Tabela za dany rok pojawia się na stronie po upływie terminu uiszczania opłat i
+                będzie widoczna do końca roku kalendarzowego. Przedstawia anonimowy status
+                uiszczonych opłat za działki w ROD Stokrotka. Dane służą wyłącznie celom wewnętrznej
+                ewidencji.
             </p>
         </>
     );

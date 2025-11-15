@@ -1,16 +1,10 @@
-'use client';
-
-import { cn } from '@/utils/cn';
-import { useInView } from '@/hooks/useInView';
-
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 
 import InformationsList from './components/InformationsList';
+import AnimateOnView from '@/components/AnimatedH2';
 
 export default function InformationPage() {
-    const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
-
     return (
         <article>
             <header>
@@ -19,9 +13,9 @@ export default function InformationPage() {
             </header>
 
             <section>
-                <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
-                    Najważniejsze informacje organizacyjne
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Najważniejsze informacje organizacyjne</h2>
+                </AnimateOnView>
                 <InformationsList />
             </section>
 

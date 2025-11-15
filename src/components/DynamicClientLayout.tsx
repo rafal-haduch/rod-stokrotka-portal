@@ -3,9 +3,6 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
-import { memoriesDataById } from '@/data/memories';
-import { investmentsDataById } from '@/data/investments';
-
 import Hero from './Hero';
 
 interface RouteTitles {
@@ -38,16 +35,17 @@ export default function DynamicClientLayout({ children }: { children: React.Reac
         let pageTitle = '';
         const staticRoute = routeTitles.find((route) => route.pathname === pathname);
 
+        //TODO: site name in slug pages
         if (staticRoute) {
             pageTitle = staticRoute.title;
         } else if (pathname.startsWith('/gallery/memory/')) {
             const id = pathname.replace('/gallery/memory/', '');
-            const memory = memoriesDataById[id];
-            pageTitle = memory ? memory.title : '';
+            // const memory = memoriesDataById[id];
+            // pageTitle = memory ? memory.title : '';
         } else if (pathname.startsWith('/investments/')) {
             const id = pathname.replace('/investments/', '');
-            const investment = investmentsDataById[id];
-            pageTitle = investment ? investment.title : '';
+            // const investment = investmentsDataById[id];
+            // pageTitle = investment ? investment.title : '';
         }
 
         document.title = pageTitle

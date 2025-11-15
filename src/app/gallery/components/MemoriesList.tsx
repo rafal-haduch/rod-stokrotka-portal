@@ -5,20 +5,11 @@ import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
 import { MemoryInList } from '@/types/Memory';
-import { memoriesSummaryList } from '@/data/memories';
 
 import NotFoundContent from '@/components/NotFoundContent';
 
 export default function MemoriesList() {
-    if (memoriesSummaryList.length === 0) return <NotFoundContent />;
-
-    return (
-        <div className="grid gap-6 md:grid-cols-2">
-            {memoriesSummaryList.map((m) => (
-                <MemoryCard key={m.id} memory={m} />
-            ))}
-        </div>
-    );
+    return <NotFoundContent />;
 }
 
 // TODO: poprawić typ

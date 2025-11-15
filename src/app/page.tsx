@@ -1,23 +1,14 @@
-'use client';
-
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-
-import { useInView } from '@/hooks/useInView';
-import { cn } from '@/utils/cn';
 
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import ImageSeparator from '@/components/ImageSeparator';
 import WorkInProgress from '@/components/WorkInProgress';
 import GardenMap from '@/components/GardenMap';
 import LineSeparator from '@/components/LineSeparator';
+import AnimateOnView from '@/components/AnimatedH2';
 
 export default function HomePage() {
-    const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
-    const { ref: ref2, inView: visible2 } = useInView<HTMLHeadingElement>(0.3);
-    const { ref: ref3, inView: visible3 } = useInView<HTMLHeadingElement>(0.3);
-    const { ref: ref4, inView: visible4 } = useInView<HTMLHeadingElement>(0.3);
-
     return (
         <article>
             <header>
@@ -26,9 +17,9 @@ export default function HomePage() {
             </header>
 
             <section>
-                <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
-                    Strona internetowa ROD ,,Stokrotka'' w Sanoku
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Strona internetowa ROD ,,Stokrotka'' w Sanoku</h2>
+                </AnimateOnView>
                 <p className="mb-8 text-left sm:text-center">
                     Zachęcamy Działkowców do odwiedzania naszej strony internetowej poświęconej
                     Stowarzyszeniu Ogrodowemu „Stokrotka” w Sanoku. Tutaj publikujemy ogłoszenia,
@@ -45,9 +36,9 @@ export default function HomePage() {
             <LineSeparator />
 
             <section>
-                <h2 ref={ref2} className={cn(`h2-animate`, visible2 ? 'visible' : '')}>
-                    Ostatnie Ogłoszenia
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Ostatnie Ogłoszenia</h2>
+                </AnimateOnView>
                 <WorkInProgress />
                 <Link
                     href="/announcements"
@@ -62,9 +53,9 @@ export default function HomePage() {
             <LineSeparator />
 
             <section>
-                <h2 ref={ref3} className={cn(`h2-animate`, visible3 ? 'visible' : '')}>
-                    Galeria ogrodu „Stokrotka” w Sanoku
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Galeria ogrodu „Stokrotka” w Sanoku</h2>
+                </AnimateOnView>
                 <WorkInProgress />
                 <Link href="/gallery" title="Zobacz więcej zdjęć" className="button-icon mx-auto">
                     Zobacz więcej
@@ -75,9 +66,9 @@ export default function HomePage() {
             <LineSeparator />
 
             <section aria-label="Lokalizacja ogrodu">
-                <h2 ref={ref4} className={cn(`h2-animate`, visible4 ? 'visible' : '')}>
-                    Gdzie dokładnie jest ogród
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Gdzie dokładnie jest ogród</h2>
+                </AnimateOnView>
                 <GardenMap />
             </section>
 

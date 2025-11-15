@@ -4,11 +4,9 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Download, X } from 'lucide-react';
 
-import { cn } from '@/utils/cn';
-import { useInView } from '@/hooks/useInView';
-
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
+import AnimateOnView from '@/components/AnimatedH2';
 
 export default function DevelopmentPlanPage() {
     // Lightbox and zoom control states
@@ -18,8 +16,6 @@ export default function DevelopmentPlanPage() {
     const [dragging, setDragging] = useState(false);
     const [startPosY, setStartPosY] = useState(0);
     const [startOffsetY, setStartOffsetY] = useState(0);
-
-    const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
 
     const openLightbox = () => {
         setIsLightboxOpen(true);
@@ -74,9 +70,9 @@ export default function DevelopmentPlanPage() {
             </header>
 
             <section>
-                <h2 ref={ref1} className={cn('h2-animate', visible1 ? 'visible' : '')}>
-                    Podgląd zagospodarowania terenu
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Podgląd zagospodarowania terenu</h2>
+                </AnimateOnView>
                 <Image
                     src="/assets/mapa-ogrodu.png"
                     alt="Podglądowa mapa ogrodu"

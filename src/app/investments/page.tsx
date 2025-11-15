@@ -13,7 +13,9 @@ export default function InvestmentsPage() {
             </header>
 
             <section>
-                <AnimatedH2>Prace i modernizacje wykonane w naszym ogrodzie</AnimatedH2>
+                <AnimatedH2 className="h2-animate">
+                    <h2>Prace i modernizacje wykonane w naszym ogrodzie</h2>
+                </AnimatedH2>
                 <InvestmentsList />
             </section>
 

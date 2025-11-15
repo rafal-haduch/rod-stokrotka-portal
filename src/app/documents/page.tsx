@@ -1,8 +1,3 @@
-'use client';
-
-import { useInView } from '@/hooks/useInView';
-import { cn } from '@/utils/cn';
-
 import { importantDocuments, minutesAndReports, templatesAndForms } from '@/data/documents';
 
 import ImageSeparator from '@/components/ImageSeparator';
@@ -10,9 +5,9 @@ import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import LineSeparator from '@/components/LineSeparator';
 
 import ListOfDocuments from './components/ListOfDocuments';
+import AnimateOnView from '@/components/AnimatedH2';
 
 export default function DocumentsPage() {
-    const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
     const my = 'my-10';
 
     return (
@@ -23,9 +18,9 @@ export default function DocumentsPage() {
             </header>
 
             <section>
-                <h2 ref={ref1} className={cn(`h2-animate`, visible1 ? 'visible' : '')}>
-                    Oficjalne dokumenty ROD ,,Stokrotka" Sanok
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Oficjalne dokumenty ROD ,,Stokrotka" Sanok</h2>
+                </AnimateOnView>
 
                 <h3 className="text-center">Ważne dokumenty</h3>
                 <ListOfDocuments documents={importantDocuments} />

@@ -1,10 +1,5 @@
-'use client';
-
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-
-import { cn } from '@/utils/cn';
-import { useInView } from '@/hooks/useInView';
 
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
@@ -12,11 +7,9 @@ import LineSeparator from '@/components/LineSeparator';
 
 import CommunityGardenPhotosPreview from './components/CommunityGardenPhotosPreview';
 import MemoriesList from './components/MemoriesList';
+import AnimateOnView from '@/components/AnimatedH2';
 
 export default function GalleryPage() {
-    const { ref: ref1, inView: visible1 } = useInView<HTMLHeadingElement>(0.3);
-    const { ref: ref2, inView: visible2 } = useInView<HTMLHeadingElement>(0.3);
-
     return (
         <article>
             <header>
@@ -25,9 +18,9 @@ export default function GalleryPage() {
             </header>
 
             <section>
-                <h2 ref={ref1} className={cn('h2-animate', visible1 ? 'visible' : '')}>
-                    Zdjęcia z naszego ogrodu
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Zdjęcia z naszego ogrodu</h2>
+                </AnimateOnView>
                 <CommunityGardenPhotosPreview />
                 <Link href="/gallery/community-garden-photos" className="button-icon mx-auto">
                     <span>Zobacz wszystkie</span>
@@ -38,9 +31,9 @@ export default function GalleryPage() {
             <LineSeparator />
 
             <section>
-                <h2 ref={ref2} className={cn('h2-animate', visible2 ? 'visible' : '')}>
-                    Wspomnienia z naszego ogrodu
-                </h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>Wspomnienia z naszego ogrodu</h2>
+                </AnimateOnView>
                 <MemoriesList />
             </section>
 

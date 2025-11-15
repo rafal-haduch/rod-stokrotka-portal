@@ -1,10 +1,10 @@
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
 
 import { getInvestmentBySlug } from '@/utils/investments';
 
 import PhotoGallery from '@/components/PhotoGallery';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
+import AnimateOnView from '@/components/AnimatedH2';
 
 export default async function InvestmentPage({ params }: { params: { slug: string } }) {
     const { slug } = await params;
@@ -13,19 +13,12 @@ export default async function InvestmentPage({ params }: { params: { slug: strin
 
     return (
         <article className="prose mx-auto my-8">
-            {post.cover && (
-                <Image
-                    src={post.cover}
-                    alt={post.title}
-                    width="64"
-                    height={'64'}
-                    className="mb-4 rounded"
-                />
-            )}
             <h1>{post.title}</h1>
             <MainHeaderLineSeparator />
             <section>
-                <h2>{post.date}</h2>
+                <AnimateOnView className="h2-animate">
+                    <h2>{post.date}</h2>
+                </AnimateOnView>
                 <div dangerouslySetInnerHTML={{ __html: post.content }} />
                 {post.photos.length > 0 && <PhotoGallery photos={post.photos} />}
             </section>
