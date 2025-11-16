@@ -28,10 +28,8 @@ export default function Footer() {
                 'w-full border-t-4 bg-gradient-to-t'
             )}
         >
-            {/* HACK: hidden for hotfix main prod
-             Themes 
-            */}
-            <div className="hidden flex-col items-center gap-2">
+            {/* Themes */}
+            <div className="flex flex-col items-center gap-2">
                 {/* Toggle Seasonal Themes */}
                 <div className="flex gap-2">
                     <span>Motywy sezonowe</span>
