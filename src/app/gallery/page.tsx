@@ -1,13 +1,9 @@
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import LineSeparator from '@/components/LineSeparator';
 
-import CommunityGardenPhotosPreview from './components/CommunityGardenPhotosPreview';
-import MemoriesList from './components/MemoriesList';
 import AnimateOnView from '@/components/AnimatedH2';
+import PhotoGallery from '@/components/PhotoGallery';
+import { gallery } from '@/data/photos';
 
 export default function GalleryPage() {
     return (
@@ -17,24 +13,17 @@ export default function GalleryPage() {
                 <MainHeaderLineSeparator />
             </header>
 
-            <section>
+            <section aria-labelledby="user-photos">
                 <AnimateOnView className="h2-animate">
-                    <h2>Zdjęcia z naszego ogrodu</h2>
+                    <h2>Galeria zdjęć przesłanych przez naszych działkowców</h2>
                 </AnimateOnView>
-                <CommunityGardenPhotosPreview />
-                <Link href="/gallery/community-garden-photos" className="button-icon mx-auto">
-                    <span>Zobacz wszystkie</span>
-                    <ArrowRight />
-                </Link>
-            </section>
-
-            <LineSeparator />
-
-            <section>
-                <AnimateOnView className="h2-animate">
-                    <h2>Wspomnienia z naszego ogrodu</h2>
-                </AnimateOnView>
-                <MemoriesList />
+                <p className="mb-10 text-left sm:text-center">
+                    Chcesz podzielić się zdjęciami swojego ogrodu?
+                    <br /> Prześlij je do administratora strony – po weryfikacji zostaną one
+                    opublikowane w galerii poniżej.
+                    <br /> Z góry dziękujemy!
+                </p>
+                <PhotoGallery photos={gallery} />
             </section>
 
             <ImageSeparator />

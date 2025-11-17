@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { galleryPreview } from '@/data/photos';
 
-export default function CommunityGardenPhotosPreview() {
+export default function GalleryPreview() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const scrollRef = useRef<HTMLDivElement>(null);
 

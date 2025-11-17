@@ -17,14 +17,15 @@ const navLinks: NavLink[] = [
     { name: 'STRONA GŁÓWNA', href: '/' },
     { name: 'O NAS', href: '/about-us' },
     { name: 'MAPA OGRODU', href: '/garden-map' },
+    { name: 'GALERIA', href: '/gallery' },
     { name: 'WŁADZE', href: '/structure-association' },
     { name: 'KONTAKT', href: '/contact' },
     { name: 'DOKUMENTY', href: '/documents' },
     { name: 'OPŁATY', href: '/fees' },
     { name: 'INFORMACJE', href: '/information' },
     { name: 'OGŁOSZENIA', href: '/announcements' },
+    { name: 'WSPOMNIENIA', href: '/memories' },
     { name: 'INWESTYCJE', href: '/investments' },
-    { name: 'GALERIA', href: '/gallery' },
     { name: 'PORADY OGRODOWE', href: '/gardening-guide' },
 ] as const;
 

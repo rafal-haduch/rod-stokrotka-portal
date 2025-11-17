@@ -1,22 +1,31 @@
-'use client';
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
-import { MemoryInList } from '@/types/Memory';
+import { getAllMemories, MemoryInList } from '@/utils/memories';
 
 import NotFoundContent from '@/components/NotFoundContent';
 
 export default function MemoriesList() {
-    return <NotFoundContent />;
+    const memories = getAllMemories();
+
+    if (memories.length === 0) return <NotFoundContent />;
+
+    return (
+        <div className="flex flex-col gap-y-14">
+            {memories.map((post, i) => (
+                <div key={i}>
+                    <MemoryCard memory={post} />
+                </div>
+            ))}
+        </div>
+    );
 }
 
-// TODO: poprawić typ
 function MemoryCard({ memory }: { memory: MemoryInList }) {
     return (
         <Link
-            href={`/gallery/memory/${memory.id}`}
+            href={`/memories/${memory.slug}`}
             className="group block overflow-hidden rounded-xl shadow transition hover:shadow-lg"
         >
             <div className="relative h-64">

@@ -8,6 +8,9 @@ import LineSeparator from '@/components/LineSeparator';
 
 import GardenStats from './components/GardenStats';
 import AnimateOnView from '@/components/AnimatedH2';
+import GalleryPreview from './components/GalleryPreview';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 export default function AboutGardenPage() {
     return (
@@ -65,6 +68,19 @@ export default function AboutGardenPage() {
                     <h2>Nasz ogród w liczbach</h2>
                 </AnimateOnView>
                 <GardenStats />
+            </section>
+
+            <LineSeparator />
+
+            <section>
+                <AnimateOnView className="h2-animate">
+                    <h2>Nasz ogród na zdjęciach</h2>
+                </AnimateOnView>
+                <GalleryPreview />
+                <Link href="/gallery/community-garden-photos" className="button-icon mx-auto">
+                    <span>Zobacz wszystkie</span>
+                    <ArrowRight />
+                </Link>
             </section>
 
             <LineSeparator />

@@ -5,6 +5,7 @@ import { getInvestmentBySlug } from '@/utils/investments';
 import PhotoGallery from '@/components/PhotoGallery';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import AnimateOnView from '@/components/AnimatedH2';
+import ImageSeparator from '@/components/ImageSeparator';
 
 export default async function InvestmentPage({ params }: { params: { slug: string } }) {
     const { slug } = await params;
@@ -12,9 +13,12 @@ export default async function InvestmentPage({ params }: { params: { slug: strin
     if (!post) return notFound();
 
     return (
-        <article className="prose mx-auto my-8">
-            <h1>{post.title}</h1>
-            <MainHeaderLineSeparator />
+        <article className="prose mx-auto">
+            <header>
+                <h1>{post.title}</h1>
+                <MainHeaderLineSeparator />
+            </header>
+
             <section>
                 <AnimateOnView className="h2-animate">
                     <h2>{post.date}</h2>
@@ -22,6 +26,8 @@ export default async function InvestmentPage({ params }: { params: { slug: strin
                 <div dangerouslySetInnerHTML={{ __html: post.content }} />
                 {post.photos.length > 0 && <PhotoGallery photos={post.photos} />}
             </section>
+
+            <ImageSeparator />
         </article>
     );
 }
