@@ -54,6 +54,10 @@
         @apply mx-auto;
     }
 
+    footer {
+        @apply py-4 sm:py-4;
+    }
+
     h1 {
         font-family: var(--font-fleurdeleah);
         @apply text-center text-6xl font-bold text-neutral-800;
