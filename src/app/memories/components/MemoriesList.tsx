@@ -12,7 +12,7 @@ export default function MemoriesList() {
     if (memories.length === 0) return <NotFoundContent />;
 
     return (
-        <div className="flex flex-col gap-y-14">
+        <div className="grid grid-cols-1 gap-14 lg:grid-cols-2">
             {memories.map((post, i) => (
                 <div key={i}>
                     <MemoryCard memory={post} />
@@ -26,7 +26,7 @@ function MemoryCard({ memory }: { memory: MemoryInList }) {
     return (
         <Link
             href={`/memories/${memory.slug}`}
-            className="group block overflow-hidden rounded-xl shadow transition hover:shadow-lg"
+            className="group mx-auto block max-w-xl overflow-hidden rounded-xl shadow transition hover:shadow-lg"
         >
             <div className="relative h-64">
                 <Image
@@ -40,9 +40,11 @@ function MemoryCard({ memory }: { memory: MemoryInList }) {
                     <ArrowRight color="white" />
                 </div>
             </div>
-            <div className="bg-lime-100 p-4 text-center group-hover:bg-lime-200">
-                <p className="text-lg text-lime-600">{memory.date}</p>
-                <h3 className="text-xl font-semibold text-lime-500">{memory.title}</h3>
+            <div className="bg-color-theme-100 group-hover:bg-color-theme-light p-4 text-center">
+                <p className="text-color-theme-txt-medium text-lg">{memory.date}</p>
+                <h3 className="text-color-theme-txt-medium text-xl font-semibold">
+                    {memory.title}
+                </h3>
             </div>
         </Link>
     );
