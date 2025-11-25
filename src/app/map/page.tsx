@@ -8,7 +8,8 @@ import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import AnimateOnView from '@/components/AnimatedH2';
 
-export default function DevelopmentPlanPage() {
+//TODO: change to server copmponent
+export default function MapPage() {
     // Lightbox and zoom control states
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [zoom, setZoom] = useState(1);

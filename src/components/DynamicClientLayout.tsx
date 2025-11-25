@@ -14,7 +14,7 @@ interface RouteTitles {
 export const routeTitles: RouteTitles[] = [
     { pathname: '/', title: 'STRONA GŁÓWNA' },
     { pathname: '/about-us', title: 'O NAS' },
-    { pathname: '/garden-map', title: 'MAPA OGRODU' },
+    { pathname: '/map', title: 'MAPA' },
     { pathname: '/gallery', title: 'GALERIA' },
     { pathname: '/structure-association', title: 'WŁADZE' },
     { pathname: '/contact', title: 'KONTAKT' },

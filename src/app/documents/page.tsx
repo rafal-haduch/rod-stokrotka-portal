@@ -22,7 +22,7 @@ export default function DocumentsPage() {
                     <h2>Oficjalne dokumenty ROD ,,Stokrotka" Sanok</h2>
                 </AnimateOnView>
 
-                <h3 className="text-center">Ważne dokumenty</h3>
+                <h3 className="text-center">Ważne i przydatne dokumenty</h3>
                 <ListOfDocuments documents={importantDocuments} />
 
                 <LineSeparator my={my} />

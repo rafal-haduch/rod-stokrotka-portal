@@ -1,5 +1,5 @@
 ---
-title: "Testowy wpis inwestycji"
+title: "Testowy wpis inwestycji 1"
 date: "17.10.2025"
 cover: "https://res.cloudinary.com/dc3xn9rpm/image/upload/v1764028722/001_fjpaks.jpg"
 photos:

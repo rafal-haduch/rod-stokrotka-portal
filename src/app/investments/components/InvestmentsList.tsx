@@ -26,7 +26,7 @@ function InvestmentCard({ investment }: { investment: any }) {
     return (
         <Link
             href={`/investments/${investment.slug}`}
-            className="bg-color-theme-100 mx-auto flex max-w-3xl flex-col items-center rounded-xl p-5 shadow-md hover:shadow-xl md:flex-row md:items-start md:gap-6"
+            className="group bg-color-theme-100 mx-auto flex max-w-3xl flex-col items-center rounded-xl p-5 shadow-md hover:shadow-xl md:flex-row md:items-start md:gap-6"
         >
             <div className="relative aspect-video w-full shrink-0 md:aspect-[4/3] md:w-64">
                 <Image
@@ -37,10 +37,10 @@ function InvestmentCard({ investment }: { investment: any }) {
                 />
             </div>
             <div className="flex h-full w-full flex-col justify-center text-center md:text-left">
-                <h3 className="text-color-theme-txt-light m-2 md:mt-0">{investment.title}</h3>
+                <h3 className="text-color-theme-txt-medium m-2 md:mt-0">{investment.title}</h3>
                 <hr className="border-color-theme-hr mx-auto mb-4 w-3/4 border-t-2 md:w-full" />
                 <p className="mb-4">{investment.date}</p>
-                <div className="flex flex-row items-end-safe justify-end text-xl md:justify-start">
+                <div className="group-hover:text-color-theme-txt-medium flex flex-row items-end-safe justify-end text-xl group-hover:underline md:justify-start">
                     Zobacz więcej <ChevronRight />
                 </div>
             </div>

@@ -16,7 +16,7 @@ interface NavLink {
 const navLinks: NavLink[] = [
     { name: 'STRONA GŁÓWNA', href: '/' },
     { name: 'O NAS', href: '/about-us' },
-    { name: 'MAPA OGRODU', href: '/garden-map' },
+    { name: 'MAPA', href: '/map' },
     { name: 'GALERIA', href: '/gallery' },
     { name: 'WŁADZE', href: '/structure-association' },
     { name: 'KONTAKT', href: '/contact' },
