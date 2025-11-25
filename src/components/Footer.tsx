@@ -26,6 +26,8 @@ export default function Footer() {
         setYearDisplay(currentYear > startYear ? `${startYear}–${currentYear}` : `${startYear}`);
     }, []);
 
+    const showSeasonalTheme = process.env.NEXT_PUBLIC_SHOW_SEASONAL_THEME === 'true';
+
     return (
         <footer
             className={cn(
@@ -84,7 +86,7 @@ export default function Footer() {
                         </button>
                     </div>
                     {/* Set Seasonal Theme */}
-                    <div className="hidden gap-3">
+                    <div className={cn('gap-3', showSeasonalTheme ? 'flex' : 'hidden')}>
                         {themeOptions.map((t) => (
                             <label
                                 key={t.id}
