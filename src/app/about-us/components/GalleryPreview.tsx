@@ -52,7 +52,7 @@ export default function GalleryPreview() {
     }, [currentIndex]);
 
     return (
-        <div className="mb-8 flex flex-col items-center gap-4">
+        <div className="mb-8 flex flex-col items-center">
             {/* Główne zdjęcie */}
             <div className="relative aspect-video w-full max-w-3xl">
                 {/* Strzałki */}
@@ -72,12 +72,12 @@ export default function GalleryPreview() {
                     src={galleryPreview[currentIndex].src}
                     alt={galleryPreview[currentIndex].alt || ''}
                     fill
-                    className="rounded-2xl object-cover shadow-lg"
+                    className="rounded-t-2xl object-cover shadow-lg"
                 />
             </div>
 
             {/* Pasek miniatur z przewijaniem */}
-            <div className="relative w-full max-w-3xl rounded-lg bg-slate-200 px-6 py-4">
+            <div className="relative w-full max-w-3xl rounded-b-2xl bg-slate-200 px-6 py-4">
                 {/* Strzałki */}
                 <button
                     onClick={() => scroll('left')}

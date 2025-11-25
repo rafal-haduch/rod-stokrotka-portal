@@ -3,9 +3,9 @@ import { importantDocuments, minutesAndReports, templatesAndForms } from '@/data
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import LineSeparator from '@/components/LineSeparator';
+import AnimateOnView from '@/components/AnimatedH2';
 
 import ListOfDocuments from './components/ListOfDocuments';
-import AnimateOnView from '@/components/AnimatedH2';
 
 export default function DocumentsPage() {
     const my = 'my-10';

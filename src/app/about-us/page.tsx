@@ -1,5 +1,5 @@
-import { useInView } from '@/hooks/useInView';
-import { cn } from '@/utils/cn';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 import GardenMap from '@/components/GardenMap';
 import ImageSeparator from '@/components/ImageSeparator';
@@ -9,8 +9,6 @@ import LineSeparator from '@/components/LineSeparator';
 import GardenStats from './components/GardenStats';
 import AnimateOnView from '@/components/AnimatedH2';
 import GalleryPreview from './components/GalleryPreview';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 
 export default function AboutGardenPage() {
     return (
@@ -77,7 +75,7 @@ export default function AboutGardenPage() {
                     <h2>Nasz ogród na zdjęciach</h2>
                 </AnimateOnView>
                 <GalleryPreview />
-                <Link href="/gallery/community-garden-photos" className="button-icon mx-auto">
+                <Link href="/gallery" className="button-icon mx-auto">
                     <span>Zobacz wszystkie</span>
                     <ArrowRight />
                 </Link>

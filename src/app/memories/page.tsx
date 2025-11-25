@@ -1,7 +1,8 @@
 import AnimateOnView from '@/components/AnimatedH2';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import MemoriesList from './components/MemoriesList';
 import ImageSeparator from '@/components/ImageSeparator';
+
+import MemoriesList from './components/MemoriesList';
 
 export default function MemoriesPage() {
     return (

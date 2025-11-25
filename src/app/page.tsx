@@ -8,6 +8,8 @@ import GardenMap from '@/components/GardenMap';
 import LineSeparator from '@/components/LineSeparator';
 import AnimateOnView from '@/components/AnimatedH2';
 
+//import MainSlider from './components/MainSlider';
+
 export default function HomePage() {
     return (
         <article>
@@ -22,7 +24,7 @@ export default function HomePage() {
                 </AnimateOnView>
                 <p className="mb-8 text-left sm:text-center">
                     Zachęcamy Działkowców do odwiedzania naszej strony internetowej poświęconej
-                    Stowarzyszeniu Ogrodowemu „Stokrotka” w Sanoku. Tutaj publikujemy ogłoszenia,
+                    Rodzinnym Ogrodom Działkowym „Stokrotka” w Sanoku. Tutaj publikujemy ogłoszenia,
                     informacje organizacyjne oraz aktualności dotyczące życia naszego ogrodu. Znajdą
                     tu Państwo również przydatne materiały i dokumenty, ciekawe zdjęcia oraz porady
                     ogrodowe, które pomogą w pielęgnacji działek.
@@ -57,6 +59,7 @@ export default function HomePage() {
                     <h2>Galeria ogrodu „Stokrotka” w Sanoku</h2>
                 </AnimateOnView>
                 <WorkInProgress />
+                {/* <MainSlider /> */}
                 <Link href="/gallery" title="Zobacz więcej zdjęć" className="button-icon mx-auto">
                     Zobacz więcej
                     <ArrowRight />

@@ -5,11 +5,11 @@ import { paymentStatusAsOf } from '@/data/plotFeesStatus';
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import LineSeparator from '@/components/LineSeparator';
+import AnimateOnView from '@/components/AnimatedH2';
 
 import FeesTypesTable from './components/FeesTypesTable';
 import FeesTable from './components/FeesTabel';
 import NoArrears from './components/NoArrears';
-import AnimateOnView from '@/components/AnimatedH2';
 
 export default function PaymentsPage() {
     return (

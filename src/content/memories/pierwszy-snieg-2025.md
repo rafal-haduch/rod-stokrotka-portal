@@ -1,6 +1,6 @@
 ---
 title: "Pierwszy śnieg w 2025 roku"
-date: "23-11-2025"
+date: "23.11.2025"
 cover: "https://res.cloudinary.com/dc3xn9rpm/image/upload/v1763947871/cover_uwkncg.jpg"
 photos:
   - src: "https://res.cloudinary.com/dc3xn9rpm/image/upload/v1763947871/cover_uwkncg.jpg"

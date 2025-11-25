@@ -1,8 +1,8 @@
 import LineSeparator from '@/components/LineSeparator';
 import ImageSeparator from '@/components/ImageSeparator';
+import AnimateOnView from '@/components/AnimatedH2';
 
 import LoginForm from './components/LoginForm';
-import AnimateOnView from '@/components/AnimatedH2';
 
 export default function SignInPage() {
     return (

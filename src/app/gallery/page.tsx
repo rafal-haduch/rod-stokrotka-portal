@@ -1,11 +1,18 @@
-import ImageSeparator from '@/components/ImageSeparator';
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
+import path from 'path';
+import fs from 'fs';
 
+import { PhotoWithTitle } from '@/types/PhotoWithTitle';
+
+import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
+import ImageSeparator from '@/components/ImageSeparator';
 import AnimateOnView from '@/components/AnimatedH2';
 import PhotoGallery from '@/components/PhotoGallery';
-import { gallery } from '@/data/photos';
 
 export default function GalleryPage() {
+    const filePath = path.join(process.cwd(), 'src/content/gallery.json');
+    const file = fs.readFileSync(filePath, 'utf8');
+    const photos: PhotoWithTitle[] = JSON.parse(file);
+
     return (
         <article>
             <header>
@@ -23,7 +30,7 @@ export default function GalleryPage() {
                     opublikowane w galerii poniżej.
                     <br /> Z góry dziękujemy!
                 </p>
-                <PhotoGallery photos={gallery} />
+                <PhotoGallery photos={photos} />
             </section>
 
             <ImageSeparator />
