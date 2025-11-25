@@ -203,7 +203,7 @@
     }
 
     .button-text {
-        @apply mx-4 block w-fit rounded-lg border-2 border-lime-400 bg-lime-200 px-6 py-3 text-center text-xl whitespace-nowrap text-green-600 transition hover:cursor-pointer hover:bg-lime-50;
+        @apply bg-color-theme-light border-color-theme-dark text-color-theme-button-txt hover:bg-color-theme-100 hover:text-color-theme-button-txt-h mx-4 block w-fit rounded-lg border-2 px-6 py-3 text-center text-xl whitespace-nowrap transition hover:cursor-pointer;
     }
 
     .button-icon {

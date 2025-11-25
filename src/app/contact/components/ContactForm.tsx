@@ -90,11 +90,11 @@ export default function ContactForm() {
 
             <form
                 onSubmit={handleSubmit}
-                className="mx-auto mb-8 max-w-3xl space-y-4 rounded-xl bg-gray-50 p-8 shadow-xl sm:mt-4"
+                className="bg-color-theme-100 mx-auto mb-8 max-w-3xl space-y-4 rounded-xl p-8 shadow-xl sm:mt-4"
             >
                 {/* NOTE: Nickname - anti-bot protection*/}
                 <div className="hidden">
-                    <label htmlFor="nickname" className="block text-xl text-gray-700">
+                    <label htmlFor="nickname" className="text-color-theme-txt-medium block text-xl">
                         Nazwa działkowca
                     </label>
                     <input
@@ -103,13 +103,13 @@ export default function ContactForm() {
                         value={nickname}
                         onChange={(e) => setNickname(e.target.value)}
                         placeholder="np. Ogrodnik"
-                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-green-500 focus:outline-none"
+                        className="border-color-theme-medium bg-color-theme-50 focus:border-color-theme-dark mt-1 block w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none"
                     />
                 </div>
 
                 {/* User Name */}
                 <div>
-                    <label htmlFor="name" className="block text-xl text-gray-700">
+                    <label htmlFor="name" className="text-color-theme-txt-medium block text-xl">
                         Imię i nazwisko (opcjonalnie numer działki)
                     </label>
                     <input
@@ -119,13 +119,13 @@ export default function ContactForm() {
                         onChange={(e) => setName(e.target.value)}
                         required
                         placeholder="np. Jan Kowalski - 123"
-                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-green-500 focus:outline-none"
+                        className="border-color-theme-medium bg-color-theme-50 focus:border-color-theme-dark mt-1 block w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none"
                     />
                 </div>
 
                 {/* User E-mail */}
                 <div>
-                    <label htmlFor="email" className="block text-xl text-gray-700">
+                    <label htmlFor="email" className="text-color-theme-txt-medium block text-xl">
                         Twój adres e-mail
                     </label>
                     <input
@@ -135,13 +135,15 @@ export default function ContactForm() {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                         placeholder="np. jankowalski@gmail.com"
-                        className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-green-500 focus:outline-none"
+                        className="border-color-theme-medium bg-color-theme-50 focus:border-color-theme-dark mt-1 block w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none"
                     />
                 </div>
 
                 {/* Subject */}
                 <div>
-                    <label className="block text-xl text-gray-700">Temat wiadomości</label>
+                    <label className="text-color-theme-txt-medium block text-xl">
+                        Temat wiadomości
+                    </label>
                     <div className="relative mt-1">
                         <input
                             type="text"
@@ -150,14 +152,14 @@ export default function ContactForm() {
                             onChange={(e) => setSubject(e.target.value)}
                             required
                             placeholder="np. Pytanie w sprawie działki"
-                            className="block w-full rounded-md border border-gray-300 px-3 py-2 pr-10 shadow-sm focus:border-green-500 focus:ring-green-500 focus:outline-none"
+                            className="border-color-theme-medium bg-color-theme-50 focus:border-color-theme-dark block w-full rounded-md border px-3 py-2 pr-10 shadow-sm focus:outline-none"
                         />
                     </div>
                 </div>
 
                 {/* Message */}
                 <div>
-                    <label htmlFor="content" className="block text-xl text-gray-700">
+                    <label htmlFor="content" className="text-color-theme-txt-medium block text-xl">
                         Treść wiadomości
                     </label>
                     <div className="relative mt-1">
@@ -167,7 +169,7 @@ export default function ContactForm() {
                             onChange={(e) => setMessage(e.target.value)}
                             required
                             rows={6}
-                            className="block w-full resize-none overflow-y-auto rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring-green-500 focus:outline-none"
+                            className="border-color-theme-medium bg-color-theme-50 focus:border-color-theme-dark block w-full resize-none overflow-y-auto rounded-md border px-3 py-2 shadow-sm focus:outline-none"
                         />
                     </div>
                 </div>
