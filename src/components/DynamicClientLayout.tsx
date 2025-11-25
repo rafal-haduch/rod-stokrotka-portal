@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
 import Hero from './Hero';
+import { slugToTitle } from '@/utils/toTitleCase';
 
 interface RouteTitles {
     pathname: string;
@@ -23,10 +24,8 @@ export const routeTitles: RouteTitles[] = [
     { pathname: '/announcements', title: 'OGŁOSZENIA' },
     { pathname: '/memories', title: 'WSPOMNIENIA' },
     { pathname: '/investments', title: 'INWESTYCJE' },
-    { pathname: '/privacy-policy', title: 'POLITYKA PRYWATNOŚCI' },
-    { pathname: '/gallery/community-garden-photos', title: 'ZDJĘCIA Z NASZEGO OGRODU' },
-    { pathname: '/community-garden-photos', title: 'ZDJĘCIA Z NASZEGO OGRODU' },
     { pathname: '/gardening-guide', title: 'PORADY OGRODOWE' },
+    { pathname: '/privacy-policy', title: 'POLITYKA PRYWATNOŚCI' },
 ] as const;
 
 export default function DynamicClientLayout({ children }: { children: React.ReactNode }) {
@@ -36,17 +35,15 @@ export default function DynamicClientLayout({ children }: { children: React.Reac
         let pageTitle = '';
         const staticRoute = routeTitles.find((route) => route.pathname === pathname);
 
-        //TODO: site name in slug pages
+        //TODO: improve site name in slug pages
         if (staticRoute) {
             pageTitle = staticRoute.title;
-        } else if (pathname.startsWith('/gallery/memory/')) {
-            const id = pathname.replace('/gallery/memory/', '');
-            // const memory = memoriesDataById[id];
-            // pageTitle = memory ? memory.title : '';
+        } else if (pathname.startsWith('/memories/')) {
+            const slug = pathname.replace('/memories/', '');
+            pageTitle = slugToTitle(slug);
         } else if (pathname.startsWith('/investments/')) {
-            const id = pathname.replace('/investments/', '');
-            // const investment = investmentsDataById[id];
-            // pageTitle = investment ? investment.title : '';
+            const slug = pathname.replace('/investments/', '');
+            pageTitle = slugToTitle(slug);
         }
 
         document.title = pageTitle
@@ -54,15 +51,10 @@ export default function DynamicClientLayout({ children }: { children: React.Reac
             : 'ROD Stokrotka Sanok';
     }, [pathname]);
 
-    const hideHeroRoutes = [
-        '/sign-in',
-        '/privacy-policy',
-        '/dashboard',
-        '/gallery/community-garden-photos',
-    ];
+    const hideHeroRoutes = ['/sign-in', '/privacy-policy', '/dashboard'];
     const showHero =
         !hideHeroRoutes.includes(pathname) &&
-        !pathname.startsWith('/gallery/memory/') &&
+        !pathname.startsWith('/memories/') &&
         !pathname.startsWith('/investments/');
 
     return (
