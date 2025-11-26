@@ -13,4 +13,4 @@ photos:
     alt: "Pierwszy śnieg w 2025 roku"
 ---
 
-Pierwszy śnieg w 2025 roku przyszedł z przytupem. Od 21 listopada (piątek) sypało przez kilka dni, tworząc sporą warstwę białego puchu. Wejście na teren naszego było nieco utrudnione, ale za to działki wyglądały wyjątkowo malowniczo — co udało się uchwycić na zdjęciach. Lekki mróz, cisza i biały krajobraz nadały ogrodom zimowego uroku, jakiego dawno tu nie było.
+Pierwszy śnieg w sezonie zimowym 2025/2026 przyszedł z przytupem. Od 21 listopada (piątek) sypało przez kilka dni, tworząc sporą warstwę białego puchu. Wejście na teren naszego ogrodu było nieco utrudnione, ale za to działki wyglądały wyjątkowo malowniczo — co udało się uchwycić na zdjęciach. Lekki mróz, cisza i biały krajobraz nadały ogrodom zimowego uroku, jakiego dawno tu nie było.

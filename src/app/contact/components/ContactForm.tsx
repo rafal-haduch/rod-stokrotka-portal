@@ -81,7 +81,7 @@ export default function ContactForm() {
 
             {isMobile && (
                 <button
-                    className="mx-auto flex items-center justify-center text-green-500 hover:cursor-pointer"
+                    className="text-color-theme-medium mx-auto flex items-center justify-center hover:cursor-pointer"
                     onClick={() => setExpanded(!expanded)}
                 >
                     {expanded ? <ChevronUp size={64} /> : <ChevronDown size={64} />}
