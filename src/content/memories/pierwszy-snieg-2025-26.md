@@ -1,5 +1,5 @@
 ---
-title: "Pierwszy śnieg w 2025 roku"
+title: "Pierwszy śnieg w sezonie zimowym 2025/26"
 date: "23.11.2025"
 cover: "https://res.cloudinary.com/dc3xn9rpm/image/upload/v1763947871/cover_uwkncg.jpg"
 photos:
