@@ -28,14 +28,6 @@ export default function Footer() {
 
     const showSeasonalTheme = process.env.NEXT_PUBLIC_SHOW_SEASONAL_THEME === 'true';
 
-    // HACK
-    useEffect(() => {
-        console.log(
-            'ENV NEXT_PUBLIC_SHOW_SEASONAL_THEME:',
-            process.env.NEXT_PUBLIC_SHOW_SEASONAL_THEME
-        );
-    }, []);
-
     return (
         <footer
             className={cn(
