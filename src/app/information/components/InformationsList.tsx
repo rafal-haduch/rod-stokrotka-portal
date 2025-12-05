@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { cn } from '@/utils/cn';
 
-import { associationEmail } from '@/data/associationDetails';
+import { associationEmail } from '@/data/association';
 import { treasurersDuties } from '@/data/treasurersDuties';
 import { wasteCollectionSchedule } from '@/data/wasteCollectionSchedule';
 

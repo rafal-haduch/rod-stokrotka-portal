@@ -25,4 +25,4 @@ export const recommendedSites: recommendedSites[] = [
         linkContext: 'www.forumogrodnicze.pl',
         url: 'https://forumogrodnicze.info/',
     },
-];
+] as const;

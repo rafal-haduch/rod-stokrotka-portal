@@ -11,4 +11,4 @@ export const wasteCollectionSchedule: WasteCollectionSchedule[] = [
     { month: 'Sierpień', mixedWasteCollectionDay: [11, 25], sortedWasteCollectionDay: [26] },
     { month: 'Wrzesień', mixedWasteCollectionDay: [8, 22], sortedWasteCollectionDay: [23] },
     { month: 'Październik', mixedWasteCollectionDay: [6, 20], sortedWasteCollectionDay: [28] },
-];
+] as const;

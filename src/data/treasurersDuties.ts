@@ -11,4 +11,4 @@ export const treasurersDuties: TreasurersDuties[] = [
     { date: '11 września, w godzinach: 17:00-18:00' },
     { date: '16 września, w godzinach: 17:00-18:00' },
     { date: '23 września, w godzinach: 17:00-18:00' },
-];
+] as const;

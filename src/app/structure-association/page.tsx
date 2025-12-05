@@ -1,9 +1,9 @@
 import {
-    asOf,
+    structureAssociationAsOf,
     associationBoard,
     auditCommittee,
     arbitrationCommission,
-} from '@/data/structureAssociation';
+} from '@/data/association';
 
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
@@ -55,7 +55,7 @@ export default function StructureAssociation() {
                         </li>
                     ))}
                 </ul>
-                <p className="mb-10">Stan na dzień: {asOf}</p>
+                <p className="mb-10">Stan na dzień: {structureAssociationAsOf}</p>
             </section>
 
             <LineSeparator my="my-10" />

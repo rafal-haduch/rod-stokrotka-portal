@@ -27,9 +27,9 @@ export default function FeesTable() {
                 </thead>
                 <tbody>
                     {plotsFeesStatus.map((item) => (
-                        <tr key={item.nr} className="hover:bg-color-theme-100">
+                        <tr key={item.id} className="hover:bg-color-theme-100">
                             <td className={cn('border-color-theme-medium', 'border px-3 py-1')}>
-                                {item.nr}
+                                {item.id}
                             </td>
                             <td
                                 className={cn(

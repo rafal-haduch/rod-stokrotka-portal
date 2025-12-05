@@ -3,18 +3,32 @@
 import { useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import { mainSliderPhotos } from '@/data/photos';
+import { PhotoWithoutTitle } from '@/types/PhotoWithoutTitle';
+
+// TODO: change alts
+const mainSliderImagesURL = '/images/main-slider/' as const;
+export const mainSliderImages: PhotoWithoutTitle[] = [
+    { src: `${mainSliderImagesURL}placeholder-slide-1.jpg`, alt: 'alt' },
+    { src: `${mainSliderImagesURL}placeholder-slide-2.jpg`, alt: 'alt' },
+    { src: `${mainSliderImagesURL}placeholder-slide-3.jpg`, alt: 'alt' },
+    { src: `${mainSliderImagesURL}placeholder-slide-4.jpg`, alt: 'alt' },
+    { src: `${mainSliderImagesURL}placeholder-slide-5.jpg`, alt: 'alt' },
+    { src: `${mainSliderImagesURL}placeholder-slide-6.jpg`, alt: 'alt' },
+    { src: `${mainSliderImagesURL}placeholder-slide-7.jpg`, alt: 'alt' },
+    { src: `${mainSliderImagesURL}placeholder-slide-8.jpg`, alt: 'alt' },
+    { src: `${mainSliderImagesURL}placeholder-slide-9.jpg`, alt: 'alt' },
+] as const;
 
 export default function MainSlider() {
     const [current, setCurrent] = useState(0);
 
     const prevSlide = () => {
-        setCurrent((prev) => (prev === 0 ? mainSliderPhotos.length - 1 : prev - 1));
-        console.log(mainSliderPhotos.length);
+        setCurrent((prev) => (prev === 0 ? mainSliderImages.length - 1 : prev - 1));
+        console.log(mainSliderImages.length);
     };
 
     const nextSlide = () => {
-        setCurrent((prev) => (prev === mainSliderPhotos.length - 1 ? 0 : prev + 1));
+        setCurrent((prev) => (prev === mainSliderImages.length - 1 ? 0 : prev + 1));
     };
 
     useEffect(() => {
@@ -32,13 +46,8 @@ export default function MainSlider() {
                 className="flex transition-transform duration-500"
                 style={{ transform: `translateX(-${current * 100}%)` }}
             >
-                {mainSliderPhotos.map((slide, index) => (
-                    <img
-                        key={index}
-                        src={slide.src}
-                        alt={slide.alt}
-                        className="w-full flex-shrink-0"
-                    />
+                {mainSliderImages.map((slide, i) => (
+                    <img key={i} src={slide.src} alt={slide.alt} className="w-full flex-shrink-0" />
                 ))}
             </div>
 

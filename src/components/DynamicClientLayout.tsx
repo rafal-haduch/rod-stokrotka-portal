@@ -3,8 +3,9 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
-import Hero from './Hero';
 import { slugToTitle } from '@/utils/toTitleCase';
+
+import Hero from './Hero';
 
 interface RouteTitles {
     pathname: string;
@@ -30,6 +31,10 @@ export const routeTitles: RouteTitles[] = [
 
 export default function DynamicClientLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
 
     useEffect(() => {
         let pageTitle = '';

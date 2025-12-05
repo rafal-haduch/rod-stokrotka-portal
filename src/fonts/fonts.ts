@@ -1,39 +1,21 @@
 import localFont from 'next/font/local';
 
 export const nunito = localFont({
-    src: [{ path: '../fonts/Nunito-Regular.ttf', weight: '400', style: 'normal' }],
+    src: './Nunito-Regular.ttf',
     variable: '--font-nunito',
 });
 
 export const fleurDeLeah = localFont({
-    src: [
-        {
-            path: '../fonts/FleurDeLeah-Regular.ttf',
-            weight: '400',
-            style: 'normal',
-        },
-    ],
+    src: './FleurDeLeah-Regular.ttf',
     variable: '--font-fleurdeleah',
 });
 
 export const aboreto = localFont({
-    src: [
-        {
-            path: '../fonts/Aboreto-Regular.ttf',
-            weight: '400',
-            style: 'normal',
-        },
-    ],
+    src: './Aboreto-Regular.ttf',
     variable: '--font-aboreto',
 });
 
 export const merriweather = localFont({
-    src: [
-        {
-            path: '../fonts/Merriweather_24pt-Regular.ttf',
-            weight: '400',
-            style: 'normal',
-        },
-    ],
+    src: '../fonts/Merriweather_24pt-Regular.ttf',
     variable: '--font-merriweather',
 });

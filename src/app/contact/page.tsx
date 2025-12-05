@@ -1,8 +1,4 @@
-import {
-    associationData,
-    associationEmail,
-    associationPhoneNumber,
-} from '@/data/associationDetails';
+import { associationData, associationEmail, associationPhoneNumber } from '@/data/association';
 
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';

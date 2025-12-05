@@ -4,18 +4,30 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import { galleryPreview } from '@/data/photos';
+import { PhotoWithoutTitle } from '@/types/PhotoWithoutTitle';
+
+const galleryPreviewImagesURL = '/images/gallery-preview-slider/' as const;
+export const galleryPreviewImages: PhotoWithoutTitle[] = [
+    { src: `${galleryPreviewImagesURL}photo-1.jpg`, alt: 'alt' },
+    { src: `${galleryPreviewImagesURL}photo-2.jpg`, alt: 'alt' },
+    { src: `${galleryPreviewImagesURL}photo-3.jpg`, alt: 'alt' },
+    { src: `${galleryPreviewImagesURL}photo-4.jpg`, alt: 'alt' },
+    { src: `${galleryPreviewImagesURL}photo-5.jpg`, alt: 'alt' },
+    { src: `${galleryPreviewImagesURL}photo-6.jpg`, alt: 'alt' },
+    { src: `${galleryPreviewImagesURL}photo-7.jpg`, alt: 'alt' },
+    { src: `${galleryPreviewImagesURL}photo-8.jpg`, alt: 'alt' },
+] as const;
 
 export default function GalleryPreview() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const scrollRef = useRef<HTMLDivElement>(null);
 
     const prevImg = () => {
-        setCurrentIndex((i) => (i > 0 ? i - 1 : galleryPreview.length - 1));
+        setCurrentIndex((i) => (i > 0 ? i - 1 : galleryPreviewImages.length - 1));
     };
 
     const nextImg = () => {
-        setCurrentIndex((i) => (i < galleryPreview.length - 1 ? i + 1 : 0));
+        setCurrentIndex((i) => (i < galleryPreviewImages.length - 1 ? i + 1 : 0));
     };
 
     const scroll = (direction: 'left' | 'right') => {
@@ -69,8 +81,8 @@ export default function GalleryPreview() {
                     <ChevronRight size={20} />
                 </button>
                 <Image
-                    src={galleryPreview[currentIndex].src}
-                    alt={galleryPreview[currentIndex].alt || ''}
+                    src={galleryPreviewImages[currentIndex].src}
+                    alt={galleryPreviewImages[currentIndex].alt || ''}
                     fill
                     className="rounded-t-2xl object-cover shadow-lg"
                 />
@@ -97,7 +109,7 @@ export default function GalleryPreview() {
                     ref={scrollRef}
                     className="no-scrollbar flex gap-2 overflow-x-auto scroll-smooth"
                 >
-                    {galleryPreview.map((img, i) => (
+                    {galleryPreviewImages.map((img, i) => (
                         <button
                             key={i}
                             onClick={() => setCurrentIndex(i)}
