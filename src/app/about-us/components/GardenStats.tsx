@@ -65,24 +65,22 @@ export default function GardenStats() {
     }, [hasAnimated]);
 
     return (
-        <div
-            ref={sectionRef}
-            className="mx-auto mb-6 flex w-full flex-col items-center justify-center px-6"
-        >
+        <div ref={sectionRef} className="mx-auto mb-6 flex w-full flex-col items-center px-6">
             {/* Górny rząd */}
-            <div className="mb-6 flex flex-col items-center justify-center gap-6 md:flex-row md:gap-8">
+            <div className="mb-6 flex flex-col items-center gap-6 md:flex-row md:gap-8">
                 {gardenStats.slice(0, 2).map((item, i) => (
                     <div
                         key={item.label}
                         className={cn(
-                            'border-color-theme-medium bg-color-theme-100',
-                            'flex w-xs flex-col items-center justify-center rounded-2xl border-4 p-6 shadow-lg transition hover:scale-105 hover:shadow-xl md:max-w-sm'
+                            'flex w-xs flex-col items-center',
+                            'p-6',
+                            'border-theme-ui-border-light bg-theme-ui-bg-light rounded-2xl border-4 shadow-lg',
+                            'transition hover:scale-105 hover:shadow-xl',
+                            'md:max-w-sm'
                         )}
                     >
-                        <span className={cn('text-color-theme-txt-medium', 'text-5xl font-bold')}>
-                            {counts[i]}
-                        </span>
-                        <span className="mt-2 text-neutral-700">{item.label}</span>
+                        <span className="text-theme-txt mb-2 text-5xl font-bold">{counts[i]}</span>
+                        <span className="text-theme-txt">{item.label}</span>
                     </div>
                 ))}
             </div>
@@ -91,14 +89,15 @@ export default function GardenStats() {
             <div className="flex items-center justify-center">
                 <div
                     className={cn(
-                        'border-color-theme-medium bg-color-theme-100',
-                        'flex w-xs flex-col items-center justify-center rounded-2xl border-4 p-6 shadow-lg transition hover:scale-105 hover:shadow-xl md:max-w-sm'
+                        'flex w-xs flex-col items-center',
+                        'p-6',
+                        'border-theme-ui-border-light bg-theme-ui-bg-light rounded-2xl border-4 shadow-lg',
+                        'transition hover:scale-105 hover:shadow-xl',
+                        'md:max-w-sm'
                     )}
                 >
-                    <span className={cn('text-color-theme-txt-medium', 'text-5xl font-bold')}>
-                        {counts[2]}
-                    </span>
-                    <span className="mt-2 text-neutral-700">{gardenStats[2].label}</span>
+                    <span className="text-theme-txt mb-2 text-5xl font-bold">{counts[2]}</span>
+                    <span className="text-theme-txt">{gardenStats[2].label}</span>
                 </div>
             </div>
         </div>

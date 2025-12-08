@@ -17,13 +17,13 @@ export default function ListOfDocuments({ documents }: { documents: Document[] }
                             download
                             className="flex w-fit items-center hover:underline sm:hidden"
                         >
-                            <FileText size={32} color="var(--color-theme-txt-medium)" />
+                            <FileText size={32} color="var(--color-theme-ui-bg-dark)" />
 
                             {item.name}
                         </a>
                         {/* Desktop */}
                         <div className="mr-6 hidden items-center sm:flex sm:gap-2">
-                            <FileText size={32} color="var(--color-theme-txt-medium)" />
+                            <FileText size={32} color="var(--color-theme-ui-bg-dark)" />
                             {item.name}
                         </div>
                         {/* Buttons */}

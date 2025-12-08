@@ -30,8 +30,6 @@ export default function ContactForm() {
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [errorMsg, setErrorMsg] = useState('');
 
-    const [showPopup, setShowPopup] = useState(false);
-
     // Check screen width
     useEffect(() => {
         const checkScreen = () => setIsMobile(window.innerWidth < 830);
@@ -72,7 +70,7 @@ export default function ContactForm() {
             <Popup type="error" message={` ${errorMsg}`} onClose={() => setStatus('idle')} />;
         }
     };
-
+    // TODO: group className with cn()
     return (
         <>
             <p className="text-lfet sm:text-center">
@@ -90,11 +88,11 @@ export default function ContactForm() {
 
             <form
                 onSubmit={handleSubmit}
-                className="bg-color-theme-100 mx-auto mb-8 max-w-3xl space-y-4 rounded-xl p-8 shadow-xl sm:mt-4"
+                className="bg-theme-bg-secondary mx-auto mb-8 max-w-3xl space-y-4 rounded-xl p-8 shadow-xl sm:mt-4"
             >
                 {/* NOTE: Nickname - anti-bot protection*/}
                 <div className="hidden">
-                    <label htmlFor="nickname" className="text-color-theme-txt-medium block text-xl">
+                    <label htmlFor="nickname" className="text-theme-txt block text-xl">
                         Nazwa działkowca
                     </label>
                     <input
@@ -103,13 +101,13 @@ export default function ContactForm() {
                         value={nickname}
                         onChange={(e) => setNickname(e.target.value)}
                         placeholder="np. Ogrodnik"
-                        className="border-color-theme-medium bg-color-theme-50 focus:border-color-theme-dark mt-1 block w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none"
+                        className="border-theme-200 bg-theme-bg-primary focus:border-theme-ui-border-dark mt-1 block w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none"
                     />
                 </div>
 
                 {/* User Name */}
                 <div>
-                    <label htmlFor="name" className="text-color-theme-txt-medium block text-xl">
+                    <label htmlFor="name" className="text-theme-txt block text-xl">
                         Imię i nazwisko (opcjonalnie numer działki)
                     </label>
                     <input
@@ -119,13 +117,13 @@ export default function ContactForm() {
                         onChange={(e) => setName(e.target.value)}
                         required
                         placeholder="np. Jan Kowalski - 123"
-                        className="border-color-theme-medium bg-color-theme-50 focus:border-color-theme-dark mt-1 block w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none"
+                        className="border-theme-200 bg-theme-bg-primary focus:border-theme-ui-border-dark mt-1 block w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none"
                     />
                 </div>
 
                 {/* User E-mail */}
                 <div>
-                    <label htmlFor="email" className="text-color-theme-txt-medium block text-xl">
+                    <label htmlFor="email" className="text-theme-txt block text-xl">
                         Twój adres e-mail
                     </label>
                     <input
@@ -135,15 +133,13 @@ export default function ContactForm() {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                         placeholder="np. jankowalski@gmail.com"
-                        className="border-color-theme-medium bg-color-theme-50 focus:border-color-theme-dark mt-1 block w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none"
+                        className="border-theme-200 bg-theme-bg-primary focus:border-theme-ui-border-dark mt-1 block w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none"
                     />
                 </div>
 
                 {/* Subject */}
                 <div>
-                    <label className="text-color-theme-txt-medium block text-xl">
-                        Temat wiadomości
-                    </label>
+                    <label className="text-theme-txt block text-xl">Temat wiadomości</label>
                     <div className="relative mt-1">
                         <input
                             type="text"
@@ -152,14 +148,14 @@ export default function ContactForm() {
                             onChange={(e) => setSubject(e.target.value)}
                             required
                             placeholder="np. Pytanie w sprawie działki"
-                            className="border-color-theme-medium bg-color-theme-50 focus:border-color-theme-dark block w-full rounded-md border px-3 py-2 pr-10 shadow-sm focus:outline-none"
+                            className="border-theme-200 bg-theme-bg-primary focus:border-theme-ui-border-dark block w-full rounded-md border px-3 py-2 pr-10 shadow-sm focus:outline-none"
                         />
                     </div>
                 </div>
 
                 {/* Message */}
                 <div>
-                    <label htmlFor="content" className="text-color-theme-txt-medium block text-xl">
+                    <label htmlFor="content" className="text-theme-txt block text-xl">
                         Treść wiadomości
                     </label>
                     <div className="relative mt-1">
@@ -169,7 +165,7 @@ export default function ContactForm() {
                             onChange={(e) => setMessage(e.target.value)}
                             required
                             rows={6}
-                            className="border-color-theme-medium bg-color-theme-50 focus:border-color-theme-dark block w-full resize-none overflow-y-auto rounded-md border px-3 py-2 shadow-sm focus:outline-none"
+                            className="border-theme-200 bg-theme-bg-primary focus:border-theme-ui-border-dark block w-full resize-none overflow-y-auto rounded-md border px-3 py-2 shadow-sm focus:outline-none"
                         />
                     </div>
                 </div>
