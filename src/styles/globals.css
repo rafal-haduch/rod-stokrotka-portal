@@ -197,9 +197,9 @@
         --bg-color-primary: var(--theme-color-50);
         --bg-color-secondary: var(--theme-color-100);
 
-        --ui-bg-color-light: var(--theme-color-200);
+        --ui-bg-color-light: var(--theme-color-100);
         --ui-bg-color-medium: var(--theme-color-200);
-        --ui-bg-color-dark: var(--theme-color-300);
+        --ui-bg-color-dark: var(--theme-color-400);
 
         --ui-border-color-light: var(--theme-color-400);
         --ui-border-color-dark: var(--theme-color-500);

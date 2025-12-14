@@ -26,6 +26,10 @@ export const templatesAndForms: Document[] = [
         href: '/documents/Decyzja_Przydzialu_Dzialki.pdf',
     },
     {
+        name: 'Przeniesienie_Prawa_Do_Działki.pdf',
+        href: '/documents/Umowa_Przeniesienia_Prawa_Do_Dzialki.pdf',
+    },
+    {
         name: 'Rezygnacja_Z_Uprawy_Działki.pdf',
         href: '/documents/Rezygnacja_Z_Uprawy_Dzialki.pdf',
     },

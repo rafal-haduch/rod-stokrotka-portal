@@ -7,8 +7,6 @@ import { ChevronDown, ChevronUp, SendHorizontal } from 'lucide-react';
 import Popup from '@/components/Popup';
 
 export default function ContactForm() {
-    const [isMobile, setIsMobile] = useState(true);
-    const [expanded, setExpanded] = useState(false);
     const shortText = (
         <>
             Potrzebujesz skontaktować się z Zarządem ROD Stokrotka w Sanoku? <br />
@@ -22,11 +20,15 @@ export default function ContactForm() {
         </>
     );
 
+    const [isMobile, setIsMobile] = useState(true);
+    const [expanded, setExpanded] = useState(false);
+
+    const [nickname, setNickname] = useState(''); // anti-bot protection
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
-    const [nickname, setNickname] = useState('');
+
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [errorMsg, setErrorMsg] = useState('');
 
@@ -56,7 +58,6 @@ export default function ContactForm() {
                 return;
             }
 
-            // success
             setStatus('success');
             setNickname('');
             setName('');
@@ -79,7 +80,8 @@ export default function ContactForm() {
 
             {isMobile && (
                 <button
-                    className="text-color-theme-medium mx-auto flex items-center justify-center hover:cursor-pointer"
+                    title="Czytaj więcej."
+                    className="text-theme-hr mx-auto flex items-center justify-center hover:cursor-pointer"
                     onClick={() => setExpanded(!expanded)}
                 >
                     {expanded ? <ChevronUp size={64} /> : <ChevronDown size={64} />}
@@ -90,7 +92,7 @@ export default function ContactForm() {
                 onSubmit={handleSubmit}
                 className="bg-theme-bg-secondary mx-auto mb-8 max-w-3xl space-y-4 rounded-xl p-8 shadow-xl sm:mt-4"
             >
-                {/* NOTE: Nickname - anti-bot protection*/}
+                {/* NOTE: Nickname - anti-bot protection */}
                 <div className="hidden">
                     <label htmlFor="nickname" className="text-theme-txt block text-xl">
                         Nazwa działkowca

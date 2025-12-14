@@ -3,8 +3,10 @@ import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
 import { getAllMemories, MemoryInList } from '@/utils/memories';
+import { formatDate } from '@/utils/formatDate';
 
 import NotFoundContent from '@/components/NotFoundContent';
+import { cn } from '@/utils/cn';
 
 export default function MemoriesList() {
     const memories = getAllMemories();
@@ -12,9 +14,15 @@ export default function MemoriesList() {
     if (memories.length === 0) return <NotFoundContent />;
 
     return (
-        <div className="grid grid-cols-1 gap-14 lg:grid-cols-2">
+        <div
+            className={cn(
+                memories.length === 1
+                    ? 'grid grid-cols-1 justify-items-center'
+                    : 'grid grid-cols-1 justify-items-center gap-14 lg:grid-cols-2'
+            )}
+        >
             {memories.map((post, i) => (
-                <div key={i}>
+                <div key={i} className="w-full max-w-xl">
                     <MemoryCard memory={post} />
                 </div>
             ))}
@@ -36,15 +44,13 @@ function MemoryCard({ memory }: { memory: MemoryInList }) {
                     className="object-cover transition group-hover:scale-105"
                 />
                 <div className="absolute inset-0 hidden items-center justify-center bg-black/50 transition-all duration-300 group-hover:flex group-hover:scale-105">
-                    <p className="tracking-wide text-amber-50">Zobacz więcej</p>
+                    <p className="tracking-wide text-white">Zobacz więcej</p>
                     <ArrowRight color="white" />
                 </div>
             </div>
-            <div className="bg-color-theme-100 group-hover:bg-color-theme-light p-4 text-center">
-                <p className="text-color-theme-txt-medium text-lg">{memory.date}</p>
-                <h3 className="text-color-theme-txt-medium text-xl font-semibold">
-                    {memory.title}
-                </h3>
+            <div className="bg-theme-bg-secondary group-hover:bg-theme-200 p-4 text-center">
+                <p className="text-theme-txt text-lg">{formatDate(memory.date)}</p>
+                <h3 className="text-theme-txt text-xl font-semibold">{memory.title}</h3>
             </div>
         </Link>
     );

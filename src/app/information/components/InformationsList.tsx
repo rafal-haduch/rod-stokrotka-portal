@@ -1,186 +1,38 @@
-import Link from 'next/link';
-
-import { cn } from '@/utils/cn';
-
-import { associationEmail } from '@/data/association';
-import { treasurersDuties } from '@/data/treasurersDuties';
-import { wasteCollectionSchedule } from '@/data/wasteCollectionSchedule';
-
 import LineSeparator from '@/components/LineSeparator';
+
+import WasteScheduleSection from './sections/WasteScheduleSection';
+import TreasurersDutiesSection from './sections/TreasurersDutiesSection';
+import WhatsAppSection from './sections/WhatsAppSection';
+import ContactSection from './sections/ContactSection';
+import GeneralMeetingSection from './sections/GeneralMeetingSection';
+import GardenEntranceSection from './sections/GardenEntranceSection';
+import GardenPhotosSection from './sections/GardenPhotosSection';
 
 export default function InformationsList() {
     const my = 'my-10';
 
+    //REVIEW: Should use that section tag?
     return (
         <div className="mx-auto max-w-3xl">
-            <section>
-                <h3 className="text-center">Harmonogram wywozu odpadów komunalnych na 2025 rok</h3>
-                <table
-                    className={cn(
-                        'border-color-theme-medium',
-                        'text-md mx-auto w-full max-w-2xl table-fixed border text-center'
-                    )}
-                >
-                    <thead>
-                        <tr className="bg-color-theme-light">
-                            <th
-                                className={cn(
-                                    'border-color-theme-medium',
-                                    'w-1/3 border px-3 py-2'
-                                )}
-                            >
-                                Miesiąc
-                            </th>
-                            <th
-                                className={cn(
-                                    'border-color-theme-medium',
-                                    'w-1/3 border px-3 py-2'
-                                )}
-                            >
-                                Mieszane
-                            </th>
-                            <th
-                                className={cn(
-                                    'border-color-theme-medium',
-                                    'w-1/3 border px-3 py-2'
-                                )}
-                            >
-                                Segregowane
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {wasteCollectionSchedule.map((item, i) => (
-                            <tr key={i} className="hover:bg-color-theme-100">
-                                <th
-                                    className={cn(
-                                        'border-color-theme-medium',
-                                        'border font-medium'
-                                    )}
-                                >
-                                    {item.month}
-                                </th>
-                                <th
-                                    className={cn(
-                                        'border-color-theme-medium',
-                                        'border font-medium'
-                                    )}
-                                >
-                                    {item.mixedWasteCollectionDay.join(', ')}
-                                </th>
-                                <th
-                                    className={cn(
-                                        'border-color-theme-medium',
-                                        'border font-medium'
-                                    )}
-                                >
-                                    {item.sortedWasteCollectionDay.join(', ')}
-                                </th>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </section>
-
+            <WasteScheduleSection />
             <LineSeparator my={my} />
 
-            <section>
-                <h3 className="text-center">
-                    Dyżury Skarbnika (działka 25) i Sekretarza (działka 24) na 2025 rok
-                </h3>
-                <ul className="text-center">
-                    {treasurersDuties.map((item, i) => (
-                        <li key={i}>
-                            <span>{item.date}</span>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-
+            <TreasurersDutiesSection />
             <LineSeparator my={my} />
 
-            <section>
-                <h3 className="text-center">Nasza grupa na WhatsApp</h3>
-                <p className="mb-4">
-                    Zapraszamy do naszej grupy społecznościowej na WhatsApp, ułatwiającej
-                    komunikację i integrację Działkowców. Dołączenie wymaga aplikacji{' '}
-                    <a
-                        href="https://www.whatsapp.com/?lang=pl"
-                        target="blank"
-                        className="link-context"
-                    >
-                        WhatsApp
-                    </a>
-                    . W przypadku chęci dołączenia prosimy skontaktować się przez stronę{' '}
-                    <Link href="/contact" className="link-context">
-                        Kontakt
-                    </Link>{' '}
-                    lub bezpośrednio z Prezesem Stowarzyszenia Ogrodowego.
-                </p>
-            </section>
-
+            <WhatsAppSection />
             <LineSeparator my={my} />
 
-            <section>
-                <h3 className="text-center">Kontakt i pytania</h3>
-                <p className="mb-4">
-                    Jeżeli mają Państwo jakiekolwiek pytania i potrzebują się skontaktować z
-                    zarządem Stowarzyszenia Ogrodowego Stokrotka Sanok, to najlepszą formą jest
-                    napisanie wiadomości przez formularz kontaktowy na stronie{' '}
-                    <Link href="/contact" className="link-context">
-                        Kontakt
-                    </Link>{' '}
-                    lub w przypadku pilnych spraw bezpośrednio z Prezesem Stowarzyszenia Ogrodowego.
-                </p>
-            </section>
-
+            <ContactSection />
             <LineSeparator my={my} />
 
-            <section>
-                <h3 className="text-center">Walne zebranie Członków ROD Stokrotka w Sanoku</h3>
-                <p>
-                    Corocznie na początku sezonu (koniec kwietnia / początek maja) odbywa się
-                    spotkanie wszystkich członków ogrodu Stokrotka w Sanoku. Obecność jest
-                    obowiązkowa. Omawiane są zmiany, dyskusje o ogrodzie oraz propozycje
-                    Działkowców.
-                </p>
-            </section>
-
+            <GeneralMeetingSection />
             <LineSeparator my={my} />
 
-            <section>
-                <h3 className="text-center">Wjazd na teren ogrodu</h3>
-                <p>
-                    Aktualnie po walnym zebraniu 2025 wjazd na teren ogrodu został przywrócony.
-                    Prosimy jednak o ograniczenie prędkości (max 15 km/h) oraz unikanie wjazdu w
-                    okresach intensywnych opadów. Zalecamy wjazd na górne działki od strony
-                    obwodnicy, aby rozłożyć ruch. Szanujmy nasze wspólne dobro - w przeciwnym razie,
-                    wjazd na teren ogrodu może zostać ponownie ograniczony. W takim przypadku, lub
-                    przy innych utrudnieniach wymagających zamknięcia bramy wjazdowej, pojawi się
-                    odpowiedni wpis na stronie{' '}
-                    <Link href="/announcements" className="link-context">
-                        Ogłoszenia
-                    </Link>{' '}
-                    oraz informacja na grupie WhatsApp.
-                </p>
-            </section>
-
+            <GardenEntranceSection />
             <LineSeparator my={my} />
 
-            <section>
-                <h3 className="text-center">Prośba o przesyłanie zdjęć z naszego ogrodu</h3>
-                <p>
-                    Zwracamy się z prośbą do naszych Działkowców, którzy chcą aby zdjęcia ogrodu
-                    znalazły się na stronie, o przesłanie ich do Administratora. Zostaną one
-                    zamieszczone na stronie{' '}
-                    <Link href="/gallery/community-garden-photos" className="link-context">
-                        Galeria
-                    </Link>
-                    . Przesyłać zdjęcia można w dowolnej chwili. Najlepiej poprzez naszą wspólną
-                    grupę na WhatsApp lub na adres e-mail Stowarzyszenia:{' '}
-                    <span className="font-bold">{associationEmail}</span>
-                </p>
-            </section>
+            <GardenPhotosSection />
         </div>
     );
 }
