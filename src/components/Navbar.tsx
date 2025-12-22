@@ -8,6 +8,8 @@ import { LogIn } from 'lucide-react';
 
 import { cn } from '@/utils/cn';
 
+import logo from '@/../public/assets/logo.svg';
+
 interface NavLink {
     name: string;
     href: string;
@@ -54,12 +56,27 @@ export default function Navbar() {
         return () => mediaQuery.removeEventListener('change', handleChange);
     }, []);
 
+    // Block scroll when mobile menu is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+
+        // REVIEW: po co?
+        // Cleanup in case of component unmounting
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isOpen]);
+
     return (
         <nav
             className={cn(
                 'sticky top-0 z-50 mx-auto',
                 'px-4 py-2',
-                'flex flex-wrap items-center justify-between',
+                'flex items-center justify-between',
                 'font-nav',
                 'from-theme-ui-bg-medium to-theme-ui-bg-dark bg-gradient-to-b',
                 'border-theme-ui-border-dark border-b-4'
@@ -67,18 +84,16 @@ export default function Navbar() {
         >
             {/* Logo - always visible */}
             <div className="z-50 flex-shrink-0">
-                <Link href="/" className="cursor-pointer">
-                    {/* REVIEW: how to use width and height in this component */}
+                <Link href="/" className="block">
                     <Image
-                        src="/assets/logo.png"
+                        src={logo}
                         alt="Logo Ogordu Stokrotka Sanok."
-                        width={150}
-                        height={80}
                         priority
-                        className="h-auto w-full object-cover"
+                        className="max-h-16 w-auto sm:max-h-22"
                     />
                 </Link>
             </div>
+
             {/* ============ Desktop Menu ============ */}
             {/* Nav */}
             <ul
@@ -101,6 +116,7 @@ export default function Navbar() {
                     </li>
                 ))}
             </ul>
+
             {/* Login */}
             <Link
                 href="/sign-in"
@@ -113,6 +129,7 @@ export default function Navbar() {
                 <LogIn size={42} />
                 <span className="text-xl font-bold">LOGOWANIE</span>
             </Link>
+
             {/* ============ Mobile Menu ============ */}
             {/* Nav */}
             {isClient && (
@@ -147,6 +164,7 @@ export default function Navbar() {
                             </Link>
                         </li>
                     ))}
+
                     {/* Login */}
                     <li>
                         <Link
@@ -165,6 +183,7 @@ export default function Navbar() {
                     </li>
                 </ul>
             )}
+
             {/* TODO: fix hamburger position in very small screen */}
             {/* Hamburger */}
             <button

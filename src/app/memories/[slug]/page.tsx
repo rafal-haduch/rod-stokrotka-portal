@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 
 import { getMemoryBySlug } from '@/utils/memories';
 
+import { formatDate } from '@/utils/formatDate';
+
 import PhotoGallery from '@/components/PhotoGallery';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import AnimateOnView from '@/components/AnimatedH2';
@@ -21,7 +23,7 @@ export default async function MemoryPage({ params }: { params: { slug: string } 
 
             <section>
                 <AnimateOnView className="h2-animate">
-                    <h2>{post.date}</h2>
+                    <h2>{formatDate(post.date)}</h2>
                 </AnimateOnView>
                 <div dangerouslySetInnerHTML={{ __html: post.content }} />
                 {post.photos.length > 0 && <PhotoGallery photos={post.photos} />}

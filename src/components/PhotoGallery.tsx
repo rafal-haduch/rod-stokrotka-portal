@@ -26,7 +26,7 @@ export default function PhotoGallery(props: PhotoGalleryProps) {
     const showNext = () =>
         setCurrentIndex((i) => (i !== null ? (i < photos.length - 1 ? i + 1 : 0) : 0));
 
-    // Auto-scroll miniatur do aktualnego zdjęcia
+    // Auto-scroll thumbnails to the currently displayed photo
     useEffect(() => {
         if (scrollRef.current && currentIndex !== null) {
             const thumbnail = scrollRef.current.children[currentIndex];
@@ -34,16 +34,15 @@ export default function PhotoGallery(props: PhotoGalleryProps) {
         }
     }, [currentIndex]);
 
+    // Block scroll when lightbox is open
     useEffect(() => {
         if (currentIndex !== null) {
-            // Blokada scrolla
             document.body.style.overflow = 'hidden';
         } else {
-            // Przywrócenie scrolla
             document.body.style.overflow = '';
         }
 
-        // Cleanup na wypadek odmontowania komponentu
+        // Cleanup in case of component unmounting
         return () => {
             document.body.style.overflow = '';
         };
@@ -51,7 +50,7 @@ export default function PhotoGallery(props: PhotoGalleryProps) {
 
     return (
         <div className="w-full">
-            {/* Siatka zdjęć */}
+            {/* Photo grid layout */}
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {photos.map((img, i) => (
                     <div
@@ -70,7 +69,7 @@ export default function PhotoGallery(props: PhotoGalleryProps) {
                 ))}
             </div>
 
-            {/* Pełnoekranowa przeglądarka */}
+            {/* Lightbox */}
             {currentIndex !== null && (
                 <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/90">
                     <button
@@ -79,6 +78,8 @@ export default function PhotoGallery(props: PhotoGalleryProps) {
                     >
                         <X size={32} />
                     </button>
+
+                    {/* Displayed photo */}
                     <div className="relative flex w-full max-w-5xl items-center justify-center">
                         <div className="relative flex h-[70vh] w-full items-center justify-center">
                             <Image
@@ -107,7 +108,7 @@ export default function PhotoGallery(props: PhotoGalleryProps) {
                         {currentIndex + 1} / {photos.length}
                     </div>
 
-                    {/* Pasek miniatur */}
+                    {/* Thumbnail bar */}
                     <div
                         ref={scrollRef}
                         className="no-scrollbar mt-4 flex w-full max-w-5xl gap-2 overflow-x-auto px-4"
