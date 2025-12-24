@@ -1,6 +1,6 @@
 import { ThemeType } from '@/types/Theme';
 
-// REVIEW: zmienic (dodac i uporzadkowac typt/interfejsy)
+// REVIEW: zmienic (dodac i uporzadkowac typy/interfejsy)
 export interface Theme {
     id: ThemeType;
     label: string;
@@ -44,10 +44,10 @@ export function getSeason(): 'spring' | 'summer' | 'autumn' | 'winter' {
     const now = new Date();
     const year = now.getFullYear();
 
-    const springStart = new Date(year, 2, 20); // 20 marca
-    const summerStart = new Date(year, 5, 21); // 21 czerwca
+    const springStart = new Date(year, 2, 21); // 21 marca
+    const summerStart = new Date(year, 5, 22); // 22 czerwca
     const autumnStart = new Date(year, 8, 23); // 23 września
-    const winterStart = new Date(year, 11, 21); // 21 grudnia
+    const winterStart = new Date(year, 11, 22); // 22 grudnia
 
     if (now >= springStart && now < summerStart) return 'spring';
     if (now >= summerStart && now < autumnStart) return 'summer';

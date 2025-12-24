@@ -74,7 +74,7 @@ export default function PhotoGallery(props: PhotoGalleryProps) {
                 <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/90">
                     <button
                         onClick={closeLightbox}
-                        className="absolute top-2 right-2 text-white hover:cursor-pointer hover:opacity-80"
+                        className="absolute top-2 right-2 p-4 text-white hover:cursor-pointer hover:opacity-80 sm:p-1"
                     >
                         <X size={32} />
                     </button>
