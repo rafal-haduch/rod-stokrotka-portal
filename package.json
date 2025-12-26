@@ -8,15 +8,17 @@
     "start": "next start"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.11.1",
     "@prisma/client": "^7.2.0",
     "@vercel/analytics": "^1.5.0",
+    "bcrypt": "^6.0.0",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.548.0",
     "next": "15.5.9",
+    "next-auth": "^4.24.13",
     "nodemailer": "^7.0.10",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "prisma": "^7.2.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "remark": "^15.0.1",
@@ -28,6 +30,8 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^17.2.3",
+    "prisma": "^7.2.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

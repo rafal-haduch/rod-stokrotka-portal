@@ -1,14 +1,56 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+    provider = "prisma-client"
+    output   = "../generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
+    provider = "postgresql"
+}
+
+enum Role {
+    ADMIN
+    PRESIDENT
+    DEPUTY_PRESIDENT
+    SECRETARY
+    TREASURER
+    BOARD_MEMBER
+    ALLOTMENT_GARDENER
+}
+
+model User {
+    id            String         @id @default(cuid())
+    login         String         @unique
+    password      String
+    name          String
+    role          Role           @default(ALLOTMENT_GARDENER)
+    plots         Plot[]
+    createdAt     DateTime       @default(now())
+    announcements Announcement[]
+}
+
+model Plot {
+    id       String    @id @default(cuid())
+    number   String
+    area     Float
+    owner    User      @relation(fields: [ownerId], references: [id])
+    ownerId  String
+    payments Payment[]
+}
+
+model Payment {
+    id     String  @id @default(cuid())
+    amount Float
+    year   Int
+    paid   Boolean @default(false)
+    plot   Plot    @relation(fields: [plotId], references: [id])
+    plotId String
+}
+
+model Announcement {
+    id            String   @id @default(cuid())
+    title         String
+    content       String
+    createdAt     DateTime @default(now())
+    postCreator   User     @relation(fields: [postCreatorId], references: [id])
+    postCreatorId String
 }
