@@ -13,7 +13,7 @@ export default async function DashboardPage() {
         <article>
             <h1>Moje Konto</h1>
             <MainHeaderLineSeparator />
-            <h2>Imię i nazwisko test</h2>
+            <h2>Imię i nazwisko</h2>
             <section>
                 <WorkInProgress />
             </section>
