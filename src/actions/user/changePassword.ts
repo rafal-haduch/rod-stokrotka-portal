@@ -3,8 +3,8 @@
 import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcrypt';
 
-export async function registerUser(formData: FormData) {
-    const email = formData.get('email') as string;
+export async function changePassword(formData: FormData) {
+    const login = formData.get('login') as string;
     const password = formData.get('password') as string;
     const name = formData.get('name') as string;
 
@@ -12,7 +12,7 @@ export async function registerUser(formData: FormData) {
 
     await prisma.user.create({
         data: {
-            email,
+            login,
             name,
             password: hashed,
         },

@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { signIn } from 'next-auth/react';
 import { Eye, EyeOff } from 'lucide-react';
 
 import Popup from '@/components/Popup';
-import { signIn } from 'next-auth/react';
 
 export default function LoginForm() {
     const [login, setLogin] = useState('');
@@ -15,18 +15,17 @@ export default function LoginForm() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Próba logowania
-        const result = await signIn('credentials', {
-            redirect: false, // najpierw bez automatycznego redirect
-            email: login,
+        const loginResult = await signIn('credentials', {
+            redirect: false,
+            login: login,
             password: password,
         });
-
-        if (result?.error) {
-            setMessage('Nieprawidłowy login lub hasło');
-        } else if (result?.ok) {
+        if (loginResult?.error) {
+            if (loginResult.status >= 400 && loginResult.status < 500)
+                setMessage('Nieprawidłowy login lub hasło');
+            else setMessage('Błąd logowania');
+        } else if (loginResult?.ok) {
             setMessage('');
-            // Jeśli chcesz redirect ręcznie:
             window.location.href = '/dashboard';
         } else {
             setShowPopup(true);
@@ -90,7 +89,7 @@ export default function LoginForm() {
                 </button>
 
                 {/* Message placeholder */}
-                <div className="flex min-h-[2rem] items-center justify-center">
+                <div className="flex min-h-8 items-center justify-center">
                     {message && <p className="text-md text-center text-red-500">{message}</p>}
                 </div>
             </form>

@@ -1,7 +1,8 @@
 import NextAuth, { AuthOptions } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcrypt';
+import { prisma } from '@/lib/prisma';
+import { Role } from '@prisma/client';
 
 export const authOptions: AuthOptions = {
     session: {
@@ -24,10 +25,26 @@ export const authOptions: AuthOptions = {
                 const isValid = await bcrypt.compare(credentials.password, user.password);
                 if (!isValid) return null;
 
-                return { id: user.id, name: user.name, role: user.role };
+                return { id: user.id, role: user.role };
             },
         }),
     ],
+    callbacks: {
+        jwt: async ({ token, user }) => {
+            if (user) {
+                token.id = user.id;
+                token.role = user.role;
+            }
+            return token;
+        },
+        session: async ({ session, token }) => {
+            if (session.user) {
+                session.user.id = token.id as string;
+                session.user.role = token.role as Role;
+            }
+            return session;
+        },
+    },
 };
 
 const handler = NextAuth(authOptions);

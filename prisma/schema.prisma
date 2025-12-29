@@ -18,39 +18,67 @@ enum Role {
 }
 
 model User {
-    id            String         @id @default(cuid())
-    login         String         @unique
-    password      String
-    name          String
-    role          Role           @default(ALLOTMENT_GARDENER)
-    plots         Plot[]
-    createdAt     DateTime       @default(now())
-    announcements Announcement[]
+    id       Int    @id @default(autoincrement())
+    login    String @unique
+    password String
+    name     String
+    plots    Plot[]
+    role     Role   @default(ALLOTMENT_GARDENER)
+
+    createdAt  DateTime  @default(now()) @map("created_at")
+    firstLogin Boolean   @default(true)
+    updatedAt  DateTime  @updatedAt @map("updated_at")
+    lastLogin  DateTime?
+
+    createdAnnouncements Announcement[] @relation("AnnouncementAuthor")
+    updatedAnnouncements Announcement[] @relation("AnnouncementUpdater")
+    deletedAnnouncements Announcement[] @relation("AnnouncementDeleter")
 }
 
 model Plot {
-    id       String    @id @default(cuid())
-    number   String
-    area     Float
-    owner    User      @relation(fields: [ownerId], references: [id])
-    ownerId  String
+    id     String @id
+    number String
+    area   Float
+
+    owner   User @relation(fields: [ownerId], references: [id])
+    ownerId Int  @map("owner_id")
+
     payments Payment[]
 }
 
 model Payment {
-    id     String  @id @default(cuid())
-    amount Float
-    year   Int
-    paid   Boolean @default(false)
-    plot   Plot    @relation(fields: [plotId], references: [id])
-    plotId String
+    id String @id @default(cuid())
+
+    plot   Plot   @relation(fields: [plotId], references: [id])
+    plotId String @map("plot_id")
+
+    year Int
+    paid Boolean @default(false)
+
+    plotAreaFee    Float  @map("plot_area_fee")
+    wasteFee       Float  @map("waste_fee")
+    membershipFee  Float  @map("membership_fee")
+    electricityFee Float? @map("electricity_fee")
+    totalAmount    Float  @map("total_amount")
 }
 
 model Announcement {
-    id            String   @id @default(cuid())
-    title         String
-    content       String
-    createdAt     DateTime @default(now())
-    postCreator   User     @relation(fields: [postCreatorId], references: [id])
-    postCreatorId String
+    id      String @id @default(cuid())
+    title   String
+    content String
+
+    createdAt DateTime @default(now()) @map("created_at")
+
+    author   User @relation("AnnouncementAuthor", fields: [authorId], references: [id])
+    authorId Int  @map("author_id")
+
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    updatedBy   User? @relation("AnnouncementUpdater", fields: [updatedById], references: [id])
+    updatedById Int?  @map("updated_by_id")
+
+    deletedAt DateTime? @map("deleted_at")
+
+    deletedBy   User? @relation("AnnouncementDeleter", fields: [deletedById], references: [id])
+    deletedById Int?  @map("deleted_by_id")
 }
