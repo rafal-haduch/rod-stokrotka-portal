@@ -6,7 +6,7 @@ import { Role } from '@prisma/client';
 
 export const authOptions: AuthOptions = {
     session: {
-        strategy: 'jwt', // <-- literal "jwt" zamiast string
+        strategy: 'jwt',
     },
     providers: [
         Credentials({
@@ -25,7 +25,7 @@ export const authOptions: AuthOptions = {
                 const isValid = await bcrypt.compare(credentials.password, user.password);
                 if (!isValid) return null;
 
-                return { id: user.id, role: user.role };
+                return { id: user.id.toString(), role: user.role };
             },
         }),
     ],
@@ -38,8 +38,8 @@ export const authOptions: AuthOptions = {
             return token;
         },
         session: async ({ session, token }) => {
-            if (session.user) {
-                session.user.id = token.id as string;
+            if (session.user && token.id) {
+                session.user.id = Number(token.id);
                 session.user.role = token.role as Role;
             }
             return session;

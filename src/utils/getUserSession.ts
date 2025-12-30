@@ -1,4 +1,4 @@
-import { authOptions } from '@/api/auth/[...nextauth]/route';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { getServerSession, Session, User } from 'next-auth';
 
 export async function getUserSession(): Promise<User | null> {

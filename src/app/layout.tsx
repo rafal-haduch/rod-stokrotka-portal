@@ -4,12 +4,13 @@ import { Analytics } from '@vercel/analytics/next';
 import '../styles/globals.css';
 import { nunito, fleurDeLeah, aboreto, merriweather } from '../fonts/fonts';
 
+import JsonLdOrganization from '@/components/JsonLdOrganization';
+import SessionProviderClientComponent from '@/components/SessionProviderClientComponent';
+import { ThemeProvider } from '@/components/ThemeProvider';
 import DynamicClientLayout from '@/components/DynamicClientLayout';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PreFooter from '@/components/PreFooter';
-import JsonLdOrganization from '@/components/JsonLdOrganization';
-import { ThemeProvider } from '@/components/ThemeProvider';
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://rod-stokrotka-sanok.vercel.app'),
@@ -72,14 +73,16 @@ export default function RootLayout({
             </head>
             <body>
                 <JsonLdOrganization />
-                <ThemeProvider>
-                    <Navbar />
-                    <DynamicClientLayout>
-                        <main>{children}</main>
-                    </DynamicClientLayout>
-                    <PreFooter />
-                    <Footer />
-                </ThemeProvider>
+                <SessionProviderClientComponent>
+                    <ThemeProvider>
+                        <Navbar />
+                        <DynamicClientLayout>
+                            <main>{children}</main>
+                        </DynamicClientLayout>
+                        <PreFooter />
+                        <Footer />
+                    </ThemeProvider>
+                </SessionProviderClientComponent>
                 <Analytics />
             </body>
         </html>

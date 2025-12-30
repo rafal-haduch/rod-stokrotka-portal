@@ -1,10 +1,11 @@
 'use client';
 
+import { useSession, signOut } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { LogIn } from 'lucide-react';
+import { LogIn, User } from 'lucide-react';
 
 import { cn } from '@/utils/cn';
 
@@ -32,6 +33,9 @@ const navLinks: NavLink[] = [
 ] as const;
 
 export default function Navbar() {
+    const { data: session, status } = useSession();
+    const isLoggedIn = status === 'authenticated';
+
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const [isClient, setIsClient] = useState(false);
@@ -117,18 +121,33 @@ export default function Navbar() {
                 ))}
             </ul>
 
+            {/* REVIEW: klasy  */}
             {/* Login */}
-            <Link
-                href="/sign-in"
-                className={cn(
-                    'hidden flex-col items-center xl:flex',
-                    'text-white',
-                    'cursor-pointer hover:underline'
-                )}
-            >
-                <LogIn size={42} />
-                <span className="text-xl font-bold">LOGOWANIE</span>
-            </Link>
+            {isLoggedIn ? (
+                <Link
+                    href="/user-panel"
+                    className={cn(
+                        'hidden flex-col items-center xl:flex',
+                        'text-white',
+                        'cursor-pointer hover:underline'
+                    )}
+                >
+                    <User size={42} />
+                    <span className="text-xl font-bold">MÓJ PROFIL</span>
+                </Link>
+            ) : (
+                <Link
+                    href="/sign-in"
+                    className={cn(
+                        'hidden flex-col items-center xl:flex',
+                        'text-white',
+                        'cursor-pointer hover:underline'
+                    )}
+                >
+                    <LogIn size={42} />
+                    <span className="text-xl font-bold">LOGOWANIE</span>
+                </Link>
+            )}
 
             {/* ============ Mobile Menu ============ */}
             {/* Nav */}

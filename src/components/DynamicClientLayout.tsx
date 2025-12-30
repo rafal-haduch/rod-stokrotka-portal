@@ -27,6 +27,10 @@ export const routeTitles: RouteTitles[] = [
     { pathname: '/investments', title: 'INWESTYCJE' },
     { pathname: '/gardening-guide', title: 'PORADY OGRODOWE' },
     { pathname: '/privacy-policy', title: 'POLITYKA PRYWATNOŚCI' },
+    { pathname: '/user-panel', title: 'PANEL DZIAŁKOWCA' },
+    { pathname: '/dashboard', title: 'PANEL ADMINISTRACYJNY' },
+    { pathname: '/dashboard/users', title: 'TABELA DZIAŁKOWCÓW' },
+    // ...
 ] as const;
 
 export default function DynamicClientLayout({ children }: { children: React.ReactNode }) {
@@ -56,11 +60,12 @@ export default function DynamicClientLayout({ children }: { children: React.Reac
             : 'ROD Stokrotka Sanok';
     }, [pathname]);
 
-    const hideHeroRoutes = ['/sign-in', '/privacy-policy', '/dashboard'];
+    const hideHeroRoutes = ['/sign-in', '/privacy-policy', '/user-panel'];
     const showHero =
         !hideHeroRoutes.includes(pathname) &&
         !pathname.startsWith('/memories/') &&
-        !pathname.startsWith('/investments/');
+        !pathname.startsWith('/investments/') &&
+        !pathname.startsWith('/dashboard');
 
     return (
         <>

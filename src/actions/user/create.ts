@@ -14,8 +14,8 @@ function generatePassword() {
 export async function createUser(formData: FormData) {
     const name = formData.get('name') as string;
 
-    const login = generateLogin(name);
-    const password = generatePassword();
+    const login = 'admin';
+    const password = 'admin';
 
     const hashed = await bcrypt.hash(password, 10);
 

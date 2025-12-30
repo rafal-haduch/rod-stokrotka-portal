@@ -10,7 +10,7 @@ export default async function UserPanelPage() {
     if (!user) redirect('/sign-in');
 
     const userData = await prisma.user.findUnique({
-        where: { id: user.id },
+        where: { id: Number(user.id) },
         include: {
             plots: true,
         },
@@ -19,13 +19,11 @@ export default async function UserPanelPage() {
 
     return (
         <article>
-            <h1>Witaj, {userData.name}</h1>
-            <MainHeaderLineSeparator />
-            <h2>Twoje działki</h2>
+            <h2>Twój profil działkowca</h2>
 
             <section>
+                Działka:
                 {userData.plots.length === 0 && <p>Brak przypisanych działek</p>}
-
                 {userData.plots.map((plot) => (
                     <div key={plot.id}>
                         Działka #{plot.number} – {plot.area} m²
