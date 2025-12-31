@@ -5,9 +5,8 @@ import { prisma } from '@/lib/prisma';
 import { Role } from '@prisma/client';
 
 export const authOptions: AuthOptions = {
-    session: {
-        strategy: 'jwt',
-    },
+    session: { strategy: 'jwt' },
+
     providers: [
         Credentials({
             credentials: {
@@ -22,17 +21,23 @@ export const authOptions: AuthOptions = {
                 });
                 if (!user) return null;
 
-                const isValid = await bcrypt.compare(credentials.password, user.password);
-                if (!isValid) return null;
+                const ok = await bcrypt.compare(credentials.password, user.password);
+                if (!ok) return null;
 
-                return { id: user.id.toString(), role: user.role };
+                return {
+                    id: user.id.toString(),
+                    name: user.name,
+                    role: user.role,
+                };
             },
         }),
     ],
+
     callbacks: {
         jwt: async ({ token, user }) => {
             if (user) {
                 token.id = user.id;
+                token.name = user.name;
                 token.role = user.role;
             }
             return token;
@@ -40,6 +45,7 @@ export const authOptions: AuthOptions = {
         session: async ({ session, token }) => {
             if (session.user && token.id) {
                 session.user.id = Number(token.id);
+                session.user.name = token.name;
                 session.user.role = token.role as Role;
             }
             return session;

@@ -1,12 +1,11 @@
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import WorkInProgress from '@/components/WorkInProgress';
 import { redirect } from 'next/navigation';
 import { getUserSession } from '@/utils/getUserSession';
 import Link from 'next/link';
+import { isAdminOrBoard } from '@/utils/roles';
 
 export default async function DashboardPage() {
     const user = await getUserSession();
-    if (!user) redirect('/sign-in');
+    if (!user || !isAdminOrBoard(user.role)) redirect('/user-panel');
 
     return (
         <article>
