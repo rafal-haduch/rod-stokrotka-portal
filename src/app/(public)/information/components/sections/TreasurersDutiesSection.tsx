@@ -1,4 +1,4 @@
-import { treasurersDuties } from '@/data/treasurersDuties';
+import { treasurersDuties } from '@/content/data/treasurersDuties';
 
 export default function TreasurersDutiesSection() {
     return (

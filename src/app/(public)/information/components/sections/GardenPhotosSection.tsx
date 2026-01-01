@@ -1,4 +1,4 @@
-import { associationEmail } from '@/data/association';
+import { associationEmail } from '@/content/data/association';
 import Link from 'next/link';
 
 export default function GardenPhotosSection() {

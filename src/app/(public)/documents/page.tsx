@@ -1,4 +1,4 @@
-import { importantDocuments, minutesAndReports, templatesAndForms } from '@/data/documents';
+import { importantDocuments, minutesAndReports, templatesAndForms } from '@/content/data/documents';
 
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';

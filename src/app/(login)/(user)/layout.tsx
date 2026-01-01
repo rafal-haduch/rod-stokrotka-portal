@@ -2,7 +2,7 @@ import { getUserSession } from '@/utils/getUserSession';
 import { redirect } from 'next/navigation';
 import UserPanelHeader from '@/components/UserPanelHeader';
 
-export default async function UserPanelLayout({ children }: { children: React.ReactNode }) {
+export default async function UserLayout({ children }: { children: React.ReactNode }) {
     const user = await getUserSession();
     if (!user) redirect('/sign-in');
 

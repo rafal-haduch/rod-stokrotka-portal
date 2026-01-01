@@ -1,12 +1,9 @@
 import { redirect } from 'next/navigation';
 import { getUserSession } from '@/utils/getUserSession';
 import Link from 'next/link';
-import { isAdminOrBoard } from '@/utils/roles';
+import { isAdminOrBoard } from '@/utils/rolePermissions';
 
 export default async function DashboardPage() {
-    const user = await getUserSession();
-    if (!user || !isAdminOrBoard(user.role)) redirect('/user-panel');
-
     return (
         <article>
             <h2>Panel Administracyjny</h2>

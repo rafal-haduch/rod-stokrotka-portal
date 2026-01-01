@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { paymentStatusAsOf } from '@/data/plotFeesStatus';
+import { paymentStatusAsOf } from '@/content/data/plotFeesStatus';
 
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';

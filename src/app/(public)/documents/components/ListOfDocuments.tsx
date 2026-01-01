@@ -1,6 +1,6 @@
 import { Download, ExternalLink, FileText } from 'lucide-react';
 
-import { Document } from '@/data/documents';
+import { Document } from '@/content/data/documents';
 import NotFoundContent from '@/components/NotFoundContent';
 
 export default function ListOfDocuments({ documents }: { documents: Document[] }) {

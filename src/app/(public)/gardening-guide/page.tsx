@@ -1,4 +1,4 @@
-import { recommendedSites } from '@/data/recommendedSites';
+import { recommendedSites } from '@/content/data/recommendedSites';
 
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';

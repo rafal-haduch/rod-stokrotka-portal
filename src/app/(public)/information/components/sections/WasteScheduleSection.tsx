@@ -1,4 +1,4 @@
-import { wasteCollectionSchedule } from '@/data/wasteCollectionSchedule';
+import { wasteCollectionSchedule } from '@/content/data/wasteCollectionSchedule';
 
 export default function WasteScheduleSection() {
     return (

@@ -1,7 +1,10 @@
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import { prisma } from '@/lib/prisma';
 import { UserPen, UserPlus, UserX } from 'lucide-react';
 import Link from 'next/link';
+
+import { prisma } from '@/lib/prisma';
+import { getRoleLabel } from '@/utils/getRoleLabel';
+
+import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 
 export default async function UserDashboardPage() {
     const users = await prisma.user.findMany({
@@ -13,16 +16,6 @@ export default async function UserDashboardPage() {
             },
         },
     });
-
-    const roleMap: Record<string, string> = {
-        ADMIN: 'Administrator Strony',
-        PRESIDENT: 'Prezes',
-        DEPUTY_PRESIDENT: 'Zastępca Prezesa',
-        SECRETARY: 'Sekretarz',
-        TREASURER: 'Skarbnik',
-        BOARD_MEMBER: 'Członek Zarządu',
-        ALLOTMENT_GARDENER: 'Działkowiec',
-    };
 
     return (
         <article>
@@ -62,7 +55,7 @@ export default async function UserDashboardPage() {
                                         ? user.plots.map((plot) => plot.id).join(', ')
                                         : '—'}
                                 </th>
-                                <th>{roleMap[user.role]}</th>
+                                <th>{getRoleLabel(user.role)}</th>
                                 <th>{user.createdAt.toLocaleDateString('pl-PL')}</th>
                                 <th>
                                     {user.lastLogin

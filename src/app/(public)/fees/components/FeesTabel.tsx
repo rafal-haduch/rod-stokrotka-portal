@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { plotsFeesStatus } from '@/data/plotFeesStatus';
+import { plotsFeesStatus } from '@/content/data/plotFeesStatus';
 import { cn } from '@/utils/cn';
 import { Check, X } from 'lucide-react';
 

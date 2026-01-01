@@ -3,7 +3,7 @@ import {
     associationBoard,
     auditCommittee,
     arbitrationCommission,
-} from '@/data/association';
+} from '@/content/data/association';
 
 import ImageSeparator from '@/components/ImageSeparator';
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
