@@ -26,7 +26,7 @@ export default function LoginForm() {
             else setMessage('Błąd logowania');
         } else if (loginResult?.ok) {
             setMessage('');
-            window.location.href = '/user-panel';
+            window.location.href = '/my-profile';
         } else {
             setShowPopup(true);
         }

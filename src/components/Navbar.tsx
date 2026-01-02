@@ -82,12 +82,12 @@ export default function Navbar() {
                 'px-4 py-2',
                 'flex items-center justify-between',
                 'font-nav',
-                'from-theme-ui-bg-medium to-theme-ui-bg-dark bg-gradient-to-b',
+                'from-theme-ui-bg-medium to-theme-ui-bg-dark bg-linear-to-b',
                 'border-theme-ui-border-dark border-b-4'
             )}
         >
             {/* Logo - always visible */}
-            <div className="z-50 flex-shrink-0">
+            <div className="z-50 shrink-0">
                 <Link href="/" className="block">
                     <Image
                         src={logo}
@@ -125,7 +125,7 @@ export default function Navbar() {
             {/* Login */}
             {isLoggedIn ? (
                 <Link
-                    href="/user-panel"
+                    href="/my-profile"
                     className={cn(
                         'hidden flex-col items-center xl:flex',
                         'text-white',
@@ -158,7 +158,7 @@ export default function Navbar() {
                         'pt-20',
                         'flex-col items-center justify-center gap-4',
                         'font-nav text-theme-txt text-center text-xl font-bold',
-                        'from-theme-ui-bg-dark via-theme-ui-bg-medium to-theme-ui-bg-dark bg-gradient-to-r',
+                        'from-theme-ui-bg-dark via-theme-ui-bg-medium to-theme-ui-bg-dark bg-linear-to-r',
                         'transition-transform duration-500',
                         isClient && isOpen ? 'scale-y-100' : 'scale-y-0',
                         isClient && isVisible ? '' : 'hidden'
@@ -186,19 +186,37 @@ export default function Navbar() {
 
                     {/* Login */}
                     <li>
-                        <Link
-                            href="/sign-in"
-                            onClick={() => setIsOpen(false)}
-                            className={cn(
-                                'mt-4 flex items-center space-x-2',
-                                'text-white',
-                                'transition-opacity duration-300 hover:underline',
-                                isClient && isOpen ? 'opacity-100 delay-300' : 'opacity-0 delay-0'
-                            )}
-                        >
-                            <LogIn size={42} />
-                            LOGOWANIE
-                        </Link>
+                        {isLoggedIn ? (
+                            <Link
+                                href="/my-profile"
+                                className={cn(
+                                    'mt-4 flex items-center space-x-2',
+                                    'text-white',
+                                    'transition-opacity duration-300 hover:underline',
+                                    isClient && isOpen
+                                        ? 'opacity-100 delay-300'
+                                        : 'opacity-0 delay-0'
+                                )}
+                            >
+                                <User size={42} />
+                                <span className="text-xl font-bold">MÓJ PROFIL</span>
+                            </Link>
+                        ) : (
+                            <Link
+                                href="/sign-in"
+                                className={cn(
+                                    'mt-4 flex items-center space-x-2',
+                                    'text-white',
+                                    'transition-opacity duration-300 hover:underline',
+                                    isClient && isOpen
+                                        ? 'opacity-100 delay-300'
+                                        : 'opacity-0 delay-0'
+                                )}
+                            >
+                                <LogIn size={42} />
+                                <span className="text-xl font-bold">LOGOWANIE</span>
+                            </Link>
+                        )}
                     </li>
                 </ul>
             )}

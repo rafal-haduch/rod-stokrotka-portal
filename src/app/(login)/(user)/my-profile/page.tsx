@@ -1,11 +1,13 @@
 import { redirect } from 'next/navigation';
-
-import { prisma } from '@/lib/prisma';
-import { getUserSession } from '@/utils/getUserSession';
 import Link from 'next/link';
 import { KeyRound } from 'lucide-react';
 
-export default async function UserPanelPage() {
+import { prisma } from '@/lib/prisma';
+
+import { getUserSession } from '@/utils/getUserSession';
+import { getRoleLabel } from '@/utils/getRoleLabel';
+
+export default async function MyProfilePage() {
     const user = await getUserSession();
     if (!user) redirect('/sign-in');
 
@@ -23,16 +25,18 @@ export default async function UserPanelPage() {
             <h2>Mój profil</h2>
             <section>
                 <form className="bg-theme-bg-secondary mx-auto max-w-lg space-y-4 rounded-lg p-6 shadow-md">
-                    {/* Imię */}
+                    {/* Name */}
                     <div className="flex space-x-1">
                         <label className="text-theme-txt">Imię: </label>
                         <span className="text-theme-txt-secondary">{userData.name}</span>
                     </div>
 
-                    {/* Rola */}
+                    {/* Role */}
                     <div className="flex space-x-1">
                         <label className="text-theme-txt">Rola: </label>
-                        <span className="text-theme-txt-secondary">{userData.role}</span>
+                        <span className="text-theme-txt-secondary">
+                            {getRoleLabel(userData.role)}
+                        </span>
                     </div>
 
                     {/* Login */}
@@ -53,7 +57,7 @@ export default async function UserPanelPage() {
                         </Link>
                     </div>
 
-                    {/* Działki */}
+                    {/* Plots */}
                     <div className="flex space-x-1">
                         <label className="text-theme-txt">Działki: </label>
                         <div className="text-theme-txt-secondary">

@@ -1,15 +1,17 @@
-import { getUserSession } from '@/utils/getUserSession';
 import { redirect } from 'next/navigation';
-import UserPanelHeader from '@/components/UserPanelHeader';
+
+import { getUserSession } from '@/utils/getUserSession';
 import { isAdminOrBoard } from '@/utils/rolePermissions';
+
+import DashboardPanelHeader from '@/components/DashboardPanelHeader';
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
     const user = await getUserSession();
     if (!user || !isAdminOrBoard(user.role)) redirect('/sign-in');
 
     return (
-        <section className="user-panel-layout">
-            <UserPanelHeader user={user} />
+        <section >
+            <DashboardPanelHeader />
             <main>{children}</main>
         </section>
     );

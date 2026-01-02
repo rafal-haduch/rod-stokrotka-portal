@@ -9,7 +9,7 @@ import AnimateOnView from '@/components/AnimatedH2';
 import PhotoGallery from '@/components/PhotoGallery';
 
 export default function GalleryPage() {
-    const filePath = path.join(process.cwd(), 'src/data/gallery.json');
+    const filePath = path.join(process.cwd(), 'src/content/data/gallery.json');
     const file = fs.readFileSync(filePath, 'utf8');
     const photos: PhotoWithTitle[] = JSON.parse(file);
 

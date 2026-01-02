@@ -4,9 +4,7 @@ import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
 import { getRoleLabel } from '@/utils/getRoleLabel';
 
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-
-export default async function UserDashboardPage() {
+export default async function DashboardUsersPage() {
     const users = await prisma.user.findMany({
         include: {
             plots: {
@@ -19,10 +17,6 @@ export default async function UserDashboardPage() {
 
     return (
         <article>
-            <header>
-                <h1>Panel Administracyjny</h1>
-                <MainHeaderLineSeparator />
-            </header>
             <h2>Tabela działkowców</h2>
             <Link
                 href="/dashboard/users/create"
