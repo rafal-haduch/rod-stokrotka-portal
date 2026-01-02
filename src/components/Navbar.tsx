@@ -1,36 +1,22 @@
 'use client';
 
-import { useSession, signOut } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { LogIn, User } from 'lucide-react';
 
+import { AppRoute, ROUTE_LIST, ROUTES } from '@/constants/routes';
+
 import { cn } from '@/utils/cn';
 
 import logo from '@/../public/assets/logo.svg';
 
-interface NavLink {
-    name: string;
-    href: string;
-}
-
-const navLinks: NavLink[] = [
-    { name: 'STRONA GŁÓWNA', href: '/' },
-    { name: 'O NAS', href: '/about-us' },
-    { name: 'MAPA', href: '/map' },
-    { name: 'GALERIA', href: '/gallery' },
-    { name: 'WŁADZE', href: '/structure-association' },
-    { name: 'KONTAKT', href: '/contact' },
-    { name: 'DOKUMENTY', href: '/documents' },
-    { name: 'OPŁATY', href: '/fees' },
-    { name: 'INFORMACJE', href: '/information' },
-    { name: 'OGŁOSZENIA', href: '/announcements' },
-    { name: 'WSPOMNIENIA', href: '/memories' },
-    { name: 'INWESTYCJE', href: '/investments' },
-    { name: 'PORADY OGRODOWE', href: '/gardening-guide' },
-] as const;
+const routes = ROUTE_LIST as AppRoute[];
+const navItems = routes
+    .filter((r) => r.mainNav)
+    .sort((a, b) => a.mainNav!.order - b.mainNav!.order);
 
 export default function Navbar() {
     const { data: session, status } = useSession();
@@ -107,25 +93,24 @@ export default function Navbar() {
                     'text-theme-txt'
                 )}
             >
-                {navLinks.map((item) => (
+                {navItems.map((item) => (
                     <li
-                        key={item.href}
+                        key={item.path}
                         className={cn(
                             'hover:text-theme-txt-h',
                             'cursor-pointer',
-                            pathname === item.href ? 'text-theme-txt-h underline' : ''
+                            pathname === item.path ? 'text-theme-txt-h underline' : ''
                         )}
                     >
-                        <Link href={item.href}>{item.name}</Link>
+                        <Link href={item.path}>{item.mainNav?.label}</Link>
                     </li>
                 ))}
             </ul>
 
-            {/* REVIEW: klasy  */}
             {/* Login */}
             {isLoggedIn ? (
                 <Link
-                    href="/my-profile"
+                    href={ROUTES.MY_PROFILE.path}
                     className={cn(
                         'hidden flex-col items-center xl:flex',
                         'text-white',
@@ -137,7 +122,7 @@ export default function Navbar() {
                 </Link>
             ) : (
                 <Link
-                    href="/sign-in"
+                    href={ROUTES.SIGN_IN.path}
                     className={cn(
                         'hidden flex-col items-center xl:flex',
                         'text-white',
@@ -165,21 +150,21 @@ export default function Navbar() {
                     )}
                 >
                     {/* TODO: change animation */}
-                    {navLinks.map((item, i) => (
-                        <li key={item.href} className="hover:text-theme-txt-h">
+                    {navItems.map((item, i) => (
+                        <li key={item.path} className="hover:text-theme-txt-h">
                             <Link
-                                href={item.href}
+                                href={item.path}
                                 onClick={() => setIsOpen(false)}
                                 className={cn(
                                     'block w-full',
                                     'transform transition-all duration-500 ease-out',
-                                    pathname === item.href ? 'text-theme-txt-h underline' : '',
+                                    pathname === item.path ? 'text-theme-txt-h underline' : '',
                                     isClient && isOpen
                                         ? 'translate-x-0 opacity-100'
                                         : '-translate-x-[120vw] opacity-0'
                                 )}
                             >
-                                {item.name}
+                                {item.mainNav?.label}
                             </Link>
                         </li>
                     ))}
@@ -188,7 +173,7 @@ export default function Navbar() {
                     <li>
                         {isLoggedIn ? (
                             <Link
-                                href="/my-profile"
+                                href={ROUTES.MY_PROFILE.path}
                                 className={cn(
                                     'mt-4 flex items-center space-x-2',
                                     'text-white',
@@ -203,7 +188,7 @@ export default function Navbar() {
                             </Link>
                         ) : (
                             <Link
-                                href="/sign-in"
+                                href={ROUTES.SIGN_IN.path}
                                 className={cn(
                                     'mt-4 flex items-center space-x-2',
                                     'text-white',

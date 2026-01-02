@@ -3,35 +3,13 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
+import { AppRoute, ROUTE_LIST } from '@/constants/routes';
+
 import { slugToTitle } from '@/utils/toTitleCase';
 
 import Hero from './Hero';
 
-interface RouteTitles {
-    pathname: string;
-    title: string;
-}
-
-export const routeTitles: RouteTitles[] = [
-    { pathname: '/', title: 'STRONA GŁÓWNA' },
-    { pathname: '/about-us', title: 'O NAS' },
-    { pathname: '/map', title: 'MAPA' },
-    { pathname: '/gallery', title: 'GALERIA' },
-    { pathname: '/structure-association', title: 'WŁADZE' },
-    { pathname: '/contact', title: 'KONTAKT' },
-    { pathname: '/documents', title: 'DOKUMENTY' },
-    { pathname: '/fees', title: 'OPŁATY' },
-    { pathname: '/information', title: 'INFORMACJE' },
-    { pathname: '/announcements', title: 'OGŁOSZENIA' },
-    { pathname: '/memories', title: 'WSPOMNIENIA' },
-    { pathname: '/investments', title: 'INWESTYCJE' },
-    { pathname: '/gardening-guide', title: 'PORADY OGRODOWE' },
-    { pathname: '/privacy-policy', title: 'POLITYKA PRYWATNOŚCI' },
-    { pathname: '/my-profile', title: 'PANEL DZIAŁKOWCA' },
-    { pathname: '/dashboard', title: 'PANEL ADMINISTRACYJNY' },
-    { pathname: '/dashboard/users', title: 'TABELA DZIAŁKOWCÓW' },
-    // ...
-] as const;
+const routes = ROUTE_LIST as AppRoute[];
 
 export default function DynamicClientLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
@@ -42,7 +20,7 @@ export default function DynamicClientLayout({ children }: { children: React.Reac
 
     useEffect(() => {
         let pageTitle = '';
-        const staticRoute = routeTitles.find((route) => route.pathname === pathname);
+        const staticRoute = routes.find((r) => r.path === pathname);
 
         //TODO: improve site name in slug pages
         if (staticRoute) {
@@ -53,6 +31,9 @@ export default function DynamicClientLayout({ children }: { children: React.Reac
         } else if (pathname.startsWith('/investments/')) {
             const slug = pathname.replace('/investments/', '');
             pageTitle = slugToTitle(slug);
+        } else if (pathname.startsWith('/announcements/')) {
+            const slug = pathname.replace('/announcements/', '');
+            pageTitle = slugToTitle(slug);
         }
 
         document.title = pageTitle
@@ -60,12 +41,12 @@ export default function DynamicClientLayout({ children }: { children: React.Reac
             : 'ROD Stokrotka Sanok';
     }, [pathname]);
 
-    const hideHeroRoutes = ['/sign-in', '/privacy-policy', '/my-profile'];
+    const route = routes.find((r) => r.path === pathname);
     const showHero =
-        !hideHeroRoutes.includes(pathname) &&
-        !pathname.startsWith('/memories/') &&
-        !pathname.startsWith('/investments/') &&
-        !pathname.startsWith('/dashboard');
+        route?.hero ??
+        (!pathname.startsWith('/memories/') &&
+            !pathname.startsWith('/investments/') &&
+            !pathname.startsWith('/dashboard'));
 
     return (
         <>

@@ -9,7 +9,7 @@ import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import AnimateOnView from '@/components/AnimatedH2';
 
 //TODO: change to server copmponent
-export default function MapPage() {
+export default function GardenMapPage() {
     // Lightbox and zoom control states
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [zoom, setZoom] = useState(1);

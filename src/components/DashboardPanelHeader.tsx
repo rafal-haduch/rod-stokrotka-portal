@@ -1,6 +1,13 @@
 import Link from 'next/link';
 
+import { AppRoute, ROUTE_LIST } from '@/constants/routes';
+
 import MainHeaderLineSeparator from './MainHeaderLineSeparator';
+
+const routes = ROUTE_LIST as AppRoute[];
+const navItems = routes
+    .filter((r) => r.dashboardNav)
+    .sort((a, b) => a.dashboardNav!.order - b.dashboardNav!.order);
 
 export default function DashboardPanelHeader() {
     return (
@@ -15,41 +22,11 @@ export default function DashboardPanelHeader() {
             {/* Bottom Section */}
             <nav>
                 <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3">
-                    <li>
-                        <Link href="/dashboard/users" className="hover:underline">
-                            Tabela Działkowców
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/dashboard/plots" className="hover:underline">
-                            Tabela działek
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/dashboard/fees" className="hover:underline">
-                            Tabela opłat
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/dashboard/payments" className="hover:underline">
-                            Płatności
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/dashboard/annoucements" className="hover:underline">
-                            Ogłoszenia
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/dashboard/documents" className="hover:underline">
-                            Dokumenty
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/dashboard/surveys" className="hover:underline">
-                            Ankiety
-                        </Link>
-                    </li>
+                    {navItems.map((item) => (
+                        <li key={item.path} className="hover:underline">
+                            <Link href={item.path}>{item.dashboardNav?.label}</Link>
+                        </li>
+                    ))}
                 </ul>
             </nav>
         </header>

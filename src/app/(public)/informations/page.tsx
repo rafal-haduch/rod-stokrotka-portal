@@ -4,7 +4,7 @@ import AnimateOnView from '@/components/AnimatedH2';
 
 import InformationsList from './components/InformationsList';
 
-export default function InformationPage() {
+export default function InformationsPage() {
     return (
         <article>
             <header>

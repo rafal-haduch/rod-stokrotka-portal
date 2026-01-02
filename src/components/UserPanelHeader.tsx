@@ -2,10 +2,17 @@ import { User } from 'next-auth';
 import Link from 'next/link';
 import { CircleUserRound, LayoutDashboard } from 'lucide-react';
 
+import { AppRoute, ROUTE_LIST, ROUTES } from '@/constants/routes';
+
 import { isAdminOrBoard } from '@/utils/rolePermissions';
 
 import SignOutButton from './SignOutButton';
 import MainHeaderLineSeparator from './MainHeaderLineSeparator';
+
+const routes = ROUTE_LIST as AppRoute[];
+const navItems = routes
+    .filter((r) => r.userNav)
+    .sort((a, b) => a.userNav!.order - b.userNav!.order);
 
 export default function UserPanelHeader({ user }: { user: User }) {
     const isDashboardAvailable = isAdminOrBoard(user.role);
@@ -24,24 +31,14 @@ export default function UserPanelHeader({ user }: { user: User }) {
             {/* Bottom Section */}
             <nav className="w-full">
                 <ul className="flex justify-around">
-                    <li>
-                        <Link href="/my-profile" className="hover:underline">
-                            Mój profil
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/user-payments" className="hover:underline">
-                            Moje Płatności
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/surveys" className="hover:underline">
-                            Ankiety
-                        </Link>
-                    </li>
+                    {navItems.map((item) => (
+                        <li key={item.path} className="hover:underline">
+                            <Link href="">{item.userNav?.label}</Link>
+                        </li>
+                    ))}
                     {isDashboardAvailable && (
                         <li>
-                            <Link href="/dashboard" className="flex hover:underline">
+                            <Link href={ROUTES.DASHBOARD.path} className="flex hover:underline">
                                 <LayoutDashboard /> Panel Zarządu
                             </Link>
                         </li>
