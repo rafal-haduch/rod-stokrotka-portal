@@ -294,7 +294,19 @@
     }
 
     .button-icon {
-        @apply bg-theme-ui-bg-medium border-theme-ui-border-dark text-theme-txt hover:bg-theme-ui-bg-light flex w-fit justify-center gap-1 rounded-lg border-2 px-6 py-3 text-xl whitespace-nowrap transition hover:cursor-pointer;
+        @apply bg-theme-ui-bg-medium border-theme-ui-border-dark text-theme-txt hover:bg-theme-ui-bg-light flex w-fit justify-center gap-1 rounded-lg border-2 p-2 text-xl whitespace-nowrap transition hover:cursor-pointer;
+    }
+
+    .cms-button-text {
+        @apply bg-theme-ui-bg-medium border-theme-ui-border-dark text-theme-txt hover:bg-theme-ui-bg-light block w-fit rounded-lg border px-3 py-1 text-center text-base whitespace-nowrap transition hover:cursor-pointer;
+    }
+
+    .cms-button-text-and-icon {
+        @apply bg-theme-ui-bg-medium border-theme-ui-border-dark text-theme-txt hover:bg-theme-ui-bg-light block w-fit rounded-lg border-2 px-3 py-1 text-center text-base whitespace-nowrap transition hover:cursor-pointer;
+    }
+
+    .cms-button-icon {
+        @apply bg-theme-ui-bg-medium border-theme-ui-border-dark text-theme-txt hover:bg-theme-ui-bg-light flex w-fit justify-center gap-1 rounded-lg border-2 p-2 text-base whitespace-nowrap transition hover:cursor-pointer;
     }
 
     .h2-animate {

@@ -9,8 +9,6 @@ import { getRoleLabel } from '@/utils/getRoleLabel';
 
 export default async function MyProfilePage() {
     const user = await getUserSession();
-    if (!user) redirect('/sign-in');
-
     const userData = await prisma.user.findUnique({
         where: { id: Number(user.id) },
         include: {

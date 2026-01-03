@@ -33,7 +33,7 @@ export default function UserPanelHeader({ user }: { user: User }) {
                 <ul className="flex justify-around">
                     {navItems.map((item) => (
                         <li key={item.path} className="hover:underline">
-                            <Link href="">{item.userNav?.label}</Link>
+                            <Link href={item.path}>{item.userNav?.label}</Link>
                         </li>
                     ))}
                     {isDashboardAvailable && (

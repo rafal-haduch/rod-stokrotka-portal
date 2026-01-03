@@ -37,7 +37,7 @@ model User {
 
 model Plot {
     id     String @id
-    number String
+    number String @unique
     area   Float
 
     owner   User @relation(fields: [ownerId], references: [id])

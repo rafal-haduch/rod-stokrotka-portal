@@ -1,6 +1,7 @@
 'use server';
 
 import { prisma } from '@/lib/prisma';
+import { Role } from '@prisma/client';
 import bcrypt from 'bcrypt';
 
 function generateLogin(name: string) {
@@ -12,11 +13,22 @@ function generatePassword() {
 }
 
 export async function createUser(formData: FormData) {
-    const name = formData.get('name') as string;
+    const nameRaw = formData.get('name');
+    const roleRaw = formData.get('role');
 
-    const login = 'user';
-    const password = 'user';
+    if (typeof nameRaw !== 'string' || nameRaw.trim().length === 0) {
+        throw new Error('Invalid name');
+    }
 
+    if (!roleRaw || !Object.values(Role).includes(roleRaw as Role)) {
+        throw new Error('Invalid role');
+    }
+
+    const name = nameRaw;
+    const role = roleRaw as Role;
+
+    const login = generateLogin(name);
+    const password = generatePassword();
     const hashed = await bcrypt.hash(password, 10);
 
     await prisma.user.create({
@@ -24,11 +36,13 @@ export async function createUser(formData: FormData) {
             login,
             password: hashed,
             name,
+            role,
         },
     });
 
     return {
         name,
+        role,
         login,
         password, // NOTE: TYLKO do pokazania po utworzeniu
     };

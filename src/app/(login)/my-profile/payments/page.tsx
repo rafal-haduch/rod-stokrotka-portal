@@ -1,0 +1,36 @@
+import { prisma } from '@/lib/prisma';
+import { getUserSession } from '@/utils/getUserSession';
+
+export default async function PaymentsUserPage() {
+    const user = await getUserSession();
+    const userPayments = await prisma.payment.findMany({
+        where: {
+            plot: {
+                ownerId: user.id,
+            },
+        },
+        include: {
+            plot: true,
+        },
+    });
+
+    return (
+        <article>
+            <h2>Płatności</h2>
+            <section>
+                {userPayments.length > 0 ? (
+                    userPayments.map((payment) => (
+                        <div key={payment.id}>
+                            <p>Działka: {payment.plot.number}</p>
+                            <p>Rok: {payment.year}</p>
+                            <p>Status: {payment.paid ? 'Opłacone' : 'Nieopłacone'}</p>
+                            <p>Kwota: {payment.totalAmount} zł</p>
+                        </div>
+                    ))
+                ) : (
+                    <p>Brak dostępnych płatności.</p>
+                )}
+            </section>
+        </article>
+    );
+}

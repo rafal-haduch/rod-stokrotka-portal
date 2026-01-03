@@ -41,7 +41,7 @@ export default async function DashboardUsersPage() {
                     </thead>
                     <tbody>
                         {users.map((user) => (
-                            <tr key={user.id}>
+                            <tr key={user.id} className="hover:bg-theme-bg-secondary">
                                 <th>{user.id}</th>
                                 <th>{user.name}</th>
                                 <th>
@@ -56,20 +56,20 @@ export default async function DashboardUsersPage() {
                                         ? user.lastLogin.toLocaleDateString('pl-PL')
                                         : '—'}
                                 </th>
-                                <th className="">
+                                <th className="px-4 align-middle">
                                     <Link
                                         href={`/dashboard/users/${user.id}/edit`}
                                         title="Edytuj konto"
-                                        className="flex w-fit justify-center gap-1 rounded-lg border bg-gray-100 px-3 whitespace-nowrap text-sky-500 transition hover:cursor-pointer"
+                                        className="flex items-center justify-center rounded-lg border bg-gray-100 text-sky-500 transition hover:cursor-pointer"
                                     >
                                         <UserPen />
                                     </Link>
                                 </th>
-                                <th>
+                                <th className="px-4 align-middle">
                                     <Link
                                         href={`/dashboard/users/${user.id}/delete`}
                                         title="Usuń konto"
-                                        className="flex w-fit justify-center gap-1 rounded-lg border bg-gray-100 px-3 whitespace-nowrap text-red-700 transition hover:cursor-pointer"
+                                        className="flex items-center justify-center rounded-lg border bg-gray-100 text-red-700 transition hover:cursor-pointer"
                                     >
                                         <UserX />
                                     </Link>
