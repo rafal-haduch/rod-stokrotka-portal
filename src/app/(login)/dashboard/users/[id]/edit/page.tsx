@@ -31,8 +31,8 @@ export default async function DeleteUserPage({ params }: { params: Promise<{ id:
 
     return (
         <article>
-            <h1>Modyfikuj dane użystkownika:</h1>
-            return <EditUserForm user={formUser} roles={Object.values(Role)} />;
+            <h2>Modyfikuj konto</h2>
+            <EditUserForm user={formUser} roles={Object.values(Role)} />
         </article>
     );
 }

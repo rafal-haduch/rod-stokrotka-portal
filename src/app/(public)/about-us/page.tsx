@@ -75,7 +75,7 @@ export default function AboutGardenPage() {
                     <h2>Nasz ogród na zdjęciach</h2>
                 </AnimateOnView>
                 <GalleryPreview />
-                <Link href="/gallery" className="button-icon mx-auto">
+                <Link href="/gallery" className="btn btn-lg btn-theme mx-auto">
                     <span>Zobacz wszystkie</span>
                     <ArrowRight />
                 </Link>

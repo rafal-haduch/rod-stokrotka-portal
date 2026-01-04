@@ -31,12 +31,16 @@ export default function ListOfDocuments({ documents }: { documents: Document[] }
                             <a
                                 href={item.href}
                                 target="_blank"
-                                className="button-icon hidden lg:flex"
+                                className="btn btn-md btn-theme hidden lg:flex"
                             >
                                 <ExternalLink />
                                 Otwórz
                             </a>
-                            <a href={item.href} download className="button-icon hidden sm:flex">
+                            <a
+                                href={item.href}
+                                download
+                                className="btn btn-md btn-theme hidden sm:flex"
+                            >
                                 <Download />
                                 Pobierz
                             </a>

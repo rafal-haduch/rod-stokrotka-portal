@@ -88,7 +88,7 @@
     }
 
     table {
-        @apply border-theme-ui-border-light;
+        @apply mx-auto w-full text-center;
     }
 
     thead {
@@ -96,11 +96,15 @@
     }
 
     th {
-        @apply border-theme-ui-border-dark border;
+        @apply border-theme-ui-border-dark border px-1 py-2;
+    }
+
+    tbody tr {
+        @apply hover:bg-theme-bg-secondary;
     }
 
     td {
-        @apply border-theme-ui-border-dark border;
+        @apply border-theme-ui-border-dark border px-1 py-1;
     }
 
     ul {
@@ -289,25 +293,54 @@
         @apply text-theme-link hover:text-theme-link-h underline;
     }
 
-    .button-text {
-        @apply bg-theme-ui-bg-medium border-theme-ui-border-dark text-theme-txt hover:bg-theme-ui-bg-light mx-4 block w-fit rounded-lg border-2 px-6 py-3 text-center text-xl whitespace-nowrap transition hover:cursor-pointer;
+    /* ====== Button Class ======= */
+    .btn {
+        @apply flex w-fit items-center justify-center gap-1 rounded-lg whitespace-nowrap hover:cursor-pointer;
     }
 
-    .button-icon {
-        @apply bg-theme-ui-bg-medium border-theme-ui-border-dark text-theme-txt hover:bg-theme-ui-bg-light flex w-fit justify-center gap-1 rounded-lg border-2 p-2 text-xl whitespace-nowrap transition hover:cursor-pointer;
+    /* Size */
+    .btn-sm {
+        @apply border px-3 py-1 text-sm sm:text-base;
     }
 
-    .cms-button-text {
-        @apply bg-theme-ui-bg-medium border-theme-ui-border-dark text-theme-txt hover:bg-theme-ui-bg-light block w-fit rounded-lg border px-3 py-1 text-center text-base whitespace-nowrap transition hover:cursor-pointer;
+    .btn-md {
+        @apply border px-3 py-1 text-lg sm:text-xl;
     }
 
-    .cms-button-text-and-icon {
-        @apply bg-theme-ui-bg-medium border-theme-ui-border-dark text-theme-txt hover:bg-theme-ui-bg-light block w-fit rounded-lg border-2 px-3 py-1 text-center text-base whitespace-nowrap transition hover:cursor-pointer;
+    .btn-lg {
+        @apply border-2 px-6 py-3 text-lg sm:text-xl;
     }
 
-    .cms-button-icon {
-        @apply bg-theme-ui-bg-medium border-theme-ui-border-dark text-theme-txt hover:bg-theme-ui-bg-light flex w-fit justify-center gap-1 rounded-lg border-2 p-2 text-base whitespace-nowrap transition hover:cursor-pointer;
+    /* Color */
+    .btn-theme {
+        @apply bg-theme-ui-bg-medium border-theme-ui-border-dark hover:bg-theme-ui-bg-light text-theme-txt;
     }
+
+    .btn-primary {
+        @apply bg-sky-600 text-white hover:bg-sky-700;
+    }
+
+    .btn-secondary {
+        @apply bg-gray-200 text-gray-900 hover:bg-gray-300;
+    }
+
+    .btn-danger {
+        @apply bg-red-600 text-white hover:bg-red-700;
+    }
+
+    .btn-success {
+        @apply bg-emerald-600 text-white hover:bg-emerald-700;
+    }
+
+    /* Special */
+    .btn-icon {
+        @apply border-2 p-2;
+    }
+
+    .btn-in-table {
+        @apply mx-auto px-2 py-1;
+    }
+    /* ====== Button Class ======= */
 
     .h2-animate {
         opacity: 0;

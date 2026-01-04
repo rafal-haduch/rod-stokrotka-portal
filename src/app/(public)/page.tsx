@@ -29,9 +29,8 @@ export default function HomePage() {
                     tu Państwo również przydatne materiały i dokumenty, ciekawe zdjęcia oraz porady
                     ogrodowe, które pomogą w pielęgnacji działek.
                 </p>
-                <Link href="/about-us" className="button-icon mx-auto">
-                    Dowiedz się więcej o nas
-                    <ArrowRight />
+                <Link href="/about-us" className="btn btn-lg btn-theme mx-auto">
+                    Dowiedz się więcej o nas <ArrowRight />
                 </Link>
             </section>
 
@@ -45,7 +44,7 @@ export default function HomePage() {
                 <Link
                     href="/announcements"
                     title="Zobacz więcej ogłoszeń"
-                    className="button-icon mx-auto"
+                    className="btn btn-lg btn-theme mx-auto"
                 >
                     Zobacz więcej
                     <ArrowRight />
@@ -60,7 +59,11 @@ export default function HomePage() {
                 </AnimateOnView>
                 <WorkInProgress />
                 {/* <MainSlider /> */}
-                <Link href="/gallery" title="Zobacz więcej zdjęć" className="button-icon mx-auto">
+                <Link
+                    href="/gallery"
+                    title="Zobacz więcej zdjęć"
+                    className="btn btn-lg btn-theme mx-auto"
+                >
                     Zobacz więcej
                     <ArrowRight />
                 </Link>

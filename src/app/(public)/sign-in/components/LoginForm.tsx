@@ -4,14 +4,13 @@ import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { Eye, EyeOff } from 'lucide-react';
 
-import Popup from '@/components/Popup';
+import { ROUTES } from '@/constants/routes';
 
 export default function LoginForm() {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [message, setMessage] = useState('');
-    const [showPopup, setShowPopup] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -22,18 +21,16 @@ export default function LoginForm() {
         });
         if (loginResult?.error) {
             if (loginResult.status >= 400 && loginResult.status < 500)
-                setMessage('Nieprawidłowy login lub hasło');
-            else setMessage('Błąd logowania');
+                setMessage('Nieprawidłowy login lub hasło!');
+            else setMessage('Błąd logowania!');
         } else if (loginResult?.ok) {
             setMessage('');
-            window.location.href = '/my-profile';
-        } else {
-            setShowPopup(true);
+            window.location.href = ROUTES.MY_PROFILE.path;
         }
     };
 
     return (
-        <div className="bg-theme-bg-secondary mx-auto mt-4 max-w-md rounded-xl p-8 pb-4 shadow-xl">
+        <div className="bg-theme-bg-secondary mx-auto mt-4 max-w-md rounded-xl p-8 shadow-xl">
             <h1 className="text-theme-txt text-center">Zaloguj się</h1>
             <hr className="border-theme-hr mx-auto my-8 w-3/4 border-t-4" />
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -47,7 +44,7 @@ export default function LoginForm() {
                         id="login"
                         value={login}
                         onChange={(e) => setLogin(e.target.value)}
-                        //required
+                        required
                         className="border-theme-200 focus:border-theme-ui-border-dark bg-theme-bg-primary mt-1 block w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none"
                     />
                 </div>
@@ -63,7 +60,7 @@ export default function LoginForm() {
                             id="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            //required
+                            required
                             className="border-theme-200 focus:border-theme-ui-border-dark bg-theme-bg-primary block w-full rounded-md border px-3 py-2 pr-10 shadow-sm focus:outline-none"
                         />
                         <button
@@ -77,30 +74,22 @@ export default function LoginForm() {
                     </div>
                 </div>
 
-                {/* Forgot Password */}
-                <div className="text-lg">
-                    <a href="/forgot-password" className="link-context font-normal">
-                        Zapomniałem hasła
-                    </a>
-                </div>
-                {/* Sign-in Button */}
-                <button type="submit" className="button-text m-0 mb-4 w-full">
-                    Zaloguj
-                </button>
+                <div>
+                    {/* Message placeholder */}
+                    <div className="flex min-h-6 items-center justify-center">
+                        {message && <p className="text-center text-base text-red-500">{message}</p>}
+                    </div>
 
-                {/* Message placeholder */}
-                <div className="flex min-h-8 items-center justify-center">
-                    {message && <p className="text-md text-center text-red-500">{message}</p>}
+                    {/* Sign-in Button */}
+                    <button
+                        type="submit"
+                        onClick={() => setMessage('')}
+                        className="btn btn-lg btn-theme mx-auto w-full"
+                    >
+                        Zaloguj
+                    </button>
                 </div>
             </form>
-            {/* Popup function unavailable */}
-            {showPopup && (
-                <Popup
-                    type="info"
-                    message="Funkcja logowania nie jest jeszcze dostępna. Trwają prace nad jej przygotowaniem."
-                    onClose={() => setShowPopup(false)}
-                />
-            )}
         </div>
     );
 }

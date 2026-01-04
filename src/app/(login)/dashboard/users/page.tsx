@@ -1,4 +1,4 @@
-import { UserPen, UserPlus, UserX } from 'lucide-react';
+import { Pencil, Plus, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 
 import { prisma } from '@/lib/prisma';
@@ -20,13 +20,13 @@ export default async function DashboardUsersPage() {
             <h2>Tabela działkowców</h2>
             <Link
                 href="/dashboard/users/create"
-                className="button-text mx-auto mb-4"
+                className="btn btn-icon btn-theme mx-auto mb-4"
                 title="Dodaj nowe konto"
             >
-                <UserPlus />
+                <Plus />
             </Link>
             <section>
-                <table className="w-full text-xs md:text-sm lg:text-lg">
+                <table className="text-xs md:text-sm lg:text-base">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -41,39 +41,39 @@ export default async function DashboardUsersPage() {
                     </thead>
                     <tbody>
                         {users.map((user) => (
-                            <tr key={user.id} className="hover:bg-theme-bg-secondary">
-                                <th>{user.id}</th>
-                                <th>{user.name}</th>
-                                <th>
+                            <tr key={user.id}>
+                                <td>{user.id}</td>
+                                <td>{user.name}</td>
+                                <td>
                                     {user.plots.length > 0
                                         ? user.plots.map((plot) => plot.id).join(', ')
                                         : '—'}
-                                </th>
-                                <th>{getRoleLabel(user.role)}</th>
-                                <th>{user.createdAt.toLocaleDateString('pl-PL')}</th>
-                                <th>
+                                </td>
+                                <td>{getRoleLabel(user.role)}</td>
+                                <td>{user.createdAt.toLocaleDateString('pl-PL')}</td>
+                                <td>
                                     {user.lastLogin
                                         ? user.lastLogin.toLocaleDateString('pl-PL')
                                         : '—'}
-                                </th>
-                                <th className="px-4 align-middle">
+                                </td>
+                                <td>
                                     <Link
                                         href={`/dashboard/users/${user.id}/edit`}
                                         title="Edytuj konto"
-                                        className="flex items-center justify-center rounded-lg border bg-gray-100 text-sky-500 transition hover:cursor-pointer"
+                                        className="btn btn-primary btn-in-table"
                                     >
-                                        <UserPen />
+                                        <Pencil />
                                     </Link>
-                                </th>
-                                <th className="px-4 align-middle">
+                                </td>
+                                <td>
                                     <Link
                                         href={`/dashboard/users/${user.id}/delete`}
                                         title="Usuń konto"
-                                        className="flex items-center justify-center rounded-lg border bg-gray-100 text-red-700 transition hover:cursor-pointer"
+                                        className="btn btn-danger btn-in-table"
                                     >
-                                        <UserX />
+                                        <Trash2 />
                                     </Link>
-                                </th>
+                                </td>
                             </tr>
                         ))}
                     </tbody>

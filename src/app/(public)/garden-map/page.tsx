@@ -85,7 +85,7 @@ export default function GardenMapPage() {
                 <a
                     href="/documents/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
                     download
-                    className="button-icon mx-auto"
+                    className="btn btn-lg btn-theme mx-auto"
                 >
                     <Download />
                     Pobierz szczegółowy plan

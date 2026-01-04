@@ -38,9 +38,10 @@ export default function CreateUserForm() {
     return (
         <form
             action={action}
-            className="bg-theme-bg-secondary mx-auto flex max-w-xl flex-col gap-4 p-4"
+            className="bg-theme-bg-secondary mx-auto flex max-w-xl flex-col gap-2 p-4"
         >
             {result ? (
+                /* Feedback result from action create user */
                 <>
                     <div className="flex items-center justify-center gap-4">
                         <p>
@@ -61,14 +62,6 @@ export default function CreateUserForm() {
                         </label>
                     </div>
                     <div className="flex flex-col items-center justify-center">
-                        <button
-                            type="button"
-                            title="Skopiuj dane logowania"
-                            onClick={copyCredentials}
-                            className="cms-button-icon"
-                        >
-                            <Copy />
-                        </button>
                         <p
                             className={`text-sm text-green-600 transition-opacity duration-200 ${
                                 copied ? 'opacity-100' : 'opacity-0'
@@ -76,35 +69,46 @@ export default function CreateUserForm() {
                         >
                             Skopiowano do schowka
                         </p>
+                        <button
+                            type="button"
+                            title="Skopiuj dane logowania"
+                            onClick={copyCredentials}
+                            className="btn btn-sm btn-theme"
+                        >
+                            Kopiuj
+                            <Copy />
+                        </button>
                     </div>
-                    <div className="flex items-center justify-center gap-4">
-                        <p>
-                            Pamiętaj aby przekazać te dane do logowania osobie, dla której zostało
-                            założone konto. Kliknij powyższy przycisk by je skopiować i wysłać.
-                        </p>
-                    </div>
-                    <div className="flex items-center justify-center gap-4">
-                        <Link href={ROUTES.USERS_DASHBOARD.path} className="cms-button-text">
+
+                    <p className="text-center text-base">
+                        Pamiętaj aby przekazać te dane do logowania osobie, dla której zostało
+                        założone konto. Możesz kliknąć powyższy przycisk by je wygodnie skopiować i
+                        wysłać.
+                    </p>
+
+                    <div className="flex items-center justify-center gap-10">
+                        <Link href={ROUTES.USERS_DASHBOARD.path} className="btn btn-sm btn-theme">
                             Wróć do tabeli
                         </Link>
                         <button
                             type="button"
                             onClick={() => setResult(null)}
-                            className="cms-button-text"
+                            className="btn btn-sm btn-theme"
                         >
                             Dodaj kolejnego
                         </button>
                     </div>
                 </>
             ) : (
+                /* Create User Form */
                 <>
                     <div className="flex items-center justify-center gap-4">
                         <label>Imię:</label>
                         <input
                             type="text"
                             name="name"
-                            className="border-theme-200 focus:border-theme-ui-border-dark bg-theme-bg-primary rounded-md border px-3 py-2 shadow-sm focus:outline-none"
                             required
+                            className="border-theme-200 focus:border-theme-ui-border-dark bg-theme-bg-primary rounded-md border px-3 py-2 shadow-sm focus:outline-none"
                         />
                     </div>
 
@@ -133,9 +137,23 @@ export default function CreateUserForm() {
                         />
                     </div>
 
-                    <button type="submit" className="button-text mx-auto">
-                        Dodaj
-                    </button>
+                    {/* Buttons */}
+                    <div className="flex justify-center gap-14">
+                        <Link
+                            href={ROUTES.USERS_DASHBOARD.path}
+                            title="Anuluj proces dodawania"
+                            className="btn btn-sm btn-theme"
+                        >
+                            Anuluj
+                        </Link>
+                        <button
+                            type="submit"
+                            title="Dodaj Działkowca"
+                            className="btn btn-sm btn-theme"
+                        >
+                            Dodaj
+                        </button>
+                    </div>
                 </>
             )}
         </form>

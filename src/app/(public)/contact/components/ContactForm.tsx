@@ -176,10 +176,10 @@ export default function ContactForm() {
                 <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="button-icon w-full"
+                    className="btn btn-lg btn-theme mx-auto w-1/2"
                 >
-                    <SendHorizontal />
                     <span>{status === 'loading' ? 'Wysyłanie...' : 'Wyślij'}</span>
+                    <SendHorizontal />
                 </button>
             </form>
 

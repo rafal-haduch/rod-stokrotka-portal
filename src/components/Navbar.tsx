@@ -174,6 +174,7 @@ export default function Navbar() {
                         {isLoggedIn ? (
                             <Link
                                 href={ROUTES.MY_PROFILE.path}
+                                onClick={() => setIsOpen(false)}
                                 className={cn(
                                     'mt-4 flex items-center space-x-2',
                                     'text-white',
@@ -189,6 +190,7 @@ export default function Navbar() {
                         ) : (
                             <Link
                                 href={ROUTES.SIGN_IN.path}
+                                onClick={() => setIsOpen(false)}
                                 className={cn(
                                     'mt-4 flex items-center space-x-2',
                                     'text-white',

@@ -9,20 +9,19 @@ import { Check, X } from 'lucide-react';
 export default function FeesTable() {
     return (
         <>
-            <table className={cn('mx-auto mb-4 w-full max-w-2xl', 'text-md text-center')}>
+            <table className="max-w-xl">
                 <thead>
                     <tr>
-                        <th className="px-3 py-2">Kod działki</th>
-                        <th className="px-3 py-2">Status</th>
+                        <th>Kod działki</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     {plotsFeesStatus.map((item) => (
-                        <tr key={item.id} className="hover:bg-theme-bg-secondary">
-                            <td className="px-3 py-1">{item.id}</td>
+                        <tr key={item.id}>
+                            <td>{item.id}</td>
                             <td
                                 className={cn(
-                                    'px-3 py-1',
                                     item.status === 'Opłacone' ? 'text-green-600' : 'text-red-600'
                                 )}
                             >
