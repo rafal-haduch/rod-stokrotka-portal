@@ -2,10 +2,11 @@ import { redirect } from 'next/navigation';
 
 import { prisma } from '@/lib/prisma';
 
-import { Role } from '@prisma/client';
-import EditUserForm, { EditUserFormProps } from './components/EditUserForm';
+import { ROUTES } from '@/constants/routes';
 
-export default async function DeleteUserPage({ params }: { params: Promise<{ id: string }> }) {
+import UpdateUserForm, { UpdateUserFormProps } from './components/UpdateUserForm';
+
+export default async function UpdateUserPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
     const userId = Number(id);
 
@@ -20,9 +21,9 @@ export default async function DeleteUserPage({ params }: { params: Promise<{ id:
         },
     });
 
-    if (!user) redirect('/dashboard/users');
+    if (!user) redirect(ROUTES.USERS_DASHBOARD.path);
 
-    const formUser: EditUserFormProps['user'] = {
+    const formUser: UpdateUserFormProps = {
         id: user.id,
         name: user.name,
         role: user.role,
@@ -30,9 +31,10 @@ export default async function DeleteUserPage({ params }: { params: Promise<{ id:
     };
 
     return (
-        <article>
-            <h2>Modyfikuj konto</h2>
-            <EditUserForm user={formUser} roles={Object.values(Role)} />
-        </article>
+        <section>
+            <h2>Edytuj konto</h2>
+
+            <UpdateUserForm user={formUser} />
+        </section>
     );
 }

@@ -10,9 +10,9 @@ export default async function DashboardLayout({ children }: { children: React.Re
     if (!user || !isAdminOrBoard(user.role)) redirect('/sign-in');
 
     return (
-        <section >
+        <article>
             <DashboardPanelHeader />
-            <main>{children}</main>
-        </section>
+            <>{children}</>
+        </article>
     );
 }

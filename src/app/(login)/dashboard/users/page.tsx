@@ -16,8 +16,8 @@ export default async function DashboardUsersPage() {
     });
 
     return (
-        <article>
-            <h2>Tabela działkowców</h2>
+        <section>
+            <h2>Tabela kont działkowców</h2>
             <Link
                 href="/dashboard/users/create"
                 className="btn btn-icon btn-theme mx-auto mb-4"
@@ -58,8 +58,8 @@ export default async function DashboardUsersPage() {
                                 </td>
                                 <td>
                                     <Link
-                                        href={`/dashboard/users/${user.id}/edit`}
-                                        title="Edytuj konto"
+                                        href={`/dashboard/users/${user.id}/update`}
+                                        title="Edytuj dane konta"
                                         className="btn btn-primary btn-in-table"
                                     >
                                         <Pencil />
@@ -68,7 +68,7 @@ export default async function DashboardUsersPage() {
                                 <td>
                                     <Link
                                         href={`/dashboard/users/${user.id}/delete`}
-                                        title="Usuń konto"
+                                        title="Usuń konto z systemu"
                                         className="btn btn-danger btn-in-table"
                                     >
                                         <Trash2 />
@@ -79,6 +79,6 @@ export default async function DashboardUsersPage() {
                     </tbody>
                 </table>
             </section>
-        </article>
+        </section>
     );
 }
