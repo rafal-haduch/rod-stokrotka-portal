@@ -11,7 +11,7 @@ const navItems = routes
 
 export default function DashboardPanelHeader() {
     return (
-        <header className="bg-theme-ui-bg-light relative mx-auto flex w-full max-w-5xl flex-col justify-between rounded-lg p-4 shadow-md">
+        <header className="bg-theme-ui-bg-light relative mx-auto mb-4 flex w-full max-w-5xl flex-col justify-between rounded-lg p-4 shadow-md">
             {/* Top Section */}
             <div className="w-full">
                 <Link href="/dashboard">

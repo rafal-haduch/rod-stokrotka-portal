@@ -2,7 +2,7 @@
 
 import { Role } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
-import { UpdateUserResult } from '@/types/editUserResult';
+import { UpdateUserResult } from '@/types/updateUserResult';
 
 //TODO: Preparing data about plot for the database type
 export async function updateUser(formData: FormData): Promise<UpdateUserResult> {

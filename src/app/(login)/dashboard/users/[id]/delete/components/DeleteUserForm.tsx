@@ -5,7 +5,7 @@ import { Role } from '@prisma/client';
 
 import { deleteUser } from '@/actions/user/delete';
 
-import { UpdateUserResult } from '@/types/editUserResult';
+import { UpdateUserResult } from '@/types/updateUserResult';
 
 import DeleteUserSuccess from './DeleteUserSuccess';
 import DeleteUserFields from './DeleteUserFields';
