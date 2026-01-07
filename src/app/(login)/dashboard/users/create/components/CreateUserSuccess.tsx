@@ -1,6 +1,5 @@
 'use client';
 
-import { Role } from '@prisma/client';
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowBigLeft, Copy, UserRoundPlus } from 'lucide-react';

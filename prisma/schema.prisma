@@ -36,21 +36,21 @@ model User {
 }
 
 model Plot {
-    id     String @id
-    number String @unique
-    area   Float
+    id         Int    @id @default(autoincrement())
+    plotNumber String @unique @map("plot_number") @db.VarChar(10)
+    area       Float?
 
-    owner   User @relation(fields: [ownerId], references: [id])
-    ownerId Int  @map("owner_id")
+    ownerId Int?  @map("owner_id")
+    owner   User? @relation(fields: [ownerId], references: [id])
 
     payments Payment[]
 }
 
 model Payment {
-    id String @id @default(cuid())
+    id Int @id @default(autoincrement())
 
-    plot   Plot   @relation(fields: [plotId], references: [id])
-    plotId String @map("plot_id")
+    plot   Plot @relation(fields: [plotId], references: [id])
+    plotId Int  @map("plot_id")
 
     year Int
     paid Boolean @default(false)
@@ -63,7 +63,7 @@ model Payment {
 }
 
 model Announcement {
-    id      String @id @default(cuid())
+    id      Int    @id @default(autoincrement())
     title   String
     content String
 
