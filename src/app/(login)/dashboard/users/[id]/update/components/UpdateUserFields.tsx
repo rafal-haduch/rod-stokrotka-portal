@@ -4,14 +4,17 @@ import { getRoleLabel } from '@/utils/getRoleLabel';
 import Link from 'next/link';
 import { ROUTES } from '@/constants/routes';
 import { Ban, Save } from 'lucide-react';
+import { PlotOption } from '../../../create/components/CreateUserForm';
+import MultiSelectDropdown from '@/components/MultiSelectPlotsDropdown';
 
 interface Props {
     user: UpdateUserFormProps;
+    plots: PlotOption[];
     loading: boolean;
     errorMsg: string | null;
 }
 
-export default function UpdateUserFields({ user, loading, errorMsg }: Props) {
+export default function UpdateUserFields({ user, plots, loading, errorMsg }: Props) {
     //TODO: hide admin role if role != admin
     const roles = Object.values(Role); //.filter((r) => r !== Role.ADMIN);
 
@@ -46,10 +49,13 @@ export default function UpdateUserFields({ user, loading, errorMsg }: Props) {
 
             {/* Plot  */}
             <label className="col-span-1 flex items-center justify-end text-base">Działka:</label>
-            <input
-                name="plots"
-                defaultValue={user.plots.length ? user.plots.map((p) => p.id).join(', ') : '—'}
-                className="border-theme-200 focus:border-theme-ui-border-dark bg-theme-bg-primary col-span-3 w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none sm:w-3/4"
+            <MultiSelectDropdown
+                name="plotIds"
+                options={plots.map((p) => ({
+                    id: p.id,
+                    label: `${p.plotNumber}`,
+                }))}
+                initialSelectedIds={user.plots.map((plot) => plot.id)}
             />
 
             {/* Error  */}

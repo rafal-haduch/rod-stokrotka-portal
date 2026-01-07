@@ -9,7 +9,7 @@ export default async function DashboardUsersPage() {
         include: {
             plots: {
                 select: {
-                    id: true,
+                    plotNumber: true,
                 },
             },
         },
@@ -47,7 +47,7 @@ export default async function DashboardUsersPage() {
                             <td>{user.name}</td>
                             <td>
                                 {user.plots.length > 0
-                                    ? user.plots.map((plot) => plot.id).join(', ')
+                                    ? user.plots.map((plot) => plot.plotNumber).join(', ')
                                     : '—'}
                             </td>
                             <td>{getRoleLabel(user.role)}</td>

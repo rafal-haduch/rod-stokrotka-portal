@@ -2,7 +2,7 @@ import { prisma } from '@/lib/prisma';
 import CreateUserForm, { PlotsListProp } from './components/CreateUserForm';
 
 export default async function CreateUserPage() {
-    const plotsDb = (
+    const plotsListDb = (
         await prisma.plot.findMany({
             select: {
                 id: true,
@@ -20,7 +20,7 @@ export default async function CreateUserPage() {
         <section>
             <h2>Dodaj nowe konto</h2>
 
-            <CreateUserForm plots={plotsDb} />
+            <CreateUserForm plots={plotsListDb} />
         </section>
     );
 }

@@ -47,7 +47,7 @@ export default function MultiSelectDropdown({ name, options, initialSelectedIds 
             >
                 {selected.length === 0 ? (
                     <span className="flex items-center justify-between">
-                        Kliknij aby rozwinąć i wybrać <ChevronDown />
+                        Kliknij aby rozwinąć <ChevronDown />
                     </span>
                 ) : (
                     <span className="flex items-center justify-between">

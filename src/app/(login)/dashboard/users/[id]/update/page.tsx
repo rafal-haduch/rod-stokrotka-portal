@@ -23,6 +23,20 @@ export default async function UpdateUserPage({ params }: { params: Promise<{ id:
 
     if (!user) redirect(ROUTES.USERS_DASHBOARD.path);
 
+    const plotsListDb = (
+        await prisma.plot.findMany({
+            select: {
+                id: true,
+                plotNumber: true,
+            },
+        })
+    ).sort((a, b) =>
+        a.plotNumber.localeCompare(b.plotNumber, 'pl', {
+            numeric: true,
+            sensitivity: 'base',
+        })
+    );
+
     const formUser: UpdateUserFormProps = {
         id: user.id,
         name: user.name,
@@ -34,7 +48,7 @@ export default async function UpdateUserPage({ params }: { params: Promise<{ id:
         <section>
             <h2>Edytuj konto</h2>
 
-            <UpdateUserForm user={formUser} />
+            <UpdateUserForm user={formUser} plotsList={plotsListDb} />
         </section>
     );
 }

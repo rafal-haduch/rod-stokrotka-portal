@@ -9,6 +9,7 @@ import { UpdateUserResult } from '@/types/updateUserResult';
 
 import UpdateUserFields from './UpdateUserFields';
 import UpdateUserSuccess from './UpdateUserSuccess';
+import { PlotOption } from '../../../create/components/CreateUserForm';
 
 export interface UpdateUserFormProps {
     id: number;
@@ -17,7 +18,12 @@ export interface UpdateUserFormProps {
     plots: { id: number }[];
 }
 
-export default function UpdateUserForm({ user }: { user: UpdateUserFormProps }) {
+interface Props {
+    user: UpdateUserFormProps;
+    plotsList: PlotOption[];
+}
+
+export default function UpdateUserForm({ user, plotsList }: Props) {
     const [result, setResult] = useState<UpdateUserResult | null>(null);
     const [loading, setLoading] = useState(false);
 
@@ -45,7 +51,12 @@ export default function UpdateUserForm({ user }: { user: UpdateUserFormProps }) 
             {result?.success ? (
                 <UpdateUserSuccess />
             ) : (
-                <UpdateUserFields user={user} loading={loading} errorMsg={errorMsg} />
+                <UpdateUserFields
+                    user={user}
+                    plots={plotsList}
+                    loading={loading}
+                    errorMsg={errorMsg}
+                />
             )}
         </form>
     );

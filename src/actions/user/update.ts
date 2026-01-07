@@ -10,7 +10,7 @@ export async function updateUser(formData: FormData): Promise<UpdateUserResult> 
         const idRaw = formData.get('id');
         const nameRaw = formData.get('name');
         const roleRaw = formData.get('role');
-        //const plotRaw = formData.get('plot');
+        const plotIdsRaw = formData.getAll('plotIds');
 
         if (typeof nameRaw !== 'string' || nameRaw.length === 0) {
             throw new Error('Invalid name');
@@ -28,7 +28,7 @@ export async function updateUser(formData: FormData): Promise<UpdateUserResult> 
         const id = Number(idRaw);
         const name = nameRaw.toString();
         const role = roleRaw.toString() as Role;
-        //const plot = plotRaw.toString();
+        const plots = plotIdsRaw.map((id) => Number(id)).filter((id) => !Number.isNaN(id));
 
         if (!Object.values(Role).includes(role)) {
             throw new Error('Niepoprawna rola użytkownika');
@@ -37,6 +37,33 @@ export async function updateUser(formData: FormData): Promise<UpdateUserResult> 
         await prisma.user.update({
             where: { id },
             data: { name, role },
+        });
+
+        console.log(plots);
+
+        await prisma.$transaction(async (tx) => {
+            await prisma.user.update({
+                where: { id },
+                data: { name, role },
+            });
+
+            await tx.plot.updateMany({
+                where: {
+                    ownerId: id,
+                },
+                data: {
+                    ownerId: null,
+                },
+            });
+
+            await tx.plot.updateMany({
+                where: {
+                    id: { in: plots },
+                },
+                data: {
+                    ownerId: id,
+                },
+            });
         });
 
         return {
