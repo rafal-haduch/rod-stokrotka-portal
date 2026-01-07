@@ -5,18 +5,11 @@ import { CreateUserResult } from '@/types/createUserResult';
 import { Role } from '@prisma/client';
 import bcrypt from 'bcrypt';
 
-function generateLogin(name: string) {
-    return name.toLowerCase().replace(/\s+/g, '.') + Math.floor(Math.random() * 1000);
-}
-
-function generatePassword() {
-    return Math.random().toString(36).slice(-10);
-}
-//TODO: Add plots
 export async function createUser(formData: FormData): Promise<CreateUserResult> {
     try {
         const nameRaw = formData.get('name');
         const roleRaw = formData.get('role');
+        const plotIdsRaw = formData.getAll('plotIds');
 
         if (typeof nameRaw !== 'string' || nameRaw.length === 0) {
             throw new Error('Invalid name');
@@ -26,6 +19,7 @@ export async function createUser(formData: FormData): Promise<CreateUserResult> 
             throw new Error('Invalid role');
         }
 
+        // TODO: zmienic na funkcje do ktorej przekazuje argument
         //HACK
         if (nameRaw.toLocaleLowerCase() === 'error test') {
             throw new Error('Test');
@@ -33,18 +27,37 @@ export async function createUser(formData: FormData): Promise<CreateUserResult> 
 
         const name = nameRaw;
         const role = roleRaw as Role;
+        const plots = plotIdsRaw.map((id) => Number(id)).filter((id) => !Number.isNaN(id));
 
         const login = generateLogin(name);
         const password = generatePassword();
         const hashed = await bcrypt.hash(password, 10);
 
-        await prisma.user.create({
-            data: {
-                login,
-                password: hashed,
-                name,
-                role,
-            },
+        let createdUserId: number;
+
+        await prisma.$transaction(async (tx) => {
+            const user = await tx.user.create({
+                data: {
+                    login,
+                    password: hashed,
+                    name,
+                    role,
+                },
+            });
+
+            // REVIEW: po co to?
+            createdUserId = user.id;
+
+            if (plots.length > 0) {
+                await tx.plot.updateMany({
+                    where: {
+                        id: { in: plots },
+                    },
+                    data: {
+                        ownerId: user.id,
+                    },
+                });
+            }
         });
 
         return {
@@ -62,4 +75,12 @@ export async function createUser(formData: FormData): Promise<CreateUserResult> 
             error: 'Wystąpił błąd podczas tworzenia nowego konta!',
         };
     }
+}
+
+function generateLogin(name: string) {
+    return name.toLowerCase().replace(/\s+/g, '.') + Math.floor(Math.random() * 1000);
+}
+
+function generatePassword() {
+    return Math.random().toString(36).slice(-10);
 }

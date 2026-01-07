@@ -7,13 +7,16 @@ import { ROUTES } from '@/constants/routes';
 
 import { getRoleLabel } from '@/utils/getRoleLabel';
 import { Ban, CirclePlus } from 'lucide-react';
+import { PlotOption } from './CreateUserForm';
+import MultiSelectDropdown from '@/components/MultiSelectPlotsDropdown';
 
 interface Props {
+    plots: PlotOption[];
     loading: boolean;
     error: string | null;
 }
 
-export default function CreateUserFields({ loading, error }: Props) {
+export default function CreateUserFields({ plots, loading, error }: Props) {
     const roles = Object.values(Role).filter((r) => r !== Role.ADMIN);
     return (
         <fieldset className="grid grid-cols-4 space-x-2 gap-y-3">
@@ -44,10 +47,12 @@ export default function CreateUserFields({ loading, error }: Props) {
 
             {/* Plot  */}
             <label className="col-span-1 flex items-center justify-end text-base">Działka:</label>
-            <input
-                type="text"
-                name="plot"
-                className="border-theme-200 focus:border-theme-ui-border-dark bg-theme-bg-primary col-span-3 w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none sm:w-3/4"
+            <MultiSelectDropdown
+                name="plotIds"
+                options={plots.map((p) => ({
+                    id: p.id,
+                    label: `${p.plotNumber}`,
+                }))}
             />
 
             {/* Info */}

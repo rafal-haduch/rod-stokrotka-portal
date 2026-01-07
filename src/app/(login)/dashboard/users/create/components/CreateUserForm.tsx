@@ -9,14 +9,22 @@ import { CreateUserResult } from '@/types/createUserResult';
 import CreateUserFields from './CreateUserFields';
 import CreateUserSuccess from './CreateUserSuccess';
 
-export default function CreateUserForm() {
+export interface PlotOption {
+    id: number;
+    plotNumber: string;
+}
+
+export interface PlotsListProp {
+    plots: PlotOption[];
+}
+
+export default function CreateUserForm({ plots }: PlotsListProp) {
     const [result, setResult] = useState<CreateUserResult | null>(null);
     const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        console.log('handleSubmit');
-        // 1️⃣ error znika NATYCHMIAST
+
         setResult(null);
         setLoading(true);
 
@@ -37,7 +45,7 @@ export default function CreateUserForm() {
             {result?.success ? (
                 <CreateUserSuccess result={result} onReset={() => setResult(null)} />
             ) : (
-                <CreateUserFields loading={loading} error={error} />
+                <CreateUserFields plots={plots} loading={loading} error={error} />
             )}
         </form>
     );
