@@ -66,7 +66,7 @@ export default function CreateUserFields({ plots, loading, error }: Props) {
             {/* Buttons */}
             <div className="col-span-4 flex justify-center gap-14">
                 <Link
-                    href={ROUTES.USERS_DASHBOARD.path}
+                    href={ROUTES.DASHBOARD_USERS.path}
                     title="Anuluj dodawanie konta"
                     className="btn btn-sm btn-theme"
                 >

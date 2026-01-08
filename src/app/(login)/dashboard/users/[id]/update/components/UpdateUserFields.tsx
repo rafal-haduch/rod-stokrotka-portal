@@ -70,7 +70,7 @@ export default function UpdateUserFields({ user, plots, loading, errorMsg }: Pro
             {/* Buttons */}
             <div className="col-span-4 flex justify-center gap-14">
                 <Link
-                    href={ROUTES.USERS_DASHBOARD.path}
+                    href={ROUTES.DASHBOARD_USERS.path}
                     title="Anuluj zmianę danych"
                     className="btn btn-sm btn-theme"
                 >

@@ -52,7 +52,7 @@ export default function DeleteUserFields({ user, loading, errorMsg }: Props) {
             {/* Buttons */}
             <div className="col-span-4 flex justify-center gap-14">
                 <Link
-                    href={ROUTES.USERS_DASHBOARD.path}
+                    href={ROUTES.DASHBOARD_USERS.path}
                     title="Anuluj usuwanie konta"
                     className="btn btn-sm btn-theme"
                 >

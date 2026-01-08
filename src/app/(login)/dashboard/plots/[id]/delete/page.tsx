@@ -25,7 +25,7 @@ export default async function DeletePlotPage({ params }: { params: Promise<{ id:
         },
     });
 
-    if (!plotDb) redirect(ROUTES.PLOTS_DASHBOARD.path);
+    if (!plotDb) redirect(ROUTES.DASHBOARD_PLOTS.path);
 
     const plotFormProps: DeletePlotFormProps = {
         id: plotDb.id,

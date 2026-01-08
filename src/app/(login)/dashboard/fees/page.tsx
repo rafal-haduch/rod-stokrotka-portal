@@ -1,3 +1,4 @@
+import { ROUTES } from '@/constants/routes';
 import { Plus } from 'lucide-react';
 import Link from 'next/link';
 
@@ -7,8 +8,8 @@ export default async function DashboardFeesPage() {
             <section>
                 <h2>Tabela opłat</h2>
                 <Link
-                    href="/dashboard/fees/create"
-                    className="button-text mx-auto mb-4"
+                    href={ROUTES.DASHBOARD_CREATE_FEES.path}
+                    className="btn btn-icon btn-theme mx-auto mb-4"
                     title="Dodaj nową opłatę"
                 >
                     <Plus />

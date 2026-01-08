@@ -1,3 +1,4 @@
+import { ROUTES } from '@/constants/routes';
 import { prisma } from '@/lib/prisma';
 import { formatPlotCode } from '@/utils/formatPlotCode';
 import { Pencil, Plus, Trash2 } from 'lucide-react';
@@ -30,7 +31,7 @@ export default async function DashboardPlotsPage() {
             <h2>Tabela działek</h2>
 
             <Link
-                href="/dashboard/plots/create"
+                href={ROUTES.DASHBOARD_CREATE_PLOT.path}
                 className="btn btn-icon btn-theme mx-auto mb-4"
                 title="Dodaj nową działkę"
             >

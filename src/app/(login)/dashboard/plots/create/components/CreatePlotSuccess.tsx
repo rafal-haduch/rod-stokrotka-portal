@@ -33,7 +33,7 @@ export default function CreatePlotSuccess({ result, onReset }: Props) {
 
             <div className="flex items-center justify-center gap-2 sm:gap-10">
                 <Link
-                    href={ROUTES.PLOTS_DASHBOARD.path}
+                    href={ROUTES.DASHBOARD_PLOTS.path}
                     title="Wróć do tabeli dzialek"
                     className="btn btn-sm btn-theme"
                 >

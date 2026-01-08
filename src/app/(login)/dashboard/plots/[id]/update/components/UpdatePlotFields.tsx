@@ -45,7 +45,7 @@ export default function UpdatePlotFields({ plot, loading, errorMsg }: Props) {
             {/* Buttons */}
             <div className="col-span-4 flex justify-center gap-14">
                 <Link
-                    href={ROUTES.PLOTS_DASHBOARD.path}
+                    href={ROUTES.DASHBOARD_PLOTS.path}
                     title="Anuluj zmianę danych"
                     className="btn btn-sm btn-theme"
                 >

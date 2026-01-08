@@ -21,7 +21,7 @@ export default async function UpdateUserPage({ params }: { params: Promise<{ id:
         },
     });
 
-    if (!user) redirect(ROUTES.USERS_DASHBOARD.path);
+    if (!user) redirect(ROUTES.DASHBOARD_USERS.path);
 
     const plotsListDb = (
         await prisma.plot.findMany({

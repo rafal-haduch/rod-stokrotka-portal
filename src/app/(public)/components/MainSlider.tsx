@@ -47,7 +47,7 @@ export default function MainSlider() {
                 style={{ transform: `translateX(-${current * 100}%)` }}
             >
                 {mainSliderImages.map((slide, i) => (
-                    <img key={i} src={slide.src} alt={slide.alt} className="w-full flex-shrink-0" />
+                    <img key={i} src={slide.src} alt={slide.alt} className="w-full shrink-0" />
                 ))}
             </div>
 

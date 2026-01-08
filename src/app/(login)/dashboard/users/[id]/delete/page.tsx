@@ -25,7 +25,7 @@ export default async function DeleteUserPage({ params }: { params: Promise<{ id:
         },
     });
 
-    if (!user) redirect(ROUTES.USERS_DASHBOARD.path);
+    if (!user) redirect(ROUTES.DASHBOARD_USERS.path);
 
     const formUser: DeleteUserFormProps = {
         id: user.id,

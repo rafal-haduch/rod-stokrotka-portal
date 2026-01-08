@@ -75,7 +75,7 @@ export default function CreateUserSuccess({ result, onReset }: Props) {
 
             <div className="flex items-center justify-center gap-2 sm:gap-10">
                 <Link
-                    href={ROUTES.USERS_DASHBOARD.path}
+                    href={ROUTES.DASHBOARD_USERS.path}
                     title="Wróć do tabeli Działkowców"
                     className="btn btn-sm btn-theme"
                 >

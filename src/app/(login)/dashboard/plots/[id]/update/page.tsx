@@ -13,7 +13,7 @@ export default async function UpdatePlotPage({ params }: { params: Promise<{ id:
         where: { id: plotId },
     });
 
-    if (!plot) redirect(ROUTES.PLOTS_DASHBOARD.path);
+    if (!plot) redirect(ROUTES.DASHBOARD_PLOTS.path);
 
     const formPlot: UpdatePlotFormProps = {
         id: plot.id,

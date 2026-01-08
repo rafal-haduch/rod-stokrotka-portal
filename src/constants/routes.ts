@@ -128,43 +128,63 @@ export const ROUTES = {
         title: 'PANEL ZARZĄDU',
         hero: false,
     },
-    USERS_DASHBOARD: {
+    DASHBOARD_USERS: {
         path: '/dashboard/users',
         title: 'TABELA DZIAŁKOWCÓW',
         dashboardNav: { label: 'Tabela działkowców', order: 1 },
         hero: false,
     },
-    PLOTS_DASHBOARD: {
+    DASHBOARD_CREATE_USER: {
+        path: '/dashboard/users/create',
+        title: 'DODAJ NOWE KONTO DZIAŁKOWCA',
+        hero: false,
+    },
+    DASHBOARD_PLOTS: {
         path: '/dashboard/plots',
         title: 'TABELA DZIAŁEK',
         dashboardNav: { label: 'Tabela działek', order: 2 },
         hero: false,
     },
-    FEES_DASHBOARD: {
+    DASHBOARD_CREATE_PLOT: {
+        path: '/dashboard/plots/create',
+        title: 'DODAJ NOWĄ DZIAŁKĘ',
+        hero: false,
+    },
+    DASHBOARD_FEES: {
         path: '/dashboard/fees',
         title: 'TABELA OPŁAT',
         dashboardNav: { label: 'Tabela opłat', order: 3 },
         hero: false,
     },
-    PAYMENTS_DASHBOARD: {
+    DASHBOARD_CREATE_FEES: {
+        path: '/dashboard/fees/create',
+        title: 'DODAJ NOWĄ OPŁATĘ',
+        hero: false,
+    },
+    DASHBOARD_PAYMENTS: {
         path: '/dashboard/payments',
         title: 'TABELA PŁATNOŚCI',
         dashboardNav: { label: 'Płatności', order: 4 },
         hero: false,
     },
-    ANNOUNCEMENTS_DASHBOARD: {
+    DASHBOARD_ANNOUNCEMENTS: {
         path: '/dashboard/announcements',
         title: 'OGŁOSZENIA',
         dashboardNav: { label: 'Ogłoszenia', order: 5 },
         hero: false,
     },
-    DOCUMENTS_DASHBOARD: {
+    DASHBOARD_CREATE_ANNOUNCEMENTS: {
+        path: '/dashboard/announcements/create',
+        title: 'DODAJ NOWE OGŁOSZENIE',
+        hero: false,
+    },
+    DASHBOARD_DOCUMENTS: {
         path: '/dashboard/documents',
         title: 'DOKUMENTY',
         dashboardNav: { label: 'Dokumenty', order: 6 },
         hero: false,
     },
-    SURVEYS_DASHBOARD: {
+    DASHBOARD_SURVEYS: {
         path: '/dashboard/surveys',
         title: 'ANKIETY',
         dashboardNav: { label: 'Ankiety', order: 7 },

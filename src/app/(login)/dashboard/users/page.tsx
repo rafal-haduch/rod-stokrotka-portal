@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { prisma } from '@/lib/prisma';
 import { getRoleLabel } from '@/utils/getRoleLabel';
+import { ROUTES } from '@/constants/routes';
 
 export default async function DashboardUsersPage() {
     const users = await prisma.user.findMany({
@@ -23,7 +24,7 @@ export default async function DashboardUsersPage() {
             <h2>Tabela kont działkowców</h2>
 
             <Link
-                href="/dashboard/users/create"
+                href={ROUTES.DASHBOARD_CREATE_USER.path}
                 className="btn btn-icon btn-theme mx-auto mb-4"
                 title="Dodaj nowe konto"
             >
