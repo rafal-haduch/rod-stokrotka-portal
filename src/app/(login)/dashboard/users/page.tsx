@@ -7,14 +7,17 @@ import { getRoleLabel } from '@/utils/getRoleLabel';
 export default async function DashboardUsersPage() {
     const users = await prisma.user.findMany({
         include: {
-            plots: {
-                select: {
-                    plotNumber: true,
+            plotsId: {
+                include: {
+                    plot: {
+                        select: {
+                            plotNumber: true,
+                        },
+                    },
                 },
             },
         },
     });
-
     return (
         <section>
             <h2>Tabela kont działkowców</h2>
@@ -46,8 +49,8 @@ export default async function DashboardUsersPage() {
                             <td>{user.id}</td>
                             <td>{user.name}</td>
                             <td>
-                                {user.plots.length > 0
-                                    ? user.plots.map((plot) => plot.plotNumber).join(', ')
+                                {user.plotsId.length > 0
+                                    ? user.plotsId.map((p) => p.plot.plotNumber).join(', ')
                                     : '—'}
                             </td>
                             <td>{getRoleLabel(user.role)}</td>

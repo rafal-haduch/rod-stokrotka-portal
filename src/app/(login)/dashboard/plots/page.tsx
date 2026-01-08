@@ -7,8 +7,14 @@ export default async function DashboardPlotsPage() {
     const plots = (
         await prisma.plot.findMany({
             include: {
-                owner: {
-                    select: { name: true },
+                ownersId: {
+                    include: {
+                        user: {
+                            select: {
+                                name: true,
+                            },
+                        },
+                    },
                 },
             },
         })
@@ -48,7 +54,11 @@ export default async function DashboardPlotsPage() {
                             <td>{plot.plotNumber}</td>
                             <td>{formatPlotCode(plot.plotNumber)}</td>
                             <td>{plot.area}</td>
-                            <td>{plot.ownerId}</td>
+                            <td>
+                                {plot.ownersId.length > 0
+                                    ? plot.ownersId.map((p) => p.user.name).join(', ')
+                                    : '—'}
+                            </td>
                             <td className="px-4 align-middle">
                                 <Link
                                     href={`/dashboard/plots/${plot.id}/update`}

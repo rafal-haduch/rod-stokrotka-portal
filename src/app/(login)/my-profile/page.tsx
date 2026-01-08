@@ -12,7 +12,15 @@ export default async function MyProfilePage() {
     const userData = await prisma.user.findUnique({
         where: { id: Number(user.id) },
         include: {
-            plots: true,
+            plotsId: {
+                include: {
+                    plot: {
+                        select: {
+                            plotNumber: true,
+                        },
+                    },
+                },
+            },
         },
     });
     //REVIEW: zmienic na błąd?
@@ -59,13 +67,9 @@ export default async function MyProfilePage() {
                     <div className="flex space-x-1">
                         <label className="text-theme-txt">Działki: </label>
                         <div className="text-theme-txt-secondary">
-                            {userData.plots.length === 0
-                                ? 'Brak przypisanych działek'
-                                : userData.plots.map((plot) => (
-                                      <div key={plot.id}>
-                                          #{plot.number} – {plot.area} m²
-                                      </div>
-                                  ))}
+                            {userData.plotsId.length > 0
+                                ? userData.plotsId.map((p) => p.plot.plotNumber).join(', ')
+                                : '—'}
                         </div>
                     </div>
                 </form>

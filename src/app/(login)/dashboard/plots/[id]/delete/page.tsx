@@ -12,6 +12,17 @@ export default async function DeletePlotPage({ params }: { params: Promise<{ id:
 
     const plotDb = await prisma.plot.findUnique({
         where: { id: plotId },
+        include: {
+            ownersId: {
+                include: {
+                    user: {
+                        select: {
+                            name: true,
+                        },
+                    },
+                },
+            },
+        },
     });
 
     if (!plotDb) redirect(ROUTES.PLOTS_DASHBOARD.path);
@@ -20,7 +31,7 @@ export default async function DeletePlotPage({ params }: { params: Promise<{ id:
         id: plotDb.id,
         plotNumber: plotDb.plotNumber,
         area: plotDb.area,
-        ownerId: plotDb.ownerId,
+        owners: plotDb.ownersId.map((p) => p.user.name),
     };
 
     return (

@@ -33,8 +33,6 @@ export async function createUser(formData: FormData): Promise<CreateUserResult> 
         const password = generatePassword();
         const hashed = await bcrypt.hash(password, 10);
 
-        let createdUserId: number;
-
         await prisma.$transaction(async (tx) => {
             const user = await tx.user.create({
                 data: {
@@ -45,17 +43,12 @@ export async function createUser(formData: FormData): Promise<CreateUserResult> 
                 },
             });
 
-            // REVIEW: po co to?
-            createdUserId = user.id;
-
             if (plots.length > 0) {
-                await tx.plot.updateMany({
-                    where: {
-                        id: { in: plots },
-                    },
-                    data: {
-                        ownerId: user.id,
-                    },
+                await tx.userPlot.createMany({
+                    data: plots.map((plotId) => ({
+                        userId: user.id,
+                        plotId,
+                    })),
                 });
             }
         });

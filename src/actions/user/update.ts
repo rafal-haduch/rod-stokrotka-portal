@@ -47,22 +47,15 @@ export async function updateUser(formData: FormData): Promise<UpdateUserResult> 
                 data: { name, role },
             });
 
-            await tx.plot.updateMany({
-                where: {
-                    ownerId: id,
-                },
-                data: {
-                    ownerId: null,
-                },
+            await tx.userPlot.deleteMany({
+                where: { userId: id },
             });
 
-            await tx.plot.updateMany({
-                where: {
-                    id: { in: plots },
-                },
-                data: {
-                    ownerId: id,
-                },
+            await tx.userPlot.createMany({
+                data: plots.map((plotId) => ({
+                    userId: id,
+                    plotId,
+                })),
             });
         });
 

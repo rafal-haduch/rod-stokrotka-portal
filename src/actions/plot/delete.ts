@@ -8,8 +8,14 @@ export async function deletePlot(formData: FormData): Promise<DeletePlotResult> 
     try {
         const id = Number(formData.get('id'));
 
-        await prisma.plot.delete({
-            where: { id },
+        await prisma.$transaction(async (tx) => {
+            await tx.userPlot.deleteMany({
+                where: { plotId: id },
+            });
+
+            await prisma.plot.delete({
+                where: { id },
+            });
         });
 
         return {

@@ -13,9 +13,13 @@ export default async function DeleteUserPage({ params }: { params: Promise<{ id:
     const user = await prisma.user.findUnique({
         where: { id: userId },
         include: {
-            plots: {
-                select: {
-                    id: true,
+            plotsId: {
+                include: {
+                    plot: {
+                        select: {
+                            plotNumber: true,
+                        },
+                    },
                 },
             },
         },
@@ -27,7 +31,7 @@ export default async function DeleteUserPage({ params }: { params: Promise<{ id:
         id: user.id,
         name: user.name,
         role: user.role,
-        plots: user.plots.map((p) => ({ id: Number(p.id) })),
+        plots: user.plotsId.map((p) => ({ id: Number(p.plot.plotNumber) })),
     };
 
     return (

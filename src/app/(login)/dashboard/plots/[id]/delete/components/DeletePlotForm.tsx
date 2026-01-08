@@ -12,7 +12,7 @@ export interface DeletePlotFormProps {
     id: number;
     plotNumber: string;
     area: number | null;
-    ownerId: number | null;
+    owners: string[];
 }
 
 export default function DeletePlotForm({ plot }: { plot: DeletePlotFormProps }) {

@@ -8,8 +8,14 @@ export async function deleteUser(formData: FormData): Promise<DeleteUserResult> 
     try {
         const id = Number(formData.get('id'));
 
-        await prisma.user.delete({
-            where: { id },
+        await prisma.$transaction(async (tx) => {
+            await tx.userPlot.deleteMany({
+                where: { userId: id },
+            });
+
+            await tx.user.delete({
+                where: { id },
+            });
         });
 
         return {

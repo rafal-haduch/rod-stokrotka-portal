@@ -18,12 +18,12 @@ enum Role {
 }
 
 model User {
-    id       Int    @id @default(autoincrement())
-    login    String @unique
+    id       Int        @id @default(autoincrement())
+    login    String     @unique
     password String
     name     String
-    plots    Plot[]
-    role     Role   @default(ALLOTMENT_GARDENER)
+    plotsId  UserPlot[]
+    role     Role       @default(ALLOTMENT_GARDENER)
 
     createdAt  DateTime  @default(now()) @map("created_at")
     firstLogin Boolean   @default(true)
@@ -40,10 +40,19 @@ model Plot {
     plotNumber String @unique @map("plot_number") @db.VarChar(10)
     area       Float?
 
-    ownerId Int?  @map("owner_id")
-    owner   User? @relation(fields: [ownerId], references: [id])
+    ownersId UserPlot[]
 
     payments Payment[]
+}
+
+model UserPlot {
+    userId Int
+    plotId Int
+
+    user User @relation(fields: [userId], references: [id])
+    plot Plot @relation(fields: [plotId], references: [id])
+
+    @@id([userId, plotId])
 }
 
 model Payment {

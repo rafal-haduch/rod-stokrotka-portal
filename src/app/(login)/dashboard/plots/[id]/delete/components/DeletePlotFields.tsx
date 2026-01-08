@@ -32,7 +32,7 @@ export default function DeletePlotFields({ plot, loading, errorMsg }: Props) {
             {/* Owner  */}
             <label className="col-span-1 flex items-center justify-end text-base">Użytkuje:</label>
             <label className="border-theme-200 bg-theme-bg-primary col-span-3 w-full rounded-md border px-3 py-2 shadow-sm sm:w-3/4">
-                -
+                {plot.owners.length > 0 ? plot.owners.map((p) => p).join(', ') : '—'}
             </label>
 
             {/* Info */}
