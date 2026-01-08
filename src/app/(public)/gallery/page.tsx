@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 
-import { PhotoWithTitle } from '@/types/PhotoWithTitle';
+import { PhotoWithTitle } from '@/types/photo';
 
 import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
 import ImageSeparator from '@/components/ImageSeparator';

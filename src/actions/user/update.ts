@@ -1,10 +1,10 @@
 'use server';
 
-import { Role } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
-import { UpdateUserResult } from '@/types/updateUserResult';
+import { Role } from '@prisma/client';
 
-//TODO: Preparing data about plot for the database type
+import { UpdateUserResult } from '@/types/user-actions-result';
+
 export async function updateUser(formData: FormData): Promise<UpdateUserResult> {
     try {
         const idRaw = formData.get('id');

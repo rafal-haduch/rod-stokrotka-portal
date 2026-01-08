@@ -1,4 +1,4 @@
-// CREATE:
+// CREATE
 export type CreatePlotSuccess = {
     success: true;
     data: {
@@ -14,7 +14,7 @@ export type CreatePlotError = {
 
 export type CreatePlotResult = CreatePlotSuccess | CreatePlotError;
 
-// UPDATE:
+// UPDATE
 export type UpdatePlotSuccess = {
     success: true;
 };
@@ -26,7 +26,7 @@ export type UpdatePlotError = {
 
 export type UpdatePlotResult = UpdatePlotSuccess | UpdatePlotError;
 
-// DELETE:
+// DELETE
 export type DeletePlotSuccess = {
     success: true;
 };

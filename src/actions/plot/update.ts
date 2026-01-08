@@ -2,7 +2,7 @@
 
 import { prisma } from '@/lib/prisma';
 
-import { UpdatePlotResult } from '@/types/plotActionResult';
+import { UpdatePlotResult } from '@/types/plot-actions-result';
 
 export async function updatePlot(formData: FormData): Promise<UpdatePlotResult> {
     try {

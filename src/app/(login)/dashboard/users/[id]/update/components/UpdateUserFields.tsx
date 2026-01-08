@@ -1,12 +1,16 @@
-import { Role } from '@prisma/client';
-import { UpdateUserFormProps } from './UpdateUserForm';
-import { getRoleLabel } from '@/utils/getRoleLabel';
 import Link from 'next/link';
-import { ROUTES } from '@/constants/routes';
 import { Ban, Save } from 'lucide-react';
+import { Role } from '@prisma/client';
+
+import { ROUTES } from '@/constants/routes';
+
+import { getRoleLabel } from '@/utils/getRoleLabel';
+
+import { UpdateUserFormProps } from './UpdateUserForm';
 import { PlotOption } from '../../../create/components/CreateUserForm';
 import MultiSelectDropdown from '@/components/MultiSelectPlotsDropdown';
 
+//REVIEW: import PlotOption czy nei zmienic jego miejsca?
 interface Props {
     user: UpdateUserFormProps;
     plots: PlotOption[];

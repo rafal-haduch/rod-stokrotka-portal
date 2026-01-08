@@ -1,20 +1,19 @@
-import { Role } from '@prisma/client';
 import Link from 'next/link';
-import { ROUTES } from '@/constants/routes';
 import { Ban, Trash2 } from 'lucide-react';
-import { DeleteUserFormProps } from './DeleteUserForm';
+
+import { ROUTES } from '@/constants/routes';
+
 import { getRoleLabel } from '@/utils/getRoleLabel';
+
+import { DeleteUserFormProps } from './DeleteUserForm';
 
 interface Props {
     user: DeleteUserFormProps;
     loading: boolean;
     errorMsg: string | null;
 }
-
+// REVIEW: czy nie powinno to byc "use client"?
 export default function DeleteUserFields({ user, loading, errorMsg }: Props) {
-    //TODO: hide admin role if role != admin
-    const roles = Object.values(Role); //.filter((r) => r !== Role.ADMIN);
-
     return (
         <fieldset className="grid grid-cols-4 space-x-2 gap-y-3">
             <input type="hidden" name="id" value={user.id} />

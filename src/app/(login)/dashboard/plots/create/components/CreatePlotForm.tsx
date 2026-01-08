@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import CreatePlotFields from './CreatePlotFields';
 import CreatePlotSuccess from './CreatePlotSuccess';
-import { CreatePlotResult } from '@/types/plotActionResult';
+import { CreatePlotResult } from '@/types/plot-actions-result';
 import { createPlot } from '@/actions/plot/create';
 
 export default function CreatePlotForm() {

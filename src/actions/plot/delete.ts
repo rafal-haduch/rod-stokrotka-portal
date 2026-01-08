@@ -2,7 +2,7 @@
 
 import { prisma } from '@/lib/prisma';
 
-import { DeletePlotResult } from '@/types/plotActionResult';
+import { DeletePlotResult } from '@/types/plot-actions-result';
 
 export async function deletePlot(formData: FormData): Promise<DeletePlotResult> {
     try {

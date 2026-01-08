@@ -5,7 +5,7 @@ import { Role } from '@prisma/client';
 
 import { updateUser } from '@/actions/user/update';
 
-import { UpdateUserResult } from '@/types/updateUserResult';
+import { UpdateUserResult } from '@/types/user-actions-result';
 
 import UpdateUserFields from './UpdateUserFields';
 import UpdateUserSuccess from './UpdateUserSuccess';

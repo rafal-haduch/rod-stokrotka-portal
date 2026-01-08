@@ -6,7 +6,7 @@ import { ArrowBigLeft, Copy, UserRoundPlus } from 'lucide-react';
 
 import { ROUTES } from '@/constants/routes';
 
-import { CreateUserSuccess as CreateUserSuccessType } from '@/types/createUserResult';
+import { CreateUserSuccess as CreateUserSuccessType } from '@/types/user-actions-result';
 
 import { getRoleLabel } from '@/utils/getRoleLabel';
 

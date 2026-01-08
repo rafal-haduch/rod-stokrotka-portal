@@ -1,4 +1,4 @@
-import { ThemeType } from '@/types/Theme';
+import { ThemeType } from '@/types/theme';
 
 // REVIEW: zmienic (dodac i uporzadkowac typy/interfejsy)
 export interface Theme {

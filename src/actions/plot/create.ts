@@ -2,7 +2,7 @@
 
 import { prisma } from '@/lib/prisma';
 
-import { CreatePlotResult } from '@/types/plotActionResult';
+import { CreatePlotResult } from '@/types/plot-actions-result';
 
 export async function createPlot(formData: FormData): Promise<CreatePlotResult> {
     try {

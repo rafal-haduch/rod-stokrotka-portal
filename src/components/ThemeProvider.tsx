@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 
-import { ThemeType } from '@/types/Theme';
+import { ThemeType } from '@/types/theme';
 
 import { setTheme, getSeason } from '@/utils/setTheme';
 import ThemePrompt from './ThemePrompt';

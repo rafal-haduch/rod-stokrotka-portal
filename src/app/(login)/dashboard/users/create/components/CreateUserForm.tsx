@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { createUser } from '@/actions/user/create';
 
-import { CreateUserResult } from '@/types/createUserResult';
+import { CreateUserResult } from '@/types/user-actions-result';
 
 import CreateUserFields from './CreateUserFields';
 import CreateUserSuccess from './CreateUserSuccess';

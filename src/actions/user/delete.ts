@@ -1,8 +1,7 @@
 'use server';
 
 import { prisma } from '@/lib/prisma';
-
-import { DeleteUserResult } from '@/types/deleteUserResult';
+import { DeleteUserResult } from '@/types/user-actions-result';
 
 export async function deleteUser(formData: FormData): Promise<DeleteUserResult> {
     try {

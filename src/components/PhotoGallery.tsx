@@ -4,8 +4,8 @@ import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
-import { PhotoWithTitle } from '@/types/PhotoWithTitle';
-import { PhotoWithoutTitle } from '@/types/PhotoWithoutTitle';
+import { PhotoWithTitle } from '@/types/photo';
+import { PhotoWithoutTitle } from '@/types/photo';
 
 interface PhotoGalleryProps {
     photos: PhotoWithTitle[] | PhotoWithoutTitle[];
@@ -117,7 +117,7 @@ export default function PhotoGallery(props: PhotoGalleryProps) {
                             <div
                                 key={i}
                                 onClick={() => setCurrentIndex(i)}
-                                className={`relative h-20 w-20 flex-shrink-0 cursor-pointer overflow-hidden rounded-md border-2 ${
+                                className={`relative h-20 w-20 shrink-0 cursor-pointer overflow-hidden rounded-md border-2 ${
                                     i === currentIndex
                                         ? 'border-3 border-white'
                                         : 'border-transparent opacity-70 hover:opacity-100'

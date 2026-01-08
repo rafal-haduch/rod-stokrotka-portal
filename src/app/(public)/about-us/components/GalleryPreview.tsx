@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import { PhotoWithoutTitle } from '@/types/PhotoWithoutTitle';
+import { PhotoWithoutTitle } from '@/types/photo';
 
 const galleryPreviewImagesURL = '/images/gallery-preview-slider/' as const;
 export const galleryPreviewImages: PhotoWithoutTitle[] = [

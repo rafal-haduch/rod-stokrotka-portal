@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 
-import { PhotoWithoutTitle } from '@/types/PhotoWithoutTitle';
+import { PhotoWithoutTitle } from '@/types/photo';
 
 export interface Investment {
     slug: string;

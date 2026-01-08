@@ -1,7 +1,8 @@
 'use server';
 
 import { prisma } from '@/lib/prisma';
-import { CreateUserResult } from '@/types/createUserResult';
+import { CreateUserResult } from '@/types/user-actions-result';
+
 import { Role } from '@prisma/client';
 import bcrypt from 'bcrypt';
 
