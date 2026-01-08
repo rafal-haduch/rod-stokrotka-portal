@@ -5,17 +5,14 @@ export default async function DashboardPage() {
     const user = await getUserSession();
 
     return (
-        <article>
-            <section>
-                <h2>Panel Zarządu</h2>
-                <p>
-                    Jesteś zalogowany jako <span className="font-bold">{user.name}</span> z rolą{' '}
-                    <span className="font-bold">{getRoleLabel(user.role)}</span>. W tym miejscu na
-                    podstawie roli są dostępne zakładki, które umożliwiają zarządzanie
-                    poszczególnymi danymi Stowarzyszenia Ogrodowego ,,Stokrotka" w Sanoku w celu
-                    prowadzenia ewidencji.
-                </p>
-            </section>
-        </article>
+        <section>
+            <h2>Panel Zarządu</h2>
+            <p>
+                Jesteś zalogowany jako <strong>{user.name}</strong> z rolą{' '}
+                <strong>{getRoleLabel(user.role)}</strong>. W tym miejscu na podstawie roli są
+                dostępne zakładki, które umożliwiają zarządzanie poszczególnymi danymi
+                Stowarzyszenia Ogrodowego ,,Stokrotka" w Sanoku w celu prowadzenia ewidencji.
+            </p>
+        </section>
     );
 }
