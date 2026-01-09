@@ -41,3 +41,15 @@ export type DeleteUserError = {
 };
 
 export type DeleteUserResult = DeleteUserSuccess | DeleteUserError;
+
+// CHANGE PASSWORD
+export type ChangePasswordSuccess = {
+    success: true;
+};
+
+export type ChangePasswordError = {
+    success: false;
+    errorMsg: string;
+};
+
+export type ChangePasswordResult = ChangePasswordSuccess | ChangePasswordError;

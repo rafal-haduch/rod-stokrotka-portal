@@ -6,6 +6,7 @@ import { prisma } from '@/lib/prisma';
 
 import { getUserSession } from '@/utils/getUserSession';
 import { getRoleLabel } from '@/utils/getRoleLabel';
+import { ROUTES } from '@/constants/routes';
 
 export default async function MyProfilePage() {
     const user = await getUserSession();
@@ -55,7 +56,7 @@ export default async function MyProfilePage() {
                     <div className="flex space-x-1">
                         <label className="text-theme-txt">Hasło: </label>
                         <Link
-                            href="/change-password"
+                            href={ROUTES.CHANGE_PASSWORD.path}
                             className="flex underline"
                             title="Kliknij aby zmienić swoje hasło"
                         >

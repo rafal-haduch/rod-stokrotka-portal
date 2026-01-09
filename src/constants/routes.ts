@@ -123,6 +123,11 @@ export const ROUTES = {
         userNav: { label: 'Ankiety', order: 3 },
         hero: false,
     },
+    CHANGE_PASSWORD: {
+        path: '/my-profile/change-password',
+        title: 'ZMIEŃ HASŁO',
+        hero: false,
+    },
     DASHBOARD: {
         path: '/dashboard',
         title: 'PANEL ZARZĄDU',
