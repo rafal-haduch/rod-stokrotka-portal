@@ -1,3 +1,4 @@
+import { ErrorCode } from '@/errors/error-codes';
 import { Role } from '@prisma/client';
 
 // CREATE
@@ -13,7 +14,8 @@ export type CreateUserSuccess = {
 
 export type CreateUserError = {
     success: false;
-    error: string;
+    errorCode: ErrorCode;
+    errorMsg: string;
 };
 
 export type CreateUserResult = CreateUserSuccess | CreateUserError;
@@ -49,6 +51,7 @@ export type ChangePasswordSuccess = {
 
 export type ChangePasswordError = {
     success: false;
+    errorCode: ErrorCode;
     errorMsg: string;
 };
 

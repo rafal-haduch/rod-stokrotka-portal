@@ -1,12 +1,13 @@
-import { ROUTES } from '@/constants/routes';
-import { ArrowBigLeft } from 'lucide-react';
 import Link from 'next/link';
+import { ArrowBigLeft } from 'lucide-react';
+
+import { ROUTES } from '@/constants/routes';
 
 export default function ChangePasswordSuccess() {
     return (
         <>
-            <h3 className="mb-8 text-center text-green-500">Haslo zostalo zmienione</h3>
-            <Link href={ROUTES.DASHBOARD_PLOTS.path} className="btn btn-sm btn-theme mx-auto">
+            <h3 className="mb-8 text-center text-green-500">Hasło zostało zmienione</h3>
+            <Link href={ROUTES.MY_PROFILE.path} className="btn btn-sm btn-theme mx-auto">
                 <ArrowBigLeft /> Ok
             </Link>
         </>
