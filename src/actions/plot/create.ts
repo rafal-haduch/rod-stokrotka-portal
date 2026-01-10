@@ -4,8 +4,22 @@ import { prisma } from '@/lib/prisma';
 
 import { CreatePlotResult } from '@/types/plot-actions-result';
 
+import { canPerform } from '@/domain/permissions/can-perform';
+import { PERMISSION_KEYS } from '@/domain/permissions/permissions';
+import { requireSession } from '@/domain/auth/require-session';
+
+import { DomainError } from '@/errors/domain-error';
+import { ErrorCode } from '@/errors/error-codes';
+
 export async function createPlot(formData: FormData): Promise<CreatePlotResult> {
     try {
+        // Session and permission
+        const session = await requireSession();
+
+        if (!canPerform(session.role, PERMISSION_KEYS.CREATE_PLOT)) {
+            throw new DomainError(ErrorCode.NO_PERMISSION);
+        }
+
         const plotNumberRaw = formData.get('plotNumber');
         const areaRaw = formData.get('area');
 

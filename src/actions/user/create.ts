@@ -1,34 +1,55 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
-import { CreateUserResult } from '@/types/user-actions-result';
-
 import { Role } from '@prisma/client';
 import bcrypt from 'bcrypt';
+import { prisma } from '@/lib/prisma';
+
+import { CreateUserResult } from '@/types/user-actions-result';
+
+import { DomainError } from '@/errors/domain-error';
+import { ErrorCode } from '@/errors/error-codes';
+import { ERROR_MESSAGES } from '@/errors/error-messages';
+
+import { requireSession } from '@/domain/auth/require-session';
+import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 
 export async function createUser(formData: FormData): Promise<CreateUserResult> {
     try {
+        // Session and permission
+        const session = await requireSession();
+
+        if (!isAdminOrBoard(session.role)) {
+            throw new DomainError(ErrorCode.NO_PERMISSION);
+        }
+
+        // Validate input
         const nameRaw = formData.get('name');
         const roleRaw = formData.get('role');
         const plotIdsRaw = formData.getAll('plotIds');
 
-        if (typeof nameRaw !== 'string' || nameRaw.length === 0) {
-            throw new Error('Invalid name');
+        if (typeof nameRaw !== 'string' || typeof roleRaw !== 'string') {
+            throw new DomainError(ErrorCode.INVALID_INPUT);
         }
 
         if (!roleRaw || !Object.values(Role).includes(roleRaw as Role)) {
-            throw new Error('Invalid role');
+            throw new DomainError(ErrorCode.INVALID_INPUT);
         }
 
-        // TODO: zmienic na funkcje do ktorej przekazuje argument
-        //HACK
-        if (nameRaw.toLocaleLowerCase() === 'error test') {
-            throw new Error('Test');
+        if (!plotIdsRaw.every((v) => typeof v === 'string')) {
+            throw new DomainError(ErrorCode.INVALID_INPUT);
         }
 
+        if (!nameRaw || !roleRaw) {
+            throw new DomainError(ErrorCode.EMPTY_INPUT);
+        }
+
+        // Prepare data for the database and validate
         const name = nameRaw;
         const role = roleRaw as Role;
-        const plots = plotIdsRaw.map((id) => Number(id)).filter((id) => !Number.isNaN(id));
+        const plotId = plotIdsRaw.map(Number);
+        if (plotId.some((id) => !Number.isInteger(id) || id <= 0)) {
+            throw new DomainError(ErrorCode.INVALID_INPUT);
+        }
 
         const login = generateLogin(name);
         const password = generatePassword();
@@ -44,9 +65,9 @@ export async function createUser(formData: FormData): Promise<CreateUserResult> 
                 },
             });
 
-            if (plots.length > 0) {
+            if (plotId.length > 0) {
                 await tx.userPlot.createMany({
-                    data: plots.map((plotId) => ({
+                    data: plotId.map((plotId) => ({
                         userId: user.id,
                         plotId,
                     })),
@@ -60,13 +81,21 @@ export async function createUser(formData: FormData): Promise<CreateUserResult> 
                 name,
                 role,
                 login,
-                password, // NOTE: TYLKO do pokazania po utworzeniu
+                password, // NOTE: Required to show credentails after account creation.
             },
         };
     } catch (e) {
+        if (e instanceof DomainError) {
+            return {
+                success: false,
+                errorCode: e.code,
+                errorMsg: ERROR_MESSAGES[e.code],
+            };
+        }
         return {
             success: false,
-            error: 'Wystąpił błąd podczas tworzenia nowego konta!',
+            errorCode: ErrorCode.SERVER_ERROR,
+            errorMsg: 'Wystąpił błąd podczas tworzenia nowego konta!',
         };
     }
 }

@@ -1,4 +1,4 @@
-import { ROLE_LABEL } from '@/constants/roles';
+import { ROLE_LABEL } from '@/constants/role-label';
 import { Role } from '@prisma/client';
 
 export function getRoleLabel(role: Role | null | undefined) {

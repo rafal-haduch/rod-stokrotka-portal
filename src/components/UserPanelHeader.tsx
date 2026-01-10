@@ -4,7 +4,7 @@ import { CircleUserRound, LayoutDashboard } from 'lucide-react';
 
 import { AppRoute, ROUTE_LIST, ROUTES } from '@/constants/routes';
 
-import { isAdminOrBoard } from '@/utils/rolePermissions';
+import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 
 import SignOutButton from './SignOutButton';
 import MainHeaderLineSeparator from './MainHeaderLineSeparator';

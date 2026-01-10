@@ -9,12 +9,3 @@ export const ROLE_LABEL: Record<Role, string> = {
     [Role.BOARD_MEMBER]: 'Członek Zarządu',
     [Role.ALLOTMENT_GARDENER]: 'Działkowiec',
 };
-
-export const adminRoles: Role[] = [
-    Role.ADMIN,
-    Role.PRESIDENT,
-    Role.DEPUTY_PRESIDENT,
-    Role.SECRETARY,
-    Role.TREASURER,
-    Role.BOARD_MEMBER,
-];

@@ -2,6 +2,7 @@ import { ErrorCode } from './error-codes';
 
 export const ERROR_MESSAGES: Record<ErrorCode, string> = {
     [ErrorCode.NO_SESSION]: 'Brak aktywnej sesji!',
+    [ErrorCode.NO_PERMISSION]: 'Brak odpowiednich uprawnień!',
     [ErrorCode.INVALID_INPUT]: 'Nieprawidłowe dane!',
     [ErrorCode.EMPTY_INPUT]: 'Uzupełnij wymagane pola!',
     [ErrorCode.NEW_PASSWORDS_MISMATCH]: 'Nowe hasła nie są takie same!',

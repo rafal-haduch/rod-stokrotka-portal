@@ -13,10 +13,10 @@ import MultiSelectDropdown from '@/components/MultiSelectPlotsDropdown';
 interface Props {
     plots: PlotOption[];
     loading: boolean;
-    error: string | null;
+    errorMsg: string | null;
 }
 
-export default function CreateUserFields({ plots, loading, error }: Props) {
+export default function CreateUserFields({ plots, loading, errorMsg }: Props) {
     const roles = Object.values(Role).filter((r) => r !== Role.ADMIN);
     return (
         <fieldset className="grid grid-cols-4 space-x-2 gap-y-3">
@@ -60,7 +60,7 @@ export default function CreateUserFields({ plots, loading, error }: Props) {
 
             {/* Error  */}
             <div className="col-span-4 min-h-10 text-center sm:min-h-4">
-                {error && <span className="text-red-500">{error}</span>}
+                {errorMsg && <span className="text-red-500">{errorMsg}</span>}
             </div>
 
             {/* Buttons */}

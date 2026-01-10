@@ -27,6 +27,7 @@ export type UpdateUserSuccess = {
 
 export type UpdateUserError = {
     success: false;
+    errorCode: ErrorCode;
     errorMsg: string;
 };
 
@@ -39,6 +40,7 @@ export type DeleteUserSuccess = {
 
 export type DeleteUserError = {
     success: false;
+    errorCode: ErrorCode;
     errorMsg: string;
 };
 

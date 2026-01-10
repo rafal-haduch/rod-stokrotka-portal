@@ -35,7 +35,7 @@ export default function CreateUserForm({ plots }: PlotsListProp) {
         setLoading(false);
     }
 
-    const error = result && !result.success ? result.error : null;
+    const errorMsg = result && !result.success ? result.errorMsg : null;
 
     return (
         <form
@@ -45,7 +45,7 @@ export default function CreateUserForm({ plots }: PlotsListProp) {
             {result?.success ? (
                 <CreateUserSuccess result={result} onReset={() => setResult(null)} />
             ) : (
-                <CreateUserFields plots={plots} loading={loading} error={error} />
+                <CreateUserFields plots={plots} loading={loading} errorMsg={errorMsg} />
             )}
         </form>
     );
