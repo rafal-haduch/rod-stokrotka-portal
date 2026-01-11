@@ -1,10 +1,10 @@
-import { recommendedSites } from '@/content/data/recommendedSites';
+import { recommendedSites } from '@/content/data/recommended-sites';
 
-import ImageSeparator from '@/components/ImageSeparator';
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import LineSeparator from '@/components/LineSeparator';
-import WorkInProgress from '@/components/WorkInProgress';
-import AnimateOnView from '@/components/AnimatedH2';
+import ImageSeparator from '@/components/image-separator';
+import MainHeaderLineSeparator from '@/components/main-header-line-separator';
+import LineSeparator from '@/components/line-separator';
+import WorkInProgress from '@/components/work-in-progress';
+import AnimateOnView from '@/components/animated-h2';
 
 export default function GardeningGuidePage() {
     return (

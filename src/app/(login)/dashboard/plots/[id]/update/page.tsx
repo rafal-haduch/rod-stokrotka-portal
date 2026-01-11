@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 
 import { ROUTES } from '@/constants/routes';
-import UpdatePlotForm, { UpdatePlotFormProps } from './components/UpdatePlotForm';
+import UpdatePlotForm, { UpdatePlotFormProps } from './_components/update-plot-form';
 
 export default async function UpdatePlotPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;

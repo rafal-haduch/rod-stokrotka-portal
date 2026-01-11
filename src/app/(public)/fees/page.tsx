@@ -1,15 +1,15 @@
 import Link from 'next/link';
 
-import { paymentStatusAsOf } from '@/content/data/plotFeesStatus';
+import { paymentStatusAsOf } from '@/content/data/plot-fees-status';
 
-import ImageSeparator from '@/components/ImageSeparator';
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import LineSeparator from '@/components/LineSeparator';
-import AnimateOnView from '@/components/AnimatedH2';
+import ImageSeparator from '@/components/image-separator';
+import MainHeaderLineSeparator from '@/components/main-header-line-separator';
+import LineSeparator from '@/components/line-separator';
+import AnimateOnView from '@/components/animated-h2';
 
-import FeesTypesTable from './components/FeesTypesTable';
-import FeesTable from './components/FeesTabel';
-import NoArrears from './components/NoArrears';
+import FeesTypesTable from './_components/fees-types-table';
+import FeesTable from './_components/fees-tabel';
+import NoArrears from './_components/noA-arears';
 
 export default function PaymentsPage() {
     return (

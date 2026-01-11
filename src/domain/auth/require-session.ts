@@ -1,25 +1,24 @@
 import { Role } from '@prisma/client';
 import { DomainError } from '@/errors/domain-error';
 import { ErrorCode } from '@/errors/error-codes';
-import { getUserSession } from '@/utils/getUserSession';
+import { getUserSession } from '@/lib/auth/get-user-session';
 
-export interface userSession {
+export interface UserSession {
     name: string;
     id: number;
     role: Role;
 }
 
-export async function requireSession(): Promise<userSession> {
-    //TODO: change destructuryzation?
+export async function requireSession(): Promise<UserSession> {
     const session = await getUserSession();
 
-    if (!session || !session.role || !session.id) {
+    if (!session || !session.role || !session.id || !session.name) {
         throw new DomainError(ErrorCode.NO_SESSION);
     }
 
     return {
-        name: session.name,
         id: session.id,
+        name: session.name,
         role: session.role,
     };
 }

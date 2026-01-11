@@ -1,4 +1,4 @@
-import WorkInProgress from '@/components/WorkInProgress';
+import WorkInProgress from '@/components/work-in-progress';
 
 export default async function DashboardSurveysPage() {
     return (

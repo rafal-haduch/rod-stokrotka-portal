@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-import GardenMap from '@/components/GardenMap';
-import ImageSeparator from '@/components/ImageSeparator';
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import LineSeparator from '@/components/LineSeparator';
+import GardenMap from '@/components/garden-map';
+import ImageSeparator from '@/components/image-separator';
+import MainHeaderLineSeparator from '@/components/main-header-line-separator';
+import LineSeparator from '@/components/line-separator';
 
-import GardenStats from './components/GardenStats';
-import AnimateOnView from '@/components/AnimatedH2';
-import GalleryPreview from './components/GalleryPreview';
+import GardenStats from './_components/garden-stats';
+import AnimateOnView from '@/components/animated-h2';
+import GalleryPreview from './_components/gallery-preview';
 
 export default function AboutGardenPage() {
     return (

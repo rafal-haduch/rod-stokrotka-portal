@@ -1,6 +1,6 @@
 import { ROUTES } from '@/constants/routes';
 import { prisma } from '@/lib/prisma';
-import { formatPlotCode } from '@/utils/formatPlotCode';
+import { formatPlotCode } from '@/utils/format-plot-code';
 import { Pencil, Plus, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -37,7 +37,7 @@ export default async function DashboardPlotsPage() {
             >
                 <Plus />
             </Link>
-
+            {/*TODO: dac do komponentu*/}
             <table className="w-full text-xs md:text-sm lg:text-lg">
                 <thead>
                     <tr>

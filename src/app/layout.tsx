@@ -4,13 +4,13 @@ import { Analytics } from '@vercel/analytics/next';
 import '../styles/globals.css';
 import { nunito, fleurDeLeah, aboreto, merriweather } from '../fonts/fonts';
 
-import JsonLdOrganization from '@/components/JsonLdOrganization';
-import SessionProviderClientComponent from '@/components/SessionProviderClientComponent';
-import { ThemeProvider } from '@/components/ThemeProvider';
-import DynamicClientLayout from '@/components/DynamicClientLayout';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import PreFooter from '@/components/PreFooter';
+import JsonLdOrganization from '@/components/json-ld-organization';
+import SessionProviderClientComponent from '@/components/session-provider-client-component';
+import { ThemeProvider } from '@/components/theme-provider';
+import DynamicClientLayout from '@/components/dynamic-client-layout';
+import Navbar from '@/components/navbar';
+import Footer from '@/components/footer';
+import PreFooter from '@/components/pre-footer';
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://rod-stokrotka-sanok.vercel.app'),

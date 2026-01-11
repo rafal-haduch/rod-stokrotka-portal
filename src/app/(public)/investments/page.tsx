@@ -1,8 +1,8 @@
-import ImageSeparator from '@/components/ImageSeparator';
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import AnimatedH2 from '@/components/AnimatedH2';
+import ImageSeparator from '@/components/image-separator';
+import MainHeaderLineSeparator from '@/components/main-header-line-separator';
+import AnimatedH2 from '@/components/animated-h2';
 
-import InvestmentsList from './components/InvestmentsList';
+import InvestmentsList from './_components/investments-list';
 
 export default function InvestmentsPage() {
     return (

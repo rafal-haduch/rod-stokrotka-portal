@@ -1,5 +1,5 @@
-import ImageSeparator from '@/components/ImageSeparator';
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
+import ImageSeparator from '@/components/image-separator';
+import MainHeaderLineSeparator from '@/components/main-header-line-separator';
 
 export default function NotFound() {
     return (

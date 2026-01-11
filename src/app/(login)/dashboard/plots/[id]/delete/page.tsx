@@ -4,7 +4,7 @@ import { prisma } from '@/lib/prisma';
 
 import { ROUTES } from '@/constants/routes';
 
-import DeletePlotForm, { DeletePlotFormProps } from './components/DeletePlotForm';
+import DeletePlotForm, { DeletePlotFormProps } from './_components/delete-plot-form';
 
 export default async function DeletePlotPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;

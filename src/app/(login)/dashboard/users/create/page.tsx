@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/prisma';
 
-import CreateUserForm from './components/CreateUserForm';
+import CreateUserForm from './_components/create-user-form';
 
 export default async function CreateUserPage() {
     const plotsListDb = (

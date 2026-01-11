@@ -4,7 +4,7 @@ import { prisma } from '@/lib/prisma';
 
 import { ROUTES } from '@/constants/routes';
 
-import DeleteUserForm, { DeleteUserFormProps } from './components/DeleteUserForm';
+import DeleteUserForm, { DeleteUserFormProps } from './_components/delete-user-form';
 
 export default async function DeleteUserPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;

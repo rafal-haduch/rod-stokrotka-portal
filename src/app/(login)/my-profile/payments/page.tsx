@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma';
-import { getUserSession } from '@/utils/getUserSession';
+import { getUserSession } from '@/lib/auth/get-user-session';
 
 export default async function PaymentsUserPage() {
     const user = await getUserSession();

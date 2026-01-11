@@ -5,10 +5,10 @@ import {
     arbitrationCommission,
 } from '@/content/data/association';
 
-import ImageSeparator from '@/components/ImageSeparator';
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import LineSeparator from '@/components/LineSeparator';
-import AnimateOnView from '@/components/AnimatedH2';
+import ImageSeparator from '@/components/image-separator';
+import MainHeaderLineSeparator from '@/components/main-header-line-separator';
+import LineSeparator from '@/components/line-separator';
+import AnimateOnView from '@/components/animated-h2';
 
 export default function StructureAssociation() {
     return (

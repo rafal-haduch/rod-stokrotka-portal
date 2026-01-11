@@ -2,7 +2,7 @@ import { Pencil, Plus, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 
 import { prisma } from '@/lib/prisma';
-import { getRoleLabel } from '@/utils/getRoleLabel';
+import { getRoleLabel } from '@/utils/get-role-label';
 import { ROUTES } from '@/constants/routes';
 
 export default async function DashboardUsersPage() {

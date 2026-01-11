@@ -4,8 +4,8 @@ import { KeyRound } from 'lucide-react';
 
 import { prisma } from '@/lib/prisma';
 
-import { getUserSession } from '@/utils/getUserSession';
-import { getRoleLabel } from '@/utils/getRoleLabel';
+import { getUserSession } from '@/lib/auth/get-user-session';
+import { getRoleLabel } from '@/utils/get-role-label';
 import { ROUTES } from '@/constants/routes';
 
 export default async function MyProfilePage() {

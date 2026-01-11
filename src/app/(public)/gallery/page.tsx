@@ -3,10 +3,10 @@ import fs from 'fs';
 
 import { PhotoWithTitle } from '@/types/photo';
 
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import ImageSeparator from '@/components/ImageSeparator';
-import AnimateOnView from '@/components/AnimatedH2';
-import PhotoGallery from '@/components/PhotoGallery';
+import MainHeaderLineSeparator from '@/components/main-header-line-separator';
+import ImageSeparator from '@/components/image-separator';
+import AnimateOnView from '@/components/animated-h2';
+import PhotoGallery from '@/components/photo-gallery';
 
 export default function GalleryPage() {
     const filePath = path.join(process.cwd(), 'src/content/data/gallery.json');

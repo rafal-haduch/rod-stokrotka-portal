@@ -1,5 +1,5 @@
-import { getUserSession } from '@/utils/getUserSession';
-import { getRoleLabel } from '@/utils/getRoleLabel';
+import { getUserSession } from '@/lib/auth/get-user-session';
+import { getRoleLabel } from '@/utils/get-role-label';
 
 export default async function DashboardPage() {
     const user = await getUserSession();

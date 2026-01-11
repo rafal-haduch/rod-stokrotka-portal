@@ -1,4 +1,4 @@
-import NotFoundContent from '@/components/NotFoundContent';
+import NotFoundContent from '@/components/not-found-content';
 
 export default function SurveysUserPage() {
     return (

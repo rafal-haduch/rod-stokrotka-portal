@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Download, X } from 'lucide-react';
 
-import ImageSeparator from '@/components/ImageSeparator';
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import AnimateOnView from '@/components/AnimatedH2';
+import ImageSeparator from '@/components/image-separator';
+import MainHeaderLineSeparator from '@/components/main-header-line-separator';
+import AnimateOnView from '@/components/animated-h2';
 
 //TODO: change to server copmponent
 export default function GardenMapPage() {

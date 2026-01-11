@@ -1,8 +1,8 @@
-import ImageSeparator from '@/components/ImageSeparator';
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import AnimateOnView from '@/components/AnimatedH2';
+import ImageSeparator from '@/components/image-separator';
+import MainHeaderLineSeparator from '@/components/main-header-line-separator';
+import AnimateOnView from '@/components/animated-h2';
 
-import InformationsList from './components/InformationsList';
+import InformationsList from './_components/informations-list';
 
 export default function InformationsPage() {
     return (

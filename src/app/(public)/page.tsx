@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import ImageSeparator from '@/components/ImageSeparator';
-import WorkInProgress from '@/components/WorkInProgress';
-import GardenMap from '@/components/GardenMap';
-import LineSeparator from '@/components/LineSeparator';
-import AnimateOnView from '@/components/AnimatedH2';
+import MainHeaderLineSeparator from '@/components/main-header-line-separator';
+import ImageSeparator from '@/components/image-separator';
+import WorkInProgress from '@/components/work-in-progress';
+import GardenMap from '@/components/garden-map';
+import LineSeparator from '@/components/line-separator';
+import AnimateOnView from '@/components/animated-h2';
 
 //import MainSlider from './components/MainSlider';
 

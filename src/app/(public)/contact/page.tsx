@@ -4,12 +4,12 @@ import {
     associationPhoneNumber,
 } from '@/content/data/association';
 
-import ImageSeparator from '@/components/ImageSeparator';
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import LineSeparator from '@/components/LineSeparator';
+import ImageSeparator from '@/components/image-separator';
+import MainHeaderLineSeparator from '@/components/main-header-line-separator';
+import LineSeparator from '@/components/line-separator';
 
-import ContactForm from './components/ContactForm';
-import AnimateOnView from '@/components/AnimatedH2';
+import ContactForm from './_components/contact-form';
+import AnimateOnView from '@/components/animated-h2';
 
 export default function ContactPage() {
     return (

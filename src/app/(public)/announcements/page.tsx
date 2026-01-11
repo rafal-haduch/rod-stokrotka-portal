@@ -1,7 +1,7 @@
-import ImageSeparator from '@/components/ImageSeparator';
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import WorkInProgress from '@/components/WorkInProgress';
-import AnimateOnView from '@/components/AnimatedH2';
+import ImageSeparator from '@/components/image-separator';
+import MainHeaderLineSeparator from '@/components/main-header-line-separator';
+import WorkInProgress from '@/components/work-in-progress';
+import AnimateOnView from '@/components/animated-h2';
 
 export default function AnnouncementsPage() {
     return (

@@ -1,13 +1,13 @@
 import { notFound } from 'next/navigation';
 
-import { getMemoryBySlug } from '@/utils/memories';
+import { getMemoryBySlug } from '@/content/memories/memories';
 
-import { formatDate } from '@/utils/formatDate';
+import { formatDate } from '@/utils/format-date';
 
-import PhotoGallery from '@/components/PhotoGallery';
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import AnimateOnView from '@/components/AnimatedH2';
-import ImageSeparator from '@/components/ImageSeparator';
+import PhotoGallery from '@/components/photo-gallery';
+import MainHeaderLineSeparator from '@/components/main-header-line-separator';
+import AnimateOnView from '@/components/animated-h2';
+import ImageSeparator from '@/components/image-separator';
 
 export default async function MemoryPage({ params }: { params: { slug: string } }) {
     const { slug } = await params;

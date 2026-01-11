@@ -1,4 +1,4 @@
-import CreatePlotForm from './components/CreatePlotForm';
+import CreatePlotForm from './_components/create-plot-form';
 
 export default function CreateUserPage() {
     return (

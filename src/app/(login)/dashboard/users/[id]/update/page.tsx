@@ -4,7 +4,7 @@ import { prisma } from '@/lib/prisma';
 
 import { ROUTES } from '@/constants/routes';
 
-import UpdateUserForm, { UpdateUserFormProps } from './components/UpdateUserForm';
+import UpdateUserForm, { UpdateUserFormProps } from './_components/update-user-form';
 
 export default async function UpdateUserPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;

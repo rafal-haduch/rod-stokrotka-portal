@@ -1,11 +1,11 @@
 import { importantDocuments, minutesAndReports, templatesAndForms } from '@/content/data/documents';
 
-import ImageSeparator from '@/components/ImageSeparator';
-import MainHeaderLineSeparator from '@/components/MainHeaderLineSeparator';
-import LineSeparator from '@/components/LineSeparator';
-import AnimateOnView from '@/components/AnimatedH2';
+import ImageSeparator from '@/components/image-separator';
+import MainHeaderLineSeparator from '@/components/main-header-line-separator';
+import LineSeparator from '@/components/line-separator';
+import AnimateOnView from '@/components/animated-h2';
 
-import ListOfDocuments from './components/ListOfDocuments';
+import ListOfDocuments from './_components/list-of-documents';
 
 export default function DocumentsPage() {
     const my = 'my-10';

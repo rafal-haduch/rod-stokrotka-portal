@@ -1,8 +1,8 @@
 import { redirect } from 'next/navigation';
 
-import { getUserSession } from '@/utils/getUserSession';
+import { getUserSession } from '@/lib/auth/get-user-session';
 
-import UserPanelHeader from '@/components/UserPanelHeader';
+import UserPanelHeader from '@/components/user-panel-header';
 
 export default async function UserLayout({ children }: { children: React.ReactNode }) {
     const user = await getUserSession();
