@@ -6,8 +6,8 @@ import { AppRoute, ROUTE_LIST, ROUTES } from '@/constants/routes';
 
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 
-import SignOutButton from './sign-out-button';
-import MainHeaderLineSeparator from './main-header-line-separator';
+import SignOutButton from '@/components/sign-out-button';
+import MainHeaderLineSeparator from '@/components/main-header-line-separator';
 
 const routes = ROUTE_LIST as AppRoute[];
 const navItems = routes

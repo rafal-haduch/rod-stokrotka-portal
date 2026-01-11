@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { AppRoute, ROUTE_LIST } from '@/constants/routes';
 
-import MainHeaderLineSeparator from './main-header-line-separator';
+import MainHeaderLineSeparator from '@/components/main-header-line-separator';
 
 const routes = ROUTE_LIST as AppRoute[];
 const navItems = routes
