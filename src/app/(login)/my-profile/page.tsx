@@ -2,28 +2,14 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { KeyRound } from 'lucide-react';
 
-import { prisma } from '@/lib/prisma';
-
-import { getUserSession } from '@/lib/auth/get-user-session';
 import { getRoleLabel } from '@/utils/get-role-label';
 import { ROUTES } from '@/constants/routes';
+import { userRepository } from '@/lib/repositories/user.repository';
+import { requireSession } from '@/domain/auth/require-session';
 
 export default async function MyProfilePage() {
-    const user = await getUserSession();
-    const userData = await prisma.user.findUnique({
-        where: { id: Number(user.id) },
-        include: {
-            plotsId: {
-                include: {
-                    plot: {
-                        select: {
-                            plotNumber: true,
-                        },
-                    },
-                },
-            },
-        },
-    });
+    const { id } = await requireSession();
+    const userData = await userRepository.getUserForProfilePage({ id });
     //REVIEW: zmienic na błąd?
     if (!userData) redirect('/sign-in');
 

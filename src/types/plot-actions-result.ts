@@ -1,14 +1,17 @@
+import { ErrorCode } from '@/errors/error-codes';
+
 // CREATE
 export type CreatePlotSuccess = {
     success: true;
     data: {
         plotNumber: string;
-        area: number;
+        area: number | null;
     };
 };
 
 export type CreatePlotError = {
     success: false;
+    errorCode: ErrorCode;
     errorMsg: string;
 };
 
@@ -21,6 +24,7 @@ export type UpdatePlotSuccess = {
 
 export type UpdatePlotError = {
     success: false;
+    errorCode: ErrorCode;
     errorMsg: string;
 };
 
@@ -33,6 +37,7 @@ export type DeletePlotSuccess = {
 
 export type DeletePlotError = {
     success: false;
+    errorCode: ErrorCode;
     errorMsg: string;
 };
 

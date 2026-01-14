@@ -10,45 +10,70 @@ import { requireSession } from '@/domain/auth/require-session';
 
 import { DomainError } from '@/errors/domain-error';
 import { ErrorCode } from '@/errors/error-codes';
+import { plotRepository } from '@/lib/repositories/plot.repository';
+import { ERROR_MESSAGES } from '@/errors/error-messages';
 
 export async function updatePlot(formData: FormData): Promise<UpdatePlotResult> {
     try {
         // Session and permission
         const session = await requireSession();
 
-        if (!canPerform(session.role, PERMISSION_KEYS.DELETE_PLOT)) {
+        if (!canPerform(session.role, PERMISSION_KEYS.UPDATE_PLOT)) {
             throw new DomainError(ErrorCode.NO_PERMISSION);
         }
 
+        // Validate input
         const idRaw = formData.get('id');
         const plotNumberRaw = formData.get('plotNumber');
         const areaRaw = formData.get('area');
 
-        if (typeof plotNumberRaw !== 'string' || plotNumberRaw.length === 0) {
-            throw new Error('Invalid plot number');
+        if (
+            typeof idRaw !== 'string' ||
+            typeof plotNumberRaw !== 'string' ||
+            typeof areaRaw !== 'string'
+        ) {
+            throw new DomainError(ErrorCode.INVALID_INPUT);
         }
 
-        //HACK
-        if (plotNumberRaw.toLocaleLowerCase() === 'error') {
-            throw new Error('Test error result');
+        if (idRaw.trim() === '' || plotNumberRaw.trim() === '') {
+            throw new DomainError(ErrorCode.EMPTY_INPUT);
         }
 
-        const id = Number(idRaw);
-        const plotNumber = plotNumberRaw as string;
-        const area = Number(areaRaw);
+        // Prepare data into database and validate
+        const id = Number(idRaw.trim());
+        const plotNumber = plotNumberRaw.trim();
+        let area: number | null = null;
 
-        await prisma.plot.update({
-            where: { id },
-            data: { plotNumber, area },
-        });
+        if (!Number.isFinite(id) || !Number.isInteger(id) || id <= 0) {
+            throw new DomainError(ErrorCode.INVALID_INPUT);
+        }
+
+        if (areaRaw.trim() !== '') {
+            area = Number(areaRaw.trim());
+
+            if (!Number.isFinite(area) || area < 0) {
+                throw new DomainError(ErrorCode.INVALID_INPUT);
+            }
+        }
+
+        await plotRepository.update({ id, plotNumber, area });
 
         return {
             success: true,
         };
     } catch (e) {
-        return {
-            success: false,
-            errorMsg: 'Wystąpił błąd podczas zmiany danych dzialki!',
-        };
+        if (e instanceof DomainError) {
+            return {
+                success: false,
+                errorCode: e.code,
+                errorMsg: ERROR_MESSAGES[e.code],
+            };
+        } else {
+            return {
+                success: false,
+                errorCode: ErrorCode.SERVER_ERROR,
+                errorMsg: ERROR_MESSAGES[ErrorCode.SERVER_ERROR],
+            };
+        }
     }
 }

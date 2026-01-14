@@ -1,7 +1,5 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
-
 import { DeleteUserResult } from '@/types/user-actions-result';
 
 import { DomainError } from '@/errors/domain-error';
@@ -10,6 +8,7 @@ import { ERROR_MESSAGES } from '@/errors/error-messages';
 
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 import { requireSession } from '@/domain/auth/require-session';
+import { userRepository } from '@/lib/repositories/user.repository';
 
 export async function deleteUser(formData: FormData): Promise<DeleteUserResult> {
     try {
@@ -37,15 +36,7 @@ export async function deleteUser(formData: FormData): Promise<DeleteUserResult> 
             throw new DomainError(ErrorCode.INVALID_INPUT);
         }
 
-        await prisma.$transaction(async (tx) => {
-            await tx.userPlot.deleteMany({
-                where: { userId: id },
-            });
-
-            await tx.user.delete({
-                where: { id },
-            });
-        });
+        await userRepository.delete({ id });
 
         return {
             success: true,

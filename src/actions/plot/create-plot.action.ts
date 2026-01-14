@@ -1,7 +1,5 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
-
 import { CreatePlotResult } from '@/types/plot-actions-result';
 
 import { canPerform } from '@/domain/permissions/can-perform';
@@ -10,6 +8,8 @@ import { requireSession } from '@/domain/auth/require-session';
 
 import { DomainError } from '@/errors/domain-error';
 import { ErrorCode } from '@/errors/error-codes';
+import { plotRepository } from '@/lib/repositories/plot.repository';
+import { ERROR_MESSAGES } from '@/errors/error-messages';
 
 export async function createPlot(formData: FormData): Promise<CreatePlotResult> {
     try {
@@ -20,45 +20,52 @@ export async function createPlot(formData: FormData): Promise<CreatePlotResult> 
             throw new DomainError(ErrorCode.NO_PERMISSION);
         }
 
+        // Validate input
         const plotNumberRaw = formData.get('plotNumber');
         const areaRaw = formData.get('area');
 
-        if (typeof plotNumberRaw !== 'string' || plotNumberRaw.length === 0) {
-            throw new Error('Invalid plot number');
+        if (typeof plotNumberRaw !== 'string' || typeof areaRaw !== 'string') {
+            throw new DomainError(ErrorCode.INVALID_INPUT);
         }
 
-        const plotNumber = plotNumberRaw as string;
-
-        const area = Number(areaRaw);
-        // if (Number.isNaN(area)) {
-        //     throw new Error('Area must be a number');
-        // }
-
-        //HACK
-        if (plotNumberRaw.toLocaleLowerCase() === 'error') {
-            throw new Error('Test error result');
+        if (plotNumberRaw.trim() === '') {
+            throw new DomainError(ErrorCode.EMPTY_INPUT);
         }
 
-        await prisma.plot.create({
-            data: {
-                plotNumber,
-                area,
-            },
-        });
+        // Prepara data into database and validate
+        const plotNumber = plotNumberRaw.trim();
+        let area: number | null = null;
 
-        console.log('Error');
+        if (areaRaw.trim() !== '') {
+            area = Number(areaRaw.trim());
+
+            if (!Number.isFinite(area) || area < 0) {
+                throw new DomainError(ErrorCode.INVALID_INPUT);
+            }
+        }
+
+        const newPlot = await plotRepository.create({ plotNumber, area });
 
         return {
             success: true,
             data: {
-                plotNumber,
-                area,
+                plotNumber: newPlot.plotNumber,
+                area: newPlot.area,
             },
         };
     } catch (e) {
-        return {
-            success: false,
-            errorMsg: 'Wystąpił błąd podczas dodawania nowej działki!',
-        };
+        if (e instanceof DomainError) {
+            return {
+                success: false,
+                errorCode: e.code,
+                errorMsg: ERROR_MESSAGES[e.code],
+            };
+        } else {
+            return {
+                success: false,
+                errorCode: ErrorCode.SERVER_ERROR,
+                errorMsg: ERROR_MESSAGES[ErrorCode.SERVER_ERROR],
+            };
+        }
     }
 }

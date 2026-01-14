@@ -23,7 +23,8 @@ export default function CreatePlotForm() {
         setLoading(false);
     }
 
-    const error = result && !result.success ? result.error : null;
+    const error = result && !result.success ? result.errorMsg : null;
+    console.log(result);
 
     return (
         <form

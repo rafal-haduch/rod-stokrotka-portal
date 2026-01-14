@@ -19,7 +19,6 @@ export default function UpdatePlotForm({ plot }: { plot: UpdatePlotFormProps }) 
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        console.log('handleSubmit');
 
         setResult(null);
         setLoading(true);

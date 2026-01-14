@@ -54,7 +54,9 @@ export default async function DashboardPlotsPage() {
                         <tr key={plot.id} className="hover:bg-theme-bg-secondary">
                             <td>{plot.plotNumber}</td>
                             <td>{formatPlotCode(plot.plotNumber)}</td>
-                            <td>{plot.area}</td>
+                            <td>
+                                {plot.area !== null && plot.area !== undefined ? plot.area : '—'}
+                            </td>
                             <td>
                                 {plot.ownersId.length > 0
                                     ? plot.ownersId.map((p) => p.user.name).join(', ')

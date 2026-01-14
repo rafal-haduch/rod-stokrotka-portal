@@ -11,6 +11,7 @@ import { ERROR_MESSAGES } from '@/errors/error-messages';
 
 import { requireSession } from '@/domain/auth/require-session';
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
+import { userRepository } from '@/lib/repositories/user.repository';
 
 export async function updateUser(formData: FormData): Promise<UpdateUserResult> {
     try {
@@ -47,36 +48,16 @@ export async function updateUser(formData: FormData): Promise<UpdateUserResult> 
             throw new DomainError(ErrorCode.EMPTY_INPUT);
         }
 
-        // Prepare data into database
+        // Prepare data into database and validate
         const id = Number(idRaw);
         const name = nameRaw;
         const role = roleRaw as Role;
-        const plotId = plotIdsRaw.map(Number);
-        if (plotId.some((id) => !Number.isInteger(id) || id <= 0)) {
+        const plotIds = plotIdsRaw.map(Number);
+        if (plotIds.some((id) => !Number.isInteger(id) || id <= 0)) {
             throw new DomainError(ErrorCode.INVALID_INPUT);
         }
 
-        console.log(plotId);
-
-        await prisma.$transaction(async (tx) => {
-            await tx.user.update({
-                where: { id },
-                data: { name, role },
-            });
-
-            await tx.userPlot.deleteMany({
-                where: { userId: id },
-            });
-
-            if (plotId.length > 0) {
-                await tx.userPlot.createMany({
-                    data: plotId.map((plotId) => ({
-                        userId: id,
-                        plotId,
-                    })),
-                });
-            }
-        });
+        await userRepository.update({ id, name, plotIds, role });
 
         return {
             success: true,

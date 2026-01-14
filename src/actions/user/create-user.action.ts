@@ -2,7 +2,6 @@
 
 import { Role } from '@prisma/client';
 import bcrypt from 'bcrypt';
-import { prisma } from '@/lib/prisma';
 
 import { CreateUserResult } from '@/types/user-actions-result';
 
@@ -12,6 +11,7 @@ import { ERROR_MESSAGES } from '@/errors/error-messages';
 
 import { requireSession } from '@/domain/auth/require-session';
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
+import { userRepository } from '@/lib/repositories/user.repository';
 
 export async function createUser(formData: FormData): Promise<CreateUserResult> {
     try {
@@ -50,30 +50,11 @@ export async function createUser(formData: FormData): Promise<CreateUserResult> 
         if (plotId.some((id) => !Number.isInteger(id) || id <= 0)) {
             throw new DomainError(ErrorCode.INVALID_INPUT);
         }
-
         const login = generateLogin(name);
         const password = generatePassword();
-        const hashed = await bcrypt.hash(password, 10);
+        const passwordHash = await bcrypt.hash(password, 10);
 
-        await prisma.$transaction(async (tx) => {
-            const user = await tx.user.create({
-                data: {
-                    login,
-                    password: hashed,
-                    name,
-                    role,
-                },
-            });
-
-            if (plotId.length > 0) {
-                await tx.userPlot.createMany({
-                    data: plotId.map((plotId) => ({
-                        userId: user.id,
-                        plotId,
-                    })),
-                });
-            }
-        });
+        await userRepository.create({ name, plotId, role, login, passwordHash });
 
         return {
             success: true,

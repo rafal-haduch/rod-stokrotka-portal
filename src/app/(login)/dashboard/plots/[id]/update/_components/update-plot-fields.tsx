@@ -16,8 +16,8 @@ export default function UpdatePlotFields({ plot, loading, errorMsg }: Props) {
 
             <h3 className="col-span-4 text-center">Dane możliwe do zmiany:</h3>
 
-            {/* Plot number  */}
-            <label className="col-span-1 flex items-center justify-end text-base">Numer:</label>
+            {/* Plot number */}
+            <label className="col-span-1 flex items-center justify-end text-base">*Numer:</label>
             <input
                 type="text"
                 name="plotNumber"
@@ -26,18 +26,21 @@ export default function UpdatePlotFields({ plot, loading, errorMsg }: Props) {
                 className="border-theme-200 focus:border-theme-ui-border-dark bg-theme-bg-primary col-span-3 flex w-full items-center justify-center rounded-md border px-3 py-2 shadow-sm focus:outline-none sm:w-3/4"
             />
 
-            {/* Area  */}
+            {/* Area */}
             <label className="col-span-1 flex items-center justify-end text-base">
                 Powierzchnia:
             </label>
             <input
                 type="text"
                 name="area"
-                defaultValue={plot.area ? plot.area : '-'}
+                defaultValue={plot.area !== null && plot.area !== undefined ? plot.area : ''}
                 className="border-theme-200 focus:border-theme-ui-border-dark bg-theme-bg-primary col-span-3 w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none sm:w-3/4"
             />
 
-            {/* Error  */}
+            {/* Info */}
+            <span className="col-span-4 text-center text-sm">* wymagane pola.</span>
+
+            {/* Error */}
             <div className="col-span-4 min-h-10 text-center sm:min-h-4">
                 {errorMsg && <span className="text-red-500">{errorMsg}</span>}
             </div>

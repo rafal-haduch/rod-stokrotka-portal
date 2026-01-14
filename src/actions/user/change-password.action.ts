@@ -10,6 +10,7 @@ import { getUserSession } from '@/lib/auth/get-user-session';
 import { DomainError } from '@/errors/domain-error';
 import { ErrorCode } from '@/errors/error-codes';
 import { ERROR_MESSAGES } from '@/errors/error-messages';
+import { userRepository } from '@/lib/repositories/user.repository';
 
 export async function changePassword(formData: FormData): Promise<ChangePasswordResult> {
     try {
@@ -51,7 +52,6 @@ export async function changePassword(formData: FormData): Promise<ChangePassword
             where: { id: id },
             select: { password: true },
         });
-
         if (!user?.password) {
             throw new DomainError(ErrorCode.USER_NOT_FOUND);
         }
@@ -61,15 +61,10 @@ export async function changePassword(formData: FormData): Promise<ChangePassword
             throw new DomainError(ErrorCode.WRONG_PASSWORD);
         }
 
-        // Update password
+        // Prepare data into database and validate
         const newPasswordHash = await bcrypt.hash(newPassword, 10);
 
-        await prisma.user.update({
-            where: { id: id },
-            data: {
-                password: newPasswordHash,
-            },
-        });
+        await userRepository.changePassword({ id, newPasswordHash });
 
         return {
             success: true,

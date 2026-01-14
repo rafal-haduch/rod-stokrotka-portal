@@ -26,7 +26,7 @@ export default function DeletePlotFields({ plot, loading, errorMsg }: Props) {
                 Powierzchnia:
             </label>
             <label className="border-theme-200 bg-theme-bg-primary col-span-3 w-full rounded-md border px-3 py-2 shadow-sm sm:w-3/4">
-                {plot.area}
+                {plot.area !== null && plot.area !== undefined ? plot.area : '—'}
             </label>
 
             {/* Owner  */}
