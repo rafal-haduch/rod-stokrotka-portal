@@ -5,13 +5,14 @@ import { prisma } from '@/lib/prisma';
 
 import { ChangePasswordResult } from '@/types/user-actions-result';
 
+import { userRepository } from '@/lib/repositories/user.repository';
+
+import { requireSession } from '@/domain/auth/require-session';
 import { DomainError } from '@/domain/errors/domain-error';
 import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
-import { userRepository } from '@/lib/repositories/user.repository';
-import { requireSession } from '@/domain/auth/require-session';
-import { validateUserPassword } from '@/domain/validation/user-password';
 import { enforcePasswordPolicy } from '@/domain/security/password-policy';
+import { validateUserPassword } from '@/domain/validation';
 
 export async function changePassword(formData: FormData): Promise<ChangePasswordResult> {
     try {

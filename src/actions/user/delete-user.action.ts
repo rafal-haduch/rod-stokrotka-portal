@@ -2,13 +2,13 @@
 
 import { DeleteUserResult } from '@/types/user-actions-result';
 
+import { userRepository } from '@/lib/repositories/user.repository';
+
 import { DomainError } from '@/domain/errors/domain-error';
 import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
-
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 import { requireSession } from '@/domain/auth/require-session';
-import { userRepository } from '@/lib/repositories/user.repository';
 import { validateId } from '@/domain/validation';
 
 export async function deleteUser(formData: FormData): Promise<DeleteUserResult> {
@@ -23,7 +23,7 @@ export async function deleteUser(formData: FormData): Promise<DeleteUserResult> 
         // Get input data
         const idRaw = formData.get('id');
 
-        // Validate and prepare data for database
+        // Validate input data and prepare for database
         const id = validateId(idRaw);
 
         await userRepository.delete({ id });

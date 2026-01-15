@@ -24,7 +24,7 @@ export async function deletePlot(formData: FormData): Promise<DeletePlotResult> 
         // Validate input
         const idRaw = formData.get('id');
 
-        // Validate and prepare data for database
+        // Validate input data and prepare for database
         const id = validateId(idRaw);
 
         await plotRepository.delete({ id });

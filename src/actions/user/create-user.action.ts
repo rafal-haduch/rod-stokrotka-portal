@@ -1,19 +1,17 @@
 'use server';
 
-import { Role } from '@prisma/client';
 import bcrypt from 'bcrypt';
 
 import { CreateUserResult } from '@/types/user-actions-result';
 
+import { userRepository } from '@/lib/repositories/user.repository';
+
 import { DomainError } from '@/domain/errors/domain-error';
 import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
-
 import { requireSession } from '@/domain/auth/require-session';
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
-import { userRepository } from '@/lib/repositories/user.repository';
-import { validateUserName } from '@/domain/validation/user-name';
-import { validatePlotIds, validateUserRole } from '@/domain/validation';
+import { validatePlotIds, validateUserName, validateUserRole } from '@/domain/validation';
 
 export async function createUser(formData: FormData): Promise<CreateUserResult> {
     try {
@@ -29,13 +27,14 @@ export async function createUser(formData: FormData): Promise<CreateUserResult> 
         const roleRaw = formData.get('role');
         const plotIdsRaw = formData.getAll('plotIds');
 
-        // Validate and prepare data for database
+        // Validate input data and prepare for database
         const name = validateUserName(nameRaw);
         const role = validateUserRole(roleRaw);
         const plotId = validatePlotIds(plotIdsRaw);
 
         const login = generateLogin(name);
         const password = generatePassword();
+
         const passwordHash = await bcrypt.hash(password, 10);
 
         await userRepository.create({ name, plotId, role, login, passwordHash });
@@ -57,12 +56,13 @@ export async function createUser(formData: FormData): Promise<CreateUserResult> 
                 errorCode: e.code,
                 errorMsg: ERROR_MESSAGES[e.code],
             };
+        } else {
+            return {
+                success: false,
+                errorCode: ErrorCode.SERVER_ERROR,
+                errorMsg: ERROR_MESSAGES[ErrorCode.SERVER_ERROR],
+            };
         }
-        return {
-            success: false,
-            errorCode: ErrorCode.SERVER_ERROR,
-            errorMsg: 'Wystąpił błąd podczas tworzenia nowego konta!',
-        };
     }
 }
 

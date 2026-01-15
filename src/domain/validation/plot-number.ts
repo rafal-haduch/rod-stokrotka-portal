@@ -1,7 +1,7 @@
 import { DomainError } from '../errors/domain-error';
 import { ErrorCode } from '../errors/error-codes';
 
-export function validatePlotNumber(value: unknown) {
+export function validatePlotNumber(value: unknown): string {
     if (typeof value !== 'string') {
         throw new DomainError(ErrorCode.INVALID_INPUT);
     }

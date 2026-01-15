@@ -2,15 +2,19 @@
 
 import { UpdateUserResult } from '@/types/user-actions-result';
 
+import { userRepository } from '@/lib/repositories/user.repository';
+
 import { DomainError } from '@/domain/errors/domain-error';
 import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
-
 import { requireSession } from '@/domain/auth/require-session';
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
-import { userRepository } from '@/lib/repositories/user.repository';
-import { validateId, validatePlotIds, validateUserRole } from '@/domain/validation';
-import { validateUserName } from '@/domain/validation/user-name';
+import {
+    validateId,
+    validatePlotIds,
+    validateUserName,
+    validateUserRole,
+} from '@/domain/validation';
 
 export async function updateUser(formData: FormData): Promise<UpdateUserResult> {
     try {
@@ -27,7 +31,7 @@ export async function updateUser(formData: FormData): Promise<UpdateUserResult> 
         const roleRaw = formData.get('role');
         const plotIdsRaw = formData.getAll('plotIds');
 
-        // Validate and prepare data for database
+        // Validate input data and prepare for database
         const id = validateId(idRaw);
         const name = validateUserName(nameRaw);
         const role = validateUserRole(roleRaw);

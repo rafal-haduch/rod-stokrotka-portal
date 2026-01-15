@@ -13,5 +13,5 @@ export const ERROR_MESSAGES: Record<ErrorCode, string> = {
     [ErrorCode.WRONG_PASSWORD]: 'Nieprawidłowe hasło!',
     [ErrorCode.UNKNOWN]: 'Wystąpił nieoczekiwany błąd!',
     [ErrorCode.SERVER_ERROR]:
-        'Błąd serwera! Spróbuj ponownie lub skontaktuj się z administratorem strony. ',
+        'Błąd serwera! Spróbuj ponownie lub skontaktuj się z administratorem strony.',
 };

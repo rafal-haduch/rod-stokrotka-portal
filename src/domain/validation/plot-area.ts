@@ -1,7 +1,7 @@
 import { DomainError } from '../errors/domain-error';
 import { ErrorCode } from '../errors/error-codes';
 
-export function validatePlotArea(value: unknown) {
+export function validatePlotArea(value: unknown): number | null {
     if (typeof value !== 'string') {
         throw new DomainError(ErrorCode.INVALID_INPUT);
     }

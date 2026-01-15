@@ -2,13 +2,13 @@
 
 import { CreatePlotResult } from '@/types/plot-actions-result';
 
+import { plotRepository } from '@/lib/repositories/plot.repository';
+
 import { canPerform } from '@/domain/permissions/can-perform';
 import { PERMISSION_KEYS } from '@/domain/permissions/permissions';
 import { requireSession } from '@/domain/auth/require-session';
-
 import { DomainError } from '@/domain/errors/domain-error';
 import { ErrorCode } from '@/domain/errors/error-codes';
-import { plotRepository } from '@/lib/repositories/plot.repository';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
 import { validatePlotArea, validatePlotNumber } from '@/domain/validation';
 
@@ -25,7 +25,7 @@ export async function createPlot(formData: FormData): Promise<CreatePlotResult> 
         const plotNumberRaw = formData.get('plotNumber');
         const areaRaw = formData.get('area');
 
-        // Validate and prepare data for database
+        // Validate input data and prepare for database
         const plotNumber = validatePlotNumber(plotNumberRaw);
         const area = validatePlotArea(areaRaw);
 
