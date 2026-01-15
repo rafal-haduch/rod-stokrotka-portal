@@ -1,17 +1,16 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
-import { Role } from '@prisma/client';
-
 import { UpdateUserResult } from '@/types/user-actions-result';
 
-import { DomainError } from '@/errors/domain-error';
-import { ErrorCode } from '@/errors/error-codes';
-import { ERROR_MESSAGES } from '@/errors/error-messages';
+import { DomainError } from '@/domain/errors/domain-error';
+import { ErrorCode } from '@/domain/errors/error-codes';
+import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
 
 import { requireSession } from '@/domain/auth/require-session';
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 import { userRepository } from '@/lib/repositories/user.repository';
+import { validateId, validatePlotIds, validateUserRole } from '@/domain/validation';
+import { validateUserName } from '@/domain/validation/user-name';
 
 export async function updateUser(formData: FormData): Promise<UpdateUserResult> {
     try {
@@ -22,40 +21,17 @@ export async function updateUser(formData: FormData): Promise<UpdateUserResult> 
             throw new DomainError(ErrorCode.NO_PERMISSION);
         }
 
-        // Validate input data
+        // Get input data
         const idRaw = formData.get('id');
         const nameRaw = formData.get('name');
         const roleRaw = formData.get('role');
         const plotIdsRaw = formData.getAll('plotIds');
 
-        if (
-            typeof idRaw !== 'string' ||
-            typeof nameRaw !== 'string' ||
-            typeof roleRaw !== 'string'
-        ) {
-            throw new DomainError(ErrorCode.INVALID_INPUT);
-        }
-
-        if (!roleRaw || !Object.values(Role).includes(roleRaw as Role)) {
-            throw new DomainError(ErrorCode.INVALID_INPUT);
-        }
-
-        if (!plotIdsRaw.every((v) => typeof v === 'string')) {
-            throw new DomainError(ErrorCode.INVALID_INPUT);
-        }
-
-        if (!idRaw || !nameRaw || !roleRaw) {
-            throw new DomainError(ErrorCode.EMPTY_INPUT);
-        }
-
-        // Prepare data into database and validate
-        const id = Number(idRaw);
-        const name = nameRaw;
-        const role = roleRaw as Role;
-        const plotIds = plotIdsRaw.map(Number);
-        if (plotIds.some((id) => !Number.isInteger(id) || id <= 0)) {
-            throw new DomainError(ErrorCode.INVALID_INPUT);
-        }
+        // Validate and prepare data for database
+        const id = validateId(idRaw);
+        const name = validateUserName(nameRaw);
+        const role = validateUserRole(roleRaw);
+        const plotIds = validatePlotIds(plotIdsRaw);
 
         await userRepository.update({ id, name, plotIds, role });
 

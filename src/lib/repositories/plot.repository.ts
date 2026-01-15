@@ -25,11 +25,10 @@ export const plotRepository = {
 
     async update({ id, plotNumber, area }: UpdatePlotData) {
         console.log({ id, plotNumber, area, typeOfArea: typeof area });
-        const result = await prisma.plot.update({
+        await prisma.plot.update({
             where: { id },
             data: { plotNumber, area },
         });
-        console.log(result);
     },
 
     async delete({ id }: DeletePlotData) {

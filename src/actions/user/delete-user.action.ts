@@ -2,13 +2,14 @@
 
 import { DeleteUserResult } from '@/types/user-actions-result';
 
-import { DomainError } from '@/errors/domain-error';
-import { ErrorCode } from '@/errors/error-codes';
-import { ERROR_MESSAGES } from '@/errors/error-messages';
+import { DomainError } from '@/domain/errors/domain-error';
+import { ErrorCode } from '@/domain/errors/error-codes';
+import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
 
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 import { requireSession } from '@/domain/auth/require-session';
 import { userRepository } from '@/lib/repositories/user.repository';
+import { validateId } from '@/domain/validation';
 
 export async function deleteUser(formData: FormData): Promise<DeleteUserResult> {
     try {
@@ -19,22 +20,11 @@ export async function deleteUser(formData: FormData): Promise<DeleteUserResult> 
             throw new DomainError(ErrorCode.NO_PERMISSION);
         }
 
-        // Validate input data
+        // Get input data
         const idRaw = formData.get('id');
 
-        if (typeof idRaw !== 'string') {
-            throw new DomainError(ErrorCode.INVALID_INPUT);
-        }
-
-        if (!idRaw) {
-            throw new DomainError(ErrorCode.EMPTY_INPUT);
-        }
-
-        // Prepare data into database and validate
-        const id = Number(idRaw);
-        if (!Number.isInteger(id) || id <= 0) {
-            throw new DomainError(ErrorCode.INVALID_INPUT);
-        }
+        // Validate and prepare data for database
+        const id = validateId(idRaw);
 
         await userRepository.delete({ id });
 

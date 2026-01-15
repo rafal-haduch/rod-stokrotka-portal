@@ -5,13 +5,15 @@ import bcrypt from 'bcrypt';
 
 import { CreateUserResult } from '@/types/user-actions-result';
 
-import { DomainError } from '@/errors/domain-error';
-import { ErrorCode } from '@/errors/error-codes';
-import { ERROR_MESSAGES } from '@/errors/error-messages';
+import { DomainError } from '@/domain/errors/domain-error';
+import { ErrorCode } from '@/domain/errors/error-codes';
+import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
 
 import { requireSession } from '@/domain/auth/require-session';
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 import { userRepository } from '@/lib/repositories/user.repository';
+import { validateUserName } from '@/domain/validation/user-name';
+import { validatePlotIds, validateUserRole } from '@/domain/validation';
 
 export async function createUser(formData: FormData): Promise<CreateUserResult> {
     try {
@@ -22,47 +24,30 @@ export async function createUser(formData: FormData): Promise<CreateUserResult> 
             throw new DomainError(ErrorCode.NO_PERMISSION);
         }
 
-        // Validate input
+        // Get input data
         const nameRaw = formData.get('name');
         const roleRaw = formData.get('role');
         const plotIdsRaw = formData.getAll('plotIds');
 
-        if (typeof nameRaw !== 'string' || typeof roleRaw !== 'string') {
-            throw new DomainError(ErrorCode.INVALID_INPUT);
-        }
+        // Validate and prepare data for database
+        const name = validateUserName(nameRaw);
+        const role = validateUserRole(roleRaw);
+        const plotId = validatePlotIds(plotIdsRaw);
 
-        if (!roleRaw || !Object.values(Role).includes(roleRaw as Role)) {
-            throw new DomainError(ErrorCode.INVALID_INPUT);
-        }
-
-        if (!plotIdsRaw.every((v) => typeof v === 'string')) {
-            throw new DomainError(ErrorCode.INVALID_INPUT);
-        }
-
-        if (!nameRaw || !roleRaw) {
-            throw new DomainError(ErrorCode.EMPTY_INPUT);
-        }
-
-        // Prepare data for the database and validate
-        const name = nameRaw;
-        const role = roleRaw as Role;
-        const plotId = plotIdsRaw.map(Number);
-        if (plotId.some((id) => !Number.isInteger(id) || id <= 0)) {
-            throw new DomainError(ErrorCode.INVALID_INPUT);
-        }
         const login = generateLogin(name);
         const password = generatePassword();
         const passwordHash = await bcrypt.hash(password, 10);
 
         await userRepository.create({ name, plotId, role, login, passwordHash });
 
+        // NOTE: The login and password are returned because they are needed to be passed on to the user for whom the account was created.
         return {
             success: true,
             data: {
                 name,
                 role,
                 login,
-                password, // NOTE: Required to show credentails after account creation.
+                password,
             },
         };
     } catch (e) {

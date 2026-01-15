@@ -6,10 +6,11 @@ import { canPerform } from '@/domain/permissions/can-perform';
 import { PERMISSION_KEYS } from '@/domain/permissions/permissions';
 import { requireSession } from '@/domain/auth/require-session';
 
-import { DomainError } from '@/errors/domain-error';
-import { ErrorCode } from '@/errors/error-codes';
+import { DomainError } from '@/domain/errors/domain-error';
+import { ErrorCode } from '@/domain/errors/error-codes';
 import { plotRepository } from '@/lib/repositories/plot.repository';
-import { ERROR_MESSAGES } from '@/errors/error-messages';
+import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
+import { validatePlotArea, validatePlotNumber } from '@/domain/validation';
 
 export async function createPlot(formData: FormData): Promise<CreatePlotResult> {
     try {
@@ -20,29 +21,13 @@ export async function createPlot(formData: FormData): Promise<CreatePlotResult> 
             throw new DomainError(ErrorCode.NO_PERMISSION);
         }
 
-        // Validate input
+        // Get input data
         const plotNumberRaw = formData.get('plotNumber');
         const areaRaw = formData.get('area');
 
-        if (typeof plotNumberRaw !== 'string' || typeof areaRaw !== 'string') {
-            throw new DomainError(ErrorCode.INVALID_INPUT);
-        }
-
-        if (plotNumberRaw.trim() === '') {
-            throw new DomainError(ErrorCode.EMPTY_INPUT);
-        }
-
-        // Prepara data into database and validate
-        const plotNumber = plotNumberRaw.trim();
-        let area: number | null = null;
-
-        if (areaRaw.trim() !== '') {
-            area = Number(areaRaw.trim());
-
-            if (!Number.isFinite(area) || area < 0) {
-                throw new DomainError(ErrorCode.INVALID_INPUT);
-            }
-        }
+        // Validate and prepare data for database
+        const plotNumber = validatePlotNumber(plotNumberRaw);
+        const area = validatePlotArea(areaRaw);
 
         const newPlot = await plotRepository.create({ plotNumber, area });
 

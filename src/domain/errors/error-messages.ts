@@ -7,6 +7,7 @@ export const ERROR_MESSAGES: Record<ErrorCode, string> = {
     [ErrorCode.EMPTY_INPUT]: 'Uzupełnij wymagane pola!',
     [ErrorCode.NEW_PASSWORDS_MISMATCH]: 'Nowe hasła nie są takie same!',
     [ErrorCode.SAME_NEW_PASSWORD]: 'Nowe hasło musi być inne niż obecne!',
+    [ErrorCode.WEAK_PASSWORD]: 'Hasło jest zbyt słabe!',
     [ErrorCode.USER_NOT_FOUND]: 'Użytkownik nie istnieje!',
     [ErrorCode.WRONG_CREDENTIALS]: 'Nieprawidłowy login lub hasło!',
     [ErrorCode.WRONG_PASSWORD]: 'Nieprawidłowe hasło!',

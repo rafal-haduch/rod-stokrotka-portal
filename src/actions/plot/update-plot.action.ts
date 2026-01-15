@@ -1,17 +1,16 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
-
 import { UpdatePlotResult } from '@/types/plot-actions-result';
 
 import { canPerform } from '@/domain/permissions/can-perform';
 import { PERMISSION_KEYS } from '@/domain/permissions/permissions';
 import { requireSession } from '@/domain/auth/require-session';
 
-import { DomainError } from '@/errors/domain-error';
-import { ErrorCode } from '@/errors/error-codes';
+import { DomainError } from '@/domain/errors/domain-error';
+import { ErrorCode } from '@/domain/errors/error-codes';
 import { plotRepository } from '@/lib/repositories/plot.repository';
-import { ERROR_MESSAGES } from '@/errors/error-messages';
+import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
+import { validateId, validatePlotArea, validatePlotNumber } from '@/domain/validation';
 
 export async function updatePlot(formData: FormData): Promise<UpdatePlotResult> {
     try {
@@ -22,39 +21,15 @@ export async function updatePlot(formData: FormData): Promise<UpdatePlotResult> 
             throw new DomainError(ErrorCode.NO_PERMISSION);
         }
 
-        // Validate input
+        // Get input data
         const idRaw = formData.get('id');
         const plotNumberRaw = formData.get('plotNumber');
         const areaRaw = formData.get('area');
 
-        if (
-            typeof idRaw !== 'string' ||
-            typeof plotNumberRaw !== 'string' ||
-            typeof areaRaw !== 'string'
-        ) {
-            throw new DomainError(ErrorCode.INVALID_INPUT);
-        }
-
-        if (idRaw.trim() === '' || plotNumberRaw.trim() === '') {
-            throw new DomainError(ErrorCode.EMPTY_INPUT);
-        }
-
-        // Prepare data into database and validate
-        const id = Number(idRaw.trim());
-        const plotNumber = plotNumberRaw.trim();
-        let area: number | null = null;
-
-        if (!Number.isFinite(id) || !Number.isInteger(id) || id <= 0) {
-            throw new DomainError(ErrorCode.INVALID_INPUT);
-        }
-
-        if (areaRaw.trim() !== '') {
-            area = Number(areaRaw.trim());
-
-            if (!Number.isFinite(area) || area < 0) {
-                throw new DomainError(ErrorCode.INVALID_INPUT);
-            }
-        }
+        // Validate and prepare data for database
+        const id = validateId(idRaw);
+        const plotNumber = validatePlotNumber(plotNumberRaw);
+        const area = validatePlotArea(areaRaw);
 
         await plotRepository.update({ id, plotNumber, area });
 

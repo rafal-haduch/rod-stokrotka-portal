@@ -5,51 +5,46 @@ import { prisma } from '@/lib/prisma';
 
 import { ChangePasswordResult } from '@/types/user-actions-result';
 
-import { getUserSession } from '@/lib/auth/get-user-session';
-
-import { DomainError } from '@/errors/domain-error';
-import { ErrorCode } from '@/errors/error-codes';
-import { ERROR_MESSAGES } from '@/errors/error-messages';
+import { DomainError } from '@/domain/errors/domain-error';
+import { ErrorCode } from '@/domain/errors/error-codes';
+import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
 import { userRepository } from '@/lib/repositories/user.repository';
+import { requireSession } from '@/domain/auth/require-session';
+import { validateUserPassword } from '@/domain/validation/user-password';
+import { enforcePasswordPolicy } from '@/domain/security/password-policy';
 
 export async function changePassword(formData: FormData): Promise<ChangePasswordResult> {
     try {
         // Session
-        const { id } = await getUserSession();
-        if (!id) {
+        const { id, role } = await requireSession();
+        if (!id || !role) {
             throw new DomainError(ErrorCode.NO_SESSION);
         }
 
-        // Validate input
-        const currentPassword = formData.get('currentPassword');
-        const newPassword = formData.get('newPassword');
-        const newPasswordRepeat = formData.get('newPasswordRepeat');
+        // Get input data
+        const currentPasswordRaw = formData.get('currentPassword');
+        const newPasswordRaw = formData.get('newPassword');
+        const newPasswordRepeatRaw = formData.get('newPasswordRepeat');
 
-        if (
-            typeof currentPassword !== 'string' ||
-            typeof newPassword !== 'string' ||
-            typeof newPasswordRepeat !== 'string'
-        ) {
-            throw new DomainError(ErrorCode.INVALID_INPUT);
-        }
-
-        if (!currentPassword || !newPassword || !newPasswordRepeat) {
-            throw new DomainError(ErrorCode.EMPTY_INPUT);
-        }
-
-        if (newPassword !== newPasswordRepeat) {
+        // Basic validation
+        if (newPasswordRaw !== newPasswordRepeatRaw) {
             throw new DomainError(ErrorCode.NEW_PASSWORDS_MISMATCH);
         }
 
-        if (newPassword === currentPassword) {
+        if (newPasswordRaw === currentPasswordRaw) {
             throw new DomainError(ErrorCode.SAME_NEW_PASSWORD);
         }
 
-        // TODO: Check password strength user.role-based
+        // Validate input data
+        const currentPassword = validateUserPassword(currentPasswordRaw);
+        const newPassword = validateUserPassword(newPasswordRaw);
+
+        // Password policy
+        enforcePasswordPolicy(newPassword, role);
 
         // Check current pasword
         const user = await prisma.user.findUnique({
-            where: { id: id },
+            where: { id },
             select: { password: true },
         });
         if (!user?.password) {
@@ -61,7 +56,7 @@ export async function changePassword(formData: FormData): Promise<ChangePassword
             throw new DomainError(ErrorCode.WRONG_PASSWORD);
         }
 
-        // Prepare data into database and validate
+        // Save new hash password into database
         const newPasswordHash = await bcrypt.hash(newPassword, 10);
 
         await userRepository.changePassword({ id, newPasswordHash });

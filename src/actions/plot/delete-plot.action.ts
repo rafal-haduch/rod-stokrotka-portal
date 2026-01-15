@@ -1,17 +1,16 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
-
 import { DeletePlotResult } from '@/types/plot-actions-result';
+
+import { plotRepository } from '@/lib/repositories/plot.repository';
 
 import { canPerform } from '@/domain/permissions/can-perform';
 import { PERMISSION_KEYS } from '@/domain/permissions/permissions';
 import { requireSession } from '@/domain/auth/require-session';
-
-import { DomainError } from '@/errors/domain-error';
-import { ErrorCode } from '@/errors/error-codes';
-import { ERROR_MESSAGES } from '@/errors/error-messages';
-import { plotRepository } from '@/lib/repositories/plot.repository';
+import { DomainError } from '@/domain/errors/domain-error';
+import { ErrorCode } from '@/domain/errors/error-codes';
+import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
+import { validateId } from '@/domain/validation';
 
 export async function deletePlot(formData: FormData): Promise<DeletePlotResult> {
     try {
@@ -25,20 +24,8 @@ export async function deletePlot(formData: FormData): Promise<DeletePlotResult> 
         // Validate input
         const idRaw = formData.get('id');
 
-        if (typeof idRaw !== 'string') {
-            throw new DomainError(ErrorCode.INVALID_INPUT);
-        }
-
-        if (idRaw.trim() === '') {
-            throw new DomainError(ErrorCode.EMPTY_INPUT);
-        }
-
-        // Prepare data for database and validate
-        const id = Number(idRaw.trim());
-
-        if (!Number.isFinite(id) || !Number.isInteger(id) || id <= 0) {
-            throw new DomainError(ErrorCode.INVALID_INPUT);
-        }
+        // Validate and prepare data for database
+        const id = validateId(idRaw);
 
         await plotRepository.delete({ id });
 

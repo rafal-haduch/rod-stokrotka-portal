@@ -1,4 +1,4 @@
-import { ErrorCode } from '@/errors/error-codes';
+import { ErrorCode } from '@/domain/errors/error-codes';
 
 // CREATE
 export type CreatePlotSuccess = {
