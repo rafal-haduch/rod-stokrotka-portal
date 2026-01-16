@@ -9,12 +9,9 @@ import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
 import { requireSession } from '@/domain/auth/require-session';
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
-import {
-    validateId,
-    validatePlotIds,
-    validateUserName,
-    validateUserRole,
-} from '@/domain/validation';
+import { validateUserName, validateUserRole } from '@/domain/user/user.validation';
+import { validateId } from '@/domain/shared';
+import { validatePlotIds } from '@/domain/plot/plot.validation';
 
 export async function updateUser(formData: FormData): Promise<UpdateUserResult> {
     try {

@@ -10,7 +10,8 @@ import { requireSession } from '@/domain/auth/require-session';
 import { DomainError } from '@/domain/errors/domain-error';
 import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
-import { validateId, validatePlotArea, validatePlotNumber } from '@/domain/validation';
+import { validatePlotArea, validatePlotNumber } from '@/domain/plot/plot.validation';
+import { validateId } from '@/domain/shared';
 
 export async function updatePlot(formData: FormData): Promise<UpdatePlotResult> {
     try {

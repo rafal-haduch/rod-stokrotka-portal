@@ -10,7 +10,7 @@ import { requireSession } from '@/domain/auth/require-session';
 import { DomainError } from '@/domain/errors/domain-error';
 import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
-import { validateId } from '@/domain/validation';
+import { validateId } from '@/domain/shared';
 
 export async function deletePlot(formData: FormData): Promise<DeletePlotResult> {
     try {

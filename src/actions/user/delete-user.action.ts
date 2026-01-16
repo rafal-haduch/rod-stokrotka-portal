@@ -9,7 +9,7 @@ import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 import { requireSession } from '@/domain/auth/require-session';
-import { validateId } from '@/domain/validation';
+import { validateId } from '@/domain/shared';
 
 export async function deleteUser(formData: FormData): Promise<DeleteUserResult> {
     try {

@@ -10,7 +10,7 @@ import { requireSession } from '@/domain/auth/require-session';
 import { DomainError } from '@/domain/errors/domain-error';
 import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
-import { validatePlotArea, validatePlotNumber } from '@/domain/validation';
+import { validatePlotArea, validatePlotNumber } from '@/domain/plot/plot.validation';
 
 export async function createPlot(formData: FormData): Promise<CreatePlotResult> {
     try {

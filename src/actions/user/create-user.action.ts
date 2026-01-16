@@ -11,7 +11,8 @@ import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
 import { requireSession } from '@/domain/auth/require-session';
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
-import { validatePlotIds, validateUserName, validateUserRole } from '@/domain/validation';
+import { validateUserName, validateUserRole } from '@/domain/user/user.validation';
+import { validatePlotIds } from '@/domain/plot/plot.validation';
 
 export async function createUser(formData: FormData): Promise<CreateUserResult> {
     try {

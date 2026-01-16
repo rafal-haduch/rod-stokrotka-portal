@@ -12,7 +12,7 @@ import { DomainError } from '@/domain/errors/domain-error';
 import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
 import { enforcePasswordPolicy } from '@/domain/security/password-policy';
-import { validateUserPassword } from '@/domain/validation';
+import { validateUserPassword } from '@/domain/user/user.validation';
 
 export async function changePassword(formData: FormData): Promise<ChangePasswordResult> {
     try {
