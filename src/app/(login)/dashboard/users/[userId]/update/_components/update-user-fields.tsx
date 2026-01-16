@@ -6,13 +6,13 @@ import { ROUTES } from '@/constants/routes';
 
 import { getRoleLabel } from '@/utils/get-role-label';
 
-import { UpdateUserFormProps } from './update-user-form';
 import { PlotOption } from '../../../create/_components/create-user-form';
 import MultiSelectDropdown from '@/components/multi-select-plots-dropdown';
+import { UseUpdateFormReadModel } from '@/domain/user/user.read-models';
 
 //REVIEW: import PlotOption czy nei zmienic jego miejsca?
 interface Props {
-    user: UpdateUserFormProps;
+    user: UseUpdateFormReadModel;
     plots: PlotOption[];
     loading: boolean;
     errorMsg: string | null;
@@ -59,7 +59,7 @@ export default function UpdateUserFields({ user, plots, loading, errorMsg }: Pro
                     id: p.id,
                     label: `${p.plotNumber}`,
                 }))}
-                initialSelectedIds={user.plots.map((plot) => plot.id)}
+                initialSelectedIds={user.plots.map((plot) => plot.plotId)}
             />
 
             {/* Error  */}

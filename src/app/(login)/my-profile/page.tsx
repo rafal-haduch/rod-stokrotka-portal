@@ -8,13 +8,16 @@ import { requireSession } from '@/domain/auth/require-session';
 
 import { getRoleLabel } from '@/utils/get-role-label';
 import { userRepository } from '@/domain/user/user.repository';
+import { mapUserToUserProfile } from '@/domain/user/user.mapper';
 
 export default async function MyProfilePage() {
     const session = await requireSession();
 
-    const userData = await userRepository.getUserForProfilePage({ id: session.id });
+    const user = await userRepository.findByIdWithPlots(session.id);
     //REVIEW: zmienic na błąd?
-    if (!userData) redirect('/sign-in');
+    if (!user) redirect('/sign-in');
+
+    const userProfile = mapUserToUserProfile(user);
 
     return (
         <article>
@@ -24,21 +27,21 @@ export default async function MyProfilePage() {
                     {/* Name */}
                     <div className="flex space-x-1">
                         <label className="text-theme-txt">Imię: </label>
-                        <span className="text-theme-txt-secondary">{userData.name}</span>
+                        <span className="text-theme-txt-secondary">{userProfile.name}</span>
                     </div>
 
                     {/* Role */}
                     <div className="flex space-x-1">
                         <label className="text-theme-txt">Rola: </label>
                         <span className="text-theme-txt-secondary">
-                            {getRoleLabel(userData.role)}
+                            {getRoleLabel(userProfile.role)}
                         </span>
                     </div>
 
                     {/* Login */}
                     <div className="flex space-x-1">
                         <label className="text-theme-txt">Login: </label>
-                        <span className="text-theme-txt-secondary">{userData.login}</span>
+                        <span className="text-theme-txt-secondary">{userProfile.login}</span>
                     </div>
 
                     {/* Password */}
@@ -57,8 +60,8 @@ export default async function MyProfilePage() {
                     <div className="flex space-x-1">
                         <label className="text-theme-txt">Działki: </label>
                         <div className="text-theme-txt-secondary">
-                            {userData.plotsId.length > 0
-                                ? userData.plotsId.map((p) => p.plot.plotNumber).join(', ')
+                            {userProfile.plots.length > 0
+                                ? userProfile.plots.map((p) => p.plotNumber).join(', ')
                                 : '—'}
                         </div>
                     </div>

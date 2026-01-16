@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Role } from '@prisma/client';
 
 import { UpdateUserResult } from '@/types/user-actions-result';
 
@@ -9,15 +8,9 @@ import { deleteUser } from '@/actions/user/delete-user.action';
 
 import DeleteUserSuccess from './delete-user-success';
 import DeleteUserFields from './delete-user-fields';
+import { UserDeleteFormReadModel } from '@/domain/user/user.read-models';
 
-export interface DeleteUserFormProps {
-    id: number;
-    name: string;
-    role: Role;
-    plots: { id: number }[];
-}
-
-export default function DeleteUserForm({ user }: { user: DeleteUserFormProps }) {
+export default function DeleteUserForm({ user }: { user: UserDeleteFormReadModel }) {
     const [result, setResult] = useState<UpdateUserResult | null>(null);
     const [loading, setLoading] = useState(false);
 

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Role } from '@prisma/client';
 
 import { updateUser } from '@/actions/user/update-user.action';
 
@@ -10,16 +9,10 @@ import { UpdateUserResult } from '@/types/user-actions-result';
 import UpdateUserFields from './update-user-fields';
 import UpdateUserSuccess from './update-user-success';
 import { PlotOption } from '../../../create/_components/create-user-form';
-
-export interface UpdateUserFormProps {
-    id: number;
-    name: string;
-    role: Role;
-    plots: { id: number }[];
-}
+import { UseUpdateFormReadModel } from '@/domain/user/user.read-models';
 
 interface Props {
-    user: UpdateUserFormProps;
+    user: UseUpdateFormReadModel;
     plotsList: PlotOption[];
 }
 

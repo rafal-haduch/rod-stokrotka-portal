@@ -5,9 +5,11 @@ import { ROUTES } from '@/constants/routes';
 
 import { getRoleLabel } from '@/utils/get-role-label';
 import { userRepository } from '@/domain/user/user.repository';
+import { mapUsersToUserTableRows } from '@/domain/user/user.mapper';
 
 export default async function DashboardUsersPage() {
-    const users = await userRepository.getUsersForDashboardPage();
+    const users = await userRepository.findManyWithPlots();
+    const userTableRows = mapUsersToUserTableRows(users);
 
     return (
         <section>
@@ -35,13 +37,13 @@ export default async function DashboardUsersPage() {
                     </tr>
                 </thead>
                 <tbody>
-                    {users.map((user) => (
+                    {userTableRows.map((user) => (
                         <tr key={user.id}>
                             <td>{user.id}</td>
                             <td>{user.name}</td>
                             <td>
-                                {user.plotsId.length > 0
-                                    ? user.plotsId.map((p) => p.plot.plotNumber).join(', ')
+                                {user.plotNumbers.length > 0
+                                    ? user.plotNumbers.map((p) => p).join(', ')
                                     : '—'}
                             </td>
                             <td>{getRoleLabel(user.role)}</td>

@@ -4,15 +4,14 @@ import { Ban, Trash2 } from 'lucide-react';
 import { ROUTES } from '@/constants/routes';
 
 import { getRoleLabel } from '@/utils/get-role-label';
-
-import { DeleteUserFormProps } from './delete-user-form';
+import { UserDeleteFormReadModel } from '@/domain/user/user.read-models';
 
 interface Props {
-    user: DeleteUserFormProps;
+    user: UserDeleteFormReadModel;
     loading: boolean;
     errorMsg: string | null;
 }
-// REVIEW: czy nie powinno to byc "use client"?
+
 export default function DeleteUserFields({ user, loading, errorMsg }: Props) {
     return (
         <fieldset className="grid grid-cols-4 space-x-2 gap-y-3">
@@ -36,7 +35,7 @@ export default function DeleteUserFields({ user, loading, errorMsg }: Props) {
             {/* Plot  */}
             <label className="col-span-1 flex items-center justify-end text-base">Działka:</label>
             <label className="border-theme-200 bg-theme-bg-primary col-span-3 w-full rounded-md border px-3 py-2 shadow-sm sm:w-3/4">
-                {user.plots.length > 0 ? user.plots.map((p) => p.id).join(', ') : '—'}
+                {user.plots.length > 0 ? user.plots.map((p) => p.plotNumber).join(', ') : '—'}
             </label>
 
             {/* Info */}
