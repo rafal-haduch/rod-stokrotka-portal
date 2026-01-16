@@ -2,14 +2,13 @@
 
 import { DeleteUserResult } from '@/types/user-actions-result';
 
-import { userRepository } from '@/lib/repositories/user.repository';
-
 import { DomainError } from '@/domain/errors/domain-error';
 import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 import { requireSession } from '@/domain/auth/require-session';
 import { validateId } from '@/domain/shared';
+import { userRepository } from '@/domain/user/user.repository';
 
 export async function deleteUser(formData: FormData): Promise<DeleteUserResult> {
     try {
@@ -26,7 +25,7 @@ export async function deleteUser(formData: FormData): Promise<DeleteUserResult> 
         // Validate input data and prepare for database
         const id = validateId(idRaw);
 
-        await userRepository.delete({ id });
+        await userRepository.delete(id);
 
         return {
             success: true,

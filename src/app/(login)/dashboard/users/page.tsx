@@ -3,9 +3,8 @@ import { Pencil, Plus, Trash2 } from 'lucide-react';
 
 import { ROUTES } from '@/constants/routes';
 
-import { userRepository } from '@/lib/repositories/user.repository';
-
 import { getRoleLabel } from '@/utils/get-role-label';
+import { userRepository } from '@/domain/user/user.repository';
 
 export default async function DashboardUsersPage() {
     const users = await userRepository.getUsersForDashboardPage();

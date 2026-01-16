@@ -4,11 +4,10 @@ import { KeyRound } from 'lucide-react';
 
 import { ROUTES } from '@/constants/routes';
 
-import { userRepository } from '@/lib/repositories/user.repository';
-
 import { requireSession } from '@/domain/auth/require-session';
 
 import { getRoleLabel } from '@/utils/get-role-label';
+import { userRepository } from '@/domain/user/user.repository';
 
 export default async function MyProfilePage() {
     const session = await requireSession();

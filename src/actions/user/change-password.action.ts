@@ -5,14 +5,13 @@ import { prisma } from '@/lib/prisma';
 
 import { ChangePasswordResult } from '@/types/user-actions-result';
 
-import { userRepository } from '@/lib/repositories/user.repository';
-
 import { requireSession } from '@/domain/auth/require-session';
 import { DomainError } from '@/domain/errors/domain-error';
 import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
 import { enforcePasswordPolicy } from '@/domain/security/password-policy';
 import { validateUserPassword } from '@/domain/user/user.validation';
+import { userRepository } from '@/domain/user/user.repository';
 
 export async function changePassword(formData: FormData): Promise<ChangePasswordResult> {
     try {
@@ -60,7 +59,7 @@ export async function changePassword(formData: FormData): Promise<ChangePassword
         // Save new hash password into database
         const newPasswordHash = await bcrypt.hash(newPassword, 10);
 
-        await userRepository.changePassword({ id, newPasswordHash });
+        await userRepository.changePassword(id, newPasswordHash);
 
         return {
             success: true,

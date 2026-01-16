@@ -3,9 +3,8 @@ import { Pencil, Plus, Trash2 } from 'lucide-react';
 
 import { ROUTES } from '@/constants/routes';
 
-import { plotRepository } from '@/lib/repositories/plot.repository';
-
 import { formatPlotCode } from '@/utils/format-plot-code';
+import { plotRepository } from '@/domain/plot/plot.repository';
 
 export default async function DashboardPlotsPage() {
     const plots = (await plotRepository.getPlotsForDashboardPage()).sort((a, b) =>

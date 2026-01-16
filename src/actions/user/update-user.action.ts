@@ -2,8 +2,6 @@
 
 import { UpdateUserResult } from '@/types/user-actions-result';
 
-import { userRepository } from '@/lib/repositories/user.repository';
-
 import { DomainError } from '@/domain/errors/domain-error';
 import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
@@ -12,6 +10,7 @@ import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 import { validateUserName, validateUserRole } from '@/domain/user/user.validation';
 import { validateId } from '@/domain/shared';
 import { validatePlotIds } from '@/domain/plot/plot.validation';
+import { userRepository } from '@/domain/user/user.repository';
 
 export async function updateUser(formData: FormData): Promise<UpdateUserResult> {
     try {

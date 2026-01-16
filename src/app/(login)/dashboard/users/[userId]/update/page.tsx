@@ -2,10 +2,9 @@ import { redirect } from 'next/navigation';
 
 import { ROUTES } from '@/constants/routes';
 
-import { userRepository } from '@/lib/repositories/user.repository';
-import { plotRepository } from '@/lib/repositories/plot.repository';
-
 import UpdateUserForm, { UpdateUserFormProps } from './_components/update-user-form';
+import { userRepository } from '@/domain/user/user.repository';
+import { plotRepository } from '@/domain/plot/plot.repository';
 
 export default async function UpdateUserPage({ params }: { params: Promise<{ userId: string }> }) {
     const { userId } = await params;

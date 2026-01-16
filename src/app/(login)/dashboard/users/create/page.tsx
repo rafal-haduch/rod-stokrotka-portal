@@ -1,5 +1,4 @@
-import { plotRepository } from '@/lib/repositories/plot.repository';
-
+import { plotRepository } from '@/domain/plot/plot.repository';
 import CreateUserForm from './_components/create-user-form';
 
 export default async function CreateUserPage() {

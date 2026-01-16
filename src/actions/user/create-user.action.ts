@@ -4,8 +4,6 @@ import bcrypt from 'bcrypt';
 
 import { CreateUserResult } from '@/types/user-actions-result';
 
-import { userRepository } from '@/lib/repositories/user.repository';
-
 import { DomainError } from '@/domain/errors/domain-error';
 import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
@@ -13,6 +11,7 @@ import { requireSession } from '@/domain/auth/require-session';
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 import { validateUserName, validateUserRole } from '@/domain/user/user.validation';
 import { validatePlotIds } from '@/domain/plot/plot.validation';
+import { userRepository } from '@/domain/user/user.repository';
 
 export async function createUser(formData: FormData): Promise<CreateUserResult> {
     try {

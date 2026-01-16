@@ -2,8 +2,6 @@
 
 import { CreatePlotResult } from '@/types/plot-actions-result';
 
-import { plotRepository } from '@/lib/repositories/plot.repository';
-
 import { canPerform } from '@/domain/permissions/can-perform';
 import { PERMISSION_KEYS } from '@/domain/permissions/permissions';
 import { requireSession } from '@/domain/auth/require-session';
@@ -11,6 +9,7 @@ import { DomainError } from '@/domain/errors/domain-error';
 import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
 import { validatePlotArea, validatePlotNumber } from '@/domain/plot/plot.validation';
+import { plotRepository } from '@/domain/plot/plot.repository';
 
 export async function createPlot(formData: FormData): Promise<CreatePlotResult> {
     try {

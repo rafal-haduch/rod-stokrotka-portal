@@ -2,9 +2,8 @@ import { redirect } from 'next/navigation';
 
 import { ROUTES } from '@/constants/routes';
 
-import { plotRepository } from '@/lib/repositories/plot.repository';
-
 import UpdatePlotForm, { UpdatePlotFormProps } from './_components/update-plot-form';
+import { plotRepository } from '@/domain/plot/plot.repository';
 
 export default async function UpdatePlotPage({ params }: { params: Promise<{ plotId: string }> }) {
     const { plotId } = await params;

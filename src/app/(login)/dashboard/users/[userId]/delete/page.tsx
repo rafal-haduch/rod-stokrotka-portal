@@ -2,9 +2,8 @@ import { redirect } from 'next/navigation';
 
 import { ROUTES } from '@/constants/routes';
 
-import { userRepository } from '@/lib/repositories/user.repository';
-
 import DeleteUserForm, { DeleteUserFormProps } from './_components/delete-user-form';
+import { userRepository } from '@/domain/user/user.repository';
 
 export default async function DeleteUserPage({ params }: { params: Promise<{ userId: string }> }) {
     const { userId } = await params;
