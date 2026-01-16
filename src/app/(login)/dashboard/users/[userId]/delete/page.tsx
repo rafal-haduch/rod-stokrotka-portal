@@ -1,30 +1,16 @@
 import { redirect } from 'next/navigation';
 
-import { prisma } from '@/lib/prisma';
-
 import { ROUTES } from '@/constants/routes';
+
+import { userRepository } from '@/lib/repositories/user.repository';
 
 import DeleteUserForm, { DeleteUserFormProps } from './_components/delete-user-form';
 
-export default async function DeleteUserPage({ params }: { params: Promise<{ id: string }> }) {
-    const { id } = await params;
-    const userId = Number(id);
+export default async function DeleteUserPage({ params }: { params: Promise<{ userId: string }> }) {
+    const { userId } = await params;
+    const id = Number(userId);
 
-    const user = await prisma.user.findUnique({
-        where: { id: userId },
-        include: {
-            plotsId: {
-                include: {
-                    plot: {
-                        select: {
-                            plotNumber: true,
-                        },
-                    },
-                },
-            },
-        },
-    });
-
+    const user = await userRepository.getUserForDashboardForm({ id });
     if (!user) redirect(ROUTES.DASHBOARD_USERS.path);
 
     const formUser: DeleteUserFormProps = {

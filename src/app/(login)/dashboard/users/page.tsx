@@ -1,24 +1,15 @@
-import { Pencil, Plus, Trash2 } from 'lucide-react';
 import Link from 'next/link';
+import { Pencil, Plus, Trash2 } from 'lucide-react';
 
-import { prisma } from '@/lib/prisma';
-import { getRoleLabel } from '@/utils/get-role-label';
 import { ROUTES } from '@/constants/routes';
 
+import { userRepository } from '@/lib/repositories/user.repository';
+
+import { getRoleLabel } from '@/utils/get-role-label';
+
 export default async function DashboardUsersPage() {
-    const users = await prisma.user.findMany({
-        include: {
-            plotsId: {
-                include: {
-                    plot: {
-                        select: {
-                            plotNumber: true,
-                        },
-                    },
-                },
-            },
-        },
-    });
+    const users = await userRepository.getUsersForDashboardPage();
+
     return (
         <section>
             <h2>Tabela kont działkowców</h2>

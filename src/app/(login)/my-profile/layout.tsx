@@ -4,13 +4,14 @@ import { getUserSession } from '@/lib/auth/get-user-session';
 
 import UserPanelHeader from './_components/user-panel-header';
 
-export default async function UserLayout({ children }: { children: React.ReactNode }) {
-    const user = await getUserSession();
-    if (!user) redirect('/sign-in');
+export default async function MyProfileLayout({ children }: { children: React.ReactNode }) {
+    const session = await getUserSession();
+
+    if (!session) redirect('/sign-in');
 
     return (
         <section>
-            <UserPanelHeader user={user} />
+            <UserPanelHeader user={session} />
             <main>{children}</main>
         </section>
     );

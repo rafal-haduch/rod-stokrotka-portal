@@ -2,14 +2,18 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { KeyRound } from 'lucide-react';
 
-import { getRoleLabel } from '@/utils/get-role-label';
 import { ROUTES } from '@/constants/routes';
+
 import { userRepository } from '@/lib/repositories/user.repository';
+
 import { requireSession } from '@/domain/auth/require-session';
 
+import { getRoleLabel } from '@/utils/get-role-label';
+
 export default async function MyProfilePage() {
-    const { id } = await requireSession();
-    const userData = await userRepository.getUserForProfilePage({ id });
+    const session = await requireSession();
+
+    const userData = await userRepository.getUserForProfilePage({ id: session.id });
     //REVIEW: zmienic na błąd?
     if (!userData) redirect('/sign-in');
 

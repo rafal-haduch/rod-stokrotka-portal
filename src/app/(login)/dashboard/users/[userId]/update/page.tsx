@@ -1,36 +1,21 @@
 import { redirect } from 'next/navigation';
 
-import { prisma } from '@/lib/prisma';
-
 import { ROUTES } from '@/constants/routes';
+
+import { userRepository } from '@/lib/repositories/user.repository';
+import { plotRepository } from '@/lib/repositories/plot.repository';
 
 import UpdateUserForm, { UpdateUserFormProps } from './_components/update-user-form';
 
-export default async function UpdateUserPage({ params }: { params: Promise<{ id: string }> }) {
-    const { id } = await params;
-    const userId = Number(id);
+export default async function UpdateUserPage({ params }: { params: Promise<{ userId: string }> }) {
+    const { userId } = await params;
+    const id = Number(userId);
 
-    const user = await prisma.user.findUnique({
-        where: { id: userId },
-        include: {
-            plotsId: {
-                select: {
-                    plotId: true,
-                },
-            },
-        },
-    });
-
+    const user = await userRepository.getUserForDashboardForm({ id });
     if (!user) redirect(ROUTES.DASHBOARD_USERS.path);
 
-    const plotsListDb = (
-        await prisma.plot.findMany({
-            select: {
-                id: true,
-                plotNumber: true,
-            },
-        })
-    ).sort((a, b) =>
+    //REVIEW: czy wydobrebnic funkcje w katalogu domain ktora pobiera i sortuje liste dzialek?
+    const plotsListDb = (await plotRepository.getPlotsList()).sort((a, b) =>
         a.plotNumber.localeCompare(b.plotNumber, 'pl', {
             numeric: true,
             sensitivity: 'base',

@@ -1,17 +1,16 @@
 import { redirect } from 'next/navigation';
 
-import { prisma } from '@/lib/prisma';
-
 import { ROUTES } from '@/constants/routes';
+
+import { plotRepository } from '@/lib/repositories/plot.repository';
+
 import UpdatePlotForm, { UpdatePlotFormProps } from './_components/update-plot-form';
 
-export default async function UpdatePlotPage({ params }: { params: Promise<{ id: string }> }) {
-    const { id } = await params;
-    const plotId = Number(id);
+export default async function UpdatePlotPage({ params }: { params: Promise<{ plotId: string }> }) {
+    const { plotId } = await params;
+    const id = Number(plotId);
 
-    const plot = await prisma.plot.findUnique({
-        where: { id: plotId },
-    });
+    const plot = await plotRepository.getPlotForDashboardForm({ id });
 
     if (!plot) redirect(ROUTES.DASHBOARD_PLOTS.path);
 

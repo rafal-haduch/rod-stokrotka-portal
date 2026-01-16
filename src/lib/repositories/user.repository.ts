@@ -20,14 +20,20 @@ interface DeleteUserData {
     id: number;
 }
 
-interface GetUserForProfilePageData {
-    id: number;
-}
-
 interface ChangePassword {
     id: number;
     newPasswordHash: string;
 }
+
+interface GetUserForProfilePageData {
+    id: number;
+}
+
+interface GetUserForDashboardForm {
+    id: number;
+}
+
+interface GetUsersForDashboardPageData {}
 
 export const userRepository = {
     async create({ name, plotId, role, login, passwordHash }: CreateUserData) {
@@ -86,15 +92,26 @@ export const userRepository = {
         });
     },
 
+    async changePassword({ id, newPasswordHash }: ChangePassword) {
+        await prisma.user.update({
+            where: { id },
+            data: { password: newPasswordHash },
+        });
+    },
+
     async getUserForProfilePage({ id }: GetUserForProfilePageData) {
-        console.log(id);
         return prisma.user.findUnique({
-            where: { id: id },
-            include: {
+            where: { id },
+            select: {
+                name: true,
+                login: true,
+                role: true,
                 plotsId: {
-                    include: {
+                    select: {
                         plot: {
-                            select: { plotNumber: true },
+                            select: {
+                                plotNumber: true,
+                            },
                         },
                     },
                 },
@@ -102,10 +119,46 @@ export const userRepository = {
         });
     },
 
-    async changePassword({ id, newPasswordHash }: ChangePassword) {
-        await prisma.user.update({
+    async getUserForDashboardForm({ id }: GetUserForDashboardForm) {
+        console.log(id);
+        return prisma.user.findUnique({
             where: { id },
-            data: { password: newPasswordHash },
+            select: {
+                id: true,
+                name: true,
+                role: true,
+                plotsId: {
+                    select: {
+                        plotId: true,
+                        plot: {
+                            select: {
+                                plotNumber: true,
+                            },
+                        },
+                    },
+                },
+            },
+        });
+    },
+
+    async getUsersForDashboardPage() {
+        return prisma.user.findMany({
+            select: {
+                id: true,
+                name: true,
+                role: true,
+                createdAt: true,
+                lastLogin: true,
+                plotsId: {
+                    select: {
+                        plot: {
+                            select: {
+                                plotNumber: true,
+                            },
+                        },
+                    },
+                },
+            },
         });
     },
 };

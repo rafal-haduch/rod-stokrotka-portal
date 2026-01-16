@@ -1,25 +1,14 @@
-import { ROUTES } from '@/constants/routes';
-import { prisma } from '@/lib/prisma';
-import { formatPlotCode } from '@/utils/format-plot-code';
-import { Pencil, Plus, Trash2 } from 'lucide-react';
 import Link from 'next/link';
+import { Pencil, Plus, Trash2 } from 'lucide-react';
+
+import { ROUTES } from '@/constants/routes';
+
+import { plotRepository } from '@/lib/repositories/plot.repository';
+
+import { formatPlotCode } from '@/utils/format-plot-code';
 
 export default async function DashboardPlotsPage() {
-    const plots = (
-        await prisma.plot.findMany({
-            include: {
-                ownersId: {
-                    include: {
-                        user: {
-                            select: {
-                                name: true,
-                            },
-                        },
-                    },
-                },
-            },
-        })
-    ).sort((a, b) =>
+    const plots = (await plotRepository.getPlotsForDashboardPage()).sort((a, b) =>
         a.plotNumber.localeCompare(b.plotNumber, 'pl', {
             numeric: true,
             sensitivity: 'base',

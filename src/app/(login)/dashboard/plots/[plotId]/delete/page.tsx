@@ -1,30 +1,16 @@
 import { redirect } from 'next/navigation';
 
-import { prisma } from '@/lib/prisma';
-
 import { ROUTES } from '@/constants/routes';
+
+import { plotRepository } from '@/lib/repositories/plot.repository';
 
 import DeletePlotForm, { DeletePlotFormProps } from './_components/delete-plot-form';
 
-export default async function DeletePlotPage({ params }: { params: Promise<{ id: string }> }) {
-    const { id } = await params;
-    const plotId = Number(id);
+export default async function DeletePlotPage({ params }: { params: Promise<{ plotId: string }> }) {
+    const { plotId } = await params;
+    const id = Number(plotId);
 
-    const plotDb = await prisma.plot.findUnique({
-        where: { id: plotId },
-        include: {
-            ownersId: {
-                include: {
-                    user: {
-                        select: {
-                            name: true,
-                        },
-                    },
-                },
-            },
-        },
-    });
-
+    const plotDb = await plotRepository.getPlotWithOwnersForDashboardForm({ id });
     if (!plotDb) redirect(ROUTES.DASHBOARD_PLOTS.path);
 
     const plotFormProps: DeletePlotFormProps = {

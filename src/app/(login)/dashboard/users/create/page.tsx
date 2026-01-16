@@ -1,16 +1,10 @@
-import { prisma } from '@/lib/prisma';
+import { plotRepository } from '@/lib/repositories/plot.repository';
 
 import CreateUserForm from './_components/create-user-form';
 
 export default async function CreateUserPage() {
-    const plotsListDb = (
-        await prisma.plot.findMany({
-            select: {
-                id: true,
-                plotNumber: true,
-            },
-        })
-    ).sort((a, b) =>
+    //REVIEW: czy wydobrebnic funkcje w katalogu domain ktora pobiera i sortuje liste dzialek?
+    const plotsListDb = (await plotRepository.getPlotsList()).sort((a, b) =>
         a.plotNumber.localeCompare(b.plotNumber, 'pl', {
             numeric: true,
             sensitivity: 'base',
