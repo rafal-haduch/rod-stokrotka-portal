@@ -3,7 +3,7 @@ import { Role } from '@prisma/client';
 
 interface CreateUserData {
     name: string;
-    plotId: number[];
+    plotIds: number[];
     role: Role;
     login: string;
     passwordHash: string;
@@ -17,8 +17,8 @@ interface UpdateUserData {
 }
 
 export const userRepository = {
-    // Create, Update, Delete
-    async create({ name, plotId, role, login, passwordHash }: CreateUserData) {
+    // Operations: Create, Update, Delete
+    async create({ name, plotIds, role, login, passwordHash }: CreateUserData) {
         await prisma.$transaction(async (tx) => {
             const user = await tx.user.create({
                 data: {
@@ -29,9 +29,9 @@ export const userRepository = {
                 },
             });
 
-            if (plotId.length > 0) {
+            if (plotIds.length > 0) {
                 await tx.userPlot.createMany({
-                    data: plotId.map((id) => ({
+                    data: plotIds.map((id) => ({
                         userId: user.id,
                         plotId: id,
                     })),
@@ -74,7 +74,7 @@ export const userRepository = {
         });
     },
 
-    // Find
+    // Operations: READ
     async findById(id: number) {
         return prisma.user.findUnique({
             where: { id },
@@ -110,7 +110,7 @@ export const userRepository = {
         });
     },
 
-    // Special Action
+    // Special operations:
     async changePassword(id: number, newPasswordHash: string) {
         await prisma.user.update({
             where: { id },

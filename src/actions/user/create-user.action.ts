@@ -9,9 +9,8 @@ import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
 import { requireSession } from '@/domain/auth/require-session';
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
-import { validateUserName, validateUserRole } from '@/domain/user/user.validation';
-import { validatePlotIds } from '@/domain/plot/plot.validation';
 import { userRepository } from '@/domain/user/user.repository';
+import { parseCreateUserInput } from '@/domain/user/user-input.parse';
 
 export async function createUser(formData: FormData): Promise<CreateUserResult> {
     try {
@@ -22,22 +21,17 @@ export async function createUser(formData: FormData): Promise<CreateUserResult> 
             throw new DomainError(ErrorCode.NO_PERMISSION);
         }
 
-        // Get input data
-        const nameRaw = formData.get('name');
-        const roleRaw = formData.get('role');
-        const plotIdsRaw = formData.getAll('plotIds');
+        // Prepare input data (validate and parse)
+        const { name, role, plotIds } = parseCreateUserInput(formData);
 
-        // Validate input data and prepare for database
-        const name = validateUserName(nameRaw);
-        const role = validateUserRole(roleRaw);
-        const plotId = validatePlotIds(plotIdsRaw);
-
+        // Prepare other necessary data
         const login = generateLogin(name);
         const password = generatePassword();
 
         const passwordHash = await bcrypt.hash(password, 10);
 
-        await userRepository.create({ name, plotId, role, login, passwordHash });
+        // Database operation
+        await userRepository.create({ name, plotIds, role, login, passwordHash });
 
         // NOTE: The login and password are returned because they are needed to be passed on to the user for whom the account was created.
         return {
@@ -66,6 +60,7 @@ export async function createUser(formData: FormData): Promise<CreateUserResult> 
     }
 }
 
+//TODO: move this function into /domain/shared
 function generateLogin(name: string) {
     return name.toLowerCase().replace(/\s+/g, '.') + Math.floor(Math.random() * 1000);
 }

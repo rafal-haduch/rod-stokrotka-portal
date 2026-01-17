@@ -7,8 +7,8 @@ import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 import { requireSession } from '@/domain/auth/require-session';
-import { validateId } from '@/domain/shared';
 import { userRepository } from '@/domain/user/user.repository';
+import { parseDeleteUserInput } from '@/domain/user/user-input.parse';
 
 export async function deleteUser(formData: FormData): Promise<DeleteUserResult> {
     try {
@@ -19,12 +19,10 @@ export async function deleteUser(formData: FormData): Promise<DeleteUserResult> 
             throw new DomainError(ErrorCode.NO_PERMISSION);
         }
 
-        // Get input data
-        const idRaw = formData.get('id');
+        // Prepare input data (validate and parse)
+        const { id } = parseDeleteUserInput(formData);
 
-        // Validate input data and prepare for database
-        const id = validateId(idRaw);
-
+        // Database operation
         await userRepository.delete(id);
 
         return {
