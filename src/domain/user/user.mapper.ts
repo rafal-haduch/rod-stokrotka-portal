@@ -2,7 +2,7 @@ import { UsersWithPlotsFromDb, UserWithPlotsFromDb } from './user-from-db.types'
 import {
     UserTableRowReadModel,
     UserDeleteFormReadModel,
-    UseUpdateFormReadModel,
+    UserUpdateFormReadModel,
     UserProfileReadModel,
 } from './user.read-models';
 
@@ -36,9 +36,9 @@ export function mapUsersToUserTableRows(users: UsersWithPlotsFromDb): UserTableR
 }
 
 /**
- * Maps a user entity with plots from database to an edit user form read model.
+ * Maps a user entity with plots from database to a user update form read model.
  */
-export function mapUserToUserUpdateForm(user: UserWithPlotsFromDb): UseUpdateFormReadModel {
+export function mapUserToUserUpdateForm(user: UserWithPlotsFromDb): UserUpdateFormReadModel {
     return {
         id: user.id,
         name: user.name,
@@ -51,7 +51,7 @@ export function mapUserToUserUpdateForm(user: UserWithPlotsFromDb): UseUpdateFor
 }
 
 /**
- * Maps a user entity with plots from database to an delete user form read model.
+ * Maps a user entity with plots from database to a user delete form read model.
  */
 export function mapUserToUserDeleteForm(user: UserWithPlotsFromDb): UserDeleteFormReadModel {
     return {

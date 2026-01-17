@@ -7,15 +7,9 @@ import { DeletePlotResult } from '@/types/plot-actions-result';
 import { deletePlot } from '@/domain/plot/actions/delete-plot.action';
 import DeletePlotFields from './delete-plot-fields';
 import DeletePlotSuccess from './delete-plot-success';
+import { PlotDeleteFormReadModel } from '@/domain/plot/plot.read-models';
 
-export interface DeletePlotFormProps {
-    id: number;
-    plotNumber: string;
-    area: number | null;
-    owners: string[];
-}
-
-export default function DeletePlotForm({ plot }: { plot: DeletePlotFormProps }) {
+export default function DeletePlotForm({ plot }: { plot: PlotDeleteFormReadModel }) {
     const [result, setResult] = useState<DeletePlotResult | null>(null);
     const [loading, setLoading] = useState(false);
 

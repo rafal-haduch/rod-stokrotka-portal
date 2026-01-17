@@ -8,8 +8,8 @@ import { requireSession } from '@/domain/auth/require-session';
 import { DomainError } from '@/domain/errors/domain-error';
 import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
-import { validateId } from '@/domain/shared';
 import { plotRepository } from '@/domain/plot/plot.repository';
+import { parseDeletePlotInput } from '../plot-input.parse';
 
 export async function deletePlot(formData: FormData): Promise<DeletePlotResult> {
     try {
@@ -20,13 +20,11 @@ export async function deletePlot(formData: FormData): Promise<DeletePlotResult> 
             throw new DomainError(ErrorCode.NO_PERMISSION);
         }
 
-        // Validate input
-        const idRaw = formData.get('id');
+        // Prepare input data (validate and parse)
+        const { id } = parseDeletePlotInput(formData);
 
-        // Validate input data and prepare for database
-        const id = validateId(idRaw);
-
-        await plotRepository.delete({ id });
+        // Database operation
+        await plotRepository.delete(id);
 
         return {
             success: true,

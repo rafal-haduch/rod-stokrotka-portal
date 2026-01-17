@@ -8,17 +8,13 @@ import { CreateUserResult } from '@/types/user-actions-result';
 
 import CreateUserFields from './create-user-fields';
 import CreateUserSuccess from './create-user-success';
+import { PlotOption } from '@/domain/shared/get-sorted-plots-list-from-db';
 
-export interface PlotOption {
-    id: number;
-    plotNumber: string;
+export interface Props {
+    plotsOptions: PlotOption[];
 }
 
-export interface PlotsListProp {
-    plots: PlotOption[];
-}
-
-export default function CreateUserForm({ plots }: PlotsListProp) {
+export default function CreateUserForm({ plotsOptions }: Props) {
     const [result, setResult] = useState<CreateUserResult | null>(null);
     const [loading, setLoading] = useState(false);
 
@@ -45,7 +41,11 @@ export default function CreateUserForm({ plots }: PlotsListProp) {
             {result?.success ? (
                 <CreateUserSuccess result={result} onReset={() => setResult(null)} />
             ) : (
-                <CreateUserFields plots={plots} loading={loading} errorMsg={errorMsg} />
+                <CreateUserFields
+                    plotsOptions={plotsOptions}
+                    loading={loading}
+                    errorMsg={errorMsg}
+                />
             )}
         </form>
     );

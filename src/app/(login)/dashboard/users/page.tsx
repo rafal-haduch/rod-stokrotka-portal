@@ -23,6 +23,7 @@ export default async function DashboardUsersPage() {
                 <Plus />
             </Link>
 
+            {/* TODO: dac do komponentu? */}
             <table className="w-full text-xs md:text-sm lg:text-base">
                 <thead>
                     <tr>
@@ -42,9 +43,7 @@ export default async function DashboardUsersPage() {
                             <td>{user.id}</td>
                             <td>{user.name}</td>
                             <td>
-                                {user.plotNumbers.length > 0
-                                    ? user.plotNumbers.map((p) => p).join(', ')
-                                    : '—'}
+                                {user.plotNumbers.length > 0 ? user.plotNumbers.join(', ') : '—'}
                             </td>
                             <td>{getRoleLabel(user.role)}</td>
                             <td>{user.createdAt.toLocaleDateString('pl-PL')}</td>

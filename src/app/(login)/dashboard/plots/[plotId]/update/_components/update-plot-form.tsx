@@ -6,14 +6,9 @@ import { UpdatePlotResult } from '@/types/plot-actions-result';
 import { updatePlot } from '@/domain/plot/actions/update-plot.action';
 import UpdatePlotSuccess from './update-plot-success';
 import UpdatePlotFields from './update-plot-fields';
+import { PlotUpdateFormReadModel } from '@/domain/plot/plot.read-models';
 
-export interface UpdatePlotFormProps {
-    id: number;
-    plotNumber: string;
-    area: number | null;
-}
-
-export default function UpdatePlotForm({ plot }: { plot: UpdatePlotFormProps }) {
+export default function UpdatePlotForm({ plot }: { plot: PlotUpdateFormReadModel }) {
     const [result, setResult] = useState<UpdatePlotResult | null>(null);
     const [loading, setLoading] = useState(false);
 

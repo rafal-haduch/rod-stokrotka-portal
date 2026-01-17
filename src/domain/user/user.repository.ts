@@ -17,7 +17,7 @@ interface UpdateUserData {
 }
 
 export const userRepository = {
-    // Operations: Create, Update, Delete
+    // OPERATIONS: CREATE, UPDATE, DELETE
     async create({ name, plotIds, role, login, passwordHash }: CreateUserData) {
         await prisma.$transaction(async (tx) => {
             const user = await tx.user.create({
@@ -74,7 +74,7 @@ export const userRepository = {
         });
     },
 
-    // Operations: READ
+    // OPERATIONS: READ
     async findById(id: number) {
         return prisma.user.findUnique({
             where: { id },
@@ -110,7 +110,7 @@ export const userRepository = {
         });
     },
 
-    // Special operations:
+    // SPECIAL OPERATIONS:
     async changePassword(id: number, newPasswordHash: string) {
         await prisma.user.update({
             where: { id },

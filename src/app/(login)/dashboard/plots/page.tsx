@@ -5,9 +5,12 @@ import { ROUTES } from '@/constants/routes';
 
 import { formatPlotCode } from '@/utils/format-plot-code';
 import { plotRepository } from '@/domain/plot/plot.repository';
+import { mapPlotsToPlotTableRows } from '@/domain/plot/plot.mapper';
 
 export default async function DashboardPlotsPage() {
-    const plots = (await plotRepository.getPlotsForDashboardPage()).sort((a, b) =>
+    const plots = await plotRepository.findManyWithOwners();
+
+    const plotTableRows = mapPlotsToPlotTableRows(plots).sort((a, b) =>
         a.plotNumber.localeCompare(b.plotNumber, 'pl', {
             numeric: true,
             sensitivity: 'base',
@@ -25,7 +28,8 @@ export default async function DashboardPlotsPage() {
             >
                 <Plus />
             </Link>
-            {/*TODO: dac do komponentu*/}
+
+            {/* TODO: dac do komponentu? */}
             <table className="w-full text-xs md:text-sm lg:text-lg">
                 <thead>
                     <tr>
@@ -38,21 +42,15 @@ export default async function DashboardPlotsPage() {
                     </tr>
                 </thead>
                 <tbody>
-                    {plots.map((plot) => (
-                        <tr key={plot.id} className="hover:bg-theme-bg-secondary">
-                            <td>{plot.plotNumber}</td>
-                            <td>{formatPlotCode(plot.plotNumber)}</td>
-                            <td>
-                                {plot.area !== null && plot.area !== undefined ? plot.area : '—'}
-                            </td>
-                            <td>
-                                {plot.ownersId.length > 0
-                                    ? plot.ownersId.map((p) => p.user.name).join(', ')
-                                    : '—'}
-                            </td>
+                    {plotTableRows.map((row) => (
+                        <tr key={row.id} className="hover:bg-theme-bg-secondary">
+                            <td>{row.plotNumber}</td>
+                            <td>{formatPlotCode(row.plotNumber)}</td>
+                            <td>{row.area !== null && row.area !== undefined ? row.area : '—'}</td>
+                            <td>{row.ownersNames.length > 0 ? row.ownersNames.join(', ') : '—'}</td>
                             <td className="px-4 align-middle">
                                 <Link
-                                    href={`/dashboard/plots/${plot.id}/update`}
+                                    href={`/dashboard/plots/${row.id}/update`}
                                     title="Edytuj dane działki"
                                     className="btn btn-primary btn-in-table"
                                 >
@@ -61,7 +59,7 @@ export default async function DashboardPlotsPage() {
                             </td>
                             <td className="px-4 align-middle">
                                 <Link
-                                    href={`/dashboard/plots/${plot.id}/delete`}
+                                    href={`/dashboard/plots/${row.id}/delete`}
                                     title="Usuń działkę z systemu"
                                     className="btn btn-danger btn-in-table"
                                 >

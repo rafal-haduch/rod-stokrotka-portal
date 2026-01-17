@@ -5,7 +5,7 @@ import { validateId } from '../shared';
 import { DomainError } from '../errors/domain-error';
 import { ErrorCode } from '../errors/error-codes';
 
-// Create User Action
+// CREATE USER ACTION
 export interface CreateUserInput {
     name: string;
     role: Role;
@@ -24,7 +24,7 @@ export function parseCreateUserInput(formData: FormData): CreateUserInput {
     return { name, role, plotIds };
 }
 
-// Update User Action
+// UPDATE USER ACTION
 export interface UpdateUserInput {
     id: number;
     name: string;
@@ -46,7 +46,7 @@ export function parseUpdateUserInput(formData: FormData): UpdateUserInput {
     return { id, name, role, plotIds };
 }
 
-// Delete User Action
+// DELETE USER ACTION
 export interface DeleteUserInput {
     id: number;
 }
@@ -59,7 +59,7 @@ export function parseDeleteUserInput(formData: FormData): DeleteUserInput {
     return { id };
 }
 
-// Change Password Action
+// CHANGE PASSWORD ACTION
 export interface ChangePasswordInput {
     currentPassword: string;
     newPassword: string;

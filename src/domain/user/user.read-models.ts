@@ -31,7 +31,7 @@ export interface UserTableRowReadModel {
  * Read model used to populate the user edit form.
  * Contains editable fields and related plot references.
  */
-export interface UseUpdateFormReadModel {
+export interface UserUpdateFormReadModel {
     id: number;
     name: string;
     role: Role;

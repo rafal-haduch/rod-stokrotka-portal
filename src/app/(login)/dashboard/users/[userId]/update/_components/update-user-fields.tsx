@@ -6,19 +6,19 @@ import { ROUTES } from '@/constants/routes';
 
 import { getRoleLabel } from '@/utils/get-role-label';
 
-import { PlotOption } from '../../../create/_components/create-user-form';
 import MultiSelectDropdown from '@/components/multi-select-plots-dropdown';
-import { UseUpdateFormReadModel } from '@/domain/user/user.read-models';
+import { UserUpdateFormReadModel } from '@/domain/user/user.read-models';
+import { PlotOption } from '@/domain/shared/get-sorted-plots-list-from-db';
 
 //REVIEW: import PlotOption czy nei zmienic jego miejsca?
 interface Props {
-    user: UseUpdateFormReadModel;
-    plots: PlotOption[];
+    user: UserUpdateFormReadModel;
+    plotsOptions: PlotOption[];
     loading: boolean;
     errorMsg: string | null;
 }
 
-export default function UpdateUserFields({ user, plots, loading, errorMsg }: Props) {
+export default function UpdateUserFields({ user, plotsOptions, loading, errorMsg }: Props) {
     //TODO: hide admin role if role != admin
     const roles = Object.values(Role); //.filter((r) => r !== Role.ADMIN);
 
@@ -55,7 +55,7 @@ export default function UpdateUserFields({ user, plots, loading, errorMsg }: Pro
             <label className="col-span-1 flex items-center justify-end text-base">Działka:</label>
             <MultiSelectDropdown
                 name="plotIds"
-                options={plots.map((p) => ({
+                options={plotsOptions.map((p) => ({
                     id: p.id,
                     label: `${p.plotNumber}`,
                 }))}

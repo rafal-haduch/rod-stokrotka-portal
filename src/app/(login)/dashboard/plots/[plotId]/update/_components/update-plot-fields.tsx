@@ -1,10 +1,12 @@
 import Link from 'next/link';
-import { ROUTES } from '@/constants/routes';
 import { Ban, Save } from 'lucide-react';
-import { UpdatePlotFormProps } from './update-plot-form';
+
+import { ROUTES } from '@/constants/routes';
+
+import { PlotUpdateFormReadModel } from '@/domain/plot/plot.read-models';
 
 interface Props {
-    plot: UpdatePlotFormProps;
+    plot: PlotUpdateFormReadModel;
     loading: boolean;
     errorMsg: string | null;
 }

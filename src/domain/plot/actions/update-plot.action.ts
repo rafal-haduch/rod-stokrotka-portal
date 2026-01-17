@@ -8,9 +8,8 @@ import { requireSession } from '@/domain/auth/require-session';
 import { DomainError } from '@/domain/errors/domain-error';
 import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
-import { validatePlotArea, validatePlotNumber } from '@/domain/plot/plot.validation';
-import { validateId } from '@/domain/shared';
 import { plotRepository } from '@/domain/plot/plot.repository';
+import { parseUpdatePlotInput } from '../plot-input.parse';
 
 export async function updatePlot(formData: FormData): Promise<UpdatePlotResult> {
     try {
@@ -21,16 +20,10 @@ export async function updatePlot(formData: FormData): Promise<UpdatePlotResult> 
             throw new DomainError(ErrorCode.NO_PERMISSION);
         }
 
-        // Get input data
-        const idRaw = formData.get('id');
-        const plotNumberRaw = formData.get('plotNumber');
-        const areaRaw = formData.get('area');
+        // Prepare input data (validate and parse)
+        const { id, plotNumber, area } = parseUpdatePlotInput(formData);
 
-        // Validate input data and prepare for database
-        const id = validateId(idRaw);
-        const plotNumber = validatePlotNumber(plotNumberRaw);
-        const area = validatePlotArea(areaRaw);
-
+        // Database operation
         await plotRepository.update({ id, plotNumber, area });
 
         return {

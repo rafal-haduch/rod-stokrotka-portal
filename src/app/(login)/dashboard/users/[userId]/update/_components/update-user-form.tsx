@@ -8,15 +8,15 @@ import { UpdateUserResult } from '@/types/user-actions-result';
 
 import UpdateUserFields from './update-user-fields';
 import UpdateUserSuccess from './update-user-success';
-import { PlotOption } from '../../../create/_components/create-user-form';
-import { UseUpdateFormReadModel } from '@/domain/user/user.read-models';
+import { UserUpdateFormReadModel } from '@/domain/user/user.read-models';
+import { PlotOption } from '@/domain/shared/get-sorted-plots-list-from-db';
 
 interface Props {
-    user: UseUpdateFormReadModel;
-    plotsList: PlotOption[];
+    user: UserUpdateFormReadModel;
+    plotsOptions: PlotOption[];
 }
 
-export default function UpdateUserForm({ user, plotsList }: Props) {
+export default function UpdateUserForm({ user, plotsOptions }: Props) {
     const [result, setResult] = useState<UpdateUserResult | null>(null);
     const [loading, setLoading] = useState(false);
 
@@ -46,7 +46,7 @@ export default function UpdateUserForm({ user, plotsList }: Props) {
             ) : (
                 <UpdateUserFields
                     user={user}
-                    plots={plotsList}
+                    plotsOptions={plotsOptions}
                     loading={loading}
                     errorMsg={errorMsg}
                 />

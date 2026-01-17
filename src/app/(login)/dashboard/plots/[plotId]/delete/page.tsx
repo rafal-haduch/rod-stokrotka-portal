@@ -2,28 +2,25 @@ import { redirect } from 'next/navigation';
 
 import { ROUTES } from '@/constants/routes';
 
-import DeletePlotForm, { DeletePlotFormProps } from './_components/delete-plot-form';
 import { plotRepository } from '@/domain/plot/plot.repository';
+import { mapPlotToPlotDeleteForm } from '@/domain/plot/plot.mapper';
+
+import DeletePlotForm from './_components/delete-plot-form';
 
 export default async function DeletePlotPage({ params }: { params: Promise<{ plotId: string }> }) {
     const { plotId } = await params;
     const id = Number(plotId);
 
-    const plotDb = await plotRepository.getPlotWithOwnersForDashboardForm({ id });
-    if (!plotDb) redirect(ROUTES.DASHBOARD_PLOTS.path);
+    const plot = await plotRepository.findByIdWithOwners(id);
+    if (!plot) redirect(ROUTES.DASHBOARD_PLOTS.path);
 
-    const plotFormProps: DeletePlotFormProps = {
-        id: plotDb.id,
-        plotNumber: plotDb.plotNumber,
-        area: plotDb.area,
-        owners: plotDb.ownersId.map((p) => p.user.name),
-    };
+    const plotForDelete = mapPlotToPlotDeleteForm(plot);
 
     return (
         <section>
             <h2>Usuń działkę</h2>
 
-            <DeletePlotForm plot={plotFormProps} />
+            <DeletePlotForm plot={plotForDelete} />
         </section>
     );
 }

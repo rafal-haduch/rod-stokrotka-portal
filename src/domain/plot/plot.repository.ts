@@ -11,21 +11,8 @@ interface UpdatePlotData {
     area: number | null;
 }
 
-interface DeletePlotData {
-    id: number;
-}
-
-interface GetPlotForDashboardForm {
-    id: number;
-}
-
-interface GetPlotWithOwnersForDashboardForm {
-    id: number;
-}
-
-interface GetPlotsList {}
-
 export const plotRepository = {
+    // OPERATIONS: CREATE, UPDATE, DELETE
     async create({ plotNumber, area }: CreatePlotData) {
         return await prisma.plot.create({
             data: { plotNumber, area },
@@ -39,7 +26,7 @@ export const plotRepository = {
         });
     },
 
-    async delete({ id }: DeletePlotData) {
+    async delete(id: number) {
         await prisma.$transaction(async (tx) => {
             await tx.userPlot.deleteMany({
                 where: { plotId: id },
@@ -51,50 +38,48 @@ export const plotRepository = {
         });
     },
 
-    async getPlotForDashboardForm({ id }: GetPlotForDashboardForm) {
+    // OPERATIONS: READ
+    async findById(id: number) {
         return prisma.plot.findUnique({
             where: { id },
         });
     },
 
-    async getPlotWithOwnersForDashboardForm({ id }: GetPlotWithOwnersForDashboardForm) {
+    async findByIdWithOwners(id: number) {
         return prisma.plot.findUnique({
             where: { id },
             include: {
                 ownersId: {
-                    select: {
-                        user: {
-                            select: {
-                                name: true,
-                            },
-                        },
+                    include: {
+                        user: true,
                     },
                 },
             },
         });
     },
 
+    async findMany() {
+        return prisma.plot.findMany();
+    },
+
+    async findManyWithOwners() {
+        return prisma.plot.findMany({
+            include: {
+                ownersId: {
+                    include: {
+                        user: true,
+                    },
+                },
+            },
+        });
+    },
+
+    // SPECIAL OPERATIONS:
     async getPlotsList() {
         return prisma.plot.findMany({
             select: {
                 id: true,
                 plotNumber: true,
-            },
-        });
-    },
-
-    async getPlotsForDashboardPage() {
-        return prisma.plot.findMany({
-            include: {
-                ownersId: {
-                    include: {
-                        user: {
-                            select: {
-                                name: true,
-                            },
-                        },
-                    },
-                },
             },
         });
     },
