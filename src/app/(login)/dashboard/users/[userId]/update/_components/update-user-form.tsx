@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { updateUser } from '@/actions/user/update-user.action';
+import { updateUser } from '@/domain/user/actions/update-user.action';
 
 import { UpdateUserResult } from '@/types/user-actions-result';
 

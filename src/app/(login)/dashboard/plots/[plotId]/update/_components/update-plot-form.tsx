@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 import { UpdatePlotResult } from '@/types/plot-actions-result';
-import { updatePlot } from '@/actions/plot/update-plot.action';
+import { updatePlot } from '@/domain/plot/actions/update-plot.action';
 import UpdatePlotSuccess from './update-plot-success';
 import UpdatePlotFields from './update-plot-fields';
 

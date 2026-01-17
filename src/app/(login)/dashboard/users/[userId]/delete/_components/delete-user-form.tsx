@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { UpdateUserResult } from '@/types/user-actions-result';
 
-import { deleteUser } from '@/actions/user/delete-user.action';
+import { deleteUser } from '@/domain/user/actions/delete-user.action';
 
 import DeleteUserSuccess from './delete-user-success';
 import DeleteUserFields from './delete-user-fields';

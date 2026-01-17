@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { createUser } from '@/actions/user/create-user.action';
+import { createUser } from '@/domain/user/actions/create-user.action';
 
 import { CreateUserResult } from '@/types/user-actions-result';
 

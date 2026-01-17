@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { ChangePasswordResult } from '@/types/user-actions-result';
 
-import { changePassword } from '@/actions/user/change-password.action';
+import { changePassword } from '@/domain/user/actions/change-password.action';
 
 import ChangePasswordFields from './change-password-fields';
 import ChangePasswordSuccess from './change-password-success';
