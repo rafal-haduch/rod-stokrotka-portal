@@ -10,34 +10,20 @@ import { DomainError } from '@/domain/errors/domain-error';
 import { ErrorCode } from '@/domain/errors/error-codes';
 import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
 import { enforcePasswordPolicy } from '@/domain/security/password-policy';
-import { validateUserPassword } from '@/domain/user/user.validation';
 import { userRepository } from '@/domain/user/user.repository';
+import { parseChangePasswordInput } from '@/domain/user/user-input.parse';
 
 export async function changePassword(formData: FormData): Promise<ChangePasswordResult> {
     try {
-        // Session
+        // Session and permission
         const { id, role } = await requireSession();
+
         if (!id || !role) {
             throw new DomainError(ErrorCode.NO_SESSION);
         }
 
-        // Get input data
-        const currentPasswordRaw = formData.get('currentPassword');
-        const newPasswordRaw = formData.get('newPassword');
-        const newPasswordRepeatRaw = formData.get('newPasswordRepeat');
-
-        // Basic validation
-        if (newPasswordRaw !== newPasswordRepeatRaw) {
-            throw new DomainError(ErrorCode.NEW_PASSWORDS_MISMATCH);
-        }
-
-        if (newPasswordRaw === currentPasswordRaw) {
-            throw new DomainError(ErrorCode.SAME_NEW_PASSWORD);
-        }
-
-        // Validate input data
-        const currentPassword = validateUserPassword(currentPasswordRaw);
-        const newPassword = validateUserPassword(newPasswordRaw);
+        // Prepare input data (validate and parse)
+        const { currentPassword, newPassword } = parseChangePasswordInput(formData);
 
         // Password policy
         enforcePasswordPolicy(newPassword, role);
@@ -56,9 +42,10 @@ export async function changePassword(formData: FormData): Promise<ChangePassword
             throw new DomainError(ErrorCode.WRONG_PASSWORD);
         }
 
-        // Save new hash password into database
+        // Prepare other necessary data
         const newPasswordHash = await bcrypt.hash(newPassword, 10);
 
+        // Database operation
         await userRepository.changePassword(id, newPasswordHash);
 
         return {
