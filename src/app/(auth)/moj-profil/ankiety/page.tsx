@@ -1,0 +1,18 @@
+import { buildMetadata } from '@/lib/metadata';
+
+import { ROUTES } from '@/constants/routes';
+
+import NotFoundContent from '@/components/not-found-content';
+
+export const metadata = buildMetadata(ROUTES.MY_SURVEYS);
+
+export default function SurveysUserPage() {
+    return (
+        <article>
+            <section>
+                <h2>Ankiety</h2>
+                <NotFoundContent />
+            </section>
+        </article>
+    );
+}

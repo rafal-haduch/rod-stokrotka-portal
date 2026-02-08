@@ -11,36 +11,28 @@ import { AppRoute, ROUTE_LIST, ROUTES } from '@/constants/routes';
 
 import { cn } from '@/utils/cn';
 
-import logo from '@/../public/assets/logo.svg';
-
 const routes = ROUTE_LIST as AppRoute[];
 const navItems = routes
     .filter((r) => r.mainNav)
     .sort((a, b) => a.mainNav!.order - b.mainNav!.order);
 
 export default function Navbar() {
-    const { data: session, status } = useSession();
+    const { status } = useSession();
     const isLoggedIn = status === 'authenticated';
 
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
-    const [isClient, setIsClient] = useState(false);
-    const [isVisible, setIsVisible] = useState(true);
 
+    // Closed mobile menu at lg break point
     useEffect(() => {
-        setIsClient(true);
-        const mediaQuery = window.matchMedia('(min-width: 1280px)');
+        const mediaQuery = window.matchMedia('(min-width: 1024px)');
 
-        const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
-            // If the screen is at least 1280px → hide the mobile menu
-            // If smaller → show it back
-            setIsVisible(!e.matches);
+        const handleChange = (e: MediaQueryListEvent) => {
+            if (e.matches) {
+                setIsOpen(false);
+            }
         };
 
-        // First check
-        handleChange(mediaQuery);
-
-        // Listening for changes
         mediaQuery.addEventListener('change', handleChange);
 
         return () => mediaQuery.removeEventListener('change', handleChange);
@@ -62,52 +54,53 @@ export default function Navbar() {
     }, [isOpen]);
 
     return (
-        <nav
+        <header
             className={cn(
-                'sticky top-0 z-50 mx-auto',
-                'px-4 py-2',
+                'sticky top-0 z-50 h-22',
                 'flex items-center justify-between',
+                'p-2',
                 'font-nav',
                 'from-theme-ui-bg-medium to-theme-ui-bg-dark bg-linear-to-b',
                 'border-theme-ui-border-dark border-b-4'
             )}
         >
             {/* Logo - always visible */}
-            <div className="z-50 shrink-0">
-                <Link href="/" className="block">
-                    <Image
-                        src={logo}
-                        alt="Logo Ogordu Stokrotka Sanok."
-                        priority
-                        className="max-h-16 w-auto sm:max-h-22"
-                    />
-                </Link>
-            </div>
+            <Link href="/" className="z-50 h-22 w-auto sm:shrink-0">
+                <Image
+                    src="/assets/logo.svg"
+                    alt="Logo Ogordu Stokrotka Sanok."
+                    width={200}
+                    height={22}
+                    priority
+                    className="h-full"
+                />
+            </Link>
 
             {/* ============ Desktop Menu ============ */}
-            {/* Nav */}
-            <ul
-                className={cn(
-                    'hidden flex-wrap justify-center gap-x-6 gap-y-3 xl:flex xl:flex-1',
-                    'font-nav font-bold',
-                    'text-theme-txt'
-                )}
-            >
-                {navItems.map((item) => (
-                    <li
-                        key={item.path}
-                        className={cn(
-                            'hover:text-theme-txt-h',
-                            'cursor-pointer',
-                            pathname === item.path ? 'text-theme-txt-h underline' : ''
-                        )}
-                    >
-                        <Link href={item.path}>{item.mainNav?.label}</Link>
-                    </li>
-                ))}
-            </ul>
+            <nav>
+                <ul
+                    className={cn(
+                        'hidden flex-wrap justify-center gap-x-6 gap-y-3 xl:flex',
+                        'font-nav text-lg font-bold',
+                        'text-theme-txt'
+                    )}
+                >
+                    {navItems.map((item) => (
+                        <li
+                            key={item.path}
+                            className={cn(
+                                'hover:text-theme-txt-h',
+                                'cursor-pointer',
+                                pathname === item.path ? 'text-theme-txt-h underline' : ''
+                            )}
+                        >
+                            <Link href={item.path}>{item.mainNav?.label}</Link>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
 
-            {/* Login */}
+            {/* Sign-in/Sign-out */}
             {isLoggedIn ? (
                 <Link
                     href={ROUTES.MY_PROFILE.path}
@@ -118,7 +111,7 @@ export default function Navbar() {
                     )}
                 >
                     <User size={42} />
-                    <span className="text-xl font-bold">MÓJ PROFIL</span>
+                    <span className="text-lg font-bold whitespace-nowrap">MÓJ PROFIL</span>
                 </Link>
             ) : (
                 <Link
@@ -134,89 +127,14 @@ export default function Navbar() {
                 </Link>
             )}
 
-            {/* ============ Mobile Menu ============ */}
-            {/* Nav */}
-            {isClient && (
-                <ul
-                    className={cn(
-                        'fixed inset-0 z-40 flex h-screen w-screen origin-top',
-                        'pt-20',
-                        'flex-col items-center justify-center gap-4',
-                        'font-nav text-theme-txt text-center text-xl font-bold',
-                        'from-theme-ui-bg-dark via-theme-ui-bg-medium to-theme-ui-bg-dark bg-linear-to-r',
-                        'transition-transform duration-500',
-                        isClient && isOpen ? 'scale-y-100' : 'scale-y-0',
-                        isClient && isVisible ? '' : 'hidden'
-                    )}
-                >
-                    {/* TODO: change animation */}
-                    {navItems.map((item, i) => (
-                        <li key={item.path} className="hover:text-theme-txt-h">
-                            <Link
-                                href={item.path}
-                                onClick={() => setIsOpen(false)}
-                                className={cn(
-                                    'block w-full',
-                                    'transform transition-all duration-500 ease-out',
-                                    pathname === item.path ? 'text-theme-txt-h underline' : '',
-                                    isClient && isOpen
-                                        ? 'translate-x-0 opacity-100'
-                                        : '-translate-x-[120vw] opacity-0'
-                                )}
-                            >
-                                {item.mainNav?.label}
-                            </Link>
-                        </li>
-                    ))}
-
-                    {/* Login */}
-                    <li>
-                        {isLoggedIn ? (
-                            <Link
-                                href={ROUTES.MY_PROFILE.path}
-                                onClick={() => setIsOpen(false)}
-                                className={cn(
-                                    'mt-4 flex items-center space-x-2',
-                                    'text-white',
-                                    'transition-opacity duration-300 hover:underline',
-                                    isClient && isOpen
-                                        ? 'opacity-100 delay-300'
-                                        : 'opacity-0 delay-0'
-                                )}
-                            >
-                                <User size={42} />
-                                <span className="text-xl font-bold">MÓJ PROFIL</span>
-                            </Link>
-                        ) : (
-                            <Link
-                                href={ROUTES.SIGN_IN.path}
-                                onClick={() => setIsOpen(false)}
-                                className={cn(
-                                    'mt-4 flex items-center space-x-2',
-                                    'text-white',
-                                    'transition-opacity duration-300 hover:underline',
-                                    isClient && isOpen
-                                        ? 'opacity-100 delay-300'
-                                        : 'opacity-0 delay-0'
-                                )}
-                            >
-                                <LogIn size={42} />
-                                <span className="text-xl font-bold">LOGOWANIE</span>
-                            </Link>
-                        )}
-                    </li>
-                </ul>
-            )}
-
-            {/* TODO: fix hamburger position in very small screen */}
-            {/* Hamburger */}
+            {/* Hamburger button */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className={cn(
                     'text-theme-txt',
-                    'relative z-50 flex flex-col items-center justify-center hover:cursor-pointer xl:hidden'
+                    'z-50 flex flex-col items-center justify-center hover:cursor-pointer xl:hidden'
                 )}
-                aria-label="Toggle menu"
+                aria-label="Przycisk do rozwijania mobilnego menu"
             >
                 <div className="relative flex h-8 w-8 flex-col items-center justify-center">
                     <span
@@ -246,6 +164,71 @@ export default function Navbar() {
                 </div>
                 <span className="text-lg font-bold">{isOpen ? 'Zamknij' : 'Menu'}</span>
             </button>
-        </nav>
+
+            {/* ============ Mobile Menu ============ */}
+            {isOpen && (
+                <>
+                    <nav
+                        className={cn(
+                            'fixed inset-0 z-40',
+                            'pt-24',
+                            'font-nav text-theme-txt text-center text-lg font-bold',
+                            'from-theme-ui-bg-dark via-theme-ui-bg-medium to-theme-ui-bg-dark bg-linear-to-r',
+                            'transition-transform duration-500'
+                        )}
+                    >
+                        <ul className="mx-auto h-full space-y-4 overflow-x-auto overflow-y-auto pb-8 whitespace-nowrap">
+                            {navItems.map((item, i) => (
+                                <li key={item.path} className="hover:text-theme-txt-h">
+                                    <Link
+                                        href={item.path}
+                                        onClick={() => setIsOpen(false)}
+                                        className={cn(
+                                            'block w-full',
+                                            pathname === item.path
+                                                ? 'text-theme-txt-h underline'
+                                                : ''
+                                        )}
+                                    >
+                                        {item.mainNav?.label}
+                                    </Link>
+                                </li>
+                            ))}
+
+                            {/* Sign-in/Sign-out */}
+                            <li>
+                                {isLoggedIn ? (
+                                    <Link
+                                        href={ROUTES.MY_PROFILE.path}
+                                        onClick={() => setIsOpen(false)}
+                                        className={cn(
+                                            'flex items-center justify-center space-x-2',
+                                            'text-white',
+                                            'transition-opacity duration-300 hover:underline'
+                                        )}
+                                    >
+                                        <User size={42} />
+                                        <span className="text-xl font-bold">MÓJ PROFIL</span>
+                                    </Link>
+                                ) : (
+                                    <Link
+                                        href={ROUTES.SIGN_IN.path}
+                                        onClick={() => setIsOpen(false)}
+                                        className={cn(
+                                            'flex items-center justify-center space-x-2',
+                                            'text-white',
+                                            'transition-opacity duration-300 hover:underline'
+                                        )}
+                                    >
+                                        <LogIn size={42} />
+                                        <span className="text-xl font-bold">LOGOWANIE</span>
+                                    </Link>
+                                )}
+                            </li>
+                        </ul>
+                    </nav>
+                </>
+            )}
+        </header>
     );
 }

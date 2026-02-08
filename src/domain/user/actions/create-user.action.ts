@@ -60,7 +60,6 @@ export async function createUser(formData: FormData): Promise<CreateUserResult> 
     }
 }
 
-//TODO: move this function into /domain/shared
 function generateLogin(name: string) {
     return name.toLowerCase().replace(/\s+/g, '.') + Math.floor(Math.random() * 1000);
 }

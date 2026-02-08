@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
+// REVIEW: Optymalize
 export default function Hero() {
     return (
-        <section aria-label="Baner z logo ogrodu" className="mx-auto max-w-7xl bg-gray-50">
+        <section aria-label="Baner z logo ogrodu" className="mx-auto max-w-7xl">
             <Link href="/" title="Powrót na stronę główną">
                 <Image
                     src="/assets/hero.jpg"

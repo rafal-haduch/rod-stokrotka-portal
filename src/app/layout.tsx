@@ -7,24 +7,24 @@ import { nunito, fleurDeLeah, aboreto, merriweather } from '../fonts/fonts';
 import JsonLdOrganization from '@/components/json-ld-organization';
 import SessionProviderClientComponent from '@/components/session-provider-client-component';
 import { ThemeProvider } from '@/components/theme-provider';
-import DynamicClientLayout from '@/components/dynamic-client-layout';
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
-import PreFooter from '@/components/pre-footer';
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://rod-stokrotka-sanok.vercel.app'),
-    title: 'ROD Stokrotka Sanok',
+    title: {
+        default: 'Rodzinne Ogrody Działkowe "Stokrotka" w Sanoku',
+        template: '%s | ROD "Stokrotka" Sanok',
+    },
     description:
-        'Strona internetowa Stowarzyszenia Ogrodowego "Stokrotka" w Sanoku. Publikujemy tutaj ogłoszenia, informacje organizacyjne i aktualności dotyczące życia naszego ogrodu.',
+        'Strona Internetowa Stowarzyszenia Rodzinnych Ogrodów Działkowych "Stokrotka" w Sanoku. Publikujemy tutaj ogłoszenia, informacje organizacyjne i aktualności dotyczące życia naszego ogrodu.',
     icons: {
         icon: '/favicon.ico',
     },
     openGraph: {
-        title: 'ROD Stokrotka Sanok',
-        description: 'Strona internetowa Stowarzyszenia Ogrodowego Stokrotka w Sanoku',
+        title: 'Rodzinne Ogrody Działkowe "Stokrotka" w Sanoku',
+        description:
+            'Strona Internetowa Stowarzyszenia Rodzinnych Ogrodów Działkowych "Stokrotka" w Sanoku. Publikujemy tutaj ogłoszenia, informacje organizacyjne i aktualności dotyczące życia naszego ogrodu.',
         url: 'https://rod-stokrotka-sanok.vercel.app',
-        siteName: 'ROD Stokrotka Sanok',
+        siteName: 'Rodzinne Ogrody Działkowe "Stokrotka" w Sanoku',
         images: [
             {
                 url: 'https://rod-stokrotka-sanok.vercel.app/og-image.png',
@@ -74,14 +74,7 @@ export default function RootLayout({
             <body>
                 <JsonLdOrganization />
                 <SessionProviderClientComponent>
-                    <ThemeProvider>
-                        <Navbar />
-                        <DynamicClientLayout>
-                            <main>{children}</main>
-                        </DynamicClientLayout>
-                        <PreFooter />
-                        <Footer />
-                    </ThemeProvider>
+                    <ThemeProvider>{children}</ThemeProvider>
                 </SessionProviderClientComponent>
                 <Analytics />
             </body>

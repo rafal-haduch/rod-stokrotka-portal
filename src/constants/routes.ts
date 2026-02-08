@@ -1,11 +1,24 @@
 export type AppRoute = {
     path: string;
-    title: string;
+
+    parent?: keyof typeof ROUTES;
+
+    meta?: {
+        title?: string;
+        description?: string;
+        noIndex?: boolean;
+    };
+
+    auth?: {
+        required?: boolean;
+        roles?: ('USER' | 'ADMIN')[];
+    };
+
     mainNav?: {
         label: string;
         order: number;
     };
-    userNav?: {
+    profileNav?: {
         label: string;
         order: number;
     };
@@ -13,187 +26,234 @@ export type AppRoute = {
         label: string;
         order: number;
     };
-    hero: boolean;
 };
 
-export const ROUTES = {
+export const ROUTES: Record<string, AppRoute> = {
+    // ==============
+    // === PUBLIC ===
+    // ==============
     HOME: {
         path: '/',
-        title: 'STRONA GŁÓWNA',
-        mainNav: { label: 'STRONA GŁÓWNA', order: 1 },
-        hero: true,
+        mainNav: { label: 'Strona główna', order: 1 },
     },
     ABOUT_US: {
-        path: '/about-us',
-        title: 'O NAS',
-        mainNav: { label: 'O NAS', order: 2 },
-        hero: true,
+        path: '/o-nas',
+        meta: {
+            title: 'O nas',
+        },
+        mainNav: { label: 'O nas', order: 2 },
     },
     GARDEN_MAP: {
-        path: '/garden-map',
-        title: 'MAPA OGRODU',
-        mainNav: { label: 'MAPA', order: 3 },
-        hero: true,
+        path: '/mapa-ogrodu',
+        meta: {
+            title: 'Mapa ogrodu',
+        },
+        mainNav: { label: 'Mapa', order: 3 },
     },
     GALLERY: {
-        path: '/gallery',
-        title: 'GALERIA OGRODU',
-        mainNav: { label: 'GALERIA', order: 4 },
-        hero: true,
+        path: '/galeria',
+        meta: {
+            title: 'Galeria',
+        },
+        mainNav: { label: 'Galeria', order: 4 },
     },
-    STRUCTURE_ASSOCIATION: {
-        path: '/structure-association',
-        title: 'WŁADZE STOWARZYSZENIA',
-        mainNav: { label: 'WŁADZE', order: 5 },
-        hero: true,
+    GOVERNANCE: {
+        path: '/wladze',
+        meta: {
+            title: 'Władze stowarzyszenia',
+        },
+        mainNav: { label: 'Władze', order: 5 },
     },
     CONTACT: {
-        path: '/contact',
-        title: 'DANE KONTAKTOWE',
-        mainNav: { label: 'KONTAKT', order: 6 },
-        hero: true,
+        path: '/kontakt',
+        meta: {
+            title: 'Dane kontaktowe',
+        },
+        mainNav: { label: 'Kontakt', order: 6 },
     },
     DOCUMENTS: {
-        path: '/documents',
-        title: 'DOKUMENTY',
-        mainNav: { label: 'DOKUMENTY', order: 7 },
-        hero: true,
+        path: '/dokumenty',
+        meta: {
+            title: 'DOKUMENTY',
+        },
+        mainNav: { label: 'Dokumenty', order: 7 },
     },
     FEES: {
-        path: '/fees',
-        title: 'OPŁATY',
-        mainNav: { label: 'OPŁATY', order: 8 },
-        hero: true,
+        path: '/oplaty',
+        meta: {
+            title: 'Opłaty',
+        },
+        mainNav: { label: 'Opłaty', order: 8 },
     },
     INFORMATIONS: {
-        path: '/informations',
-        title: 'INFORMACJE ORGANIZACYJNE',
-        mainNav: { label: 'INFORMACJE', order: 9 },
-        hero: true,
+        path: '/informacje',
+        meta: {
+            title: 'Informacje organizacyjne',
+        },
+        mainNav: { label: 'Informacje', order: 9 },
     },
     ANNOUNCEMENTS: {
-        path: '/announcements',
-        title: 'OGŁOSZENIA ZARZĄDU',
-        mainNav: { label: 'OGŁOSZENIA', order: 10 },
-        hero: true,
+        path: '/ogloszenia',
+        meta: {
+            title: 'Ogłoszenia zarządu',
+        },
+        mainNav: { label: 'Ogłoszenia', order: 10 },
     },
     MEMORIES: {
-        path: '/memories',
-        title: 'WSPOMNIENIA',
-        mainNav: { label: 'WSPOMNIENIA', order: 11 },
-        hero: true,
+        path: '/wspomnienia',
+        meta: {
+            title: 'Wspomnienia',
+        },
+        mainNav: { label: 'Wspomnienia', order: 11 },
     },
     INVESTMENTS: {
-        path: '/investments',
-        title: 'INWESTYCJE W OGRODZIE',
-        mainNav: { label: 'INWESTYCJE', order: 12 },
-        hero: true,
+        path: '/inwestycje',
+        meta: {
+            title: 'Inwestycje w ogrodzie',
+        },
+        mainNav: { label: 'Inwestycje', order: 12 },
     },
     GARDENING_GUIDE: {
-        path: '/gardening-guide',
-        title: 'PORADY OGRODOWE',
-        mainNav: { label: 'PORADY OGRODOWE', order: 13 },
-        hero: true,
+        path: '/porady-ogrodowe',
+        meta: {
+            title: 'Porady ogrodowe',
+        },
+        mainNav: { label: 'Porady ogrodowe', order: 13 },
     },
     SIGN_IN: {
-        path: '/sign-in',
-        title: 'ZALOGUJ SIĘ',
-        hero: false,
+        path: '/logowanie',
+        meta: {
+            title: 'Zaloguj się',
+        },
     },
     PRIVACY_POLICY: {
-        path: '/privacy-policy',
-        title: 'POLITYKA PRYWATNOŚCI',
-        hero: false,
+        path: '/polityka-prywatnosci',
+        meta: {
+            title: 'Polityka prywatności',
+        },
     },
+    // ============
+    // === AUTH ===
+    // ============
     MY_PROFILE: {
-        path: '/my-profile',
-        title: 'MÓJ PROFIL',
-        userNav: { label: 'Mój profil', order: 1 },
-        hero: false,
+        path: '/moj-profil',
+        profileNav: { label: 'Mój profil', order: 1 },
     },
     MY_PAYMENTS: {
-        path: '/my-profile/payments',
-        title: 'PŁATNOŚCI',
-        userNav: { label: 'Płatności', order: 2 },
-        hero: false,
+        path: '/moj-profil/platnosci',
+        parent: 'MY_PROFILE',
+        meta: {
+            title: 'Płatności',
+        },
+        profileNav: { label: 'Płatności', order: 2 },
     },
     MY_SURVEYS: {
-        path: '/my-profile/surveys',
-        title: 'MOJE ANKIETY',
-        userNav: { label: 'Ankiety', order: 3 },
-        hero: false,
+        path: '/moj-profil/ankiety',
+        parent: 'MY_PROFILE',
+        meta: {
+            title: 'Ankiety',
+        },
+        profileNav: { label: 'Ankiety', order: 3 },
     },
     CHANGE_PASSWORD: {
-        path: '/my-profile/change-password',
-        title: 'ZMIEŃ HASŁO',
-        hero: false,
+        path: '/moj-profil/zmiana-hasla',
+        parent: 'MY_PROFILE',
+        meta: {
+            title: 'Zmiana hasła',
+        },
     },
+    // =================
+    // === DASHBOARD ===
+    // =================
     DASHBOARD: {
         path: '/dashboard',
-        title: 'PANEL ZARZĄDU',
-        hero: false,
+        meta: {
+            title: 'PANEL ZARZĄDU',
+        },
     },
     DASHBOARD_USERS: {
         path: '/dashboard/users',
-        title: 'TABELA DZIAŁKOWCÓW',
+        parent: 'DASHBOARD',
+        meta: {
+            title: 'TABELA DZIAŁKOWCÓW',
+        },
         dashboardNav: { label: 'Tabela działkowców', order: 1 },
-        hero: false,
     },
     DASHBOARD_CREATE_USER: {
         path: '/dashboard/users/create',
-        title: 'DODAJ NOWE KONTO DZIAŁKOWCA',
-        hero: false,
+        parent: 'DASHBOARD_USERS',
+        meta: {
+            title: 'DODAJ NOWE KONTO DZIAŁKOWCA',
+        },
     },
     DASHBOARD_PLOTS: {
         path: '/dashboard/plots',
-        title: 'TABELA DZIAŁEK',
+        parent: 'DASHBOARD',
+        meta: {
+            title: 'TABELA DZIAŁEK',
+        },
         dashboardNav: { label: 'Tabela działek', order: 2 },
-        hero: false,
     },
     DASHBOARD_CREATE_PLOT: {
         path: '/dashboard/plots/create',
-        title: 'DODAJ NOWĄ DZIAŁKĘ',
-        hero: false,
+        parent: 'DASHBOARD_PLOTS',
+        meta: {
+            title: 'DODAJ NOWĄ DZIAŁKĘ',
+        },
     },
     DASHBOARD_FEES: {
         path: '/dashboard/fees',
-        title: 'TABELA OPŁAT',
+        parent: 'DASHBOARD',
+        meta: {
+            title: 'TABELA OPŁAT',
+        },
         dashboardNav: { label: 'Tabela opłat', order: 3 },
-        hero: false,
     },
     DASHBOARD_CREATE_FEES: {
         path: '/dashboard/fees/create',
-        title: 'DODAJ NOWĄ OPŁATĘ',
-        hero: false,
+        parent: 'DASHBOARD_FEES',
+        meta: {
+            title: 'DODAJ NOWĄ OPŁATĘ',
+        },
     },
     DASHBOARD_PAYMENTS: {
         path: '/dashboard/payments',
-        title: 'TABELA PŁATNOŚCI',
+        parent: 'DASHBOARD',
+        meta: {
+            title: 'TABELA PŁATNOŚCI',
+        },
         dashboardNav: { label: 'Płatności', order: 4 },
-        hero: false,
     },
     DASHBOARD_ANNOUNCEMENTS: {
         path: '/dashboard/announcements',
-        title: 'OGŁOSZENIA',
+        parent: 'DASHBOARD',
+        meta: {
+            title: 'OGŁOSZENIA',
+        },
         dashboardNav: { label: 'Ogłoszenia', order: 5 },
-        hero: false,
     },
     DASHBOARD_CREATE_ANNOUNCEMENTS: {
         path: '/dashboard/announcements/create',
-        title: 'DODAJ NOWE OGŁOSZENIE',
-        hero: false,
+        parent: 'DASHBOARD_ANNOUNCEMENTS',
+        meta: {
+            title: 'DODAJ NOWE OGŁOSZENIE',
+        },
     },
     DASHBOARD_DOCUMENTS: {
         path: '/dashboard/documents',
-        title: 'DOKUMENTY',
+        parent: 'DASHBOARD',
+        meta: {
+            title: 'DOKUMENTY',
+        },
         dashboardNav: { label: 'Dokumenty', order: 6 },
-        hero: false,
     },
     DASHBOARD_SURVEYS: {
         path: '/dashboard/surveys',
-        title: 'ANKIETY',
+        parent: 'DASHBOARD',
+        meta: {
+            title: 'ANKIETY',
+        },
         dashboardNav: { label: 'Ankiety', order: 7 },
-        hero: false,
     },
 } satisfies Record<string, AppRoute>;
 

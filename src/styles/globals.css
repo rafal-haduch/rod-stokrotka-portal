@@ -2,7 +2,6 @@
 
 @theme inline {
     --font-sans: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-    --font-mono: var(--font-geist-mono);
 
     --font-heading: var(--font-fleurdeleah);
     --font-subheading: var(--font-merriweather);
@@ -42,10 +41,6 @@
 }
 
 @layer base {
-    * {
-        @apply m-0 box-border p-0;
-    }
-
     html {
         color-scheme: light;
     }
@@ -56,11 +51,7 @@
     }
 
     main {
-        @apply bg-theme-bg-primary mx-auto min-h-screen max-w-7xl px-6 pt-8 sm:px-10 md:px-15 lg:px-20;
-    }
-
-    article {
-        @apply mx-auto;
+        @apply bg-theme-bg-primary mx-auto min-h-screen max-w-7xl py-6;
     }
 
     footer {
@@ -74,12 +65,12 @@
 
     h2 {
         font-family: var(--font-merriweather);
-        @apply mb-8 text-center text-2xl text-neutral-800 uppercase sm:text-3xl;
+        @apply mb-4 text-center text-2xl text-neutral-800 uppercase sm:text-3xl;
     }
 
     h3 {
         font-family: var(--font-nunito);
-        @apply mb-4 text-xl font-bold text-neutral-700 sm:text-2xl;
+        @apply text-xl font-bold text-neutral-700 sm:text-2xl;
     }
 
     p {
@@ -105,12 +96,6 @@
 
     td {
         @apply border-theme-ui-border-dark border px-1 py-1;
-    }
-
-    ul {
-        /* TODO: remove this and fix in code */
-        font-family: var(--font-nunito);
-        @apply text-base text-neutral-600 sm:text-lg;
     }
 }
 
@@ -295,7 +280,7 @@
 
     /* ====== Button Class ======= */
     .btn {
-        @apply flex w-fit items-center justify-center gap-1 rounded-lg whitespace-nowrap hover:cursor-pointer;
+        @apply flex w-fit items-center justify-center gap-1 overflow-x-hidden rounded-lg whitespace-nowrap hover:cursor-pointer;
     }
 
     /* Size */

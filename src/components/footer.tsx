@@ -7,6 +7,7 @@ import { Power, PowerOff } from 'lucide-react';
 import { cn } from '@/utils/cn';
 import { Theme } from '@/utils/set-theme';
 import { useTheme } from './theme-provider';
+import { ROUTE_LIST, ROUTES } from '@/constants/routes';
 
 const themeOptions: Theme[] = [
     { id: 'spring', label: 'Wiosna' },
@@ -47,7 +48,7 @@ export default function Footer() {
                 >
                     {/* Privacy Policy */}
                     <Link
-                        href="/privacy-policy"
+                        href={ROUTES.PRIVACY_POLICY.path}
                         className={cn(
                             'text-theme-txt hover:text-theme-txt-h hover:underline',
                             'order-2 md:order-1'
