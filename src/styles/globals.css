@@ -54,8 +54,8 @@
         @apply bg-theme-bg-primary mx-auto min-h-screen max-w-7xl py-6;
     }
 
-    footer {
-        @apply py-4 sm:py-4;
+    address {
+        @apply not-italic;
     }
 
     h1 {

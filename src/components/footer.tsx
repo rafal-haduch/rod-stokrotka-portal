@@ -32,13 +32,14 @@ export default function Footer() {
     return (
         <footer
             className={cn(
-                'p-0 contain-layout',
+                'py-4 contain-layout',
                 'text-theme-txt text-lg',
+                'from-theme-ui-bg-medium to-theme-ui-bg-dark bg-linear-to-t',
                 'border-theme-ui-border-dark border-t-4'
             )}
         >
             {/* NOTE: This div is needed so that there is no 1 px between border and bg. */}
-            <div className="from-theme-ui-bg-medium to-theme-ui-bg-dark w-full gap-y-8 bg-linear-to-t p-4">
+            <div className="gap-y-8 p-4">
                 {/* First Row */}
                 <div
                     className={cn(

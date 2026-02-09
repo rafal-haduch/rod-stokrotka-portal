@@ -1,5 +1,9 @@
+import { ROUTES } from '@/constants/routes';
+
+import { buildMetadata } from '@/lib/metadata';
+
 import {
-    structureAssociationAsOf,
+    governanceAssociationStructureAsOf,
     associationBoard,
     auditCommittee,
     arbitrationCommission,
@@ -8,9 +12,8 @@ import {
 import ImageSeparator from '@/components/image-separator';
 import MainHeaderLineSeparator from '@/components/main-header-line-separator';
 import LineSeparator from '@/components/line-separator';
-import AnimateOnView from '@/components/animated-h2';
-import { buildMetadata } from '@/lib/metadata';
-import { ROUTES } from '@/constants/routes';
+
+import { GovernanceSection } from './_components/governance-section';
 
 export const metadata = buildMetadata(ROUTES.GOVERNANCE);
 
@@ -20,58 +23,17 @@ export default function GovernanceAssociation() {
             <h1>Władze</h1>
             <MainHeaderLineSeparator />
 
-            <section>
-                <AnimateOnView>
-                    <h2>Zarząd:</h2>
-                </AnimateOnView>
-                <dl className="mb-10 [counter-reset:members]">
-                    {associationBoard.map((item, i) => (
-                        <div
-                            key={item.person}
-                            className="flex justify-center gap-1 [counter-increment:members] before:mr-1 before:content-[counter(members)'.']"
-                        >
-                            <dt>{item.person}</dt> {'-'}
-                            <dd>{item.position}</dd>
-                        </div>
-                    ))}
-                </dl>
-            </section>
-            <section>
-                <AnimateOnView>
-                    <h2>Komisja Rewizyjna:</h2>
-                </AnimateOnView>
-                <dl className="mb-10 [counter-reset:members]">
-                    {auditCommittee.map((item) => (
-                        <div
-                            key={item.person}
-                            className="flex justify-center gap-1 [counter-increment:members] before:mr-1 before:content-[counter(members)'.']"
-                        >
-                            <dt>{item.person}</dt> {'-'}
-                            <dd>{item.position}</dd>
-                        </div>
-                    ))}
-                </dl>
-            </section>
-            <section>
-                <AnimateOnView>
-                    <h2>Komisja Rozjemcza:</h2>
-                </AnimateOnView>
-                <dl className="mb-10 [counter-reset:members]">
-                    {arbitrationCommission.map((item) => (
-                        <div
-                            key={item.person}
-                            className="flex justify-center gap-1 [counter-increment:members] before:mr-1 before:content-[counter(members)'.']"
-                        >
-                            <dt>{item.person}</dt> {'-'}
-                            <dd>{item.position}</dd>
-                        </div>
-                    ))}
-                </dl>
-            </section>
+            <GovernanceSection title="Zarząd" members={associationBoard} />
+
+            <GovernanceSection title="Komisja Rewizyjna" members={auditCommittee} />
+
+            <GovernanceSection title="Komisja Rozjemcza" members={arbitrationCommission} />
 
             <p className="mb-10 text-center">
                 Stan na dzień:{' '}
-                <time dateTime={structureAssociationAsOf}>{structureAssociationAsOf}</time>
+                <time dateTime={governanceAssociationStructureAsOf}>
+                    {governanceAssociationStructureAsOf}
+                </time>
             </p>
 
             <LineSeparator my="my-10" />

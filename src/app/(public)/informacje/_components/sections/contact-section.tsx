@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function () {
+export default function ContactSection() {
     return (
         <section>
             <h3 className="text-center">Kontakt i pytania</h3>

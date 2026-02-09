@@ -1,5 +1,6 @@
 import Script from 'next/script';
 
+//TODO: data
 export default function JsonLdOrganization() {
     const jsonLd = {
         '@context': 'https://schema.org',
@@ -9,6 +10,15 @@ export default function JsonLdOrganization() {
                 name: 'Rodzinne Ogrody Działkowe „Stokrotka” w Sanoku',
                 url: 'https://rod-stokrotka-sanok.vercel.app',
                 logo: 'https://rod-stokrotka-sanok.vercel.app/logo.png',
+                email: '...',
+                telephone: '...',
+                address: {
+                    '@type': 'PostalAddress',
+                    streetAddress: 'ul. Wolna 12/8',
+                    addressLocality: 'Sanok',
+                    postalCode: '38-500',
+                    addressCountry: 'PL',
+                },
             },
             {
                 '@type': 'WebSite',
