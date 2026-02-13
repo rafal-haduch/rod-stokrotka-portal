@@ -2,9 +2,9 @@ import { ROUTES } from '@/constants/routes';
 
 import { buildMetadata } from '@/lib/metadata';
 
-import ImageSeparator from '@/components/image-separator';
-import MainHeaderLineSeparator from '@/components/main-header-line-separator';
-import AnimatedH2 from '@/components/animated-h2';
+import { ImageSeparator } from '@/components/image-separator';
+import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
+import { AnimateOnView } from '@/components/animated-h2';
 
 import InvestmentsList from './_components/investments-list';
 
@@ -15,13 +15,13 @@ export default function InvestmentsPage() {
         <article>
             <header>
                 <h1>Inwestycje</h1>
-                <MainHeaderLineSeparator />
+                <MainHeadingLineSeparator />
             </header>
 
             <section>
-                <AnimatedH2 className="h2-animate">
+                <AnimateOnView className="h2-animate">
                     <h2>Prace i modernizacje wykonane w naszym ogrodzie</h2>
-                </AnimatedH2>
+                </AnimateOnView>
                 <InvestmentsList />
             </section>
 

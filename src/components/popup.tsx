@@ -8,7 +8,7 @@ interface PopupProps {
     onClose: () => void;
 }
 
-export default function Popup({ type, message, onClose }: PopupProps) {
+export function Popup({ type, message, onClose }: PopupProps) {
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
             <div className="w-full max-w-sm rounded-xl bg-white p-6 text-center shadow-2xl">

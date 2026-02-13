@@ -10,7 +10,7 @@ interface Props {
 }
 
 //FIXME:
-export default function TooltipIcon({ text, icon = <Info size={16} />, position = 'left' }: Props) {
+export function TooltipIcon({ text, icon = <Info size={16} />, position = 'left' }: Props) {
     const [visible, setVisible] = useState(false);
 
     const positionClasses = {

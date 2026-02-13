@@ -2,9 +2,9 @@ import { ROUTES } from '@/constants/routes';
 
 import { buildMetadata } from '@/lib/metadata';
 
-import LineSeparator from '@/components/line-separator';
-import ImageSeparator from '@/components/image-separator';
-import AnimateOnView from '@/components/animated-h2';
+import { LineSeparator } from '@/components/line-separator';
+import { ImageSeparator } from '@/components/image-separator';
+import { AnimateOnView } from '@/components/animated-h2';
 
 import LoginForm from './_components/login-form';
 

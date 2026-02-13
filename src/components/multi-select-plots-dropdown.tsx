@@ -15,7 +15,7 @@ interface Props {
     initialSelectedIds?: number[]; // już przypisane
 }
 
-export default function MultiSelectDropdown({ name, options, initialSelectedIds = [] }: Props) {
+export function MultiSelectDropdown({ name, options, initialSelectedIds = [] }: Props) {
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState<number[]>(initialSelectedIds);
     const ref = useRef<HTMLDivElement>(null);

@@ -16,7 +16,7 @@ const navItems = routes
     .filter((r) => r.mainNav)
     .sort((a, b) => a.mainNav!.order - b.mainNav!.order);
 
-export default function Navbar() {
+export function Navbar() {
     const { status } = useSession();
     const isLoggedIn = status === 'authenticated';
 

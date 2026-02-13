@@ -6,8 +6,8 @@ import { AppRoute, ROUTE_LIST, ROUTES } from '@/constants/routes';
 
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 
-import SignOutButton from '@/components/sign-out-button';
-import MainHeaderLineSeparator from '@/components/main-header-line-separator';
+import { SignOutButton } from '@/components/sign-out-button';
+import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 
 const routes = ROUTE_LIST as AppRoute[];
 const navItems = routes
@@ -27,7 +27,7 @@ export default function UserPanelHeader({ user }: { user: User }) {
 
                 <SignOutButton />
             </div>
-            <MainHeaderLineSeparator />
+            <MainHeadingLineSeparator />
             {/* Bottom Section */}
             <nav className="w-full">
                 <ul className="flex justify-around">

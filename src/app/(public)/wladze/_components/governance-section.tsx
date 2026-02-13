@@ -1,4 +1,4 @@
-import AnimateOnView from '@/components/animated-h2';
+import { AnimateOnView } from '@/components/animated-h2';
 import { GovernanceAssociationStructure } from '@/content/data/association';
 
 interface GovernanceSectionProps {

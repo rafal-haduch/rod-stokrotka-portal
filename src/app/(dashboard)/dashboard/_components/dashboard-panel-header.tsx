@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { AppRoute, ROUTE_LIST } from '@/constants/routes';
 
-import MainHeaderLineSeparator from '@/components/main-header-line-separator';
+import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 
 const routes = ROUTE_LIST as AppRoute[];
 const navItems = routes
@@ -18,7 +18,7 @@ export default function DashboardPanelHeader() {
                     <h1>Panel Zarządu</h1>
                 </Link>
             </div>
-            <MainHeaderLineSeparator />
+            <MainHeadingLineSeparator />
             {/* Bottom Section */}
             <nav>
                 <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3">

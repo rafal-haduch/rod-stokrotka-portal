@@ -4,11 +4,11 @@ import { buildMetadata } from '@/lib/metadata';
 
 import { recommendedSites } from '@/content/data/recommended-sites';
 
-import ImageSeparator from '@/components/image-separator';
-import MainHeaderLineSeparator from '@/components/main-header-line-separator';
-import LineSeparator from '@/components/line-separator';
-import WorkInProgress from '@/components/work-in-progress';
-import AnimateOnView from '@/components/animated-h2';
+import { ImageSeparator } from '@/components/image-separator';
+import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
+import { LineSeparator } from '@/components/line-separator';
+import { WorkInProgress } from '@/components/work-in-progress';
+import { AnimateOnView } from '@/components/animated-h2';
 
 export const metadata = buildMetadata(ROUTES.GARDENING_GUIDE);
 
@@ -17,7 +17,7 @@ export default function GardeningGuidePage() {
         <article>
             <header>
                 <h1>Porady Ogrodowe</h1>
-                <MainHeaderLineSeparator />
+                <MainHeadingLineSeparator />
             </header>
 
             <section className="text-center">

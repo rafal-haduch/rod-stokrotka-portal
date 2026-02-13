@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 // REVIEW: Optymalize
-export default function Hero() {
+export function Hero() {
     return (
         <section aria-label="Baner z logo ogrodu" className="mx-auto max-w-7xl">
             <Link href="/" title="Powrót na stronę główną">

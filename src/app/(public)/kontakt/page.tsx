@@ -2,10 +2,10 @@ import { ROUTES } from '@/constants/routes';
 
 import { buildMetadata } from '@/lib/metadata';
 
-import ImageSeparator from '@/components/image-separator';
-import MainHeaderLineSeparator from '@/components/main-header-line-separator';
-import LineSeparator from '@/components/line-separator';
-import AnimateOnView from '@/components/animated-h2';
+import { ImageSeparator } from '@/components/image-separator';
+import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
+import { LineSeparator } from '@/components/line-separator';
+import { AnimateOnView } from '@/components/animated-h2';
 
 import AssociationInfoSection from './_components/association-info-section';
 import ContactForm from './_components/contact-form';
@@ -16,7 +16,7 @@ export default function ContactPage() {
     return (
         <article>
             <h1>Dane Kontaktowe</h1>
-            <MainHeaderLineSeparator />
+            <MainHeadingLineSeparator />
 
             <AssociationInfoSection />
 

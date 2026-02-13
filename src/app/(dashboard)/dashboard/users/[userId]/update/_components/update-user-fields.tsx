@@ -6,10 +6,10 @@ import { ROUTES } from '@/constants/routes';
 
 import { getRoleLabel } from '@/utils/get-role-label';
 
-import MultiSelectDropdown from '@/components/multi-select-plots-dropdown';
+import { MultiSelectDropdown } from '@/components/multi-select-plots-dropdown';
 import { UserUpdateFormReadModel } from '@/domain/user/user.read-models';
 import { PlotOption } from '@/domain/shared/get-sorted-plots-list-from-db';
-import TooltipIcon from '@/components/tooltip-icon';
+import { TooltipIcon } from '@/components/tooltip-icon';
 
 //REVIEW: import PlotOption czy nei zmienic jego miejsca?
 interface Props {

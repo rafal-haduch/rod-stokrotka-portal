@@ -3,8 +3,8 @@ import fs from 'fs';
 
 import { PhotoWithTitle } from '@/types/photo';
 
-import AnimateOnView from '@/components/animated-h2';
-import PhotoGallery from '@/components/photo-gallery';
+import { AnimateOnView } from '@/components/animated-h2';
+import { PhotoGallery } from '@/components/photo-gallery';
 
 export default function GallerySection() {
     const filePath = path.join(process.cwd(), 'src/content/data/gallery.json');

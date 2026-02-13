@@ -7,11 +7,11 @@
 
 // import { slugToTitle } from '@/utils/to-title-case';
 
-// import Hero from './hero';
+// import { Hero } from './hero';
 
 // const routes = ROUTE_LIST as AppRoute[];
 
-// export default function DynamicClientLayout({ children }: { children: React.ReactNode }) {
+// export function DynamicClientLayout({ children }: { children: React.ReactNode }) {
 //     const pathname = usePathname();
 
 //     useEffect(() => {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTheme } from './theme-provider';
 
-export default function ThemePrompt() {
+export function ThemePrompt() {
     const [showPrompt, setShowPrompt] = useState(false);
     const { toggleSeasonalThemes } = useTheme();
 

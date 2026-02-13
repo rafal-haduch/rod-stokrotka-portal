@@ -7,7 +7,7 @@ import {
     associationOfficeCity,
 } from '@/content/data/association';
 
-import AnimateOnView from '@/components/animated-h2';
+import { AnimateOnView } from '@/components/animated-h2';
 
 export default function AssociationInfoSection() {
     return (

@@ -2,9 +2,9 @@ import { ROUTES } from '@/constants/routes';
 
 import { buildMetadata } from '@/lib/metadata';
 
-import AnimateOnView from '@/components/animated-h2';
-import MainHeaderLineSeparator from '@/components/main-header-line-separator';
-import ImageSeparator from '@/components/image-separator';
+import { AnimateOnView } from '@/components/animated-h2';
+import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
+import { ImageSeparator } from '@/components/image-separator';
 
 import MemoriesList from './_components/memories-list';
 
@@ -15,7 +15,7 @@ export default function MemoriesPage() {
         <article>
             <header>
                 <h1>Wspomnienia</h1>
-                <MainHeaderLineSeparator />
+                <MainHeadingLineSeparator />
             </header>
 
             <section>

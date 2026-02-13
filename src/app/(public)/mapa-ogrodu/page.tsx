@@ -2,9 +2,9 @@ import { ROUTES } from '@/constants/routes';
 
 import { buildMetadata } from '@/lib/metadata';
 
-import ImageSeparator from '@/components/image-separator';
-import MainHeaderLineSeparator from '@/components/main-header-line-separator';
-import AnimateOnView from '@/components/animated-h2';
+import { ImageSeparator } from '@/components/image-separator';
+import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
+import { AnimateOnView } from '@/components/animated-h2';
 
 import ImageLightbox from './_components/image-lightbox';
 
@@ -14,7 +14,7 @@ export default function GardenMapPage() {
     return (
         <article>
             <h1>Mapa Ogrodu</h1>
-            <MainHeaderLineSeparator />
+            <MainHeadingLineSeparator />
 
             <section>
                 <AnimateOnView className="h2-animate">

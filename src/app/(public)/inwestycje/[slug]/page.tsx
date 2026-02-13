@@ -4,10 +4,10 @@ import { getInvestmentBySlug } from '@/content/investments/investments';
 
 import { formatDate } from '@/utils/format-date';
 
-import PhotoGallery from '@/components/photo-gallery';
-import MainHeaderLineSeparator from '@/components/main-header-line-separator';
-import AnimateOnView from '@/components/animated-h2';
-import ImageSeparator from '@/components/image-separator';
+import { PhotoGallery } from '@/components/photo-gallery';
+import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
+import { AnimateOnView } from '@/components/animated-h2';
+import { ImageSeparator } from '@/components/image-separator';
 
 export default async function InvestmentPage({ params }: { params: { slug: string } }) {
     const { slug } = await params;
@@ -18,7 +18,7 @@ export default async function InvestmentPage({ params }: { params: { slug: strin
         <article className="prose mx-auto">
             <header>
                 <h1>{post.title}</h1>
-                <MainHeaderLineSeparator />
+                <MainHeadingLineSeparator />
             </header>
 
             <section>

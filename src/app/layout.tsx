@@ -4,8 +4,8 @@ import { Analytics } from '@vercel/analytics/next';
 import '../styles/globals.css';
 import { nunito, fleurDeLeah, aboreto, merriweather } from '../fonts/fonts';
 
-import JsonLdOrganization from '@/components/json-ld-organization';
-import SessionProviderClientComponent from '@/components/session-provider-client-component';
+import { JsonLdOrganization } from '@/components/json-ld-organization';
+import { SessionProviderClientComponent } from '@/components/session-provider-client-component';
 import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {

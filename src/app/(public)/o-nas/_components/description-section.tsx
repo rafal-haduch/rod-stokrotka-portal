@@ -1,4 +1,4 @@
-import AnimateOnView from '@/components/animated-h2';
+import { AnimateOnView } from '@/components/animated-h2';
 
 export default function DescriptionSection() {
     return (

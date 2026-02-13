@@ -4,8 +4,8 @@ import { Analytics } from '@vercel/analytics/next';
 
 import { getUserSession } from '@/lib/auth/get-user-session';
 
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
+import { Navbar } from '@/components/navbar';
+import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
     title: {

@@ -4,8 +4,8 @@ import { buildMetadata } from '@/lib/metadata';
 
 import { associationEmail } from '@/content/data/association';
 
-import ImageSeparator from '@/components/image-separator';
-import MainHeaderLineSeparator from '@/components/main-header-line-separator';
+import { ImageSeparator } from '@/components/image-separator';
+import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 
 export const metadata = buildMetadata(ROUTES.PRIVACY_POLICY);
 export default function PrivacyPolicyPage() {
@@ -13,7 +13,7 @@ export default function PrivacyPolicyPage() {
         <article>
             <header>
                 <h1>Polityka Prywatności</h1>
-                <MainHeaderLineSeparator />
+                <MainHeadingLineSeparator />
             </header>
 
             <section>

@@ -6,10 +6,10 @@ import { ROUTES } from '@/constants/routes';
 
 import { paymentStatusAsOf } from '@/content/data/plot-fees-status';
 
-import ImageSeparator from '@/components/image-separator';
-import MainHeaderLineSeparator from '@/components/main-header-line-separator';
-import LineSeparator from '@/components/line-separator';
-import AnimateOnView from '@/components/animated-h2';
+import { ImageSeparator } from '@/components/image-separator';
+import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
+import { LineSeparator } from '@/components/line-separator';
+import { AnimateOnView } from '@/components/animated-h2';
 
 import FeesTypesTable from './_components/fees-types-table';
 import FeesTable from './_components/fees-tabel';
@@ -21,7 +21,7 @@ export default function PaymentsPage() {
     return (
         <article>
             <h1>Opłaty</h1>
-            <MainHeaderLineSeparator />
+            <MainHeadingLineSeparator />
 
             <section>
                 <AnimateOnView className="h2-animate">

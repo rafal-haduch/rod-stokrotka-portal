@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ChevronDown, ChevronUp, SendHorizontal } from 'lucide-react';
 
-import Popup from '@/components/popup';
+import { Popup } from '@/components/popup';
 
 export default function ContactForm() {
     const shortText = (

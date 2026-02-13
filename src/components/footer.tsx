@@ -7,7 +7,7 @@ import { Power, PowerOff } from 'lucide-react';
 import { cn } from '@/utils/cn';
 import { Theme } from '@/utils/set-theme';
 import { useTheme } from './theme-provider';
-import { ROUTE_LIST, ROUTES } from '@/constants/routes';
+import { ROUTES } from '@/constants/routes';
 
 const themeOptions: Theme[] = [
     { id: 'spring', label: 'Wiosna' },
@@ -16,7 +16,7 @@ const themeOptions: Theme[] = [
     { id: 'winter', label: 'Zima' },
 ] as const;
 
-export default function Footer() {
+export function Footer() {
     const { activeTheme, setActiveTheme, seasonalThemesEnabled, toggleSeasonalThemes } = useTheme();
 
     const startYear = 2025;

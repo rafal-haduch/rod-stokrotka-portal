@@ -9,9 +9,9 @@ import {
     arbitrationCommission,
 } from '@/content/data/association';
 
-import ImageSeparator from '@/components/image-separator';
-import MainHeaderLineSeparator from '@/components/main-header-line-separator';
-import LineSeparator from '@/components/line-separator';
+import { ImageSeparator } from '@/components/image-separator';
+import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
+import { LineSeparator } from '@/components/line-separator';
 
 import { GovernanceSection } from './_components/governance-section';
 
@@ -21,7 +21,7 @@ export default function GovernanceAssociation() {
     return (
         <article>
             <h1>Władze</h1>
-            <MainHeaderLineSeparator />
+            <MainHeadingLineSeparator />
 
             <GovernanceSection title="Zarząd" members={associationBoard} />
 

@@ -2,9 +2,9 @@ import { buildMetadata } from '@/lib/metadata';
 
 import { ROUTES } from '@/constants/routes';
 
-import ImageSeparator from '@/components/image-separator';
-import MainHeaderLineSeparator from '@/components/main-header-line-separator';
-import AnimateOnView from '@/components/animated-h2';
+import { ImageSeparator } from '@/components/image-separator';
+import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
+import { AnimateOnView } from '@/components/animated-h2';
 
 import InformationsList from './_components/informations-list';
 
@@ -15,7 +15,7 @@ export default function InformationsPage() {
         <article>
             <header>
                 <h1>Informacje</h1>
-                <MainHeaderLineSeparator />
+                <MainHeadingLineSeparator />
             </header>
 
             <section>

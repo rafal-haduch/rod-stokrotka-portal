@@ -1,4 +1,4 @@
-export default function PreFooter() {
+export function PreFooter() {
     return (
         <section
             aria-hidden="true"

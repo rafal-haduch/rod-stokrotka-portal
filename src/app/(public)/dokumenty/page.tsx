@@ -1,9 +1,9 @@
 import { importantDocuments, minutesAndReports, templatesAndForms } from '@/content/data/documents';
 
-import ImageSeparator from '@/components/image-separator';
-import MainHeaderLineSeparator from '@/components/main-header-line-separator';
-import LineSeparator from '@/components/line-separator';
-import AnimateOnView from '@/components/animated-h2';
+import { ImageSeparator } from '@/components/image-separator';
+import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
+import { LineSeparator } from '@/components/line-separator';
+import { AnimateOnView } from '@/components/animated-h2';
 
 import ListOfDocuments from './_components/list-of-documents';
 import { buildMetadata } from '@/lib/metadata';
@@ -17,7 +17,7 @@ export default function DocumentsPage() {
     return (
         <article>
             <h1>Dokumenty</h1>
-            <MainHeaderLineSeparator />
+            <MainHeadingLineSeparator />
 
             {/* FIXME: HTML structure */}
             <section>

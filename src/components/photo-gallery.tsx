@@ -11,7 +11,7 @@ interface PhotoGalleryProps {
     photos: PhotoWithTitle[] | PhotoWithoutTitle[];
 }
 
-export default function PhotoGallery(props: PhotoGalleryProps) {
+export function PhotoGallery(props: PhotoGalleryProps) {
     const [currentIndex, setCurrentIndex] = useState<number | null>(null);
     const scrollRef = useRef<HTMLDivElement | null>(null);
 

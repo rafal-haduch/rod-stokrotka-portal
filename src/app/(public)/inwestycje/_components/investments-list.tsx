@@ -5,7 +5,7 @@ import { ChevronRight } from 'lucide-react';
 import { getAllInvestments } from '@/content/investments/investments';
 import { formatDate } from '@/utils/format-date';
 
-import NotFoundContent from '@/components/not-found-content';
+import { NotFoundContent } from '@/components/not-found-content';
 
 export default function InvestmentsList() {
     const investments = getAllInvestments();

@@ -1,7 +1,7 @@
 import { Download, ExternalLink, FileText } from 'lucide-react';
 
 import { Document } from '@/content/data/documents';
-import NotFoundContent from '@/components/not-found-content';
+import { NotFoundContent } from '@/components/not-found-content';
 
 export default function ListOfDocuments({ documents }: { documents: Document[] }) {
     if (documents.length === 0) return <NotFoundContent />;

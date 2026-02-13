@@ -5,7 +5,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { ThemeType } from '@/types/theme';
 
 import { setTheme, getSeason } from '@/utils/set-theme';
-import ThemePrompt from './theme-prompt';
+import { ThemePrompt } from './theme-prompt';
 
 interface ThemeContextValue {
     activeTheme: ThemeType;

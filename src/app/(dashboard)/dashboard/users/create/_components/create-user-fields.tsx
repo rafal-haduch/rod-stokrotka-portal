@@ -7,9 +7,9 @@ import { ROUTES } from '@/constants/routes';
 
 import { getRoleLabel } from '@/utils/get-role-label';
 import { Ban, CirclePlus } from 'lucide-react';
-import MultiSelectDropdown from '@/components/multi-select-plots-dropdown';
+import { MultiSelectDropdown } from '@/components/multi-select-plots-dropdown';
 import { PlotOption } from '@/domain/shared/get-sorted-plots-list-from-db';
-import TooltipIcon from '@/components/tooltip-icon';
+import { TooltipIcon } from '@/components/tooltip-icon';
 
 interface Props {
     plotsOptions: PlotOption[];

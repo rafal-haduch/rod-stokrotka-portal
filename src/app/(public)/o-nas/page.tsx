@@ -5,11 +5,11 @@ import { ROUTES } from '@/constants/routes';
 
 import { buildMetadata } from '@/lib/metadata';
 
-import GoogleMaps from '@/components/garden-map';
-import ImageSeparator from '@/components/image-separator';
-import MainHeaderLineSeparator from '@/components/main-header-line-separator';
-import LineSeparator from '@/components/line-separator';
-import AnimateOnView from '@/components/animated-h2';
+import { GoogleMaps } from '@/components/garden-map';
+import { ImageSeparator } from '@/components/image-separator';
+import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
+import { LineSeparator } from '@/components/line-separator';
+import { AnimateOnView } from '@/components/animated-h2';
 
 import GardenStats from './_components/garden-stats';
 import GalleryPreview from './_components/gallery-preview';
@@ -21,7 +21,7 @@ export default function AboutUsPage() {
     return (
         <article>
             <h1>O Nas</h1>
-            <MainHeaderLineSeparator />
+            <MainHeadingLineSeparator />
 
             <DescriptionSection />
 

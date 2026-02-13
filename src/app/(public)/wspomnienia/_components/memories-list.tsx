@@ -5,8 +5,9 @@ import { ArrowRight } from 'lucide-react';
 import { getAllMemories, MemoryInList } from '@/content/memories/memories';
 import { formatDate } from '@/utils/format-date';
 
-import NotFoundContent from '@/components/not-found-content';
+import { NotFoundContent } from '@/components/not-found-content';
 import { cn } from '@/utils/cn';
+import { ROUTES } from '@/constants/routes';
 
 export default function MemoriesList() {
     const memories = getAllMemories();
@@ -33,7 +34,7 @@ export default function MemoriesList() {
 function MemoryCard({ memory }: { memory: MemoryInList }) {
     return (
         <Link
-            href={`/memories/${memory.slug}`}
+            href={`${ROUTES.MEMORIES.path}/${memory.slug}`}
             className="group mx-auto block max-w-xl overflow-hidden rounded-xl shadow transition hover:shadow-lg"
         >
             <div className="relative h-64">

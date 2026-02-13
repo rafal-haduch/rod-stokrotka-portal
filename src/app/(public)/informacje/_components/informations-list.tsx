@@ -1,4 +1,4 @@
-import LineSeparator from '@/components/line-separator';
+import { LineSeparator } from '@/components/line-separator';
 
 import WasteScheduleSection from './sections/waste-schedule-section';
 import TreasurersDutiesSection from './sections/treasurers-duties-section';
