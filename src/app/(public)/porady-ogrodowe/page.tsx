@@ -18,12 +18,12 @@ export default function GardeningGuidePage() {
             <header>
                 <h1>Porady Ogrodowe</h1>
                 <MainHeadingLineSeparator />
-            </header>
-
-            <section className="text-center">
                 <AnimateOnView className="h2-animate">
                     <h2>Porady, wskazówki i inspiracje dla ogrodu</h2>
                 </AnimateOnView>
+            </header>
+
+            <section className="text-center">
                 <h3>Polecane strony:</h3>
                 <ul className="space-y-6 sm:space-y-4">
                     {recommendedSites.map((item) => (

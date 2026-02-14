@@ -86,16 +86,17 @@
         @apply bg-theme-ui-bg-medium;
     }
 
-    th {
-        @apply border-theme-ui-border-dark border px-1 py-2;
+    thead th {
+        @apply border-theme-ui-border-dark border border-b-0 px-1 py-2;
     }
 
     tbody tr {
         @apply hover:bg-theme-bg-secondary;
     }
 
+    tbody th,
     td {
-        @apply border-theme-ui-border-dark border px-1 py-1;
+        @apply border-theme-ui-border-dark border px-1 py-1 font-normal;
     }
 }
 

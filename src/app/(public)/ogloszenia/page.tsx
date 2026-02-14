@@ -11,20 +11,19 @@ export const metadata = buildMetadata(ROUTES.ANNOUNCEMENTS);
 
 export default function AnnouncementsPage() {
     return (
-        <article>
-            <header>
-                <h1>Ogłoszenia</h1>
-                <MainHeadingLineSeparator />
-            </header>
+        <>
+            <h1>Ogłoszenia</h1>
+            <MainHeadingLineSeparator />
 
             <section>
                 <AnimateOnView className="h2-animate">
                     <h2>Ogłoszenia Zarządu ROD ,,Stokrotka" w Sanoku</h2>
                 </AnimateOnView>
+
                 <WorkInProgress />
             </section>
 
             <ImageSeparator />
-        </article>
+        </>
     );
 }

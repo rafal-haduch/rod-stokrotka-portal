@@ -1,13 +1,17 @@
 import Link from 'next/link';
 
-export default function WhatsAppSection() {
+export default function WhatsAppArticle() {
     return (
-        <section>
+        <article>
             <h3 className="text-center">Nasza grupa na WhatsApp</h3>
-            <p className="mb-4">
+            <p>
                 Zapraszamy do naszej grupy społecznościowej na WhatsApp, ułatwiającej komunikację i
                 integrację Działkowców. Dołączenie wymaga aplikacji{' '}
-                <a href="https://www.whatsapp.com/?lang=pl" target="blank" className="link-context">
+                <a
+                    href="https://www.whatsapp.com/?lang=pl"
+                    target="_blank"
+                    className="link-context"
+                >
                     WhatsApp
                 </a>
                 . W przypadku chęci dołączenia prosimy skontaktować się przez stronę{' '}
@@ -16,6 +20,6 @@ export default function WhatsAppSection() {
                 </Link>{' '}
                 lub bezpośrednio z Prezesem Stowarzyszenia Ogrodowego.
             </p>
-        </section>
+        </article>
     );
 }

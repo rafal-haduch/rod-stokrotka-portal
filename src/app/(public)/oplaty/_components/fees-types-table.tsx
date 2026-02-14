@@ -1,19 +1,21 @@
 import { typesOfFees } from '@/content/data/types-of-fees';
-import { cn } from '@/utils/cn';
 
 export default function FeesTypesTable() {
     return (
         <table className="max-w-xl">
+            <caption className="sr-only">
+                Rodzaje opłat obowiązujących członków stowarzyszenia
+            </caption>
             <thead>
                 <tr>
-                    <th>Rodzaje opłat</th>
-                    <th>Kwota</th>
+                    <th scope="col">Opłata</th>
+                    <th scope="col">Kwota</th>
                 </tr>
             </thead>
             <tbody>
                 {typesOfFees.map((item) => (
                     <tr key={item.fee}>
-                        <td>{item.fee}</td>
+                        <th scope="row">{item.fee}</th>
                         <td>{item.amount}</td>
                     </tr>
                 ))}

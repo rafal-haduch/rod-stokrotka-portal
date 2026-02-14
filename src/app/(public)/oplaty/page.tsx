@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import { buildMetadata } from '@/lib/metadata';
 
 import { ROUTES } from '@/constants/routes';
@@ -11,6 +9,7 @@ import { MainHeadingLineSeparator } from '@/components/main-heading-line-separat
 import { LineSeparator } from '@/components/line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
 
+import FeesInfoSection from './_components/fees-info-section';
 import FeesTypesTable from './_components/fees-types-table';
 import FeesTable from './_components/fees-tabel';
 import NoArrears from './_components/noA-arears';
@@ -23,51 +22,14 @@ export default function PaymentsPage() {
             <h1>Opłaty</h1>
             <MainHeadingLineSeparator />
 
+            <FeesInfoSection />
+
+            <LineSeparator />
+
             <section>
                 <AnimateOnView className="h2-animate">
-                    <h2>Informacje o płatnościach za użytkowanie ogrodu</h2>
+                    <h2>Rodzaje opłat</h2>
                 </AnimateOnView>
-                <p className="mb-6 text-left sm:text-center">
-                    Termin uiszczenia opłat upływa 30 czerwca każdego roku. Uprzejmie prosimy o
-                    przestrzeganie go.
-                    <br />
-                    <span className="font-bold text-red-500">
-                        Notoryczne opóźnienia mogą skutkować naliczaniem odsetek zgodnie z
-                        regulaminem ogrodu!
-                    </span>
-                </p>
-                <p className="mb-8 text-left sm:text-center">
-                    Zachęcamy do dokonywania wpłat przelewem bankowym – to najszybszy i
-                    najwygodniejszy sposób rozliczenia należności.
-                    <br />W przypadku płatności gotówką, dyżury Skarbnika znajdą Państwo na stronie{' '}
-                    <Link href="/information" className="link-context">
-                        Informacje
-                    </Link>
-                    .
-                </p>
-                <p className="mb-8 text-left sm:text-center">
-                    Numer konta bankowego Stowarzyszenia Ogrodowego ,,Stokrotka'' Sanok (Santander
-                    Bank Polska):
-                    <br />
-                    <br />
-                    <span className="text-lg font-bold sm:text-2xl">
-                        78 1090 2750 0000 0001 5383 4747
-                    </span>
-                    <br />
-                    <br />
-                    Wzór tytułu przelewu: <br />
-                    <span className="font-bold italic">
-                        "Numer działki, czego dotyczy przelew - rok."
-                    </span>
-                    <br />
-                    <br />
-                    Przykładowy tytuł przelewu:
-                    <br />
-                    <span className="font-bold italic">
-                        "Działka 123, opłata za użytkowanie działki - 2025r."
-                        <br />
-                    </span>
-                </p>
                 <FeesTypesTable />
             </section>
 
@@ -77,7 +39,9 @@ export default function PaymentsPage() {
                 <AnimateOnView className="h2-animate">
                     <h2>Bilans opłat za 2025 rok</h2>
                 </AnimateOnView>
-                <h3 className="text-center">Stan na: {paymentStatusAsOf}</h3>
+                <p className="text-center">
+                    <strong>(Stan na: {paymentStatusAsOf})</strong>
+                </p>
                 <FeesTable />
             </section>
 

@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-export default function GardenEntranceSection() {
+export default function GardenEntranceArticle() {
     return (
-        <section>
+        <article>
             <h3 className="text-center">Wjazd na teren ogrodu</h3>
             <p>
                 Aktualnie po walnym zebraniu 2025 wjazd na teren ogrodu został przywrócony. Prosimy
@@ -17,6 +17,6 @@ export default function GardenEntranceSection() {
                 </Link>{' '}
                 oraz informacja na grupie WhatsApp.
             </p>
-        </section>
+        </article>
     );
 }

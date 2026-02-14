@@ -1,9 +1,9 @@
 import { associationEmail } from '@/content/data/association';
 import Link from 'next/link';
 
-export default function GardenPhotosSection() {
+export default function GardenPhotosArticle() {
     return (
-        <section>
+        <article>
             <h3 className="text-center">Prośba o przesyłanie zdjęć z naszego ogrodu</h3>
             <p>
                 Zwracamy się z prośbą do naszych Działkowców, którzy chcą aby zdjęcia ogrodu
@@ -16,6 +16,6 @@ export default function GardenPhotosSection() {
                 na WhatsApp lub na adres e-mail Stowarzyszenia:{' '}
                 <span className="font-bold">{associationEmail}</span>
             </p>
-        </section>
+        </article>
     );
 }

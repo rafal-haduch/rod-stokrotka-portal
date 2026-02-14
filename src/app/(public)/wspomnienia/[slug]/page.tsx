@@ -4,10 +4,9 @@ import { getMemoryBySlug } from '@/content/memories/memories';
 
 import { formatDate } from '@/utils/format-date';
 
-import { PhotoGallery } from '@/components/photo-gallery';
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
+import { PhotoGallery } from '@/components/photo-gallery';
 import { AnimateOnView } from '@/components/animated-h2';
-import { ImageSeparator } from '@/components/image-separator';
 
 export default async function MemoryPage({ params }: { params: { slug: string } }) {
     const { slug } = await params;
@@ -16,20 +15,21 @@ export default async function MemoryPage({ params }: { params: { slug: string } 
 
     return (
         <article className="prose mx-auto">
-            <header>
-                <h1>{post.title}</h1>
-                <MainHeadingLineSeparator />
-            </header>
+            <h1>{post.title}</h1>
+            <MainHeadingLineSeparator />
 
-            <section>
-                <AnimateOnView className="h2-animate">
-                    <h2>{formatDate(post.date)}</h2>
-                </AnimateOnView>
-                <div dangerouslySetInnerHTML={{ __html: post.content }} />
-                {post.photos.length > 0 && <PhotoGallery photos={post.photos} />}
-            </section>
-
-            <ImageSeparator />
+            <AnimateOnView className="h2-animate">
+                <p className="mb-4 text-center">
+                    <time
+                        className="text-2xl font-semibold"
+                        dateTime={new Date(post.date).toISOString()}
+                    >
+                        {formatDate(post.date)}
+                    </time>
+                </p>
+            </AnimateOnView>
+            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            {post.photos.length > 0 && <PhotoGallery photos={post.photos} />}
         </article>
     );
 }

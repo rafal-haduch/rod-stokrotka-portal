@@ -12,20 +12,19 @@ export const metadata = buildMetadata(ROUTES.MEMORIES);
 
 export default function MemoriesPage() {
     return (
-        <article>
-            <header>
-                <h1>Wspomnienia</h1>
-                <MainHeadingLineSeparator />
-            </header>
+        <>
+            <h1>Wspomnienia</h1>
+            <MainHeadingLineSeparator />
 
             <section>
                 <AnimateOnView className="h2-animate">
                     <h2>Wspomnienia z naszego ogrodu</h2>
                 </AnimateOnView>
+                
                 <MemoriesList />
             </section>
 
             <ImageSeparator />
-        </article>
+        </>
     );
 }

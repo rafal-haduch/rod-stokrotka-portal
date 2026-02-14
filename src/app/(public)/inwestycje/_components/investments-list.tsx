@@ -15,9 +15,9 @@ export default function InvestmentsList() {
     return (
         <div className="flex flex-col gap-y-14">
             {investments.map((i) => (
-                <div key={i.slug}>
+                <article key={i.slug}>
                     <InvestmentCard investment={i} />
-                </div>
+                </article>
             ))}
         </div>
     );

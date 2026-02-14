@@ -2,12 +2,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
+import { ROUTES } from '@/constants/routes';
+
 import { getAllMemories, MemoryInList } from '@/content/memories/memories';
+
 import { formatDate } from '@/utils/format-date';
+import { cn } from '@/utils/cn';
 
 import { NotFoundContent } from '@/components/not-found-content';
-import { cn } from '@/utils/cn';
-import { ROUTES } from '@/constants/routes';
 
 export default function MemoriesList() {
     const memories = getAllMemories();
@@ -23,9 +25,9 @@ export default function MemoriesList() {
             )}
         >
             {memories.map((post, i) => (
-                <div key={i} className="w-full max-w-xl">
+                <article key={i} className="w-full max-w-xl">
                     <MemoryCard memory={post} />
-                </div>
+                </article>
             ))}
         </div>
     );

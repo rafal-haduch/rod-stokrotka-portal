@@ -1,8 +1,8 @@
 import { treasurersDuties } from '@/content/data/treasurers-duties';
 
-export default function TreasurersDutiesSection() {
+export default function TreasurersDutiesArticle() {
     return (
-        <section>
+        <article>
             <h3 className="text-center">
                 Dyżury Skarbnika (działka 25) i Sekretarza (działka 24) na 2025 rok
             </h3>
@@ -13,6 +13,6 @@ export default function TreasurersDutiesSection() {
                     </li>
                 ))}
             </ul>
-        </section>
+        </article>
     );
 }

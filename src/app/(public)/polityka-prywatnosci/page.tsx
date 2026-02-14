@@ -4,7 +4,6 @@ import { buildMetadata } from '@/lib/metadata';
 
 import { associationEmail } from '@/content/data/association';
 
-import { ImageSeparator } from '@/components/image-separator';
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 
 export const metadata = buildMetadata(ROUTES.PRIVACY_POLICY);
@@ -90,8 +89,6 @@ export default function PrivacyPolicyPage() {
                     </li>
                 </ul>
             </section>
-
-            <ImageSeparator />
         </article>
     );
 }
