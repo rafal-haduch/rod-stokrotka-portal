@@ -8,11 +8,13 @@ export default async function MyProfileLayout({ children }: { children: React.Re
     const session = await getUserSession();
 
     if (!session) redirect('/sign-in');
-
+    //FIXME: semantic html in this and auth layout
     return (
-        <section>
-            <UserPanelHeader user={session} />
-            <main>{children}</main>
-        </section>
+        <>
+            <header>
+                <UserPanelHeader user={session} />
+            </header>
+            <>{children}</>
+        </>
     );
 }

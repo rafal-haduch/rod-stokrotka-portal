@@ -1,6 +1,5 @@
 import { redirect } from 'next/navigation';
 import type { Metadata } from 'next';
-import { Analytics } from '@vercel/analytics/next';
 
 import { getUserSession } from '@/lib/auth/get-user-session';
 
@@ -28,7 +27,6 @@ export default async function AuthLayout({
             <Navbar />
             <main>{children}</main>
             <Footer />
-            <Analytics />
         </>
     );
 }

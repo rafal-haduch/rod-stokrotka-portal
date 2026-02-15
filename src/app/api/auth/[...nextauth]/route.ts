@@ -1,8 +1,10 @@
 import NextAuth, { AuthOptions } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import bcrypt from 'bcrypt';
-import { prisma } from '@/lib/prisma';
+
 import { Role } from '@prisma/client/edge';
+
+import { prisma } from '@/lib/prisma';
 
 export const authOptions: AuthOptions = {
     session: { strategy: 'jwt' },

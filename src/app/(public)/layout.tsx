@@ -1,7 +1,5 @@
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
-import { PreFooter } from '@/components/pre-footer';
-import { Hero } from '@/components/hero';
 
 export default function PublicLayout({
     children,
@@ -11,9 +9,7 @@ export default function PublicLayout({
     return (
         <>
             <Navbar />
-            <Hero />
-            <main className="overflow-x-hidden px-4">{children}</main>
-            <PreFooter />
+            <main className="overflow-x-hidden px-4 pb-24">{children}</main>
             <Footer />
         </>
     );

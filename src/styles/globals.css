@@ -54,10 +54,6 @@
         @apply bg-theme-bg-primary mx-auto min-h-screen max-w-7xl py-6;
     }
 
-    address {
-        @apply not-italic;
-    }
-
     h1 {
         font-family: var(--font-fleurdeleah);
         @apply text-center text-6xl font-bold text-neutral-800;
@@ -76,6 +72,10 @@
     p {
         font-family: var(--font-nunito);
         @apply text-base text-neutral-600 sm:text-lg;
+    }
+
+    address {
+        @apply not-italic;
     }
 
     table {
