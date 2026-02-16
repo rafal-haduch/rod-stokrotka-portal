@@ -7,13 +7,13 @@ import { AnimateOnView } from '@/components/animated-h2';
 
 import LoginForm from './_components/login-form';
 
-export const metadata = buildMetadata(ROUTES.SIGN_IN);
+export const metadata = buildMetadata(ROUTES.LOGIN);
 
-export default function SignInPage() {
+export default function LoginPage() {
     return (
-        <article aria-labelledby="login-heading">
-            <h1 id="login-heading" className="sr-only">
-                Logowanie do Stowarzyszenia „Stokrotka”
+        <>
+            <h1 className="sr-only">
+                Logowanie do profilu Dzialkowca Stowarzyszenia Ogrodowego „Stokrotka”
             </h1>
 
             <section aria-labelledby="login-form-heading">
@@ -51,6 +51,6 @@ export default function SignInPage() {
                     </p>
                 </div>
             </section>
-        </article>
+        </>
     );
 }

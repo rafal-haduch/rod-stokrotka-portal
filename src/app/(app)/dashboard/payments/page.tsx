@@ -6,16 +6,12 @@ export default async function DashboardPaymentsPage() {
             <table className="w-full text-xs md:text-sm lg:text-lg">
                 <thead>
                     <tr>
-                        <th>Rok</th>
-                        <th>Działka</th>
-                        <th>Status</th>
+                        <th>Nr działki</th>
+                        <th>Osoba</th>
                         <th>Kwota</th>
-                        <th>Data</th>
-                        <th>Sposób</th>
-                        <th>Powierzchnia</th>
-                        <th>Nieczystości</th>
-                        <th>Składka</th>
-                        <th>Energia</th>
+                        <th>Status</th>
+                        <th>Wprowadź oplate</th>
+                        <th>Cofnij oplate</th>
                     </tr>
                 </thead>
                 <tbody></tbody>

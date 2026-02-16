@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import type { AppRoute } from '@/constants/routes';
+import type { AppRouteBase } from '@/constants/routes';
 
-export function buildMetadata(route: AppRoute): Metadata {
+export function buildMetadata(route: AppRouteBase): Metadata {
     return {
         title: route.meta?.title,
         description: route.meta?.description,

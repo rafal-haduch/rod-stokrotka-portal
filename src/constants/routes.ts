@@ -1,7 +1,6 @@
-export type AppRoute = {
+// Base type
+export type AppRouteBase = {
     path: string;
-
-    parent?: keyof typeof ROUTES;
 
     meta?: {
         title?: string;
@@ -28,7 +27,8 @@ export type AppRoute = {
     };
 };
 
-export const ROUTES: Record<string, AppRoute> = {
+// Routes
+export const ROUTES = {
     // ==============
     // === PUBLIC ===
     // ==============
@@ -120,10 +120,10 @@ export const ROUTES: Record<string, AppRoute> = {
         },
         mainNav: { label: 'Porady ogrodowe', order: 13 },
     },
-    SIGN_IN: {
+    LOGIN: {
         path: '/logowanie',
         meta: {
-            title: 'Zaloguj się',
+            title: 'Logowanie',
         },
     },
     PRIVACY_POLICY: {
@@ -139,13 +139,21 @@ export const ROUTES: Record<string, AppRoute> = {
         path: '/moj-profil',
         profileNav: { label: 'Mój profil', order: 1 },
     },
+    MY_PLOTS: {
+        path: '/moj-profil/dzialki',
+        parent: 'MY_PROFILE',
+        meta: {
+            title: 'Działki',
+        },
+        profileNav: { label: 'Działki', order: 2 },
+    },
     MY_PAYMENTS: {
         path: '/moj-profil/platnosci',
         parent: 'MY_PROFILE',
         meta: {
             title: 'Płatności',
         },
-        profileNav: { label: 'Płatności', order: 2 },
+        profileNav: { label: 'Płatności', order: 3 },
     },
     MY_SURVEYS: {
         path: '/moj-profil/ankiety',
@@ -153,7 +161,7 @@ export const ROUTES: Record<string, AppRoute> = {
         meta: {
             title: 'Ankiety',
         },
-        profileNav: { label: 'Ankiety', order: 3 },
+        profileNav: { label: 'Ankiety', order: 4 },
     },
     CHANGE_PASSWORD: {
         path: '/moj-profil/zmiana-hasla',
@@ -255,6 +263,23 @@ export const ROUTES: Record<string, AppRoute> = {
         },
         dashboardNav: { label: 'Ankiety', order: 7 },
     },
-} satisfies Record<string, AppRoute>;
+} as const satisfies Record<string, AppRouteBase & { parent?: string }>;
+
+// Validator
+type ValidateRouteParents<T extends Record<string, any>> = {
+    [K in keyof T]: T[K] extends { parent: infer P }
+        ? P extends keyof T
+            ? T[K]
+            : '❌ INVALID PARENT'
+        : T[K];
+};
+const _validateRoutes: ValidateRouteParents<typeof ROUTES> = ROUTES;
+
+// Final types
+export type RouteKey = keyof typeof ROUTES;
+
+export type AppRoute = AppRouteBase & {
+    parent?: RouteKey;
+};
 
 export const ROUTE_LIST = Object.values(ROUTES);

@@ -6,11 +6,11 @@ export default async function DashboardPage() {
 
     return (
         <section>
-            <h2>Panel Zarządu</h2>
+            <h2>Panel do zarządzania</h2>
             <p>
                 Jesteś zalogowany jako <strong>{user.name}</strong> z rolą{' '}
-                <strong>{getRoleLabel(user.role)}</strong>. W tym miejscu na podstawie roli są
-                dostępne zakładki, które umożliwiają zarządzanie poszczególnymi danymi
+                <strong>{getRoleLabel(user.role)}</strong>. W tym miejscu są dostępne zakładki
+                przekierowywujące do poszczególnych stron, które umożliwiają zarządzanie danymi
                 Stowarzyszenia Ogrodowego ,,Stokrotka" w Sanoku w celu prowadzenia ewidencji.
             </p>
         </section>

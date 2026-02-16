@@ -19,9 +19,9 @@ export default async function PaymentsUserPage() {
     // });
 
     return (
-        <article>
+        <section>
             <h2>Płatności</h2>
-            <section>
+            <div>
                 {/* {userPayments.length > 0 ? (
                     userPayments.map((payment) => (
                         <div key={payment.id}>
@@ -34,7 +34,7 @@ export default async function PaymentsUserPage() {
                 ) : (
                     <p>Brak dostępnych płatności.</p>
                 )} */}
-            </section>
-        </article>
+            </div>
+        </section>
     );
 }

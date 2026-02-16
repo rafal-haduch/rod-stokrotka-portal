@@ -271,6 +271,21 @@
         --hr-color: var(--theme-color-300); /* theme(colors.cyan.400) */
     }
 
+    .h1 {
+        font-family: var(--font-fleurdeleah);
+        @apply text-center text-6xl font-bold text-neutral-800;
+    }
+
+    .h2 {
+        font-family: var(--font-merriweather);
+        @apply mb-4 text-center text-2xl font-normal text-neutral-800 uppercase sm:text-3xl;
+    }
+
+    .h3 {
+        font-family: var(--font-nunito);
+        @apply text-xl font-normal text-neutral-700 sm:text-2xl;
+    }
+
     .link-context {
         @apply text-theme-link hover:text-theme-link-h font-bold hover:underline;
     }

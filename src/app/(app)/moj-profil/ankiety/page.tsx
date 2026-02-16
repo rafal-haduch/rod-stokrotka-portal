@@ -8,11 +8,9 @@ export const metadata = buildMetadata(ROUTES.MY_SURVEYS);
 
 export default function SurveysUserPage() {
     return (
-        <article>
-            <section>
-                <h2>Ankiety</h2>
-                <NotFoundContent />
-            </section>
-        </article>
+        <section>
+            <h2>Ankiety</h2>
+            <NotFoundContent />
+        </section>
     );
 }

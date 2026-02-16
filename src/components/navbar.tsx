@@ -7,11 +7,11 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { LogIn, User } from 'lucide-react';
 
-import { AppRoute, ROUTE_LIST, ROUTES } from '@/constants/routes';
+import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/constants/routes';
 
 import { cn } from '@/utils/cn';
 
-const routes = ROUTE_LIST as AppRoute[];
+const routes = ROUTE_LIST as AppRouteBase[];
 const navItems = routes
     .filter((r) => r.mainNav)
     .sort((a, b) => a.mainNav!.order - b.mainNav!.order);
@@ -55,6 +55,7 @@ export function Navbar() {
 
     return (
         <header
+            aria-label="Główny baner strony"
             className={cn(
                 'sticky top-0 z-50 h-22',
                 'flex items-center justify-between',
@@ -77,7 +78,7 @@ export function Navbar() {
             </Link>
 
             {/* ============ Desktop Menu ============ */}
-            <nav>
+            <nav aria-label="Główna nawigacja strony">
                 <ul
                     className={cn(
                         'hidden flex-wrap justify-center gap-x-6 gap-y-3 xl:flex',
@@ -115,7 +116,7 @@ export function Navbar() {
                 </Link>
             ) : (
                 <Link
-                    href={ROUTES.SIGN_IN.path}
+                    href={ROUTES.LOGIN.path}
                     className={cn(
                         'hidden flex-col items-center xl:flex',
                         'text-white',
@@ -130,11 +131,11 @@ export function Navbar() {
             {/* Hamburger button */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
+                aria-label="Przycisk do rozwijania mobilnego menu"
                 className={cn(
                     'text-theme-txt',
                     'z-50 flex flex-col items-center justify-center hover:cursor-pointer xl:hidden'
                 )}
-                aria-label="Przycisk do rozwijania mobilnego menu"
             >
                 <div className="relative flex h-8 w-8 flex-col items-center justify-center">
                     <span
@@ -169,6 +170,7 @@ export function Navbar() {
             {isOpen && (
                 <>
                     <nav
+                        aria-label="Główna nawigacja strony"
                         className={cn(
                             'fixed inset-0 z-40',
                             'pt-24',
@@ -212,7 +214,7 @@ export function Navbar() {
                                     </Link>
                                 ) : (
                                     <Link
-                                        href={ROUTES.SIGN_IN.path}
+                                        href={ROUTES.LOGIN.path}
                                         onClick={() => setIsOpen(false)}
                                         className={cn(
                                             'flex items-center justify-center space-x-2',
