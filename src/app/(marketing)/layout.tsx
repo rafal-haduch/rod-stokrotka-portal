@@ -1,7 +1,7 @@
 import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
-import { PreFooter } from '@/components/pre-footer';
 import { Hero } from '@/components/hero';
+import { PreFooter } from '@/components/pre-footer';
+import { Footer } from '@/components/footer';
 
 export default function MarketingLayout({
     children,

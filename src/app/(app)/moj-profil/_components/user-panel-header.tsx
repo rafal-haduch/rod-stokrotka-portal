@@ -28,7 +28,7 @@ export default function UserPanelHeader() {
     return (
         <header
             aria-label="Panel profilu działkowca"
-            className="bg-theme-bg-secondary relative mx-auto mb-8 flex w-full max-w-5xl flex-col justify-between overflow-x-hidden rounded-lg p-4 shadow-md"
+            className="panel-br relative mx-auto mb-8 flex w-full max-w-5xl flex-col justify-between overflow-x-hidden rounded-lg p-4 shadow-md"
         >
             {/* First row */}
             <div className="flex w-full items-stretch justify-between">
@@ -72,7 +72,7 @@ export default function UserPanelHeader() {
 
             {/* Second row */}
             <nav aria-label="Nawigacja panelu działkowca" className="font-nav py-0 sm:py-2 md:py-4">
-                <ul className="flex flex-wrap justify-around gap-4 text-base font-semibold whitespace-nowrap sm:text-lg md:text-xl">
+                <ul className="flex flex-wrap justify-around gap-4 text-base font-semibold whitespace-nowrap sm:text-lg">
                     {navItems.map((item) => (
                         <li
                             key={item.path}

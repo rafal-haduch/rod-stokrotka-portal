@@ -46,7 +46,7 @@ export function Navbar() {
             document.body.style.overflow = '';
         }
 
-        // REVIEW: po co?
+        // REVIEW: why?
         // Cleanup in case of component unmounting
         return () => {
             document.body.style.overflow = '';
@@ -101,7 +101,7 @@ export function Navbar() {
                 </ul>
             </nav>
 
-            {/* Sign-in/Sign-out */}
+            {/* Sign In / My Profile */}
             {isLoggedIn ? (
                 <Link
                     href={ROUTES.MY_PROFILE.path}
@@ -197,7 +197,7 @@ export function Navbar() {
                                 </li>
                             ))}
 
-                            {/* Sign-in/Sign-out */}
+                            {/* Sign In / My Profile */}
                             <li>
                                 {isLoggedIn ? (
                                     <Link

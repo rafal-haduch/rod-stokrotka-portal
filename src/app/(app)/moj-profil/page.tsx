@@ -12,7 +12,6 @@ import { mapUserToUserProfile } from '@/domain/user/user.mapper';
 
 export default async function MyProfilePage() {
     const session = await requireSession();
-
     const user = await userRepository.findByIdWithPlots(session.id);
     //REVIEW: change to 500?
     if (!user) notFound();
@@ -20,20 +19,13 @@ export default async function MyProfilePage() {
     const userProfile = mapUserToUserProfile(user);
 
     return (
-        <section aria-labelledby="profile-heading">
-            <h1 id="profile-heading" className="h2">
-                Mój profil
-            </h1>
+        <section>
+            <h1 className="h2">Mój profil</h1>
 
-            <section
-                aria-labelledby="profile-form-heading"
-                className="bg-theme-bg-secondary mx-auto max-w-lg space-y-4 rounded-lg p-6 shadow-md"
-            >
-                <h2 id="profile-form-heading" className="sr-only">
-                    Moje dane
-                </h2>
+            <section className="panel-bl mx-auto max-w-lg space-y-4 rounded-lg p-6 text-base shadow-lg sm:text-lg">
+                <h2 className="sr-only">Moje dane</h2>
                 {/* Name */}
-                <div className="flex space-x-1">
+                <div className="flex items-center gap-1">
                     <label htmlFor="user-name" className="text-theme-txt">
                         Imię:
                     </label>

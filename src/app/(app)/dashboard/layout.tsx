@@ -19,7 +19,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
     if (!session || !isAdminOrBoard(session.role)) redirect(ROUTES.MY_PROFILE.path);
 
     return (
-        <main>
+        <main aria-labelledby="dashboard-context-heading" className="py-0 pb-24 lg:py-6 lg:pb-24">
             <DashboardPanelHeader />
             {children}
         </main>

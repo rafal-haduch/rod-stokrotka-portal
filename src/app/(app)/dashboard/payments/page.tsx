@@ -10,8 +10,8 @@ export default async function DashboardPaymentsPage() {
                         <th>Osoba</th>
                         <th>Kwota</th>
                         <th>Status</th>
-                        <th>Wprowadź oplate</th>
-                        <th>Cofnij oplate</th>
+                        <th>Dodaj wpłatę</th>
+                        <th>Cofnij wpłatę</th>
                     </tr>
                 </thead>
                 <tbody></tbody>

@@ -343,6 +343,14 @@
     }
     /* ====== Button Class ======= */
 
+    .panel-br {
+        @apply from-theme-bg-secondary via-theme-bg-primary to-theme-bg-secondary border-theme-ui-bg-medium border-2 bg-linear-to-br;
+    }
+
+    .panel-bl {
+        @apply from-theme-bg-secondary via-theme-bg-primary to-theme-bg-secondary border-theme-ui-bg-medium border-2 bg-linear-to-bl;
+    }
+
     .h2-animate {
         opacity: 0;
     }
