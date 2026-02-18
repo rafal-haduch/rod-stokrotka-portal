@@ -5,7 +5,7 @@ import { ArrowBigLeft, CirclePlus } from 'lucide-react';
 
 import { ROUTES } from '@/config/routes';
 
-import { CreatePlotSuccess as CreatePlotSuccessType } from '@/contracts/plot-actions-result';
+import { CreatePlotSuccess as CreatePlotSuccessType } from '@/contracts/plot-actions';
 
 interface Props {
     result: CreatePlotSuccessType;

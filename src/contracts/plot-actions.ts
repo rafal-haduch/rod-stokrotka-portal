@@ -1,44 +1,44 @@
 import { ErrorCode } from '@/domain/error/error-codes';
 
 // CREATE
-export type CreatePlotSuccess = {
+export interface CreatePlotSuccess {
     success: true;
     data: {
         plotNumber: string;
         area: number | null;
     };
-};
+}
 
-export type CreatePlotError = {
+export interface CreatePlotError {
     success: false;
     errorCode: ErrorCode;
     errorMsg: string;
-};
+}
 
 export type CreatePlotResult = CreatePlotSuccess | CreatePlotError;
 
 // UPDATE
-export type UpdatePlotSuccess = {
+export interface UpdatePlotSuccess {
     success: true;
-};
+}
 
-export type UpdatePlotError = {
+export interface UpdatePlotError {
     success: false;
     errorCode: ErrorCode;
     errorMsg: string;
-};
+}
 
 export type UpdatePlotResult = UpdatePlotSuccess | UpdatePlotError;
 
 // DELETE
-export type DeletePlotSuccess = {
+export interface DeletePlotSuccess {
     success: true;
-};
+}
 
-export type DeletePlotError = {
+export interface DeletePlotError {
     success: false;
     errorCode: ErrorCode;
     errorMsg: string;
-};
+}
 
 export type DeletePlotResult = DeletePlotSuccess | DeletePlotError;

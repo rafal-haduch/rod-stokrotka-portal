@@ -3,7 +3,7 @@
 import bcrypt from 'bcrypt';
 import { prisma } from '@/lib/prisma';
 
-import { ChangePasswordResult } from '@/contracts/user-actions-result';
+import { ChangePasswordResult } from '@/contracts/user-actions';
 
 import { requireSession } from '@/domain/auth/require-session';
 import { DomainError } from '@/domain/error/domain-error';

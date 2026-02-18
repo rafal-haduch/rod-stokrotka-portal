@@ -1,8 +1,8 @@
-import { ErrorCode } from '@/domain/error/error-codes';
 import { Role } from '@prisma/client';
+import { ErrorCode } from '@/domain/error/error-codes';
 
 // CREATE
-export type CreateUserSuccess = {
+export interface CreateUserSuccess {
     success: true;
     data: {
         name: string;
@@ -10,51 +10,51 @@ export type CreateUserSuccess = {
         login: string;
         password: string;
     };
-};
+}
 
-export type CreateUserError = {
+export interface CreateUserError {
     success: false;
     errorCode: ErrorCode;
     errorMsg: string;
-};
+}
 
 export type CreateUserResult = CreateUserSuccess | CreateUserError;
 
 // UPDATE
-export type UpdateUserSuccess = {
+export interface UpdateUserSuccess {
     success: true;
-};
+}
 
-export type UpdateUserError = {
+export interface UpdateUserError {
     success: false;
     errorCode: ErrorCode;
     errorMsg: string;
-};
+}
 
 export type UpdateUserResult = UpdateUserSuccess | UpdateUserError;
 
 // DELETE
-export type DeleteUserSuccess = {
+export interface DeleteUserSuccess {
     success: true;
-};
+}
 
-export type DeleteUserError = {
+export interface DeleteUserError {
     success: false;
     errorCode: ErrorCode;
     errorMsg: string;
-};
+}
 
 export type DeleteUserResult = DeleteUserSuccess | DeleteUserError;
 
 // CHANGE PASSWORD
-export type ChangePasswordSuccess = {
+export interface ChangePasswordSuccess {
     success: true;
-};
+}
 
-export type ChangePasswordError = {
+export interface ChangePasswordError {
     success: false;
     errorCode: ErrorCode;
     errorMsg: string;
-};
+}
 
 export type ChangePasswordResult = ChangePasswordSuccess | ChangePasswordError;

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Copy, TriangleAlert, X } from 'lucide-react';
 
-import { CreateUserSuccess as CreateUserSuccessType } from '@/contracts/user-actions-result';
+import { CreateUserSuccess as CreateUserSuccessType } from '@/contracts/user-actions';
 
 import { getRoleLabel } from '@/utils/get-role-label';
 

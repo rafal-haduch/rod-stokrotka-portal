@@ -1,6 +1,6 @@
 'use server';
 
-import { UpdateUserResult } from '@/contracts/user-actions-result';
+import { UpdateUserResult } from '@/contracts/user-actions';
 
 import { DomainError } from '@/domain/error/domain-error';
 import { ErrorCode } from '@/domain/error/error-codes';

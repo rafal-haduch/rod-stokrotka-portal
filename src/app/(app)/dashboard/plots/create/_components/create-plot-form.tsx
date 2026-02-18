@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { CreatePlotResult } from '@/contracts/plot-actions-result';
+import { CreatePlotResult } from '@/contracts/plot-actions';
 
 import { createPlot } from '@/domain/plot/actions/create-plot.action';
 

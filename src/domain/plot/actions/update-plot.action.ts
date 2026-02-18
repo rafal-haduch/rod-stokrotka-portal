@@ -1,6 +1,6 @@
 'use server';
 
-import { UpdatePlotResult } from '@/contracts/plot-actions-result';
+import { UpdatePlotResult } from '@/contracts/plot-actions';
 
 import { canPerform } from '@/domain/permissions/can-perform';
 import { PERMISSION_KEYS } from '@/domain/permissions/permissions';

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { UpdateUserResult } from '@/contracts/user-actions-result';
+import { UpdateUserResult } from '@/contracts/user-actions';
 
 import { deleteUser } from '@/domain/user/actions/delete-user.action';
 

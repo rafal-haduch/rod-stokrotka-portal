@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { createUser } from '@/domain/user/actions/create-user.action';
 
-import { CreateUserResult } from '@/contracts/user-actions-result';
+import { CreateUserResult } from '@/contracts/user-actions';
 
 import CreateUserForm from './create-user-form';
 import CreateUserSuccess from './create-user-success';

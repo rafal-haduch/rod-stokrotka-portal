@@ -2,7 +2,7 @@
 
 import bcrypt from 'bcrypt';
 
-import { CreateUserResult } from '@/contracts/user-actions-result';
+import { CreateUserResult } from '@/contracts/user-actions';
 
 import { DomainError } from '@/domain/error/domain-error';
 import { ErrorCode } from '@/domain/error/error-codes';
