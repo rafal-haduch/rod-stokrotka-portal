@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Ban, Trash2 } from 'lucide-react';
 
-import { ROUTES } from '@/constants/routes';
+import { ROUTES } from '@/config/routes';
 
 import { getRoleLabel } from '@/utils/get-role-label';
 import { UserDeleteFormReadModel } from '@/domain/user/user.read-models';

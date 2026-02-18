@@ -1,4 +1,4 @@
-import { ROUTES } from '@/constants/routes';
+import { ROUTES } from '@/config/routes';
 
 import { buildMetadata } from '@/lib/metadata';
 
@@ -20,7 +20,7 @@ export default function MemoriesPage() {
                 <AnimateOnView className="h2-animate">
                     <h2>Wspomnienia z naszego ogrodu</h2>
                 </AnimateOnView>
-                
+
                 <MemoriesList />
             </section>
 

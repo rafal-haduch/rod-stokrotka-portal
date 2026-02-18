@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { ArrowLeft, CircleUserRound, LayoutDashboard, X } from 'lucide-react';
 
-import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/constants/routes';
+import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/config/routes';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/utils/cn';
 import { useState } from 'react';

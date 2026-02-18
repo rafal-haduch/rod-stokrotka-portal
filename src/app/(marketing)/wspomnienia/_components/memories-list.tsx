@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
-import { ROUTES } from '@/constants/routes';
+import { ROUTES } from '@/config/routes';
 
 import { getAllMemories, MemoryInList } from '@/content/memories/memories';
 

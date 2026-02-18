@@ -1,13 +1,13 @@
 'use server';
 
-import { DeletePlotResult } from '@/types/plot-actions-result';
+import { DeletePlotResult } from '@/contracts/plot-actions-result';
 
 import { canPerform } from '@/domain/permissions/can-perform';
 import { PERMISSION_KEYS } from '@/domain/permissions/permissions';
 import { requireSession } from '@/domain/auth/require-session';
-import { DomainError } from '@/domain/errors/domain-error';
-import { ErrorCode } from '@/domain/errors/error-codes';
-import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
+import { DomainError } from '@/domain/error/domain-error';
+import { ErrorCode } from '@/domain/error/error-codes';
+import { ERROR_MESSAGES } from '@/domain/error/error.messages';
 import { plotRepository } from '@/domain/plot/plot.repository';
 import { parseDeletePlotInput } from '../plot-input.parse';
 

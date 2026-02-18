@@ -2,7 +2,7 @@ import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
 import { KeyRound } from 'lucide-react';
 
-import { ROUTES } from '@/constants/routes';
+import { ROUTES } from '@/config/routes';
 
 import { getRoleLabel } from '@/utils/get-role-label';
 

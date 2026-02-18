@@ -1,31 +1,23 @@
-//TODO: change file name into index.ts and improve imports
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 
-import { PhotoWithoutTitle } from '@/types/photo';
-
-export interface Investment {
-    slug: string;
-    title: string;
-    date: string;
-    cover: string;
-    content: string;
-    photos: PhotoWithoutTitle[];
-}
-
-export type InvestmentInList = {
-    slug: string;
-    title: string;
-    date: string;
-    cover: string;
-};
+import { PhotoWithoutTitle } from '@/models/photo';
 
 const investmentsDir = path.join(process.cwd(), 'src/content/investments');
 
-// Gets a list of all posts (without Markdown to HTML conversion)
+export interface InvestmentInList {
+    slug: string;
+    title: string;
+    date: string;
+    cover: string;
+}
+
+/**
+ * Gets a list of all investment posts (without conversion from Markdown to HTML!)
+ */
 export function getAllInvestments(): InvestmentInList[] {
     const fileNames = fs.readdirSync(investmentsDir);
     const investments = fileNames
@@ -48,7 +40,18 @@ export function getAllInvestments(): InvestmentInList[] {
     return investments.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
-// Gets a single posts (with Markdown to HTML conversion)
+export interface Investment {
+    slug: string;
+    title: string;
+    date: string;
+    cover: string;
+    content: string;
+    photos: PhotoWithoutTitle[];
+}
+
+/**
+ * Gets a single investment post (with conversion from Markdown to HTML!)
+ */
 export async function getInvestmentBySlug(slug: string): Promise<Investment | null> {
     const fullPath = path.join(investmentsDir, `${slug}.md`);
     if (!fs.existsSync(fullPath)) return null;
@@ -56,6 +59,7 @@ export async function getInvestmentBySlug(slug: string): Promise<Investment | nu
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
+    // Conversion to HTML
     const processedContent = await remark().use(html).process(content);
     const contentHtml = processedContent.toString();
 

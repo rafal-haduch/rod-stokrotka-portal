@@ -1,6 +1,6 @@
 import { Role } from '@prisma/client';
-import { DomainError } from '../errors/domain-error';
-import { ErrorCode } from '../errors/error-codes';
+import { DomainError } from '../error/domain-error';
+import { ErrorCode } from '../error/error-codes';
 
 // Role
 export function validateUserRole(value: unknown): Role {

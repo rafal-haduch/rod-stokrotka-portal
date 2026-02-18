@@ -3,12 +3,12 @@
 import bcrypt from 'bcrypt';
 import { prisma } from '@/lib/prisma';
 
-import { ChangePasswordResult } from '@/types/user-actions-result';
+import { ChangePasswordResult } from '@/contracts/user-actions-result';
 
 import { requireSession } from '@/domain/auth/require-session';
-import { DomainError } from '@/domain/errors/domain-error';
-import { ErrorCode } from '@/domain/errors/error-codes';
-import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
+import { DomainError } from '@/domain/error/domain-error';
+import { ErrorCode } from '@/domain/error/error-codes';
+import { ERROR_MESSAGES } from '@/domain/error/error.messages';
 import { enforcePasswordPolicy } from '@/domain/security/password-policy';
 import { userRepository } from '@/domain/user/user.repository';
 import { parseChangePasswordInput } from '@/domain/user/user-input.parse';

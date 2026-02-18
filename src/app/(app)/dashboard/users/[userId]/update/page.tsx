@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-import { ROUTES } from '@/constants/routes';
+import { ROUTES } from '@/config/routes';
 
 import UpdateUserForm from './_components/update-user-form';
 import { userRepository } from '@/domain/user/user.repository';

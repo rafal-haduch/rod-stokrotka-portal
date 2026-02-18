@@ -71,7 +71,7 @@ export default function ContactForm() {
             <Popup type="error" message={` ${errorMsg}`} onClose={() => setStatus('idle')} />;
         }
     };
-    // TODO: group className with cn()
+
     return (
         <>
             <p className="text-lfet sm:text-center">

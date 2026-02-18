@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-import { ROUTES } from '@/constants/routes';
+import { ROUTES } from '@/config/routes';
 
 import { plotRepository } from '@/domain/plot/plot.repository';
 import { mapPlotToPlotDeleteForm } from '@/domain/plot/plot.mapper';

@@ -1,4 +1,4 @@
-import { ErrorCode } from '@/domain/errors/error-codes';
+import { ErrorCode } from '@/domain/error/error-codes';
 import { Role } from '@prisma/client';
 
 // CREATE

@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { updateUser } from '@/domain/user/actions/update-user.action';
 
-import { UpdateUserResult } from '@/types/user-actions-result';
+import { UpdateUserResult } from '@/contracts/user-actions-result';
 
 import UpdateUserFields from './update-user-fields';
 import UpdateUserSuccess from './update-user-success';

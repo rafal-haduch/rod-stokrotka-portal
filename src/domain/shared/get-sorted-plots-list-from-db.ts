@@ -1,5 +1,6 @@
 import { plotRepository } from '../plot/plot.repository';
 
+//REVIEW: change this interface location?
 /**
  * Plot option used in UI selection inputs (dropdown multiselect).
  */

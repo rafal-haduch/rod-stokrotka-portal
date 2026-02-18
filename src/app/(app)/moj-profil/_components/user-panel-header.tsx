@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
 import { CircleUserRound, LayoutDashboard, LogOut } from 'lucide-react';
 
-import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/constants/routes';
+import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/config/routes';
 
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 import { cn } from '@/utils/cn';

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Pencil, Plus, Trash2 } from 'lucide-react';
 
-import { ROUTES } from '@/constants/routes';
+import { ROUTES } from '@/config/routes';
 
 import { formatPlotCode } from '@/utils/format-plot-code';
 import { plotRepository } from '@/domain/plot/plot.repository';
@@ -29,7 +29,6 @@ export default async function DashboardPlotsPage() {
                 <Plus />
             </Link>
 
-            {/* TODO: dac do komponentu? */}
             <table className="w-full text-xs md:text-sm lg:text-lg">
                 <thead>
                     <tr>

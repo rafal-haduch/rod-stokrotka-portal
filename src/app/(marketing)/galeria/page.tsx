@@ -1,9 +1,9 @@
 import path from 'path';
 import fs from 'fs';
 
-import { ROUTES } from '@/constants/routes';
+import { ROUTES } from '@/config/routes';
 
-import { PhotoWithTitle } from '@/types/photo';
+import { PhotoWithTitle } from '@/models/photo';
 
 import { buildMetadata } from '@/lib/metadata';
 

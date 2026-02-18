@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ROUTES } from '@/constants/routes';
+import { ROUTES } from '@/config/routes';
 import { Ban, Trash2 } from 'lucide-react';
 import { PlotDeleteFormReadModel } from '@/domain/plot/plot.read-models';
 

@@ -2,16 +2,17 @@ import Link from 'next/link';
 import { Ban, Save } from 'lucide-react';
 import { Role } from '@prisma/client';
 
-import { ROUTES } from '@/constants/routes';
+import { ROUTES } from '@/config/routes';
 
 import { getRoleLabel } from '@/utils/get-role-label';
 
-import { MultiSelectDropdown } from '@/components/multi-select-plots-dropdown';
 import { UserUpdateFormReadModel } from '@/domain/user/user.read-models';
+
+import { MultiSelectDropdown } from '@/components/multi-select-plots-dropdown';
 import { PlotOption } from '@/domain/shared/get-sorted-plots-list-from-db';
 import { TooltipIcon } from '@/components/tooltip-icon';
+import { ASSIGNABLE_ROLES } from '@/domain/user/user.constants';
 
-//REVIEW: import PlotOption czy nei zmienic jego miejsca?
 interface Props {
     user: UserUpdateFormReadModel;
     plotsOptions: PlotOption[];
@@ -20,9 +21,6 @@ interface Props {
 }
 
 export default function UpdateUserFields({ user, plotsOptions, loading, errorMsg }: Props) {
-    //TODO: hide admin role if role != admin
-    const roles = Object.values(Role); //.filter((r) => r !== Role.ADMIN);
-
     return (
         <fieldset className="grid grid-cols-4 space-x-2 gap-y-3">
             <input type="hidden" name="id" value={user.id} />
@@ -40,7 +38,7 @@ export default function UpdateUserFields({ user, plotsOptions, loading, errorMsg
                 />
                 <div className="absolute top-1/2 right-3 -translate-y-1/2">
                     <TooltipIcon
-                        text={
+                        helperText={
                             'Dopuszczalna forma zapisu to imię + 1 litera nazwiska.\nPrzykład:\nosoba -> Jan Kowalski\nzapis -> Jan K.'
                         }
                     />
@@ -54,7 +52,7 @@ export default function UpdateUserFields({ user, plotsOptions, loading, errorMsg
                 defaultValue={user.role}
                 className="border-theme-200 focus:border-theme-ui-border-dark bg-theme-bg-primary col-span-3 w-full rounded-md border px-3 py-2 shadow-sm hover:cursor-pointer focus:outline-none sm:w-3/4"
             >
-                {roles.map((role) => (
+                {ASSIGNABLE_ROLES.map((role) => (
                     <option key={role} value={role}>
                         {getRoleLabel(role)}
                     </option>

@@ -1,31 +1,21 @@
-//TODO: change file name into index.ts and improve imports
 import path from 'path';
 import fs from 'fs';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 
-import { PhotoWithoutTitle } from '@/types/photo';
-
-export interface Memory {
-    slug: string;
-    title: string;
-    date: string;
-    cover: string;
-    content: string;
-    photos: PhotoWithoutTitle[];
-}
-
-export type MemoryInList = {
-    slug: string;
-    title: string;
-    date: string;
-    cover: string;
-};
+import { PhotoWithoutTitle } from '@/models/photo';
 
 const memoriesDir = path.join(process.cwd(), 'src/content/memories');
 
-// Gets a list of all posts (without Markdown to HTML conversion)
+export interface MemoryInList {
+    slug: string;
+    title: string;
+    date: string;
+    cover: string;
+}
+
+// Gets a list of all memories posts (without conversion from Markdown to HTML!)
 export function getAllMemories(): MemoryInList[] {
     const fileNames = fs.readdirSync(memoriesDir);
 
@@ -49,7 +39,16 @@ export function getAllMemories(): MemoryInList[] {
     return memories.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
-// Gets a single posts (with Markdown to HTML conversion)
+export interface Memory {
+    slug: string;
+    title: string;
+    date: string;
+    cover: string;
+    content: string;
+    photos: PhotoWithoutTitle[];
+}
+
+// Gets a single memory post (with conversion from Markdown to HTML!)
 export async function getMemoryBySlug(slug: string): Promise<Memory | null> {
     const fullPath = path.join(memoriesDir, `${slug}.md`);
     if (!fs.existsSync(fullPath)) return null;

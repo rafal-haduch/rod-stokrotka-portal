@@ -38,7 +38,7 @@ export function MultiSelectDropdown({ name, options, initialSelectedIds = [] }: 
     const selectedLabels = options.filter((o) => selected.includes(o.id)).map((o) => o.label);
 
     return (
-        <div ref={ref} className="relative col-span-3 w-full sm:w-3/4">
+        <div ref={ref} className="relative col-span-3 w-full">
             {/* trigger */}
             <button
                 type="button"

@@ -1,6 +1,6 @@
 import { Role } from '@prisma/client';
-import { DomainError } from '@/domain/errors/domain-error';
-import { ErrorCode } from '@/domain/errors/error-codes';
+import { DomainError } from '@/domain/error/domain-error';
+import { ErrorCode } from '@/domain/error/error-codes';
 import { getUserSession } from '@/lib/auth/get-user-session';
 
 export interface UserSession {

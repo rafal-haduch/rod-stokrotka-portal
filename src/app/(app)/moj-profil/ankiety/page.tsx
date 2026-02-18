@@ -1,6 +1,6 @@
 import { buildMetadata } from '@/lib/metadata';
 
-import { ROUTES } from '@/constants/routes';
+import { ROUTES } from '@/config/routes';
 
 import { NotFoundContent } from '@/components/not-found-content';
 

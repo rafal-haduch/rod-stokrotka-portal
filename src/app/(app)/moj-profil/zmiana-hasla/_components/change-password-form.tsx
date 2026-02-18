@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { ChangePasswordResult } from '@/types/user-actions-result';
+import { ChangePasswordResult } from '@/contracts/user-actions-result';
 
 import { changePassword } from '@/domain/user/actions/change-password.action';
 

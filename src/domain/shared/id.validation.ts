@@ -1,5 +1,5 @@
-import { DomainError } from '../errors/domain-error';
-import { ErrorCode } from '../errors/error-codes';
+import { DomainError } from '../error/domain-error';
+import { ErrorCode } from '../error/error-codes';
 
 export function validateId(value: unknown): number {
     if (typeof value !== 'string') {

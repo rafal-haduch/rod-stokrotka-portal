@@ -3,7 +3,7 @@
 import { Role } from '@prisma/client';
 import Link from 'next/link';
 
-import { ROUTES } from '@/constants/routes';
+import { ROUTES } from '@/config/routes';
 
 import { getRoleLabel } from '@/utils/get-role-label';
 import { Ban, CirclePlus } from 'lucide-react';

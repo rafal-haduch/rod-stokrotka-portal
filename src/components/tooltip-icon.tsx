@@ -1,16 +1,22 @@
 'use client';
 
+import { cn } from '@/utils/cn';
 import { Info } from 'lucide-react';
 import { ReactNode, useState } from 'react';
 
 interface Props {
-    text: string;
+    helperText: string;
+    example?: string;
     icon?: ReactNode;
     position?: 'top' | 'bottom' | 'left' | 'right';
 }
 
-//FIXME:
-export function TooltipIcon({ text, icon = <Info size={16} />, position = 'left' }: Props) {
+export function TooltipIcon({
+    helperText: text,
+    example,
+    icon = <Info />,
+    position = 'left',
+}: Props) {
     const [visible, setVisible] = useState(false);
 
     const positionClasses = {
@@ -22,26 +28,26 @@ export function TooltipIcon({ text, icon = <Info size={16} />, position = 'left'
 
     return (
         <div
-            className="relative inline-flex h-6 w-6 items-center justify-center"
             onMouseEnter={() => setVisible(true)}
             onMouseLeave={() => setVisible(false)}
+            className="relative z-50 items-center justify-center"
         >
             {icon}
-
             {visible && (
-                <>
-                    {/* MOBILE */}
-                    <span className="fixed bottom-6 left-1/2 z-50 w-[90vw] -translate-x-1/2 rounded-md bg-white px-3 py-2 text-xs wrap-break-word whitespace-pre-line text-black shadow-lg sm:hidden">
-                        {text}
-                    </span>
-
-                    {/* DESKTOP */}
-                    <span
-                        className={`absolute z-50 hidden w-max max-w-sm rounded-md bg-white px-3 py-2 text-xs wrap-break-word whitespace-pre-line text-black shadow-lg sm:block ${positionClasses[position]} `}
-                    >
-                        {text}
-                    </span>
-                </>
+                <div
+                    className={cn(
+                        positionClasses[position],
+                        'absolute z-1 flex flex-col gap-2 rounded-md bg-white p-4 shadow-lg sm:max-w-sm sm:min-w-xs'
+                    )}
+                >
+                    <p className="wrap-break-word whitespace-pre-line text-black">{text}</p>
+                    {example && (
+                        <div className="flex flex-col">
+                            <mark className="w-fit">Przykład:</mark>
+                            <i className="wrap-break-word whitespace-pre-line">{example}</i>
+                        </div>
+                    )}
+                </div>
             )}
         </div>
     );

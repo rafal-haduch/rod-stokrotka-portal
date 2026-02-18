@@ -1,6 +1,6 @@
 import Script from 'next/script';
 
-//TODO: data
+//TODO: complete the data
 export function JsonLdOrganization() {
     const jsonLd = {
         '@context': 'https://schema.org',

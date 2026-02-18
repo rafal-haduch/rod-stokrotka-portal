@@ -2,11 +2,11 @@
 
 import bcrypt from 'bcrypt';
 
-import { CreateUserResult } from '@/types/user-actions-result';
+import { CreateUserResult } from '@/contracts/user-actions-result';
 
-import { DomainError } from '@/domain/errors/domain-error';
-import { ErrorCode } from '@/domain/errors/error-codes';
-import { ERROR_MESSAGES } from '@/domain/errors/error-messages';
+import { DomainError } from '@/domain/error/domain-error';
+import { ErrorCode } from '@/domain/error/error-codes';
+import { ERROR_MESSAGES } from '@/domain/error/error.messages';
 import { requireSession } from '@/domain/auth/require-session';
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 import { userRepository } from '@/domain/user/user.repository';

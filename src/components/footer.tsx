@@ -7,7 +7,7 @@ import { Power, PowerOff } from 'lucide-react';
 import { cn } from '@/utils/cn';
 import { Theme } from '@/utils/set-theme';
 import { useTheme } from './theme-provider';
-import { ROUTES } from '@/constants/routes';
+import { ROUTES } from '@/config/routes';
 
 const themeOptions: Theme[] = [
     { id: 'spring', label: 'Wiosna' },

@@ -1,5 +1,5 @@
-import { DomainError } from '../errors/domain-error';
-import { ErrorCode } from '../errors/error-codes';
+import { DomainError } from '../error/domain-error';
+import { ErrorCode } from '../error/error-codes';
 
 // Ids
 export function validatePlotIds(values: unknown[]): number[] {

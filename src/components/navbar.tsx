@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { LogIn, User } from 'lucide-react';
 
-import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/constants/routes';
+import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/config/routes';
 
 import { cn } from '@/utils/cn';
 

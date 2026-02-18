@@ -1,6 +1,6 @@
 import { buildMetadata } from '@/lib/metadata';
 
-import { ROUTES } from '@/constants/routes';
+import { ROUTES } from '@/config/routes';
 
 import { paymentStatusAsOf } from '@/content/data/plot-fees-status';
 
