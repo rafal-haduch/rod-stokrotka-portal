@@ -8,9 +8,10 @@ import { DomainError } from '@/domain/error/domain-error';
 import { ErrorCode } from '@/domain/error/error-codes';
 import { ERROR_MESSAGES } from '@/domain/error/error.messages';
 import { requireSession } from '@/domain/auth/require-session';
-import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
-import { userRepository } from '@/domain/user/user.repository';
-import { parseCreateUserInput } from '@/domain/user/user-input.parse';
+
+import { isAdminOrBoard } from '../user.helpers';
+import { parseCreateUserInput } from '../user.input-parse';
+import { userRepository } from '../user.repository';
 
 export async function createUser(formData: FormData): Promise<CreateUserResult> {
     try {

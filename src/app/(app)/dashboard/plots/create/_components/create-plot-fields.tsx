@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import { ROUTES } from '@/config/routes';
 
-import { getRoleLabel } from '@/utils/get-role-label';
+import { getRoleLabel } from '@/domain/user/user.helpers';
 import { Ban, CirclePlus } from 'lucide-react';
 
 interface Props {

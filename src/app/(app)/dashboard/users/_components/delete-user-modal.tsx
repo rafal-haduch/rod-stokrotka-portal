@@ -1,7 +1,7 @@
-import { UserTableRowReadModel } from '@/domain/user/user.read-models';
+import { UserTableRow } from '@/domain/user/user.read-models';
 
 interface Props {
-    user: UserTableRowReadModel;
+    user: UserTableRow;
     onClose: () => void;
 }
 

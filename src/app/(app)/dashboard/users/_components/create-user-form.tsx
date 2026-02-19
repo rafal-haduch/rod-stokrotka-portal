@@ -1,16 +1,14 @@
 'use client';
 
-import { useMemo } from 'react';
 import { Role } from '@prisma/client';
 import { CirclePlus, X } from 'lucide-react';
 
-import { getRoleLabel } from '@/utils/get-role-label';
-
-import { PlotOption } from '@/domain/shared/get-sorted-plots-list-from-db';
+import { getRoleLabel } from '@/domain/user/user.helpers';
+import { ASSIGNABLE_ROLES } from '@/domain/user/user.constants';
+import { PlotOption } from '@/domain/plot/plot.read-models';
 
 import { TooltipIcon } from '@/components/tooltip-icon';
 import { MultiSelectDropdown } from '@/components/multi-select-plots-dropdown';
-import { ASSIGNABLE_ROLES } from '@/domain/user/user.constants';
 
 interface Props {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;

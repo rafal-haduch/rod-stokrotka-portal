@@ -8,7 +8,7 @@ import { ERROR_MESSAGES } from '@/domain/error/error.messages';
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 import { requireSession } from '@/domain/auth/require-session';
 import { userRepository } from '@/domain/user/user.repository';
-import { parseDeleteUserInput } from '@/domain/user/user-input.parse';
+import { parseDeleteUserInput } from '@/domain/user/user.input-parse';
 
 export async function deleteUser(formData: FormData): Promise<DeleteUserResult> {
     try {

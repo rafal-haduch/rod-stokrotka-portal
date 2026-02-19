@@ -1,17 +1,27 @@
 import { Role } from '@prisma/client';
-import { validateUserName, validateUserPassword, validateUserRole } from './user.validation';
+
 import { validatePlotIds } from '@/domain/plot/plot.validation';
+
 import { validateId } from '../shared';
 import { DomainError } from '../error/domain-error';
 import { ErrorCode } from '../error/error-codes';
 
-// CREATE USER ACTION
-export interface CreateUserInput {
+import { validateUserName, validateUserPassword, validateUserRole } from './user.validation';
+
+// ============================
+// === Create user use-case ===
+// ============================
+
+interface CreateUserInput {
     name: string;
     role: Role;
     plotIds: number[];
 }
 
+/**
+ * Parses and validates FormData for the create user use-case.
+ * Throws DomainError when validation fails.
+ */
 export function parseCreateUserInput(formData: FormData): CreateUserInput {
     const nameRaw = formData.get('name');
     const roleRaw = formData.get('role');
@@ -24,14 +34,21 @@ export function parseCreateUserInput(formData: FormData): CreateUserInput {
     return { name, role, plotIds };
 }
 
-// UPDATE USER ACTION
-export interface UpdateUserInput {
+// ============================
+// === Update user use-case ===
+// ============================
+
+interface UpdateUserInput {
     id: number;
     name: string;
     role: Role;
     plotIds: number[];
 }
 
+/**
+ * Parses and validates FormData for the update user use-case.
+ * Throws DomainError when validation fails.
+ */
 export function parseUpdateUserInput(formData: FormData): UpdateUserInput {
     const idRaw = formData.get('id');
     const nameRaw = formData.get('name');
@@ -46,11 +63,18 @@ export function parseUpdateUserInput(formData: FormData): UpdateUserInput {
     return { id, name, role, plotIds };
 }
 
-// DELETE USER ACTION
-export interface DeleteUserInput {
+// ============================
+// === Delete user use-case ===
+// ============================
+
+interface DeleteUserInput {
     id: number;
 }
 
+/**
+ * Parses and validates FormData for the delete user use-case.
+ * Throws DomainError when validation fails.
+ */
 export function parseDeleteUserInput(formData: FormData): DeleteUserInput {
     const idRaw = formData.get('id');
 
@@ -59,12 +83,20 @@ export function parseDeleteUserInput(formData: FormData): DeleteUserInput {
     return { id };
 }
 
-// CHANGE PASSWORD ACTION
-export interface ChangePasswordInput {
+// ================================
+// === Change password use-case ===
+// ================================
+
+interface ChangePasswordInput {
     currentPassword: string;
     newPassword: string;
 }
 
+/**
+ * Parses and validates FormData for the change password use-case.
+ * Performs additional password consistency checks.
+ * Throws DomainError when validation fails.
+ */
 export function parseChangePasswordInput(formData: FormData): ChangePasswordInput {
     const currentPasswordRaw = formData.get('currentPassword');
     const newPasswordRaw = formData.get('newPassword');

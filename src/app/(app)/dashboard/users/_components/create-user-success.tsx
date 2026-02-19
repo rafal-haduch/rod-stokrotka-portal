@@ -5,7 +5,7 @@ import { Copy, TriangleAlert, X } from 'lucide-react';
 
 import { CreateUserSuccess as CreateUserSuccessType } from '@/contracts/user-actions';
 
-import { getRoleLabel } from '@/utils/get-role-label';
+import { getRoleLabel } from '@/domain/user/user.helpers';
 
 interface Props {
     result: CreateUserSuccessType;

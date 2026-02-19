@@ -8,7 +8,7 @@ import { ERROR_MESSAGES } from '@/domain/error/error.messages';
 import { requireSession } from '@/domain/auth/require-session';
 import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 import { userRepository } from '@/domain/user/user.repository';
-import { parseUpdateUserInput } from '@/domain/user/user-input.parse';
+import { parseUpdateUserInput } from '@/domain/user/user.input-parse';
 
 export async function updateUser(formData: FormData): Promise<UpdateUserResult> {
     try {

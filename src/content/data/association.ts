@@ -37,7 +37,6 @@ export const associationLegalData: AssociationLegalData[] = [
 
 export const governanceAssociationStructureAsOf = '17.05.2025' as const;
 
-// export for Governance Section component.
 export interface GovernanceAssociationStructure {
     person: string;
     position: string;

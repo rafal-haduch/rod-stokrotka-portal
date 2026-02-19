@@ -1,17 +1,24 @@
-import { UserTableRowReadModel } from '@/domain/user/user.read-models';
-import { getRoleLabel } from '@/utils/get-role-label';
 import { Pencil, Trash2 } from 'lucide-react';
 
+import { CRUDModalType } from '@/types/crud-modal';
+
+import { getRoleLabel } from '@/domain/user/user.helpers';
+
+import { UserTableRow } from '@/domain/user/user.read-models';
+
 interface Props {
-    data: UserTableRowReadModel[];
-    onEdit: (owner: UserTableRowReadModel) => void;
-    onDelete: (owner: UserTableRowReadModel) => void;
+    data: UserTableRow[];
+    onEdit: (type: CRUDModalType, user: UserTableRow) => void;
+    onDelete: (type: CRUDModalType, user: UserTableRow) => void;
 }
 
 export default function UsersTable({ data, onEdit, onDelete }: Props) {
     return (
         <div className="overflow-x-auto">
-            <table className="w-full text-xs md:text-sm lg:text-base">
+            <table
+                atia-label="Tabela konta działkowców"
+                className="w-full text-xs md:text-sm lg:text-base"
+            >
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -43,20 +50,20 @@ export default function UsersTable({ data, onEdit, onDelete }: Props) {
                             </td>
                             <td>
                                 <button
-                                    onClick={() => onEdit(rowUser)}
+                                    onClick={() => onEdit('edit', rowUser)}
                                     title="Edytuj dane konta"
                                     className="btn btn-primary btn-in-table"
                                 >
-                                    <Pencil />
+                                    <Pencil aria-hidden="true" />
                                 </button>
                             </td>
                             <td>
                                 <button
-                                    onClick={() => onDelete(rowUser)}
+                                    onClick={() => onDelete('delete', rowUser)}
                                     title="Usuń konto z systemu"
                                     className="btn btn-danger btn-in-table"
                                 >
-                                    <Trash2 />
+                                    <Trash2 aria-hidden="true" />
                                 </button>
                             </td>
                         </tr>

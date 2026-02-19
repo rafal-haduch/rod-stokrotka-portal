@@ -3,7 +3,7 @@ import { Ban, Trash2 } from 'lucide-react';
 
 import { ROUTES } from '@/config/routes';
 
-import { getRoleLabel } from '@/utils/get-role-label';
+import { getRoleLabel } from '@/domain/user/user.helpers';
 import { UserDeleteFormReadModel } from '@/domain/user/user.read-models';
 
 interface Props {

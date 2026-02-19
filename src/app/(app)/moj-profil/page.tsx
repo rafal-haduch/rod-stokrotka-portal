@@ -1,10 +1,10 @@
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { KeyRound } from 'lucide-react';
 
 import { ROUTES } from '@/config/routes';
 
-import { getRoleLabel } from '@/utils/get-role-label';
+import { getRoleLabel } from '@/domain/user/user.helpers';
 
 import { requireSession } from '@/domain/auth/require-session';
 import { userRepository } from '@/domain/user/user.repository';

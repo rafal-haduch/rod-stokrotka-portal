@@ -29,3 +29,11 @@ export interface PlotDeleteFormReadModel {
     area: number | null;
     ownersNames: string[];
 }
+
+/**
+ * Available plot used as an option in UI multi-select dropdown inputs.
+ */
+export interface PlotOption {
+    id: number;
+    plotNumber: string;
+}

@@ -4,14 +4,13 @@ import { Role } from '@prisma/client';
 
 import { ROUTES } from '@/config/routes';
 
-import { getRoleLabel } from '@/utils/get-role-label';
-
+import { getRoleLabel } from '@/domain/user/user.helpers';
+import { ASSIGNABLE_ROLES } from '@/domain/user/user.constants';
+import { PlotOption } from '@/domain/plot/plot.read-models';
 import { UserUpdateFormReadModel } from '@/domain/user/user.read-models';
 
 import { MultiSelectDropdown } from '@/components/multi-select-plots-dropdown';
-import { PlotOption } from '@/domain/shared/get-sorted-plots-list-from-db';
 import { TooltipIcon } from '@/components/tooltip-icon';
-import { ASSIGNABLE_ROLES } from '@/domain/user/user.constants';
 
 interface Props {
     user: UserUpdateFormReadModel;

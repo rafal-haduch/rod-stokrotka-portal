@@ -15,19 +15,6 @@ export interface UserProfileReadModel {
 }
 
 /**
- * Read model representing a single user entry in user listings.
- * Contains only data required for overview and administration purposes.
- */
-export interface UserTableRowReadModel {
-    id: number;
-    name: string;
-    role: Role;
-    plotNumbers: string[];
-    createdAt: Date;
-    lastLogin: Date | null;
-}
-
-/**
  * Read model used to populate the user edit form.
  * Contains editable fields and related plot references.
  */
@@ -53,4 +40,16 @@ export interface UserDeleteFormReadModel {
         plotId: number;
         plotNumber: string;
     }[];
+}
+
+/**
+ * Represents a single user entry and contains only the fields required for overview and administration.
+ */
+export interface UserTableRow {
+    id: number;
+    name: string;
+    role: Role;
+    plotNumbers: string[];
+    createdAt: Date;
+    lastLogin: Date | null;
 }

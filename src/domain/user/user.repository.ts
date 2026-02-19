@@ -1,5 +1,7 @@
-import { prisma } from '@/lib/prisma';
 import { Role } from '@prisma/client';
+
+import { prisma } from '@/lib/prisma';
+import { UserTableRow } from './user.read-models';
 
 interface CreateUserData {
     name: string;
@@ -17,7 +19,6 @@ interface UpdateUserData {
 }
 
 export const userRepository = {
-    // OPERATIONS: CREATE, UPDATE, DELETE
     async create({ name, plotIds, role, login, passwordHash }: CreateUserData) {
         await prisma.$transaction(async (tx) => {
             const user = await tx.user.create({
@@ -74,7 +75,6 @@ export const userRepository = {
         });
     },
 
-    // OPERATIONS: READ
     async findById(id: number) {
         return prisma.user.findUnique({
             where: { id },
@@ -110,11 +110,43 @@ export const userRepository = {
         });
     },
 
-    // SPECIAL OPERATIONS:
     async changePassword(id: number, newPasswordHash: string) {
         await prisma.user.update({
             where: { id },
             data: { password: newPasswordHash },
         });
+    },
+
+    // ===========================
+    // === Special for queries ===
+    // ===========================
+
+    async getUserTableRows(): Promise<UserTableRow[]> {
+        const users = await prisma.user.findMany({
+            select: {
+                id: true,
+                name: true,
+                role: true,
+                createdAt: true,
+                lastLogin: true,
+                plotsId: {
+                    select: {
+                        plot: {
+                            select: {
+                                plotNumber: true,
+                            },
+                        },
+                    },
+                },
+            },
+        });
+        return users.map((u) => ({
+            id: u.id,
+            name: u.name,
+            role: u.role,
+            createdAt: u.createdAt,
+            lastLogin: u.lastLogin,
+            plotNumbers: u.plotsId.map((up) => up.plot.plotNumber),
+        }));
     },
 };

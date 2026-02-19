@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma';
+import { PlotOption } from './plot.read-models';
 
 interface CreatePlotData {
     plotNumber: string;
@@ -12,7 +13,6 @@ interface UpdatePlotData {
 }
 
 export const plotRepository = {
-    // OPERATIONS: CREATE, UPDATE, DELETE
     async create({ plotNumber, area }: CreatePlotData) {
         return await prisma.plot.create({
             data: { plotNumber, area },
@@ -38,7 +38,6 @@ export const plotRepository = {
         });
     },
 
-    // OPERATIONS: READ
     async findById(id: number) {
         return prisma.plot.findUnique({
             where: { id },
@@ -74,8 +73,11 @@ export const plotRepository = {
         });
     },
 
-    // SPECIAL OPERATIONS:
-    async getPlotsList() {
+    // ===========================
+    // === Special for queries ===
+    // ===========================
+
+    async getPlotOptions(): Promise<PlotOption[]> {
         return prisma.plot.findMany({
             select: {
                 id: true,

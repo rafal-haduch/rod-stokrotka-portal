@@ -11,7 +11,7 @@ import { ErrorCode } from '@/domain/error/error-codes';
 import { ERROR_MESSAGES } from '@/domain/error/error.messages';
 import { enforcePasswordPolicy } from '@/domain/security/password-policy';
 import { userRepository } from '@/domain/user/user.repository';
-import { parseChangePasswordInput } from '@/domain/user/user-input.parse';
+import { parseChangePasswordInput } from '@/domain/user/user.input-parse';
 
 export async function changePassword(formData: FormData): Promise<ChangePasswordResult> {
     try {

@@ -9,7 +9,7 @@ import { UpdateUserResult } from '@/contracts/user-actions';
 import UpdateUserFields from './update-user-fields';
 import UpdateUserSuccess from './update-user-success';
 import { UserUpdateFormReadModel } from '@/domain/user/user.read-models';
-import { PlotOption } from '@/domain/shared/get-sorted-plots-list-from-db';
+import { PlotOption } from '@/domain/plot/plot.read-models';
 
 interface Props {
     user: UserUpdateFormReadModel;

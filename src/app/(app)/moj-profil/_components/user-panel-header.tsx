@@ -5,10 +5,11 @@ import { usePathname } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
 import { CircleUserRound, LayoutDashboard, LogOut } from 'lucide-react';
 
+import { cn } from '@/utils/cn';
+
 import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/config/routes';
 
-import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
-import { cn } from '@/utils/cn';
+import { isAdminOrBoard } from '@/domain/user/user.helpers';
 
 const routes = ROUTE_LIST as AppRouteBase[];
 const navItems = routes

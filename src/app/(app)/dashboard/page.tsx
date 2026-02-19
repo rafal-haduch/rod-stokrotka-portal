@@ -1,5 +1,6 @@
+import { getRoleLabel } from '@/domain/user/user.helpers';
+
 import { getUserSession } from '@/lib/auth/get-user-session';
-import { getRoleLabel } from '@/utils/get-role-label';
 
 export default async function DashboardPage() {
     const user = await getUserSession();

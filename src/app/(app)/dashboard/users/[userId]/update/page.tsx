@@ -5,7 +5,7 @@ import { ROUTES } from '@/config/routes';
 import UpdateUserForm from './_components/update-user-form';
 import { userRepository } from '@/domain/user/user.repository';
 import { mapUserToUserUpdateForm } from '@/domain/user/user.mapper';
-import { getSortedPlotsListFromDb } from '@/domain/shared/get-sorted-plots-list-from-db';
+import { getSortedAvailablePlots } from '@/domain/plot/queries/get-sorted-available-plots.query';
 
 export default async function UpdateUserPage({ params }: { params: Promise<{ userId: string }> }) {
     const { userId } = await params;
@@ -16,7 +16,7 @@ export default async function UpdateUserPage({ params }: { params: Promise<{ use
 
     const userForUpdate = mapUserToUserUpdateForm(user);
 
-    const availablePlots = await getSortedPlotsListFromDb();
+    const availablePlots = await getSortedAvailablePlots();
 
     return (
         <section>

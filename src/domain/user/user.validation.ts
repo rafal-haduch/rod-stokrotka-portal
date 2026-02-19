@@ -2,7 +2,6 @@ import { Role } from '@prisma/client';
 import { DomainError } from '../error/domain-error';
 import { ErrorCode } from '../error/error-codes';
 
-// Role
 export function validateUserRole(value: unknown): Role {
     if (typeof value !== 'string') {
         throw new DomainError(ErrorCode.INVALID_INPUT);
@@ -17,7 +16,6 @@ export function validateUserRole(value: unknown): Role {
     return normalized;
 }
 
-// Password
 export function validateUserPassword(value: unknown): string {
     if (typeof value !== 'string') {
         throw new DomainError(ErrorCode.INVALID_INPUT);
@@ -36,7 +34,6 @@ export function validateUserPassword(value: unknown): string {
     return trimmed;
 }
 
-// Name
 const NAME_REGEX = /^[A-ZĄĆĘŁŃÓŚŻŹ][a-ząćęłńóśżź]{1,29}\s[A-ZĄĆĘŁŃÓŚŻŹ]\.$/;
 export function validateUserName(value: unknown): string {
     if (typeof value !== 'string') {

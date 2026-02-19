@@ -1,6 +1,6 @@
-import { UsersWithPlotsFromDb, UserWithPlotsFromDb } from './user-from-db.types';
+import { UsersWithPlotsFromDb, UserWithPlotsFromDb } from './user.db-types';
 import {
-    UserTableRowReadModel,
+    UserTableRow,
     UserDeleteFormReadModel,
     UserUpdateFormReadModel,
     UserProfileReadModel,
@@ -24,7 +24,7 @@ export function mapUserToUserProfile(user: UserWithPlotsFromDb): UserProfileRead
 /**
  * Maps a collection of users with plots from database to dashboard user table rows read model.
  */
-export function mapUsersToUserTableRows(users: UsersWithPlotsFromDb): UserTableRowReadModel[] {
+export function mapUsersToUserTableRows(users: UsersWithPlotsFromDb): UserTableRow[] {
     return users.map((user) => ({
         id: user.id,
         name: user.name,
