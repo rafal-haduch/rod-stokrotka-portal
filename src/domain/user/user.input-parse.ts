@@ -76,7 +76,7 @@ interface DeleteUserInput {
  * Throws DomainError when validation fails.
  */
 export function parseDeleteUserInput(formData: FormData): DeleteUserInput {
-    const idRaw = formData.get('id');
+    const idRaw = formData.get('userId');
 
     const id = validateId(idRaw);
 

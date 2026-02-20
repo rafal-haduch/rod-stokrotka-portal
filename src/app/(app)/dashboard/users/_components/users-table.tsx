@@ -37,15 +37,19 @@ export default function UsersTable({ data, onEdit, onDelete }: Props) {
                             <td>{rowUser.id}</td>
                             <td>{rowUser.name}</td>
                             <td>
-                                {rowUser.plotNumbers.length > 0
-                                    ? rowUser.plotNumbers.join(', ')
+                                {rowUser.plots.length > 0
+                                    ? rowUser.plots
+                                          .map((plot) => {
+                                              return plot.plotNumber;
+                                          })
+                                          .join(', ')
                                     : '—'}
                             </td>
                             <td>{getRoleLabel(rowUser.role)}</td>
-                            <td>{rowUser.createdAt.toLocaleDateString('pl-PL')}</td>
+                            <td>{new Date(rowUser.createdAt).toLocaleDateString('pl-PL')}</td>
                             <td>
                                 {rowUser.lastLogin
-                                    ? rowUser.lastLogin.toLocaleDateString('pl-PL')
+                                    ? new Date(rowUser.lastLogin).toLocaleDateString('pl-PL')
                                     : '—'}
                             </td>
                             <td>

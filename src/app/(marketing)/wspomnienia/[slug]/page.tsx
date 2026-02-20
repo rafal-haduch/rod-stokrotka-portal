@@ -8,7 +8,11 @@ import { MainHeadingLineSeparator } from '@/components/main-heading-line-separat
 import { PhotoGallery } from '@/components/photo-gallery';
 import { AnimateOnView } from '@/components/animated-h2';
 
-export default async function MemoryPage({ params }: { params: { slug: string } }) {
+type Props = {
+    params: Promise<{ slug: string }>;
+};
+
+export default async function MemoryPage({ params }: Props) {
     const { slug } = await params;
     const post = await getMemoryBySlug(slug);
     if (!post) return notFound();

@@ -33,7 +33,7 @@ export default function CreateUserSuccess({ result, onUserCreated }: Props) {
                 title="Zamknij okno dodawania nowego działkowca"
                 className="ml-auto flex p-2 hover:cursor-pointer"
             >
-                <X className="h-8 w-8" />
+                <X aria-hidden="true" className="h-8 w-8" />
             </button>
             <div
                 aria-labelledby="success-heading"
@@ -75,7 +75,7 @@ export default function CreateUserSuccess({ result, onUserCreated }: Props) {
                         className="btn btn-sm btn-theme"
                     >
                         Kopiuj
-                        <Copy />
+                        <Copy aria-hidden="true" />
                     </button>
                     <p
                         className={`text-sm transition-opacity duration-200 ${
@@ -85,7 +85,7 @@ export default function CreateUserSuccess({ result, onUserCreated }: Props) {
                         {copied ? 'Skopiowano do schowka.' : '.'}
                     </p>
                     <div className="mx-auto flex flex-col items-center border border-red-500 p-1">
-                        <TriangleAlert className="text-red-500" />
+                        <TriangleAlert aria-hidden="true" className="text-red-500" />
                         <p className="text-center text-base">
                             Pamiętaj aby przekazać dane do logowania osobie, dla której zostało
                             założone konto. Możesz kliknąć powyższy przycisk "Kopiuj" by je wygodnie

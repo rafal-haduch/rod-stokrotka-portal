@@ -1,14 +1,21 @@
+import { unstable_cache } from 'next/cache';
 import { PlotOption } from '../plot.read-models';
 import { plotRepository } from '../plot.repository';
 
 /**
- * Fetches from database only the fields needed for UI (multi-select dropdown inputs) and sorts them by plot number.
+ * Fetches sorted only the fields needed for the multi-select dropdown inputs from the database.
+ *
+ * This function is cached on the server using Next.js App Router `unstable_cache`.
+ *
+ * Use `revalidateTag('plots')` after any server-side mutations to immediately refresh cached data.
  */
-export async function getSortedAvailablePlots(): Promise<PlotOption[]> {
-    return (await plotRepository.getPlotOptions()).sort((a, b) =>
-        a.plotNumber.localeCompare(b.plotNumber, 'pl', {
-            numeric: true,
-            sensitivity: 'base',
-        })
-    );
-}
+export const getSortedAvailablePlots: () => Promise<PlotOption[]> = unstable_cache(
+    async () => {
+        return await plotRepository.getPlotOptions();
+    },
+    ['available-plots'],
+    {
+        revalidate: 60 * 60 * 24 * 30, // 30 days
+        tags: ['plots'],
+    }
+);

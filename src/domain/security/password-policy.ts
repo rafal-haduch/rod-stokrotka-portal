@@ -1,7 +1,7 @@
 import { Role } from '@prisma/client';
 import { DomainError } from '../error/domain-error';
 import { ErrorCode } from '../error/error-codes';
-import { isAdminOrBoard } from '../permissions/is-admin-or-board';
+import { isAdminOrBoard } from '../user/user.helpers';
 
 export function enforcePasswordPolicy(password: string, role: Role): void {
     if (isAdminOrBoard(role)) {

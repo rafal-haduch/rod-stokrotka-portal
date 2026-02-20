@@ -20,7 +20,7 @@ interface UpdateUserData {
 
 export const userRepository = {
     async create({ name, plotIds, role, login, passwordHash }: CreateUserData) {
-        await prisma.$transaction(async (tx) => {
+        return prisma.$transaction(async (tx) => {
             const user = await tx.user.create({
                 data: {
                     name: name,
@@ -29,7 +29,6 @@ export const userRepository = {
                     role: role,
                 },
             });
-
             if (plotIds.length > 0) {
                 await tx.userPlot.createMany({
                     data: plotIds.map((id) => ({
@@ -38,20 +37,33 @@ export const userRepository = {
                     })),
                 });
             }
+            return tx.user.findUniqueOrThrow({
+                where: { id: user.id },
+                include: {
+                    plotsId: {
+                        select: {
+                            plot: {
+                                select: {
+                                    id: true,
+                                    plotNumber: true,
+                                },
+                            },
+                        },
+                    },
+                },
+            });
         });
     },
 
     async update({ id, name, plotIds, role }: UpdateUserData) {
-        await prisma.$transaction(async (tx) => {
+        return prisma.$transaction(async (tx) => {
             await tx.user.update({
                 where: { id },
                 data: { name, role },
             });
-
             await tx.userPlot.deleteMany({
                 where: { userId: id },
             });
-
             if (plotIds.length > 0) {
                 await tx.userPlot.createMany({
                     data: plotIds.map((plotId) => ({
@@ -60,6 +72,16 @@ export const userRepository = {
                     })),
                 });
             }
+            return tx.user.findUniqueOrThrow({
+                where: { id },
+                include: {
+                    plotsId: {
+                        include: {
+                            plot: true,
+                        },
+                    },
+                },
+            });
         });
     },
 
@@ -133,6 +155,7 @@ export const userRepository = {
                     select: {
                         plot: {
                             select: {
+                                id: true,
                                 plotNumber: true,
                             },
                         },
@@ -144,9 +167,14 @@ export const userRepository = {
             id: u.id,
             name: u.name,
             role: u.role,
-            createdAt: u.createdAt,
-            lastLogin: u.lastLogin,
-            plotNumbers: u.plotsId.map((up) => up.plot.plotNumber),
+            createdAt: new Date(u.createdAt),
+            lastLogin: u.lastLogin ? new Date(u.lastLogin) : null,
+            plots: u.plotsId.map((p) => {
+                return {
+                    id: p.plot.id,
+                    plotNumber: p.plot.plotNumber,
+                };
+            }),
         }));
     },
 };

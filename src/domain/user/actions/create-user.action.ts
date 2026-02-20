@@ -1,5 +1,6 @@
 'use server';
 
+import { revalidateTag } from 'next/cache';
 import bcrypt from 'bcrypt';
 
 import { CreateUserResult } from '@/contracts/user-actions';
@@ -32,16 +33,28 @@ export async function createUser(formData: FormData): Promise<CreateUserResult> 
         const passwordHash = await bcrypt.hash(password, 10);
 
         // Database operation
-        await userRepository.create({ name, plotIds, role, login, passwordHash });
+        const result = await userRepository.create({ name, plotIds, role, login, passwordHash });
+
+        // Revalidate cache
+        revalidateTag('users');
 
         // NOTE: The login and password are returned because they are needed to be passed on to the user for whom the account was created.
         return {
             success: true,
             data: {
+                id: result.id,
                 name,
+                plots: result.plotsId.map((p) => {
+                    return {
+                        id: p.plot.id,
+                        plotNumber: p.plot.plotNumber,
+                    };
+                }),
                 role,
                 login,
                 password,
+                createdAt: result.createdAt,
+                lastLogin: result.lastLogin,
             },
         };
     } catch (e) {

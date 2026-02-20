@@ -35,8 +35,12 @@ export default function CreateUserForm({
             >
                 <X className="h-8 w-8" />
             </button>
-            <form onSubmit={onSubmit} aria-labelledby="form-heading" className="px-2 pb-6 sm:px-6">
-                <p id="form-heading" className="mb-4 text-center text-xl font-semibold">
+            <form
+                onSubmit={onSubmit}
+                aria-labelledby="create-user-form-heading"
+                className="px-2 pb-6 sm:px-6"
+            >
+                <p id="create-user-form-heading" className="mb-4 text-center text-xl font-semibold">
                     Stwórz nowe konto działkowca
                 </p>
                 <fieldset className="flex flex-col gap-3">

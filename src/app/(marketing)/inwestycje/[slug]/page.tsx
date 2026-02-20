@@ -9,7 +9,11 @@ import { MainHeadingLineSeparator } from '@/components/main-heading-line-separat
 import { AnimateOnView } from '@/components/animated-h2';
 import { ImageSeparator } from '@/components/image-separator';
 
-export default async function InvestmentPage({ params }: { params: { slug: string } }) {
+type Props = {
+    params: Promise<{ slug: string }>;
+};
+
+export default async function InvestmentPage({ params }: Props) {
     const { slug } = await params;
     const post = await getInvestmentBySlug(slug);
     if (!post) return notFound();

@@ -1,6 +1,5 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Plus } from 'lucide-react';
 
@@ -20,10 +19,31 @@ interface Props {
 }
 
 export default function DashboardUsersView({ userTableRows, plotOptions }: Props) {
+    //NOTE: Copy user table rows into state for local update after server actions mutation
+    const [userRows, setUserRows] = useState<UserTableRow[]>(userTableRows);
     const [activeModal, setActiveModal] = useState<CRUDModalType>(null);
     const [selectedUser, setSelectedUser] = useState<UserTableRow | null>(null);
 
-    const router = useRouter();
+    const addUserInTable = (newUserRow: UserTableRow) => {
+        const newUser: UserTableRow = {
+            id: newUserRow.id,
+            name: newUserRow.name,
+            role: newUserRow.role,
+            plots: newUserRow.plots,
+            createdAt: new Date(newUserRow.createdAt),
+            lastLogin: newUserRow.lastLogin ? new Date(newUserRow.lastLogin) : null,
+        };
+
+        setUserRows((prev) => [newUser, ...prev]);
+    };
+
+    const updateUserInTable = (updatedUser: UserTableRow) => {
+        setUserRows((prev) => prev.map((u) => (u.id === updatedUser.id ? updatedUser : u)));
+    };
+
+    const removeUserFromTable = (userId: number) => {
+        setUserRows((prev) => prev.filter((u) => u.id !== userId));
+    };
 
     const openModal = (type: CRUDModalType, user?: UserTableRow) => {
         setSelectedUser(user ?? null);
@@ -48,7 +68,7 @@ export default function DashboardUsersView({ userTableRows, plotOptions }: Props
                 <Plus />
             </button>
 
-            <UsersTable data={userTableRows} onEdit={openModal} onDelete={openModal} />
+            <UsersTable data={userRows} onEdit={openModal} onDelete={openModal} />
 
             {activeModal === 'create' && (
                 <CreateUserModal
@@ -56,19 +76,34 @@ export default function DashboardUsersView({ userTableRows, plotOptions }: Props
                     onCloseModal={() => {
                         closeModal();
                     }}
-                    onUserCreated={() => {
+                    onUserCreated={(newUserRow: UserTableRow) => {
                         closeModal();
-                        router.refresh(); // NOTE: Used to automatically refresh the users table after closing the modal window containing the view informing about the successful creation of a new user.
+                        addUserInTable(newUserRow);
                     }}
                 />
             )}
 
             {activeModal === 'edit' && selectedUser && (
-                <EditUserModal user={selectedUser} onClose={() => closeModal()} />
+                <EditUserModal
+                    user={selectedUser}
+                    onCloseModal={() => closeModal()}
+                    onUpdatedUser={(updatedUserRow: UserTableRow) => {
+                        closeModal();
+                        updateUserInTable(updatedUserRow);
+                    }}
+                    plotOptions={plotOptions}
+                />
             )}
 
             {activeModal === 'delete' && selectedUser && (
-                <DeleteUserModal user={selectedUser} onClose={() => closeModal()} />
+                <DeleteUserModal
+                    user={selectedUser}
+                    onCloseModal={closeModal}
+                    onUserDeleted={(id: number) => {
+                        closeModal();
+                        removeUserFromTable(id);
+                    }}
+                />
             )}
         </section>
     );

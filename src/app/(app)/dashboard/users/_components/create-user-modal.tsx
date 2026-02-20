@@ -11,11 +11,12 @@ import Portal from '@/components/portal';
 
 import CreateUserSuccess from './create-user-success';
 import CreateUserForm from './create-user-form';
+import { UserTableRow } from '@/domain/user/user.read-models';
 
 interface Props {
     plotOptions: PlotOption[];
     onCloseModal: () => void;
-    onUserCreated: () => void;
+    onUserCreated: (newUserRow: UserTableRow) => void;
 }
 
 export default function CreateUserModal({ plotOptions, onCloseModal, onUserCreated }: Props) {
@@ -58,8 +59,8 @@ export default function CreateUserModal({ plotOptions, onCloseModal, onUserCreat
                         <CreateUserSuccess
                             result={result}
                             onUserCreated={() => {
-                                onUserCreated();
-                                setResult(null); //NOTE: Clear result data.
+                                onUserCreated(result.data);
+                                setResult(null);
                             }}
                         />
                     ) : (

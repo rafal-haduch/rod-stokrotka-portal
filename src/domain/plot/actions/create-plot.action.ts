@@ -10,6 +10,7 @@ import { ErrorCode } from '@/domain/error/error-codes';
 import { ERROR_MESSAGES } from '@/domain/error/error.messages';
 import { plotRepository } from '@/domain/plot/plot.repository';
 import { parseCreatePlotInput } from '../plot-input.parse';
+import { revalidateTag } from 'next/cache';
 
 export async function createPlot(formData: FormData): Promise<CreatePlotResult> {
     try {
@@ -25,6 +26,9 @@ export async function createPlot(formData: FormData): Promise<CreatePlotResult> 
 
         // Database operation
         const newPlot = await plotRepository.create({ plotNumber, area });
+
+        // Revalidate cache
+        revalidateTag('plots');
 
         return {
             success: true,

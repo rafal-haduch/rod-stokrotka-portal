@@ -1,14 +1,19 @@
 import { Role } from '@prisma/client';
 import { ErrorCode } from '@/domain/error/error-codes';
+import { PlotOption } from '@/domain/plot/plot.read-models';
 
 // CREATE
 export interface CreateUserSuccess {
     success: true;
     data: {
+        id: number;
         name: string;
+        plots: PlotOption[];
         role: Role;
         login: string;
         password: string;
+        createdAt: Date;
+        lastLogin: Date | null;
     };
 }
 
@@ -23,6 +28,14 @@ export type CreateUserResult = CreateUserSuccess | CreateUserError;
 // UPDATE
 export interface UpdateUserSuccess {
     success: true;
+    data: {
+        id: number;
+        name: string;
+        plots: PlotOption[];
+        role: Role;
+        createdAt: Date;
+        lastLogin: Date | null;
+    };
 }
 
 export interface UpdateUserError {

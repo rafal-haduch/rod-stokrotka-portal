@@ -79,6 +79,7 @@ export const plotRepository = {
 
     async getPlotOptions(): Promise<PlotOption[]> {
         return prisma.plot.findMany({
+            orderBy: { plotNumber: 'asc' },
             select: {
                 id: true,
                 plotNumber: true,

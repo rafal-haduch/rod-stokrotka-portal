@@ -5,10 +5,12 @@ import { DeleteUserResult } from '@/contracts/user-actions';
 import { DomainError } from '@/domain/error/domain-error';
 import { ErrorCode } from '@/domain/error/error-codes';
 import { ERROR_MESSAGES } from '@/domain/error/error.messages';
-import { isAdminOrBoard } from '@/domain/permissions/is-admin-or-board';
 import { requireSession } from '@/domain/auth/require-session';
 import { userRepository } from '@/domain/user/user.repository';
 import { parseDeleteUserInput } from '@/domain/user/user.input-parse';
+
+import { isAdminOrBoard } from '../user.helpers';
+import { revalidateTag } from 'next/cache';
 
 export async function deleteUser(formData: FormData): Promise<DeleteUserResult> {
     try {
@@ -24,6 +26,9 @@ export async function deleteUser(formData: FormData): Promise<DeleteUserResult> 
 
         // Database operation
         await userRepository.delete(id);
+
+        // Revalidate cache
+        revalidateTag('users');
 
         return {
             success: true,

@@ -1,4 +1,5 @@
 import { Role } from '@prisma/client';
+import { PlotOption } from '../plot/plot.read-models';
 
 /**
  * Read model representing the current user's profile data.
@@ -49,7 +50,7 @@ export interface UserTableRow {
     id: number;
     name: string;
     role: Role;
-    plotNumbers: string[];
+    plots: PlotOption[];
     createdAt: Date;
     lastLogin: Date | null;
 }

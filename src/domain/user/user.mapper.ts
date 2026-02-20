@@ -29,7 +29,9 @@ export function mapUsersToUserTableRows(users: UsersWithPlotsFromDb): UserTableR
         id: user.id,
         name: user.name,
         role: user.role,
-        plotNumbers: user.plotsId.map((userPlot) => userPlot.plot.plotNumber),
+        plots: user.plotsId.map((userPlot) => {
+            return { id: userPlot.plot.id, plotNumber: userPlot.plot.plotNumber };
+        }),
         createdAt: user.createdAt,
         lastLogin: user.lastLogin,
     }));
