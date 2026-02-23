@@ -5,6 +5,7 @@ import { CRUDModalType } from '@/types/crud-modal';
 import { getRoleLabel } from '@/domain/user/user.helpers';
 
 import { UserTableRow } from '@/domain/user/user.read-models';
+import { CustomButton } from '@/components/custom-button';
 
 interface Props {
     data: UserTableRow[];
@@ -53,22 +54,26 @@ export default function UsersTable({ data, onEdit, onDelete }: Props) {
                                     : '—'}
                             </td>
                             <td>
-                                <button
-                                    onClick={() => onEdit('edit', rowUser)}
+                                <CustomButton
+                                    type="button"
                                     title="Edytuj dane konta"
-                                    className="btn btn-primary btn-in-table"
+                                    onClick={() => onEdit('edit', rowUser)}
+                                    size="table"
+                                    variant="secondary"
                                 >
                                     <Pencil aria-hidden="true" />
-                                </button>
+                                </CustomButton>
                             </td>
                             <td>
-                                <button
-                                    onClick={() => onDelete('delete', rowUser)}
+                                <CustomButton
+                                    type="button"
                                     title="Usuń konto z systemu"
-                                    className="btn btn-danger btn-in-table"
+                                    onClick={() => onDelete('delete', rowUser)}
+                                    size="table"
+                                    variant="danger"
                                 >
                                     <Trash2 aria-hidden="true" />
-                                </button>
+                                </CustomButton>
                             </td>
                         </tr>
                     ))}

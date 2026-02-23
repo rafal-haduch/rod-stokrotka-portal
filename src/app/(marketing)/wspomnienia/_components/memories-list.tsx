@@ -37,23 +37,22 @@ function MemoryCard({ memory }: { memory: MemoryInList }) {
     return (
         <Link
             href={`${ROUTES.MEMORIES.path}/${memory.slug}`}
-            className="group mx-auto block max-w-xl overflow-hidden rounded-xl shadow transition hover:shadow-lg"
+            className="group mx-auto block max-w-xl overflow-hidden rounded-xl shadow-md transition"
         >
             <div className="relative h-64">
-                <Image
-                    src={memory.cover}
-                    alt={memory.title}
-                    fill
-                    className="object-cover transition group-hover:scale-105"
-                />
-                <div className="absolute inset-0 hidden items-center justify-center bg-black/50 transition-all duration-300 group-hover:flex group-hover:scale-105">
+                <Image src={memory.cover} alt={memory.title} fill className="object-cover" />
+                <div className="absolute inset-0 hidden items-center justify-center bg-black/50 transition-all duration-300 group-hover:flex">
                     <p className="tracking-wide text-white">Zobacz więcej</p>
                     <ArrowRight color="white" />
                 </div>
             </div>
-            <div className="bg-theme-bg-secondary group-hover:bg-theme-200 p-4 text-center">
-                <p className="text-theme-txt text-lg">{formatDate(memory.date)}</p>
-                <h3 className="text-theme-txt text-xl font-semibold">{memory.title}</h3>
+            <div className="bg-theme-background-secondary group-hover:bg-theme-ui-background-light p-4 text-center">
+                <p className="text-theme-ui-foreground-primary text-lg">
+                    {formatDate(memory.date)}
+                </p>
+                <h3 className="text-theme-ui-foreground-primary text-xl font-semibold">
+                    {memory.title}
+                </h3>
             </div>
         </Link>
     );

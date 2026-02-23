@@ -7,6 +7,7 @@ import { MainHeadingLineSeparator } from '@/components/main-heading-line-separat
 import { AnimateOnView } from '@/components/animated-h2';
 
 import ImageLightbox from './_components/image-lightbox';
+import { Download } from 'lucide-react';
 
 export const metadata = buildMetadata(ROUTES.GARDEN_MAP);
 
@@ -22,6 +23,15 @@ export default function GardenMapPage() {
                 </AnimateOnView>
 
                 <ImageLightbox />
+
+                <a
+                    href="/documents/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
+                    download
+                    className="btn btn-lg btn-theme-primary mx-auto"
+                >
+                    <Download />
+                    Pobierz szczegółowy plan
+                </a>
             </section>
 
             <ImageSeparator />

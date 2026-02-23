@@ -7,6 +7,7 @@ import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/config/routes';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/utils/cn';
 import { useState } from 'react';
+import { CustomButton } from '@/components/custom-button';
 
 const routes = ROUTE_LIST as AppRouteBase[];
 const navItems = routes
@@ -26,18 +27,23 @@ export default function DashboardPanelHeader() {
                 <Link href="/dashboard">
                     <p
                         id="dashboard-context-heading"
-                        className="font-heading text-center text-4xl font-semibold sm:text-5xl md:text-6xl"
+                        className="font-heading text-theme-ui-foreground-primary text-center text-4xl font-semibold sm:text-5xl md:text-6xl"
                     >
                         Panel Zarządu
                     </p>
                 </Link>
             </div>
 
-            <Link href={ROUTES.MY_PROFILE.path} className="btn btn-md btn-theme mx-auto my-4">
+            <CustomButton
+                href={ROUTES.MY_PROFILE.path}
+                size="md"
+                variant="primary"
+                className="mx-auto my-4"
+            >
                 <ArrowLeft /> <span className="hidden sm:flex">Wróc do mojego profilu </span>
                 <span className="flex sm:hidden">Mój profil </span>
                 <CircleUserRound />
-            </Link>
+            </CustomButton>
 
             {/* Desktop menu */}
             <nav aria-label="Nawigacja panelu do zarządzania" className="hidden sm:flex">
@@ -45,7 +51,12 @@ export default function DashboardPanelHeader() {
                     {navItems.map((item) => (
                         <li
                             key={item.path}
-                            className={cn('hover:underline', path === item.path ? 'underline' : '')}
+                            className={cn(
+                                'text-theme-ui-foreground-primary hover:text-theme-ui-foreground-secondary hover:underline',
+                                path === item.path
+                                    ? 'text-theme-ui-foreground-secondary underline'
+                                    : ''
+                            )}
                         >
                             <Link href={item.path}>{item.dashboardNav?.label}</Link>
                         </li>
@@ -66,7 +77,7 @@ export default function DashboardPanelHeader() {
                     <span
                         className={cn(
                             'absolute h-1 w-8',
-                            'bg-theme-txt',
+                            'bg-theme-ui-background-extra-dark',
                             'transition-transform duration-300 ease-in-out',
                             isOpen ? 'translate-y-0 rotate-45' : '-translate-y-2'
                         )}
@@ -74,7 +85,7 @@ export default function DashboardPanelHeader() {
                     <span
                         className={cn(
                             'absolute h-1 w-8',
-                            'bg-theme-txt',
+                            'bg-theme-ui-background-extra-dark',
                             'transition-opacity duration-200 ease-in-out',
                             isOpen ? 'opacity-0' : 'opacity-100'
                         )}
@@ -82,7 +93,7 @@ export default function DashboardPanelHeader() {
                     <span
                         className={cn(
                             'absolute h-1 w-8',
-                            'bg-theme-txt',
+                            'bg-theme-ui-background-extra-dark',
                             'transition-transform duration-300 ease-in-out',
                             isOpen ? 'translate-y-0 -rotate-45' : 'translate-y-2'
                         )}
@@ -101,7 +112,7 @@ export default function DashboardPanelHeader() {
                         aria-label="Przycisk do zamykania mobilnego menu"
                         className="ml-auto flex p-4 hover:cursor-pointer"
                     >
-                        <X className="text-theme-txt h-10 w-10" />
+                        <X className="text-theme-ui-foreground-primary h-10 w-10" />
                     </button>
 
                     <ul className="font-nav mx-auto items-center justify-center space-y-6 gap-x-6 text-center font-semibold">
@@ -109,8 +120,10 @@ export default function DashboardPanelHeader() {
                             <li
                                 key={item.path}
                                 className={cn(
-                                    'hover:underline',
-                                    path === item.path ? 'underline' : ''
+                                    'hover:text-theme-ui-foreground-secondary text-theme-ui-foreground-primary hover:underline',
+                                    path === item.path
+                                        ? 'text-theme-ui-foreground-secondary underline'
+                                        : ''
                                 )}
                             >
                                 <Link href={item.path}>{item.dashboardNav?.label}</Link>

@@ -10,6 +10,7 @@ import { cn } from '@/utils/cn';
 import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/config/routes';
 
 import { isAdminOrBoard } from '@/domain/user/user.helpers';
+import { CustomButton } from '@/components/custom-button';
 
 const routes = ROUTE_LIST as AppRouteBase[];
 const navItems = routes
@@ -33,34 +34,37 @@ export default function UserPanelHeader() {
         >
             {/* First row */}
             <div className="flex w-full items-stretch justify-between">
-                <CircleUserRound className="text-theme-hr hidden h-auto w-34 sm:flex" />
+                <CircleUserRound className="text-theme-ui-foreground-primary hidden h-auto w-34 sm:flex" />
                 <div className="flex w-full flex-col items-center justify-center gap-2 sm:w-full sm:flex-row sm:items-stretch sm:justify-between">
                     <div className="flex w-full items-center">
                         <p
                             id="user-context-heading"
-                            className="font-heading w-full text-center text-5xl font-semibold md:text-6xl"
+                            className="font-heading text-theme-ui-foreground-primary w-full text-center text-5xl font-semibold md:text-6xl"
                         >
                             Witaj <span className="whitespace-nowrap">{user.name}</span>
                         </p>
                     </div>
                     <div className="flex items-center justify-evenly gap-6 sm:flex-col sm:items-end sm:gap-2">
-                        <button
-                            onClick={() => signOut({ callbackUrl: ROUTES.LOGIN.path })}
+                        <CustomButton
+                            type="button"
                             title="Wyloguj się"
-                            className="btn btn-sm btn-theme"
+                            onClick={() => signOut({ callbackUrl: ROUTES.LOGIN.path })}
+                            size="sm"
+                            variant="primary"
                         >
                             Wyloguj <span className="hidden sm:flex">się</span>
                             <LogOut />
-                        </button>
+                        </CustomButton>
                         {isDashboardAvailable && (
-                            <Link
+                            <CustomButton
                                 href={ROUTES.DASHBOARD.path}
                                 title="Panel zarządu"
-                                className="btn btn-sm btn-theme"
+                                size="sm"
+                                variant="primary"
                             >
                                 Panel <span className="hidden sm:flex">zarządu</span>
                                 <LayoutDashboard />
-                            </Link>
+                            </CustomButton>
                         )}
                     </div>
                 </div>
@@ -68,7 +72,7 @@ export default function UserPanelHeader() {
 
             <div
                 aria-hidden="true"
-                className="border-theme-hr mx-auto my-4 w-2/3 max-w-sm border-t-4"
+                className="border-theme-ui-foreground-primary mx-auto my-4 w-2/3 max-w-sm border-t-4"
             />
 
             {/* Second row */}
@@ -78,8 +82,10 @@ export default function UserPanelHeader() {
                         <li
                             key={item.path}
                             className={cn(
-                                'hover:underline',
-                                pathname === item.path ? 'underline' : ''
+                                'text-theme-ui-foreground-primary hover:text-theme-ui-foreground-secondary hover:underline',
+                                pathname === item.path
+                                    ? 'text-theme-ui-foreground-secondary underline'
+                                    : ''
                             )}
                         >
                             <Link href={item.path}>{item.profileNav?.label}</Link>

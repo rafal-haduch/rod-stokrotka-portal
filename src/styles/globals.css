@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 @theme inline {
+    /* TODO: organize type names */
     --font-sans: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 
     --font-heading: var(--font-fleurdeleah);
@@ -21,23 +22,38 @@
     --color-theme-900: var(--theme-color-900);
     --color-theme-950: var(--theme-color-950);
 
-    --color-theme-bg-primary: var(--bg-color-primary);
-    --color-theme-bg-secondary: var(--bg-color-secondary);
+    --color-theme-background-primary: var(--background-primary);
+    --color-theme-background-secondary: var(--background-secondary);
 
-    --color-theme-ui-bg-light: var(--ui-bg-color-light);
-    --color-theme-ui-bg-medium: var(--ui-bg-color-medium);
-    --color-theme-ui-bg-dark: var(--ui-bg-color-dark);
+    --color-theme-foreground-primary: var(--foreground-primary);
+    --color-theme-foreground-secondary: var(--foreground-secondary);
+    --color-theme-foreground-inverted: var(--foreground-inverted);
+    --color-theme-foreground-muted: var(--foreground-muted);
 
-    --color-theme-ui-border-light: var(--ui-border-color-light);
-    --color-theme-ui-border-dark: var(--ui-border-color-dark);
+    --color-theme-ui-background-extra-light: var(--ui-background-extra-light);
+    --color-theme-ui-background-light: var(--ui-background-light);
+    --color-theme-ui-background-medium: var(--ui-background-medium);
+    --color-theme-ui-background-normal: var(--ui-background-normal);
+    --color-theme-ui-background-dark: var(--ui-background-dark);
+    --color-theme-ui-background-extra-dark: var(--ui-background-extra-dark);
 
-    --color-theme-txt: var(--txt-color);
-    --color-theme-txt-h: var(--txt-color-h);
+    --color-theme-ui-foreground-primary: var(--ui-foreground-primary);
+    --color-theme-ui-foreground-secondary: var(--ui-foreground-secondary);
+    --color-theme-ui-foreground-inverted: var(--ui-foreground-inverted);
+    --color-theme-ui-foreground-muted: var(--ui-foreground-muted);
 
-    --color-theme-link: var(--link-color);
-    --color-theme-link-h: var(--link-color-h);
+    --color-theme-ui-border-extra-light: var(--ui-border-extra-light);
+    --color-theme-ui-border-light: var(--ui-border-light);
+    --color-theme-ui-border-medium: var(--ui-border-medium);
+    --color-theme-ui-border-dark: var(--ui-border-dark);
+    --color-theme-ui-border-extra-dark: var(--ui-border-extra-dark);
 
-    --color-theme-hr: var(--hr-color);
+    --color-theme-link: var(--link);
+    --color-theme-link-h: var(--link-h);
+
+    --color-theme-line-separator: var(--line-separator);
+
+    --color-theme-navbar-and-footer-border: var(--navbar-and-footer-border);
 }
 
 @layer base {
@@ -46,12 +62,21 @@
     }
 
     body {
-        font-family: var(--font-sans);
-        @apply bg-theme-bg-secondary text-neutral-600;
+        font-family: var(--font-nunito);
+        @apply bg-theme-background-secondary text-theme-foreground-secondary;
     }
 
     main {
-        @apply bg-theme-bg-primary mx-auto min-h-screen max-w-7xl py-6;
+        @apply bg-theme-background-primary mx-auto min-h-screen max-w-7xl py-6;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply text-theme-foreground-primary;
     }
 
     h1 {
@@ -65,13 +90,12 @@
     }
 
     h3 {
-        font-family: var(--font-nunito);
         @apply text-xl font-bold text-neutral-700 sm:text-2xl;
     }
 
+    /* TODO: styles global (ex. p-4 sm:p-0)*/
     p {
-        font-family: var(--font-nunito);
-        @apply text-base text-neutral-600 sm:text-lg;
+        @apply text-base;
     }
 
     address {
@@ -83,20 +107,20 @@
     }
 
     thead {
-        @apply bg-theme-ui-bg-medium;
+        @apply bg-theme-ui-background-light;
     }
 
     thead th {
-        @apply border-theme-ui-border-dark border border-b-0 px-1 py-2;
+        @apply border-theme-ui-border-medium border border-b-0 px-1 py-2;
     }
 
     tbody tr {
-        @apply hover:bg-theme-bg-secondary;
+        @apply hover:bg-theme-ui-background-extra-light;
     }
 
     tbody th,
     td {
-        @apply border-theme-ui-border-dark border px-1 py-1 font-normal;
+        @apply border-theme-ui-border-medium border px-1 py-1 font-normal;
     }
 }
 
@@ -116,23 +140,38 @@
         --theme-color-950: theme(colors.green.950);
 
         /* alias + components */
-        --bg-color-primary: theme(colors.slate.50);
-        --bg-color-secondary: theme(colors.slate.100);
+        --background-primary: theme(colors.slate.50);
+        --background-secondary: theme(colors.slate.100);
 
-        --ui-bg-color-light: var(--theme-color-200);
-        --ui-bg-color-medium: var(--theme-color-300);
-        --ui-bg-color-dark: var(--theme-color-400);
+        --foreground-primary: theme(color-slate-800);
+        --foreground-secondary: theme(color-slate-700);
+        --foreground-inverted: theme(colors.slate.100);
+        --foreground-muted: theme(colors.slate.500);
 
-        --ui-border-color-light: var(--theme-color-500);
-        --ui-border-color-dark: var(--theme-color-400);
+        --ui-background-extra-light: theme(colors.slate.100);
+        --ui-background-light: var(--theme-color-200);
+        --ui-background-medium: var(--theme-color-300);
+        --ui-background-normal: var(--theme-color-400);
+        --ui-background-dark: var(--theme-color-500);
+        --ui-background-extra-dark: var(--theme-color-600);
 
-        --txt-color: var(--theme-color-700);
-        --txt-color-h: var(--theme-color-800);
+        --ui-foreground-primary: var(--theme-color-700);
+        --ui-foreground-secondary: var(--theme-color-800);
+        --ui-foreground-inverted: var(--theme-color-100);
+        --ui-foreground-muted: var(--theme-color-500);
 
-        --link-color: var(--theme-color-500);
-        --link-color-h: var(--theme-color-600);
+        --ui-border-extra-light: var(--theme-color-400);
+        --ui-border-light: var(--theme-color-500);
+        --ui-border-medium: var(--theme-color-500);
+        --ui-border-dark: var(--theme-color-500);
+        --ui-border-extra-dark: var(--theme-color-400);
 
-        --hr-color: var(--theme-color-500);
+        --link: var(--theme-color-500);
+        --link-h: var(--theme-color-600);
+
+        --line-separator: var(--theme-color-500);
+
+        --navbar-and-footer-border: var(--theme-color-500);
     }
 
     .theme-spring {
@@ -150,23 +189,38 @@
         --theme-color-950: theme(colors.lime.950);
 
         /* alias + components */
-        --bg-color-primary: var(--theme-color-50);
-        --bg-color-secondary: var(--theme-color-100);
+        --background-primary: var(--theme-color-50);
+        --background-secondary: var(--theme-color-100);
 
-        --ui-bg-color-light: var(--theme-color-100);
-        --ui-bg-color-medium: var(--theme-color-200);
-        --ui-bg-color-dark: var(--theme-color-300);
+        --foreground-primary: theme(color-slate-800);
+        --foreground-secondary: theme(color-slate-700);
+        --foreground-inverted: theme(colors.slate.100);
+        --foreground-muted: theme(colors.slate.500);
 
-        --ui-border-color-light: var(--theme-color-400);
-        --ui-border-color-dark: var(--theme-color-500);
+        --ui-background-extra-light: var(--theme-color-100);
+        --ui-background-light: var(--theme-color-200);
+        --ui-background-medium: var(--theme-color-300);
+        --ui-background-normal: var(--theme-color-400);
+        --ui-background-dark: var(--theme-color-500);
+        --ui-background-extra-dark: var(--theme-color-600);
 
-        --txt-color: theme(colors.green.600);
-        --txt-color-h: theme(colors.green.800);
+        --ui-foreground-primary: theme(colors.green.600);
+        --ui-foreground-secondary: theme(colors.green.800);
+        --ui-foreground-inverted: theme(colors.green.100);
+        --ui-foreground-muted: theme(colors.green.400);
 
-        --link-color: var(--theme-color-500);
-        --link-color-h: var(--theme-color-600);
+        --ui-border-extra-light: var(--theme-color-400);
+        --ui-border-light: var(--theme-color-500);
+        --ui-border-medium: var(--theme-color-600);
+        --ui-border-dark: var(--theme-color-700);
+        --ui-border-extra-dark: var(--theme-color-800);
 
-        --hr-color: var(--theme-color-500);
+        --link: var(--theme-color-500);
+        --link-h: var(--theme-color-600);
+
+        --line-separator: var(--theme-color-500);
+
+        --navbar-and-footer-border: var(--theme-color-500);
     }
 
     .theme-summer {
@@ -184,23 +238,38 @@
         --theme-color-950: theme(colors.yellow.950);
 
         /* alias + components */
-        --bg-color-primary: var(--theme-color-50);
-        --bg-color-secondary: var(--theme-color-100);
+        --background-primary: var(--theme-color-50);
+        --background-secondary: var(--theme-color-100);
 
-        --ui-bg-color-light: var(--theme-color-100);
-        --ui-bg-color-medium: var(--theme-color-200);
-        --ui-bg-color-dark: var(--theme-color-400);
+        --foreground-primary: theme(color-slate-800);
+        --foreground-secondary: theme(color-slate-700);
+        --foreground-inverted: theme(colors.slate.100);
+        --foreground-muted: theme(colors.slate.500);
 
-        --ui-border-color-light: var(--theme-color-400);
-        --ui-border-color-dark: var(--theme-color-500);
+        --ui-background-extra-light: var(--theme-color-100);
+        --ui-background-light: var(--theme-color-200);
+        --ui-background-medium: var(--theme-color-300);
+        --ui-background-normal: var(--theme-color-400);
+        --ui-background-dark: var(--theme-color-500);
+        --ui-background-extra-dark: var(--theme-color-600);
 
-        --txt-color: theme(colors.amber.600);
-        --txt-color-h: theme(colors.amber.700);
+        --ui-foreground-primary: theme(colors.amber.600);
+        --ui-foreground-secondary: theme(colors.amber.700);
+        --ui-foreground-inverted: theme(colors.amber.100);
+        --ui-foreground-muted: theme(colors.amber.400);
 
-        --link-color: var(--theme-color-400);
-        --link-color-h: var(--theme-color-600);
+        --ui-border-extra-light: var(--theme-color-400);
+        --ui-border-light: var(--theme-color-500);
+        --ui-border-medium: var(--theme-color-600);
+        --ui-border-dark: var(--theme-color-700);
+        --ui-border-extra-dark: var(--theme-color-800);
 
-        --hr-color: var(--theme-color-400);
+        --link: var(--theme-color-500);
+        --link-h: var(--theme-color-600);
+
+        --line-separator: var(--theme-color-400);
+
+        --navbar-and-footer-border: var(--theme-color-500);
     }
 
     .theme-autumn {
@@ -218,23 +287,38 @@
         --theme-color-950: theme(colors.orange.950);
 
         /* alias + components */
-        --bg-color-primary: var(--theme-color-50);
-        --bg-color-secondary: var(--theme-color-100);
+        --background-primary: var(--theme-color-50);
+        --background-secondary: var(--theme-color-100);
 
-        --ui-bg-color-light: var(--theme-color-200);
-        --ui-bg-color-medium: var(--theme-color-300);
-        --ui-bg-color-dark: var(--theme-color-400);
+        --foreground-primary: theme(color-slate-800);
+        --foreground-secondary: theme(color-slate-700);
+        --foreground-inverted: theme(colors.slate.100);
+        --foreground-muted: theme(colors.slate.500);
 
-        --ui-border-color-light: var(--theme-color-500);
-        --ui-border-color-dark: var(--theme-color-600);
+        --ui-background-extra-light: var(--theme-color-100);
+        --ui-background-light: var(--theme-color-200);
+        --ui-background-medium: var(--theme-color-300);
+        --ui-background-normal: var(--theme-color-400);
+        --ui-background-dark: var(--theme-color-500);
+        --ui-background-extra-dark: var(--theme-color-600);
 
-        --txt-color: theme(colors.orange.700);
-        --txt-color-h: theme(colors.red.800);
+        --ui-foreground-primary: theme(colors.orange.700);
+        --ui-foreground-secondary: theme(colors.red.800);
+        --ui-foreground-inverted: theme(colors.orange.100);
+        --ui-foreground-muted: theme(colors.orange.400);
 
-        --link-color: var(--theme-color-400);
-        --link-color-h: var(--theme-color-600);
+        --ui-border-extra-light: var(--theme-color-400);
+        --ui-border-light: var(--theme-color-500);
+        --ui-border-medium: var(--theme-color-600);
+        --ui-border-dark: var(--theme-color-700);
+        --ui-border-extra-dark: var(--theme-color-800);
 
-        --hr-color: var(--theme-color-400);
+        --link: var(--theme-color-400);
+        --link-h: var(--theme-color-600);
+
+        --line-separator: var(--theme-color-400);
+
+        --navbar-and-footer-border: var(--theme-color-400);
     }
 
     .theme-winter {
@@ -252,23 +336,38 @@
         --theme-color-950: theme(colors.sky.950);
 
         /* alias + components */
-        --bg-color-primary: theme(colors.cyan.50);
-        --bg-color-secondary: theme(colors.cyan.100);
+        --background-primary: theme(colors.cyan.50);
+        --background-secondary: theme(colors.cyan.100);
 
-        --ui-bg-color-light: theme(colors.cyan.100);
-        --ui-bg-color-medium: var(--theme-color-200);
-        --ui-bg-color-dark: var(--theme-color-300);
+        --foreground-primary: theme(color-slate-800);
+        --foreground-secondary: theme(color-slate-700);
+        --foreground-inverted: theme(colors.slate.100);
+        --foreground-muted: theme(colors.slate.500);
 
-        --ui-border-color-light: var(--theme-color-400);
-        --ui-border-color-dark: var(--theme-color-500);
+        --ui-background-extra-light: theme(colors.cyan.100);
+        --ui-background-light: var(--theme-color-200);
+        --ui-background-medium: var(--theme-color-300);
+        --ui-background-normal: var(--theme-color-400);
+        --ui-background-dark: var(--theme-color-500);
+        --ui-background-extra-dark: var(--theme-color-600);
 
-        --txt-color: theme(colors.teal.600);
-        --txt-color-h: theme(colors.teal.800);
+        --ui-foreground-primary: var(--theme-color-700);
+        --ui-foreground-secondary: var(--theme-color-900);
+        --ui-foreground-inverted: var(--theme-color-50);
+        --ui-foreground-muted: var(--theme-color-400);
 
-        --link-color: var(--theme-color-400);
-        --link-color-h: var(--theme-color-600);
+        --ui-border-extra-light: var(--theme-color-400);
+        --ui-border-light: var(--theme-color-500);
+        --ui-border-medium: var(--theme-color-600);
+        --ui-border-dark: var(--theme-color-700);
+        --ui-border-extra-dark: var(--theme-color-800);
 
-        --hr-color: var(--theme-color-300); /* theme(colors.cyan.400) */
+        --link: var(--theme-color-400);
+        --link-h: var(--theme-color-600);
+
+        --line-separator: var(--theme-color-300);
+
+        --navbar-and-footer-border: var(--theme-color-500);
     }
 
     .h1 {
@@ -287,19 +386,23 @@
     }
 
     .link-context {
-        @apply text-theme-link hover:text-theme-link-h font-bold hover:underline;
+        @apply text-theme-link hover:text-theme-link-h font-semibold hover:underline;
     }
 
     .link-visible {
         @apply text-theme-link hover:text-theme-link-h underline;
     }
 
-    /* ====== Button Class ======= */
+    /* ====== Button Classes ======= */
     .btn {
-        @apply flex w-fit items-center justify-center gap-1 overflow-x-hidden rounded-lg whitespace-nowrap hover:cursor-pointer;
+        @apply flex w-fit items-center justify-center gap-1 rounded-lg whitespace-nowrap transition hover:cursor-pointer;
     }
 
-    /* Size */
+    /* Button size */
+    .btn-xs {
+        @apply border p-1 text-sm;
+    }
+
     .btn-sm {
         @apply border px-3 py-1 text-sm sm:text-base;
     }
@@ -312,56 +415,90 @@
         @apply border-2 px-6 py-3 text-lg sm:text-xl;
     }
 
-    /* Color */
-    .btn-theme {
-        @apply bg-theme-ui-bg-medium border-theme-ui-border-dark hover:bg-theme-ui-bg-light text-theme-txt;
+    /* Specific button sizes */
+    .btn-icon {
+        @apply border p-2;
     }
 
+    .btn-in-table {
+        @apply mx-auto border px-2 py-1;
+    }
+
+    /* Button color */
     .btn-theme-primary {
-        @apply bg-sky-600 text-white hover:bg-sky-700;
+        @apply bg-theme-ui-background-light border-theme-ui-border-medium hover:border-theme-ui-border-dark hover:bg-theme-ui-background-medium text-theme-ui-foreground-primary hover:text-theme-ui-foreground-secondary;
     }
 
     .btn-theme-secondary {
-        @apply bg-theme-ui-bg-light border-theme-ui-border-dark text-theme-txt hover:bg-transparent;
+        @apply bg-theme-ui-background-dark border-theme-ui-border-dark hover:bg-theme-ui-background-extra-dark text-white;
+    }
+
+    .btn-theme-outline {
+        @apply hover:bg-theme-50 border-theme-ui-border-light hover:border-theme-ui-border-extra-light text-theme-ui-foreground-primary bg-theme-100;
     }
 
     .btn-theme-ghost {
-        @apply hover:bg-theme-ui-bg-medium border-theme-ui-border-dark text-theme-txt bg-transparent;
+        @apply hover:bg-theme-ui-background-medium border-theme-ui-border-dark text-theme-ui-foreground-primary bg-transparent;
+    }
+
+    .btn-info {
+        @apply border border-blue-600 bg-blue-500 text-white hover:bg-blue-600;
+    }
+
+    .btn-success {
+        @apply border border-emerald-600 bg-emerald-500 text-white hover:bg-emerald-600;
+    }
+
+    .btn-warning {
+        @apply border border-orange-600 bg-orange-500 text-white hover:bg-orange-600;
     }
 
     .btn-danger {
         @apply border border-red-600 bg-red-500 text-white hover:bg-red-600;
     }
 
-    /* TODO: Delete? */
-    .btn-primary {
-        @apply bg-sky-600 text-white hover:bg-sky-700;
+    /* TODO: te klasy*/
+    /* Button State */
+    .btn-disabled {
+        @apply bg-pink-400;
     }
 
-    .btn-secondary {
-        @apply bg-gray-200 text-gray-900 hover:bg-gray-300;
+    .btn-loading {
+        @apply bg-pink-400;
     }
 
-    .btn-success {
-        @apply bg-emerald-600 text-white hover:bg-emerald-700;
+    /* === Backgrounds ===*/
+    .bg-theme-linear-b {
+        @apply from-theme-ui-background-light to-theme-ui-background-medium bg-linear-to-b;
     }
 
-    /* Special */
-    .btn-icon {
-        @apply border-2 p-2;
+    .bg-theme-linear-t {
+        @apply from-theme-ui-background-light to-theme-ui-background-medium bg-linear-to-t;
     }
 
-    .btn-in-table {
-        @apply mx-auto px-2 py-1;
+    .bg-theme-linear-r {
+        @apply from-theme-ui-background-light to-theme-ui-background-medium bg-linear-to-r;
     }
-    /* ====== Button Class ======= */
 
+    .bg-theme-linear-l {
+        @apply from-theme-ui-background-light to-theme-ui-background-medium bg-linear-to-l;
+    }
+
+    .bg-theme-linear-lcr {
+        @apply from-theme-ui-background-medium via-theme-ui-background-extra-light to-theme-ui-background-medium bg-linear-to-r;
+    }
+
+    /* TODO: change like up */
     .panel-br {
-        @apply from-theme-bg-secondary via-theme-bg-primary to-theme-bg-secondary border-theme-ui-bg-medium border-2 bg-linear-to-br;
+        @apply from-theme-background-secondary via-theme-background-primary to-theme-background-secondary border-theme-ui-background-medium border-2 bg-linear-to-br;
     }
 
     .panel-bl {
-        @apply from-theme-bg-secondary via-theme-bg-primary to-theme-bg-secondary border-theme-ui-bg-medium border-2 bg-linear-to-bl;
+        @apply from-theme-background-secondary via-theme-background-primary to-theme-background-secondary border-theme-ui-background-medium border-2 bg-linear-to-bl;
+    }
+
+    .input-form {
+        @apply bg-theme-background-primary border-theme-ui-border-light focus:border-theme-ui-border-extra-light w-full rounded-md border p-2 shadow-sm focus:outline-none;
     }
 
     .h2-animate {

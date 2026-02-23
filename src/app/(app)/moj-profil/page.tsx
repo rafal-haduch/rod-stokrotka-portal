@@ -26,7 +26,7 @@ export default async function MyProfilePage() {
                 <h2 className="sr-only">Moje dane</h2>
                 {/* Name */}
                 <div className="flex items-center gap-1">
-                    <label htmlFor="user-name" className="text-theme-txt">
+                    <label htmlFor="user-name" className="text-theme-ui-foreground-primary">
                         Imię:
                     </label>
                     <p id="user-name" className="text-theme-txt-secondary">
@@ -35,7 +35,7 @@ export default async function MyProfilePage() {
                 </div>
                 {/* Role */}
                 <div className="flex space-x-1">
-                    <label htmlFor="user-role" className="text-theme-txt">
+                    <label htmlFor="user-role" className="text-theme-ui-foreground-primary">
                         Rola:
                     </label>
                     <p id="user-role" className="text-theme-txt-secondary">
@@ -44,7 +44,7 @@ export default async function MyProfilePage() {
                 </div>
                 {/* Login */}
                 <div className="flex space-x-1">
-                    <label htmlFor="user-login" className="text-theme-txt">
+                    <label htmlFor="user-login" className="text-theme-ui-foreground-primary">
                         Login:
                     </label>
                     <p id="user-login" className="text-theme-txt-secondary">
@@ -53,7 +53,7 @@ export default async function MyProfilePage() {
                 </div>
                 {/* Password */}
                 <div className="flex space-x-1">
-                    <label htmlFor="change-password" className="text-theme-txt">
+                    <label htmlFor="change-password" className="text-theme-ui-foreground-primary">
                         Hasło:
                     </label>
                     <Link

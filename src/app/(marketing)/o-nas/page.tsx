@@ -14,6 +14,7 @@ import { AnimateOnView } from '@/components/animated-h2';
 import GardenStats from './_components/garden-stats';
 import GalleryPreview from './_components/gallery-preview';
 import DescriptionSection from './_components/description-section';
+import { CustomButton } from '@/components/custom-button';
 
 export const metadata = buildMetadata(ROUTES.ABOUT_US);
 
@@ -41,9 +42,14 @@ export default function AboutUsPage() {
                     <h2>Nasz ogród na zdjęciach</h2>
                 </AnimateOnView>
                 <GalleryPreview />
-                <Link href="/gallery" className="btn btn-lg btn-theme mx-auto">
+                <CustomButton
+                    href={ROUTES.GALLERY.path}
+                    size="lg"
+                    variant="primary"
+                    className="mx-auto"
+                >
                     Zobacz wszystkie <ArrowRight />
-                </Link>
+                </CustomButton>
             </section>
 
             <LineSeparator />

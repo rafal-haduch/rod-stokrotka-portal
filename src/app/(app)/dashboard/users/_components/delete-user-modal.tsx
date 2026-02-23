@@ -1,5 +1,6 @@
 'use client';
 
+import { CustomButton } from '@/components/custom-button';
 import Portal from '@/components/portal';
 import { DeleteUserResult } from '@/contracts/user-actions';
 import { deleteUser } from '@/domain/user/actions/delete-user.action';
@@ -70,16 +71,22 @@ export default function DeleteUserModal({ user, onCloseModal, onUserDeleted }: P
                                 <p className="text-center text-red-500">{errorMsg}</p>
                             ) : (
                                 <div className="flex flex-row items-center justify-evenly gap-4 sm:gap-0">
-                                    <button className="btn btn-md btn-danger" disabled={loading}>
+                                    <CustomButton
+                                        type="submit"
+                                        disabled={loading}
+                                        size="md"
+                                        variant="danger"
+                                    >
                                         Usuń użytkownika
-                                    </button>
-                                    <button
+                                    </CustomButton>
+                                    <CustomButton
                                         type="button"
                                         onClick={onCloseModal}
-                                        className="btn btn-md btn-theme-secondary"
+                                        size="md"
+                                        variant="outline"
                                     >
                                         Anuluj
-                                    </button>
+                                    </CustomButton>
                                 </div>
                             )}
                         </form>

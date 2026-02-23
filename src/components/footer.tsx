@@ -32,14 +32,13 @@ export function Footer() {
     return (
         <footer
             className={cn(
-                'py-4 contain-layout',
-                'text-theme-txt text-lg',
-                'from-theme-ui-bg-medium to-theme-ui-bg-dark bg-linear-to-t',
-                'border-theme-ui-border-dark border-t-4'
+                'px-4 py-8',
+                'text-theme-ui-foreground-primary text-lg',
+                'bg-theme-linear-t',
+                'border-theme-navbar-and-footer-border border-t-4'
             )}
         >
-            {/* NOTE: This div is needed so that there is no 1 px between border and bg. */}
-            <div className="gap-y-8 p-4">
+            <div className="gap-y-8 contain-layout">
                 {/* First Row */}
                 <div
                     className={cn(
@@ -125,8 +124,10 @@ export function Footer() {
                     </div>
                 </div>
                 {/* Second Row */}
-                <div className="text-center">
-                    <span>© {yearDisplay} Stowarzyszenie Ogrodowe „Stokrotka” w Sanoku</span>
+                <div>
+                    <p className="text-center text-lg">
+                        © {yearDisplay} Stowarzyszenie Ogrodowe „Stokrotka” w Sanoku
+                    </p>
                 </div>
             </div>
         </footer>

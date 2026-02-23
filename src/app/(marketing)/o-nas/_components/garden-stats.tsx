@@ -74,15 +74,13 @@ export default function GardenStats() {
                 <div
                     key={item.id}
                     className={cn(
-                        'border-theme-ui-border-light bg-theme-ui-bg-light w-full max-w-xs rounded-2xl border-4 p-6 shadow-lg transition hover:scale-105 hover:shadow-xl',
+                        'border-theme-ui-border-extra-light bg-theme-ui-background-extra-light w-full max-w-xs rounded-2xl border-4 p-6 shadow-lg transition hover:scale-105 hover:shadow-xl',
                         item.id === 2 ? 'col-span-2' : ''
                     )}
                 >
-                    <p className="flex flex-col items-center">
-                        <span className="text-theme-txt mb-2 text-5xl font-bold">
-                            {counts[item.id]}
-                        </span>
-                        <span className="text-theme-txt">{item.label}</span>
+                    <p className="text-theme-ui-foreground-primary flex flex-col items-center">
+                        <span className="mb-2 text-5xl font-bold">{counts[item.id]}</span>
+                        <span className="font-semibold">{item.label}</span>
                     </p>
                 </div>
             ))}

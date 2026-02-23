@@ -17,20 +17,20 @@ export default function ListOfDocuments({ documents }: { documents: Document[] }
                             download
                             className="flex w-fit items-center hover:underline sm:hidden"
                         >
-                            <FileText size={32} color="var(--color-theme-ui-bg-dark)" />
+                            <FileText size={32} color="var(--color-theme-ui-background-dark)" />
                             {item.name}
                         </a>
                         {/* Desktop view */}
                         <div className="hidden w-full gap-4 sm:flex sm:justify-between">
                             <div className="flex items-center gap-1">
-                                <FileText size={32} color="var(--color-theme-ui-bg-dark)" />
+                                <FileText size={32} color="var(--color-theme-ui-background-dark)" />
                                 {item.name}
                             </div>
                             <div className="flex gap-4">
                                 <a
                                     href={item.href}
                                     target="_blank"
-                                    className="btn btn-md btn-theme hidden lg:flex"
+                                    className="btn btn-md btn-theme-outline hidden lg:flex"
                                 >
                                     <ExternalLink />
                                     Otwórz
@@ -38,7 +38,7 @@ export default function ListOfDocuments({ documents }: { documents: Document[] }
                                 <a
                                     href={item.href}
                                     download
-                                    className="btn btn-md btn-theme hidden sm:flex"
+                                    className="btn btn-md btn-theme-outline hidden sm:flex"
                                 >
                                     <Download />
                                     Pobierz

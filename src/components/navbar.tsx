@@ -58,11 +58,10 @@ export function Navbar() {
             aria-label="Główny baner strony"
             className={cn(
                 'sticky top-0 z-50 h-22',
-                'flex items-center justify-between',
-                'p-2',
-                'font-nav',
-                'from-theme-ui-bg-medium to-theme-ui-bg-dark bg-linear-to-b',
-                'border-theme-ui-border-dark border-b-4'
+                'flex items-center justify-between p-2',
+                'bg-theme-linear-b',
+                'border-theme-navbar-and-footer-border border-b-4',
+                'font-nav text-theme-foreground-primary'
             )}
         >
             {/* Logo - always visible */}
@@ -78,21 +77,19 @@ export function Navbar() {
             </Link>
 
             {/* ============ Desktop Menu ============ */}
-            <nav aria-label="Główna nawigacja strony">
-                <ul
-                    className={cn(
-                        'hidden flex-wrap justify-center gap-x-6 gap-y-3 xl:flex',
-                        'font-nav text-lg font-bold',
-                        'text-theme-txt'
-                    )}
-                >
+            <nav
+                aria-label="Główna nawigacja strony"
+                className="font-nav hidden text-lg font-bold xl:flex"
+            >
+                <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3">
                     {navItems.map((item) => (
                         <li
                             key={item.path}
                             className={cn(
-                                'hover:text-theme-txt-h',
-                                'cursor-pointer',
-                                pathname === item.path ? 'text-theme-txt-h underline' : ''
+                                'text-theme-ui-foreground-primary hover:text-theme-ui-foreground-secondary cursor-pointer transition hover:underline',
+                                pathname === item.path
+                                    ? 'text-theme-ui-foreground-secondary underline'
+                                    : ''
                             )}
                         >
                             <Link href={item.path}>{item.mainNav?.label}</Link>
@@ -105,26 +102,18 @@ export function Navbar() {
             {isLoggedIn ? (
                 <Link
                     href={ROUTES.MY_PROFILE.path}
-                    className={cn(
-                        'hidden flex-col items-center xl:flex',
-                        'text-white',
-                        'cursor-pointer hover:underline'
-                    )}
+                    className="hidden cursor-pointer flex-col items-center text-white hover:underline xl:flex"
                 >
                     <User size={42} />
-                    <span className="text-lg font-bold whitespace-nowrap">MÓJ PROFIL</span>
+                    <p className="text-lg font-bold whitespace-nowrap">MÓJ PROFIL</p>
                 </Link>
             ) : (
                 <Link
                     href={ROUTES.LOGIN.path}
-                    className={cn(
-                        'hidden flex-col items-center xl:flex',
-                        'text-white',
-                        'cursor-pointer hover:underline'
-                    )}
+                    className="hidden cursor-pointer flex-col items-center text-white hover:underline xl:flex"
                 >
                     <LogIn size={42} />
-                    <span className="text-xl font-bold">LOGOWANIE</span>
+                    <p className="text-xl font-bold">LOGOWANIE</p>
                 </Link>
             )}
 
@@ -133,23 +122,20 @@ export function Navbar() {
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Przycisk do rozwijania mobilnego menu"
                 className={cn(
-                    'text-theme-txt',
                     'z-50 flex flex-col items-center justify-center hover:cursor-pointer xl:hidden'
                 )}
             >
                 <div className="relative flex h-8 w-8 flex-col items-center justify-center">
                     <span
                         className={cn(
-                            'absolute h-1 w-8',
-                            'bg-theme-txt',
-                            'transition-transform duration-300 ease-in-out',
+                            'bg-theme-ui-background-extra-dark absolute h-1 w-8 transition-transform duration-300 ease-in-out',
                             isOpen ? 'translate-y-0 rotate-45' : '-translate-y-2'
                         )}
                     />
                     <span
                         className={cn(
                             'absolute h-1 w-8',
-                            'bg-theme-txt',
+                            'bg-theme-ui-background-extra-dark',
                             'transition-opacity duration-200 ease-in-out',
                             isOpen ? 'opacity-0' : 'opacity-100'
                         )}
@@ -157,13 +143,15 @@ export function Navbar() {
                     <span
                         className={cn(
                             'absolute h-1 w-8',
-                            'bg-theme-txt',
+                            'bg-theme-ui-background-extra-dark',
                             'transition-transform duration-300 ease-in-out',
                             isOpen ? 'translate-y-0 -rotate-45' : 'translate-y-2'
                         )}
                     />
                 </div>
-                <span className="text-lg font-bold">{isOpen ? 'Zamknij' : 'Menu'}</span>
+                <p className="text-theme-ui-foreground-primary font-bold">
+                    {isOpen ? 'Zamknij' : 'Menu'}
+                </p>
             </button>
 
             {/* ============ Mobile Menu ============ */}
@@ -174,24 +162,21 @@ export function Navbar() {
                         className={cn(
                             'fixed inset-0 z-40',
                             'pt-24',
-                            'font-nav text-theme-txt text-center text-lg font-bold',
-                            'from-theme-ui-bg-dark via-theme-ui-bg-medium to-theme-ui-bg-dark bg-linear-to-r',
+                            'font-nav text-center text-lg font-bold',
+                            'bg-theme-linear-lcr',
                             'transition-transform duration-500'
                         )}
                     >
                         <ul className="mx-auto h-full space-y-4 overflow-x-auto overflow-y-auto pb-8 whitespace-nowrap">
                             {navItems.map((item, i) => (
-                                <li key={item.path} className="hover:text-theme-txt-h">
-                                    <Link
-                                        href={item.path}
-                                        onClick={() => setIsOpen(false)}
-                                        className={cn(
-                                            'block w-full',
-                                            pathname === item.path
-                                                ? 'text-theme-txt-h underline'
-                                                : ''
-                                        )}
-                                    >
+                                <li
+                                    key={item.path}
+                                    className={cn(
+                                        'text-theme-ui-foreground-primary hover:text-theme-ui-foreground-secondary cursor-pointer transition hover:underline',
+                                        pathname === item.path ? 'underline' : ''
+                                    )}
+                                >
+                                    <Link href={item.path} onClick={() => setIsOpen(false)}>
                                         {item.mainNav?.label}
                                     </Link>
                                 </li>

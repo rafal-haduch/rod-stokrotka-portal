@@ -12,6 +12,7 @@ import UsersTable from './users-table';
 import CreateUserModal from './create-user-modal';
 import EditUserModal from './edit-user-modal';
 import DeleteUserModal from './delete-user-modal';
+import { CustomButton } from '@/components/custom-button';
 
 interface Props {
     userTableRows: UserTableRow[];
@@ -19,7 +20,7 @@ interface Props {
 }
 
 export default function DashboardUsersView({ userTableRows, plotOptions }: Props) {
-    //NOTE: Copy user table rows into state for local update after server actions mutation
+    //NOTE: Copy user table rows into state for local update after server action mutation
     const [userRows, setUserRows] = useState<UserTableRow[]>(userTableRows);
     const [activeModal, setActiveModal] = useState<CRUDModalType>(null);
     const [selectedUser, setSelectedUser] = useState<UserTableRow | null>(null);
@@ -59,14 +60,16 @@ export default function DashboardUsersView({ userTableRows, plotOptions }: Props
         <section>
             <h1 className="h2">Tabela kont działkowców</h1>
 
-            <button
+            <CustomButton
                 type="button"
-                onClick={() => openModal('create')}
                 title="Dodaj nowe konto"
-                className="btn btn-icon btn-theme mx-auto mb-4"
+                onClick={() => openModal('create')}
+                size="icon"
+                variant="secondary"
+                className="mx-auto mb-4"
             >
                 <Plus />
-            </button>
+            </CustomButton>
 
             <UsersTable data={userRows} onEdit={openModal} onDelete={openModal} />
 

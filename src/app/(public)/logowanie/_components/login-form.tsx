@@ -5,6 +5,7 @@ import { signIn } from 'next-auth/react';
 import { Eye, EyeOff } from 'lucide-react';
 
 import { ROUTES } from '@/config/routes';
+import { CustomButton } from '@/components/custom-button';
 
 export default function LoginForm() {
     const [login, setLogin] = useState('');
@@ -42,7 +43,7 @@ export default function LoginForm() {
                     value={login}
                     onChange={(e) => setLogin(e.target.value)}
                     required
-                    className="border-theme-200 focus:border-theme-ui-border-dark bg-theme-bg-primary mt-1 block w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none"
+                    className="input-form"
                 />
             </div>
 
@@ -58,13 +59,13 @@ export default function LoginForm() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
-                        className="border-theme-200 focus:border-theme-ui-border-dark bg-theme-bg-primary block w-full rounded-md border px-3 py-2 pr-10 shadow-sm focus:outline-none"
+                        className="input-form"
                     />
                     <button
                         type="button"
                         title={showPassword ? 'Ukryj hasło' : 'Pokaż hasło'}
                         onClick={() => setShowPassword(!showPassword)}
-                        className="text-theme-txt absolute inset-y-0 right-0 flex items-center px-3 hover:cursor-pointer"
+                        className="text-theme-ui-foreground-primary absolute inset-y-0 right-0 flex items-center px-3 hover:cursor-pointer"
                     >
                         {showPassword ? <EyeOff /> : <Eye />}
                     </button>
@@ -78,13 +79,15 @@ export default function LoginForm() {
                 </div>
 
                 {/* Sign-in Button */}
-                <button
+                <CustomButton
                     type="submit"
+                    size="lg"
+                    variant="primary"
+                    className="mx-auto w-full"
                     onClick={() => setMessage('')}
-                    className="btn btn-lg btn-theme mx-auto w-full"
                 >
                     Zaloguj
-                </button>
+                </CustomButton>
             </div>
         </form>
     );

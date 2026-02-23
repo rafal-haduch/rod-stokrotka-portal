@@ -8,6 +8,7 @@ import { ImageSeparator } from '@/components/image-separator';
 import { WorkInProgress } from '@/components/work-in-progress';
 import { LineSeparator } from '@/components/line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
+import { CustomButton } from '@/components/custom-button';
 
 //import MainSlider from './components/MainSlider';
 
@@ -39,9 +40,15 @@ export default function HomePage() {
                     materiały i dokumenty, ciekawe zdjęcia oraz porady ogrodowe, które pomogą w
                     pielęgnacji działek.
                 </p>
-                <Link href="/about-us" className="btn btn-lg btn-theme mx-auto">
+
+                <CustomButton
+                    href={ROUTES.ABOUT_US.path}
+                    size="lg"
+                    variant="primary"
+                    className="mx-auto"
+                >
                     Dowiedz się więcej o nas <ArrowRight />
-                </Link>
+                </CustomButton>
             </section>
 
             <LineSeparator />
@@ -51,14 +58,15 @@ export default function HomePage() {
                     <h2>Ostatnie Ogłoszenia</h2>
                 </AnimateOnView>
                 <WorkInProgress />
-                <Link
-                    href="/announcements"
-                    title="Zobacz więcej ogłoszeń"
-                    className="btn btn-lg btn-theme mx-auto"
+                <CustomButton
+                    href={ROUTES.ANNOUNCEMENTS.path}
+                    size="lg"
+                    variant="primary"
+                    className="mx-auto"
                 >
                     Zobacz więcej
                     <ArrowRight />
-                </Link>
+                </CustomButton>
             </section>
 
             <LineSeparator />
@@ -69,14 +77,15 @@ export default function HomePage() {
                 </AnimateOnView>
                 <WorkInProgress />
                 {/* <MainSlider /> */}
-                <Link
-                    href="/gallery"
-                    title="Zobacz więcej zdjęć"
-                    className="btn btn-lg btn-theme mx-auto"
+                <CustomButton
+                    href={ROUTES.GALLERY.path}
+                    size="lg"
+                    variant="primary"
+                    className="mx-auto"
                 >
                     Zobacz więcej
                     <ArrowRight />
-                </Link>
+                </CustomButton>
             </section>
 
             <ImageSeparator />

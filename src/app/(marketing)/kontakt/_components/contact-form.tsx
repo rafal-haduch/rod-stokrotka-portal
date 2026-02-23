@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ChevronDown, ChevronUp, SendHorizontal } from 'lucide-react';
 
 import { Popup } from '@/components/popup';
+import { CustomButton } from '@/components/custom-button';
 
 export default function ContactForm() {
     const shortText = (
@@ -90,7 +91,7 @@ export default function ContactForm() {
 
             <form
                 onSubmit={handleSubmit}
-                className="bg-theme-bg-secondary mx-auto mb-8 max-w-3xl space-y-4 rounded-xl p-8 shadow-xl sm:mt-4"
+                className="panel-br mx-auto mb-8 max-w-3xl space-y-4 rounded-xl p-8 shadow-xl sm:mt-4"
             >
                 {/* NOTE: Nickname - anti-bot protection */}
                 <div className="hidden">
@@ -103,7 +104,7 @@ export default function ContactForm() {
                         value={nickname}
                         onChange={(e) => setNickname(e.target.value)}
                         placeholder="np. Ogrodnik"
-                        className="border-theme-200 bg-theme-bg-primary focus:border-theme-ui-border-dark mt-1 block w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none"
+                        className="input-form"
                     />
                 </div>
 
@@ -119,7 +120,7 @@ export default function ContactForm() {
                         onChange={(e) => setName(e.target.value)}
                         required
                         placeholder="np. Jan Kowalski - 123"
-                        className="border-theme-200 bg-theme-bg-primary focus:border-theme-ui-border-dark mt-1 block w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none"
+                        className="input-form"
                     />
                 </div>
 
@@ -135,7 +136,7 @@ export default function ContactForm() {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                         placeholder="np. jankowalski@gmail.com"
-                        className="border-theme-200 bg-theme-bg-primary focus:border-theme-ui-border-dark mt-1 block w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none"
+                        className="input-form"
                     />
                 </div>
 
@@ -150,7 +151,7 @@ export default function ContactForm() {
                             onChange={(e) => setSubject(e.target.value)}
                             required
                             placeholder="np. Pytanie w sprawie działki"
-                            className="border-theme-200 bg-theme-bg-primary focus:border-theme-ui-border-dark block w-full rounded-md border px-3 py-2 pr-10 shadow-sm focus:outline-none"
+                            className="input-form"
                         />
                     </div>
                 </div>
@@ -167,20 +168,22 @@ export default function ContactForm() {
                             onChange={(e) => setMessage(e.target.value)}
                             required
                             rows={6}
-                            className="border-theme-200 bg-theme-bg-primary focus:border-theme-ui-border-dark block w-full resize-none overflow-y-auto rounded-md border px-3 py-2 shadow-sm focus:outline-none"
+                            className="input-form w-full resize-none overflow-y-auto"
                         />
                     </div>
                 </div>
 
                 {/* Send Button */}
-                <button
+                <CustomButton
                     type="submit"
                     disabled={status === 'loading'}
-                    className="btn btn-lg btn-theme mx-auto w-1/2"
+                    size="lg"
+                    variant="outline"
+                    className="mx-auto w-1/2"
                 >
                     <span>{status === 'loading' ? 'Wysyłanie...' : 'Wyślij'}</span>
                     <SendHorizontal />
-                </button>
+                </CustomButton>
             </form>
 
             <div>

@@ -68,14 +68,6 @@ export default function ImageLightbox() {
                 onClick={openLightbox}
                 className="mx-auto w-xl hover:cursor-pointer"
             />
-            <a
-                href="/documents/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
-                download
-                className="btn btn-lg btn-theme mx-auto"
-            >
-                <Download />
-                Pobierz szczegółowy plan
-            </a>
 
             {isLightboxOpen && (
                 <div
