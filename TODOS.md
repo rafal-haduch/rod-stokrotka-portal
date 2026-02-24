@@ -1,5 +1,7 @@
 # TODOS
 
+- improve global.css file (czat "Nazewnictwo CSS w CMS" w ChatGPT)
+
 - major improved all user modal action
 
 # REVIEWS

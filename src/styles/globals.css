@@ -1,59 +1,129 @@
 @import 'tailwindcss';
 
+/* TODO: move here theme definitions  */
+/* TODO: remove inline? */
 @theme inline {
-    /* TODO: organize type names */
-    --font-sans: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+    /* =============== */
+    /* === Fonts Classes === */
+    /* =============== */
+    /* TODO: move font family into tailwind.config*/
+    /* Base fonts */
+    --font-sans: var(--font-nunito), Arial, Helvetica, sans-serif;
+    --font-mono: var(--font-nunito), SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
+    /* Specificity fonts */
+    --font-body: var(--font-sans);
     --font-heading: var(--font-fleurdeleah);
     --font-subheading: var(--font-merriweather);
-    --font-body: var(--font-nunito);
     --font-nav: var(--font-aboreto);
 
-    /* Theme */
-    --color-theme-50: var(--theme-color-50);
-    --color-theme-100: var(--theme-color-100);
-    --color-theme-200: var(--theme-color-200);
-    --color-theme-300: var(--theme-color-300);
-    --color-theme-400: var(--theme-color-400);
-    --color-theme-500: var(--theme-color-500);
-    --color-theme-600: var(--theme-color-600);
-    --color-theme-700: var(--theme-color-700);
-    --color-theme-800: var(--theme-color-800);
-    --color-theme-900: var(--theme-color-900);
-    --color-theme-950: var(--theme-color-950);
+    /* ======================================== */
+    /* === Own System Design for Themes Colors Management === */
+    /* ======================================== */
 
-    --color-theme-background-primary: var(--background-primary);
-    --color-theme-background-secondary: var(--background-secondary);
+    /* Primary theme color palete */
+    /* TODO: use-case */
+    /* IMPORTANT:  It is not recommended to use these classes in components (JSX code). Whenever possible, use the following layered classes as a design system. */
+    --color-theme-primary-50: var(--primary-color-50);
+    --color-theme-primary-100: var(--primary-color-100);
+    --color-theme-primary-200: var(--primary-color-200);
+    --color-theme-primary-300: var(--primary-color-300);
+    --color-theme-primary-400: var(--primary-color-400);
+    --color-theme-primary-600: var(--primary-color-600);
+    --color-theme-primary-500: var(--primary-color-500);
+    --color-theme-primary-700: var(--primary-color-700);
+    --color-theme-primary-800: var(--primary-color-800);
+    --color-theme-primary-900: var(--primary-color-900);
+    --color-theme-primary-950: var(--primary-color-950);
 
-    --color-theme-foreground-primary: var(--foreground-primary);
-    --color-theme-foreground-secondary: var(--foreground-secondary);
-    --color-theme-foreground-inverted: var(--foreground-inverted);
+    /* Secondary theme color palete */
+    /* TODO: use-case */
+    /* IMPORTANT:  It is not recommended to use these classes in components (JSX code). Whenever possible, use the following layered classes as a design system. */
+    --color-theme-secondary-50: var(--secondary-color-50);
+    --color-theme-secondary-100: var(--secondary-color-100);
+    --color-theme-secondary-200: var(--secondary-color-200);
+    --color-theme-secondary-300: var(--secondary-color-300);
+    --color-theme-secondary-400: var(--secondary-color-400);
+    --color-theme-secondary-600: var(--secondary-color-600);
+    --color-theme-secondary-500: var(--secondary-color-500);
+    --color-theme-secondary-700: var(--secondary-color-700);
+    --color-theme-secondary-800: var(--secondary-color-800);
+    --color-theme-secondary-900: var(--secondary-color-900);
+    --color-theme-secondary-950: var(--secondary-color-950);
+
+    /* Classes for layout layer (base content in pages) */
+    /* NOTE: Example of use: page bg, sections, headings, paragraphs e.t.c. */
+    --color-theme-background-body: var(--background-body);
+    --color-theme-background-main: var(--background-main);
+
+    --color-theme-foreground-heading: var(--foreground-heading);
+    --color-theme-foreground-content: var(--foreground-content);
     --color-theme-foreground-muted: var(--foreground-muted);
 
-    --color-theme-ui-background-extra-light: var(--ui-background-extra-light);
-    --color-theme-ui-background-light: var(--ui-background-light);
-    --color-theme-ui-background-medium: var(--ui-background-medium);
-    --color-theme-ui-background-normal: var(--ui-background-normal);
-    --color-theme-ui-background-dark: var(--ui-background-dark);
-    --color-theme-ui-background-extra-dark: var(--ui-background-extra-dark);
+    /* Classes for content layer (interactive content in pages) */
+    /* NOTE: Example of use: cards, tables, sliders e.t.c. */
+    --color-theme-surface: var(--surface); /*TODO: lekko ciemniejsze niż --bg-body*/
+    --color-theme-surface-hover: var(--background-body);
 
-    --color-theme-ui-foreground-primary: var(--ui-foreground-primary);
-    --color-theme-ui-foreground-secondary: var(--ui-foreground-secondary);
-    --color-theme-ui-foreground-inverted: var(--ui-foreground-inverted);
-    --color-theme-ui-foreground-muted: var(--ui-foreground-muted);
+    --color-theme-surface-border: var(--surface-border);
 
-    --color-theme-ui-border-extra-light: var(--ui-border-extra-light);
-    --color-theme-ui-border-light: var(--ui-border-light);
-    --color-theme-ui-border-medium: var(--ui-border-medium);
-    --color-theme-ui-border-dark: var(--ui-border-dark);
-    --color-theme-ui-border-extra-dark: var(--ui-border-extra-dark);
+    --color-theme-on-surface: var(--on-surface);
 
+    /* Classes for elevated layer (default UI elements) */
+    /* NOTE: Example of use: background linear in UI elements like forms, panels, modals e.t.c. */
+    --color-theme-surface-elevated-light: var(--surface-elevated-light);
+    --color-theme-surface-elevated-dark: var(--surface-elevated-dark);
+
+    --color-theme-surface-elevated-border: var(--surface-elevated-border);
+
+    --color-theme-on-surface-elevated: var(--on-surface-elevated);
+    --color-theme-on-surface-elevated-hover: var(--on-surface-elevated-hover);
+
+    /* Classes for inverted layer (dark UI elements) */
+    /* NOTE: Example of use: background linear in UI elements like forms, panels, modals e.t.c. */
+    --color-theme-surface-inverted-light: var(--surface-inverted-light);
+    --color-theme-surface-inverted-dark: var(--surface-inverted-dark);
+
+    --color-theme-surface-inverted-border: var(--surface-inverted-border);
+
+    --color-theme-on-surface-inverted: var(--on-surface-inverted);
+    --color-theme-on-surface-inverted-hover: var(--on-surface-inverted-hover);
+
+    /* Classes for UI bars */
+    /* NOTE: Example of use: only in navbar and footer. */
+    --color-theme-ui-bar-light: var(--ui-bar-light);
+    --color-theme-ui-bar-dark: var(--ui-bar-dark);
+
+    --color-theme-ui-bar-border: var(--ui-bar-border);
+
+    --color-theme-on-ui-bar: var(--on-ui-bar);
+    --color-theme-on-ui-bar-hover: var(--on-ui-bar-hover);
+
+    /* Classes for primary buttons (or possible other important interactive UI elements)*/
+    --color-theme-accent: var(--accent);
+    --color-theme-accent-hover: var(--accent-hover);
+
+    --color-theme-accent-border: var(--accent-border);
+
+    --color-theme-on-accent: var(--on-accent);
+
+    /* Classes for primary action buttons in dashboard (or possible other important interactive UI elements) */
+    --color-theme-accent-strong: var(--accent-strong);
+    --color-theme-accent-strong-hover: var(--accent-strong-hover);
+
+    --color-theme-accent-strong-border: var(--accent-strong-border);
+
+    --color-theme-on-accent-strong: var(--on-accent-strong);
+
+    /* Classes for links */
     --color-theme-link: var(--link);
-    --color-theme-link-h: var(--link-h);
+    --color-theme-link-hover: var(--link-hover);
 
-    --color-theme-line-separator: var(--line-separator);
-
-    --color-theme-navbar-and-footer-border: var(--navbar-and-footer-border);
+    /* Classes for content line separator */
+    --color-theme-divider-subtle: var(--divider-subtle);
+    --color-theme-divider: var(--divider);
+    --color-theme-divider-strong: var(--divider-strong);
+    --color-theme-divider-inverted: var(--divider-inverted);
 }
 
 @layer base {
@@ -124,250 +194,281 @@
     }
 }
 
+/* TODO: move theme definitions into top */
 @layer components {
     .theme-default {
-        /* main palet */
-        --theme-color-50: theme(colors.green.50);
-        --theme-color-100: theme(colors.green.100);
-        --theme-color-200: theme(colors.green.200);
-        --theme-color-300: theme(colors.green.300);
-        --theme-color-400: theme(colors.green.400);
-        --theme-color-500: theme(colors.green.500);
-        --theme-color-600: theme(colors.green.600);
-        --theme-color-700: theme(colors.green.700);
-        --theme-color-800: theme(colors.green.800);
-        --theme-color-900: theme(colors.green.900);
-        --theme-color-950: theme(colors.green.950);
+        /* Primary color palette */
+        --primary-color-50: theme(colors.green.50);
+        --primary-color-100: theme(colors.green.100);
+        --primary-color-200: theme(colors.green.200);
+        --primary-color-300: theme(colors.green.300);
+        --primary-color-400: theme(colors.green.400);
+        --primary-color-500: theme(colors.green.500);
+        --primary-color-600: theme(colors.green.600);
+        --primary-color-700: theme(colors.green.700);
+        --primary-color-800: theme(colors.green.800);
+        --primary-color-900: theme(colors.green.900);
+        --primary-color-950: theme(colors.green.950);
 
-        /* alias + components */
-        --background-primary: theme(colors.slate.50);
-        --background-secondary: theme(colors.slate.100);
+        /* Secondary color palette */
+        --secondary-color-50: theme(colors.slate.50);
+        --secondary-color-100: theme(colors.slate.100);
+        --secondary-color-200: theme(colors.slate.200);
+        --secondary-color-300: theme(colors.slate.300);
+        --secondary-color-400: theme(colors.slate.400);
+        --secondary-color-500: theme(colors.slate.500);
+        --secondary-color-600: theme(colors.slate.600);
+        --secondary-color-700: theme(colors.slate.700);
+        --secondary-color-800: theme(colors.slate.800);
+        --secondary-color-900: theme(colors.slate.900);
+        --secondary-color-950: theme(colors.slate.950);
 
-        --foreground-primary: theme(color-slate-800);
-        --foreground-secondary: theme(color-slate-700);
-        --foreground-inverted: theme(colors.slate.100);
-        --foreground-muted: theme(colors.slate.500);
+        /* Layout layer */
+        /* TODO: this variables*/
 
-        --ui-background-extra-light: theme(colors.slate.100);
-        --ui-background-light: var(--theme-color-200);
-        --ui-background-medium: var(--theme-color-300);
-        --ui-background-normal: var(--theme-color-400);
-        --ui-background-dark: var(--theme-color-500);
-        --ui-background-extra-dark: var(--theme-color-600);
+        /* Content layer */
+        /* TODO: this variables*/
 
-        --ui-foreground-primary: var(--theme-color-700);
-        --ui-foreground-secondary: var(--theme-color-800);
-        --ui-foreground-inverted: var(--theme-color-100);
-        --ui-foreground-muted: var(--theme-color-500);
+        /* Elevated layer */
+        /* TODO: this variables*/
 
-        --ui-border-extra-light: var(--theme-color-400);
-        --ui-border-light: var(--theme-color-500);
-        --ui-border-medium: var(--theme-color-500);
-        --ui-border-dark: var(--theme-color-500);
-        --ui-border-extra-dark: var(--theme-color-400);
+        /* Inverted layer */
+        /* TODO: this variables*/
 
-        --link: var(--theme-color-500);
-        --link-h: var(--theme-color-600);
+        /* UI bars */
+        /* TODO: this variables*/
 
-        --line-separator: var(--theme-color-500);
+        /* Accent */
+        /* TODO: this variables*/
 
-        --navbar-and-footer-border: var(--theme-color-500);
+        /* Accent strong */
+        /* TODO: this variables*/
+
+        /* Links */
+        /* TODO: this variables*/
+
+        /* Dividers */
+        /* TODO: this variables*/
     }
 
     .theme-spring {
-        /* main palet */
-        --theme-color-50: theme(colors.lime.50);
-        --theme-color-100: theme(colors.lime.100);
-        --theme-color-200: theme(colors.lime.200);
-        --theme-color-300: theme(colors.lime.300);
-        --theme-color-400: theme(colors.lime.400);
-        --theme-color-500: theme(colors.lime.500);
-        --theme-color-600: theme(colors.lime.600);
-        --theme-color-700: theme(colors.lime.700);
-        --theme-color-800: theme(colors.lime.800);
-        --theme-color-900: theme(colors.lime.900);
-        --theme-color-950: theme(colors.lime.950);
+        /* Primary color palette */
+        --primary-color-50: theme(colors.lime.50);
+        --primary-color-100: theme(colors.lime.100);
+        --primary-color-200: theme(colors.lime.200);
+        --primary-color-300: theme(colors.lime.300);
+        --primary-color-400: theme(colors.lime.400);
+        --primary-color-500: theme(colors.lime.500);
+        --primary-color-600: theme(colors.lime.600);
+        --primary-color-700: theme(colors.lime.700);
+        --primary-color-800: theme(colors.lime.800);
+        --primary-color-900: theme(colors.lime.900);
+        --primary-color-950: theme(colors.lime.950);
 
-        /* alias + components */
-        --background-primary: var(--theme-color-50);
-        --background-secondary: var(--theme-color-100);
+        /* Secondary color palette */
+        --secondary-color-50: theme(colors.green.50);
+        --secondary-color-100: theme(colors.green.100);
+        --secondary-color-200: theme(colors.green.200);
+        --secondary-color-300: theme(colors.green.300);
+        --secondary-color-400: theme(colors.green.400);
+        --secondary-color-500: theme(colors.green.500);
+        --secondary-color-600: theme(colors.green.600);
+        --secondary-color-700: theme(colors.green.700);
+        --secondary-color-800: theme(colors.green.800);
+        --secondary-color-900: theme(colors.green.900);
+        --secondary-color-950: theme(colors.green.950);
 
-        --foreground-primary: theme(color-slate-800);
-        --foreground-secondary: theme(color-slate-700);
-        --foreground-inverted: theme(colors.slate.100);
-        --foreground-muted: theme(colors.slate.500);
+        /* Layout layer */
+        /* TODO: this variables*/
 
-        --ui-background-extra-light: var(--theme-color-100);
-        --ui-background-light: var(--theme-color-200);
-        --ui-background-medium: var(--theme-color-300);
-        --ui-background-normal: var(--theme-color-400);
-        --ui-background-dark: var(--theme-color-500);
-        --ui-background-extra-dark: var(--theme-color-600);
+        /* Content layer */
+        /* TODO: this variables*/
 
-        --ui-foreground-primary: theme(colors.green.600);
-        --ui-foreground-secondary: theme(colors.green.800);
-        --ui-foreground-inverted: theme(colors.green.100);
-        --ui-foreground-muted: theme(colors.green.400);
+        /* Elevated layer */
+        /* TODO: this variables*/
 
-        --ui-border-extra-light: var(--theme-color-400);
-        --ui-border-light: var(--theme-color-500);
-        --ui-border-medium: var(--theme-color-600);
-        --ui-border-dark: var(--theme-color-700);
-        --ui-border-extra-dark: var(--theme-color-800);
+        /* Inverted layer */
+        /* TODO: this variables*/
 
-        --link: var(--theme-color-500);
-        --link-h: var(--theme-color-600);
+        /* UI bars */
+        /* TODO: this variables*/
 
-        --line-separator: var(--theme-color-500);
+        /* Accent */
+        /* TODO: this variables*/
 
-        --navbar-and-footer-border: var(--theme-color-500);
+        /* Accent strong */
+        /* TODO: this variables*/
+
+        /* Links */
+        /* TODO: this variables*/
+
+        /* Dividers */
+        /* TODO: this variables*/
     }
 
     .theme-summer {
-        /* main palet */
-        --theme-color-50: theme(colors.yellow.50);
-        --theme-color-100: theme(colors.yellow.100);
-        --theme-color-200: theme(colors.yellow.200);
-        --theme-color-300: theme(colors.yellow.300);
-        --theme-color-400: theme(colors.yellow.400);
-        --theme-color-500: theme(colors.yellow.500);
-        --theme-color-600: theme(colors.yellow.600);
-        --theme-color-700: theme(colors.yellow.700);
-        --theme-color-800: theme(colors.yellow.800);
-        --theme-color-900: theme(colors.yellow.900);
-        --theme-color-950: theme(colors.yellow.950);
+        /* Primary color palette */
+        --primary-color-50: theme(colors.green.50);
+        --primary-color-100: theme(colors.green.100);
+        --primary-color-200: theme(colors.green.200);
+        --primary-color-300: theme(colors.green.300);
+        --primary-color-400: theme(colors.green.400);
+        --primary-color-500: theme(colors.green.500);
+        --primary-color-600: theme(colors.green.600);
+        --primary-color-700: theme(colors.green.700);
+        --primary-color-800: theme(colors.green.800);
+        --primary-color-900: theme(colors.green.900);
+        --primary-color-950: theme(colors.green.950);
 
-        /* alias + components */
-        --background-primary: var(--theme-color-50);
-        --background-secondary: var(--theme-color-100);
+        /* Secondary color palette */
+        --secondary-color-50: theme(colors.emerald.50);
+        --secondary-color-100: theme(colors.emerald.100);
+        --secondary-color-200: theme(colors.emerald.200);
+        --secondary-color-300: theme(colors.emerald.300);
+        --secondary-color-400: theme(colors.emerald.400);
+        --secondary-color-500: theme(colors.emerald.500);
+        --secondary-color-600: theme(colors.emerald.600);
+        --secondary-color-700: theme(colors.emerald.700);
+        --secondary-color-800: theme(colors.emerald.800);
+        --secondary-color-900: theme(colors.emerald.900);
+        --secondary-color-950: theme(colors.emerald.950);
 
-        --foreground-primary: theme(color-slate-800);
-        --foreground-secondary: theme(color-slate-700);
-        --foreground-inverted: theme(colors.slate.100);
-        --foreground-muted: theme(colors.slate.500);
+        /* Layout layer */
+        /* TODO: this variables*/
 
-        --ui-background-extra-light: var(--theme-color-100);
-        --ui-background-light: var(--theme-color-200);
-        --ui-background-medium: var(--theme-color-300);
-        --ui-background-normal: var(--theme-color-400);
-        --ui-background-dark: var(--theme-color-500);
-        --ui-background-extra-dark: var(--theme-color-600);
+        /* Content layer */
+        /* TODO: this variables*/
 
-        --ui-foreground-primary: theme(colors.amber.600);
-        --ui-foreground-secondary: theme(colors.amber.700);
-        --ui-foreground-inverted: theme(colors.amber.100);
-        --ui-foreground-muted: theme(colors.amber.400);
+        /* Elevated layer */
+        /* TODO: this variables*/
 
-        --ui-border-extra-light: var(--theme-color-400);
-        --ui-border-light: var(--theme-color-500);
-        --ui-border-medium: var(--theme-color-600);
-        --ui-border-dark: var(--theme-color-700);
-        --ui-border-extra-dark: var(--theme-color-800);
+        /* Inverted layer */
+        /* TODO: this variables*/
 
-        --link: var(--theme-color-500);
-        --link-h: var(--theme-color-600);
+        /* UI bars */
+        /* TODO: this variables*/
 
-        --line-separator: var(--theme-color-400);
+        /* Accent */
+        /* TODO: this variables*/
 
-        --navbar-and-footer-border: var(--theme-color-500);
+        /* Accent strong */
+        /* TODO: this variables*/
+
+        /* Links */
+        /* TODO: this variables*/
+
+        /* Dividers */
+        /* TODO: this variables*/
     }
 
     .theme-autumn {
-        /* main palet */
-        --theme-color-50: theme(colors.orange.50);
-        --theme-color-100: theme(colors.orange.100);
-        --theme-color-200: theme(colors.orange.200);
-        --theme-color-300: theme(colors.orange.300);
-        --theme-color-400: theme(colors.orange.400);
-        --theme-color-500: theme(colors.orange.500);
-        --theme-color-600: theme(colors.orange.600);
-        --theme-color-700: theme(colors.orange.700);
-        --theme-color-800: theme(colors.orange.800);
-        --theme-color-900: theme(colors.orange.900);
-        --theme-color-950: theme(colors.orange.950);
+        /* Primary color palette */
+        --primary-color-50: theme(colors.orange.50);
+        --primary-color-100: theme(colors.orange.100);
+        --primary-color-200: theme(colors.orange.200);
+        --primary-color-300: theme(colors.orange.300);
+        --primary-color-400: theme(colors.orange.400);
+        --primary-color-500: theme(colors.orange.500);
+        --primary-color-600: theme(colors.orange.600);
+        --primary-color-700: theme(colors.orange.700);
+        --primary-color-800: theme(colors.orange.800);
+        --primary-color-900: theme(colors.orange.900);
+        --primary-color-950: theme(colors.orange.950);
 
-        /* alias + components */
-        --background-primary: var(--theme-color-50);
-        --background-secondary: var(--theme-color-100);
+        /* Secondary color palette */
+        --secondary-color-50: theme(colors.red.50);
+        --secondary-color-100: theme(colors.red.100);
+        --secondary-color-200: theme(colors.red.200);
+        --secondary-color-300: theme(colors.red.300);
+        --secondary-color-400: theme(colors.red.400);
+        --secondary-color-500: theme(colors.red.500);
+        --secondary-color-600: theme(colors.red.600);
+        --secondary-color-700: theme(colors.red.700);
+        --secondary-color-800: theme(colors.red.800);
+        --secondary-color-900: theme(colors.red.900);
+        --secondary-color-950: theme(colors.red.950);
 
-        --foreground-primary: theme(color-slate-800);
-        --foreground-secondary: theme(color-slate-700);
-        --foreground-inverted: theme(colors.slate.100);
-        --foreground-muted: theme(colors.slate.500);
+        /* Layout layer */
+        /* TODO: this variables*/
 
-        --ui-background-extra-light: var(--theme-color-100);
-        --ui-background-light: var(--theme-color-200);
-        --ui-background-medium: var(--theme-color-300);
-        --ui-background-normal: var(--theme-color-400);
-        --ui-background-dark: var(--theme-color-500);
-        --ui-background-extra-dark: var(--theme-color-600);
+        /* Content layer */
+        /* TODO: this variables*/
 
-        --ui-foreground-primary: theme(colors.orange.700);
-        --ui-foreground-secondary: theme(colors.red.800);
-        --ui-foreground-inverted: theme(colors.orange.100);
-        --ui-foreground-muted: theme(colors.orange.400);
+        /* Elevated layer */
+        /* TODO: this variables*/
 
-        --ui-border-extra-light: var(--theme-color-400);
-        --ui-border-light: var(--theme-color-500);
-        --ui-border-medium: var(--theme-color-600);
-        --ui-border-dark: var(--theme-color-700);
-        --ui-border-extra-dark: var(--theme-color-800);
+        /* Inverted layer */
+        /* TODO: this variables*/
 
-        --link: var(--theme-color-400);
-        --link-h: var(--theme-color-600);
+        /* UI bars */
+        /* TODO: this variables*/
 
-        --line-separator: var(--theme-color-400);
+        /* Accent */
+        /* TODO: this variables*/
 
-        --navbar-and-footer-border: var(--theme-color-400);
+        /* Accent strong */
+        /* TODO: this variables*/
+
+        /* Links */
+        /* TODO: this variables*/
+
+        /* Dividers */
+        /* TODO: this variables*/
     }
 
     .theme-winter {
-        /* main palet */
-        --theme-color-50: theme(colors.sky.50);
-        --theme-color-100: theme(colors.sky.100);
-        --theme-color-200: theme(colors.sky.200);
-        --theme-color-300: theme(colors.sky.300);
-        --theme-color-400: theme(colors.sky.400);
-        --theme-color-500: theme(colors.sky.500);
-        --theme-color-600: theme(colors.sky.600);
-        --theme-color-700: theme(colors.sky.700);
-        --theme-color-800: theme(colors.sky.800);
-        --theme-color-900: theme(colors.sky.900);
-        --theme-color-950: theme(colors.sky.950);
+        /* Primary color palette */
+        --primary-color-50: theme(colors.sky.50);
+        --primary-color-100: theme(colors.sky.100);
+        --primary-color-200: theme(colors.sky.200);
+        --primary-color-300: theme(colors.sky.300);
+        --primary-color-400: theme(colors.sky.400);
+        --primary-color-500: theme(colors.sky.500);
+        --primary-color-600: theme(colors.sky.600);
+        --primary-color-700: theme(colors.sky.700);
+        --primary-color-800: theme(colors.sky.800);
+        --primary-color-900: theme(colors.sky.900);
+        --primary-color-950: theme(colors.sky.950);
 
-        /* alias + components */
-        --background-primary: theme(colors.cyan.50);
-        --background-secondary: theme(colors.cyan.100);
+        /* Secondary color palette */
+        --secondary-color-50: theme(colors.indigo.50);
+        --secondary-color-100: theme(colors.indigo.100);
+        --secondary-color-200: theme(colors.indigo.200);
+        --secondary-color-300: theme(colors.indigo.300);
+        --secondary-color-400: theme(colors.indigo.400);
+        --secondary-color-500: theme(colors.indigo.500);
+        --secondary-color-600: theme(colors.indigo.600);
+        --secondary-color-700: theme(colors.indigo.700);
+        --secondary-color-800: theme(colors.indigo.800);
+        --secondary-color-900: theme(colors.indigo.900);
+        --secondary-color-950: theme(colors.indigo.950);
 
-        --foreground-primary: theme(color-slate-800);
-        --foreground-secondary: theme(color-slate-700);
-        --foreground-inverted: theme(colors.slate.100);
-        --foreground-muted: theme(colors.slate.500);
+        /* Layout layer */
+        /* TODO: this variables*/
 
-        --ui-background-extra-light: theme(colors.cyan.100);
-        --ui-background-light: var(--theme-color-200);
-        --ui-background-medium: var(--theme-color-300);
-        --ui-background-normal: var(--theme-color-400);
-        --ui-background-dark: var(--theme-color-500);
-        --ui-background-extra-dark: var(--theme-color-600);
+        /* Content layer */
+        /* TODO: this variables*/
 
-        --ui-foreground-primary: var(--theme-color-700);
-        --ui-foreground-secondary: var(--theme-color-900);
-        --ui-foreground-inverted: var(--theme-color-50);
-        --ui-foreground-muted: var(--theme-color-400);
+        /* Elevated layer */
+        /* TODO: this variables*/
 
-        --ui-border-extra-light: var(--theme-color-400);
-        --ui-border-light: var(--theme-color-500);
-        --ui-border-medium: var(--theme-color-600);
-        --ui-border-dark: var(--theme-color-700);
-        --ui-border-extra-dark: var(--theme-color-800);
+        /* Inverted layer */
+        /* TODO: this variables*/
 
-        --link: var(--theme-color-400);
-        --link-h: var(--theme-color-600);
+        /* UI bars */
+        /* TODO: this variables*/
 
-        --line-separator: var(--theme-color-300);
+        /* Accent */
+        /* TODO: this variables*/
 
-        --navbar-and-footer-border: var(--theme-color-500);
+        /* Accent strong */
+        /* TODO: this variables*/
+
+        /* Links */
+        /* TODO: this variables*/
+
+        /* Dividers */
+        /* TODO: this variables*/
     }
 
     .h1 {
@@ -398,7 +499,7 @@
         @apply flex w-fit items-center justify-center gap-1 rounded-lg whitespace-nowrap transition hover:cursor-pointer;
     }
 
-    /* Button size */
+    /* Button sizes */
     .btn-xs {
         @apply border p-1 text-sm;
     }
@@ -415,16 +516,22 @@
         @apply border-2 px-6 py-3 text-lg sm:text-xl;
     }
 
-    /* Specific button sizes */
-    .btn-icon {
-        @apply border p-2;
+    /* Specific size for button only with icon */
+    .btn-square-icon {
+        @apply border-2 p-2;
     }
 
+    .btn-rectangle-icon {
+        @apply border-2 px-4 py-2;
+    }
+
+    /* REVIEW: is it needed? */
+    /* Specific size for button in table */
     .btn-in-table {
         @apply mx-auto border px-2 py-1;
     }
 
-    /* Button color */
+    /* Button colors */
     .btn-theme-primary {
         @apply bg-theme-ui-background-light border-theme-ui-border-medium hover:border-theme-ui-border-dark hover:bg-theme-ui-background-medium text-theme-ui-foreground-primary hover:text-theme-ui-foreground-secondary;
     }
@@ -468,23 +575,23 @@
     }
 
     /* === Backgrounds ===*/
-    .bg-theme-linear-b {
+    .theme-bg-linear-b {
         @apply from-theme-ui-background-light to-theme-ui-background-medium bg-linear-to-b;
     }
 
-    .bg-theme-linear-t {
+    .theme-bg-linear-t {
         @apply from-theme-ui-background-light to-theme-ui-background-medium bg-linear-to-t;
     }
 
-    .bg-theme-linear-r {
+    .theme-bg-linear-r {
         @apply from-theme-ui-background-light to-theme-ui-background-medium bg-linear-to-r;
     }
 
-    .bg-theme-linear-l {
+    .theme-bg-linear-l {
         @apply from-theme-ui-background-light to-theme-ui-background-medium bg-linear-to-l;
     }
 
-    .bg-theme-linear-lcr {
+    .theme-bg-linear-lcr {
         @apply from-theme-ui-background-medium via-theme-ui-background-extra-light to-theme-ui-background-medium bg-linear-to-r;
     }
 
@@ -518,22 +625,6 @@
     .no-scrollbar {
         -ms-overflow-style: none; /* IE, Edge */
         scrollbar-width: none; /* Firefox */
-    }
-
-    .text-outline-shadow {
-        text-shadow:
-            1px 1px 0 #ffffff,
-            -1px -1px 0 #ffffff,
-            1px -1px 0 #ffffff,
-            -1px 1px 0 #ffffff;
-    }
-
-    .text-outline-shadow-dark {
-        text-shadow:
-            1px 1px 0 #464646,
-            -1px -1px 0 #474747,
-            1px -1px 0 #474747,
-            -1px 1px 0 #474747;
     }
 }
 
