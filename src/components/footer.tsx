@@ -30,14 +30,7 @@ export function Footer() {
     const showSeasonalTheme = process.env.NEXT_PUBLIC_SHOW_SEASONAL_THEME === 'true';
 
     return (
-        <footer
-            className={cn(
-                'px-4 py-8',
-                'text-theme-ui-foreground-primary text-lg',
-                'bg-theme-linear-t',
-                'border-theme-navbar-and-footer-border border-t-4'
-            )}
-        >
+        <footer className={cn('px-4 py-8', 'text-lg', 'footer')}>
             <div className="gap-y-8 contain-layout">
                 {/* First Row */}
                 <div

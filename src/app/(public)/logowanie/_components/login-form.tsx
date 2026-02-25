@@ -34,7 +34,7 @@ export default function LoginForm() {
         <form onSubmit={handleSubmit} className="space-y-4">
             {/* Login */}
             <div>
-                <label htmlFor="login" className="text-theme-txt block text-xl">
+                <label htmlFor="login" className="block text-xl">
                     Login
                 </label>
                 <input

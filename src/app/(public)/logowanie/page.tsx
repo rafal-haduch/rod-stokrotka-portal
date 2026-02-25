@@ -17,16 +17,16 @@ export default function LoginPage() {
             </h1>
 
             <section aria-labelledby="login-form-heading">
-                <div className="panel-br mx-auto mt-4 max-w-md rounded-xl p-8 shadow-xl">
+                <div className="form surface-elevated mx-auto mt-4 max-w-md rounded-xl p-8 shadow-xl">
                     <h2
                         id="login-form-heading"
-                        className="text-theme-ui-foreground-primary font-heading text-center text-6xl font-semibold normal-case"
+                        className="text-theme-on-surface font-heading text-center text-6xl font-semibold normal-case"
                     >
                         Zaloguj Się
                     </h2>
                     <div
                         aria-hidden="true"
-                        className="border-theme-ui-foreground-primary mx-auto mb-6 w-3/4 border-t-4"
+                        className="border-theme-divider mx-auto mb-6 w-3/4 border-t-4"
                     />
                     <LoginForm />
                 </div>

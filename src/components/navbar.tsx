@@ -59,9 +59,7 @@ export function Navbar() {
             className={cn(
                 'sticky top-0 z-50 h-22',
                 'flex items-center justify-between p-2',
-                'bg-theme-linear-b',
-                'border-theme-navbar-and-footer-border border-b-4',
-                'font-nav text-theme-foreground-primary'
+                'navbar'
             )}
         >
             {/* Logo - always visible */}
@@ -86,10 +84,8 @@ export function Navbar() {
                         <li
                             key={item.path}
                             className={cn(
-                                'text-theme-ui-foreground-primary hover:text-theme-ui-foreground-secondary cursor-pointer transition hover:underline',
-                                pathname === item.path
-                                    ? 'text-theme-ui-foreground-secondary underline'
-                                    : ''
+                                'hover:text-theme-on-ui-bar-hover cursor-pointer transition hover:underline',
+                                pathname === item.path ? 'text-theme-on-ui-bar-hover underline' : ''
                             )}
                         >
                             <Link href={item.path}>{item.mainNav?.label}</Link>
@@ -128,14 +124,14 @@ export function Navbar() {
                 <div className="relative flex h-8 w-8 flex-col items-center justify-center">
                     <span
                         className={cn(
-                            'bg-theme-ui-background-extra-dark absolute h-1 w-8 transition-transform duration-300 ease-in-out',
+                            'bg-theme-on-ui-bar absolute h-1 w-8 transition-transform duration-300 ease-in-out',
                             isOpen ? 'translate-y-0 rotate-45' : '-translate-y-2'
                         )}
                     />
                     <span
                         className={cn(
                             'absolute h-1 w-8',
-                            'bg-theme-ui-background-extra-dark',
+                            'bg-theme-on-ui-bar',
                             'transition-opacity duration-200 ease-in-out',
                             isOpen ? 'opacity-0' : 'opacity-100'
                         )}
@@ -143,15 +139,13 @@ export function Navbar() {
                     <span
                         className={cn(
                             'absolute h-1 w-8',
-                            'bg-theme-ui-background-extra-dark',
+                            'bg-theme-on-ui-bar',
                             'transition-transform duration-300 ease-in-out',
                             isOpen ? 'translate-y-0 -rotate-45' : 'translate-y-2'
                         )}
                     />
                 </div>
-                <p className="text-theme-ui-foreground-primary font-bold">
-                    {isOpen ? 'Zamknij' : 'Menu'}
-                </p>
+                <p className="text-theme-on-ui-bar font-bold">{isOpen ? 'Zamknij' : 'Menu'}</p>
             </button>
 
             {/* ============ Mobile Menu ============ */}
@@ -163,7 +157,7 @@ export function Navbar() {
                             'fixed inset-0 z-40',
                             'pt-24',
                             'font-nav text-center text-lg font-bold',
-                            'bg-theme-linear-lcr',
+                            'mobile-navbar',
                             'transition-transform duration-500'
                         )}
                     >
@@ -172,7 +166,7 @@ export function Navbar() {
                                 <li
                                     key={item.path}
                                     className={cn(
-                                        'text-theme-ui-foreground-primary hover:text-theme-ui-foreground-secondary cursor-pointer transition hover:underline',
+                                        'text-theme-on-ui-bar hover:text-theme-on-ui-bar-hover cursor-pointer transition hover:underline',
                                         pathname === item.path ? 'underline' : ''
                                     )}
                                 >

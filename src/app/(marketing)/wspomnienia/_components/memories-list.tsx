@@ -37,7 +37,7 @@ function MemoryCard({ memory }: { memory: MemoryInList }) {
     return (
         <Link
             href={`${ROUTES.MEMORIES.path}/${memory.slug}`}
-            className="group mx-auto block max-w-xl overflow-hidden rounded-xl shadow-md transition"
+            className="group post-card surface mx-auto block max-w-xl overflow-hidden"
         >
             <div className="relative h-64">
                 <Image src={memory.cover} alt={memory.title} fill className="object-cover" />
@@ -46,11 +46,9 @@ function MemoryCard({ memory }: { memory: MemoryInList }) {
                     <ArrowRight color="white" />
                 </div>
             </div>
-            <div className="bg-theme-background-secondary group-hover:bg-theme-ui-background-light p-4 text-center">
-                <p className="text-theme-ui-foreground-primary text-lg">
-                    {formatDate(memory.date)}
-                </p>
-                <h3 className="text-theme-ui-foreground-primary text-xl font-semibold">
+            <div className="p-4 text-center">
+                <p className="text-lg">{formatDate(memory.date)}</p>
+                <h3 className="text-theme-on-surface text-xl font-semibold group-hover:underline">
                     {memory.title}
                 </h3>
             </div>
