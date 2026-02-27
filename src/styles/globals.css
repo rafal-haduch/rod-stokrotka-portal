@@ -508,7 +508,7 @@
 
     /* Semantic fonts */
     --font-body: var(--font-sans);
-    --font-heading: var(--font-fleurdeleah), cursive;
+    --font-heading: var(--font-fleur-de-leah), cursive;
     --font-subheading: var(--font-merriweather), Georgia, serif;
     --font-nav: var(--font-aboreto), serif;
 
