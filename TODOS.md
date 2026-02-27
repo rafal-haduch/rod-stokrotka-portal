@@ -1,6 +1,6 @@
 # TODOS
 
-- improve global.css file (czat "Nazewnictwo CSS w CMS" w ChatGPT)
+- use font from next/google
 
 - major improved all user modal action
 

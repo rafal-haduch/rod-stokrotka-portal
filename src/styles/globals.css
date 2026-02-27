@@ -516,6 +516,8 @@
     /* === Own System Design for Themes Colors Management === */
     /* ======================================== */
 
+    /* IMPORTANT: When styling inline components in JSX, use ONLY these semantic classes. You can extend them with new classes as needed, while maintaining the same pattern. */
+
     /* Classes for layout layer (base content in pages) */
     /* NOTE: Example of use: page bg, sections, headings, paragraphs e.t.c. */
     --color-theme-background-body: var(--background-body);
@@ -626,7 +628,6 @@
         @apply text-xl font-semibold sm:text-2xl;
     }
 
-    /* TODO: styles global (ex. p-4 sm:p-0)*/
     p {
         @apply px-4 text-base sm:px-0;
     }
@@ -684,15 +685,86 @@
         @apply text-theme-link hover:text-theme-link-hover underline;
     }
 
-    /* ======================= */
-    /* ====== Button Classes ======= */
-    /* ======================= */
+    /* ===================== */
+    /* === COMPONENT SYSTEM === */
+    /* ===================== */
+
+    /* Surface Layers */
+
+    .surface {
+        @apply bg-theme-surface text-theme-on-surface border-theme-surface-border;
+    }
+
+    .surface-hover {
+        @apply bg-theme-surface text-theme-on-surface border-theme-surface-border hover:bg-theme-surface-hover;
+    }
+
+    .surface-elevated {
+        @apply from-theme-surface-elevated-dark via-theme-surface-elevated-light to-theme-surface-elevated-dark text-theme-on-surface-elevated border-theme-surface-elevated-border bg-linear-to-br;
+    }
+
+    .surface-inverted {
+        @apply from-theme-surface-inverted-dark via-theme-surface-inverted-light to-theme-surface-inverted-dark text-theme-on-surface-inverted border-theme-surface-inverted-border bg-linear-to-br;
+    }
+
+    /* Types of Components */
+
+    /* NOTE:  For consistency, use with the surface class. */
+    .card {
+        @apply rounded-2xl border-4 shadow-lg;
+    }
+
+    /* NOTE:  For consistency, use with the surface-hover class. */
+    .card-interactive {
+        @apply rounded-2xl border-4 shadow-lg transition hover:scale-105 hover:shadow-xl;
+    }
+
+    /* NOTE:  For consistency, use with the surface-hover class. */
+    .post-card {
+        @apply rounded-xl border-0 shadow-lg transition hover:shadow-xl;
+    }
+
+    /* NOTE: For consistency, use with the surface-elevated class. */
+    .form {
+        @apply rounded-xl border-2 shadow-lg;
+    }
+
+    .input-form {
+        @apply bg-theme-background-main border-theme-surface-elevated-border focus:border-theme-surface-elevated-border-hover w-full rounded-md border p-2 text-slate-700 shadow-sm focus:shadow-md focus:outline-none;
+    }
+
+    /* NOTE: For consistency, use with the surface-elevated class. */
+    .modal {
+        @apply rounded-xl border-2 shadow-lg;
+    }
+
+    /* NOTE: For consistency, use with the surface-elevated class. */
+    .panel {
+        @apply rounded-xl border-4 shadow-lg;
+    }
+
+    .navbar {
+        @apply from-theme-ui-bar-light to-theme-ui-bar-dark border-theme-ui-bar-border text-theme-on-ui-bar border-b-4 bg-linear-to-b shadow-xl;
+    }
+
+    .mobile-navbar {
+        @apply from-theme-ui-bar-dark via-theme-ui-bar-light to-theme-ui-bar-dark border-theme-ui-bar-border text-theme-on-ui-bar border-b-4 bg-linear-to-r;
+    }
+
+    .footer {
+        @apply from-theme-ui-bar-light to-theme-ui-bar-dark border-theme-ui-bar-border text-theme-on-ui-bar border-t-4 bg-linear-to-t;
+    }
+
+    /* ================== */
+    /* === BUTTON SYSTEM === */
+    /* ================== */
 
     .btn {
         @apply flex w-fit items-center justify-center gap-1 rounded-lg whitespace-nowrap transition hover:cursor-pointer;
     }
 
-    /* Button sizes */
+    /* Button - Size Variants */
+
     .btn-xs {
         @apply border p-1 text-sm;
     }
@@ -709,7 +781,12 @@
         @apply border-2 px-6 py-3 text-lg sm:text-xl;
     }
 
-    /* Specific sizes  */
+    .btn-xl {
+        @apply border-2 px-6 py-3 text-lg sm:text-xl;
+    }
+
+    /* Button - Context Variants */
+
     .btn-square-icon {
         @apply border-2 p-2;
     }
@@ -722,7 +799,8 @@
         @apply mx-auto border px-2 py-1;
     }
 
-    /* Button colors */
+    /* Button - Visual Variants */
+
     .btn-theme-primary {
         @apply bg-theme-accent border-theme-accent-border hover:bg-theme-accent-hover text-theme-on-accent;
     }
@@ -739,110 +817,31 @@
         @apply hover:bg-theme-surface border-theme-accent-border text-theme-on-accent bg-transparent;
     }
 
-    /* NOTE: Use only for action button in dashboard. */
+    /* NOTE: Use for action buttons in the dashboard. */
     .btn-action {
         @apply bg-theme-accent-strong border-theme-accent-strong-border hover:bg-theme-accent-strong-hover text-theme-on-accent-strong;
     }
 
+    /* NOTE: Use for danger action buttons in the dashboard. */
     .btn-danger {
         @apply border border-red-600 bg-red-500 text-white hover:bg-red-600;
     }
 
-    /* TODO: te klasy*/
-    /* Button States */
+    /* Button - State Modifiers */
+
+    /* TODO button disable state */
     .btn-disabled {
         @apply bg-pink-400;
     }
 
+    /* TODO button loading state */
     .btn-loading {
         @apply bg-pink-400;
     }
 
-    /* ========================== */
-    /* === Backgrounds Themes Variants === */
-    /* ========================== */
-    /* TODO: bg variants */
-    .theme-bg-linear-b {
-        @apply from-theme-surface-elevated-light to-theme-surface-elevated-dark bg-linear-to-b;
-    }
-
-    .theme-bg-linear-t {
-        @apply from-theme-surface-elevated-light to-theme-surface-elevated-dark bg-linear-to-t;
-    }
-
-    .theme-bg-linear-r {
-        @apply from-theme-surface-elevated-light to-theme-surface-elevated-dark bg-linear-to-r;
-    }
-
-    .theme-bg-linear-l {
-        @apply from-theme-surface-elevated-light to-theme-surface-elevated-dark bg-linear-to-l;
-    }
-
-    .theme-bg-linear-lcr {
-        @apply from-theme-surface-elevated-dark via-theme-surface-elevated-light to-theme-surface-elevated-dark bg-linear-to-r;
-    }
-
-    /* TODO: change like up */
-    .panel-br {
-        @apply from-theme-surface-elevated-dark via-theme-surface-elevated-light to-theme-surface-elevated-dark border-theme-surface-elevated-border border-2 bg-linear-to-br;
-    }
-
-    .panel-bl {
-        @apply from-theme-surface-elevated-dark via-theme-surface-elevated-light to-theme-surface-elevated-dark border-theme-surface-elevated-border border-2 bg-linear-to-bl;
-    }
-
-    .surface {
-        @apply bg-theme-surface text-theme-on-surface border-theme-surface-border hover:bg-theme-surface-hover;
-    }
-
-    .surface-elevated {
-        @apply from-theme-surface-elevated-dark via-theme-surface-elevated-light to-theme-surface-elevated-dark text-theme-on-surface-elevated border-theme-surface-elevated-border bg-linear-to-br;
-    }
-
-    .surface-inverted {
-        @apply from-theme-surface-inverted-dark via-theme-surface-inverted-light to-theme-surface-inverted-dark text-theme-on-surface-inverted border-theme-surface-inverted-border bg-linear-to-br;
-    }
-
-    .navbar {
-        @apply from-theme-ui-bar-light to-theme-ui-bar-dark border-theme-ui-bar-border text-theme-on-ui-bar border-b-4 bg-linear-to-b shadow-xl;
-    }
-
-    .mobile-navbar {
-        @apply from-theme-ui-bar-dark via-theme-ui-bar-light to-theme-ui-bar-dark border-theme-ui-bar-border text-theme-on-ui-bar border-b-4 bg-linear-to-r;
-    }
-
-    .footer {
-        @apply from-theme-ui-bar-light to-theme-ui-bar-dark border-theme-ui-bar-border text-theme-on-ui-bar border-t-4 bg-linear-to-t;
-    }
-
-    /* NOTE:  Use with surface or surface-hover class. */
-    .card {
-        @apply rounded-2xl border-4 shadow-lg transition hover:scale-105 hover:shadow-xl;
-    }
-
-    /* NOTE:  Use with surface or surface-hover class. */
-    .post-card {
-        @apply rounded-xl border-0 shadow-lg transition hover:shadow-xl;
-    }
-
-    /* NOTE: Use with surface-elevated class. */
-    .form {
-        @apply rounded-xl border-2 shadow-lg;
-    }
-
-    .input-form {
-        @apply bg-theme-background-main border-theme-surface-elevated-border focus:border-theme-surface-elevated-border-hover w-full rounded-md border p-2 text-slate-700 shadow-sm focus:outline-none;
-    }
-
-    /* NOTE: Use with surface-elevated class. */
-    .modal {
-        @apply rounded-xl border-2 shadow-lg;
-    }
-
-    /* NOTE: Use with surface-elevated class. */
-    .panel {
-        @apply rounded-xl border-4 shadow-lg;
-    }
+    /* ============== */
+    /* === Animations === */
+    /* ============== */
 
     .h2-animate {
         opacity: 0;
