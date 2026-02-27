@@ -801,11 +801,11 @@
 
     /* Button - Visual Variants */
 
-    .btn-theme-primary {
+    .btn-primary {
         @apply bg-theme-accent border-theme-accent-border hover:bg-theme-accent-hover text-theme-on-accent;
     }
 
-    .btn-theme-secondary {
+    .btn-secondary {
         @apply border-slate-100 bg-slate-600 text-white hover:bg-slate-500;
     }
 

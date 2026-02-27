@@ -27,10 +27,10 @@ const contextClasses: Record<contextButton, string> = {
 } as const;
 
 const variantClasses: Record<variantButton, string> = {
-    primary: 'btn-theme-primary',
-    secondary: 'btn-theme-secondary',
-    outline: 'btn-theme-outline',
-    ghost: 'btn-theme-ghost',
+    primary: 'btn-primary',
+    secondary: 'btn-secondary',
+    outline: 'btn-outline',
+    ghost: 'btn-ghost',
     action: 'btn-action',
     danger: 'btn-danger',
 } as const;
@@ -65,7 +65,7 @@ type ExternalLinkProps = BaseProps &
 type Props = ButtonProps | InternalLinkProps | ExternalLinkProps;
 
 export function CustomButton(props: Props) {
-    const { size, variant, context, className } = props;
+    const { size, variant, context, className, children } = props;
 
     const classes = clsx(
         'btn',
@@ -76,7 +76,15 @@ export function CustomButton(props: Props) {
     );
 
     if (!('href' in props) && props.type) {
-        const { type = 'button', children, ...restButtonProps } = props;
+        const {
+            type = 'button',
+            size: _s,
+            variant: _v,
+            context: _c,
+            className: _cn,
+            children: _ch,
+            ...restButtonProps
+        } = props;
 
         return (
             <button type={type} className={classes} {...restButtonProps}>
@@ -86,7 +94,17 @@ export function CustomButton(props: Props) {
     }
 
     // From this point on, TS knows that we have a link.
-    const { href, external, children, ...restLinkProps } = props;
+    const {
+        href,
+        external,
+        size: _s,
+        variant: _v,
+        context: _c,
+        className: _cn,
+        children: _ch,
+        ...restLinkProps
+    } = props;
+
     const Component = external ? 'a' : Link;
 
     return (
