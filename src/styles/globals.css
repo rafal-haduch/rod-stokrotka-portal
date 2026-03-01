@@ -41,7 +41,7 @@
 
     /* Content layer */
     --surface: var(--primary-color-50);
-    --surface-hover: var(--secondary-color-100);
+    --surface-hover: var(--primary-color-100);
 
     --surface-border: var(--primary-color-400);
 
@@ -100,6 +100,10 @@
     --divider: var(--primary-color-400);
     --divider-strong: var(--primary-color-500);
     --divider-inverted: var(--secondary-color-50);
+
+    /* Table */
+    --table-head: var(--primary-color-100);
+    --table-body-row-hover: var(--primary-color-50);
 }
 
 .theme-spring {
@@ -198,6 +202,10 @@
     --divider: var(--primary-color-500);
     --divider-strong: var(--primary-color-700);
     --divider-inverted: var(--primary-color-100);
+
+    /* Table */
+    --table-head: var(--primary-color-200);
+    --table-body-row-hover: var(--primary-color-100);
 }
 
 .theme-summer {
@@ -296,6 +304,10 @@
     --divider: var(--primary-color-500);
     --divider-strong: var(--primary-color-700);
     --divider-inverted: var(--primary-color-100);
+
+    /* Table */
+    --table-head: var(--primary-color-200);
+    --table-body-row-hover: var(--primary-color-100);
 }
 
 .theme-autumn {
@@ -394,6 +406,10 @@
     --divider: var(--primary-color-500);
     --divider-strong: var(--primary-color-700);
     --divider-inverted: var(--primary-color-100);
+
+    /* Table */
+    --table-head: var(--primary-color-200);
+    --table-body-row-hover: var(--primary-color-100);
 }
 
 .theme-winter {
@@ -492,6 +508,10 @@
     --divider: var(--primary-color-500);
     --divider-strong: var(--primary-color-700);
     --divider-inverted: var(--primary-color-100);
+
+    /* Table */
+    --table-head: var(--primary-color-200);
+    --table-body-row-hover: var(--primary-color-100);
 }
 
 /* =================== */
@@ -604,7 +624,7 @@
     }
 
     main {
-        @apply bg-theme-background-main mx-auto min-h-screen max-w-7xl py-6;
+        @apply bg-theme-background-main mx-auto min-h-screen max-w-7xl py-8;
     }
 
     h1,
@@ -629,7 +649,7 @@
     }
 
     p {
-        @apply px-4 text-base sm:px-0;
+        @apply text-base;
     }
 
     address {
@@ -641,15 +661,15 @@
     }
 
     thead {
-        @apply bg-theme-surface;
+        background-color: var(--table-head);
     }
 
     thead th {
         @apply border-theme-surface-border border border-b-0 px-1 py-2;
     }
 
-    tbody tr {
-        @apply hover:bg-theme-surface-hover;
+    tbody tr:hover {
+        background-color: var(--table-body-row-hover);
     }
 
     tbody th,
@@ -809,11 +829,11 @@
         @apply border-slate-100 bg-slate-600 text-white hover:bg-slate-500;
     }
 
-    .btn-theme-outline {
+    .btn-outline {
         @apply hover:bg-theme-surface border-theme-accent-border text-theme-on-accent bg-theme-surface-hover;
     }
 
-    .btn-theme-ghost {
+    .btn-ghost {
         @apply hover:bg-theme-surface border-theme-accent-border text-theme-on-accent bg-transparent;
     }
 

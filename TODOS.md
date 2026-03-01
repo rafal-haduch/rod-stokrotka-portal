@@ -1,7 +1,5 @@
 # TODOS
 
-- use font from next/google
-
 - major improved all user modal action
 
 # REVIEWS

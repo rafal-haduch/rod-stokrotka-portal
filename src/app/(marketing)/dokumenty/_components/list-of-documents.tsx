@@ -2,6 +2,7 @@ import { Download, ExternalLink, FileText } from 'lucide-react';
 
 import { Document } from '@/content/data/documents';
 import { NotFoundContent } from '@/components/not-found-content';
+import { CustomButton } from '@/components/custom-button';
 
 export default function ListOfDocuments({ documents }: { documents: Document[] }) {
     if (documents.length === 0) return <NotFoundContent />;
@@ -11,7 +12,7 @@ export default function ListOfDocuments({ documents }: { documents: Document[] }
             <ul className="space-y-6 text-lg sm:space-y-1 sm:text-xl">
                 {documents.map((item, i) => (
                     <li key={i} className="flex w-full py-2">
-                        {/* Mobile view */}
+                        {/* Mobile View */}
                         <a
                             href={item.href}
                             download
@@ -20,29 +21,33 @@ export default function ListOfDocuments({ documents }: { documents: Document[] }
                             <FileText size={32} color="var(--color-theme-divider)" />
                             {item.name}
                         </a>
-                        {/* Desktop view */}
+                        {/* Desktop View */}
                         <div className="hidden w-full gap-4 sm:flex sm:justify-between">
                             <div className="flex items-center gap-1">
                                 <FileText size={32} color="var(--color-theme-divider)" />
                                 {item.name}
                             </div>
                             <div className="flex gap-4">
-                                <a
+                                <CustomButton
                                     href={item.href}
                                     target="_blank"
-                                    className="btn btn-md btn-theme-outline hidden lg:flex"
+                                    variant="outline"
+                                    size="md"
+                                    className="hidden lg:flex"
                                 >
                                     <ExternalLink />
                                     Otwórz
-                                </a>
-                                <a
+                                </CustomButton>
+                                <CustomButton
                                     href={item.href}
                                     download
-                                    className="btn btn-md btn-theme-outline hidden sm:flex"
+                                    variant="outline"
+                                    size="md"
+                                    className="hidden sm:flex"
                                 >
                                     <Download />
                                     Pobierz
-                                </a>
+                                </CustomButton>
                             </div>
                         </div>
                     </li>

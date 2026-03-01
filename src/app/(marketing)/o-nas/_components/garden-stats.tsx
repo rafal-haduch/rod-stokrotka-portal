@@ -74,7 +74,7 @@ export default function GardenStats() {
                 <div
                     key={item.id}
                     className={cn(
-                        'surface card w-full max-w-xs p-6 ',
+                        'surface-hover card w-full max-w-xs p-6',
                         item.id === 2 ? 'col-span-2' : ''
                     )}
                 >

@@ -9,7 +9,7 @@ export default function PublicLayout({
     return (
         <>
             <Navbar />
-            <main className="overflow-x-hidden px-4 pb-24">{children}</main>
+            <main className="overflow-x-hidden pb-24">{children}</main>
             <Footer />
         </>
     );

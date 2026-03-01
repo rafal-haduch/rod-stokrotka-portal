@@ -97,11 +97,11 @@ export function CustomButton(props: Props) {
     const {
         href,
         external,
-        size: _s,
-        variant: _v,
-        context: _c,
-        className: _cn,
-        children: _ch,
+        size: _size,
+        variant: _variant,
+        context: _context,
+        className: _className,
+        children: _children,
         ...restLinkProps
     } = props;
 

@@ -18,7 +18,7 @@ export default function MemoriesPage() {
 
             <section>
                 <AnimateOnView className="h2-animate">
-                    <h2>Wspomnienia z naszego ogrodu</h2>
+                    <h2>Wydarzenia z życia naszego ogrodu</h2>
                 </AnimateOnView>
 
                 <MemoriesList />
