@@ -2,8 +2,8 @@ import { redirect } from 'next/navigation';
 
 import { ROUTES } from '@/config/routes';
 
-import { plotRepository } from '@/domain/plot/plot.repository';
-import { mapPlotToPlotDeleteForm } from '@/domain/plot/plot.mapper';
+import { plotRepository } from '@/features/plot/plot.repository';
+import { mapPlotToPlotDeleteForm } from '@/features/plot/plot.mapper';
 
 import DeletePlotForm from './_components/delete-plot-form';
 

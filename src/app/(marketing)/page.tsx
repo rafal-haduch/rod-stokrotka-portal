@@ -4,7 +4,6 @@ import { ArrowRight } from 'lucide-react';
 import { ROUTES } from '@/config/routes';
 
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
-import { ImageSeparator } from '@/components/image-separator';
 import { WorkInProgress } from '@/components/work-in-progress';
 import { LineSeparator } from '@/components/line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
@@ -87,8 +86,6 @@ export default function HomePage() {
                     <ArrowRight />
                 </CustomButton>
             </section>
-
-            <ImageSeparator />
         </>
     );
 }

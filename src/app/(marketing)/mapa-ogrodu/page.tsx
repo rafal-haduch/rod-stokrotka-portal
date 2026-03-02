@@ -2,12 +2,12 @@ import { ROUTES } from '@/config/routes';
 
 import { buildMetadata } from '@/lib/metadata';
 
-import { ImageSeparator } from '@/components/image-separator';
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
 
 import ImageLightbox from './_components/image-lightbox';
 import { Download } from 'lucide-react';
+import { CustomButton } from '@/components/custom-button';
 
 export const metadata = buildMetadata(ROUTES.GARDEN_MAP);
 
@@ -24,17 +24,18 @@ export default function GardenMapPage() {
 
                 <ImageLightbox />
 
-                <a
+                <CustomButton
                     href="/documents/Plan_Zagospodarowania_ROD_Stokrotka.pdf"
+                    external
                     download
-                    className="btn btn-lg btn-theme-primary mx-auto"
+                    size="lg"
+                    variant="primary"
+                    className="mx-auto"
                 >
                     <Download />
                     Pobierz szczegółowy plan
-                </a>
+                </CustomButton>
             </section>
-
-            <ImageSeparator />
         </article>
     );
 }

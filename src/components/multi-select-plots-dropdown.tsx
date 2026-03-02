@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@/utils/cn';
 import { ChevronDown } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
@@ -13,9 +14,10 @@ interface Props {
     name: string; // np. "plotIds"
     options: MultiSelectOption[]; // lista dostępnych opcji
     initialSelectedIds?: number[]; // już przypisane
+    className?: string;
 }
 
-export function MultiSelectDropdown({ name, options, initialSelectedIds = [] }: Props) {
+export function MultiSelectDropdown({ name, options, initialSelectedIds = [], className }: Props) {
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState<number[]>(initialSelectedIds);
     const ref = useRef<HTMLDivElement>(null);
@@ -43,7 +45,10 @@ export function MultiSelectDropdown({ name, options, initialSelectedIds = [] }: 
             <button
                 type="button"
                 onClick={() => setOpen((o) => !o)}
-                className="border-theme-200 focus:border-theme-ui-border-dark bg-theme-bg-primary w-full rounded-md border px-3 py-2 shadow-sm hover:cursor-pointer focus:outline-none"
+                className={cn(
+                    'border-theme-200 focus:border-theme-ui-border-dark bg-theme-bg-primary w-full rounded-md border px-3 py-2 shadow-sm hover:cursor-pointer focus:outline-none',
+                    className
+                )}
             >
                 {selected.length === 0 ? (
                     <span className="flex items-center justify-between">
@@ -62,7 +67,7 @@ export function MultiSelectDropdown({ name, options, initialSelectedIds = [] }: 
                     {options.map((opt) => (
                         <label
                             key={opt.id}
-                            className={`flex items-center gap-2 px-3 py-1 ${opt.disabled ? 'opacity-50' : 'cursor-pointer hover:bg-gray-100'}`}
+                            className={`flex items-center gap-2 px-3 py-1 text-slate-700 ${opt.disabled ? 'opacity-50' : 'cursor-pointer hover:bg-gray-100'}`}
                         >
                             <input
                                 type="checkbox"

@@ -3,7 +3,7 @@ import { Ban, Save } from 'lucide-react';
 
 import { ROUTES } from '@/config/routes';
 
-import { PlotUpdateFormReadModel } from '@/domain/plot/plot.read-models';
+import { PlotUpdateFormReadModel } from '@/features/plot/plot.read-models';
 
 interface Props {
     plot: PlotUpdateFormReadModel;

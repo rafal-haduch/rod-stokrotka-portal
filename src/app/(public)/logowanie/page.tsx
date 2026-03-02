@@ -16,8 +16,8 @@ export default function LoginPage() {
                 Logowanie do profilu Dzialkowca Stowarzyszenia Ogrodowego „Stokrotka”
             </h1>
 
-            <section aria-labelledby="login-form-heading">
-                <div className="form surface-elevated mx-auto mt-4 max-w-md rounded-xl p-8 shadow-xl">
+            <section aria-labelledby="login-form-heading" className="pt-8">
+                <div className="form surface-elevated mx-auto max-w-md rounded-xl p-8 shadow-xl">
                     <h2
                         id="login-form-heading"
                         className="text-theme-on-surface font-heading text-center text-6xl font-semibold normal-case"

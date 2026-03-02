@@ -4,10 +4,10 @@ import { useState } from 'react';
 
 import { DeletePlotResult } from '@/contracts/plot-actions';
 
-import { deletePlot } from '@/domain/plot/actions/delete-plot.action';
+import { deletePlot } from '@/features/plot/actions/delete-plot.action';
 import DeletePlotFields from './delete-plot-fields';
 import DeletePlotSuccess from './delete-plot-success';
-import { PlotDeleteFormReadModel } from '@/domain/plot/plot.read-models';
+import { PlotDeleteFormReadModel } from '@/features/plot/plot.read-models';
 
 export default function DeletePlotForm({ plot }: { plot: PlotDeleteFormReadModel }) {
     const [result, setResult] = useState<DeletePlotResult | null>(null);

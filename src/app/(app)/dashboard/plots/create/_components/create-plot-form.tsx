@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { CreatePlotResult } from '@/contracts/plot-actions';
 
-import { createPlot } from '@/domain/plot/actions/create-plot.action';
+import { createPlot } from '@/features/plot/actions/create-plot.action';
 
 import CreatePlotFields from './create-plot-fields';
 import CreatePlotSuccess from './create-plot-success';

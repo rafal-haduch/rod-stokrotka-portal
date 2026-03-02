@@ -48,7 +48,7 @@ export const ROUTES = {
         meta: {
             title: 'Mapa ogrodu',
         },
-        mainNav: { label: 'Mapa', order: 3 },
+        mainNav: { label: 'Mapa ogrodu', order: 3 },
     },
     GALLERY: {
         path: '/galeria',
@@ -57,68 +57,68 @@ export const ROUTES = {
         },
         mainNav: { label: 'Galeria', order: 4 },
     },
-    GOVERNANCE: {
-        path: '/wladze',
-        meta: {
-            title: 'Władze stowarzyszenia',
-        },
-        mainNav: { label: 'Władze', order: 5 },
-    },
     CONTACT: {
         path: '/kontakt',
         meta: {
             title: 'Dane kontaktowe',
         },
-        mainNav: { label: 'Kontakt', order: 6 },
-    },
-    DOCUMENTS: {
-        path: '/dokumenty',
-        meta: {
-            title: 'DOKUMENTY',
-        },
-        mainNav: { label: 'Dokumenty', order: 7 },
-    },
-    FEES: {
-        path: '/oplaty',
-        meta: {
-            title: 'Opłaty',
-        },
-        mainNav: { label: 'Opłaty', order: 8 },
-    },
-    INFORMATIONS: {
-        path: '/informacje',
-        meta: {
-            title: 'Informacje organizacyjne',
-        },
-        mainNav: { label: 'Informacje', order: 9 },
-    },
-    ANNOUNCEMENTS: {
-        path: '/ogloszenia',
-        meta: {
-            title: 'Ogłoszenia zarządu',
-        },
-        mainNav: { label: 'Ogłoszenia', order: 10 },
-    },
-    MEMORIES: {
-        path: '/wspomnienia',
-        meta: {
-            title: 'Wspomnienia',
-        },
-        mainNav: { label: 'Wspomnienia', order: 11 },
-    },
-    INVESTMENTS: {
-        path: '/inwestycje',
-        meta: {
-            title: 'Inwestycje w ogrodzie',
-        },
-        mainNav: { label: 'Inwestycje', order: 12 },
+        mainNav: { label: 'Kontakt', order: 5 },
     },
     GARDENING_GUIDE: {
         path: '/porady-ogrodowe',
         meta: {
             title: 'Porady ogrodowe',
         },
-        mainNav: { label: 'Porady ogrodowe', order: 13 },
+        mainNav: { label: 'Porady ogrodowe', order: 6 },
+    },
+    GOVERNANCE: {
+        path: '/wladze',
+        meta: {
+            title: 'Władze stowarzyszenia',
+        },
+        mainNav: { label: 'Władze', order: 7 },
+    },
+    DOCUMENTS: {
+        path: '/dokumenty',
+        meta: {
+            title: 'DOKUMENTY',
+        },
+        mainNav: { label: 'Dokumenty', order: 8 },
+    },
+    FEES: {
+        path: '/oplaty',
+        meta: {
+            title: 'Opłaty',
+        },
+        mainNav: { label: 'Opłaty', order: 9 },
+    },
+    INFORMATIONS: {
+        path: '/informacje',
+        meta: {
+            title: 'Informacje organizacyjne',
+        },
+        mainNav: { label: 'Informacje', order: 10 },
+    },
+    ANNOUNCEMENTS: {
+        path: '/ogloszenia',
+        meta: {
+            title: 'Ogłoszenia zarządu',
+        },
+        mainNav: { label: 'Ogłoszenia', order: 11 },
+    },
+    MEMORIES: {
+        path: '/wspomnienia',
+        meta: {
+            title: 'Wspomnienia',
+        },
+        mainNav: { label: 'Wspomnienia', order: 12 },
+    },
+    INVESTMENTS: {
+        path: '/inwestycje',
+        meta: {
+            title: 'Inwestycje w ogrodzie',
+        },
+        mainNav: { label: 'Inwestycje', order: 13 },
     },
     LOGIN: {
         path: '/logowanie',

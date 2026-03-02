@@ -4,14 +4,15 @@ import { KeyRound } from 'lucide-react';
 
 import { ROUTES } from '@/config/routes';
 
-import { getRoleLabel } from '@/domain/user/user.helpers';
+import { getRoleLabel } from '@/features/user/domain/user.helpers';
 
-import { requireSession } from '@/domain/auth/require-session';
-import { userRepository } from '@/domain/user/user.repository';
-import { mapUserToUserProfile } from '@/domain/user/user.mapper';
+import { requireSession } from '@/features/auth/require-session';
+import { userRepository } from '@/features/user/domain/user.repository';
+import { mapUserToUserProfile } from '@/features/user/domain/user.mapper';
 
 export default async function MyProfilePage() {
     const session = await requireSession();
+    //TODO: change into queries
     const user = await userRepository.findByIdWithPlots(session.id);
     //REVIEW: change to 500?
     if (!user) notFound();
@@ -21,8 +22,8 @@ export default async function MyProfilePage() {
     return (
         <section>
             <h1 className="h2">Mój profil</h1>
-
-            <section className="panel-bl mx-auto max-w-lg space-y-4 rounded-lg p-6 text-base shadow-lg sm:text-lg">
+            {/* TODO: move into /features/user/ui */}
+            <section className="panel surface-elevated-subtle mx-auto max-w-lg space-y-4 p-6 text-lg">
                 <h2 className="sr-only">Moje dane</h2>
                 {/* Name */}
                 <div className="flex items-center gap-1">

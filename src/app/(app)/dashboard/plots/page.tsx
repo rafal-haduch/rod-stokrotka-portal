@@ -4,8 +4,8 @@ import { Pencil, Plus, Trash2 } from 'lucide-react';
 import { ROUTES } from '@/config/routes';
 
 import { formatPlotCode } from '@/utils/format-plot-code';
-import { plotRepository } from '@/domain/plot/plot.repository';
-import { mapPlotsToPlotTableRows } from '@/domain/plot/plot.mapper';
+import { plotRepository } from '@/features/plot/plot.repository';
+import { mapPlotsToPlotTableRows } from '@/features/plot/plot.mapper';
 
 export default async function DashboardPlotsPage() {
     const plots = await plotRepository.findManyWithOwners();

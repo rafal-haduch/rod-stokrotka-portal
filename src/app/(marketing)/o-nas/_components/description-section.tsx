@@ -2,7 +2,7 @@ import { AnimateOnView } from '@/components/animated-h2';
 
 export default function DescriptionSection() {
     return (
-        <section className="sm:px-4 lg:px-8 xl:px-12">
+        <section>
             <AnimateOnView className="h2-animate">
                 <h2>Kilka słów o ogrodzie ,,Stokrotka'' w Sanoku</h2>
             </AnimateOnView>

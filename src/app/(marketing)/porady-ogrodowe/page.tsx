@@ -4,7 +4,6 @@ import { buildMetadata } from '@/lib/metadata';
 
 import { recommendedSites } from '@/content/data/recommended-sites';
 
-import { ImageSeparator } from '@/components/image-separator';
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { LineSeparator } from '@/components/line-separator';
 import { WorkInProgress } from '@/components/work-in-progress';
@@ -49,8 +48,6 @@ export default function GardeningGuidePage() {
                 <h3>Wybrane artykuły:</h3>
                 <WorkInProgress />
             </section>
-
-            <ImageSeparator />
         </article>
     );
 }

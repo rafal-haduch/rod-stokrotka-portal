@@ -463,7 +463,7 @@
     --surface-elevated-border-hover: var(--primary-color-600);
 
     --on-surface-elevated: var(--secondary-color-500);
-    --on-surface-elevated-hover: var(--secondary-color-600);
+    --on-surface-elevated-hover: var(--secondary-color-700);
 
     /* Inverted layer */
     --surface-inverted-light: var(--primary-color-400);
@@ -665,7 +665,7 @@
     }
 
     thead th {
-        @apply border-theme-surface-border border border-b-0 px-1 py-2;
+        @apply border-theme-surface-elevated-border-hover border border-b-0 px-1 py-2;
     }
 
     tbody tr:hover {
@@ -674,7 +674,11 @@
 
     tbody th,
     td {
-        @apply border-theme-surface-border border px-1 py-1 font-normal;
+        @apply border-theme-surface-elevated-border-hover border px-1 py-1 font-normal;
+    }
+
+    td {
+        @apply text-center align-middle;
     }
 }
 
@@ -719,6 +723,10 @@
         @apply bg-theme-surface text-theme-on-surface border-theme-surface-border hover:bg-theme-surface-hover;
     }
 
+    .surface-elevated-subtle {
+        @apply from-theme-background-body via-theme-background-main to-theme-background-body border-theme-surface-border bg-linear-to-br;
+    }
+
     .surface-elevated {
         @apply from-theme-surface-elevated-dark via-theme-surface-elevated-light to-theme-surface-elevated-dark text-theme-on-surface-elevated border-theme-surface-elevated-border bg-linear-to-br;
     }
@@ -750,7 +758,7 @@
     }
 
     .input-form {
-        @apply bg-theme-background-main border-theme-surface-elevated-border focus:border-theme-surface-elevated-border-hover w-full rounded-md border p-2 text-slate-700 shadow-sm focus:shadow-md focus:outline-none;
+        @apply bg-theme-background-main border-theme-surface-elevated-border focus:border-theme-surface-elevated-border-hover text-theme-foreground-content w-full rounded-md border p-2 shadow-sm focus:shadow-md focus:outline-none;
     }
 
     /* NOTE: For consistency, use with the surface-elevated class. */
@@ -758,9 +766,9 @@
         @apply rounded-xl border-2 shadow-lg;
     }
 
-    /* NOTE: For consistency, use with the surface-elevated class. */
+    /* NOTE: For consistency, use with the surface-elevated-subtle/surface-elevated class. */
     .panel {
-        @apply rounded-xl border-4 shadow-lg;
+        @apply rounded-xl border-3 shadow-lg;
     }
 
     .navbar {
@@ -839,7 +847,7 @@
 
     /* NOTE: Use for action buttons in the dashboard. */
     .btn-action {
-        @apply bg-theme-accent-strong border-theme-accent-strong-border hover:bg-theme-accent-strong-hover text-theme-on-accent-strong;
+        @apply bg-theme-accent-strong border-theme-accent-border hover:bg-theme-accent-strong-hover text-white;
     }
 
     /* NOTE: Use for danger action buttons in the dashboard. */

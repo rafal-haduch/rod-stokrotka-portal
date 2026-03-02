@@ -6,7 +6,7 @@ import { ArrowLeft, CircleUserRound, LayoutDashboard, X } from 'lucide-react';
 import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/config/routes';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/utils/cn';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CustomButton } from '@/components/custom-button';
 
 const routes = ROUTE_LIST as AppRouteBase[];
@@ -18,12 +18,41 @@ export default function DashboardPanelHeader() {
     const path = usePathname();
     const [isOpen, setIsOpen] = useState(false);
 
+    // Closed mobile menu at sm break point
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(min-width: 640px)');
+
+        const handleChange = (e: MediaQueryListEvent) => {
+            if (e.matches) {
+                setIsOpen(false);
+            }
+        };
+
+        mediaQuery.addEventListener('change', handleChange);
+
+        return () => mediaQuery.removeEventListener('change', handleChange);
+    }, []);
+
+    // Block scroll when mobile menu is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+
+        // Cleanup in case of component unmounting
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isOpen]);
+
     return (
         <header
             aria-label="Panel zarządzania dla czlonków zarządu Stowarzyszenia Ogrodowego Stokrotka w Sanoku"
-            className="panel-br relative mx-auto mb-4 flex w-full max-w-5xl flex-col justify-between rounded-lg p-4 shadow-md"
+            className="panel surface-elevated mx-auto flex w-full max-w-5xl flex-col justify-between overflow-x-hidden p-4 pb-0 sm:pb-4"
         >
-            <div className="flex w-full items-center justify-center text-5xl">
+            <div>
                 <Link href="/dashboard">
                     <p
                         id="dashboard-context-heading"
@@ -52,9 +81,9 @@ export default function DashboardPanelHeader() {
                         <li
                             key={item.path}
                             className={cn(
-                                'text-theme-ui-foreground-primary hover:text-theme-ui-foreground-secondary hover:underline',
+                                'hover:text-theme-on-surface-elevated-hover hover:underline',
                                 path === item.path
-                                    ? 'text-theme-ui-foreground-secondary underline'
+                                    ? 'text-theme-on-surface-elevated-hover underline'
                                     : ''
                             )}
                         >
@@ -69,67 +98,49 @@ export default function DashboardPanelHeader() {
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Przycisk do rozwijania mobilnego menu"
                 className={cn(
-                    'text-theme-txt',
-                    'flex flex-col items-center justify-center hover:cursor-pointer sm:hidden'
+                    'flex flex-col items-center justify-center hover:cursor-pointer sm:hidden',
+                    isOpen ? 'invisible' : 'visible'
                 )}
             >
-                <div className="relative flex h-8 w-8 flex-col items-center justify-center">
-                    <span
-                        className={cn(
-                            'absolute h-1 w-8',
-                            'bg-theme-ui-background-extra-dark',
-                            'transition-transform duration-300 ease-in-out',
-                            isOpen ? 'translate-y-0 rotate-45' : '-translate-y-2'
-                        )}
-                    />
-                    <span
-                        className={cn(
-                            'absolute h-1 w-8',
-                            'bg-theme-ui-background-extra-dark',
-                            'transition-opacity duration-200 ease-in-out',
-                            isOpen ? 'opacity-0' : 'opacity-100'
-                        )}
-                    />
-                    <span
-                        className={cn(
-                            'absolute h-1 w-8',
-                            'bg-theme-ui-background-extra-dark',
-                            'transition-transform duration-300 ease-in-out',
-                            isOpen ? 'translate-y-0 -rotate-45' : 'translate-y-2'
-                        )}
-                    />
+                <div className="flex h-fit w-8 flex-col items-center justify-center gap-1">
+                    <span className={cn('h-1 w-8', 'bg-theme-on-surface-elevated')} />
+                    <span className={cn('h-1 w-8', 'bg-theme-on-surface-elevated')} />
+                    <span className={cn('h-1 w-8', 'bg-theme-on-surface-elevated')} />
                 </div>
+                <span className="font-semibold">Menu</span>
             </button>
 
             {/* Mobile menu */}
             {isOpen && (
                 <nav
-                    aria-label="Nawigacja panelu do zarządzania"
-                    className="panel-br fixed inset-0 z-40 my-22 h-fit w-full bg-linear-to-l pb-12 shadow-xl sm:hidden"
+                    aria-label="Mobilna Nawigacja w panelu do zarządzania"
+                    className="fixed inset-0 z-60 flex items-center bg-black/50 bg-linear-to-l px-2 shadow-xl sm:hidden"
                 >
-                    <button
-                        onClick={() => setIsOpen(false)}
-                        aria-label="Przycisk do zamykania mobilnego menu"
-                        className="ml-auto flex p-4 hover:cursor-pointer"
-                    >
-                        <X className="text-theme-ui-foreground-primary h-10 w-10" />
-                    </button>
+                    <div className="panel surface-elevated z-60 h-fit w-full rounded-xl pb-12">
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            aria-label="Przycisk do zamykania mobilnego menu"
+                            className="ml-auto flex p-4 hover:cursor-pointer"
+                        >
+                            <X className="text-theme-ui-foreground-primary h-10 w-10" />
+                        </button>
 
-                    <ul className="font-nav mx-auto items-center justify-center space-y-6 gap-x-6 text-center font-semibold">
-                        {navItems.map((item) => (
-                            <li
-                                key={item.path}
-                                className={cn(
-                                    'hover:text-theme-ui-foreground-secondary text-theme-ui-foreground-primary hover:underline',
-                                    path === item.path
-                                        ? 'text-theme-ui-foreground-secondary underline'
-                                        : ''
-                                )}
-                            >
-                                <Link href={item.path}>{item.dashboardNav?.label}</Link>
-                            </li>
-                        ))}
-                    </ul>
+                        <ul className="font-nav mx-auto items-center justify-center space-y-6 gap-x-6 text-center font-semibold">
+                            {navItems.map((item) => (
+                                <li
+                                    key={item.path}
+                                    className={cn(
+                                        'hover:text-theme-on-surface-elevated-hover hover:underline',
+                                        path === item.path
+                                            ? 'text-theme-on-surface-elevated-hover underline'
+                                            : ''
+                                    )}
+                                >
+                                    <Link href={item.path}>{item.dashboardNav?.label}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </nav>
             )}
         </header>

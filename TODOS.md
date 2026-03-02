@@ -1,6 +1,6 @@
 # TODOS
 
-- major improved all user modal action
+- organize project structure in /features/urser (all todos, reviews, improve imports, remove delete form, fix close modal buttons  etc.  )
 
 # REVIEWS
 

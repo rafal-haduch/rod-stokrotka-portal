@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
+import { ImageSeparator } from '@/components/image-separator';
 
 export default function PublicLayout({
     children,
@@ -9,7 +10,10 @@ export default function PublicLayout({
     return (
         <>
             <Navbar />
-            <main className="overflow-x-hidden pb-24">{children}</main>
+            <main className="overflow-x-hidden px-4 sm:px-6 lg:px-8">
+                {children}
+                <ImageSeparator />
+            </main>
             <Footer />
         </>
     );

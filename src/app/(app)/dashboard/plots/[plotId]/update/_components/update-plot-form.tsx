@@ -3,10 +3,10 @@
 import { useState } from 'react';
 
 import { UpdatePlotResult } from '@/contracts/plot-actions';
-import { updatePlot } from '@/domain/plot/actions/update-plot.action';
+import { updatePlot } from '@/features/plot/actions/update-plot.action';
 import UpdatePlotSuccess from './update-plot-success';
 import UpdatePlotFields from './update-plot-fields';
-import { PlotUpdateFormReadModel } from '@/domain/plot/plot.read-models';
+import { PlotUpdateFormReadModel } from '@/features/plot/plot.read-models';
 
 export default function UpdatePlotForm({ plot }: { plot: PlotUpdateFormReadModel }) {
     const [result, setResult] = useState<UpdatePlotResult | null>(null);

@@ -1,6 +1,6 @@
 import { Role } from '@prisma/client';
-import { ErrorCode } from '@/domain/error/error-codes';
-import { PlotOption } from '@/domain/plot/plot.read-models';
+import { ErrorCode } from '@/features/error/error-codes';
+import { PlotOption } from '@/features/plot/plot.read-models';
 
 // CREATE
 export interface CreateUserSuccess {

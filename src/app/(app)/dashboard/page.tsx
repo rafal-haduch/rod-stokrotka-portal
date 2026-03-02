@@ -1,4 +1,4 @@
-import { getRoleLabel } from '@/domain/user/user.helpers';
+import { getRoleLabel } from '@/features/user/domain/user.helpers';
 
 import { getUserSession } from '@/lib/auth/get-user-session';
 

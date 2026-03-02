@@ -9,7 +9,7 @@ import { cn } from '@/utils/cn';
 
 import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/config/routes';
 
-import { isAdminOrBoard } from '@/domain/user/user.helpers';
+import { isAdminOrBoard } from '@/features/user/domain/user.helpers';
 import { CustomButton } from '@/components/custom-button';
 
 const routes = ROUTE_LIST as AppRouteBase[];
@@ -30,7 +30,7 @@ export default function UserPanelHeader() {
     return (
         <header
             aria-label="Panel profilu działkowca"
-            className="panel-br relative mx-auto mb-8 flex w-full max-w-5xl flex-col justify-between overflow-x-hidden rounded-lg p-4 shadow-md"
+            className="panel surface-elevated mx-auto flex w-full max-w-5xl flex-col justify-between overflow-x-hidden p-4"
         >
             {/* First row */}
             <div className="flex w-full items-stretch justify-between">
@@ -82,9 +82,9 @@ export default function UserPanelHeader() {
                         <li
                             key={item.path}
                             className={cn(
-                                'text-theme-ui-foreground-primary hover:text-theme-ui-foreground-secondary hover:underline',
+                                'hover:text-theme-on-surface-elevated-hover hover:underline',
                                 pathname === item.path
-                                    ? 'text-theme-ui-foreground-secondary underline'
+                                    ? 'text-theme-on-surface-elevated-hover underline'
                                     : ''
                             )}
                         >

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ROUTES } from '@/config/routes';
 import { Ban, Trash2 } from 'lucide-react';
-import { PlotDeleteFormReadModel } from '@/domain/plot/plot.read-models';
+import { PlotDeleteFormReadModel } from '@/features/plot/plot.read-models';
 
 interface Props {
     plot: PlotDeleteFormReadModel;

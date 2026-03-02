@@ -68,7 +68,7 @@ export default function GardenStats() {
     return (
         <div
             ref={sectionRef}
-            className="mx-auto grid max-w-3xl grid-cols-1 place-items-center gap-12 px-4 sm:grid-cols-2"
+            className="mx-auto grid max-w-3xl grid-cols-1 place-items-center gap-12 sm:grid-cols-2"
         >
             {gardenStats.map((item, i) => (
                 <div

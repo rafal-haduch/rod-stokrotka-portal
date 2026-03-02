@@ -2,7 +2,6 @@ import { ROUTES } from '@/config/routes';
 
 import { buildMetadata } from '@/lib/metadata';
 
-import { ImageSeparator } from '@/components/image-separator';
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { LineSeparator } from '@/components/line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
@@ -29,8 +28,6 @@ export default function ContactPage() {
 
                 <ContactForm />
             </section>
-
-            <ImageSeparator />
         </article>
     );
 }
