@@ -7,17 +7,16 @@ import { CreateUserResult } from '@/contracts/user-actions';
 
 import Portal from '@/components/portal';
 
+import { PlotMinimalReference } from '@/features/plot/plot.read-models';
+
+import { UserTableRow } from '@/features/user/domain/user.read-models';
 import { createUser } from '@/features/user/domain/actions/create-user.action';
-import { PlotOption } from '@/features/plot/plot.read-models';
 
-import { UserTableRow } from '../../domain/user.read-models';
-
-import CreateUserForm from '../forms/create-user-form';
-
-import CreateUserSuccess from './create-user-success';
+import CreateUserForm from '@/features/user/ui/forms/create-user-form';
+import CreateUserSuccess from '@/features/user/ui/modals/create-user-success';
 
 interface Props {
-    plotOptions: PlotOption[];
+    plotOptions: PlotMinimalReference[];
     onCloseModal: () => void;
     onUserCreated: (newUserRow: UserTableRow) => void;
 }

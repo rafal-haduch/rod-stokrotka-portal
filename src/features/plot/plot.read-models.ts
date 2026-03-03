@@ -31,9 +31,10 @@ export interface PlotDeleteFormReadModel {
 }
 
 /**
- * Available plot used as an option in UI multi-select dropdown inputs.
+ * Represents a plot with minimal information needed for UI display or assignment to a user.
+ * Can be used in tables, user profiles, forms, and dropdowns.
  */
-export interface PlotOption {
-    id: number;
-    plotNumber: string;
+export interface PlotMinimalReference {
+    id: number; // plot ID
+    plotNumber: string; // human-readable plot number
 }

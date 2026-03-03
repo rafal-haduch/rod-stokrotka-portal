@@ -1,68 +1,33 @@
-import { UsersWithPlotsFromDb, UserWithPlotsFromDb } from './user.db-types';
-import {
-    UserTableRow,
-    UserDeleteFormReadModel,
-    UserUpdateFormReadModel,
-    UserProfileReadModel,
-} from './user.read-models';
+import { UserProfileFromDb, UserTableRowsFromDb } from './user.db-types';
+import { UserTableRow, UserProfile } from './user.read-models';
 
 /**
- * Maps a user entity with plots from database to a user profile read model.
+ * Maps a row user entity with plots from database to a user profile read model.
  */
-export function mapUserToUserProfile(user: UserWithPlotsFromDb): UserProfileReadModel {
+export function mapToUserProfile(user: UserProfileFromDb): UserProfile {
     return {
         name: user.name,
         role: user.role,
         login: user.login,
         plots: user.plotsId.map((p) => ({
-            plotId: p.plotId,
+            id: p.plot.id,
             plotNumber: p.plot.plotNumber,
         })),
     };
 }
 
 /**
- * Maps a collection of users with plots from database to dashboard user table rows read model.
+ * Maps a row collection of users with plots from database to dashboard user table rows read model.
  */
-export function mapUsersToUserTableRows(users: UsersWithPlotsFromDb): UserTableRow[] {
-    return users.map((user) => ({
-        id: user.id,
-        name: user.name,
-        role: user.role,
-        plots: user.plotsId.map((userPlot) => {
+export function mapToUserTableRows(input: UserTableRowsFromDb): UserTableRow[] {
+    return input.map((userRow) => ({
+        id: userRow.id,
+        name: userRow.name,
+        role: userRow.role,
+        plots: userRow.plotsId.map((userPlot) => {
             return { id: userPlot.plot.id, plotNumber: userPlot.plot.plotNumber };
         }),
-        createdAt: user.createdAt,
-        lastLogin: user.lastLogin,
+        createdAt: userRow.createdAt,
+        lastLogin: userRow.lastLogin,
     }));
-}
-
-/**
- * Maps a user entity with plots from database to a user update form read model.
- */
-export function mapUserToUserUpdateForm(user: UserWithPlotsFromDb): UserUpdateFormReadModel {
-    return {
-        id: user.id,
-        name: user.name,
-        role: user.role,
-        plots: user.plotsId.map((p) => ({
-            plotId: p.plotId,
-            plotNumber: p.plot.plotNumber,
-        })),
-    };
-}
-
-/**
- * Maps a user entity with plots from database to a user delete form read model.
- */
-export function mapUserToUserDeleteForm(user: UserWithPlotsFromDb): UserDeleteFormReadModel {
-    return {
-        id: user.id,
-        name: user.name,
-        role: user.role,
-        plots: user.plotsId.map((p) => ({
-            plotId: p.plotId,
-            plotNumber: p.plot.plotNumber,
-        })),
-    };
 }

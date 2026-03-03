@@ -1,10 +1,11 @@
 import { getSortedAvailablePlots } from '@/features/plot/queries/get-sorted-available-plots.query';
-import { getDashboardUserTableRows } from '@/features/user/domain/queries/get-dashboard-user-table-rows';
+
+import { getUserTableRows } from '@/features/user/domain/queries/get-user-table-rows.query';
 
 import DashboardUsersView from '@/features/user/ui/dashboard-users-view';
 
 export default async function DashboardUsersPage() {
-    const userTableRows = await getDashboardUserTableRows();
+    const userTableRows = await getUserTableRows();
     const plotOptions = await getSortedAvailablePlots();
 
     return <DashboardUsersView userTableRows={userTableRows} plotOptions={plotOptions} />;

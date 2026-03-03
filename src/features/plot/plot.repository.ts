@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma';
-import { PlotOption } from './plot.read-models';
+import { PlotMinimalReference } from './plot.read-models';
 
 interface CreatePlotData {
     plotNumber: string;
@@ -77,7 +77,7 @@ export const plotRepository = {
     // === Special for queries ===
     // ===========================
 
-    async getPlotOptions(): Promise<PlotOption[]> {
+    async getPlotOptions(): Promise<PlotMinimalReference[]> {
         return prisma.plot.findMany({
             orderBy: { plotNumber: 'asc' },
             select: {

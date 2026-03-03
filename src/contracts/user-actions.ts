@@ -1,6 +1,6 @@
 import { Role } from '@prisma/client';
 import { ErrorCode } from '@/features/error/error-codes';
-import { PlotOption } from '@/features/plot/plot.read-models';
+import { PlotMinimalReference } from '@/features/plot/plot.read-models';
 
 // CREATE
 export interface CreateUserSuccess {
@@ -8,7 +8,7 @@ export interface CreateUserSuccess {
     data: {
         id: number;
         name: string;
-        plots: PlotOption[];
+        plots: PlotMinimalReference[];
         role: Role;
         login: string;
         password: string;
@@ -31,7 +31,7 @@ export interface UpdateUserSuccess {
     data: {
         id: number;
         name: string;
-        plots: PlotOption[];
+        plots: PlotMinimalReference[];
         role: Role;
         createdAt: Date;
         lastLogin: Date | null;

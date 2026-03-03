@@ -1,8 +1,10 @@
 # TODOS
 
-- organize project structure in /features/urser (all todos, reviews, improve imports, remove delete form, fix close modal buttons  etc.  )
+- review, optimize and improve all user feature 
 
 # REVIEWS
+
+- czy robic takie odstepy wi mportach jakie robie teraz? 
 
 - czy opisywac funkcje komponentow reactowych jako dokumentacja?
 

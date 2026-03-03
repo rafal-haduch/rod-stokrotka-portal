@@ -7,14 +7,14 @@ import { TooltipIcon } from '@/components/tooltip-icon';
 import { MultiSelectDropdown } from '@/components/multi-select-plots-dropdown';
 import { CustomButton } from '@/components/custom-button';
 
-import { PlotOption } from '@/features/plot/plot.read-models';
+import { PlotMinimalReference } from '@/features/plot/plot.read-models';
 
-import { getRoleLabel } from '../../domain/user.helpers';
-import { ASSIGNABLE_ROLES } from '../../domain/user.constants';
+import { ASSIGNABLE_ROLES } from '@/features/user/domain/user.constants';
+import { getRoleLabel } from '@/features/user/domain/user.helpers';
 
 interface Props {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-    plotsOptions: PlotOption[];
+    plotsOptions: PlotMinimalReference[];
     loading: boolean;
     errorMsg: string | null;
 }

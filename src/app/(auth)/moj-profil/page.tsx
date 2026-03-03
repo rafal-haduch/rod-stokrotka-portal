@@ -4,20 +4,15 @@ import { KeyRound } from 'lucide-react';
 
 import { ROUTES } from '@/config/routes';
 
-import { getRoleLabel } from '@/features/user/domain/user.helpers';
-
 import { requireSession } from '@/features/auth/require-session';
-import { userRepository } from '@/features/user/domain/user.repository';
-import { mapUserToUserProfile } from '@/features/user/domain/user.mapper';
+import { getRoleLabel } from '@/features/user/domain/user.helpers';
+import { getUserProfile } from '@/features/user/domain/queries/get-user-profile.query';
 
 export default async function MyProfilePage() {
     const session = await requireSession();
-    //TODO: change into queries
-    const user = await userRepository.findByIdWithPlots(session.id);
+    const userProfile = await getUserProfile(session.id);
     //REVIEW: change to 500?
-    if (!user) notFound();
-
-    const userProfile = mapUserToUserProfile(user);
+    if (!userProfile) notFound();
 
     return (
         <section>

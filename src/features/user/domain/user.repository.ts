@@ -2,6 +2,12 @@ import { Role } from '@prisma/client';
 
 import { prisma } from '@/lib/prisma';
 import { UserTableRow } from './user.read-models';
+import {
+    UserProfileFromDb,
+    userProfileSelect,
+    UserTableRowsFromDb,
+    userTableRowsSelect,
+} from './user.db-types';
 
 interface CreateUserData {
     name: string;
@@ -139,42 +145,18 @@ export const userRepository = {
         });
     },
 
-    // ===========================
-    // === Special for queries ===
-    // ===========================
+    /* ============================ */
+    /* === QUERIES FOR SELECT USE CASES === */
+    /* ============================ */
 
-    async getUserTableRows(): Promise<UserTableRow[]> {
-        const users = await prisma.user.findMany({
-            select: {
-                id: true,
-                name: true,
-                role: true,
-                createdAt: true,
-                lastLogin: true,
-                plotsId: {
-                    select: {
-                        plot: {
-                            select: {
-                                id: true,
-                                plotNumber: true,
-                            },
-                        },
-                    },
-                },
-            },
+    async getUserProfile(id: number): Promise<UserProfileFromDb | null> {
+        return prisma.user.findUnique({
+            where: { id },
+            select: userProfileSelect.select,
         });
-        return users.map((u) => ({
-            id: u.id,
-            name: u.name,
-            role: u.role,
-            createdAt: new Date(u.createdAt),
-            lastLogin: u.lastLogin ? new Date(u.lastLogin) : null,
-            plots: u.plotsId.map((p) => {
-                return {
-                    id: p.plot.id,
-                    plotNumber: p.plot.plotNumber,
-                };
-            }),
-        }));
+    },
+
+    async getUserTableRows(): Promise<UserTableRowsFromDb> {
+        return await prisma.user.findMany(userTableRowsSelect);
     },
 };

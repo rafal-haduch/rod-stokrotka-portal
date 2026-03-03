@@ -1,6 +1,7 @@
 import { unstable_cache } from 'next/cache';
 import { UserTableRow } from '../user.read-models';
 import { userRepository } from '../user.repository';
+import { mapToUserTableRows } from '../user.mapper';
 
 /**
  * Fetches only the fields needed for the dashboard users table from the database.
@@ -9,9 +10,10 @@ import { userRepository } from '../user.repository';
  *
  * Use `revalidateTag('users')` after any server-side mutations to immediately refresh cached data.
  */
-export const getDashboardUserTableRows: () => Promise<UserTableRow[]> = unstable_cache(
+export const getUserTableRows: () => Promise<UserTableRow[]> = unstable_cache(
     async () => {
-        return await userRepository.getUserTableRows();
+        const result = await userRepository.getUserTableRows();
+        return mapToUserTableRows(result);
     },
     ['user-table-rows'],
     {

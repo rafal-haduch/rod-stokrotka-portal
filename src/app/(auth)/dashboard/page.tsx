@@ -9,7 +9,7 @@ export default async function DashboardPage() {
         <section className="pt-4 sm:pt-8">
             <h1 className="h2">Panel do zarządzania</h1>
 
-            <section className="panel-bl mx-auto max-w-3xl space-y-4 rounded-lg sm:p-4">
+            <section className="panel surface-elevated-subtle mx-auto max-w-3xl space-y-4 rounded-lg sm:p-4">
                 <h2 className="h3">Informacja dla członków zarządu</h2>
                 <p>
                     Jesteś zalogowany jako <strong>{user.name}</strong> z rolą{' '}

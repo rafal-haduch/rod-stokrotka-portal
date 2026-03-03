@@ -1,23 +1,25 @@
 'use client';
 
 import { useState } from 'react';
+import { X } from 'lucide-react';
 
 import { UpdateUserResult } from '@/contracts/user-actions';
 
 import Portal from '@/components/portal';
 
-import { PlotOption } from '@/features/plot/plot.read-models';
+import { PlotMinimalReference } from '@/features/plot/plot.read-models';
 
-import { UserTableRow } from '../../domain/user.read-models';
-import { updateUser } from '../../domain/actions/update-user.action';
+import { updateUser } from '@/features/user/domain/actions/update-user.action';
 
-import EditUserForm from '../forms/edit-user-form';
+import { UserTableRow } from '@/features/user/domain/user.read-models';
+
+import EditUserForm from '@/features/user/ui/forms/edit-user-form';
 
 interface Props {
     user: UserTableRow;
     onCloseModal: () => void;
     onUpdatedUser: (updatedUserRow: UserTableRow) => void;
-    plotOptions: PlotOption[];
+    plotOptions: PlotMinimalReference[];
 }
 
 export default function EditUserModal({ user, onCloseModal, onUpdatedUser, plotOptions }: Props) {
@@ -60,9 +62,16 @@ export default function EditUserModal({ user, onCloseModal, onUpdatedUser, plotO
                     aria-label="Okno dodawania nowego konta działkowca"
                     className="panel surface-elevated mx-auto max-w-xl"
                 >
+                    <button
+                        type="button"
+                        onClick={onCloseModal}
+                        title="Zamknij okno edycji danych konta działkowca"
+                        className="ml-auto flex p-2 hover:cursor-pointer"
+                    >
+                        <X className="h-8 w-8" />
+                    </button>
                     <EditUserForm
                         onSubmit={handleSubmit}
-                        onCloseModal={onCloseModal}
                         plotsOptions={plotOptions}
                         userData={user}
                         loading={loading}

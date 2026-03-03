@@ -5,11 +5,12 @@ import { X } from 'lucide-react';
 
 import { DeleteUserResult } from '@/contracts/user-actions';
 
-import { CustomButton } from '@/components/custom-button';
 import Portal from '@/components/portal';
 
-import { deleteUser } from '../../domain/actions/delete-user.action';
-import { UserTableRow } from '../../domain/user.read-models';
+import { UserTableRow } from '@/features/user/domain/user.read-models';
+import { deleteUser } from '@/features/user/domain/actions/delete-user.action';
+
+import DeleteUserForm from '@/features/user/ui/forms/delete-user-form';
 
 interface Props {
     user: UserTableRow;
@@ -66,42 +67,27 @@ export default function DeleteUserModal({ user, onCloseModal, onUserDeleted }: P
                         <X className="h-8 w-8" />
                     </button>
                     <div className="px-2 pb-6 sm:px-6">
-                        <form onSubmit={handleSubmit} aria-labelledby="delete-user-form-heading">
-                            <input type="hidden" name="userId" value={user.id}></input>
-                            {errorMsg ? (
-                                <p className="text-center text-red-500">{errorMsg}</p>
-                            ) : (
-                                <>
-                                    <p
-                                        id="delete-user-form-heading"
-                                        className="text-theme-foreground-content mb-4 text-center"
-                                    >
-                                        Czy na pewno chcesz usunąć konto działkowca{' '}
-                                        <strong className="whitespace-nowrap">{user.name}</strong>
-                                        ? <br /> Tę operację może cofnąć jedynie administrator
-                                        strony!
-                                    </p>
-                                    <div className="flex flex-row items-center justify-evenly gap-4 sm:gap-0">
-                                        <CustomButton
-                                            type="submit"
-                                            disabled={loading}
-                                            size="md"
-                                            variant="danger"
-                                        >
-                                            Usuń użytkownika
-                                        </CustomButton>
-                                        <CustomButton
-                                            type="button"
-                                            onClick={onCloseModal}
-                                            size="md"
-                                            variant="outline"
-                                        >
-                                            Anuluj
-                                        </CustomButton>
-                                    </div>
-                                </>
-                            )}
-                        </form>
+                        {errorMsg ? (
+                            <p className="text-center text-red-500">{errorMsg}</p>
+                        ) : (
+                            <>
+                                <p
+                                    id="delete-user-form-heading"
+                                    className="text-theme-foreground-content mb-4 text-center"
+                                >
+                                    Czy na pewno chcesz usunąć konto działkowca{' '}
+                                    <strong className="whitespace-nowrap">{user.name}</strong>
+                                    ? <br /> Tę operację może cofnąć jedynie administrator strony!
+                                </p>
+                                <DeleteUserForm
+                                    onSubmit={handleSubmit}
+                                    onCloseModal={onCloseModal}
+                                    userData={user}
+                                    loading={loading}
+                                    errorMsg={errorMsg}
+                                />
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

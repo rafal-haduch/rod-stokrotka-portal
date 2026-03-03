@@ -1,5 +1,5 @@
 import { unstable_cache } from 'next/cache';
-import { PlotOption } from '../plot.read-models';
+import { PlotMinimalReference } from '../plot.read-models';
 import { plotRepository } from '../plot.repository';
 
 /**
@@ -9,7 +9,7 @@ import { plotRepository } from '../plot.repository';
  *
  * Use `revalidateTag('plots')` after any server-side mutations to immediately refresh cached data.
  */
-export const getSortedAvailablePlots: () => Promise<PlotOption[]> = unstable_cache(
+export const getSortedAvailablePlots: () => Promise<PlotMinimalReference[]> = unstable_cache(
     async () => {
         return await plotRepository.getPlotOptions();
     },

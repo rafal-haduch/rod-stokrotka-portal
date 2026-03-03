@@ -7,22 +7,23 @@ import { CRUDModalType } from '@/types/crud-modal';
 
 import { CustomButton } from '@/components/custom-button';
 
-import { PlotOption } from '@/features/plot/plot.read-models';
+import { PlotMinimalReference } from '@/features/plot/plot.read-models';
 
-import { UserTableRow } from '../domain/user.read-models';
+import { UserTableRow } from '@/features/user/domain/user.read-models';
 
-import UsersTable from './users-table';
-import CreateUserModal from './modals/create-user-modal';
-import EditUserModal from './modals/edit-user-modal';
-import DeleteUserModal from './modals/delete-user-modal';
+import CreateUserModal from '@/features/user/ui/modals/create-user-modal';
+import EditUserModal from '@/features/user/ui/modals/edit-user-modal';
+import DeleteUserModal from '@/features/user/ui/modals/delete-user-modal';
+
+import UsersTable from '@/features/user/ui/users-table';
 
 interface Props {
     userTableRows: UserTableRow[];
-    plotOptions: PlotOption[];
+    plotOptions: PlotMinimalReference[];
 }
 
 export default function DashboardUsersView({ userTableRows, plotOptions }: Props) {
-    //NOTE: Copy user table rows into state for local update after server action mutation
+    //NOTE: Copy user table rows into state for local update after server action mutation.
     const [userRows, setUserRows] = useState<UserTableRow[]>(userTableRows);
     const [activeModal, setActiveModal] = useState<CRUDModalType>(null);
     const [selectedUser, setSelectedUser] = useState<UserTableRow | null>(null);

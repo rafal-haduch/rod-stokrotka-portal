@@ -9,7 +9,7 @@ import { CreateUserSuccess as CreateUserSuccessType } from '@/contracts/user-act
 
 import { CustomButton } from '@/components/custom-button';
 
-import { getRoleLabel } from '../../domain/user.helpers';
+import { getRoleLabel } from '@/features/user/domain/user.helpers';
 
 interface Props {
     result: CreateUserSuccessType;
