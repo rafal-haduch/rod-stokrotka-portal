@@ -10,11 +10,9 @@ import { CustomButton } from '@/components/custom-button';
 import { PlotMinimalReference } from '@/features/plot/plot.read-models';
 
 import { UserTableRow } from '@/features/user/domain/user.read-models';
-
 import CreateUserModal from '@/features/user/ui/modals/create-user-modal';
 import EditUserModal from '@/features/user/ui/modals/edit-user-modal';
 import DeleteUserModal from '@/features/user/ui/modals/delete-user-modal';
-
 import UsersTable from '@/features/user/ui/users-table';
 
 interface Props {

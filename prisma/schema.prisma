@@ -20,7 +20,7 @@ enum Role {
 model User {
     id       Int        @id @default(autoincrement())
     name     String
-    plotsId  UserPlot[]
+    plots    UserPlot[]
     role     Role       @default(ALLOTMENT_GARDENER)
     login    String     @unique
     password String

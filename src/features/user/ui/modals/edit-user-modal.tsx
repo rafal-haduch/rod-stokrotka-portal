@@ -10,9 +10,7 @@ import Portal from '@/components/portal';
 import { PlotMinimalReference } from '@/features/plot/plot.read-models';
 
 import { updateUser } from '@/features/user/domain/actions/update-user.action';
-
 import { UserTableRow } from '@/features/user/domain/user.read-models';
-
 import EditUserForm from '@/features/user/ui/forms/edit-user-form';
 
 interface Props {

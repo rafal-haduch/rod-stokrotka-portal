@@ -9,6 +9,7 @@
     "arrowParens": "always",
     "trailingComma": "es5",
     "endOfLine": "lf",
-
-    "plugins": ["prettier-plugin-tailwindcss"]
+    "plugins": [
+        "prettier-plugin-tailwindcss"
+    ]
 }

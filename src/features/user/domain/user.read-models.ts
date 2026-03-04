@@ -2,10 +2,6 @@ import { Role } from '@prisma/client';
 
 import { PlotMinimalReference } from '@/features/plot/plot.read-models';
 
-/* ======================= */
-/* === USE CASE PROJECTIONS === */
-/* ======================= */
-
 /**
  * Read model representing the current user's profile data.
  * Used for displaying personal account information.

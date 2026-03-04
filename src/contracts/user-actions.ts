@@ -1,6 +1,7 @@
 import { Role } from '@prisma/client';
 import { ErrorCode } from '@/features/error/error-codes';
 import { PlotMinimalReference } from '@/features/plot/plot.read-models';
+import { ActionError } from '@/features/error/error.types';
 
 // CREATE
 export interface CreateUserSuccess {
@@ -17,13 +18,7 @@ export interface CreateUserSuccess {
     };
 }
 
-export interface CreateUserError {
-    success: false;
-    errorCode: ErrorCode;
-    errorMsg: string;
-}
-
-export type CreateUserResult = CreateUserSuccess | CreateUserError;
+export type CreateUserResult = CreateUserSuccess | ActionError;
 
 // UPDATE
 export interface UpdateUserSuccess {
@@ -38,36 +33,18 @@ export interface UpdateUserSuccess {
     };
 }
 
-export interface UpdateUserError {
-    success: false;
-    errorCode: ErrorCode;
-    errorMsg: string;
-}
-
-export type UpdateUserResult = UpdateUserSuccess | UpdateUserError;
+export type UpdateUserResult = UpdateUserSuccess | ActionError;
 
 // DELETE
 export interface DeleteUserSuccess {
     success: true;
 }
 
-export interface DeleteUserError {
-    success: false;
-    errorCode: ErrorCode;
-    errorMsg: string;
-}
-
-export type DeleteUserResult = DeleteUserSuccess | DeleteUserError;
+export type DeleteUserResult = DeleteUserSuccess | ActionError;
 
 // CHANGE PASSWORD
 export interface ChangePasswordSuccess {
     success: true;
 }
 
-export interface ChangePasswordError {
-    success: false;
-    errorCode: ErrorCode;
-    errorMsg: string;
-}
-
-export type ChangePasswordResult = ChangePasswordSuccess | ChangePasswordError;
+export type ChangePasswordResult = ChangePasswordSuccess | ActionError;

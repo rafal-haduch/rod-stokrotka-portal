@@ -1,10 +1,10 @@
 # TODOS
 
-- review, optimize and improve all user feature 
+- review where have user action contracts or improve this,
+
+- improve system domain error
 
 # REVIEWS
-
-- czy robic takie odstepy wi mportach jakie robie teraz? 
 
 - czy opisywac funkcje komponentow reactowych jako dokumentacja?
 

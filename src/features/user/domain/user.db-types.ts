@@ -1,13 +1,11 @@
 import { User, UserPlot, Plot, Prisma } from '@prisma/client';
 
-/* ======================== */
-/* === BASE TYPES FOR INCLUDE === */
-/* ======================== */
+// === BASE TYPES FOR INCLUDE ===
 
 export type UserFromDb = User;
 
 export type UserWithPlotsFromDb = User & {
-    plotsId: (UserPlot & {
+    plots: (UserPlot & {
         plot: Plot;
     })[];
 };
@@ -16,16 +14,15 @@ export type UsersFromDb = User[];
 
 export type UsersWithPlotsFromDb = UserWithPlotsFromDb[];
 
-/* =========================== */
-/* ===  TYPES FOR SELECT USE CASES  === */
-/* =========================== */
+// ===  TYPES FOR SELECT USE CASES  ===
 
+// User Profile
 export const userProfileSelect = Prisma.validator<Prisma.UserDefaultArgs>()({
     select: {
         name: true,
         login: true,
         role: true,
-        plotsId: {
+        plots: {
             select: {
                 plot: {
                     select: {
@@ -39,6 +36,7 @@ export const userProfileSelect = Prisma.validator<Prisma.UserDefaultArgs>()({
 });
 export type UserProfileFromDb = Prisma.UserGetPayload<typeof userProfileSelect>;
 
+// User Table Rows
 export const userTableRowsSelect = Prisma.validator<Prisma.UserDefaultArgs>()({
     select: {
         id: true,
@@ -46,7 +44,7 @@ export const userTableRowsSelect = Prisma.validator<Prisma.UserDefaultArgs>()({
         role: true,
         createdAt: true,
         lastLogin: true,
-        plotsId: {
+        plots: {
             select: {
                 plot: {
                     select: {

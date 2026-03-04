@@ -23,7 +23,7 @@ export const ASSIGNABLE_ROLES = Object.values(Role).filter((r) => r !== Role.ADM
 /**
  * Roles considered as administrative or board-level within the system.
  */
-export const adminRoles: Role[] = [
+export const ADMIN_AND_BOARD_ROLES: Role[] = [
     Role.ADMIN,
     Role.PRESIDENT,
     Role.DEPUTY_PRESIDENT,

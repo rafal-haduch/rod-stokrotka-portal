@@ -1,12 +1,13 @@
-import { DomainError, ErrorCode } from '@/features/error';
 import { Role } from '@prisma/client';
+
+import { DomainError, ErrorCode } from '@/features/error';
 
 export function validateUserRole(value: unknown): Role {
     if (typeof value !== 'string') {
         throw new DomainError(ErrorCode.INVALID_INPUT);
     }
 
-    if (!Object.values(Role).includes(value as Role)) {
+    if (!(value in Role)) {
         throw new DomainError(ErrorCode.INVALID_INPUT);
     }
 

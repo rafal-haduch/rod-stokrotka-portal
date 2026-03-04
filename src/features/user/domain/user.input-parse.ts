@@ -1,21 +1,24 @@
 import { Role } from '@prisma/client';
 
-import { validatePlotIds } from '@/features/plot/plot.validation';
-
-import { validateUserName, validateUserPassword, validateUserRole } from './user.validation';
 import { validateId } from '@/features/shared';
+
 import { DomainError, ErrorCode } from '@/features/error';
 
-// ============================
-// === Create user use-case ===
-// ============================
+import { validatePlotIds } from '@/features/plot/plot.validation';
+
+import {
+    validateUserName,
+    validateUserPassword,
+    validateUserRole,
+} from '@/features/user/domain/user.validation';
+
+// === CREATE USER USE CASE ===
 
 interface CreateUserInput {
     name: string;
     role: Role;
     plotIds: number[];
 }
-
 /**
  * Parses and validates FormData for the create user use-case.
  * Throws DomainError when validation fails.
@@ -32,9 +35,7 @@ export function parseCreateUserInput(formData: FormData): CreateUserInput {
     return { name, role, plotIds };
 }
 
-// ============================
-// === Update user use-case ===
-// ============================
+// === UPDATE USER USE CASE ===
 
 interface UpdateUserInput {
     id: number;
@@ -42,7 +43,6 @@ interface UpdateUserInput {
     role: Role;
     plotIds: number[];
 }
-
 /**
  * Parses and validates FormData for the update user use-case.
  * Throws DomainError when validation fails.
@@ -61,14 +61,11 @@ export function parseUpdateUserInput(formData: FormData): UpdateUserInput {
     return { id, name, role, plotIds };
 }
 
-// ============================
-// === Delete user use-case ===
-// ============================
+// === DELETE USER USE CASE ===
 
 interface DeleteUserInput {
     id: number;
 }
-
 /**
  * Parses and validates FormData for the delete user use-case.
  * Throws DomainError when validation fails.
@@ -81,15 +78,12 @@ export function parseDeleteUserInput(formData: FormData): DeleteUserInput {
     return { id };
 }
 
-// ================================
-// === Change password use-case ===
-// ================================
+// === CHANGE PASSWORD USE CASE ===
 
 interface ChangePasswordInput {
     currentPassword: string;
     newPassword: string;
 }
-
 /**
  * Parses and validates FormData for the change password use-case.
  * Performs additional password consistency checks.

@@ -9,7 +9,6 @@ import Portal from '@/components/portal';
 
 import { UserTableRow } from '@/features/user/domain/user.read-models';
 import { deleteUser } from '@/features/user/domain/actions/delete-user.action';
-
 import DeleteUserForm from '@/features/user/ui/forms/delete-user-form';
 
 interface Props {

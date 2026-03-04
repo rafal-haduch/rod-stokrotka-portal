@@ -1,13 +1,13 @@
 import { unstable_cache } from 'next/cache';
-import { UserTableRow } from '../user.read-models';
-import { userRepository } from '../user.repository';
-import { mapToUserTableRows } from '../user.mapper';
+
+import { mapToUserTableRows } from '@/features/user/domain/user.mapper';
+import { UserTableRow } from '@/features/user/domain/user.read-models';
+import { userRepository } from '@/features/user/domain/user.repository';
 
 /**
  * Fetches only the fields needed for the dashboard users table from the database.
  *
  * This function is cached on the server using Next.js App Router `unstable_cache`.
- *
  * Use `revalidateTag('users')` after any server-side mutations to immediately refresh cached data.
  */
 export const getUserTableRows: () => Promise<UserTableRow[]> = unstable_cache(

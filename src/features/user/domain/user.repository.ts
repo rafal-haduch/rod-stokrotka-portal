@@ -25,6 +25,8 @@ interface UpdateUserData {
 }
 
 export const userRepository = {
+    // === GENERAL QUERIES (USING INCLUDE) ===
+
     async create({ name, plotIds, role, login, passwordHash }: CreateUserData) {
         return prisma.$transaction(async (tx) => {
             const user = await tx.user.create({
@@ -46,7 +48,7 @@ export const userRepository = {
             return tx.user.findUniqueOrThrow({
                 where: { id: user.id },
                 include: {
-                    plotsId: {
+                    plots: {
                         select: {
                             plot: {
                                 select: {
@@ -81,7 +83,7 @@ export const userRepository = {
             return tx.user.findUniqueOrThrow({
                 where: { id },
                 include: {
-                    plotsId: {
+                    plots: {
                         include: {
                             plot: true,
                         },
@@ -113,7 +115,7 @@ export const userRepository = {
         return prisma.user.findUnique({
             where: { id },
             include: {
-                plotsId: {
+                plots: {
                     include: {
                         plot: true,
                     },
@@ -129,7 +131,7 @@ export const userRepository = {
     async findManyWithPlots() {
         return prisma.user.findMany({
             include: {
-                plotsId: {
+                plots: {
                     include: {
                         plot: true,
                     },
@@ -138,16 +140,7 @@ export const userRepository = {
         });
     },
 
-    async changePassword(id: number, newPasswordHash: string) {
-        await prisma.user.update({
-            where: { id },
-            data: { password: newPasswordHash },
-        });
-    },
-
-    /* ============================ */
-    /* === QUERIES FOR SELECT USE CASES === */
-    /* ============================ */
+    /* === USE CASES INQUIRIES (USING SELECT) === */
 
     async getUserProfile(id: number): Promise<UserProfileFromDb | null> {
         return prisma.user.findUnique({
@@ -158,5 +151,19 @@ export const userRepository = {
 
     async getUserTableRows(): Promise<UserTableRowsFromDb> {
         return await prisma.user.findMany(userTableRowsSelect);
+    },
+
+    async changePassword(id: number, newPasswordHash: string) {
+        await prisma.user.update({
+            where: { id },
+            data: { password: newPasswordHash },
+        });
+    },
+
+    async getUserPassword(id: number) {
+        return await prisma.user.findUnique({
+            where: { id },
+            select: { password: true },
+        });
     },
 };

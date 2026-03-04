@@ -11,7 +11,6 @@ import { PlotMinimalReference } from '@/features/plot/plot.read-models';
 
 import { UserTableRow } from '@/features/user/domain/user.read-models';
 import { createUser } from '@/features/user/domain/actions/create-user.action';
-
 import CreateUserForm from '@/features/user/ui/forms/create-user-form';
 import CreateUserSuccess from '@/features/user/ui/modals/create-user-success';
 

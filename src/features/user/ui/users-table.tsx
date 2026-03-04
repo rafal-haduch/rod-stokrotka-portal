@@ -1,3 +1,5 @@
+'use client';
+
 import { Pencil, Trash2 } from 'lucide-react';
 
 import { CRUDModalType } from '@/types/crud-modal';
