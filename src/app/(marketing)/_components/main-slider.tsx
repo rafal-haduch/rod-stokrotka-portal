@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import { PhotoWithoutTitle } from '@/models/photo';
+import { PhotoWithoutTitle } from '@/shared/models/photo';
 
 //TODO: change alts
 const mainSliderImagesURL = '/images/main-slider/' as const;

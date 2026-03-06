@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { CreatePlotResult } from '@/contracts/plot-actions';
+import { CreatePlotResult } from '@/shared/contracts/plot-actions';
 
 import { createPlot } from '@/features/plot/actions/create-plot.action';
 

@@ -1,4 +1,4 @@
-import { ROUTES } from '@/config/routes';
+import { ROUTES } from '@/shared/config/routes';
 import { Plus } from 'lucide-react';
 import Link from 'next/link';
 

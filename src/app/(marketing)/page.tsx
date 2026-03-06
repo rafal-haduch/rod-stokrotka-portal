@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-import { ROUTES } from '@/config/routes';
+import { ROUTES } from '@/shared/config/routes';
 
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { WorkInProgress } from '@/components/work-in-progress';

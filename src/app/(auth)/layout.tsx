@@ -1,8 +1,8 @@
 import { redirect } from 'next/navigation';
 
-import { ROUTES } from '@/config/routes';
+import { ROUTES } from '@/shared/config/routes';
 
-import { getUserSession } from '@/lib/auth/get-user-session';
+import { getUserSession } from '@/shared/lib/next-auth/get-user-session';
 
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';

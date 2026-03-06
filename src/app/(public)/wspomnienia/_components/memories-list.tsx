@@ -2,12 +2,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
-import { ROUTES } from '@/config/routes';
+import { ROUTES } from '@/shared/config/routes';
 
 import { getAllMemories, MemoryInList } from '@/content/memories/memories';
 
-import { formatDate } from '@/utils/format-date';
-import { cn } from '@/utils/cn';
+import { formatDate } from '@/shared/utils/format-date';
+import { cn } from '@/shared/utils/cn';
 
 import { NotFoundContent } from '@/components/not-found-content';
 

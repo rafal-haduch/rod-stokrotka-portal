@@ -1,11 +1,11 @@
 import path from 'path';
 import fs from 'fs';
 
-import { ROUTES } from '@/config/routes';
+import { ROUTES } from '@/shared/config/routes';
 
-import { PhotoWithTitle } from '@/models/photo';
+import { PhotoWithTitle } from '@/shared/models/photo';
 
-import { buildMetadata } from '@/lib/metadata';
+import { buildMetadata } from '@/shared/lib/metadata';
 
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { AnimateOnView } from '@/components/animated-h2';

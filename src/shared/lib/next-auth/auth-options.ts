@@ -1,12 +1,13 @@
-import { AuthOptions, SessionStrategy } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import bcrypt from 'bcrypt';
-import { prisma } from '@/lib/prisma';
+import { AuthOptions, SessionStrategy } from 'next-auth';
 import { Role } from '@prisma/client';
+import bcrypt from 'bcrypt';
+
+import { prisma } from '@/shared/lib/prisma';
 
 export const authOptions: AuthOptions = {
     session: {
-        strategy: 'jwt' as SessionStrategy, // jawnie rzutujemy na typ
+        strategy: 'jwt' as SessionStrategy,
     },
     providers: [
         Credentials({

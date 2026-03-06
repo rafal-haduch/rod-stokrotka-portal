@@ -1,11 +1,9 @@
 import { redirect } from 'next/navigation';
 import { Metadata } from 'next';
 
-import { ROUTES } from '@/config/routes';
-
-import { getUserSession } from '@/lib/auth/get-user-session';
-
-import { isAdminOrBoard } from '@/features/user/domain/user.helpers';
+import { getUserSession } from '@/shared/lib/next-auth/get-user-session';
+import { ROUTES } from '@/shared/config/routes';
+import { isAdminOrBoard } from '@/shared/auth/is-admin-or-board';
 
 import DashboardPanelHeader from './_components/dashboard-panel-header';
 

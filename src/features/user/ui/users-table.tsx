@@ -2,7 +2,7 @@
 
 import { Pencil, Trash2 } from 'lucide-react';
 
-import { CRUDModalType } from '@/types/crud-modal';
+import { CRUDModalType } from '@/shared/types/crud-modal';
 
 import { CustomButton } from '@/components/custom-button';
 

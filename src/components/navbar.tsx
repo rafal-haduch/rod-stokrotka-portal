@@ -7,9 +7,9 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { LogIn, User } from 'lucide-react';
 
-import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/config/routes';
+import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/shared/config/routes';
 
-import { cn } from '@/utils/cn';
+import { cn } from '@/shared/utils/cn';
 
 const routes = ROUTE_LIST as AppRouteBase[];
 const navItems = routes

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Plus } from 'lucide-react';
 
-import { CRUDModalType } from '@/types/crud-modal';
+import { CRUDModalType } from '@/shared/types/crud-modal';
 
 import { CustomButton } from '@/components/custom-button';
 
@@ -14,6 +14,7 @@ import CreateUserModal from '@/features/user/ui/modals/create-user-modal';
 import EditUserModal from '@/features/user/ui/modals/edit-user-modal';
 import DeleteUserModal from '@/features/user/ui/modals/delete-user-modal';
 import UsersTable from '@/features/user/ui/users-table';
+import { CreateUserData } from '@/features/user/domain/user.contracts';
 
 interface Props {
     userTableRows: UserTableRow[];
@@ -27,14 +28,14 @@ export default function DashboardUsersView({ userTableRows, plotOptions }: Props
     const [selectedUser, setSelectedUser] = useState<UserTableRow | null>(null);
 
     // FIXME: widok nie powiniem dodakowo mapowac/zmieniac danych domenowych (data)
-    const addUserInTable = (newUserRow: UserTableRow) => {
+    const addUserInTable = (newUserData: CreateUserData) => {
         const newUser: UserTableRow = {
-            id: newUserRow.id,
-            name: newUserRow.name,
-            role: newUserRow.role,
-            plots: newUserRow.plots,
-            createdAt: new Date(newUserRow.createdAt),
-            lastLogin: newUserRow.lastLogin ? new Date(newUserRow.lastLogin) : null,
+            id: newUserData.id,
+            name: newUserData.name,
+            role: newUserData.role,
+            plots: newUserData.plots,
+            createdAt: new Date(newUserData.createdAt),
+            lastLogin: newUserData.lastLogin,
         };
 
         setUserRows((prev) => [newUser, ...prev]);
@@ -81,8 +82,8 @@ export default function DashboardUsersView({ userTableRows, plotOptions }: Props
                     onCloseModal={() => {
                         closeModal();
                     }}
-                    onUserCreated={(newUserRow: UserTableRow) => {
-                        addUserInTable(newUserRow);
+                    onUserCreated={(newUserData: CreateUserData) => {
+                        addUserInTable(newUserData);
                     }}
                 />
             )}

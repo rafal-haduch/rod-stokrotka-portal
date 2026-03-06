@@ -1,6 +1,6 @@
-import { buildMetadata } from '@/lib/metadata';
+import { buildMetadata } from '@/shared/lib/metadata';
 
-import { ROUTES } from '@/config/routes';
+import { ROUTES } from '@/shared/config/routes';
 
 import { paymentStatusAsOf } from '@/content/data/plot-fees-status';
 

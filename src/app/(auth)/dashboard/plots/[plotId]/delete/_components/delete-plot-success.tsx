@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowBigLeft } from 'lucide-react';
 
-import { ROUTES } from '@/config/routes';
+import { ROUTES } from '@/shared/config/routes';
 
 export default function DeletePlotSuccess() {
     return (

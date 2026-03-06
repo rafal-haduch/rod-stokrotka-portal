@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import { ArrowBigLeft, CirclePlus } from 'lucide-react';
 
-import { ROUTES } from '@/config/routes';
+import { ROUTES } from '@/shared/config/routes';
 
-import { CreatePlotSuccess as CreatePlotSuccessType } from '@/contracts/plot-actions';
+import { CreatePlotSuccess as CreatePlotSuccessType } from '@/shared/contracts/plot-actions';
 
 interface Props {
     result: CreatePlotSuccessType;

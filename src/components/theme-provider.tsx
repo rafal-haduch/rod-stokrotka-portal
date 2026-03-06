@@ -2,9 +2,9 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 
-import { ThemeType } from '@/types/theme';
+import { ThemeType } from '@/shared/types/theme';
 
-import { setTheme, getSeason } from '@/utils/set-theme';
+import { setTheme, getSeason } from '@/shared/utils/set-theme';
 import { ThemePrompt } from './theme-prompt';
 
 interface ThemeContextValue {

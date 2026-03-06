@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 
 import { getInvestmentBySlug } from '@/content/investments/investments';
 
-import { formatDate } from '@/utils/format-date';
+import { formatDate } from '@/shared/utils/format-date';
 
 import { PhotoGallery } from '@/components/photo-gallery';
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';

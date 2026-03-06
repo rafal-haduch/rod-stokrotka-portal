@@ -2,8 +2,8 @@
 
 import { ReactNode } from 'react';
 
-import { useInView } from '@/hooks/use-in-view';
-import { cn } from '@/utils/cn';
+import { useInView } from '@/shared/hooks/use-in-view';
+import { cn } from '@/shared/utils/cn';
 
 interface AnimateOnViewProps {
     children: ReactNode;

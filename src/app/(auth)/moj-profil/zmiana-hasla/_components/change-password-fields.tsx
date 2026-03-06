@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Ban, Save } from 'lucide-react';
 
-import { ROUTES } from '@/config/routes';
+import { ROUTES } from '@/shared/config/routes';
 
 interface Props {
     loading: boolean;

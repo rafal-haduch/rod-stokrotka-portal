@@ -1,13 +1,13 @@
 'use server';
 
-import { CreatePlotResult } from '@/contracts/plot-actions';
+import { CreatePlotResult } from '@/shared/contracts/plot-actions';
 
-import { canPerform } from '@/features/permissions/can-perform';
-import { PERMISSION_KEYS } from '@/features/permissions/permissions';
-import { requireSession } from '@/features/auth/require-session';
-import { DomainError } from '@/features/error/domain-error';
-import { ErrorCode } from '@/features/error/error-codes';
-import { ERROR_MESSAGES } from '@/features/error/error.messages';
+import { canPerform } from '@/shared/auth/can-perform';
+import { PERMISSION_KEYS } from '@/shared/auth/permissions';
+import { requireSession } from '@/shared/auth/require-session';
+import { DomainError } from '@/shared/error/domain-error';
+import { ErrorCode } from '@/shared/error/error-codes';
+import { ERROR_MESSAGES } from '@/shared/error/error.messages';
 import { plotRepository } from '@/features/plot/plot.repository';
 import { parseCreatePlotInput } from '../plot-input.parse';
 import { revalidateTag } from 'next/cache';

@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-import { ROUTES } from '@/config/routes';
+import { ROUTES } from '@/shared/config/routes';
 
 import { plotRepository } from '@/features/plot/plot.repository';
 import { mapPlotToPlotUpdateForm } from '@/features/plot/plot.mapper';

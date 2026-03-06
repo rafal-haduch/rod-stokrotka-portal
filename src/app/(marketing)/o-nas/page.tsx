@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-import { ROUTES } from '@/config/routes';
+import { ROUTES } from '@/shared/config/routes';
 
-import { buildMetadata } from '@/lib/metadata';
+import { buildMetadata } from '@/shared/lib/metadata';
 
-import { GoogleMaps } from '@/components/garden-map';
+import { GoogleMaps } from '@/components/google-maps';
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { LineSeparator } from '@/components/line-separator';
 import { AnimateOnView } from '@/components/animated-h2';

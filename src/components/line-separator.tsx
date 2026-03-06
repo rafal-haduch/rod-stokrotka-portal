@@ -1,4 +1,4 @@
-import { cn } from '@/utils/cn';
+import { cn } from '@/shared/utils/cn';
 
 export function LineSeparator({ my = 'my-20' }: { my?: string }) {
     return (

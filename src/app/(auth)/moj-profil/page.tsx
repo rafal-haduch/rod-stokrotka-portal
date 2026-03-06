@@ -2,9 +2,9 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { KeyRound } from 'lucide-react';
 
-import { ROUTES } from '@/config/routes';
+import { ROUTES } from '@/shared/config/routes';
 
-import { requireSession } from '@/features/auth/require-session';
+import { requireSession } from '@/shared/auth/require-session';
 import { getRoleLabel } from '@/features/user/domain/user.helpers';
 import { getUserProfile } from '@/features/user/domain/queries/get-user-profile.query';
 

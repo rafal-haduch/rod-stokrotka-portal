@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { DeletePlotResult } from '@/contracts/plot-actions';
+import { DeletePlotResult } from '@/shared/contracts/plot-actions';
 
 import { deletePlot } from '@/features/plot/actions/delete-plot.action';
 import DeletePlotFields from './delete-plot-fields';

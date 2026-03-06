@@ -2,20 +2,18 @@
 
 import bcrypt from 'bcrypt';
 
-import { ChangePasswordResult } from '@/contracts/user-actions';
+import { ActionResult } from '@/shared/contracts/action-result';
+import { requireSession } from '@/shared/auth/require-session';
+import { DomainError } from '@/shared/error/domain-error';
+import { ErrorCode } from '@/shared/error/error-codes';
+import { handleActionError } from '@/shared/error/handle-action-error';
 
-import { DomainError } from '@/features/error/domain-error';
-import { ErrorCode } from '@/features/error/error-codes';
-import { handleActionError } from '@/features/error/handle-action-error';
-
-import { requireSession } from '@/features/auth/require-session';
-
-import { enforcePasswordPolicy } from '@/features/security/password-policy';
-
-import { parseChangePasswordInput } from '@/features/user/domain/user.input-parse';
 import { userRepository } from '@/features/user/domain/user.repository';
 
-export async function changePassword(formData: FormData): Promise<ChangePasswordResult> {
+import { enforcePasswordPolicy } from '@/features/auth/domain/auth.helpers';
+import { parseChangePasswordInput } from '@/features/auth/domain/auth.input-parse';
+
+export async function changePassword(formData: FormData): Promise<ActionResult<void>> {
     try {
         const { id, role } = await requireSession();
 
@@ -39,7 +37,7 @@ export async function changePassword(formData: FormData): Promise<ChangePassword
 
         const newPasswordHash = await bcrypt.hash(newPassword, 10);
 
-        await userRepository.changePassword(id, newPasswordHash);
+        await userRepository.updatePasswordHash(id, newPasswordHash);
 
         return {
             success: true,

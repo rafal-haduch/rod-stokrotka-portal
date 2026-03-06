@@ -1,7 +1,7 @@
 import { Role } from '@prisma/client';
 import { randomBytes } from 'crypto';
 
-import { ADMIN_AND_BOARD_ROLES, ROLE_LABEL } from '@/features/user/domain/user.constants';
+import { ROLE_LABEL } from '@/features/user/domain/user.constants';
 
 /**
  * @returns A Polish display label for the given role. If role is missing, returns a fallback placeholder `-`.
@@ -10,14 +10,6 @@ export function getRoleLabel(role: Role | null | undefined) {
     if (!role) return '-';
 
     return ROLE_LABEL[role];
-}
-
-/**
- * Checks whether the role has administrative or board-level privileges.
- * @returns `true` if the given role belongs to the admin or board roles group.
- */
-export function isAdminOrBoard(userRole: Role): boolean {
-    return ADMIN_AND_BOARD_ROLES.includes(userRole as Role);
 }
 
 /**
@@ -42,7 +34,7 @@ export function generateLogin(name: string) {
 
 /**
  * Generates a random temporary password for a new user account.
- * 
+ *
  * The password is a 10-character alphanumeric string derived
  * from a base-36 encoded random value.
  *

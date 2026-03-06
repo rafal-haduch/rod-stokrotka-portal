@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Power, PowerOff } from 'lucide-react';
 
-import { cn } from '@/utils/cn';
-import { Theme } from '@/utils/set-theme';
+import { cn } from '@/shared/utils/cn';
+import { Theme } from '@/shared/utils/set-theme';
 import { useTheme } from './theme-provider';
-import { ROUTES } from '@/config/routes';
+import { ROUTES } from '@/shared/config/routes';
 
 const themeOptions: Theme[] = [
     { id: 'spring', label: 'Wiosna' },

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import type { AppRouteBase } from '@/config/routes';
+
+import type { AppRouteBase } from '@/shared/config/routes';
 
 export function buildMetadata(route: AppRouteBase): Metadata {
     return {

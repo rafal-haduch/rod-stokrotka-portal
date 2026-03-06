@@ -3,8 +3,6 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
 
-import { CreateUserResult } from '@/contracts/user-actions';
-
 import Portal from '@/components/portal';
 
 import { PlotMinimalReference } from '@/features/plot/plot.read-models';
@@ -13,15 +11,17 @@ import { UserTableRow } from '@/features/user/domain/user.read-models';
 import { createUser } from '@/features/user/domain/actions/create-user.action';
 import CreateUserForm from '@/features/user/ui/forms/create-user-form';
 import CreateUserSuccess from '@/features/user/ui/modals/create-user-success';
+import { ActionResult } from '@/shared/contracts/action-result';
+import { CreateUserData } from '@/features/user/domain/user.contracts';
 
 interface Props {
     plotOptions: PlotMinimalReference[];
     onCloseModal: () => void;
-    onUserCreated: (newUserRow: UserTableRow) => void;
+    onUserCreated: (newUserData: CreateUserData) => void;
 }
 
 export default function CreateUserModal({ plotOptions, onCloseModal, onUserCreated }: Props) {
-    const [result, setResult] = useState<CreateUserResult | 'error' | null>(null);
+    const [result, setResult] = useState<ActionResult<CreateUserData> | 'error' | null>(null);
     const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -36,7 +36,7 @@ export default function CreateUserModal({ plotOptions, onCloseModal, onUserCreat
             const res = await createUser(formData);
             setResult(res);
 
-            if (res.success) {
+            if (res.success && res.data) {
                 onUserCreated(res.data);
             }
         } catch (err) {
@@ -71,8 +71,8 @@ export default function CreateUserModal({ plotOptions, onCloseModal, onUserCreat
                     >
                         <X className="h-8 w-8" />
                     </button>
-                    {result !== 'error' && result?.success ? (
-                        <CreateUserSuccess result={result} />
+                    {result !== 'error' && result?.success && result.data ? (
+                        <CreateUserSuccess result={result.data} />
                     ) : (
                         <CreateUserForm
                             onSubmit={handleSubmit}

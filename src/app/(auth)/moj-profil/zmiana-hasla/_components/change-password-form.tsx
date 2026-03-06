@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 
-import { ChangePasswordResult } from '@/contracts/user-actions';
+import { ChangePasswordResult } from '@/shared/contracts/user-actions';
 
-import { changePassword } from '@/features/user/domain/actions/change-password.action';
+import { changePassword } from '@/features/auth/domain/actions/change-password.action';
 
 import ChangePasswordFields from './change-password-fields';
 import ChangePasswordSuccess from './change-password-success';

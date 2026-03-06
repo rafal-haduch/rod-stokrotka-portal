@@ -3,8 +3,6 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
 
-import { UpdateUserResult } from '@/contracts/user-actions';
-
 import Portal from '@/components/portal';
 
 import { PlotMinimalReference } from '@/features/plot/plot.read-models';
@@ -12,6 +10,8 @@ import { PlotMinimalReference } from '@/features/plot/plot.read-models';
 import { updateUser } from '@/features/user/domain/actions/update-user.action';
 import { UserTableRow } from '@/features/user/domain/user.read-models';
 import EditUserForm from '@/features/user/ui/forms/edit-user-form';
+import { ActionResult } from '@/shared/contracts/action-result';
+import { UpdateUserData } from '@/features/user/domain/user.contracts';
 
 interface Props {
     user: UserTableRow;
@@ -21,7 +21,7 @@ interface Props {
 }
 
 export default function EditUserModal({ user, onCloseModal, onUpdatedUser, plotOptions }: Props) {
-    const [result, setResult] = useState<UpdateUserResult | 'error' | null>(null);
+    const [result, setResult] = useState<ActionResult<UpdateUserData> | 'error' | null>(null);
     const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {

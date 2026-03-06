@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@/utils/cn';
+import { cn } from '@/shared/utils/cn';
 
 interface PopupProps {
     type: 'info' | 'success' | 'error';

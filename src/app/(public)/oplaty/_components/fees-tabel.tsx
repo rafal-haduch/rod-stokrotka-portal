@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { plotsFeesStatus } from '@/content/data/plot-fees-status';
-import { cn } from '@/utils/cn';
+import { cn } from '@/shared/utils/cn';
 import { Check, X } from 'lucide-react';
 
 export default function FeesTable() {

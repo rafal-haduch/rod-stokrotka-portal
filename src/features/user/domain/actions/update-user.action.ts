@@ -2,19 +2,18 @@
 
 import { revalidateTag } from 'next/cache';
 
-import { UpdateUserResult } from '@/contracts/user-actions';
+import { ActionResult } from '@/shared/contracts/action-result';
+import { requireSession } from '@/shared/auth/require-session';
+import { isAdminOrBoard } from '@/shared/auth/is-admin-or-board';
+import { DomainError } from '@/shared/error/domain-error';
+import { ErrorCode } from '@/shared/error/error-codes';
+import { handleActionError } from '@/shared/error/handle-action-error';
 
-import { DomainError } from '@/features/error/domain-error';
-import { ErrorCode } from '@/features/error/error-codes';
-import { handleActionError } from '@/features/error/handle-action-error';
-
-import { requireSession } from '@/features/auth/require-session';
-
-import { isAdminOrBoard } from '@/features/user/domain/user.helpers';
+import { UpdateUserData } from '@/features/user/domain/user.contracts';
 import { parseUpdateUserInput } from '@/features/user/domain/user.input-parse';
 import { userRepository } from '@/features/user/domain/user.repository';
 
-export async function updateUser(formData: FormData): Promise<UpdateUserResult> {
+export async function updateUser(formData: FormData): Promise<ActionResult<UpdateUserData>> {
     try {
         const session = await requireSession();
 

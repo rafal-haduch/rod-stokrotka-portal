@@ -19,15 +19,3 @@ export const ROLE_LABEL: Record<Role, string> = {
  * Admin is excluded because it shouldn't be assigned from the app.
  */
 export const ASSIGNABLE_ROLES = Object.values(Role).filter((r) => r !== Role.ADMIN);
-
-/**
- * Roles considered as administrative or board-level within the system.
- */
-export const ADMIN_AND_BOARD_ROLES: Role[] = [
-    Role.ADMIN,
-    Role.PRESIDENT,
-    Role.DEPUTY_PRESIDENT,
-    Role.SECRETARY,
-    Role.TREASURER,
-    Role.BOARD_MEMBER,
-];

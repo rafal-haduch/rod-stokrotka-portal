@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 
-import { PhotoWithoutTitle } from '@/models/photo';
+import { PhotoWithoutTitle } from '@/shared/models/photo';
 
 const investmentsDir = path.join(process.cwd(), 'src/content/investments');
 

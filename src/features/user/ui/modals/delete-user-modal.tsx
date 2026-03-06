@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
 
-import { DeleteUserResult } from '@/contracts/user-actions';
+import { DeleteUserResult } from '@/shared/contracts/user-actions';
 
 import Portal from '@/components/portal';
 

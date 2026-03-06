@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 
 import { getMemoryBySlug } from '@/content/memories/memories';
 
-import { formatDate } from '@/utils/format-date';
+import { formatDate } from '@/shared/utils/format-date';
 
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { PhotoGallery } from '@/components/photo-gallery';

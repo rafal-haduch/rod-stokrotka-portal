@@ -1,13 +1,13 @@
 import { Analytics } from '@vercel/analytics/next';
 
 import '../styles/globals.css';
-import { nunito, fleurDeLeah, aboreto, merriweather } from '@/config/fonts';
+import { nunito, fleurDeLeah, aboreto, merriweather } from '@/shared/config/fonts';
 
 import { JsonLdOrganization } from '@/components/json-ld-organization';
 import { SessionProviderClientComponent } from '@/components/session-provider-client-component';
 import { ThemeProvider } from '@/components/theme-provider';
 
-export { metadata } from '@/config/metadata';
+export { metadata } from '@/shared/config/metadata';
 
 export default function RootLayout({
     children,

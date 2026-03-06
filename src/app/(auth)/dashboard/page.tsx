@@ -1,6 +1,6 @@
 import { getRoleLabel } from '@/features/user/domain/user.helpers';
 
-import { getUserSession } from '@/lib/auth/get-user-session';
+import { getUserSession } from '@/shared/lib/next-auth/get-user-session';
 
 export default async function DashboardPage() {
     const user = await getUserSession();

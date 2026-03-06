@@ -3,27 +3,22 @@
 import { useState } from 'react';
 import { Copy, TriangleAlert, X } from 'lucide-react';
 
-import { cn } from '@/utils/cn';
-
-import { CreateUserSuccess as CreateUserSuccessType } from '@/contracts/user-actions';
+import { cn } from '@/shared/utils/cn';
 
 import { CustomButton } from '@/components/custom-button';
 
 import { getRoleLabel } from '@/features/user/domain/user.helpers';
+import { CreateUserData } from '@/features/user/domain/user.contracts';
 
 interface Props {
-    result: CreateUserSuccessType;
+    result: CreateUserData;
 }
 
 export default function CreateUserSuccess({ result }: Props) {
     const [copied, setCopied] = useState(false);
 
     function copyCredentials() {
-        if (!result.success) return;
-
-        navigator.clipboard.writeText(
-            `Login: ${result.data.login}\nHasło: ${result.data.password}`
-        );
+        navigator.clipboard.writeText(`Login: ${result.login}\nHasło: ${result.password}`);
 
         setCopied(true);
         setTimeout(() => setCopied(false), 3000);
@@ -37,18 +32,18 @@ export default function CreateUserSuccess({ result }: Props) {
                 Konto zostało utworzone
             </p>
             <p className="text-theme-foreground-content text-center">
-                Osoba <strong>{result.data.name}</strong> z rolą{' '}
-                <strong>{getRoleLabel(result.data.role)}</strong> została dodana do systemu.
+                Osoba <strong>{result.name}</strong> z rolą{' '}
+                <strong>{getRoleLabel(result.role)}</strong> została dodana do systemu.
             </p>
 
             <div className="mx-auto flex flex-col gap-2">
                 <div className="flex w-full gap-2">
                     <label className="flex w-fit items-center justify-end text-base">Login:</label>
-                    <label className="input-form text-center">{result.data.login}</label>
+                    <label className="input-form text-center">{result.login}</label>
                 </div>
                 <div className="flex w-full gap-2">
                     <label className="flex items-center justify-end text-base">Hasło:</label>
-                    <label className="input-form text-center">{result.data.password}</label>
+                    <label className="input-form text-center">{result.password}</label>
                 </div>
             </div>
 

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { UpdatePlotResult } from '@/contracts/plot-actions';
+import { UpdatePlotResult } from '@/shared/contracts/plot-actions';
 import { updatePlot } from '@/features/plot/actions/update-plot.action';
 import UpdatePlotSuccess from './update-plot-success';
 import UpdatePlotFields from './update-plot-fields';

@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { Pencil, Plus, Trash2 } from 'lucide-react';
 
-import { ROUTES } from '@/config/routes';
+import { ROUTES } from '@/shared/config/routes';
 
-import { formatPlotCode } from '@/utils/format-plot-code';
+import { formatPlotCode } from '@/shared/utils/format-plot-code';
 import { plotRepository } from '@/features/plot/plot.repository';
 import { mapPlotsToPlotTableRows } from '@/features/plot/plot.mapper';
 

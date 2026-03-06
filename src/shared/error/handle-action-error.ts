@@ -1,10 +1,11 @@
-import { DomainError } from '@/features/error/domain-error';
-import { ErrorCode } from '@/features/error/error-codes';
-import { ERROR_MESSAGES } from '@/features/error/error.messages';
-import { ActionError } from '@/features/error/error.types';
+import { ActionResultError } from '@/shared/contracts/action-result';
+
+import { DomainError } from '@/shared/error/domain-error';
+import { ErrorCode } from '@/shared/error/error-codes';
+import { ERROR_MESSAGES } from '@/shared/error/error.messages';
 
 //TODO: write doc
-export function handleActionError(e: unknown): ActionError {
+export function handleActionError(e: unknown): ActionResultError {
     if (e instanceof DomainError) {
         return {
             success: false,

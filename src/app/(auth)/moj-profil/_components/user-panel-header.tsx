@@ -5,11 +5,10 @@ import { usePathname } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
 import { CircleUserRound, LayoutDashboard, LogOut } from 'lucide-react';
 
-import { cn } from '@/utils/cn';
+import { cn } from '@/shared/utils/cn';
+import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/shared/config/routes';
+import { isAdminOrBoard } from '@/shared/auth/is-admin-or-board';
 
-import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/config/routes';
-
-import { isAdminOrBoard } from '@/features/user/domain/user.helpers';
 import { CustomButton } from '@/components/custom-button';
 
 const routes = ROUTE_LIST as AppRouteBase[];

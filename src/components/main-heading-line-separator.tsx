@@ -1,3 +1,4 @@
+// REVIEW: polaczyc do line separator i zrobic jakie spropsy?
 export function MainHeadingLineSeparator() {
     return (
         <div

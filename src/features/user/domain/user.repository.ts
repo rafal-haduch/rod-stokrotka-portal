@@ -1,7 +1,6 @@
 import { Role } from '@prisma/client';
 
-import { prisma } from '@/lib/prisma';
-import { UserTableRow } from './user.read-models';
+import { prisma } from '@/shared/lib/prisma';
 import {
     UserProfileFromDb,
     userProfileSelect,
@@ -153,7 +152,7 @@ export const userRepository = {
         return await prisma.user.findMany(userTableRowsSelect);
     },
 
-    async changePassword(id: number, newPasswordHash: string) {
+    async updatePasswordHash(id: number, newPasswordHash: string) {
         await prisma.user.update({
             where: { id },
             data: { password: newPasswordHash },

@@ -1,5 +1,17 @@
 import { Role } from '@prisma/client';
 
+/**
+ * Roles considered as administrative or board-level within the system.
+ */
+export const ADMIN_AND_BOARD_ROLES: Role[] = [
+    Role.ADMIN,
+    Role.PRESIDENT,
+    Role.DEPUTY_PRESIDENT,
+    Role.SECRETARY,
+    Role.TREASURER,
+    Role.BOARD_MEMBER,
+];
+
 type Permission =
     | 'UPDATE_USER'
     | 'DELETE_USER'

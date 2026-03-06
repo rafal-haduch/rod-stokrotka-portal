@@ -1,4 +1,4 @@
-import { ErrorCode } from '@/features/error/error-codes';
+import { ErrorCode } from '@/shared/error/error-codes';
 
 // CREATE
 export interface CreatePlotSuccess {

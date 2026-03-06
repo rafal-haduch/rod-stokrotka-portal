@@ -3,23 +3,19 @@
 import { revalidateTag } from 'next/cache';
 import bcrypt from 'bcrypt';
 
-import { CreateUserResult } from '@/contracts/user-actions';
-
-import { DomainError } from '@/features/error/domain-error';
-import { ErrorCode } from '@/features/error/error-codes';
-import { handleActionError } from '@/features/error/handle-action-error';
-
-import { requireSession } from '@/features/auth/require-session';
+import { DomainError } from '@/shared/error/domain-error';
+import { ErrorCode } from '@/shared/error/error-codes';
+import { ActionResult } from '@/shared/contracts/action-result';
+import { requireSession } from '@/shared/auth/require-session';
+import { isAdminOrBoard } from '@/shared/auth/is-admin-or-board';
+import { handleActionError } from '@/shared/error/handle-action-error';
 
 import { parseCreateUserInput } from '@/features/user/domain/user.input-parse';
 import { userRepository } from '@/features/user/domain/user.repository';
-import {
-    generateLogin,
-    generatePassword,
-    isAdminOrBoard,
-} from '@/features/user/domain/user.helpers';
+import { generateLogin, generatePassword } from '@/features/user/domain/user.helpers';
+import { CreateUserData } from '@/features/user/domain/user.contracts';
 
-export async function createUser(formData: FormData): Promise<CreateUserResult> {
+export async function createUser(formData: FormData): Promise<ActionResult<CreateUserData>> {
     try {
         // 1. Session and permission
         const session = await requireSession();
@@ -50,18 +46,18 @@ export async function createUser(formData: FormData): Promise<CreateUserResult> 
             success: true,
             data: {
                 id: result.id,
-                name,
+                name: result.name,
                 plots: result.plots.map((p) => {
                     return {
                         id: p.plot.id,
                         plotNumber: p.plot.plotNumber,
                     };
                 }),
-                role,
-                login,
+                role: result.role,
+                login: result.login,
                 password,
                 createdAt: result.createdAt,
-                lastLogin: result.lastLogin,
+                lastLogin: null,
             },
         };
     } catch (e) {
