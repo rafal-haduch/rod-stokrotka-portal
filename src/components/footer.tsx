@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 import { Power, PowerOff } from 'lucide-react';
 
 import { cn } from '@/shared/utils/cn';
-import { Theme } from '@/shared/utils/set-theme';
-import { useTheme } from './theme-provider';
+import { Theme } from '@/features/theme/set-theme';
+import { useTheme } from '../features/theme/theme-provider';
 import { ROUTES } from '@/shared/config/routes';
 
 const themeOptions: Theme[] = [

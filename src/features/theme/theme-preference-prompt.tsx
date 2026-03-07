@@ -1,7 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useTheme } from './theme-provider';
 
-export function ThemePrompt() {
+/**
+ * Popup shown on the user's first visit asking whether seasonal themes
+ * should be enabled or disabled.
+ *
+ * Behaviour:
+ * - Appears only if `seasonalThemesEnabled` is not set in localStorage.
+ * - "Zostaw" keeps seasonal themes (default behaviour).
+ * - "Przełącz" disables seasonal themes via ThemeProvider.
+ *
+ * After a decision the popup will not appear again.
+ */
+export function ThemePreferencePrompt() {
     const [showPrompt, setShowPrompt] = useState(false);
     const { toggleSeasonalThemes } = useTheme();
 

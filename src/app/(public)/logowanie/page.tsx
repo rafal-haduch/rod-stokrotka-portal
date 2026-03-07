@@ -1,11 +1,11 @@
 import { ROUTES } from '@/shared/config/routes';
 
-import { buildMetadata } from '@/shared/lib/metadata';
+import { buildMetadata } from '@/shared/utils/build-metadata';
 
 import { LineSeparator } from '@/components/line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
 
-import LoginForm from './_components/login-form';
+import LoginForm from '../../../features/auth/ui/login-form';
 
 export const metadata = buildMetadata(ROUTES.LOGIN);
 

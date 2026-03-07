@@ -1,7 +1,9 @@
 import { Role } from '@prisma/client';
+
+import { getUserSession } from '@/shared/lib/next-auth/get-user-session';
+
 import { DomainError } from '@/shared/error/domain-error';
 import { ErrorCode } from '@/shared/error/error-codes';
-import { getUserSession } from '@/shared/lib/next-auth/get-user-session';
 
 export interface UserSession {
     name: string;

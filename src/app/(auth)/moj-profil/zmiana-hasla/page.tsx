@@ -1,4 +1,4 @@
-import { buildMetadata } from '@/shared/lib/metadata';
+import { buildMetadata } from '@/shared/utils/build-metadata';
 import ChangePasswordForm from './_components/change-password-form';
 import { ROUTES } from '@/shared/config/routes';
 

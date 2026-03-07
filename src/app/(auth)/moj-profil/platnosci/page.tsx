@@ -1,6 +1,6 @@
 import { prisma } from '@/shared/lib/prisma';
 import { getUserSession } from '@/shared/lib/next-auth/get-user-session';
-import { buildMetadata } from '@/shared/lib/metadata';
+import { buildMetadata } from '@/shared/utils/build-metadata';
 import { ROUTES } from '@/shared/config/routes';
 
 export const metadata = buildMetadata(ROUTES.MY_PAYMENTS);

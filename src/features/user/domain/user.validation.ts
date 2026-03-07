@@ -1,6 +1,7 @@
 import { Role } from '@prisma/client';
 
-import { DomainError, ErrorCode } from '@/shared/error';
+import { DomainError } from '@/shared/error/domain-error';
+import { ErrorCode } from '@/shared/error/error-codes';
 
 export function validateUserRole(value: unknown): Role {
     if (typeof value !== 'string') {

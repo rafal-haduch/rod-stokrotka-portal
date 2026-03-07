@@ -1,6 +1,6 @@
 import { ROUTES } from '@/shared/config/routes';
 
-import { buildMetadata } from '@/shared/lib/metadata';
+import { buildMetadata } from '@/shared/utils/build-metadata';
 
 import { AnimateOnView } from '@/components/animated-h2';
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';

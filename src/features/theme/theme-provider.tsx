@@ -2,10 +2,10 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 
-import { ThemeType } from '@/shared/types/theme';
+import { ThemeType } from '@/features/theme/theme';
 
-import { setTheme, getSeason } from '@/shared/utils/set-theme';
-import { ThemePrompt } from './theme-prompt';
+import { setTheme, getSeason } from '@/features/theme/set-theme';
+import { ThemePreferencePrompt } from './theme-preference-prompt';
 
 interface ThemeContextValue {
     activeTheme: ThemeType;
@@ -56,7 +56,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
             <ThemeContext.Provider
                 value={{ activeTheme, seasonalThemesEnabled, setActiveTheme, toggleSeasonalThemes }}
             >
-                <ThemePrompt />
+                <ThemePreferencePrompt />
                 {children}
             </ThemeContext.Provider>
         </>

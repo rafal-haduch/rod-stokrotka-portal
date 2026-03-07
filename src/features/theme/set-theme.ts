@@ -1,4 +1,4 @@
-import { ThemeType } from '@/shared/types/theme';
+import { ThemeType } from '@/features/theme/theme';
 
 // REVIEW: zmienic (dodac i uporzadkowac typy/interfejsy) themes dac do const itd
 export interface Theme {

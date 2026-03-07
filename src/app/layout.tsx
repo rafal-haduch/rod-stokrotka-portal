@@ -5,7 +5,7 @@ import { nunito, fleurDeLeah, aboreto, merriweather } from '@/shared/config/font
 
 import { JsonLdOrganization } from '@/components/json-ld-organization';
 import { SessionProviderClientComponent } from '@/components/session-provider-client-component';
-import { ThemeProvider } from '@/components/theme-provider';
+import { ThemeProvider } from '@/features/theme/theme-provider';
 
 export { metadata } from '@/shared/config/metadata';
 

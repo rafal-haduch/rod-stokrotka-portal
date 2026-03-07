@@ -1,5 +1,6 @@
-import { PlotMinimalReference } from '@/features/plot/plot.read-models';
 import { Role } from '@prisma/client';
+
+import { PlotMinimalReference } from '@/features/plot/plot.read-models';
 
 /**
  * Data returned by the create user action if it completes successfully.

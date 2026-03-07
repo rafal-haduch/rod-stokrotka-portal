@@ -5,7 +5,7 @@ import { ROUTES } from '@/shared/config/routes';
 
 import { PhotoWithTitle } from '@/shared/models/photo';
 
-import { buildMetadata } from '@/shared/lib/metadata';
+import { buildMetadata } from '@/shared/utils/build-metadata';
 
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { AnimateOnView } from '@/components/animated-h2';

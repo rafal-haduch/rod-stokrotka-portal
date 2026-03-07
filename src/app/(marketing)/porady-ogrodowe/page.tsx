@@ -1,6 +1,6 @@
 import { ROUTES } from '@/shared/config/routes';
 
-import { buildMetadata } from '@/shared/lib/metadata';
+import { buildMetadata } from '@/shared/utils/build-metadata';
 
 import { recommendedSites } from '@/content/data/recommended-sites';
 
