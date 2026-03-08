@@ -2,16 +2,21 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 
-import { ThemeType } from '@/features/theme/theme';
+import { ThemeType } from '@/features/theme/domain/theme.types';
 
-import { setTheme, getSeason } from '@/features/theme/set-theme';
+import { applyTheme } from '@/features/theme/domain/theme.helpers';
 import { ThemePreferencePrompt } from './theme-preference-prompt';
+import { getSeason } from '@/shared/utils/get-season';
+import {
+    getSeasonalThemesPreference,
+    setSeasonalThemesPreference,
+} from '@/features/theme/domain/theme.storage';
 
 interface ThemeContextValue {
     activeTheme: ThemeType;
     seasonalThemesEnabled: boolean;
     setActiveTheme: (theme: ThemeType) => void;
-    toggleSeasonalThemes: (enabled: boolean) => void;
+    toggleSeasonalThemesPreference: (enabled: boolean) => void;
 }
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
@@ -20,31 +25,31 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const [seasonalThemesEnabled, setSeasonalThemesEnabled] = useState(true);
     const [activeTheme, setActiveThemeState] = useState<ThemeType>('default');
 
-    // Inicjalizacja
     useEffect(() => {
-        const pref = localStorage.getItem('seasonalThemesEnabled');
-        if (pref === null) {
-            localStorage.setItem('seasonalThemesEnabled', 'true');
-        }
-        const enabled = pref === null ? true : pref === 'true';
+        const pref = getSeasonalThemesPreference();
+        const enabled = pref ?? true;
+
         setSeasonalThemesEnabled(enabled);
 
         const theme = enabled ? getSeason() : 'default';
+
         setActiveThemeState(theme);
-        setTheme(theme);
+        applyTheme(theme);
     }, []);
 
-    // Synchronizacja przy zmianie
     useEffect(() => {
-        setTheme(activeTheme);
+        applyTheme(activeTheme);
     }, [activeTheme]);
 
-    const toggleSeasonalThemes = (enabled: boolean) => {
+    const toggleSeasonalThemesPreference = (enabled: boolean) => {
+        setSeasonalThemesPreference(enabled);
+
         setSeasonalThemesEnabled(enabled);
-        localStorage.setItem('seasonalThemesEnabled', String(enabled));
+
         const theme = enabled ? getSeason() : 'default';
+
         setActiveThemeState(theme);
-        setTheme(theme);
+        applyTheme(theme);
     };
 
     const setActiveTheme = (theme: ThemeType) => {
@@ -52,14 +57,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     };
 
     return (
-        <>
-            <ThemeContext.Provider
-                value={{ activeTheme, seasonalThemesEnabled, setActiveTheme, toggleSeasonalThemes }}
-            >
-                <ThemePreferencePrompt />
-                {children}
-            </ThemeContext.Provider>
-        </>
+        <ThemeContext.Provider
+            value={{
+                activeTheme,
+                seasonalThemesEnabled,
+                setActiveTheme,
+                toggleSeasonalThemesPreference,
+            }}
+        >
+            <ThemePreferencePrompt />
+            {children}
+        </ThemeContext.Provider>
     );
 }
 

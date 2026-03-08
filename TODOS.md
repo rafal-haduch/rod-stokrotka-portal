@@ -2,6 +2,8 @@
 
 - refactor /src/features/theme
 
+- improve section comments in user repository
+
 - improve system domain error (remove unknown and server_error into global error and change handleActionError )
 
 - write docs in .md
