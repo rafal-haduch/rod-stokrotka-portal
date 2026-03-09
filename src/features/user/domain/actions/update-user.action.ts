@@ -9,11 +9,12 @@ import { DomainError } from '@/shared/error/domain-error';
 import { ErrorCode } from '@/shared/error/error-codes';
 import { handleActionError } from '@/shared/error/handle-action-error';
 
-import { UpdateUserData } from '@/features/user/domain/user.contracts';
+import { UpdatedUserData } from '@/features/user/domain/user.api-contracts';
 import { parseUpdateUserInput } from '@/features/user/domain/user.input-parse';
 import { userRepository } from '@/features/user/domain/user.repository';
+import { mapToUpdateUserData } from '@/features/user/domain/user.mapper';
 
-export async function updateUser(formData: FormData): Promise<ActionResult<UpdateUserData>> {
+export async function updateUser(formData: FormData): Promise<ActionResult<UpdatedUserData>> {
     try {
         const session = await requireSession();
 
@@ -27,22 +28,9 @@ export async function updateUser(formData: FormData): Promise<ActionResult<Updat
 
         revalidateTag('users');
 
-        //REVIEW: Optimize return by mapper or sth?
         return {
             success: true,
-            data: {
-                id: result.id,
-                name,
-                plots: result.plots.map((p) => {
-                    return {
-                        id: p.plot.id,
-                        plotNumber: p.plot.plotNumber,
-                    };
-                }),
-                role,
-                createdAt: result.createdAt,
-                lastLogin: result.lastLogin,
-            },
+            data: mapToUpdateUserData(result),
         };
     } catch (e) {
         return handleActionError(e);

@@ -14,7 +14,7 @@ import CreateUserModal from '@/features/user/ui/modals/create-user-modal';
 import EditUserModal from '@/features/user/ui/modals/edit-user-modal';
 import DeleteUserModal from '@/features/user/ui/modals/delete-user-modal';
 import UsersTable from '@/features/user/ui/users-table';
-import { CreateUserData } from '@/features/user/domain/user.contracts';
+import { CreatedUserData } from '@/features/user/domain/user.api-contracts';
 
 interface Props {
     userTableRows: UserTableRow[];
@@ -28,7 +28,7 @@ export default function DashboardUsersView({ userTableRows, plotOptions }: Props
     const [selectedUser, setSelectedUser] = useState<UserTableRow | null>(null);
 
     // FIXME: widok nie powiniem dodakowo mapowac/zmieniac danych domenowych (data)
-    const addUserInTable = (newUserData: CreateUserData) => {
+    const addUserInTable = (newUserData: CreatedUserData) => {
         const newUser: UserTableRow = {
             id: newUserData.id,
             name: newUserData.name,
@@ -82,7 +82,7 @@ export default function DashboardUsersView({ userTableRows, plotOptions }: Props
                     onCloseModal={() => {
                         closeModal();
                     }}
-                    onUserCreated={(newUserData: CreateUserData) => {
+                    onUserCreated={(newUserData: CreatedUserData) => {
                         addUserInTable(newUserData);
                     }}
                 />

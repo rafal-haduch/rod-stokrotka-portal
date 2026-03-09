@@ -12,16 +12,16 @@ import { createUser } from '@/features/user/domain/actions/create-user.action';
 import CreateUserForm from '@/features/user/ui/forms/create-user-form';
 import CreateUserSuccess from '@/features/user/ui/modals/create-user-success';
 import { ActionResult } from '@/shared/contracts/action-result';
-import { CreateUserData } from '@/features/user/domain/user.contracts';
+import { CreatedUserData } from '@/features/user/domain/user.api-contracts';
 
 interface Props {
     plotOptions: PlotMinimalReference[];
     onCloseModal: () => void;
-    onUserCreated: (newUserData: CreateUserData) => void;
+    onUserCreated: (newUserData: CreatedUserData) => void;
 }
 
 export default function CreateUserModal({ plotOptions, onCloseModal, onUserCreated }: Props) {
-    const [result, setResult] = useState<ActionResult<CreateUserData> | 'error' | null>(null);
+    const [result, setResult] = useState<ActionResult<CreatedUserData> | 'error' | null>(null);
     const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {

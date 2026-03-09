@@ -1,6 +1,6 @@
-import { DomainError, ErrorCode } from '@/shared/error';
-
-import { validateUserPassword } from '@/features/user/domain/user.validation';
+import { validateUserPassword } from '@/features/auth/domain/auth.validation';
+import { DomainError } from '@/shared/error/domain-error';
+import { ErrorCode } from '@/shared/error/error-codes';
 
 interface ChangePasswordInput {
     currentPassword: string;

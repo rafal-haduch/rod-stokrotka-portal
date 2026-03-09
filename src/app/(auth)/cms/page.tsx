@@ -2,7 +2,7 @@ import { getRoleLabel } from '@/features/user/domain/user.helpers';
 
 import { getUserSession } from '@/shared/lib/next-auth/get-user-session';
 
-export default async function DashboardPage() {
+export default async function CMSPage() {
     const user = await getUserSession();
 
     return (
@@ -14,7 +14,7 @@ export default async function DashboardPage() {
                 <p>
                     Jesteś zalogowany jako <strong>{user.name}</strong> z rolą{' '}
                     <strong>{getRoleLabel(user.role)}</strong>. W tym miejscu są dostępne zakładki
-                    przekierowywujące do poszczególnych stron, które umożliwiają zarządzanie danymi
+                    przekierowywujące do poszczególnych paneli, które umożliwiają zarządzanie danymi
                     Stowarzyszenia Ogrodowego ,,Stokrotka" w Sanoku w celu lepszego skoordynowania
                     prowadzenia ewidencji.
                 </p>
@@ -45,8 +45,9 @@ export default async function DashboardPage() {
                     prosimy zachować wtedy <strong>szczególną ostrożność</strong>.
                 </p>
                 <p>
-                    W przypadku jakichkolwiek wątpliwości, pytań lub problemów technicznych proszę
-                    skontaktować się z administratorem strony: <strong>501 683 048</strong>
+                    W przypadku jakichkolwiek wątpliwości, pytań lub napotkanych problemów
+                    technicznych proszę skontaktować się z administratorem strony:{' '}
+                    <strong>501 683 048</strong>
                 </p>
             </section>
         </section>

@@ -1,14 +1,17 @@
 import { Role } from '@prisma/client';
 
 import { prisma } from '@/shared/lib/prisma';
+
 import {
     UserProfileFromDb,
     userProfileSelect,
     UserTableRowsFromDb,
     userTableRowsSelect,
-} from './user.db-types';
+} from '@/features/user/domain/user.db-types';
 
-interface CreateUserData {
+// === TYPES FOR DB OPERATIONS ===
+
+interface CreateUserDbInput {
     name: string;
     plotIds: number[];
     role: Role;
@@ -16,17 +19,25 @@ interface CreateUserData {
     passwordHash: string;
 }
 
-interface UpdateUserData {
+interface UpdateUserDbInput {
     id: number;
     name: string;
     plotIds: number[];
     role: Role;
 }
 
-export const userRepository = {
-    // === GENERAL QUERIES (USING INCLUDE) ===
+// === USER REPOSITORY ===
 
-    async create({ name, plotIds, role, login, passwordHash }: CreateUserData) {
+export const userRepository = {
+    // === TRANSACTIONAL OPERATIONS (CREATE, UPDATE, DELETE) ===
+
+    /**
+     * Creates a new user along with assigned plots if provided.
+     *
+     * This operation is executed inside a transaction.
+     * @returns The newly created user including assigned plots.
+     */
+    async create({ name, plotIds, role, login, passwordHash }: CreateUserDbInput) {
         return prisma.$transaction(async (tx) => {
             const user = await tx.user.create({
                 data: {
@@ -62,7 +73,13 @@ export const userRepository = {
         });
     },
 
-    async update({ id, name, plotIds, role }: UpdateUserData) {
+    /**
+     * Updates user data and plot assignments.
+     *
+     * This operation is executed inside a transaction.
+     * @returns The updated user including assigned plots.
+     */
+    async update({ id, name, plotIds, role }: UpdateUserDbInput) {
         return prisma.$transaction(async (tx) => {
             await tx.user.update({
                 where: { id },
@@ -92,6 +109,12 @@ export const userRepository = {
         });
     },
 
+    /**
+     * Deletes a user by ID and all associated plot assignments.
+     *
+     * This operation is executed inside a transaction.
+     * @param id - User ID to delete.
+     */
     async delete(id: number) {
         await prisma.$transaction(async (tx) => {
             await tx.userPlot.deleteMany({
@@ -104,12 +127,22 @@ export const userRepository = {
         });
     },
 
+    // === GENERAL FINDERS (INCLUDE RELATIONS) ===
+
+    /**
+     * Retrieves a user by ID.
+     * @param id - User ID.
+     */
     async findById(id: number) {
         return prisma.user.findUnique({
             where: { id },
         });
     },
 
+    /**
+     * Retrieves a user by ID including assigned plots.
+     * @param id - User ID.
+     */
     async findByIdWithPlots(id: number) {
         return prisma.user.findUnique({
             where: { id },
@@ -123,10 +156,16 @@ export const userRepository = {
         });
     },
 
+    /**
+     * Retrieves all users without relations.
+     */
     async findMany() {
         return prisma.user.findMany();
     },
 
+    /**
+     * Retrieves all users including assigned plots.
+     */
     async findManyWithPlots() {
         return prisma.user.findMany({
             include: {
@@ -139,8 +178,13 @@ export const userRepository = {
         });
     },
 
-    /* === USE CASES INQUIRIES (USING SELECT) === */
+    // === USE CASE SPECIFIC QUERIES (SELECT SUBSETS) ===
 
+    /**
+     * Retrieves a user profile by ID.
+     * @param id - User ID.
+     * @returns Selected user profile or null if not found.
+     */
     async getUserProfile(id: number): Promise<UserProfileFromDb | null> {
         return prisma.user.findUnique({
             where: { id },
@@ -148,21 +192,34 @@ export const userRepository = {
         });
     },
 
+    /**
+     * Retrieves all users for table display.
+     * @returns Array of user table rows.
+     */
     async getUserTableRows(): Promise<UserTableRowsFromDb> {
         return await prisma.user.findMany(userTableRowsSelect);
     },
 
-    async updatePasswordHash(id: number, newPasswordHash: string) {
-        await prisma.user.update({
-            where: { id },
-            data: { password: newPasswordHash },
-        });
-    },
-
+    /**
+     * Retrieves a user's password hash.
+     * @param id - User ID.
+     * @returns Object containing password hash or null if not found.
+     */
     async getUserPassword(id: number) {
         return await prisma.user.findUnique({
             where: { id },
             select: { password: true },
+        });
+    },
+
+    /**
+     * Updates a user's password hash.
+     * @param id - User ID.
+     */
+    async updatePasswordHash(id: number, newPasswordHash: string) {
+        await prisma.user.update({
+            where: { id },
+            data: { password: newPasswordHash },
         });
     },
 };

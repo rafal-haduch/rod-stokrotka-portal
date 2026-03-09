@@ -6,18 +6,23 @@ import { validatePlotIds } from '@/features/plot/plot.validation';
 
 import { validateUserName, validateUserRole } from '@/features/user/domain/user.validation';
 
-// === CREATE USER USE CASE ===
+// === USE CASE: CREATE USER ===
 
-interface CreateUserInput {
+interface CreateUserFormInput {
     name: string;
     role: Role;
     plotIds: number[];
 }
+
 /**
  * Parses and validates FormData for the create user use-case.
- * Throws DomainError when validation fails.
+ *
+ * Throws `DomainError` when validation fails.
+ *
+ * @param formData - Raw form data submitted by the client
+ * @returns Validated input ready for user creation
  */
-export function parseCreateUserInput(formData: FormData): CreateUserInput {
+export function parseCreateUserInput(formData: FormData): CreateUserFormInput {
     const nameRaw = formData.get('name');
     const roleRaw = formData.get('role');
     const plotIdsRaw = formData.getAll('plotIds');
@@ -29,19 +34,24 @@ export function parseCreateUserInput(formData: FormData): CreateUserInput {
     return { name, role, plotIds };
 }
 
-// === UPDATE USER USE CASE ===
+// === USE CASE: UPDATE USER ===
 
-interface UpdateUserInput {
+interface UpdateUserFormInput {
     id: number;
     name: string;
     role: Role;
     plotIds: number[];
 }
+
 /**
  * Parses and validates FormData for the update user use-case.
- * Throws DomainError when validation fails.
+ *
+ * Throws `DomainError` when validation fails.
+ *
+ * @param formData - Raw form data submitted by the client
+ * @returns Validated input ready for user update
  */
-export function parseUpdateUserInput(formData: FormData): UpdateUserInput {
+export function parseUpdateUserInput(formData: FormData): UpdateUserFormInput {
     const idRaw = formData.get('id');
     const nameRaw = formData.get('name');
     const roleRaw = formData.get('role');
@@ -55,16 +65,21 @@ export function parseUpdateUserInput(formData: FormData): UpdateUserInput {
     return { id, name, role, plotIds };
 }
 
-// === DELETE USER USE CASE ===
+// === USE CASE: DELETE USER ===
 
-interface DeleteUserInput {
+interface DeleteUserFormInput {
     id: number;
 }
+
 /**
  * Parses and validates FormData for the delete user use-case.
- * Throws DomainError when validation fails.
+ *
+ * Throws `DomainError` when validation fails.
+ *
+ * @param formData - Raw form data submitted by the client
+ * @returns Validated input ready for user deletion
  */
-export function parseDeleteUserInput(formData: FormData): DeleteUserInput {
+export function parseDeleteUserInput(formData: FormData): DeleteUserFormInput {
     const idRaw = formData.get('userId');
 
     const id = validateId(idRaw);

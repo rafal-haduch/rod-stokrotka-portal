@@ -1,7 +1,7 @@
 import { unstable_cache } from 'next/cache';
 
+import { FetchedUserTableRows } from '@/features/user/domain/user.api-contracts';
 import { mapToUserTableRows } from '@/features/user/domain/user.mapper';
-import { UserTableRow } from '@/features/user/domain/user.read-models';
 import { userRepository } from '@/features/user/domain/user.repository';
 
 /**
@@ -10,7 +10,7 @@ import { userRepository } from '@/features/user/domain/user.repository';
  * This function is cached on the server using Next.js App Router `unstable_cache`.
  * Use `revalidateTag('users')` after any server-side mutations to immediately refresh cached data.
  */
-export const getUserTableRows: () => Promise<UserTableRow[]> = unstable_cache(
+export const getUserTableRows: () => Promise<FetchedUserTableRows> = unstable_cache(
     async () => {
         const result = await userRepository.getUserTableRows();
         return mapToUserTableRows(result);

@@ -13,9 +13,10 @@ import { handleActionError } from '@/shared/error/handle-action-error';
 import { parseCreateUserInput } from '@/features/user/domain/user.input-parse';
 import { userRepository } from '@/features/user/domain/user.repository';
 import { generateLogin, generatePassword } from '@/features/user/domain/user.helpers';
-import { CreateUserData } from '@/features/user/domain/user.contracts';
+import { CreatedUserData } from '@/features/user/domain/user.api-contracts';
+import { mapToCreateUserData } from '@/features/user/domain/user.mapper';
 
-export async function createUser(formData: FormData): Promise<ActionResult<CreateUserData>> {
+export async function createUser(formData: FormData): Promise<ActionResult<CreatedUserData>> {
     try {
         // 1. Session and permission
         const session = await requireSession();
@@ -39,26 +40,11 @@ export async function createUser(formData: FormData): Promise<ActionResult<Creat
         // 5. Revalidate cache
         revalidateTag('users');
 
-        //REVIEW: Optimize return by mapper or sth?
         // 6. Return
         // NOTE: The login and password are returned because they are needed to be passed on to the user for whom the account was created.
         return {
             success: true,
-            data: {
-                id: result.id,
-                name: result.name,
-                plots: result.plots.map((p) => {
-                    return {
-                        id: p.plot.id,
-                        plotNumber: p.plot.plotNumber,
-                    };
-                }),
-                role: result.role,
-                login: result.login,
-                password,
-                createdAt: result.createdAt,
-                lastLogin: null,
-            },
+            data: mapToCreateUserData(result),
         };
     } catch (e) {
         return handleActionError(e);

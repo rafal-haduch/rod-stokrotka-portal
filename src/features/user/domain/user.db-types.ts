@@ -1,22 +1,36 @@
 import { User, UserPlot, Plot, Prisma } from '@prisma/client';
 
-// === BASE TYPES FOR INCLUDE ===
+// === TYPES WITH RELATIONS (INCLUDE)===
 
+/**
+ * Represents a user row from the database.
+ */
 export type UserFromDb = User;
 
+/**
+ * Represents a user with all assigned plots included.
+ */
 export type UserWithPlotsFromDb = User & {
     plots: (UserPlot & {
         plot: Plot;
     })[];
 };
 
+/**
+ * Array of users from the database.
+ */
 export type UsersFromDb = User[];
 
+/**
+ * Array of users with plots included.
+ */
 export type UsersWithPlotsFromDb = UserWithPlotsFromDb[];
 
-// ===  TYPES FOR SELECT USE CASES  ===
+// ===  SELECTED FIELDS TYPES (SELECT)  ===
 
-// User Profile
+/**
+ * Selection for retrieving a user's profile for user profile panel view
+ */
 export const userProfileSelect = Prisma.validator<Prisma.UserDefaultArgs>()({
     select: {
         name: true,
@@ -34,9 +48,15 @@ export const userProfileSelect = Prisma.validator<Prisma.UserDefaultArgs>()({
         },
     },
 });
+
+/**
+ * Type representing the result of `userProfileSelect`.
+ */
 export type UserProfileFromDb = Prisma.UserGetPayload<typeof userProfileSelect>;
 
-// User Table Rows
+/**
+ * Selection for retrieving user table rows for admin views or lists.
+ */
 export const userTableRowsSelect = Prisma.validator<Prisma.UserDefaultArgs>()({
     select: {
         id: true,
@@ -56,4 +76,8 @@ export const userTableRowsSelect = Prisma.validator<Prisma.UserDefaultArgs>()({
         },
     },
 });
+
+/**
+ * Type representing the result of `userTableRowsSelect`.
+ */
 export type UserTableRowsFromDb = Prisma.UserGetPayload<typeof userTableRowsSelect>[];

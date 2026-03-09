@@ -17,24 +17,6 @@ export function validateUserRole(value: unknown): Role {
     return normalized;
 }
 
-export function validateUserPassword(value: unknown): string {
-    if (typeof value !== 'string') {
-        throw new DomainError(ErrorCode.INVALID_INPUT);
-    }
-
-    const trimmed = value.trim();
-
-    if (trimmed.length === 0) {
-        throw new DomainError(ErrorCode.EMPTY_INPUT);
-    }
-
-    if (trimmed.length > 128) {
-        throw new DomainError(ErrorCode.INVALID_INPUT);
-    }
-
-    return trimmed;
-}
-
 const NAME_REGEX = /^[A-ZĄĆĘŁŃÓŚŻŹ][a-ząćęłńóśżź]{1,29}\s[A-ZĄĆĘŁŃÓŚŻŹ]\.$/;
 export function validateUserName(value: unknown): string {
     if (typeof value !== 'string') {

@@ -1,5 +1,5 @@
-import { Role } from '@prisma/client';
 import { randomBytes } from 'crypto';
+import { Role } from '@prisma/client';
 
 import { ROLE_LABEL } from '@/features/user/domain/user.constants';
 
@@ -35,10 +35,10 @@ export function generateLogin(name: string) {
 /**
  * Generates a random temporary password for a new user account.
  *
- * The password is a 10-character alphanumeric string derived
- * from a base-36 encoded random value.
+ * The password is a 12-character alphanumeric string derived from
+ * a base-64url encoded random value.
  *
- * @returns Generated temporary password.
+ * @returns Random temporary password
  */
 export function generatePassword(): string {
     return randomBytes(9).toString('base64url');

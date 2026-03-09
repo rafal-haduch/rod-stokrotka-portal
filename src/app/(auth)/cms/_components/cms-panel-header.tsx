@@ -14,7 +14,7 @@ const navItems = routes
     .filter((r) => r.dashboardNav)
     .sort((a, b) => a.dashboardNav!.order - b.dashboardNav!.order);
 
-export default function DashboardPanelHeader() {
+export function CMSPanelHeader() {
     const path = usePathname();
     const [isOpen, setIsOpen] = useState(false);
 
