@@ -1,78 +1,104 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 import { ThemeType } from '@/features/theme/domain/theme.types';
-
-import { applyTheme } from '@/features/theme/domain/theme.helpers';
-import { ThemePreferencePrompt } from './theme-preference-prompt';
-import { getSeason } from '@/shared/utils/get-season';
 import {
-    getSeasonalThemesPreference,
-    setSeasonalThemesPreference,
+    applyThemeToDocument,
+    resolveThemeFromPreference,
+} from '@/features/theme/domain/theme.helpers';
+import {
+    getSeasonalThemePreference,
+    setSeasonalThemePreference,
 } from '@/features/theme/domain/theme.storage';
+import { ThemePreferencePrompt } from '@/features/theme/ui/theme-preference-prompt';
 
 interface ThemeContextValue {
     activeTheme: ThemeType;
-    seasonalThemesEnabled: boolean;
     setActiveTheme: (theme: ThemeType) => void;
-    toggleSeasonalThemesPreference: (enabled: boolean) => void;
+    seasonalThemeEnabled: boolean;
+    toggleSeasonalThemePreference: (enabled: boolean) => void;
 }
 
+/**
+ * React context used to share theme state and controls across the application.
+ */
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
+/**
+ * Provides theme state and theme management logic to the application.
+ *
+ * Responsibilities:
+ * - Determines the initial theme based on stored preferences.
+ * - Applies the active theme to the document.
+ * - Exposes theme controls via React context.
+ * - Displays the seasonal theme preference prompt on first visit.
+ */
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-    const [seasonalThemesEnabled, setSeasonalThemesEnabled] = useState(true);
-    const [activeTheme, setActiveThemeState] = useState<ThemeType>('default');
+    const [seasonalThemeEnabled, setSeasonalThemeEnabled] = useState(true);
+    const [activeTheme, setActiveTheme] = useState<ThemeType>('default');
+    const [initialized, setInitialized] = useState(false);
 
+    // Initializes theme state from stored user preference.
     useEffect(() => {
-        const pref = getSeasonalThemesPreference();
+        const pref = getSeasonalThemePreference();
         const enabled = pref ?? true;
 
-        setSeasonalThemesEnabled(enabled);
+        setSeasonalThemeEnabled(enabled);
+        setActiveTheme(resolveThemeFromPreference(enabled));
 
-        const theme = enabled ? getSeason() : 'default';
-
-        setActiveThemeState(theme);
-        applyTheme(theme);
+        setInitialized(true);
     }, []);
 
     useEffect(() => {
-        applyTheme(activeTheme);
+        applyThemeToDocument(activeTheme);
     }, [activeTheme]);
 
-    const toggleSeasonalThemesPreference = (enabled: boolean) => {
-        setSeasonalThemesPreference(enabled);
-
-        setSeasonalThemesEnabled(enabled);
-
-        const theme = enabled ? getSeason() : 'default';
-
-        setActiveThemeState(theme);
-        applyTheme(theme);
+    /**
+     * Enables or disables seasonal themes.
+     *
+     * Updates:
+     * - localStorage preference
+     * - internal state
+     * - currently active theme
+     */
+    const toggleSeasonalThemePreference = (enabled: boolean) => {
+        setSeasonalThemePreference(enabled);
+        setSeasonalThemeEnabled(enabled);
+        setActiveTheme(resolveThemeFromPreference(enabled));
     };
 
-    const setActiveTheme = (theme: ThemeType) => {
-        setActiveThemeState(theme);
-    };
+    /**
+     * Memoized context value to prevent unnecessary re-renders
+     * of components consuming the ThemeContext.
+     */
+    const value = useMemo(
+        () => ({
+            activeTheme,
+            setActiveTheme,
+            seasonalThemeEnabled,
+            toggleSeasonalThemePreference,
+        }),
+        [activeTheme, seasonalThemeEnabled]
+    );
+
+    if (!initialized) return null;
 
     return (
-        <ThemeContext.Provider
-            value={{
-                activeTheme,
-                seasonalThemesEnabled,
-                setActiveTheme,
-                toggleSeasonalThemesPreference,
-            }}
-        >
+        <ThemeContext.Provider value={value}>
             <ThemePreferencePrompt />
             {children}
         </ThemeContext.Provider>
     );
 }
 
+/**
+ * Hook for accessing theme state and actions from ThemeContext.
+ *
+ * Must be used inside ThemeProvider.
+ */
 export function useTheme() {
     const ctx = useContext(ThemeContext);
-    if (!ctx) throw new Error('useTheme must be used inside ThemeProvider');
+    if (!ctx) throw new Error('useTheme() must be used inside ThemeProvider!');
     return ctx;
 }

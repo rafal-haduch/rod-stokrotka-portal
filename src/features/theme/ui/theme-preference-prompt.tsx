@@ -1,24 +1,31 @@
+'use client';
+
 import { useEffect, useState } from 'react';
-import { useTheme } from './theme-provider';
-import { getSeasonalThemesPreference } from '@/features/theme/domain/theme.storage';
+
+import { CustomButton } from '@/components/custom-button';
+
+import {
+    getSeasonalThemePreference,
+    setSeasonalThemePreference,
+} from '@/features/theme/domain/theme.storage';
+import { useTheme } from '@/features/theme/ui/theme-provider';
 
 /**
- * Popup shown on the user's first visit asking whether seasonal themes
- * should be enabled or disabled.
+ * Popup shown on the user's first visit asking whether seasonal themes should be enabled or disabled.
  *
  * Behaviour:
  * - Appears only if `seasonalThemesEnabled` is not set in localStorage.
- * - "Zostaw" keeps seasonal themes (default behaviour).
- * - "Przełącz" disables seasonal themes via ThemeProvider.
+ * - "Zostawiam kolory sezonowe" keeps seasonal themes enabled in ThemeProvider and set that preference in local storage.
+ * - "Przełączam na stałe kolory" disables seasonal themes preference via ThemeProvider.
  *
  * After a decision the popup will not appear again.
  */
 export function ThemePreferencePrompt() {
     const [showPrompt, setShowPrompt] = useState(false);
-    const { toggleSeasonalThemesPreference } = useTheme();
+    const { toggleSeasonalThemePreference: toggleSeasonalThemesPreference } = useTheme();
 
     useEffect(() => {
-        const pref = getSeasonalThemesPreference();
+        const pref = getSeasonalThemePreference();
         if (pref === null) {
             setShowPrompt(true);
         }
@@ -27,38 +34,41 @@ export function ThemePreferencePrompt() {
     if (!showPrompt) return null;
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-            <div className="max-w-4xl rounded-xl bg-white p-6 text-center shadow-lg">
-                <p className="mb-4 text-lg">
+        <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/50">
+            <div className="max-w-4xl rounded-xl bg-white p-8 shadow-lg">
+                <p className="mb-8 text-justify text-lg">
                     Kolory na stronie są dopasowywane automatycznie do aktualnej pory roku. To
-                    ustawienie możesz zmienić w każdej chwili na samym dole strony{' '}
-                    <strong>"Motywy Sezonowe" </strong>, aby przełączyć na stałe kolory.
+                    ustawienie możesz zmienić w każdej chwili na samym dole strony przy opcji{' '}
+                    <strong>"Motywy Sezonowe"</strong>. Zalecamy jednak mieć włączone motywy
+                    sezonowe, dla lepszego oddania klimatu jaki panuje aktualnie w naszym ogrodzie.
                 </p>
-                <div className="mb-4 flex justify-center gap-4">
-                    <button
+                <div className="flex justify-center gap-4">
+                    <CustomButton
+                        type="button"
+                        title="Zapisz opcję włączonych motywów sezonowych"
                         onClick={() => {
-                            //NOTE: We only close the prompt because seasonal themes preference in local storage are set to true by default in first visit.
+                            setSeasonalThemePreference(true);
                             setShowPrompt(false);
                         }}
-                        className="button-text rounded-lg px-4 py-2"
+                        size="lg"
+                        variant="primary"
                     >
                         Zostawiam kolory sezonowe
-                    </button>
+                    </CustomButton>
 
-                    <button
+                    <CustomButton
+                        type="button"
+                        title="Zapisz opcję wyłączonych motywów sezonowych"
                         onClick={() => {
                             toggleSeasonalThemesPreference(false);
                             setShowPrompt(false);
                         }}
-                        className="rounded-lg bg-gray-300 px-4 py-2 text-black hover:cursor-pointer hover:bg-gray-200"
+                        size="lg"
+                        variant="secondary"
                     >
                         Przełączam na stałe kolory
-                    </button>
+                    </CustomButton>
                 </div>
-                <p className="text-md">
-                    *Zalecamy mieć włączone motywy sezonowe, dla lepszego oddania klimatu jaki
-                    panuje aktualnie w naszym ogrodzie.
-                </p>
             </div>
         </div>
     );

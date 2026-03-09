@@ -6,7 +6,8 @@ import { useEffect, useState } from 'react';
 import { cn } from '@/shared/utils/cn';
 import { ROUTES } from '@/shared/config/routes';
 
-import { ThemeSwitcher } from '@/features/theme/ui/theme-switcher';
+import { SeasonalThemesToggle } from '@/features/theme/ui/seasonal-themes-toggle';
+import { SeasonalThemeSelector } from '@/features/theme/ui/seasonal-theme-selector';
 
 export function Footer() {
     const startYear = 2025;
@@ -40,10 +41,9 @@ export function Footer() {
                     {/* Author */}
                     <p className="order-3 md:order-2">Realizacja: Rafał Haduch</p>
                     {/* Theme */}
-                    <div
-                        className={cn('flex flex-col', 'items-center gap-2', 'order-1 md:order-3')}
-                    >
-                        <ThemeSwitcher />
+                    <div className="order-1 flex flex-col items-center gap-2 md:order-3">
+                        <SeasonalThemesToggle />
+                        <SeasonalThemeSelector />
                     </div>
                 </div>
 
