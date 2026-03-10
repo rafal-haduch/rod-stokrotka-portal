@@ -595,7 +595,7 @@
 
     --color-theme-on-accent: var(--on-accent);
 
-    /* Classes for primary action buttons in dashboard (or possible other important interactive UI elements) */
+    /* Classes for primary action buttons in CMS (or possible other important interactive UI elements) */
     --color-theme-accent-strong: var(--accent-strong);
     --color-theme-accent-strong-hover: var(--accent-strong-hover);
 
@@ -845,12 +845,12 @@
         @apply hover:bg-theme-surface border-theme-accent-border text-theme-on-accent bg-transparent;
     }
 
-    /* NOTE: Use for action buttons in the dashboard. */
+    /* NOTE: Use for action buttons in the CMS. */
     .btn-action {
         @apply bg-theme-accent-strong border-theme-accent-border hover:bg-theme-accent-strong-hover text-white;
     }
 
-    /* NOTE: Use for danger action buttons in the dashboard. */
+    /* NOTE: Use for danger action buttons in the CMS. */
     .btn-danger {
         @apply border border-red-600 bg-red-500 text-white hover:bg-red-600;
     }

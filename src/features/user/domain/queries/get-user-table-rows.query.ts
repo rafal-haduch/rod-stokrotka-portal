@@ -5,7 +5,7 @@ import { mapToUserTableRows } from '@/features/user/domain/user.mapper';
 import { userRepository } from '@/features/user/domain/user.repository';
 
 /**
- * Fetches only the fields needed for the dashboard users table from the database.
+ * Fetches only the fields needed for the CMS users table from the database.
  *
  * This function is cached on the server using Next.js App Router `unstable_cache`.
  * Use `revalidateTag('users')` after any server-side mutations to immediately refresh cached data.

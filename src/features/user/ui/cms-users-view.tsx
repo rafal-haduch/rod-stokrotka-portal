@@ -21,7 +21,7 @@ interface Props {
     plotOptions: PlotMinimalReference[];
 }
 
-export default function DashboardUsersView({ userTableRows, plotOptions }: Props) {
+export default function CMSUsersView({ userTableRows, plotOptions }: Props) {
     //NOTE: Copy user table rows into state for local update after server action mutation.
     const [userRows, setUserRows] = useState<UserTableRow[]>(userTableRows);
     const [activeModal, setActiveModal] = useState<CRUDModalType>(null);

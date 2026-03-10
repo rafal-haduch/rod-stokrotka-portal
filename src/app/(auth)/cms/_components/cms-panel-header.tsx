@@ -10,9 +10,7 @@ import { useEffect, useState } from 'react';
 import { CustomButton } from '@/components/custom-button';
 
 const routes = ROUTE_LIST as AppRouteBase[];
-const navItems = routes
-    .filter((r) => r.dashboardNav)
-    .sort((a, b) => a.dashboardNav!.order - b.dashboardNav!.order);
+const navItems = routes.filter((r) => r.cmsNav).sort((a, b) => a.cmsNav!.order - b.cmsNav!.order);
 
 export function CMSPanelHeader() {
     const path = usePathname();
@@ -53,12 +51,12 @@ export function CMSPanelHeader() {
             className="panel surface-elevated mx-auto flex w-full max-w-5xl flex-col justify-between overflow-x-hidden p-4 pb-0 sm:pb-4"
         >
             <div>
-                <Link href="/dashboard">
+                <Link href={ROUTES.CMS.path}>
                     <p
-                        id="dashboard-context-heading"
+                        id="cms-context-heading"
                         className="font-heading text-theme-ui-foreground-primary text-center text-4xl font-semibold sm:text-5xl md:text-6xl"
                     >
-                        Panel Zarządu
+                        Panel Zarządzania
                     </p>
                 </Link>
             </div>
@@ -87,7 +85,7 @@ export function CMSPanelHeader() {
                                     : ''
                             )}
                         >
-                            <Link href={item.path}>{item.dashboardNav?.label}</Link>
+                            <Link href={item.path}>{item.cmsNav?.label}</Link>
                         </li>
                     ))}
                 </ul>
@@ -136,7 +134,7 @@ export function CMSPanelHeader() {
                                             : ''
                                     )}
                                 >
-                                    <Link href={item.path}>{item.dashboardNav?.label}</Link>
+                                    <Link href={item.path}>{item.cmsNav?.label}</Link>
                                 </li>
                             ))}
                         </ul>

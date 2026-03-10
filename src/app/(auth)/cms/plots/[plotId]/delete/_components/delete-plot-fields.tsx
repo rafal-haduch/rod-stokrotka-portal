@@ -48,7 +48,7 @@ export default function DeletePlotFields({ plot, loading, errorMsg }: Props) {
             {/* Buttons */}
             <div className="col-span-4 flex justify-center gap-14">
                 <Link
-                    href={ROUTES.DASHBOARD_PLOTS.path}
+                    href={ROUTES.CMS_PLOTS.path}
                     title="Anuluj usuwanie działki"
                     className="btn btn-sm btn-theme"
                 >

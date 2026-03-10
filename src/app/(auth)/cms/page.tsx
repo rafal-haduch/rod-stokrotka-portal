@@ -6,17 +6,17 @@ export default async function CMSPage() {
     const user = await getUserSession();
 
     return (
-        <section className="pt-4 sm:pt-8">
-            <h1 className="h2">Panel do zarządzania</h1>
+        <section>
+            <h1 className="h2">Panel zarządzania</h1>
 
             <section className="panel surface-elevated-subtle mx-auto max-w-3xl space-y-4 rounded-lg sm:p-4">
                 <h2 className="h3">Informacja dla członków zarządu</h2>
                 <p>
                     Jesteś zalogowany jako <strong>{user.name}</strong> z rolą{' '}
                     <strong>{getRoleLabel(user.role)}</strong>. W tym miejscu są dostępne zakładki
-                    przekierowywujące do poszczególnych paneli, które umożliwiają zarządzanie danymi
-                    Stowarzyszenia Ogrodowego ,,Stokrotka" w Sanoku w celu lepszego skoordynowania
-                    prowadzenia ewidencji.
+                    przekierowywujące do poszczególnych paneli, które umożliwiają zarządzanie
+                    treściami na stronie oraz danymi Stowarzyszenia Ogrodowego ,,Stokrotka" w Sanoku
+                    w celu lepszego skoordynowania prowadzenia ewidencji.
                 </p>
                 <p>
                     W panelach zarządzania zostały umieszczone opisy pomagające korzystać z nich. Po

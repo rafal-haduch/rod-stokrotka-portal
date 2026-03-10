@@ -6,7 +6,7 @@ import {
 } from './plot.read-models';
 
 /**
- * Maps a collection of plots with owners from database to dashboard plot table rows read model.
+ * Maps a collection of plots with owners from database to CMS plot table rows read model.
  */
 export function mapPlotsToPlotTableRows(plots: PlotsWithOwnersFromDb): PlotTableRowReadModel[] {
     return plots.map((plot) => ({

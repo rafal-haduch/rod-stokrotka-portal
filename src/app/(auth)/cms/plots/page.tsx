@@ -1,13 +1,11 @@
 import Link from 'next/link';
 import { Pencil, Plus, Trash2 } from 'lucide-react';
 
-import { ROUTES } from '@/shared/config/routes';
-
 import { formatPlotCode } from '@/shared/utils/format-plot-code';
 import { plotRepository } from '@/features/plot/plot.repository';
 import { mapPlotsToPlotTableRows } from '@/features/plot/plot.mapper';
 
-export default async function DashboardPlotsPage() {
+export default async function CMSPlotsPage() {
     const plots = await plotRepository.findManyWithOwners();
 
     const plotTableRows = mapPlotsToPlotTableRows(plots).sort((a, b) =>
@@ -20,14 +18,6 @@ export default async function DashboardPlotsPage() {
     return (
         <section>
             <h2>Tabela działek</h2>
-
-            <Link
-                href={ROUTES.DASHBOARD_CREATE_PLOT.path}
-                className="btn btn-icon btn-theme mx-auto mb-4"
-                title="Dodaj nową działkę"
-            >
-                <Plus />
-            </Link>
 
             <table className="w-full text-xs md:text-sm lg:text-lg">
                 <thead>

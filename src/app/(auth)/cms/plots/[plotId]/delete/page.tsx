@@ -12,7 +12,7 @@ export default async function DeletePlotPage({ params }: { params: Promise<{ plo
     const id = Number(plotId);
 
     const plot = await plotRepository.findByIdWithOwners(id);
-    if (!plot) redirect(ROUTES.DASHBOARD_PLOTS.path);
+    if (!plot) redirect(ROUTES.CMS_PLOTS.path);
 
     const plotForDelete = mapPlotToPlotDeleteForm(plot);
 

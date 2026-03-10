@@ -2,17 +2,11 @@ import { ROUTES } from '@/shared/config/routes';
 import { Plus } from 'lucide-react';
 import Link from 'next/link';
 
-export default async function DashboardFeesPage() {
+export default async function CMSFeesPage() {
     return (
         <section>
             <h2>Tabela opłat</h2>
-            <Link
-                href={ROUTES.DASHBOARD_CREATE_FEES.path}
-                className="btn btn-icon btn-theme mx-auto mb-4"
-                title="Dodaj nową opłatę"
-            >
-                <Plus />
-            </Link>
+
             <table className="w-full text-xs md:text-sm lg:text-lg">
                 <thead>
                     <tr>

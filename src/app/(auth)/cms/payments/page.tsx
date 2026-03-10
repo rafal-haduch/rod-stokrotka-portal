@@ -1,4 +1,4 @@
-export default async function DashboardPaymentsPage() {
+export default async function CMSPaymentsPage() {
     return (
         <section>
             <h2>Płatności</h2>

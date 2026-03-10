@@ -24,7 +24,7 @@ export default function UserPanelHeader() {
     if (!data?.user) return null;
 
     const user = data.user;
-    const isDashboardAvailable = isAdminOrBoard(user.role);
+    const isCMSAvailable = isAdminOrBoard(user.role);
 
     return (
         <header
@@ -54,15 +54,15 @@ export default function UserPanelHeader() {
                             Wyloguj <span className="hidden sm:flex">się</span>
                             <LogOut />
                         </CustomButton>
-                        {isDashboardAvailable && (
+                        {isCMSAvailable && (
                             <CustomButton
-                                href={ROUTES.DASHBOARD.path}
+                                href={ROUTES.CMS.path}
                                 title="Panel zarządu"
                                 size="sm"
                                 variant="primary"
                             >
                                 Panel <span className="hidden sm:flex">zarządu</span>
-                                <LayoutDashboard />
+                                <LayoutDashboard aria-hidden="true" />
                             </CustomButton>
                         )}
                     </div>

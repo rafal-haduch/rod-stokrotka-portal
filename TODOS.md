@@ -1,4 +1,6 @@
-# TODOS
+# TODOS:
+
+- change all names "dashboard" into "cms" (routes, css, comments etc...)
 
 - start write docs in .md
 
@@ -6,17 +8,15 @@
 
 - refactor /src/features/plot based on user feature
 
-- add fees feature
+- add fee/s feature
 
-- add payment feature
+- add payment/s feature
 
-- add annoucement feature
+- add annoucement/s feature
 
-- add survey feature
+- add survey/s feature
 
 
-# REVIEWS
-
-- czy w server action przy zwracaniu jesli jest pole data to zrobic funkcje mapującą czy zostawić to tak jak jest?
+# REVIEWS:
 
 - zwracane błędy z serwera vs wyświetlane błędy UI (wyswietlać zawsze jeden stały komunikat?) 

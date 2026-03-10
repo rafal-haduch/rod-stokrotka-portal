@@ -8,7 +8,7 @@ import { isAdminOrBoard } from '@/shared/auth/is-admin-or-board';
 import { CMSPanelHeader } from '@/app/(auth)/cms/_components/cms-panel-header';
 
 export const metadata: Metadata = {
-    title: 'Panel zarządu',
+    title: 'Panel zarządzania',
     robots: 'noindex, nofollow',
 };
 
@@ -18,7 +18,7 @@ export default async function CMSLayout({ children }: { children: React.ReactNod
 
     return (
         <main
-            aria-labelledby="dashboard-context-heading"
+            aria-labelledby="cms-context-heading"
             className="space-y-8 px-2 py-2 pb-24 sm:space-y-12 sm:px-4 sm:py-4 md:px-6 lg:px-8 lg:py-8"
         >
             <CMSPanelHeader />

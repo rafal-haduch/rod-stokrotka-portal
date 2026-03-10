@@ -21,7 +21,7 @@ export type AppRouteBase = {
         label: string;
         order: number;
     };
-    dashboardNav?: {
+    cmsNav?: {
         label: string;
         order: number;
     };
@@ -170,98 +170,77 @@ export const ROUTES = {
             title: 'Zmiana hasła',
         },
     },
-    // =================
-    // === DASHBOARD ===
-    // =================
-    DASHBOARD: {
-        path: '/dashboard',
+    // ==========
+    // === CMS  ===
+    //===========
+    CMS: {
+        path: '/cms',
         meta: {
-            title: 'PANEL ZARZĄDU',
+            title: 'PANEL ZARZĄDZANIA',
         },
     },
-    DASHBOARD_USERS: {
-        path: '/dashboard/users',
-        parent: 'DASHBOARD',
+    DASHBOARD: {
+        path: '/cms/dashboard',
+        parent: 'CMS',
+        meta: {
+            title: 'PANEL',
+        },
+    },
+    CMS_USERS: {
+        path: '/cms/users',
+        parent: 'CMS',
         meta: {
             title: 'TABELA DZIAŁKOWCÓW',
         },
-        dashboardNav: { label: 'Tabela działkowców', order: 1 },
+        cmsNav: { label: 'Tabela działkowców', order: 1 },
     },
-    DASHBOARD_CREATE_USER: {
-        path: '/dashboard/users/create',
-        parent: 'DASHBOARD_USERS',
-        meta: {
-            title: 'DODAJ NOWE KONTO DZIAŁKOWCA',
-        },
-    },
-    DASHBOARD_PLOTS: {
-        path: '/dashboard/plots',
-        parent: 'DASHBOARD',
+    CMS_PLOTS: {
+        path: '/cms/plots',
+        parent: 'CMS',
         meta: {
             title: 'TABELA DZIAŁEK',
         },
-        dashboardNav: { label: 'Tabela działek', order: 2 },
+        cmsNav: { label: 'Tabela działek', order: 2 },
     },
-    DASHBOARD_CREATE_PLOT: {
-        path: '/dashboard/plots/create',
-        parent: 'DASHBOARD_PLOTS',
-        meta: {
-            title: 'DODAJ NOWĄ DZIAŁKĘ',
-        },
-    },
-    DASHBOARD_FEES: {
-        path: '/dashboard/fees',
-        parent: 'DASHBOARD',
+    CMS_FEES: {
+        path: '/cms/fees',
+        parent: 'CMS',
         meta: {
             title: 'TABELA OPŁAT',
         },
-        dashboardNav: { label: 'Tabela opłat', order: 3 },
+        cmsNav: { label: 'Tabela opłat', order: 3 },
     },
-    DASHBOARD_CREATE_FEES: {
-        path: '/dashboard/fees/create',
-        parent: 'DASHBOARD_FEES',
-        meta: {
-            title: 'DODAJ NOWĄ OPŁATĘ',
-        },
-    },
-    DASHBOARD_PAYMENTS: {
-        path: '/dashboard/payments',
-        parent: 'DASHBOARD',
+    CMS_PAYMENTS: {
+        path: '/cms/payments',
+        parent: 'CMS',
         meta: {
             title: 'TABELA PŁATNOŚCI',
         },
-        dashboardNav: { label: 'Płatności', order: 4 },
+        cmsNav: { label: 'Płatności', order: 4 },
     },
-    DASHBOARD_ANNOUNCEMENTS: {
-        path: '/dashboard/announcements',
-        parent: 'DASHBOARD',
+    CMS_ANNOUNCEMENTS: {
+        path: '/cms/announcements',
+        parent: 'CMS',
         meta: {
             title: 'OGŁOSZENIA',
         },
-        dashboardNav: { label: 'Ogłoszenia', order: 5 },
+        cmsNav: { label: 'Ogłoszenia', order: 5 },
     },
-    DASHBOARD_CREATE_ANNOUNCEMENTS: {
-        path: '/dashboard/announcements/create',
-        parent: 'DASHBOARD_ANNOUNCEMENTS',
-        meta: {
-            title: 'DODAJ NOWE OGŁOSZENIE',
-        },
-    },
-    DASHBOARD_DOCUMENTS: {
-        path: '/dashboard/documents',
-        parent: 'DASHBOARD',
+    CMS_DOCUMENTS: {
+        path: '/cms/documents',
+        parent: 'CMS',
         meta: {
             title: 'DOKUMENTY',
         },
-        dashboardNav: { label: 'Dokumenty', order: 6 },
+        cmsNav: { label: 'Dokumenty', order: 6 },
     },
-    DASHBOARD_SURVEYS: {
-        path: '/dashboard/surveys',
-        parent: 'DASHBOARD',
+    CMS_SURVEYS: {
+        path: '/cms/surveys',
+        parent: 'CMS',
         meta: {
             title: 'ANKIETY',
         },
-        dashboardNav: { label: 'Ankiety', order: 7 },
+        cmsNav: { label: 'Ankiety', order: 7 },
     },
 } as const satisfies Record<string, AppRouteBase & { parent?: string }>;
 

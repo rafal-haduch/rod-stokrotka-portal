@@ -1,4 +1,4 @@
-export default async function DashboardAnnouncementsPage() {
+export default async function CMSAnnouncementsPage() {
     return (
         <section>
             <h2>Ogłoszenia</h2>

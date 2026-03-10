@@ -21,7 +21,7 @@ export function mapToUserProfile(user: UserProfileFromDb): UserProfile {
 }
 
 /**
- * Maps a row collection of users with plots from database to dashboard user table rows read model.
+ * Maps a row collection of users with plots from database to CMS user table rows read model.
  */
 export function mapToUserTableRows(input: UserTableRowsFromDb): UserTableRow[] {
     return input.map((userRow) => ({
