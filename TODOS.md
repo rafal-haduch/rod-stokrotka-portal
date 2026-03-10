@@ -1,7 +1,5 @@
 # TODOS:
 
-- change all names "dashboard" into "cms" (routes, css, comments etc...)
-
 - start write docs in .md
 
 - improve system domain error (remove unknown and server_error into global error and change handleActionError )

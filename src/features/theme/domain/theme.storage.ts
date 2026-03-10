@@ -11,8 +11,12 @@ import { STORAGE_KEY } from '@/features/theme/domain/theme.constants';
  * - `null`  → preference not yet set (first visit)
  */
 export function getSeasonalThemePreference(): boolean | null | undefined {
-    if (typeof window === 'undefined') return undefined;
-
+    if (typeof window === 'undefined') {
+        console.error(
+            'The getSeasonalThemePreference() function can only be used in the client component.'
+        );
+        return undefined;
+    }
     const value = localStorage.getItem(STORAGE_KEY);
     if (value === null) return null;
 
@@ -27,7 +31,11 @@ export function getSeasonalThemePreference(): boolean | null | undefined {
  * @param enabled - Whether seasonal themes should be enabled.
  */
 export function setSeasonalThemePreference(enabled: boolean) {
-    if (typeof window === 'undefined') return;
-
+    if (typeof window === 'undefined') {
+        console.error(
+            'The setSeasonalThemePreference() function can only be used in the client component.'
+        );
+        return;
+    }
     localStorage.setItem(STORAGE_KEY, String(enabled));
 }
