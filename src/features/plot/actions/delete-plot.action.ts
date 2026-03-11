@@ -7,7 +7,7 @@ import { PERMISSION_KEYS } from '@/shared/auth/permissions';
 import { requireSession } from '@/shared/auth/require-session';
 import { DomainError } from '@/shared/error/domain-error';
 import { ErrorCode } from '@/shared/error/error-codes';
-import { ERROR_MESSAGES } from '@/shared/error/error.messages';
+import { ERROR_MESSAGES } from '@/shared/error/error-messages';
 import { plotRepository } from '@/features/plot/plot.repository';
 import { parseDeletePlotInput } from '../plot-input.parse';
 

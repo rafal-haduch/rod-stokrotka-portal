@@ -1,8 +1,8 @@
 # TODOS:
 
-- start write docs in .md
+-rename files in feature domain (replace - in .)
 
-- improve system domain error (remove unknown and server_error into global error and change handleActionError )
+- add error message for technical error in handle submit form action (np "Wystapił problem techniczny." w /shared/constants?)
 
 - refactor /src/features/plot based on user feature
 
@@ -16,5 +16,3 @@
 
 
 # REVIEWS:
-
-- zwracane błędy z serwera vs wyświetlane błędy UI (wyswietlać zawsze jeden stały komunikat?) 

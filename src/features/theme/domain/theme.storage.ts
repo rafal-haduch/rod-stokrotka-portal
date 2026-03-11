@@ -12,7 +12,7 @@ import { STORAGE_KEY } from '@/features/theme/domain/theme.constants';
  */
 export function getSeasonalThemePreference(): boolean | null | undefined {
     if (typeof window === 'undefined') {
-        console.error(
+        console.warn(
             'The getSeasonalThemePreference() function can only be used in the client component.'
         );
         return undefined;
@@ -32,7 +32,7 @@ export function getSeasonalThemePreference(): boolean | null | undefined {
  */
 export function setSeasonalThemePreference(enabled: boolean) {
     if (typeof window === 'undefined') {
-        console.error(
+        console.warn(
             'The setSeasonalThemePreference() function can only be used in the client component.'
         );
         return;

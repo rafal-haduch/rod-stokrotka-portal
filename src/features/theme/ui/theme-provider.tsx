@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 import { ThemeType } from '@/features/theme/domain/theme.types';
 import {
@@ -62,11 +62,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
      * - internal state
      * - currently active theme
      */
-    const toggleSeasonalThemePreference = (enabled: boolean) => {
+    const toggleSeasonalThemePreference = useCallback((enabled: boolean) => {
         setSeasonalThemePreference(enabled);
         setSeasonalThemeEnabled(enabled);
         setActiveTheme(resolveThemeFromPreference(enabled));
-    };
+    }, []);
 
     /**
      * Memoized context value to prevent unnecessary re-renders
