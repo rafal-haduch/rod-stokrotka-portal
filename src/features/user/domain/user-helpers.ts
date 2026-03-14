@@ -1,7 +1,7 @@
 import { randomBytes } from 'crypto';
 import { Role } from '@prisma/client';
 
-import { ROLE_LABEL } from '@/features/user/domain/user.constants';
+import { ROLE_LABEL } from '@/features/user/domain/user-constants';
 
 /**
  * @returns A Polish display label for the given role. If role is missing, returns a fallback placeholder `-`.

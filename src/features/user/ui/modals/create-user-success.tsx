@@ -7,8 +7,8 @@ import { cn } from '@/shared/utils/cn';
 
 import { CustomButton } from '@/components/custom-button';
 
-import { getRoleLabel } from '@/features/user/domain/user.helpers';
-import { CreatedUserData } from '@/features/user/domain/user.api-contracts';
+import { getRoleLabel } from '@/features/user/domain/user-helpers';
+import { CreatedUserData } from '@/features/user/domain/user-api-contracts';
 
 interface Props {
     result: CreatedUserData;

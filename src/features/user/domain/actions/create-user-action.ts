@@ -10,11 +10,11 @@ import { requireSession } from '@/shared/auth/require-session';
 import { isAdminOrBoard } from '@/shared/auth/is-admin-or-board';
 import { handleActionError } from '@/shared/error/handle-action-error';
 
-import { parseCreateUserInput } from '@/features/user/domain/user.input-parse';
-import { userRepository } from '@/features/user/domain/user.repository';
-import { generateLogin, generatePassword } from '@/features/user/domain/user.helpers';
-import { CreatedUserData } from '@/features/user/domain/user.api-contracts';
-import { mapToCreateUserData } from '@/features/user/domain/user.mapper';
+import { parseCreateUserInput } from '@/features/user/domain/user-input-parse';
+import { userRepository } from '@/features/user/domain/user-repository';
+import { generateLogin, generatePassword } from '@/features/user/domain/user-helpers';
+import { CreatedUserData } from '@/features/user/domain/user-api-contracts';
+import { mapToCreateUserData } from '@/features/user/domain/user-mapper';
 
 export async function createUser(formData: FormData): Promise<ActionResult<CreatedUserData>> {
     try {

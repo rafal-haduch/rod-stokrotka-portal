@@ -9,12 +9,10 @@ import { DomainError } from '@/shared/error/domain-error';
 import { ErrorCode } from '@/shared/error/error-codes';
 import { handleActionError } from '@/shared/error/handle-action-error';
 
-import { UpdatedUserData } from '@/features/user/domain/user.api-contracts';
-import { parseUpdateUserInput } from '@/features/user/domain/user.input-parse';
-import { userRepository } from '@/features/user/domain/user.repository';
-import { mapToUpdateUserData } from '@/features/user/domain/user.mapper';
+import { parseDeleteUserInput } from '@/features/user/domain/user-input-parse';
+import { userRepository } from '@/features/user/domain/user-repository';
 
-export async function updateUser(formData: FormData): Promise<ActionResult<UpdatedUserData>> {
+export async function deleteUser(formData: FormData): Promise<ActionResult<void>> {
     try {
         const session = await requireSession();
 
@@ -22,15 +20,14 @@ export async function updateUser(formData: FormData): Promise<ActionResult<Updat
             throw new DomainError(ErrorCode.NO_PERMISSION);
         }
 
-        const { id, name, role, plotIds } = parseUpdateUserInput(formData);
+        const { id } = parseDeleteUserInput(formData);
 
-        const result = await userRepository.update({ id, name, plotIds, role });
+        await userRepository.delete(id);
 
         revalidateTag('users');
 
         return {
             success: true,
-            data: mapToUpdateUserData(result),
         };
     } catch (e) {
         return handleActionError(e);

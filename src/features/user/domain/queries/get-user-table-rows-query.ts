@@ -1,8 +1,8 @@
 import { unstable_cache } from 'next/cache';
 
-import { FetchedUserTableRows } from '@/features/user/domain/user.api-contracts';
-import { mapToUserTableRows } from '@/features/user/domain/user.mapper';
-import { userRepository } from '@/features/user/domain/user.repository';
+import { FetchedUserTableRows } from '@/features/user/domain/user-api-contracts';
+import { mapToUserTableRows } from '@/features/user/domain/user-mapper';
+import { userRepository } from '@/features/user/domain/user-repository';
 
 /**
  * Fetches only the fields needed for the CMS users table from the database.

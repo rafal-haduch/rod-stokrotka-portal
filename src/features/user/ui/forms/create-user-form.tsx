@@ -9,8 +9,8 @@ import { CustomButton } from '@/components/custom-button';
 
 import { PlotMinimalReference } from '@/features/plot/plot.read-models';
 
-import { ASSIGNABLE_ROLES } from '@/features/user/domain/user.constants';
-import { getRoleLabel } from '@/features/user/domain/user.helpers';
+import { ASSIGNABLE_ROLES } from '@/features/user/domain/user-constants';
+import { getRoleLabel } from '@/features/user/domain/user-helpers';
 
 interface Props {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;

@@ -1,9 +1,5 @@
 # TODOS:
 
--rename files in feature domain (replace - in .)
-
-- add error message for technical error in handle submit form action (np "Wystapił problem techniczny." w /shared/constants?)
-
 - refactor /src/features/plot based on user feature
 
 - add fee/s feature
@@ -16,3 +12,5 @@
 
 
 # REVIEWS:
+
+- workflow create user modal -> create user actions woithj safre action. is error handling is correct?

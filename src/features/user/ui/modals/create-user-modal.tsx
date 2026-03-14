@@ -5,14 +5,17 @@ import { X } from 'lucide-react';
 
 import Portal from '@/components/portal';
 
+import { ActionResult } from '@/shared/contracts/action-result';
+import { safeAction } from '@/shared/utils/safe-action';
+import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
+import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
+
 import { PlotMinimalReference } from '@/features/plot/plot.read-models';
 
-import { UserTableRow } from '@/features/user/domain/user.read-models';
-import { createUser } from '@/features/user/domain/actions/create-user.action';
+import { createUser } from '@/features/user/domain/actions/create-user-action';
+import { CreatedUserData } from '@/features/user/domain/user-api-contracts';
 import CreateUserForm from '@/features/user/ui/forms/create-user-form';
 import CreateUserSuccess from '@/features/user/ui/modals/create-user-success';
-import { ActionResult } from '@/shared/contracts/action-result';
-import { CreatedUserData } from '@/features/user/domain/user.api-contracts';
 
 interface Props {
     plotOptions: PlotMinimalReference[];
@@ -21,7 +24,9 @@ interface Props {
 }
 
 export default function CreateUserModal({ plotOptions, onCloseModal, onUserCreated }: Props) {
-    const [result, setResult] = useState<ActionResult<CreatedUserData> | 'error' | null>(null);
+    const [result, setResult] = useState<ActionResult<CreatedUserData> | TechnicalError | null>(
+        null
+    );
     const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -32,23 +37,20 @@ export default function CreateUserModal({ plotOptions, onCloseModal, onUserCreat
 
         const formData = new FormData(e.currentTarget);
 
-        try {
-            const res = await createUser(formData);
-            setResult(res);
+        const res = await safeAction(() => createUser(formData));
 
-            if (res.success && res.data) {
-                onUserCreated(res.data);
-            }
-        } catch (err) {
-            setResult('error');
-        } finally {
-            setLoading(false);
+        setResult(res);
+
+        if (res !== TECHNICAL_ERROR && res.success) {
+            onUserCreated(res.data);
         }
+
+        setLoading(false);
     }
 
     const errorMsg =
-        result === 'error'
-            ? 'Wystąpił problem techniczny! Spróbuj ponownie.'
+        result === TECHNICAL_ERROR
+            ? SYSTEM_MESSAGES.TECHNICAL_ERROR
             : result && !result.success
               ? result.errorMsg
               : null;
@@ -71,7 +73,7 @@ export default function CreateUserModal({ plotOptions, onCloseModal, onUserCreat
                     >
                         <X className="h-8 w-8" />
                     </button>
-                    {result !== 'error' && result?.success && result.data ? (
+                    {result !== TECHNICAL_ERROR && result?.success && result.data ? (
                         <CreateUserSuccess result={result.data} />
                     ) : (
                         <CreateUserForm

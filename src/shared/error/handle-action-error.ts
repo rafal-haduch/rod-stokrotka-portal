@@ -20,7 +20,7 @@ export function handleActionError(e: unknown): ActionResultError {
     }
 
     if (e instanceof Prisma.PrismaClientKnownRequestError) {
-        console.error(e);
+        console.error('Database error:', e);
 
         return {
             success: false,

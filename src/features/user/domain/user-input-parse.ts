@@ -4,7 +4,7 @@ import { validateId } from '@/shared/utils/validate-id';
 
 import { validatePlotIds } from '@/features/plot/plot.validation';
 
-import { validateUserName, validateUserRole } from '@/features/user/domain/user.validation';
+import { validateUserName, validateUserRole } from '@/features/user/domain/user-validation';
 
 // === USE CASE: CREATE USER ===
 

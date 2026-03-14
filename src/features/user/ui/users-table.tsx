@@ -6,8 +6,8 @@ import { CRUDModalType } from '@/shared/types/crud-modal';
 
 import { CustomButton } from '@/components/custom-button';
 
-import { UserTableRow } from '@/features/user/domain/user.read-models';
-import { getRoleLabel } from '@/features/user/domain/user.helpers';
+import { UserTableRow } from '@/features/user/domain/user-read-models';
+import { getRoleLabel } from '@/features/user/domain/user-helpers';
 
 interface Props {
     data: UserTableRow[];

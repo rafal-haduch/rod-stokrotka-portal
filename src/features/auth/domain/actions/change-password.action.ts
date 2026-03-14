@@ -8,7 +8,7 @@ import { DomainError } from '@/shared/error/domain-error';
 import { ErrorCode } from '@/shared/error/error-codes';
 import { handleActionError } from '@/shared/error/handle-action-error';
 
-import { userRepository } from '@/features/user/domain/user.repository';
+import { userRepository } from '@/features/user/domain/user-repository';
 
 import { enforcePasswordPolicy } from '@/features/auth/domain/auth.helpers';
 import { parseChangePasswordInput } from '@/features/auth/domain/auth.input-parse';

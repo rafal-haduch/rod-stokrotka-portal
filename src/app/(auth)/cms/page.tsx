@@ -1,4 +1,4 @@
-import { getRoleLabel } from '@/features/user/domain/user.helpers';
+import { getRoleLabel } from '@/features/user/domain/user-helpers';
 
 import { getUserSession } from '@/shared/lib/next-auth/get-user-session';
 

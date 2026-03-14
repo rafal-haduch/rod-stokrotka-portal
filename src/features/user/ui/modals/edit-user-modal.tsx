@@ -5,13 +5,17 @@ import { X } from 'lucide-react';
 
 import Portal from '@/components/portal';
 
+import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
+import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
+import { ActionResult } from '@/shared/contracts/action-result';
+import { safeAction } from '@/shared/utils/safe-action';
+
 import { PlotMinimalReference } from '@/features/plot/plot.read-models';
 
-import { updateUser } from '@/features/user/domain/actions/update-user.action';
-import { UserTableRow } from '@/features/user/domain/user.read-models';
+import { updateUser } from '@/features/user/domain/actions/update-user-action';
+import { UserTableRow } from '@/features/user/domain/user-read-models';
+import { UpdatedUserData } from '@/features/user/domain/user-api-contracts';
 import EditUserForm from '@/features/user/ui/forms/edit-user-form';
-import { ActionResult } from '@/shared/contracts/action-result';
-import { UpdatedUserData } from '@/features/user/domain/user.api-contracts';
 
 interface Props {
     user: UserTableRow;
@@ -21,7 +25,9 @@ interface Props {
 }
 
 export default function EditUserModal({ user, onCloseModal, onUpdatedUser, plotOptions }: Props) {
-    const [result, setResult] = useState<ActionResult<UpdatedUserData> | 'error' | null>(null);
+    const [result, setResult] = useState<ActionResult<UpdatedUserData> | TechnicalError | null>(
+        null
+    );
     const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -32,23 +38,20 @@ export default function EditUserModal({ user, onCloseModal, onUpdatedUser, plotO
 
         const formData = new FormData(e.currentTarget);
 
-        try {
-            const res = await updateUser(formData);
-            setResult(res);
+        const res = await safeAction(() => updateUser(formData));
 
-            if (res.success) {
-                onUpdatedUser(res.data);
-            }
-        } catch (err) {
-            setResult('error');
-        } finally {
-            setLoading(false);
+        setResult(res);
+
+        if (res !== TECHNICAL_ERROR && res.success) {
+            onUpdatedUser(res.data);
         }
+
+        setLoading(false);
     }
 
     const errorMsg =
-        result === 'error'
-            ? 'Wystąpił problem techniczny! Spróbuj ponownie.'
+        result === TECHNICAL_ERROR
+            ? SYSTEM_MESSAGES.TECHNICAL_ERROR
             : result && !result.success
               ? result.errorMsg
               : null;

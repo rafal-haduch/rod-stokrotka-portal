@@ -1,4 +1,4 @@
-import { ErrorCode } from '@/shared/error';
+import { ErrorCode } from '@/shared/error/error-codes';
 
 export interface ActionResultSuccessWithData<T> {
     success: true;

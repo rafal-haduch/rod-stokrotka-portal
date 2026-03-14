@@ -8,9 +8,9 @@ import { MultiSelectDropdown } from '@/components/multi-select-plots-dropdown';
 
 import { PlotMinimalReference } from '@/features/plot/plot.read-models';
 
-import { UserTableRow } from '@/features/user/domain/user.read-models';
-import { ASSIGNABLE_ROLES } from '@/features/user/domain/user.constants';
-import { getRoleLabel } from '@/features/user/domain/user.helpers';
+import { UserTableRow } from '@/features/user/domain/user-read-models';
+import { ASSIGNABLE_ROLES } from '@/features/user/domain/user-constants';
+import { getRoleLabel } from '@/features/user/domain/user-helpers';
 
 interface Props {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;

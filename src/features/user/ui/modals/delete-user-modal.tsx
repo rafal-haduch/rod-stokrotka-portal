@@ -3,12 +3,15 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
 
-import { DeleteUserResult } from '@/shared/contracts/user-actions';
-
 import Portal from '@/components/portal';
 
-import { UserTableRow } from '@/features/user/domain/user.read-models';
-import { deleteUser } from '@/features/user/domain/actions/delete-user.action';
+import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
+import { ActionResult } from '@/shared/contracts/action-result';
+import { safeAction } from '@/shared/utils/safe-action';
+import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
+
+import { UserTableRow } from '@/features/user/domain/user-read-models';
+import { deleteUser } from '@/features/user/domain/actions/delete-user-action';
 import DeleteUserForm from '@/features/user/ui/forms/delete-user-form';
 
 interface Props {
@@ -18,7 +21,7 @@ interface Props {
 }
 
 export default function DeleteUserModal({ user, onCloseModal, onUserDeleted }: Props) {
-    const [result, setResult] = useState<DeleteUserResult | 'error' | null>(null);
+    const [result, setResult] = useState<ActionResult<void> | TechnicalError | null>(null);
     const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -29,23 +32,20 @@ export default function DeleteUserModal({ user, onCloseModal, onUserDeleted }: P
 
         const formData = new FormData(e.currentTarget);
 
-        try {
-            const res = await deleteUser(formData);
-            setResult(res);
+        const res = await safeAction(() => deleteUser(formData));
 
-            if (res.success) {
-                onUserDeleted(user.id);
-            }
-        } catch (err) {
-            setResult('error');
-        } finally {
-            setLoading(false);
+        setResult(res);
+
+        if (res !== TECHNICAL_ERROR && res.success) {
+            onUserDeleted(user.id);
         }
+
+        setLoading(false);
     }
 
     const errorMsg =
-        result === 'error'
-            ? 'Wystąpił problem techniczny! Spróbuj ponownie.'
+        result === TECHNICAL_ERROR
+            ? SYSTEM_MESSAGES.TECHNICAL_ERROR
             : result && !result.success
               ? result.errorMsg
               : null;

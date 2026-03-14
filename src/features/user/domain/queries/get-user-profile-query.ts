@@ -1,6 +1,6 @@
-import { FetchedUserProfile } from '@/features/user/domain/user.api-contracts';
-import { mapToUserProfile } from '@/features/user/domain/user.mapper';
-import { userRepository } from '@/features/user/domain/user.repository';
+import { FetchedUserProfile } from '@/features/user/domain/user-api-contracts';
+import { mapToUserProfile } from '@/features/user/domain/user-mapper';
+import { userRepository } from '@/features/user/domain/user-repository';
 
 /**
  * Fetches only the fields needed for the user profile panel from the database.

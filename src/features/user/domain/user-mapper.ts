@@ -1,7 +1,7 @@
-import { CreatedUserData, UpdatedUserData } from '@/features/user/domain/user.api-contracts';
-import { UserProfileFromDb, UserTableRowsFromDb } from '@/features/user/domain/user.db-types';
-import { UserProfile, UserTableRow } from '@/features/user/domain/user.read-models';
-import { userRepository } from '@/features/user/domain/user.repository';
+import { CreatedUserData, UpdatedUserData } from '@/features/user/domain/user-api-contracts';
+import { UserProfileFromDb, UserTableRowsFromDb } from '@/features/user/domain/user-db-types';
+import { UserProfile, UserTableRow } from '@/features/user/domain/user-read-models';
+import { userRepository } from '@/features/user/domain/user-repository';
 
 // === MAPPERS FOR QUERIES ===
 

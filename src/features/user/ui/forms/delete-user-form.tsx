@@ -2,7 +2,7 @@
 
 import { CustomButton } from '@/components/custom-button';
 
-import { UserTableRow } from '@/features/user/domain/user.read-models';
+import { UserTableRow } from '@/features/user/domain/user-read-models';
 
 interface Props {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;

@@ -7,7 +7,7 @@ import {
     userProfileSelect,
     UserTableRowsFromDb,
     userTableRowsSelect,
-} from '@/features/user/domain/user.db-types';
+} from '@/features/user/domain/user-db-types';
 
 // === TYPES FOR DB OPERATIONS ===
 
