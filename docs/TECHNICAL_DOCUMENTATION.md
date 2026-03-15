@@ -6,13 +6,14 @@
 2. [Application Architecture](#2-application-architecture)
 3. [Feature-Based Structure](#3-feature-based-structure)
 4. [Backend Logic and Structure](#4-backend-logic-and-structure)
-5. [Data Layer](#5-data-layer)
-6. [Validation and Data Parsing](#6-validation-and-data-parsing)
-7. [API Contracts and Data Mapping](#7-api-contracts-and-data-mapping)
-8. [Error Handling](#8-error-handling)
-9. [Styling and Design System](#9-styling-and-design-system)
-10. [Application Areas](#10-application-areas)
-11. [Blog System](#11-blog-system)
+5. [Server Action Execution Flow](#5-server-action-execution-flow)
+6. [Data Layer](#6-data-layer)
+7. [Validation and Data Parsing](#7-validation-and-data-parsing)
+8. [API Contracts and Data Mapping](#8-api-contracts-and-data-mapping)
+9. [Error Handling](#9-error-handling)
+10. [Styling and Design System](#10-styling-and-design-system)
+11. [Application Areas](#11-application-areas)
+12. [Blog System](#12-blog-system)
 
 ---
 
@@ -217,7 +218,22 @@ Responsible for validating individual fields submitted from the frontend.
 
 ---
 
-# 5. Data Layer
+
+# 5. Server Action Execution Flow
+
+All mutable server actions follow a consistent execution order:
+
+1. Session and Permissions Check
+2. Input Parsing
+3. Business Logic / Preparation
+4. Database Operations
+5. Cache / Side Effects
+6. Return Result
+7. Error Handling
+
+Technical errors (network failures, etc.) are handled via `safeAction` on the frontend and are **not** part of the `ActionResult<T>`.
+
+# 6. Data Layer
 
 Database access is implemented using **Prisma ORM**.
 All database operations are located in: */src/features/feature/feature.repository.ts*
@@ -240,7 +256,7 @@ This abstraction isolates database logic from business logic and makes the domai
 
 ---
 
-# 6. Validation and Data Parsing
+# 7. Validation and Data Parsing
 
 Data sent from forms is processed in two steps:
 
@@ -257,7 +273,7 @@ Validation functions verify individual input fields and ensure that the data mee
 
 ---
 
-# 7. API Contracts and Data Mapping
+# 8. API Contracts and Data Mapping
 
 To keep the frontend independent from database models, the project uses **API contracts** and **mapping functions**.
 
@@ -271,7 +287,7 @@ To keep the frontend independent from database models, the project uses **API co
 
 ---
 
-# 8. Error Handling
+# 9. Error Handling
 
 Basic error handling is implemented through a shared domain error system.
 
@@ -287,7 +303,7 @@ Error messages returned to the frontend are generated from predefined error code
 
 ---
 
-# 9. Styling and Design System
+# 10. Styling and Design System
 
 The application uses a custom styling approach based on **semantic CSS classes**.
 
@@ -314,7 +330,7 @@ Themes are implemented using:
 
 ---
 
-# 10. Application Areas
+# 11. Application Areas
 
 The application is divided into several functional areas.
 
@@ -362,7 +378,7 @@ The CMS allows managing:
 
 ---
 
-# 11. Blog System
+# 12. Blog System
 
 The blog system is implemented using **Markdown files**.
 

@@ -18,33 +18,26 @@ import { mapToCreateUserData } from '@/features/user/domain/user-mapper';
 
 export async function createUser(formData: FormData): Promise<ActionResult<CreatedUserData>> {
     try {
-        // 1. Session and permission
         const session = await requireSession();
 
         if (!isAdminOrBoard(session.role)) {
             throw new DomainError(ErrorCode.NO_PERMISSION);
         }
 
-        // 2. Prepare input data (validate and parse)
         const { name, role, plotIds } = parseCreateUserInput(formData);
 
-        // 3. Prepare other necessary data or buisnes logic
         const login = generateLogin(name);
         const password = generatePassword();
-
         const passwordHash = await bcrypt.hash(password, 10);
 
-        // 4. Database operation
         const result = await userRepository.create({ name, plotIds, role, login, passwordHash });
 
-        // 5. Revalidate cache
         revalidateTag('users');
 
-        // 6. Return
         // NOTE: The login and password are returned because they are needed to be passed on to the user for whom the account was created.
         return {
             success: true,
-            data: mapToCreateUserData(result),
+            data: mapToCreateUserData(result, password),
         };
     } catch (e) {
         return handleActionError(e);

@@ -42,7 +42,8 @@ export function mapToUserTableRows(input: UserTableRowsFromDb): UserTableRow[] {
  * Maps raw user entity returned from `create` action to CreateUserData contract.
  */
 export function mapToCreateUserData(
-    input: Awaited<ReturnType<typeof userRepository.create>>
+    input: Awaited<ReturnType<typeof userRepository.create>>,
+    password: string
 ): CreatedUserData {
     return {
         id: input.id,
@@ -50,7 +51,7 @@ export function mapToCreateUserData(
         plots: input.plots.map((p) => ({ id: p.plot.id, plotNumber: p.plot.plotNumber })),
         role: input.role,
         login: input.login,
-        password: input.password, // jeśli potrzebne w akcjach
+        password: password,
         createdAt: input.createdAt,
         lastLogin: null,
     };

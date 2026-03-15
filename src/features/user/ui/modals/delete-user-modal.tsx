@@ -32,7 +32,7 @@ export default function DeleteUserModal({ user, onCloseModal, onUserDeleted }: P
 
         const formData = new FormData(e.currentTarget);
 
-        const res = await safeAction(() => deleteUser(formData));
+        const res = await safeAction<void>(() => deleteUser(formData));
 
         setResult(res);
 

@@ -24,7 +24,7 @@ export default function DeleteUserForm({
             <input type="hidden" name="userId" value={userData.id}></input>
             <div className="flex flex-row items-center justify-evenly gap-4 sm:gap-0">
                 <CustomButton type="submit" disabled={loading} size="md" variant="danger">
-                    Usuń użytkownika
+                    Usuń konto
                 </CustomButton>
                 <CustomButton type="button" onClick={onCloseModal} size="md" variant="outline">
                     Anuluj
