@@ -12,7 +12,7 @@ import { handleActionError } from '@/shared/error/handle-action-error';
 import { UpdatedUserData } from '@/features/user/domain/user-api-contracts';
 import { parseUpdateUserInput } from '@/features/user/domain/user-input-parse';
 import { userRepository } from '@/features/user/domain/user-repository';
-import { mapToUpdateUserData } from '@/features/user/domain/user-mapper';
+import { mapToUpdatedUserData } from '@/features/user/domain/user-mapper';
 
 export async function updateUser(formData: FormData): Promise<ActionResult<UpdatedUserData>> {
     try {
@@ -30,7 +30,7 @@ export async function updateUser(formData: FormData): Promise<ActionResult<Updat
 
         return {
             success: true,
-            data: mapToUpdateUserData(result),
+            data: mapToUpdatedUserData(result),
         };
     } catch (e) {
         return handleActionError(e);

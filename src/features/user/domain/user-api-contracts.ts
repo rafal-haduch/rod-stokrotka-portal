@@ -1,6 +1,7 @@
 import { Role } from '@prisma/client';
 
-import { PlotMinimalReference } from '@/features/plot/plot.read-models';
+import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
+
 import { UserProfile, UserTableRow } from '@/features/user/domain/user-read-models';
 
 // === FOR QUERIES ===

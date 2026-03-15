@@ -14,7 +14,7 @@ import { parseCreateUserInput } from '@/features/user/domain/user-input-parse';
 import { userRepository } from '@/features/user/domain/user-repository';
 import { generateLogin, generatePassword } from '@/features/user/domain/user-helpers';
 import { CreatedUserData } from '@/features/user/domain/user-api-contracts';
-import { mapToCreateUserData } from '@/features/user/domain/user-mapper';
+import { mapToCreatedUserData } from '@/features/user/domain/user-mapper';
 
 export async function createUser(formData: FormData): Promise<ActionResult<CreatedUserData>> {
     try {
@@ -37,7 +37,7 @@ export async function createUser(formData: FormData): Promise<ActionResult<Creat
         // NOTE: The login and password are returned because they are needed to be passed on to the user for whom the account was created.
         return {
             success: true,
-            data: mapToCreateUserData(result, password),
+            data: mapToCreatedUserData(result, password),
         };
     } catch (e) {
         return handleActionError(e);

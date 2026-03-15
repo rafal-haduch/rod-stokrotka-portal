@@ -13,7 +13,6 @@ export const ROLE_LABEL: Record<Role, string> = {
     [Role.ALLOTMENT_GARDENER]: 'Działkowiec',
 };
 
-//REVIEW: set Admin role in database or in app?
 /**
  * Roles that can be assigned to users in the CMS app.
  * Admin is excluded because it shouldn't be assigned from the app.

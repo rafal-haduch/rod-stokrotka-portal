@@ -1,6 +1,6 @@
 import { Role } from '@prisma/client';
 
-import { PlotMinimalReference } from '@/features/plot/plot.read-models';
+import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
 /**
  * Read model representing the current user's profile data.

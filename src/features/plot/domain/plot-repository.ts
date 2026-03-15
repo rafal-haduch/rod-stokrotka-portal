@@ -1,5 +1,5 @@
 import { prisma } from '@/shared/lib/prisma';
-import { PlotMinimalReference } from './plot.read-models';
+import { PlotMinimalReference } from './plot-read-models';
 
 interface CreatePlotData {
     plotNumber: string;

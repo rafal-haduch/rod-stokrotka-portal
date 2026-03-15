@@ -1,6 +1,6 @@
 import { unstable_cache } from 'next/cache';
-import { PlotMinimalReference } from '../plot.read-models';
-import { plotRepository } from '../plot.repository';
+import { PlotMinimalReference } from '../plot-read-models';
+import { plotRepository } from '../plot-repository';
 
 /**
  * Fetches sorted only the fields needed for the multi-select dropdown inputs from the database.

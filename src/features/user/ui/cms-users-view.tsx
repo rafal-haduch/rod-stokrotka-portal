@@ -7,7 +7,7 @@ import { CRUDModalType } from '@/shared/types/crud-modal';
 
 import { CustomButton } from '@/components/custom-button';
 
-import { PlotMinimalReference } from '@/features/plot/plot.read-models';
+import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
 import { UserTableRow } from '@/features/user/domain/user-read-models';
 import CreateUserModal from '@/features/user/ui/modals/create-user-modal';

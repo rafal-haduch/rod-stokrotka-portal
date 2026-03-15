@@ -1,5 +1,5 @@
-import { DomainError } from '../../shared/error/domain-error';
-import { ErrorCode } from '../../shared/error/error-codes';
+import { DomainError } from '@/shared/error/domain-error';
+import { ErrorCode } from '@/shared/error/error-codes';
 
 // Ids
 export function validatePlotIds(values: unknown[]): number[] {

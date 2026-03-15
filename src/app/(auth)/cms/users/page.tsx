@@ -1,4 +1,4 @@
-import { getSortedAvailablePlots } from '@/features/plot/queries/get-sorted-available-plots.query';
+import { getSortedAvailablePlots } from '@/features/plot/domain/queries/get-sorted-available-plots-query';
 
 import { getUserTableRows } from '@/features/user/domain/queries/get-user-table-rows-query';
 import CMSUsersView from '@/features/user/ui/cms-users-view';

@@ -8,12 +8,12 @@ import { userRepository } from '@/features/user/domain/user-repository';
 /**
  * Maps a row user entity with plots from database to a user profile read model.
  */
-export function mapToUserProfile(user: UserProfileFromDb): UserProfile {
+export function mapToUserProfile(input: UserProfileFromDb): UserProfile {
     return {
-        name: user.name,
-        role: user.role,
-        login: user.login,
-        plots: user.plots.map((p) => ({
+        name: input.name,
+        role: input.role,
+        login: input.login,
+        plots: input.plots.map((p) => ({
             id: p.plot.id,
             plotNumber: p.plot.plotNumber,
         })),
@@ -41,7 +41,7 @@ export function mapToUserTableRows(input: UserTableRowsFromDb): UserTableRow[] {
 /**
  * Maps raw user entity returned from `create` action to CreateUserData contract.
  */
-export function mapToCreateUserData(
+export function mapToCreatedUserData(
     input: Awaited<ReturnType<typeof userRepository.create>>,
     password: string
 ): CreatedUserData {
@@ -60,7 +60,7 @@ export function mapToCreateUserData(
 /**
  * Maps raw user entity returned from `update` action to UpdateUserData contract.
  */
-export function mapToUpdateUserData(
+export function mapToUpdatedUserData(
     input: Awaited<ReturnType<typeof userRepository.update>>
 ): UpdatedUserData {
     return {

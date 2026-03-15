@@ -519,7 +519,6 @@
 /* =================== */
 
 @theme {
-    /* REVIEW: are fallbacks correct? */
     /* Base fonts */
     --font-sans:
         var(--font-nunito), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial,
