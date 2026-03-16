@@ -1,5 +1,6 @@
 import { prisma } from '@/shared/lib/prisma';
 import { PlotMinimalReference } from './plot-read-models';
+import { PlotTableRowsFromDb, plotTableRowsSelect } from '@/features/plot/domain/plot-db-types';
 
 interface CreatePlotData {
     plotNumber: string;
@@ -20,7 +21,7 @@ export const plotRepository = {
     },
 
     async update({ id, plotNumber, area }: UpdatePlotData) {
-        await prisma.plot.update({
+        return await prisma.plot.update({
             where: { id },
             data: { plotNumber, area },
         });
@@ -85,5 +86,9 @@ export const plotRepository = {
                 plotNumber: true,
             },
         });
+    },
+
+    async getUserTableRows(): Promise<PlotTableRowsFromDb> {
+        return await prisma.plot.findMany(plotTableRowsSelect);
     },
 };

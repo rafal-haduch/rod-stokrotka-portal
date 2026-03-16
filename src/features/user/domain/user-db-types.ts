@@ -1,6 +1,6 @@
 import { User, UserPlot, Plot, Prisma } from '@prisma/client';
 
-// === TYPES WITH RELATIONS (INCLUDE)===
+// === TYPES WITH RELATIONS (INCLUDE) ===
 
 /**
  * Represents a user row from the database.

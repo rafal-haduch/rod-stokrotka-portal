@@ -10,7 +10,7 @@ import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error'
 import { ActionResult } from '@/shared/contracts/action-result';
 import { safeAction } from '@/shared/utils/safe-action';
 
-import { PlotMinimalReference } from '@/features/plot/plot.read-models';
+import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
 import { updateUser } from '@/features/user/domain/actions/update-user-action';
 import { UserTableRow } from '@/features/user/domain/user-read-models';

@@ -6,7 +6,7 @@ import { TooltipIcon } from '@/components/tooltip-icon';
 import { CustomButton } from '@/components/custom-button';
 import { MultiSelectDropdown } from '@/components/multi-select-plots-dropdown';
 
-import { PlotMinimalReference } from '@/features/plot/plot.read-models';
+import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
 import { UserTableRow } from '@/features/user/domain/user-read-models';
 import { ASSIGNABLE_ROLES } from '@/features/user/domain/user-constants';
@@ -97,7 +97,7 @@ export default function EditUserForm({
                     {errorMsg && <span className="text-red-500">{errorMsg}</span>}
                 </p>
 
-                {/* Buttons */}
+                {/* Submit Button */}
                 <div className="flex justify-center gap-14">
                     <CustomButton
                         type="submit"

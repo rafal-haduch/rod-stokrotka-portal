@@ -7,7 +7,7 @@ import { TooltipIcon } from '@/components/tooltip-icon';
 import { MultiSelectDropdown } from '@/components/multi-select-plots-dropdown';
 import { CustomButton } from '@/components/custom-button';
 
-import { PlotMinimalReference } from '@/features/plot/plot.read-models';
+import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
 import { ASSIGNABLE_ROLES } from '@/features/user/domain/user-constants';
 import { getRoleLabel } from '@/features/user/domain/user-helpers';
@@ -82,10 +82,10 @@ export default function CreateUserForm({ onSubmit, plotsOptions, loading, errorM
 
                 {/* Error  */}
                 <div className="col-span-4 min-h-10 text-center sm:min-h-4">
-                    {errorMsg && <span className="text-red-500">{errorMsg}</span>}
+                    {errorMsg && <p className="text-red-500">{errorMsg}</p>}
                 </div>
 
-                {/* Buttons */}
+                {/* Submit Button */}
                 <div className="col-span-4 flex justify-center gap-14">
                     <CustomButton
                         type="submit"
@@ -94,7 +94,7 @@ export default function CreateUserForm({ onSubmit, plotsOptions, loading, errorM
                         size="sm"
                         variant="primary"
                     >
-                        Dodaj <CirclePlus />
+                        Dodaj <CirclePlus aria-hidden="true" />
                     </CustomButton>
                 </div>
             </fieldset>

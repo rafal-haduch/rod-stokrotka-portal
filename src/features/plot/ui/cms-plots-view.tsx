@@ -1,0 +1,119 @@
+'use client';
+
+import { CustomButton } from '@/components/custom-button';
+import {
+    CreatedPlotData,
+    DeletedPlotData,
+    UpdatedPlotData,
+} from '@/features/plot/domain/plot-api-contracts';
+import { PlotTableRow } from '@/features/plot/domain/plot-read-models';
+import { CreatePlotModal } from '@/features/plot/ui/crud-modals/create-plot-modal';
+import { DeletePlotModal } from '@/features/plot/ui/crud-modals/delete-plot-modal';
+import { EditPlotModal } from '@/features/plot/ui/crud-modals/edit-plot-modal';
+import { PlotsTable } from '@/features/plot/ui/plots-table';
+import { CRUDModalType } from '@/shared/types/crud-modal';
+import { Plus } from 'lucide-react';
+import { useState } from 'react';
+
+interface Props {
+    plotTableRows: PlotTableRow[];
+}
+
+export function CMSPlotsView({ plotTableRows }: Props) {
+    //NOTE: Copy user table rows into state for local update after server action mutation.
+    const [plotRows, setPlotRows] = useState<PlotTableRow[]>(plotTableRows);
+    const [activeModal, setActiveModal] = useState<CRUDModalType>(null);
+    const [selectedPlot, setSelectedPlot] = useState<PlotTableRow | null>(null);
+
+    const openModal = (type: CRUDModalType, plot?: PlotTableRow) => {
+        setSelectedPlot(plot ?? null);
+        setActiveModal(type);
+    };
+
+    const closeModal = () => {
+        setActiveModal(null);
+        setSelectedPlot(null);
+    };
+
+    const addPlotInTable = (newPlotData: CreatedPlotData) => {
+        const newPlot: PlotTableRow = {
+            id: newPlotData.id,
+            plotNumber: newPlotData.plotNumber,
+            area: newPlotData.area,
+            ownersNames: [], // NOTE: It's empty because the plot has just been added and the user is assigned to an existing plot in the users section in CMS.
+        };
+
+        setPlotRows((prev) => [newPlot, ...prev]);
+    };
+
+    const updatePlotInTable = (updatedPlot: UpdatedPlotData) => {
+        setPlotRows((prev) =>
+            prev.map((p) =>
+                p.id === updatedPlot.id
+                    ? { ...p, plotNumber: updatedPlot.plotNumber, area: updatedPlot.area }
+                    : p
+            )
+        );
+    };
+
+    const removePlotFromTable = (plotId: number) => {
+        setPlotRows((prev) => prev.filter((p) => p.id !== plotId));
+    };
+
+    return (
+        <section>
+            <h1 className="h2">Tabela działek</h1>
+
+            <CustomButton
+                type="button"
+                title="Dodaj nowe konto"
+                onClick={() => openModal('create')}
+                context="iconSquare"
+                variant="action"
+                className="mx-auto mb-4"
+            >
+                <Plus />
+            </CustomButton>
+
+            <PlotsTable data={plotRows} onEdit={openModal} onDelete={openModal} />
+
+            {activeModal === 'create' && (
+                <CreatePlotModal
+                    onCloseModal={() => {
+                        closeModal();
+                    }}
+                    onPlotCreated={(newPlotData: CreatedPlotData) => {
+                        closeModal();
+                        addPlotInTable(newPlotData);
+                    }}
+                />
+            )}
+
+            {activeModal === 'edit' && selectedPlot && (
+                <EditPlotModal
+                    plot={selectedPlot}
+                    onCloseModal={() => {
+                        closeModal();
+                    }}
+                    onPlotUpdated={(newPlotData: UpdatedPlotData) => {
+                        closeModal();
+                        updatePlotInTable(newPlotData);
+                    }}
+                />
+            )}
+
+            {activeModal === 'delete' && selectedPlot && (
+                <DeletePlotModal
+                    plot={selectedPlot}
+                    onCloseModal={() => {
+                        closeModal();
+                    }}
+                    onPlotDeleted={(deletedPlot: DeletedPlotData) => {
+                        closeModal();
+                        removePlotFromTable(deletedPlot.id);
+                    }}
+                />
+            )}
+        </section>
+    );
+}

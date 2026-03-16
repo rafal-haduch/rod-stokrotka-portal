@@ -1,17 +1,17 @@
-import { PlotsWithOwnersFromDb } from './plot-db-types';
+import { PlotTableRowsFromDb } from './plot-db-types';
 import { PlotTableRow } from './plot-read-models';
 import { plotRepository } from '@/features/plot/domain/plot-repository';
-import { CreatedPlotData } from '@/features/plot/domain/plot-api-contracts';
+import { CreatedPlotData, UpdatedPlotData } from '@/features/plot/domain/plot-api-contracts';
 
 /**
  * Maps a collection of plots with owners from database to CMS plot table rows read model.
  */
-export function mapToPlotTableRows(plots: PlotsWithOwnersFromDb): PlotTableRow[] {
-    return plots.map((plot) => ({
-        id: plot.id,
-        plotNumber: plot.plotNumber,
-        area: plot.area,
-        ownersNames: plot.ownersId.map((userPlot) => userPlot.user.name),
+export function mapToPlotTableRows(input: PlotTableRowsFromDb): PlotTableRow[] {
+    return input.map((plotRow) => ({
+        id: plotRow.id,
+        plotNumber: plotRow.plotNumber,
+        area: plotRow.area,
+        ownersNames: plotRow.ownersId.map((userPlot) => userPlot.user.name),
     }));
 }
 
@@ -22,6 +22,20 @@ export function mapToCreatedPlotData(
     input: Awaited<ReturnType<typeof plotRepository.create>>
 ): CreatedPlotData {
     return {
+        id: input.id,
+        plotNumber: input.plotNumber,
+        area: input.area,
+    };
+}
+
+/**
+ * Maps raw plot entity returned from `update` action to `CreatedPlotData` contract.
+ */
+export function mapToUpdatedPlotData(
+    input: Awaited<ReturnType<typeof plotRepository.update>>
+): UpdatedPlotData {
+    return {
+        id: input.id,
         plotNumber: input.plotNumber,
         area: input.area,
     };

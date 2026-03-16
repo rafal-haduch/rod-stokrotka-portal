@@ -69,7 +69,7 @@ export default function UsersTable({ data, onEdit, onDelete }: Props) {
                             <td>
                                 <CustomButton
                                     type="button"
-                                    title="Usuń konto z systemu"
+                                    title="Usuń konto"
                                     onClick={() => onDelete('delete', rowUser)}
                                     context="table"
                                     variant="danger"

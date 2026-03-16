@@ -1,6 +1,6 @@
 import { unstable_cache } from 'next/cache';
-import { PlotMinimalReference } from '../plot-read-models';
 import { plotRepository } from '../plot-repository';
+import { FetchedAvailablePlots } from '@/features/plot/domain/plot-api-contracts';
 
 /**
  * Fetches sorted only the fields needed for the multi-select dropdown inputs from the database.
@@ -9,7 +9,7 @@ import { plotRepository } from '../plot-repository';
  *
  * Use `revalidateTag('plots')` after any server-side mutations to immediately refresh cached data.
  */
-export const getSortedAvailablePlots: () => Promise<PlotMinimalReference[]> = unstable_cache(
+export const getSortedAvailablePlots: () => Promise<FetchedAvailablePlots> = unstable_cache(
     async () => {
         return await plotRepository.getPlotOptions();
     },

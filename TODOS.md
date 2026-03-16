@@ -1,6 +1,8 @@
 # TODOS:
 
-- refactor /src/features/plot based on user feature
+- review /src/features/plot 
+
+- improved api contract in crud user and plot (always return some data)
 
 - add fee feature
 

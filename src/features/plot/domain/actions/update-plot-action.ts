@@ -1,5 +1,7 @@
 'use server';
 
+import { revalidateTag } from 'next/cache';
+
 import { ActionResult } from '@/shared/contracts/action-result';
 import { canPerform } from '@/shared/auth/can-perform';
 import { PERMISSION_KEYS } from '@/shared/auth/permissions';
@@ -10,8 +12,10 @@ import { handleActionError } from '@/shared/error/handle-action-error';
 
 import { parseUpdatePlotInput } from '@/features/plot/domain/plot-input-parse';
 import { plotRepository } from '@/features/plot/domain/plot-repository';
+import { UpdatedPlotData } from '@/features/plot/domain/plot-api-contracts';
+import { mapToUpdatedPlotData } from '@/features/plot/domain/plot-mapper';
 
-export async function updatePlot(formData: FormData): Promise<ActionResult<void>> {
+export async function updatePlot(formData: FormData): Promise<ActionResult<UpdatedPlotData>> {
     try {
         const session = await requireSession();
 
@@ -21,10 +25,13 @@ export async function updatePlot(formData: FormData): Promise<ActionResult<void>
 
         const { id, plotNumber, area } = parseUpdatePlotInput(formData);
 
-        await plotRepository.update({ id, plotNumber, area });
+        const result = await plotRepository.update({ id, plotNumber, area });
+
+        revalidateTag('plots');
 
         return {
             success: true,
+            data: mapToUpdatedPlotData(result),
         };
     } catch (e) {
         return handleActionError(e);

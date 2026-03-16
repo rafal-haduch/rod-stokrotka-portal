@@ -10,12 +10,12 @@ import { safeAction } from '@/shared/utils/safe-action';
 import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
 import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
 
-import { PlotMinimalReference } from '@/features/plot/plot.read-models';
 
 import { createUser } from '@/features/user/domain/actions/create-user-action';
 import { CreatedUserData } from '@/features/user/domain/user-api-contracts';
 import CreateUserForm from '@/features/user/ui/forms/create-user-form';
 import CreateUserSuccess from '@/features/user/ui/modals/create-user-success';
+import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
 interface Props {
     plotOptions: PlotMinimalReference[];
