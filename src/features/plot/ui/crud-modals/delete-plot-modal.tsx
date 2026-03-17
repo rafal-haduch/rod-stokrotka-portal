@@ -1,25 +1,29 @@
 'use client';
 
-import Portal from '@/components/portal';
-import { deletePlot } from '@/features/plot/domain/actions/delete-plot-action';
-import { DeletedPlotData } from '@/features/plot/domain/plot-api-contracts';
-import { PlotTableRow } from '@/features/plot/domain/plot-read-models';
-import { DeletePlotForm } from '@/features/plot/ui/crud-forms/delete-plot-form';
+import { X } from 'lucide-react';
+import { useState } from 'react';
+
 import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
 import { ActionResult } from '@/shared/contracts/action-result';
 import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
 import { safeAction } from '@/shared/utils/safe-action';
-import { X } from 'lucide-react';
-import { useState } from 'react';
+
+import { Portal } from '@/components/portal';
+
+import { deletePlot } from '@/features/plot/domain/actions/delete-plot-action';
+import { DeletePlotResult } from '@/features/plot/domain/plot-api-contracts';
+import { PlotTableRow } from '@/features/plot/domain/plot-read-models';
+
+import { DeletePlotForm } from '@/features/plot/ui/crud-forms/delete-plot-form';
 
 interface Props {
     plot: PlotTableRow;
     onCloseModal: () => void;
-    onPlotDeleted: (deletedPlotId: DeletedPlotData) => void;
+    onPlotDeleted: (deletedPlot: DeletePlotResult) => void;
 }
 
 export function DeletePlotModal({ plot, onCloseModal, onPlotDeleted }: Props) {
-    const [result, setResult] = useState<ActionResult<void> | TechnicalError | null>(null);
+    const [result, setResult] = useState<ActionResult<DeletePlotResult> | TechnicalError | null>(null);
     const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -78,11 +82,10 @@ export function DeletePlotModal({ plot, onCloseModal, onPlotDeleted }: Props) {
                                     ? <br /> Tę operację może cofnąć jedynie administrator strony!
                                 </p>
                                 <DeletePlotForm
+                                    plotData={plot}
                                     onSubmit={handleSubmit}
                                     onCloseModal={onCloseModal}
-                                    plotData={plot}
                                     loading={loading}
-                                    errorMsg={errorMsg}
                                 />
                             </>
                         )}

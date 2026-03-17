@@ -1,23 +1,27 @@
 'use client';
 
-import Portal from '@/components/portal';
-import { createPlot } from '@/features/plot/domain/actions/create-plot-action';
-import { CreatedPlotData } from '@/features/plot/domain/plot-api-contracts';
-import { CreatePlotForm } from '@/features/plot/ui/crud-forms/create-plot-form';
+import { useState } from 'react';
+import {  X } from 'lucide-react';
+
 import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
 import { ActionResult } from '@/shared/contracts/action-result';
 import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
 import { safeAction } from '@/shared/utils/safe-action';
-import { CirclePlus, X } from 'lucide-react';
-import { useState } from 'react';
+
+import { Portal }from '@/components/portal';
+
+import { createPlot } from '@/features/plot/domain/actions/create-plot-action';
+import { CreatePlotResult } from '@/features/plot/domain/plot-api-contracts';
+
+import { CreatePlotForm } from '@/features/plot/ui/crud-forms/create-plot-form';
 
 interface Props {
     onCloseModal: () => void;
-    onPlotCreated: (newPlotData: CreatedPlotData) => void;
+    onPlotCreated: (newPlotData: CreatePlotResult) => void;
 }
 
 export function CreatePlotModal({ onCloseModal, onPlotCreated }: Props) {
-    const [result, setResult] = useState<ActionResult<CreatedPlotData> | TechnicalError | null>(
+    const [result, setResult] = useState<ActionResult<CreatePlotResult> | TechnicalError | null>(
         null
     );
     const [loading, setLoading] = useState(false);

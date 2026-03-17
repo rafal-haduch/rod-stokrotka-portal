@@ -10,10 +10,10 @@ import { handleActionError } from '@/shared/error/handle-action-error';
 
 import { plotRepository } from '@/features/plot/domain/plot-repository';
 import { parseDeletePlotInput } from '@/features/plot/domain/plot-input-parse';
-import { DeletedPlotData } from '@/features/plot/domain/plot-api-contracts';
+import { DeletePlotResult } from '@/features/plot/domain/plot-api-contracts';
 import { revalidateTag } from 'next/cache';
 
-export async function deletePlot(formData: FormData): Promise<ActionResult<DeletedPlotData>> {
+export async function deletePlot(formData: FormData): Promise<ActionResult<DeletePlotResult>> {
     try {
         const session = await requireSession();
 

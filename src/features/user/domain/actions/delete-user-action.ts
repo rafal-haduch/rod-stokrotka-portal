@@ -11,8 +11,9 @@ import { handleActionError } from '@/shared/error/handle-action-error';
 
 import { parseDeleteUserInput } from '@/features/user/domain/user-input-parse';
 import { userRepository } from '@/features/user/domain/user-repository';
+import { DeleteUserResult } from '@/features/user/domain/user-api-contracts';
 
-export async function deleteUser(formData: FormData): Promise<ActionResult<void>> {
+export async function deleteUser(formData: FormData): Promise<ActionResult<DeleteUserResult>> {
     try {
         const session = await requireSession();
 
@@ -28,6 +29,9 @@ export async function deleteUser(formData: FormData): Promise<ActionResult<void>
 
         return {
             success: true,
+            data: {
+                id: id
+            }
         };
     } catch (e) {
         return handleActionError(e);

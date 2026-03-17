@@ -1,8 +1,10 @@
 'use client';
 
-import { CustomButton } from '@/components/custom-button';
-import { PlotTableRow } from '@/features/plot/domain/plot-read-models';
 import { Save } from 'lucide-react';
+
+import { CustomButton } from '@/components/custom-button';
+
+import { PlotTableRow } from '@/features/plot/domain/plot-read-models';
 
 interface Props {
     plotData: PlotTableRow;

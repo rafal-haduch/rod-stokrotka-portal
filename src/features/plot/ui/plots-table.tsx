@@ -1,10 +1,13 @@
 'use client';
 
-import { CustomButton } from '@/components/custom-button';
-import { PlotTableRow } from '@/features/plot/domain/plot-read-models';
+import { Pencil, Trash2 } from 'lucide-react';
+
 import { CRUDModalType } from '@/shared/types/crud-modal';
 import { formatPlotCode } from '@/shared/utils/format-plot-code';
-import { Pencil, Trash2 } from 'lucide-react';
+
+import { CustomButton } from '@/components/custom-button';
+
+import { PlotTableRow } from '@/features/plot/domain/plot-read-models';
 
 interface Props {
     data: PlotTableRow[];

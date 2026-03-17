@@ -1,21 +1,25 @@
 'use client';
 
-import Portal from '@/components/portal';
-import { updatePlot } from '@/features/plot/domain/actions/update-plot-action';
-import { UpdatedPlotData } from '@/features/plot/domain/plot-api-contracts';
-import { PlotTableRow } from '@/features/plot/domain/plot-read-models';
-import { EditPlotForm } from '@/features/plot/ui/crud-forms/edit-plot-form';
-import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
+import { useState } from 'react';
+import { X } from 'lucide-react';
+
 import { ActionResult } from '@/shared/contracts/action-result';
+import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
 import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
 import { safeAction } from '@/shared/utils/safe-action';
-import { X } from 'lucide-react';
-import { useState } from 'react';
+
+import { Portal } from '@/components/portal';
+
+import { updatePlot } from '@/features/plot/domain/actions/update-plot-action';
+import { UpdatePlotResult } from '@/features/plot/domain/plot-api-contracts';
+import { PlotTableRow } from '@/features/plot/domain/plot-read-models';
+
+import { EditPlotForm } from '@/features/plot/ui/crud-forms/edit-plot-form';
 
 interface Props {
     plot: PlotTableRow;
     onCloseModal: () => void;
-    onPlotUpdated: (updatedPlotRow: UpdatedPlotData) => void;
+    onPlotUpdated: (updatedPlotRow: UpdatePlotResult) => void;
 }
 
 export function EditPlotModal({ plot, onCloseModal, onPlotUpdated }: Props) {
@@ -65,8 +69,8 @@ export function EditPlotModal({ plot, onCloseModal, onPlotUpdated }: Props) {
                     </button>
 
                     <EditPlotForm
-                        onSubmit={handleSubmit}
                         plotData={plot}
+                        onSubmit={handleSubmit}
                         loading={loading}
                         errorMsg={errorMsg}
                     />

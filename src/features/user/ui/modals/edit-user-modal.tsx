@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
 
-import Portal from '@/components/portal';
+import { Portal } from '@/components/portal';
 
 import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
 import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
@@ -14,7 +14,7 @@ import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
 import { updateUser } from '@/features/user/domain/actions/update-user-action';
 import { UserTableRow } from '@/features/user/domain/user-read-models';
-import { UpdatedUserData } from '@/features/user/domain/user-api-contracts';
+import { UpdateUserResult } from '@/features/user/domain/user-api-contracts';
 import EditUserForm from '@/features/user/ui/forms/edit-user-form';
 
 interface Props {
@@ -25,7 +25,7 @@ interface Props {
 }
 
 export default function EditUserModal({ user, onCloseModal, onUpdatedUser, plotOptions }: Props) {
-    const [result, setResult] = useState<ActionResult<UpdatedUserData> | TechnicalError | null>(
+    const [result, setResult] = useState<ActionResult<UpdateUserResult> | TechnicalError | null>(
         null
     );
     const [loading, setLoading] = useState(false);

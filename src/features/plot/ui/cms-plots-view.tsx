@@ -1,19 +1,23 @@
 'use client';
 
+import { Plus } from 'lucide-react';
+import { useState } from 'react';
+
+import { CRUDModalType } from '@/shared/types/crud-modal';
+
 import { CustomButton } from '@/components/custom-button';
+
 import {
-    CreatedPlotData,
-    DeletedPlotData,
-    UpdatedPlotData,
+    CreatePlotResult,
+    DeletePlotResult,
+    UpdatePlotResult,
 } from '@/features/plot/domain/plot-api-contracts';
 import { PlotTableRow } from '@/features/plot/domain/plot-read-models';
+
 import { CreatePlotModal } from '@/features/plot/ui/crud-modals/create-plot-modal';
 import { DeletePlotModal } from '@/features/plot/ui/crud-modals/delete-plot-modal';
 import { EditPlotModal } from '@/features/plot/ui/crud-modals/edit-plot-modal';
 import { PlotsTable } from '@/features/plot/ui/plots-table';
-import { CRUDModalType } from '@/shared/types/crud-modal';
-import { Plus } from 'lucide-react';
-import { useState } from 'react';
 
 interface Props {
     plotTableRows: PlotTableRow[];
@@ -35,18 +39,19 @@ export function CMSPlotsView({ plotTableRows }: Props) {
         setSelectedPlot(null);
     };
 
-    const addPlotInTable = (newPlotData: CreatedPlotData) => {
-        const newPlot: PlotTableRow = {
-            id: newPlotData.id,
-            plotNumber: newPlotData.plotNumber,
-            area: newPlotData.area,
+    const addPlotInTable = (createdPlot: CreatePlotResult) => {
+        const newPlot : PlotTableRow = {
+            id: createdPlot.id,
+            plotNumber: createdPlot.plotNumber,
+            area: createdPlot.area,
             ownersNames: [], // NOTE: It's empty because the plot has just been added and the user is assigned to an existing plot in the users section in CMS.
         };
 
         setPlotRows((prev) => [newPlot, ...prev]);
     };
 
-    const updatePlotInTable = (updatedPlot: UpdatedPlotData) => {
+    //REVIEW: Is this a good approach? (no types?)
+    const updatePlotInTable = (updatedPlot: UpdatePlotResult) => {
         setPlotRows((prev) =>
             prev.map((p) =>
                 p.id === updatedPlot.id
@@ -72,7 +77,7 @@ export function CMSPlotsView({ plotTableRows }: Props) {
                 variant="action"
                 className="mx-auto mb-4"
             >
-                <Plus />
+                <Plus aria-hidden='true'/>
             </CustomButton>
 
             <PlotsTable data={plotRows} onEdit={openModal} onDelete={openModal} />
@@ -82,9 +87,9 @@ export function CMSPlotsView({ plotTableRows }: Props) {
                     onCloseModal={() => {
                         closeModal();
                     }}
-                    onPlotCreated={(newPlotData: CreatedPlotData) => {
+                    onPlotCreated={(createdPlot: CreatePlotResult) => {
                         closeModal();
-                        addPlotInTable(newPlotData);
+                        addPlotInTable(createdPlot);
                     }}
                 />
             )}
@@ -95,9 +100,9 @@ export function CMSPlotsView({ plotTableRows }: Props) {
                     onCloseModal={() => {
                         closeModal();
                     }}
-                    onPlotUpdated={(newPlotData: UpdatedPlotData) => {
+                    onPlotUpdated={(updatedPlot: UpdatePlotResult) => {
                         closeModal();
-                        updatePlotInTable(newPlotData);
+                        updatePlotInTable(updatedPlot);
                     }}
                 />
             )}
@@ -108,7 +113,7 @@ export function CMSPlotsView({ plotTableRows }: Props) {
                     onCloseModal={() => {
                         closeModal();
                     }}
-                    onPlotDeleted={(deletedPlot: DeletedPlotData) => {
+                    onPlotDeleted={(deletedPlot: DeletePlotResult) => {
                         closeModal();
                         removePlotFromTable(deletedPlot.id);
                     }}

@@ -1,17 +1,17 @@
 'use client';
 
 import { CustomButton } from '@/components/custom-button';
+
 import { PlotTableRow } from '@/features/plot/domain/plot-read-models';
 
 interface Props {
+    plotData: PlotTableRow;
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
     onCloseModal: () => void;
-    plotData: PlotTableRow;
     loading: boolean;
-    errorMsg: string | null;
 }
 
-export function DeletePlotForm({ onSubmit, onCloseModal, plotData, loading, errorMsg }: Props) {
+export function DeletePlotForm({ plotData, onSubmit, onCloseModal, loading }: Props) {
     return (
         <form onSubmit={onSubmit} aria-labelledby="delete-user-form-heading">
             <input type="hidden" name="id" value={plotData.id}></input>

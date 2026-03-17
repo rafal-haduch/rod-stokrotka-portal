@@ -12,10 +12,10 @@ import { handleActionError } from '@/shared/error/handle-action-error';
 
 import { parseUpdatePlotInput } from '@/features/plot/domain/plot-input-parse';
 import { plotRepository } from '@/features/plot/domain/plot-repository';
-import { UpdatedPlotData } from '@/features/plot/domain/plot-api-contracts';
+import { UpdatePlotResult } from '@/features/plot/domain/plot-api-contracts';
 import { mapToUpdatedPlotData } from '@/features/plot/domain/plot-mapper';
 
-export async function updatePlot(formData: FormData): Promise<ActionResult<UpdatedPlotData>> {
+export async function updatePlot(formData: FormData): Promise<ActionResult<UpdatePlotResult>> {
     try {
         const session = await requireSession();
 

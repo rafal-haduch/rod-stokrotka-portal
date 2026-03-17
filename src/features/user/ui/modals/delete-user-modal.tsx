@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
 
-import Portal from '@/components/portal';
+import { Portal } from '@/components/portal';
 
 import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
 import { ActionResult } from '@/shared/contracts/action-result';
@@ -12,16 +12,17 @@ import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error'
 
 import { UserTableRow } from '@/features/user/domain/user-read-models';
 import { deleteUser } from '@/features/user/domain/actions/delete-user-action';
+import { DeleteUserResult } from '@/features/user/domain/user-api-contracts';
 import DeleteUserForm from '@/features/user/ui/forms/delete-user-form';
 
 interface Props {
     user: UserTableRow;
     onCloseModal: () => void;
-    onUserDeleted: (id: number) => void;
+    onUserDeleted: (deletedUser: DeleteUserResult) => void;
 }
 
 export default function DeleteUserModal({ user, onCloseModal, onUserDeleted }: Props) {
-    const [result, setResult] = useState<ActionResult<void> | TechnicalError | null>(null);
+    const [result, setResult] = useState<ActionResult<DeleteUserResult> | TechnicalError | null>(null);
     const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -32,12 +33,12 @@ export default function DeleteUserModal({ user, onCloseModal, onUserDeleted }: P
 
         const formData = new FormData(e.currentTarget);
 
-        const res = await safeAction<void>(() => deleteUser(formData));
+        const res = await safeAction(() => deleteUser(formData));
 
         setResult(res);
 
         if (res !== TECHNICAL_ERROR && res.success) {
-            onUserDeleted(user.id);
+            onUserDeleted(res.data);
         }
 
         setLoading(false);

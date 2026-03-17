@@ -15,7 +15,7 @@ export type FetchedPlotTableRows = PlotTableRow[];
 /**
  * API contract representing data returned by the create plot action upon successful completion.
  */
-export interface CreatedPlotData {
+export interface CreatePlotResult {
     id: number;
     plotNumber: string;
     area: number | null;
@@ -24,7 +24,7 @@ export interface CreatedPlotData {
 /**
  * API contract representing data returned by the update plot  action upon successful completion.
  */
-export interface UpdatedPlotData {
+export interface UpdatePlotResult {
     id: number;
     plotNumber: string;
     area: number | null;
@@ -33,6 +33,6 @@ export interface UpdatedPlotData {
 /**
  * API contract representing data returned by the delete plot  action upon successful completion.
  */
-export interface DeletedPlotData {
+export interface DeletePlotResult {
     id: number;
 }

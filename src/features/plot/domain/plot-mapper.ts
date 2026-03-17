@@ -1,7 +1,7 @@
 import { PlotTableRowsFromDb } from './plot-db-types';
 import { PlotTableRow } from './plot-read-models';
 import { plotRepository } from '@/features/plot/domain/plot-repository';
-import { CreatedPlotData, UpdatedPlotData } from '@/features/plot/domain/plot-api-contracts';
+import { CreatePlotResult, UpdatePlotResult } from '@/features/plot/domain/plot-api-contracts';
 
 /**
  * Maps a collection of plots with owners from database to CMS plot table rows read model.
@@ -20,7 +20,7 @@ export function mapToPlotTableRows(input: PlotTableRowsFromDb): PlotTableRow[] {
  */
 export function mapToCreatedPlotData(
     input: Awaited<ReturnType<typeof plotRepository.create>>
-): CreatedPlotData {
+): CreatePlotResult {
     return {
         id: input.id,
         plotNumber: input.plotNumber,
@@ -33,7 +33,7 @@ export function mapToCreatedPlotData(
  */
 export function mapToUpdatedPlotData(
     input: Awaited<ReturnType<typeof plotRepository.update>>
-): UpdatedPlotData {
+): UpdatePlotResult {
     return {
         id: input.id,
         plotNumber: input.plotNumber,

@@ -8,10 +8,10 @@ import { cn } from '@/shared/utils/cn';
 import { CustomButton } from '@/components/custom-button';
 
 import { getRoleLabel } from '@/features/user/domain/user-helpers';
-import { CreatedUserData } from '@/features/user/domain/user-api-contracts';
+import { CreateUserResult } from '@/features/user/domain/user-api-contracts';
 
 interface Props {
-    result: CreatedUserData;
+    result: CreateUserResult;
 }
 
 export default function CreateUserSuccess({ result }: Props) {

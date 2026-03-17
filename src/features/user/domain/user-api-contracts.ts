@@ -21,7 +21,7 @@ export type FetchedUserTableRows = UserTableRow[];
 /**
  * API contract representing data returned by the create user action upon successful completion.
  */
-export interface CreatedUserData {
+export interface CreateUserResult {
     id: number;
     name: string;
     plots: PlotMinimalReference[];
@@ -35,11 +35,15 @@ export interface CreatedUserData {
 /**
  * API contract representing data returned by the update user action upon successful completion.
  */
-export interface UpdatedUserData {
+export interface UpdateUserResult {
     id: number;
     name: string;
     plots: PlotMinimalReference[];
     role: Role;
     createdAt: Date;
     lastLogin: Date | null;
+}
+
+export interface DeleteUserResult {
+    id: number
 }

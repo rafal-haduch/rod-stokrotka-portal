@@ -1,7 +1,8 @@
 'use client';
 
-import { CustomButton } from '@/components/custom-button';
 import { CirclePlus } from 'lucide-react';
+
+import { CustomButton } from '@/components/custom-button';
 
 interface Props {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;

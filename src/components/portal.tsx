@@ -1,4 +1,5 @@
 'use client';
+
 import { createPortal } from 'react-dom';
 import { useEffect, useState } from 'react';
 
@@ -11,7 +12,7 @@ import { useEffect, useState } from 'react';
  * Prevents issues with z-index, overflow:hidden and scroll containers.
  * Waits for client mount to avoid SSR hydration mismatch.
  */
-export default function Portal({ children }: { children: React.ReactNode }) {
+export  function Portal({ children }: { children: React.ReactNode }) {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => setMounted(true), []);

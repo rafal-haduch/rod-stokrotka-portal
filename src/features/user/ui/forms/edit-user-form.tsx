@@ -34,7 +34,7 @@ export default function EditUserForm({
             className="px-2 pb-6 sm:px-6"
         >
             <p id="edit-user-form-heading" className="mb-4 text-center text-xl font-semibold">
-                Zmień dane konta działkowca:
+                Zmień dane konta:
             </p>
             <fieldset className="flex flex-col gap-3">
                 {/* ID  */}

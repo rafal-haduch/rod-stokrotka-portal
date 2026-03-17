@@ -9,12 +9,12 @@ import { CustomButton } from '@/components/custom-button';
 
 import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
+import { CreateUserResult, DeleteUserResult, UpdateUserResult } from '@/features/user/domain/user-api-contracts';
 import { UserTableRow } from '@/features/user/domain/user-read-models';
 import CreateUserModal from '@/features/user/ui/modals/create-user-modal';
 import EditUserModal from '@/features/user/ui/modals/edit-user-modal';
 import DeleteUserModal from '@/features/user/ui/modals/delete-user-modal';
 import UsersTable from '@/features/user/ui/users-table';
-import { CreatedUserData } from '@/features/user/domain/user-api-contracts';
 
 interface Props {
     userTableRows: UserTableRow[];
@@ -27,28 +27,6 @@ export default function CMSUsersView({ userTableRows, plotOptions }: Props) {
     const [activeModal, setActiveModal] = useState<CRUDModalType>(null);
     const [selectedUser, setSelectedUser] = useState<UserTableRow | null>(null);
 
-    // FIXME: widok nie powiniem dodakowo mapowac/zmieniac danych domenowych (data)
-    const addUserInTable = (newUserData: CreatedUserData) => {
-        const newUser: UserTableRow = {
-            id: newUserData.id,
-            name: newUserData.name,
-            role: newUserData.role,
-            plots: newUserData.plots,
-            createdAt: new Date(newUserData.createdAt),
-            lastLogin: newUserData.lastLogin,
-        };
-
-        setUserRows((prev) => [newUser, ...prev]);
-    };
-
-    const updateUserInTable = (updatedUser: UserTableRow) => {
-        setUserRows((prev) => prev.map((u) => (u.id === updatedUser.id ? updatedUser : u)));
-    };
-
-    const removeUserFromTable = (userId: number) => {
-        setUserRows((prev) => prev.filter((u) => u.id !== userId));
-    };
-
     const openModal = (type: CRUDModalType, user?: UserTableRow) => {
         setSelectedUser(user ?? null);
         setActiveModal(type);
@@ -57,6 +35,29 @@ export default function CMSUsersView({ userTableRows, plotOptions }: Props) {
     const closeModal = () => {
         setActiveModal(null);
         setSelectedUser(null);
+    };
+
+    // FIXME: widok nie powiniem dodakowo mapowac/zmieniac danych domenowych (data)
+    const addUserInTable = (createdUser: CreateUserResult) => {
+        const newUser: UserTableRow = {
+            id: createdUser.id,
+            name: createdUser.name,
+            role: createdUser.role,
+            plots: createdUser.plots,
+            createdAt: new Date(createdUser.createdAt),
+            lastLogin: createdUser.lastLogin,
+        };
+
+        setUserRows((prev) => [newUser, ...prev]);
+    };
+
+    //REVIEW: Is this a good approach? (different interface with same fields)
+    const updateUserInTable = (updatedUser: UpdateUserResult) => {
+        setUserRows((prev) => prev.map((u) => (u.id === updatedUser.id ? updatedUser : u)));
+    };
+
+    const removeUserFromTable = (userId: number) => {
+        setUserRows((prev) => prev.filter((u) => u.id !== userId));
     };
 
     return (
@@ -82,8 +83,8 @@ export default function CMSUsersView({ userTableRows, plotOptions }: Props) {
                     onCloseModal={() => {
                         closeModal();
                     }}
-                    onUserCreated={(newUserData: CreatedUserData) => {
-                        addUserInTable(newUserData);
+                    onUserCreated={(createdUser: CreateUserResult) => {
+                        addUserInTable(createdUser);
                     }}
                 />
             )}
@@ -92,9 +93,9 @@ export default function CMSUsersView({ userTableRows, plotOptions }: Props) {
                 <EditUserModal
                     user={selectedUser}
                     onCloseModal={() => closeModal()}
-                    onUpdatedUser={(updatedUserRow: UserTableRow) => {
+                    onUpdatedUser={(updatedUser: UpdateUserResult) => {
                         closeModal();
-                        updateUserInTable(updatedUserRow);
+                        updateUserInTable(updatedUser);
                     }}
                     plotOptions={plotOptions}
                 />
@@ -104,9 +105,9 @@ export default function CMSUsersView({ userTableRows, plotOptions }: Props) {
                 <DeleteUserModal
                     user={selectedUser}
                     onCloseModal={closeModal}
-                    onUserDeleted={(id: number) => {
+                    onUserDeleted={(deletedUser: DeleteUserResult) => {
                         closeModal();
-                        removeUserFromTable(id);
+                        removeUserFromTable(deletedUser.id);
                     }}
                 />
             )}
