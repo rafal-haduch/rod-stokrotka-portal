@@ -16,7 +16,7 @@ import { updateUser } from '@/features/user/domain/actions/update-user-action';
 import { UserTableRow } from '@/features/user/domain/user-read-models';
 import { UpdateUserResult } from '@/features/user/domain/user-api-contracts';
 
-import { EditUserForm } from '@/features/user/ui/forms/edit-user-form';
+import { EditUserForm } from '@/features/user/ui/crud-forms/edit-user-form';
 
 interface Props {
     user: UserTableRow;

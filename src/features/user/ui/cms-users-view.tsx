@@ -12,9 +12,9 @@ import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 import { CreateUserResult, DeleteUserResult, UpdateUserResult } from '@/features/user/domain/user-api-contracts';
 import { UserTableRow } from '@/features/user/domain/user-read-models';
 
-import { CreateUserModal } from '@/features/user/ui/modals/create-user-modal';
-import { EditUserModal } from '@/features/user/ui/modals/edit-user-modal';
-import DeleteUserModal from '@/features/user/ui/modals/delete-user-modal';
+import { CreateUserModal } from '@/features/user/ui/crud-modals/create-user-modal';
+import { EditUserModal } from '@/features/user/ui/crud-modals/edit-user-modal';
+import DeleteUserModal from '@/features/user/ui/crud-modals/delete-user-modal';
 import UsersTable from '@/features/user/ui/users-table';
 
 interface Props {

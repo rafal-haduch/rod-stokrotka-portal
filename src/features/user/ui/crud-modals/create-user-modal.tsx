@@ -16,8 +16,8 @@ import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 import { createUser } from '@/features/user/domain/actions/create-user-action';
 import { CreateUserResult } from '@/features/user/domain/user-api-contracts';
 
-import { CreateUserForm } from '@/features/user/ui/forms/create-user-form';
-import { CreateUserSuccess } from '@/features/user/ui/modals/create-user-success';
+import { CreateUserForm } from '@/features/user/ui/crud-forms/create-user-form';
+import { CreateUserSuccess } from '@/features/user/ui/crud-modals/create-user-success';
 
 interface Props {
     plotOptions: PlotMinimalReference[];

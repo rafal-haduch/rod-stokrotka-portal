@@ -15,7 +15,7 @@ import { UserTableRow } from '@/features/user/domain/user-read-models';
 import { deleteUser } from '@/features/user/domain/actions/delete-user-action';
 import { DeleteUserResult } from '@/features/user/domain/user-api-contracts';
 
-import { DeleteUserForm } from '@/features/user/ui/forms/delete-user-form';
+import { DeleteUserForm } from '@/features/user/ui/crud-forms/delete-user-form';
 
 interface Props {
     user: UserTableRow;
