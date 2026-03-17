@@ -3,17 +3,19 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
 
-import { Portal } from '@/components/portal';
 
 import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
 import { ActionResult } from '@/shared/contracts/action-result';
-import { safeAction } from '@/shared/utils/safe-action';
 import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
+import { safeAction } from '@/shared/utils/safe-action';
+
+import { Portal } from '@/components/portal';
 
 import { UserTableRow } from '@/features/user/domain/user-read-models';
 import { deleteUser } from '@/features/user/domain/actions/delete-user-action';
 import { DeleteUserResult } from '@/features/user/domain/user-api-contracts';
-import DeleteUserForm from '@/features/user/ui/forms/delete-user-form';
+
+import { DeleteUserForm } from '@/features/user/ui/forms/delete-user-form';
 
 interface Props {
     user: UserTableRow;
@@ -80,11 +82,10 @@ export default function DeleteUserModal({ user, onCloseModal, onUserDeleted }: P
                                     ? <br /> Tę operację może cofnąć jedynie administrator strony!
                                 </p>
                                 <DeleteUserForm
+                                    userData={user}
                                     onSubmit={handleSubmit}
                                     onCloseModal={onCloseModal}
-                                    userData={user}
                                     loading={loading}
-                                    errorMsg={errorMsg}
                                 />
                             </>
                         )}

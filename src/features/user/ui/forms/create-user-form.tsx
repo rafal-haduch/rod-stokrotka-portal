@@ -3,9 +3,9 @@
 import { Role } from '@prisma/client';
 import { CirclePlus, X } from 'lucide-react';
 
+import { CustomButton } from '@/components/custom-button';
 import { TooltipIcon } from '@/components/tooltip-icon';
 import { MultiSelectDropdown } from '@/components/multi-select-plots-dropdown';
-import { CustomButton } from '@/components/custom-button';
 
 import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
@@ -19,7 +19,7 @@ interface Props {
     errorMsg: string | null;
 }
 
-export default function CreateUserForm({ onSubmit, plotsOptions, loading, errorMsg }: Props) {
+export  function CreateUserForm({ onSubmit, plotsOptions, loading, errorMsg }: Props) {
     return (
         <form
             onSubmit={onSubmit}

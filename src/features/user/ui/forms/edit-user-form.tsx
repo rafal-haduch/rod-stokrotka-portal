@@ -13,17 +13,17 @@ import { ASSIGNABLE_ROLES } from '@/features/user/domain/user-constants';
 import { getRoleLabel } from '@/features/user/domain/user-helpers';
 
 interface Props {
-    onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
     userData: UserTableRow;
     plotsOptions: PlotMinimalReference[];
+    onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
     loading: boolean;
     errorMsg: string | null;
 }
 
-export default function EditUserForm({
-    onSubmit,
+export  function EditUserForm({
     userData,
     plotsOptions,
+    onSubmit,
     loading,
     errorMsg,
 }: Props) {

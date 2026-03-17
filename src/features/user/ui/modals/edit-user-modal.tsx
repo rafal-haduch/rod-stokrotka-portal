@@ -3,28 +3,29 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
 
-import { Portal } from '@/components/portal';
-
 import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
-import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
 import { ActionResult } from '@/shared/contracts/action-result';
+import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
 import { safeAction } from '@/shared/utils/safe-action';
+
+import { Portal } from '@/components/portal';
 
 import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
 import { updateUser } from '@/features/user/domain/actions/update-user-action';
 import { UserTableRow } from '@/features/user/domain/user-read-models';
 import { UpdateUserResult } from '@/features/user/domain/user-api-contracts';
-import EditUserForm from '@/features/user/ui/forms/edit-user-form';
+
+import { EditUserForm } from '@/features/user/ui/forms/edit-user-form';
 
 interface Props {
     user: UserTableRow;
+    plotOptions: PlotMinimalReference[];
     onCloseModal: () => void;
     onUpdatedUser: (updatedUserRow: UserTableRow) => void;
-    plotOptions: PlotMinimalReference[];
 }
 
-export default function EditUserModal({ user, onCloseModal, onUpdatedUser, plotOptions }: Props) {
+export  function EditUserModal({ user, plotOptions, onCloseModal, onUpdatedUser }: Props) {
     const [result, setResult] = useState<ActionResult<UpdateUserResult> | TechnicalError | null>(
         null
     );
@@ -72,9 +73,9 @@ export default function EditUserModal({ user, onCloseModal, onUpdatedUser, plotO
                         <X className="h-8 w-8" />
                     </button>
                     <EditUserForm
-                        onSubmit={handleSubmit}
-                        plotsOptions={plotOptions}
                         userData={user}
+                        plotsOptions={plotOptions}
+                        onSubmit={handleSubmit}
                         loading={loading}
                         errorMsg={errorMsg}
                     />

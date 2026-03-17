@@ -14,7 +14,7 @@ interface Props {
     result: CreateUserResult;
 }
 
-export default function CreateUserSuccess({ result }: Props) {
+export  function CreateUserSuccess({ result }: Props) {
     const [copied, setCopied] = useState(false);
 
     function copyCredentials() {

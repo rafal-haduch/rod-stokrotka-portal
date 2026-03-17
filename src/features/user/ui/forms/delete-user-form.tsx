@@ -5,19 +5,17 @@ import { CustomButton } from '@/components/custom-button';
 import { UserTableRow } from '@/features/user/domain/user-read-models';
 
 interface Props {
+    userData: UserTableRow;
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
     onCloseModal: () => void;
-    userData: UserTableRow;
     loading: boolean;
-    errorMsg: string | null;
 }
 
-export default function DeleteUserForm({
+export  function DeleteUserForm({
+    userData,
     onSubmit,
     onCloseModal,
-    userData,
     loading,
-    errorMsg,
 }: Props) {
     return (
         <form onSubmit={onSubmit} aria-labelledby="delete-user-form-heading">
