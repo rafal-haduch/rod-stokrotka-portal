@@ -1,6 +1,9 @@
+'use server';
+
 import { unstable_cache } from 'next/cache';
-import { plotRepository } from '../plot-repository';
-import { FetchedAvailablePlots } from '@/features/plot/domain/plot-api-contracts';
+
+import { GetAvailablePlotsResponse } from '@/features/plot/domain/plot-api-contracts';
+import { plotRepository } from '@/features/plot/domain/plot-repository';
 
 /**
  * Fetches sorted only the fields needed for the multi-select dropdown inputs from the database.
@@ -9,7 +12,7 @@ import { FetchedAvailablePlots } from '@/features/plot/domain/plot-api-contracts
  *
  * Use `revalidateTag('plots')` after any server-side mutations to immediately refresh cached data.
  */
-export const getSortedAvailablePlots: () => Promise<FetchedAvailablePlots> = unstable_cache(
+export const getSortedAvailablePlots: () => Promise<GetAvailablePlotsResponse> = unstable_cache(
     async () => {
         return await plotRepository.getPlotOptions();
     },

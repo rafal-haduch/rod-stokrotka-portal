@@ -1,4 +1,4 @@
-import { CreateUserResult, UpdateUserResult } from '@/features/user/domain/user-api-contracts';
+import { CreateUserData, UpdateUserData } from '@/features/user/domain/user-api-contracts';
 import { UserProfileFromDb, UserTableRowsFromDb } from '@/features/user/domain/user-db-types';
 import { UserProfile, UserTableRow } from '@/features/user/domain/user-read-models';
 import { userRepository } from '@/features/user/domain/user-repository';
@@ -44,7 +44,7 @@ export function mapToUserTableRows(input: UserTableRowsFromDb): UserTableRow[] {
 export function mapToCreatedUserData(
     input: Awaited<ReturnType<typeof userRepository.create>>,
     password: string
-): CreateUserResult {
+): CreateUserData {
     return {
         id: input.id,
         name: input.name,
@@ -62,7 +62,7 @@ export function mapToCreatedUserData(
  */
 export function mapToUpdatedUserData(
     input: Awaited<ReturnType<typeof userRepository.update>>
-): UpdateUserResult {
+): UpdateUserData {
     return {
         id: input.id,
         name: input.name,

@@ -11,7 +11,7 @@ import { safeAction } from '@/shared/utils/safe-action';
 import { Portal } from '@/components/portal';
 
 import { deletePlot } from '@/features/plot/domain/actions/delete-plot-action';
-import { DeletePlotResult } from '@/features/plot/domain/plot-api-contracts';
+import { DeletePlotData } from '@/features/plot/domain/plot-api-contracts';
 import { PlotTableRow } from '@/features/plot/domain/plot-read-models';
 
 import { DeletePlotForm } from '@/features/plot/ui/crud-forms/delete-plot-form';
@@ -19,11 +19,13 @@ import { DeletePlotForm } from '@/features/plot/ui/crud-forms/delete-plot-form';
 interface Props {
     plot: PlotTableRow;
     onCloseModal: () => void;
-    onPlotDeleted: (deletedPlot: DeletePlotResult) => void;
+    onPlotDeleted: (deletedPlot: DeletePlotData) => void;
 }
 
 export function DeletePlotModal({ plot, onCloseModal, onPlotDeleted }: Props) {
-    const [result, setResult] = useState<ActionResult<DeletePlotResult> | TechnicalError | null>(null);
+    const [result, setResult] = useState<ActionResult<DeletePlotData> | TechnicalError | null>(
+        null
+    );
     const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {

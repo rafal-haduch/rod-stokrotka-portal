@@ -1,21 +1,23 @@
-// === FOR QUERIES ===
-
 import { PlotMinimalReference, PlotTableRow } from '@/features/plot/domain/plot-read-models';
+
+// === FOR QUERIES ===
 
 /**
  * API contract representing data returned by the get available plot query.
  */
-export type FetchedAvailablePlots = PlotMinimalReference[];
+export type GetAvailablePlotsResponse = PlotMinimalReference[];
 
 /**
  * API contract representing data returned by the get plot table rows query.
  */
-export type FetchedPlotTableRows = PlotTableRow[];
+export type GetPlotTableRowsResponse = PlotTableRow[];
+
+// === FOR ACTIONS ===
 
 /**
  * API contract representing data returned by the create plot action upon successful completion.
  */
-export interface CreatePlotResult {
+export interface CreatePlotData {
     id: number;
     plotNumber: string;
     area: number | null;
@@ -24,7 +26,7 @@ export interface CreatePlotResult {
 /**
  * API contract representing data returned by the update plot  action upon successful completion.
  */
-export interface UpdatePlotResult {
+export interface UpdatePlotData {
     id: number;
     plotNumber: string;
     area: number | null;
@@ -33,6 +35,6 @@ export interface UpdatePlotResult {
 /**
  * API contract representing data returned by the delete plot  action upon successful completion.
  */
-export interface DeletePlotResult {
+export interface DeletePlotData {
     id: number;
 }

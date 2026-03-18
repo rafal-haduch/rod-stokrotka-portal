@@ -11,11 +11,11 @@ import { ErrorCode } from '@/shared/error/error-codes';
 import { handleActionError } from '@/shared/error/handle-action-error';
 
 import { plotRepository } from '@/features/plot/domain/plot-repository';
-import { CreatePlotResult } from '@/features/plot/domain/plot-api-contracts';
+import { CreatePlotData } from '@/features/plot/domain/plot-api-contracts';
 import { parseCreatePlotInput } from '@/features/plot/domain/plot-input-parse';
 import { mapToCreatedPlotData } from '@/features/plot/domain/plot-mapper';
 
-export async function createPlot(formData: FormData): Promise<ActionResult<CreatePlotResult>> {
+export async function createPlot(formData: FormData): Promise<ActionResult<CreatePlotData>> {
     try {
         const session = await requireSession();
 

@@ -11,7 +11,7 @@ import { safeAction } from '@/shared/utils/safe-action';
 import { Portal } from '@/components/portal';
 
 import { updatePlot } from '@/features/plot/domain/actions/update-plot-action';
-import { UpdatePlotResult } from '@/features/plot/domain/plot-api-contracts';
+import { UpdatePlotData } from '@/features/plot/domain/plot-api-contracts';
 import { PlotTableRow } from '@/features/plot/domain/plot-read-models';
 
 import { EditPlotForm } from '@/features/plot/ui/crud-forms/edit-plot-form';
@@ -19,7 +19,7 @@ import { EditPlotForm } from '@/features/plot/ui/crud-forms/edit-plot-form';
 interface Props {
     plot: PlotTableRow;
     onCloseModal: () => void;
-    onPlotUpdated: (updatedPlotRow: UpdatePlotResult) => void;
+    onPlotUpdated: (updatedPlotRow: UpdatePlotData) => void;
 }
 
 export function EditPlotModal({ plot, onCloseModal, onPlotUpdated }: Props) {

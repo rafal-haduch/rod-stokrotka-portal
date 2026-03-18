@@ -1,5 +1,6 @@
 import { validateId } from '@/shared/utils/validate-id';
-import { validatePlotArea, validatePlotNumber } from './plot-validation';
+
+import { validatePlotArea, validatePlotNumber } from '@/features/plot/domain/plot-validation';
 
 // CREATE PLOT ACTION
 export interface CreatePlotInput {

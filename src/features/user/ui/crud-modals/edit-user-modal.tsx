@@ -14,7 +14,7 @@ import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
 import { updateUser } from '@/features/user/domain/actions/update-user-action';
 import { UserTableRow } from '@/features/user/domain/user-read-models';
-import { UpdateUserResult } from '@/features/user/domain/user-api-contracts';
+import { UpdateUserData } from '@/features/user/domain/user-api-contracts';
 
 import { EditUserForm } from '@/features/user/ui/crud-forms/edit-user-form';
 
@@ -25,8 +25,8 @@ interface Props {
     onUpdatedUser: (updatedUserRow: UserTableRow) => void;
 }
 
-export  function EditUserModal({ user, plotOptions, onCloseModal, onUpdatedUser }: Props) {
-    const [result, setResult] = useState<ActionResult<UpdateUserResult> | TechnicalError | null>(
+export function EditUserModal({ user, plotOptions, onCloseModal, onUpdatedUser }: Props) {
+    const [result, setResult] = useState<ActionResult<UpdateUserData> | TechnicalError | null>(
         null
     );
     const [loading, setLoading] = useState(false);

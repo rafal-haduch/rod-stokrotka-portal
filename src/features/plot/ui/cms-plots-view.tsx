@@ -8,9 +8,9 @@ import { CRUDModalType } from '@/shared/types/crud-modal';
 import { CustomButton } from '@/components/custom-button';
 
 import {
-    CreatePlotResult,
-    DeletePlotResult,
-    UpdatePlotResult,
+    CreatePlotData,
+    DeletePlotData,
+    UpdatePlotData,
 } from '@/features/plot/domain/plot-api-contracts';
 import { PlotTableRow } from '@/features/plot/domain/plot-read-models';
 
@@ -39,8 +39,8 @@ export function CMSPlotsView({ plotTableRows }: Props) {
         setSelectedPlot(null);
     };
 
-    const addPlotInTable = (createdPlot: CreatePlotResult) => {
-        const newPlot : PlotTableRow = {
+    const addPlotInTable = (createdPlot: CreatePlotData) => {
+        const newPlot: PlotTableRow = {
             id: createdPlot.id,
             plotNumber: createdPlot.plotNumber,
             area: createdPlot.area,
@@ -51,7 +51,7 @@ export function CMSPlotsView({ plotTableRows }: Props) {
     };
 
     //REVIEW: Is this a good approach? (no types?)
-    const updatePlotInTable = (updatedPlot: UpdatePlotResult) => {
+    const updatePlotInTable = (updatedPlot: UpdatePlotData) => {
         setPlotRows((prev) =>
             prev.map((p) =>
                 p.id === updatedPlot.id
@@ -77,7 +77,7 @@ export function CMSPlotsView({ plotTableRows }: Props) {
                 variant="action"
                 className="mx-auto mb-4"
             >
-                <Plus aria-hidden='true'/>
+                <Plus aria-hidden="true" />
             </CustomButton>
 
             <PlotsTable data={plotRows} onEdit={openModal} onDelete={openModal} />
@@ -87,7 +87,7 @@ export function CMSPlotsView({ plotTableRows }: Props) {
                     onCloseModal={() => {
                         closeModal();
                     }}
-                    onPlotCreated={(createdPlot: CreatePlotResult) => {
+                    onPlotCreated={(createdPlot: CreatePlotData) => {
                         closeModal();
                         addPlotInTable(createdPlot);
                     }}
@@ -100,7 +100,7 @@ export function CMSPlotsView({ plotTableRows }: Props) {
                     onCloseModal={() => {
                         closeModal();
                     }}
-                    onPlotUpdated={(updatedPlot: UpdatePlotResult) => {
+                    onPlotUpdated={(updatedPlot: UpdatePlotData) => {
                         closeModal();
                         updatePlotInTable(updatedPlot);
                     }}
@@ -113,7 +113,7 @@ export function CMSPlotsView({ plotTableRows }: Props) {
                     onCloseModal={() => {
                         closeModal();
                     }}
-                    onPlotDeleted={(deletedPlot: DeletePlotResult) => {
+                    onPlotDeleted={(deletedPlot: DeletePlotData) => {
                         closeModal();
                         removePlotFromTable(deletedPlot.id);
                     }}

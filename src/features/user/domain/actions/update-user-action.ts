@@ -9,12 +9,12 @@ import { DomainError } from '@/shared/error/domain-error';
 import { ErrorCode } from '@/shared/error/error-codes';
 import { handleActionError } from '@/shared/error/handle-action-error';
 
-import { UpdateUserResult } from '@/features/user/domain/user-api-contracts';
+import { UpdateUserData } from '@/features/user/domain/user-api-contracts';
 import { parseUpdateUserInput } from '@/features/user/domain/user-input-parse';
 import { userRepository } from '@/features/user/domain/user-repository';
 import { mapToUpdatedUserData } from '@/features/user/domain/user-mapper';
 
-export async function updateUser(formData: FormData): Promise<ActionResult<UpdateUserResult>> {
+export async function updateUser(formData: FormData): Promise<ActionResult<UpdateUserData>> {
     try {
         const session = await requireSession();
 

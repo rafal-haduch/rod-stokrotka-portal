@@ -9,19 +9,19 @@ import { UserProfile, UserTableRow } from '@/features/user/domain/user-read-mode
 /**
  * API contract representing data returned by the get user profile query.
  */
-export interface FetchedUserProfile extends UserProfile {}
+export interface GetUserProfileResponse extends UserProfile {}
 
 /**
  * API contract representing data returned by the get user table rows query.
  */
-export type FetchedUserTableRows = UserTableRow[];
+export type GetUserTableRowsResponse = UserTableRow[];
 
 // === FOR ACTIONS ===
 
 /**
  * API contract representing data returned by the create user action upon successful completion.
  */
-export interface CreateUserResult {
+export interface CreateUserData {
     id: number;
     name: string;
     plots: PlotMinimalReference[];
@@ -35,7 +35,7 @@ export interface CreateUserResult {
 /**
  * API contract representing data returned by the update user action upon successful completion.
  */
-export interface UpdateUserResult {
+export interface UpdateUserData {
     id: number;
     name: string;
     plots: PlotMinimalReference[];
@@ -44,6 +44,9 @@ export interface UpdateUserResult {
     lastLogin: Date | null;
 }
 
-export interface DeleteUserResult {
-    id: number
+/**
+ * API contract representing data returned by the delete user action upon successful completion.
+ */
+export interface DeleteUserData {
+    id: number;
 }

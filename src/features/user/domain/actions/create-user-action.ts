@@ -13,10 +13,10 @@ import { handleActionError } from '@/shared/error/handle-action-error';
 import { parseCreateUserInput } from '@/features/user/domain/user-input-parse';
 import { userRepository } from '@/features/user/domain/user-repository';
 import { generateLogin, generatePassword } from '@/features/user/domain/user-helpers';
-import { CreateUserResult } from '@/features/user/domain/user-api-contracts';
+import { CreateUserData } from '@/features/user/domain/user-api-contracts';
 import { mapToCreatedUserData } from '@/features/user/domain/user-mapper';
 
-export async function createUser(formData: FormData): Promise<ActionResult<CreateUserResult>> {
+export async function createUser(formData: FormData): Promise<ActionResult<CreateUserData>> {
     try {
         const session = await requireSession();
 

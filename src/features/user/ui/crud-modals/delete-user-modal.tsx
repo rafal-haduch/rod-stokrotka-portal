@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
 
-
 import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
 import { ActionResult } from '@/shared/contracts/action-result';
 import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
@@ -13,18 +12,20 @@ import { Portal } from '@/components/portal';
 
 import { UserTableRow } from '@/features/user/domain/user-read-models';
 import { deleteUser } from '@/features/user/domain/actions/delete-user-action';
-import { DeleteUserResult } from '@/features/user/domain/user-api-contracts';
+import { DeleteUserData } from '@/features/user/domain/user-api-contracts';
 
 import { DeleteUserForm } from '@/features/user/ui/crud-forms/delete-user-form';
 
 interface Props {
     user: UserTableRow;
     onCloseModal: () => void;
-    onUserDeleted: (deletedUser: DeleteUserResult) => void;
+    onUserDeleted: (deletedUser: DeleteUserData) => void;
 }
 
 export default function DeleteUserModal({ user, onCloseModal, onUserDeleted }: Props) {
-    const [result, setResult] = useState<ActionResult<DeleteUserResult> | TechnicalError | null>(null);
+    const [result, setResult] = useState<ActionResult<DeleteUserData> | TechnicalError | null>(
+        null
+    );
     const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {

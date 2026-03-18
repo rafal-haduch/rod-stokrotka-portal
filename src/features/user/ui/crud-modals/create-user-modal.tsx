@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
 
-
 import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
 import { ActionResult } from '@/shared/contracts/action-result';
 import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
@@ -14,7 +13,7 @@ import { Portal } from '@/components/portal';
 import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
 import { createUser } from '@/features/user/domain/actions/create-user-action';
-import { CreateUserResult } from '@/features/user/domain/user-api-contracts';
+import { CreateUserData } from '@/features/user/domain/user-api-contracts';
 
 import { CreateUserForm } from '@/features/user/ui/crud-forms/create-user-form';
 import { CreateUserSuccess } from '@/features/user/ui/crud-modals/create-user-success';
@@ -22,11 +21,11 @@ import { CreateUserSuccess } from '@/features/user/ui/crud-modals/create-user-su
 interface Props {
     plotOptions: PlotMinimalReference[];
     onCloseModal: () => void;
-    onUserCreated: (newUserData: CreateUserResult) => void;
+    onUserCreated: (newUserData: CreateUserData) => void;
 }
 
 export function CreateUserModal({ plotOptions, onCloseModal, onUserCreated }: Props) {
-    const [result, setResult] = useState<ActionResult<CreateUserResult> | TechnicalError | null>(
+    const [result, setResult] = useState<ActionResult<CreateUserData> | TechnicalError | null>(
         null
     );
     const [loading, setLoading] = useState(false);

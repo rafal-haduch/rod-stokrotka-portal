@@ -1,7 +1,10 @@
-import { FetchedPlotTableRows } from '@/features/plot/domain/plot-api-contracts';
-import { mapToPlotTableRows } from '@/features/plot/domain/plot-mapper';
-import { plotRepository } from '@/features/plot/domain/plot-repository';
+'use server';
+
 import { unstable_cache } from 'next/cache';
+
+import { GetPlotTableRowsResponse } from '@/features/plot/domain/plot-api-contracts';
+import { plotRepository } from '@/features/plot/domain/plot-repository';
+import { mapToPlotTableRows } from '@/features/plot/domain/plot-mapper';
 
 /**
  * Fetches only the fields needed for the CMS plots table from the database.
@@ -9,7 +12,7 @@ import { unstable_cache } from 'next/cache';
  * This function is cached on the server using Next.js App Router `unstable_cache`.
  * Use `revalidateTag('plots')` after any server-side mutations to immediately refresh cached data.
  */
-export const getPlotTableRows: () => Promise<FetchedPlotTableRows> = unstable_cache(
+export const getPlotTableRows: () => Promise<GetPlotTableRowsResponse> = unstable_cache(
     async () => {
         const result = await plotRepository.getUserTableRows();
         return mapToPlotTableRows(result);

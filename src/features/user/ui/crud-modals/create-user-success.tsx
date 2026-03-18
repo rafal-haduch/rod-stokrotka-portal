@@ -8,13 +8,13 @@ import { cn } from '@/shared/utils/cn';
 import { CustomButton } from '@/components/custom-button';
 
 import { getRoleLabel } from '@/features/user/domain/user-helpers';
-import { CreateUserResult } from '@/features/user/domain/user-api-contracts';
+import { CreateUserData } from '@/features/user/domain/user-api-contracts';
 
 interface Props {
-    result: CreateUserResult;
+    result: CreateUserData;
 }
 
-export  function CreateUserSuccess({ result }: Props) {
+export function CreateUserSuccess({ result }: Props) {
     const [copied, setCopied] = useState(false);
 
     function copyCredentials() {

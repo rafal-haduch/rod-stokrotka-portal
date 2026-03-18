@@ -1,6 +1,7 @@
 import { prisma } from '@/shared/lib/prisma';
-import { PlotMinimalReference } from './plot-read-models';
+
 import { PlotTableRowsFromDb, plotTableRowsSelect } from '@/features/plot/domain/plot-db-types';
+import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
 interface CreatePlotData {
     plotNumber: string;
