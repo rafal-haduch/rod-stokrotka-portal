@@ -1,7 +1,5 @@
 # TODOS:
 
-- rename api contracts for queries in user and plot feature 
-commit...
 - add soft delete (deletedAt DateTime? deletedBy UserId?)
 - improve schema by change fields (ownersId in plot) etc.
 commit...

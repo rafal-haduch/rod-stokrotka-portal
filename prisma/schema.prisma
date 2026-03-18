@@ -17,37 +17,47 @@ enum Role {
     ALLOTMENT_GARDENER
 }
 
+enum PaymentMethod {
+    CASH
+    BANK_TRANSFER
+}
+
 model User {
-    id       Int        @id @default(autoincrement())
-    name     String
-    plots    UserPlot[]
-    role     Role       @default(ALLOTMENT_GARDENER)
-    login    String     @unique
-    password String
-
+    id         Int       @id @default(autoincrement())
+    name       String
+    role       Role      @default(ALLOTMENT_GARDENER)
+    login      String    @unique
+    password   String
+    firstLogin Boolean   @default(true) @map("first_login")
+    lastLogin  DateTime? @map("last_login")
     createdAt  DateTime  @default(now()) @map("created_at")
-    firstLogin Boolean   @default(true)
-    updatedAt  DateTime  @updatedAt @map("updated_at")
-    lastLogin  DateTime?
 
-    createdAnnouncements Announcement[] @relation("AnnouncementAuthor")
-    updatedAnnouncements Announcement[] @relation("AnnouncementUpdater")
-    deletedAnnouncements Announcement[] @relation("AnnouncementDeleter")
+    updatedAt DateTime? @map("updated_at")
+
+    deletedAt       DateTime? @map("deleted_at")
+    deletedByUserId Int?      @map("deleted_by_user_id")
+
+    ownedPlots   Plot[]     @relation("PlotOwner")
+    coOwnedPlots Plot[]     @relation("PlotCoOwner") // if can be many co-owners change like used plots
+    usedPlots    UserPlot[]
 }
 
 model Plot {
-    id         Int    @id @default(autoincrement())
-    plotNumber String @unique @map("plot_number") @db.VarChar(10)
-    area       Float?
+    id        Int    @id @default(autoincrement())
+    number    String @unique @map("number") @db.VarChar(10)
+    area      Float?
+    ownerId   Int?   @map("owner_id")
+    coOwnerId Int?   @map("co_owner_id") // if can be many co-owners change like used plots
 
-    ownersId UserPlot[]
-
-    payments Payment[]
+    owner   User?      @relation("PlotOwner", fields: [ownerId], references: [id])
+    coOwner User?      @relation("PlotCoOwner", fields: [coOwnerId], references: [id]) // if can be many co-owners change like used plots
+    users   UserPlot[]
+    fees    Fee[]
 }
 
 model UserPlot {
-    userId Int
-    plotId Int
+    userId Int @map("user_id")
+    plotId Int @map("plot_id")
 
     user User @relation(fields: [userId], references: [id])
     plot Plot @relation(fields: [plotId], references: [id])
@@ -55,39 +65,44 @@ model UserPlot {
     @@id([userId, plotId])
 }
 
+model Fee {
+    id             Int      @id @default(autoincrement())
+    plotId         Int      @map("plot_id")
+    year           Int
+    plotAreaFee    Decimal  @map("plot_area_fee") @db.Decimal(10, 2)
+    wasteFee       Decimal  @map("waste_fee") @db.Decimal(10, 2)
+    membershipFee  Decimal  @map("membership_fee") @db.Decimal(10, 2)
+    electricityFee Decimal? @map("electricity_fee") @db.Decimal(10, 2)
+    totalAmount    Decimal  @map("total_amount") @db.Decimal(10, 2) // plotAreaFee + wasteFee + membershipFee + (electricityFee),
+
+    plot    Plot     @relation(fields: [plotId], references: [id])
+    payment Payment?
+}
+
 model Payment {
-    id Int @id @default(autoincrement())
+    id                 Int           @id @default(autoincrement())
+    feeId              Int           @unique @map("fee_id")
+    paidAt             DateTime      @default(now()) @map("paid_at")
+    method             PaymentMethod
+    receivedByUserId   Int           @map("received_by_user_id")
+    receivedByUserName String        @map("received_by_user_name")
 
-    plot   Plot @relation(fields: [plotId], references: [id])
-    plotId Int  @map("plot_id")
-
-    year Int
-    paid Boolean @default(false)
-
-    plotAreaFee    Float  @map("plot_area_fee")
-    wasteFee       Float  @map("waste_fee")
-    membershipFee  Float  @map("membership_fee")
-    electricityFee Float? @map("electricity_fee")
-    totalAmount    Float  @map("total_amount")
+    fee Fee @relation(fields: [feeId], references: [id])
 }
 
 model Announcement {
-    id      Int    @id @default(autoincrement())
-    title   String
-    content String
+    id         Int      @id @default(autoincrement())
+    title      String
+    content    String
+    createdAt  DateTime @default(now()) @map("created_at")
+    authorId   Int      @map("author_id")
+    authorName String   @map("author_name")
 
-    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt         DateTime? @map("updated_at")
+    updatedByUserId   Int?      @map("updated_by_user_id")
+    updatedByUserName String?   @map("updated_by_user_name")
 
-    author   User @relation("AnnouncementAuthor", fields: [authorId], references: [id])
-    authorId Int  @map("author_id")
-
-    updatedAt DateTime @updatedAt @map("updated_at")
-
-    updatedBy   User? @relation("AnnouncementUpdater", fields: [updatedById], references: [id])
-    updatedById Int?  @map("updated_by_id")
-
-    deletedAt DateTime? @map("deleted_at")
-
-    deletedBy   User? @relation("AnnouncementDeleter", fields: [deletedById], references: [id])
-    deletedById Int?  @map("deleted_by_id")
+    deletedAt         DateTime? @map("deleted_at")
+    deletedByUserId   Int?      @map("deleted_by_user_id")
+    deletedByUserName String?   @map("deleted_by_user_name")
 }
