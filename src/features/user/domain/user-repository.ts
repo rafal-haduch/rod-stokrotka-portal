@@ -1,4 +1,4 @@
-import { Role } from '@prisma/client';
+import { UserRole } from '@prisma/client';
 
 import { prisma } from '@/shared/lib/prisma';
 
@@ -14,7 +14,7 @@ import {
 interface CreateUserDbInput {
     name: string;
     plotIds: number[];
-    role: Role;
+    role: UserRole;
     login: string;
     passwordHash: string;
 }
@@ -23,7 +23,7 @@ interface UpdateUserDbInput {
     id: number;
     name: string;
     plotIds: number[];
-    role: Role;
+    role: UserRole;
 }
 
 // === USER REPOSITORY ===
@@ -43,7 +43,7 @@ export const userRepository = {
                 data: {
                     name: name,
                     login: login,
-                    password: passwordHash,
+                    passwordHash: passwordHash,
                     role: role,
                 },
             });
@@ -208,7 +208,7 @@ export const userRepository = {
     async getUserPassword(id: number) {
         return await prisma.user.findUnique({
             where: { id },
-            select: { password: true },
+            select: { passwordHash: true },
         });
     },
 
@@ -219,7 +219,7 @@ export const userRepository = {
     async updatePasswordHash(id: number, newPasswordHash: string) {
         await prisma.user.update({
             where: { id },
-            data: { password: newPasswordHash },
+            data: { passwordHash: newPasswordHash },
         });
     },
 };

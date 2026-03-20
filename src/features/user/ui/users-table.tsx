@@ -7,7 +7,7 @@ import { CRUDModalType } from '@/shared/types/crud-modal';
 import { CustomButton } from '@/components/custom-button';
 
 import { UserTableRow } from '@/features/user/domain/user-read-models';
-import { getRoleLabel } from '@/features/user/domain/user-helpers';
+import { getUserRoleLabel } from '@/features/user/domain/user-helpers';
 
 interface Props {
     data: UserTableRow[];
@@ -48,7 +48,7 @@ export default function UsersTable({ data, onEdit, onDelete }: Props) {
                                           .join(', ')
                                     : '—'}
                             </td>
-                            <td>{getRoleLabel(rowUser.role)}</td>
+                            <td>{getUserRoleLabel(rowUser.role)}</td>
                             <td>{new Date(rowUser.createdAt).toLocaleDateString('pl-PL')}</td>
                             <td>
                                 {rowUser.lastLogin

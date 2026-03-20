@@ -1,18 +1,18 @@
-import { Role } from '@prisma/client';
+import { UserRole } from '@prisma/client';
 
 import { DomainError } from '@/shared/error/domain-error';
 import { ErrorCode } from '@/shared/error/error-codes';
 
-export function validateUserRole(value: unknown): Role {
+export function validateRole(value: unknown): UserRole {
     if (typeof value !== 'string') {
         throw new DomainError(ErrorCode.INVALID_INPUT);
     }
 
-    if (!(value in Role)) {
+    if (!(value in UserRole)) {
         throw new DomainError(ErrorCode.INVALID_INPUT);
     }
 
-    const normalized = value as Role;
+    const normalized = value as UserRole;
 
     return normalized;
 }

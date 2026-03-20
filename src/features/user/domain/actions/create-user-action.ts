@@ -30,7 +30,13 @@ export async function createUser(formData: FormData): Promise<ActionResult<Creat
         const password = generatePassword();
         const passwordHash = await bcrypt.hash(password, 10);
 
-        const result = await userRepository.create({ name, plotIds, role, login, passwordHash });
+        const result = await userRepository.create({
+            name,
+            plotIds,
+            role,
+            login,
+            passwordHash,
+        });
 
         revalidateTag('users');
 

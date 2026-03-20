@@ -15,8 +15,6 @@ enum UserRole {
     TREASURER
     BOARD_MEMBER
     ALLOTMENT_GARDENER
-
-    @@map("Role")
 }
 
 enum PlotRole {
@@ -157,7 +155,7 @@ model AuditLog {
     userId      Int      @map("user_id")
     userName    String   @map("user_name")
     createdAt   DateTime @default(now()) @map("created_at")
-    //NOTE: State is saved only in update action.
+    //NOTE: State is saved only while update action.
     stateBefore Json?    @map("state_before")
     stateAfter  Json?    @map("state_after")
 

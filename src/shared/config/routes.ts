@@ -10,7 +10,7 @@ export type AppRouteBase = {
 
     auth?: {
         required?: boolean;
-        roles?: ('USER' | 'ADMIN')[];
+        userRole?: ('USER' | 'ADMIN')[];
     };
 
     mainNav?: {

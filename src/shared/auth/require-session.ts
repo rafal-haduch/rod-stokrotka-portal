@@ -1,4 +1,4 @@
-import { Role } from '@prisma/client';
+import { UserRole } from '@prisma/client';
 
 import { getUserSession } from '@/shared/lib/next-auth/get-user-session';
 
@@ -8,13 +8,13 @@ import { ErrorCode } from '@/shared/error/error-codes';
 export interface UserSession {
     name: string;
     id: number;
-    role: Role;
+    role: UserRole;
 }
 
 export async function requireSession(): Promise<UserSession> {
     const session = await getUserSession();
 
-    if (!session || !session.role || !session.id || !session.name) {
+    if (!session || !session.UserRole || !session.id || !session.name) {
         throw new DomainError(ErrorCode.NO_SESSION);
     }
 

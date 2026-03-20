@@ -1,15 +1,15 @@
 import { randomBytes } from 'crypto';
-import { Role } from '@prisma/client';
+import { UserRole } from '@prisma/client';
 
-import { ROLE_LABEL } from '@/features/user/domain/user-constants';
+import { USER_ROLE_LABEL } from '@/features/user/domain/user-constants';
 
 /**
- * @returns A Polish display label for the given role. If role is missing, returns a fallback placeholder `-`.
+ * @returns A Polish display label for the given UserUserRole. If UserUserRole is missing, returns a fallback placeholder `-`.
  */
-export function getRoleLabel(role: Role | null | undefined) {
-    if (!role) return '-';
+export function getUserRoleLabel(UserRole: UserRole | null | undefined) {
+    if (!UserRole) return '-';
 
-    return ROLE_LABEL[role];
+    return USER_ROLE_LABEL[UserRole];
 }
 
 /**

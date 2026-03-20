@@ -1,6 +1,6 @@
 'use client';
 
-import { Save, X } from 'lucide-react';
+import { Save } from 'lucide-react';
 
 import { TooltipIcon } from '@/components/tooltip-icon';
 import { CustomButton } from '@/components/custom-button';
@@ -9,8 +9,8 @@ import { MultiSelectDropdown } from '@/components/multi-select-plots-dropdown';
 import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
 import { UserTableRow } from '@/features/user/domain/user-read-models';
-import { ASSIGNABLE_ROLES } from '@/features/user/domain/user-constants';
-import { getRoleLabel } from '@/features/user/domain/user-helpers';
+import { ASSIGNABLE_USER_ROLES } from '@/features/user/domain/user-constants';
+import { getUserRoleLabel } from '@/features/user/domain/user-helpers';
 
 interface Props {
     userData: UserTableRow;
@@ -20,13 +20,7 @@ interface Props {
     errorMsg: string | null;
 }
 
-export  function EditUserForm({
-    userData,
-    plotsOptions,
-    onSubmit,
-    loading,
-    errorMsg,
-}: Props) {
+export function EditUserForm({ userData, plotsOptions, onSubmit, loading, errorMsg }: Props) {
     return (
         <form
             onSubmit={onSubmit}
@@ -62,13 +56,17 @@ export  function EditUserForm({
                     </div>
                 </div>
 
-                {/* Role  */}
+                {/* UserRole  */}
                 <div className="flex w-full items-center gap-4">
                     <label className="flex w-1/4 justify-end text-base">*Rola:</label>
-                    <select name="role" defaultValue={userData.role} className="input-form w-3/4">
-                        {ASSIGNABLE_ROLES.map((role) => (
+                    <select
+                        name="UserRole"
+                        defaultValue={userData.role}
+                        className="input-form w-3/4"
+                    >
+                        {ASSIGNABLE_USER_ROLES.map((role) => (
                             <option key={role} value={role}>
-                                {getRoleLabel(role)}
+                                {getUserRoleLabel(role)}
                             </option>
                         ))}
                     </select>

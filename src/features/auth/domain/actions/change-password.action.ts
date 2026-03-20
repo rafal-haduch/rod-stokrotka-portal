@@ -26,11 +26,11 @@ export async function changePassword(formData: FormData): Promise<ActionResult<v
         enforcePasswordPolicy(newPassword, role);
 
         const result = await userRepository.getUserPassword(id);
-        if (!result?.password) {
+        if (!result?.passwordHash) {
             throw new DomainError(ErrorCode.USER_NOT_FOUND);
         }
 
-        const isPasswordMatch = await bcrypt.compare(currentPassword, result.password);
+        const isPasswordMatch = await bcrypt.compare(currentPassword, result.passwordHash);
         if (!isPasswordMatch) {
             throw new DomainError(ErrorCode.WRONG_PASSWORD);
         }

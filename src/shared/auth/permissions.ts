@@ -1,15 +1,15 @@
-import { Role } from '@prisma/client';
+import { UserRole } from '@prisma/client';
 
 /**
- * Roles considered as administrative or board-level within the system.
+ * UserRoles considered as administrative or board-level within the system.
  */
-export const ADMIN_AND_BOARD_ROLES: Role[] = [
-    Role.ADMIN,
-    Role.PRESIDENT,
-    Role.DEPUTY_PRESIDENT,
-    Role.SECRETARY,
-    Role.TREASURER,
-    Role.BOARD_MEMBER,
+export const ADMIN_AND_BOARD_ROLES: UserRole[] = [
+    UserRole.ADMIN,
+    UserRole.PRESIDENT,
+    UserRole.DEPUTY_PRESIDENT,
+    UserRole.SECRETARY,
+    UserRole.TREASURER,
+    UserRole.BOARD_MEMBER,
 ];
 
 type Permission =
@@ -27,44 +27,49 @@ type Permission =
     | 'UPDATE_ANNOUNCEMENT'
     | 'DELETE_ANNOUNCEMENT';
 
-export const PERMISSIONS: Record<Permission, readonly Role[]> = {
-    CREATE_USER: [Role.ADMIN, Role.PRESIDENT, Role.DEPUTY_PRESIDENT],
-    UPDATE_USER: [Role.ADMIN, Role.PRESIDENT, Role.DEPUTY_PRESIDENT],
-    DELETE_USER: [Role.ADMIN, Role.PRESIDENT, Role.DEPUTY_PRESIDENT],
+export const PERMISSIONS: Record<Permission, readonly UserRole[]> = {
+    CREATE_USER: [UserRole.ADMIN, UserRole.PRESIDENT, UserRole.DEPUTY_PRESIDENT],
+    UPDATE_USER: [UserRole.ADMIN, UserRole.PRESIDENT, UserRole.DEPUTY_PRESIDENT],
+    DELETE_USER: [UserRole.ADMIN, UserRole.PRESIDENT, UserRole.DEPUTY_PRESIDENT],
 
-    CREATE_PLOT: [Role.ADMIN, Role.PRESIDENT, Role.DEPUTY_PRESIDENT],
-    UPDATE_PLOT: [Role.ADMIN, Role.PRESIDENT, Role.DEPUTY_PRESIDENT],
-    DELETE_PLOT: [Role.ADMIN, Role.PRESIDENT, Role.DEPUTY_PRESIDENT],
+    CREATE_PLOT: [UserRole.ADMIN, UserRole.PRESIDENT, UserRole.DEPUTY_PRESIDENT],
+    UPDATE_PLOT: [UserRole.ADMIN, UserRole.PRESIDENT, UserRole.DEPUTY_PRESIDENT],
+    DELETE_PLOT: [UserRole.ADMIN, UserRole.PRESIDENT, UserRole.DEPUTY_PRESIDENT],
 
-    CREATE_FEES: [Role.ADMIN, Role.PRESIDENT, Role.DEPUTY_PRESIDENT],
-    UPDATE_FEES: [Role.ADMIN, Role.PRESIDENT, Role.DEPUTY_PRESIDENT],
-    DELETE_FEES: [Role.ADMIN, Role.PRESIDENT, Role.DEPUTY_PRESIDENT],
+    CREATE_FEES: [UserRole.ADMIN, UserRole.PRESIDENT, UserRole.DEPUTY_PRESIDENT],
+    UPDATE_FEES: [UserRole.ADMIN, UserRole.PRESIDENT, UserRole.DEPUTY_PRESIDENT],
+    DELETE_FEES: [UserRole.ADMIN, UserRole.PRESIDENT, UserRole.DEPUTY_PRESIDENT],
 
-    ADD_PAYMENTS: [Role.ADMIN, Role.PRESIDENT, Role.DEPUTY_PRESIDENT, Role.TREASURER],
+    ADD_PAYMENTS: [
+        UserRole.ADMIN,
+        UserRole.PRESIDENT,
+        UserRole.DEPUTY_PRESIDENT,
+        UserRole.TREASURER,
+    ],
 
     CREATE_ANNOUNCEMENT: [
-        Role.ADMIN,
-        Role.PRESIDENT,
-        Role.DEPUTY_PRESIDENT,
-        Role.SECRETARY,
-        Role.TREASURER,
-        Role.BOARD_MEMBER,
+        UserRole.ADMIN,
+        UserRole.PRESIDENT,
+        UserRole.DEPUTY_PRESIDENT,
+        UserRole.SECRETARY,
+        UserRole.TREASURER,
+        UserRole.BOARD_MEMBER,
     ],
     UPDATE_ANNOUNCEMENT: [
-        Role.ADMIN,
-        Role.PRESIDENT,
-        Role.DEPUTY_PRESIDENT,
-        Role.SECRETARY,
-        Role.TREASURER,
-        Role.BOARD_MEMBER,
+        UserRole.ADMIN,
+        UserRole.PRESIDENT,
+        UserRole.DEPUTY_PRESIDENT,
+        UserRole.SECRETARY,
+        UserRole.TREASURER,
+        UserRole.BOARD_MEMBER,
     ],
     DELETE_ANNOUNCEMENT: [
-        Role.ADMIN,
-        Role.PRESIDENT,
-        Role.DEPUTY_PRESIDENT,
-        Role.SECRETARY,
-        Role.TREASURER,
-        Role.BOARD_MEMBER,
+        UserRole.ADMIN,
+        UserRole.PRESIDENT,
+        UserRole.DEPUTY_PRESIDENT,
+        UserRole.SECRETARY,
+        UserRole.TREASURER,
+        UserRole.BOARD_MEMBER,
     ],
 };
 

@@ -5,7 +5,7 @@ import { KeyRound } from 'lucide-react';
 import { ROUTES } from '@/shared/config/routes';
 
 import { requireSession } from '@/shared/auth/require-session';
-import { getRoleLabel } from '@/features/user/domain/user-helpers';
+import { getUserRoleLabel } from '@/features/user/domain/user-helpers';
 import { getUserProfile } from '@/features/user/domain/queries/get-user-profile-query';
 
 export default async function MyProfilePage() {
@@ -29,13 +29,13 @@ export default async function MyProfilePage() {
                         {userProfile.name}
                     </p>
                 </div>
-                {/* Role */}
+                {/* UserUserRole */}
                 <div className="flex space-x-1">
-                    <label htmlFor="user-role" className="text-theme-ui-foreground-primary">
+                    <label htmlFor="user-UserUserRole" className="text-theme-ui-foreground-primary">
                         Rola:
                     </label>
-                    <p id="user-role" className="text-theme-txt-secondary">
-                        {getRoleLabel(userProfile.role)}
+                    <p id="user-UserUserRole" className="text-theme-txt-secondary">
+                        {getUserRoleLabel(userProfile.role)}
                     </p>
                 </div>
                 {/* Login */}

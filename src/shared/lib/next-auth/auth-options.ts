@@ -1,6 +1,6 @@
 import Credentials from 'next-auth/providers/credentials';
 import { AuthOptions, SessionStrategy } from 'next-auth';
-import { Role } from '@prisma/client';
+import { UserRole } from '@prisma/client';
 import bcrypt from 'bcrypt';
 
 import { prisma } from '@/shared/lib/prisma';
@@ -11,22 +11,22 @@ export const authOptions: AuthOptions = {
     },
     providers: [
         Credentials({
-            credentials: { login: { type: 'text' }, password: { type: 'password' } },
+            credentials: { login: { type: 'text' }, passwordHash: { type: 'password' } },
             authorize: async (credentials) => {
-                if (!credentials?.login || !credentials.password) return null;
+                if (!credentials?.login || !credentials.passwordHash) return null;
 
                 const user = await prisma.user.findUnique({
                     where: { login: credentials.login },
                 });
                 if (!user) return null;
 
-                const ok = await bcrypt.compare(credentials.password, user.password);
+                const ok = await bcrypt.compare(credentials.passwordHash, user.passwordHash);
                 if (!ok) return null;
 
                 return {
                     id: user.id.toString(),
                     name: user.name,
-                    role: user.role as Role,
+                    role: user.role as UserRole,
                 };
             },
         }),
@@ -36,7 +36,7 @@ export const authOptions: AuthOptions = {
             if (user) {
                 token.id = user.id;
                 token.name = user.name;
-                token.role = user.role as Role;
+                token.role = user.role as UserRole;
             }
             return token;
         },
@@ -44,7 +44,7 @@ export const authOptions: AuthOptions = {
             if (session.user) {
                 session.user.id = Number(token.id);
                 session.user.name = token.name!;
-                session.user.role = token.role as Role;
+                session.user.UserUserRole = token.UserUserRole as UserRole;
             }
             return session;
         },

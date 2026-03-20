@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default async function CMSLayout({ children }: { children: React.ReactNode }) {
     const session = await getUserSession();
-    if (!session || !isAdminOrBoard(session.role)) redirect(ROUTES.MY_PROFILE.path);
+    if (!session || !isAdminOrBoard(session.UserRole)) redirect(ROUTES.MY_PROFILE.path);
 
     return (
         <main

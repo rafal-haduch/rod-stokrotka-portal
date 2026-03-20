@@ -1,4 +1,4 @@
-import { getRoleLabel } from '@/features/user/domain/user-helpers';
+import { getUserRoleLabel } from '@/features/user/domain/user-helpers';
 
 import { getUserSession } from '@/shared/lib/next-auth/get-user-session';
 
@@ -13,10 +13,10 @@ export default async function CMSPage() {
                 <h2 className="h3">Informacja dla członków zarządu</h2>
                 <p>
                     Jesteś zalogowany jako <strong>{user.name}</strong> z rolą{' '}
-                    <strong>{getRoleLabel(user.role)}</strong>. W tym miejscu są dostępne zakładki
-                    przekierowywujące do poszczególnych paneli, które umożliwiają zarządzanie
-                    treściami na stronie oraz danymi Stowarzyszenia Ogrodowego ,,Stokrotka" w Sanoku
-                    w celu lepszego skoordynowania prowadzenia ewidencji.
+                    <strong>{getUserRoleLabel(user.UserUserRole)}</strong>. W tym miejscu są
+                    dostępne zakładki przekierowywujące do poszczególnych paneli, które umożliwiają
+                    zarządzanie treściami na stronie oraz danymi Stowarzyszenia Ogrodowego
+                    ,,Stokrotka" w Sanoku w celu lepszego skoordynowania prowadzenia ewidencji.
                 </p>
                 <p>
                     W panelach zarządzania zostały umieszczone opisy pomagające korzystać z nich. Po

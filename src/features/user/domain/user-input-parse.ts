@@ -1,16 +1,16 @@
-import { Role } from '@prisma/client';
+import { UserRole } from '@prisma/client';
 
 import { validateId } from '@/shared/utils/validate-id';
 
 import { validatePlotIds } from '@/features/plot/domain/plot-validation';
 
-import { validateUserName, validateUserRole } from '@/features/user/domain/user-validation';
+import { validateUserName, validateRole } from '@/features/user/domain/user-validation';
 
 // === USE CASE: CREATE USER ===
 
 interface CreateUserFormInput {
     name: string;
-    role: Role;
+    role: UserRole;
     plotIds: number[];
 }
 
@@ -28,7 +28,7 @@ export function parseCreateUserInput(formData: FormData): CreateUserFormInput {
     const plotIdsRaw = formData.getAll('plotIds');
 
     const name = validateUserName(nameRaw);
-    const role = validateUserRole(roleRaw);
+    const role = validateRole(roleRaw);
     const plotIds = validatePlotIds(plotIdsRaw);
 
     return { name, role, plotIds };
@@ -39,7 +39,7 @@ export function parseCreateUserInput(formData: FormData): CreateUserFormInput {
 interface UpdateUserFormInput {
     id: number;
     name: string;
-    role: Role;
+    role: UserRole;
     plotIds: number[];
 }
 
@@ -59,7 +59,7 @@ export function parseUpdateUserInput(formData: FormData): UpdateUserFormInput {
 
     const id = validateId(idRaw);
     const name = validateUserName(nameRaw);
-    const role = validateUserRole(roleRaw);
+    const role = validateRole(roleRaw);
     const plotIds = validatePlotIds(plotIdsRaw);
 
     return { id, name, role, plotIds };

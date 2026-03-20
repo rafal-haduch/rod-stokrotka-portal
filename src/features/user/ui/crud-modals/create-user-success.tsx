@@ -7,7 +7,7 @@ import { cn } from '@/shared/utils/cn';
 
 import { CustomButton } from '@/components/custom-button';
 
-import { getRoleLabel } from '@/features/user/domain/user-helpers';
+import { getUserRoleLabel } from '@/features/user/domain/user-helpers';
 import { CreateUserData } from '@/features/user/domain/user-api-contracts';
 
 interface Props {
@@ -33,7 +33,7 @@ export function CreateUserSuccess({ result }: Props) {
             </p>
             <p className="text-theme-foreground-content text-center">
                 Osoba <strong>{result.name}</strong> z rolą{' '}
-                <strong>{getRoleLabel(result.role)}</strong> została dodana do systemu.
+                <strong>{getUserRoleLabel(result.role)}</strong> została dodana do systemu.
             </p>
 
             <div className="mx-auto flex flex-col gap-2">

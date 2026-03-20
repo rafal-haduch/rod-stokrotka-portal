@@ -24,7 +24,7 @@ export default function UserPanelHeader() {
     if (!data?.user) return null;
 
     const user = data.user;
-    const isCMSAvailable = isAdminOrBoard(user.role);
+    const isCMSAvailable = isAdminOrBoard(user.UserUserRole);
 
     return (
         <header

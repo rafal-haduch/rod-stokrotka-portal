@@ -1,6 +1,6 @@
 'use client';
 
-import { Role } from '@prisma/client';
+import { UserRole } from '@prisma/client';
 import { CirclePlus, X } from 'lucide-react';
 
 import { CustomButton } from '@/components/custom-button';
@@ -9,8 +9,8 @@ import { MultiSelectDropdown } from '@/components/multi-select-plots-dropdown';
 
 import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
-import { ASSIGNABLE_ROLES } from '@/features/user/domain/user-constants';
-import { getRoleLabel } from '@/features/user/domain/user-helpers';
+import { ASSIGNABLE_USER_ROLES } from '@/features/user/domain/user-constants';
+import { getUserRoleLabel } from '@/features/user/domain/user-helpers';
 
 interface Props {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -19,7 +19,7 @@ interface Props {
     errorMsg: string | null;
 }
 
-export  function CreateUserForm({ onSubmit, plotsOptions, loading, errorMsg }: Props) {
+export function CreateUserForm({ onSubmit, plotsOptions, loading, errorMsg }: Props) {
     return (
         <form
             onSubmit={onSubmit}
@@ -46,17 +46,17 @@ export  function CreateUserForm({ onSubmit, plotsOptions, loading, errorMsg }: P
                     </div>
                 </div>
 
-                {/* Role  */}
+                {/* UserRole  */}
                 <div className="flex w-full items-center gap-4">
                     <label className="flex w-1/4 justify-end text-base">*Rola:</label>
                     <select
-                        name="role"
-                        defaultValue={Role.ALLOTMENT_GARDENER}
+                        name="UserRole"
+                        defaultValue={UserRole.ALLOTMENT_GARDENER}
                         className="input-form w-3/4"
                     >
-                        {ASSIGNABLE_ROLES.map((role) => (
+                        {ASSIGNABLE_USER_ROLES.map((role) => (
                             <option key={role} value={role}>
-                                {getRoleLabel(role)}
+                                {getUserRoleLabel(role)}
                             </option>
                         ))}
                     </select>

@@ -1,4 +1,4 @@
-import { Role } from '@prisma/client';
+import { UserRole } from '@prisma/client';
 
 import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
@@ -25,7 +25,7 @@ export interface CreateUserData {
     id: number;
     name: string;
     plots: PlotMinimalReference[];
-    role: Role;
+    role: UserRole;
     login: string;
     password: string;
     createdAt: Date;
@@ -39,7 +39,7 @@ export interface UpdateUserData {
     id: number;
     name: string;
     plots: PlotMinimalReference[];
-    role: Role;
+    role: UserRole;
     createdAt: Date;
     lastLogin: Date | null;
 }
