@@ -22,40 +22,57 @@ enum PaymentMethod {
     BANK_TRANSFER
 }
 
+enum Action {
+    CREATE
+    UPDATE
+    DELETE
+}
+
+enum Entity {
+    USER
+    PLOT
+    USER_PLOT
+    FEE
+    PAYMENT
+    ANNOUNCEMENT
+}
+
 model User {
-    id         Int       @id @default(autoincrement())
-    name       String
-    role       Role      @default(ALLOTMENT_GARDENER)
-    login      String    @unique
-    password   String
-    firstLogin Boolean   @default(true) @map("first_login")
-    lastLogin  DateTime? @map("last_login")
-    createdAt  DateTime  @default(now()) @map("created_at")
-
-    updatedAt DateTime? @map("updated_at")
-
+    id              Int       @id @default(autoincrement())
+    name            String
+    role            Role      @default(ALLOTMENT_GARDENER)
+    login           String    @unique
+    passwordHash    String    @map("password_hash")
+    lastLogin       DateTime? @map("last_login")
+    createdAt       DateTime  @default(now()) @map("created_at")
+    updatedAt       DateTime? @map("updated_at")
     deletedAt       DateTime? @map("deleted_at")
     deletedByUserId Int?      @map("deleted_by_user_id")
 
-    ownedPlots   Plot[]     @relation("PlotOwner")
-    coOwnedPlots Plot[]     @relation("PlotCoOwner") // if can be many co-owners change like used plots
-    usedPlots    UserPlot[]
+    ownedPlots   Plot[]        @relation("PlotOwner")
+    coOwnedPlots PlotCoOwner[]
+    usedPlots    PlotUser[]
 }
 
 model Plot {
-    id        Int    @id @default(autoincrement())
-    number    String @unique @map("number") @db.VarChar(10)
-    area      Float?
-    ownerId   Int?   @map("owner_id")
-    coOwnerId Int?   @map("co_owner_id") // if can be many co-owners change like used plots
+    id              Int       @id @default(autoincrement())
+    number          String    @unique @db.VarChar(10)
+    area            Decimal?  @db.Decimal(6, 2)
+    ownerId         Int?      @map("owner_id")
+    createdAt       DateTime  @default(now()) @map("created_at")
+    updatedAt       DateTime  @updatedAt @map("updated_at")
+    deletedAt       DateTime? @map("deleted_at")
+    deletedByUserId Int?      @map("deleted_by_user_id")
 
-    owner   User?      @relation("PlotOwner", fields: [ownerId], references: [id])
-    coOwner User?      @relation("PlotCoOwner", fields: [coOwnerId], references: [id]) // if can be many co-owners change like used plots
-    users   UserPlot[]
-    fees    Fee[]
+    owner    User?         @relation("PlotOwner", fields: [ownerId], references: [id])
+    coOwners PlotCoOwner[]
+    users    PlotUser[]
+    fees     Fee[]
+
+    @@index([ownerId])
 }
 
-model UserPlot {
+model PlotCoOwner {
     userId Int @map("user_id")
     plotId Int @map("plot_id")
 
@@ -63,20 +80,43 @@ model UserPlot {
     plot Plot @relation(fields: [plotId], references: [id])
 
     @@id([userId, plotId])
+    @@index([plotId])
+    @@map("PlotCoOwner")
+}
+
+model PlotUser {
+    userId Int @map("user_id")
+    plotId Int @map("plot_id")
+
+    user User @relation(fields: [userId], references: [id])
+    plot Plot @relation(fields: [plotId], references: [id])
+
+    @@id([userId, plotId])
+    @@index([plotId])
+    @@map("PlotUser")
 }
 
 model Fee {
-    id             Int      @id @default(autoincrement())
-    plotId         Int      @map("plot_id")
-    year           Int
-    plotAreaFee    Decimal  @map("plot_area_fee") @db.Decimal(10, 2)
-    wasteFee       Decimal  @map("waste_fee") @db.Decimal(10, 2)
-    membershipFee  Decimal  @map("membership_fee") @db.Decimal(10, 2)
-    electricityFee Decimal? @map("electricity_fee") @db.Decimal(10, 2)
-    totalAmount    Decimal  @map("total_amount") @db.Decimal(10, 2) // plotAreaFee + wasteFee + membershipFee + (electricityFee),
+    id              Int       @id @default(autoincrement())
+    plotId          Int       @map("plot_id")
+    year            Int
+    paid            Boolean   @default(false)
+    plotAreaFee     Decimal   @map("plot_area_fee") @db.Decimal(10, 2)
+    wasteFee        Decimal   @map("waste_fee") @db.Decimal(10, 2)
+    membershipFee   Decimal   @map("membership_fee") @db.Decimal(10, 2)
+    electricityFee  Decimal?  @map("electricity_fee") @db.Decimal(10, 2)
+    createdAt       DateTime  @default(now()) @map("created_at")
+    updatedAt       DateTime  @updatedAt @map("updated_at")
+    deletedAt       DateTime? @map("deleted_at")
+    deletedByUserId Int?      @map("deleted_by_user_id")
 
     plot    Plot     @relation(fields: [plotId], references: [id])
     payment Payment?
+
+    @@unique([plotId, year])
+    @@index([plotId])
+    @@index([year])
+    @@index([plotId, year])
 }
 
 model Payment {
@@ -86,8 +126,13 @@ model Payment {
     method             PaymentMethod
     receivedByUserId   Int           @map("received_by_user_id")
     receivedByUserName String        @map("received_by_user_name")
+    deletedAt          DateTime?     @map("deleted_at")
+    deletedByUserId    Int?          @map("deleted_by_user_id")
 
     fee Fee @relation(fields: [feeId], references: [id])
+
+    @@index([feeId])
+    @@index([receivedByUserId])
 }
 
 model Announcement {
@@ -98,11 +143,26 @@ model Announcement {
     authorId   Int      @map("author_id")
     authorName String   @map("author_name")
 
-    updatedAt         DateTime? @map("updated_at")
-    updatedByUserId   Int?      @map("updated_by_user_id")
-    updatedByUserName String?   @map("updated_by_user_name")
+    updatedAt       DateTime  @updatedAt @map("updated_at")
+    deletedAt       DateTime? @map("deleted_at")
+    deletedByUserId Int?      @map("deleted_by_user_id")
 
-    deletedAt         DateTime? @map("deleted_at")
-    deletedByUserId   Int?      @map("deleted_by_user_id")
-    deletedByUserName String?   @map("deleted_by_user_name")
+    @@index([authorId])
+}
+
+model AuditLog {
+    id          Int      @id @default(autoincrement())
+    action      Action
+    entity      Entity
+    entityId    Int      @map("entity_id")
+    userId      Int      @map("user_id")
+    userName    String   @map("user_name")
+    createdAt   DateTime @default(now()) @map("created_at")
+    //NOTE: State is saved only in updated action.
+    stateBefore Json?    @map("state_before")
+    stateAfter  Json?    @map("state_after")
+
+    @@index([userId])
+    @@index([entity, entityId])
+    @@index([createdAt])
 }
