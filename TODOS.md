@@ -1,8 +1,6 @@
 # TODOS:
 
-- add soft delete (deletedAt DateTime? deletedBy UserId?)
-- improve schema by change fields (ownersId in plot) etc.
-commit...
+- refactor repositorys afeter impproved model data
 
 - add fee feature
 

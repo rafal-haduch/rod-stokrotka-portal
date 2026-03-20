@@ -7,7 +7,7 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-enum Role {
+enum UserRole {
     ADMIN
     PRESIDENT
     DEPUTY_PRESIDENT
@@ -15,6 +15,13 @@ enum Role {
     TREASURER
     BOARD_MEMBER
     ALLOTMENT_GARDENER
+
+    @@map("Role")
+}
+
+enum PlotRole {
+    CO_OWNER
+    USER
 }
 
 enum PaymentMethod {
@@ -40,7 +47,7 @@ enum Entity {
 model User {
     id              Int       @id @default(autoincrement())
     name            String
-    role            Role      @default(ALLOTMENT_GARDENER)
+    role            UserRole  @default(ALLOTMENT_GARDENER)
     login           String    @unique
     passwordHash    String    @map("password_hash")
     lastLogin       DateTime? @map("last_login")
@@ -49,9 +56,10 @@ model User {
     deletedAt       DateTime? @map("deleted_at")
     deletedByUserId Int?      @map("deleted_by_user_id")
 
-    ownedPlots   Plot[]        @relation("PlotOwner")
-    coOwnedPlots PlotCoOwner[]
-    usedPlots    PlotUser[]
+    ownedPlots      Plot[]     @relation("PlotOwner")
+    plotMemberships UserPlot[]
+
+    @@map("users")
 }
 
 model Plot {
@@ -64,36 +72,25 @@ model Plot {
     deletedAt       DateTime? @map("deleted_at")
     deletedByUserId Int?      @map("deleted_by_user_id")
 
-    owner    User?         @relation("PlotOwner", fields: [ownerId], references: [id])
-    coOwners PlotCoOwner[]
-    users    PlotUser[]
-    fees     Fee[]
+    owner   User?      @relation("PlotOwner", fields: [ownerId], references: [id])
+    members UserPlot[]
+    fees    Fee[]
 
     @@index([ownerId])
+    @@map("plots")
 }
 
-model PlotCoOwner {
-    userId Int @map("user_id")
-    plotId Int @map("plot_id")
+model UserPlot {
+    userId Int      @map("user_id")
+    plotId Int      @map("plot_id")
+    role   PlotRole
 
     user User @relation(fields: [userId], references: [id])
     plot Plot @relation(fields: [plotId], references: [id])
 
     @@id([userId, plotId])
     @@index([plotId])
-    @@map("PlotCoOwner")
-}
-
-model PlotUser {
-    userId Int @map("user_id")
-    plotId Int @map("plot_id")
-
-    user User @relation(fields: [userId], references: [id])
-    plot Plot @relation(fields: [plotId], references: [id])
-
-    @@id([userId, plotId])
-    @@index([plotId])
-    @@map("PlotUser")
+    @@map("user_plots")
 }
 
 model Fee {
@@ -116,7 +113,7 @@ model Fee {
     @@unique([plotId, year])
     @@index([plotId])
     @@index([year])
-    @@index([plotId, year])
+    @@map("fees")
 }
 
 model Payment {
@@ -131,8 +128,8 @@ model Payment {
 
     fee Fee @relation(fields: [feeId], references: [id])
 
-    @@index([feeId])
     @@index([receivedByUserId])
+    @@map("payments")
 }
 
 model Announcement {
@@ -148,6 +145,8 @@ model Announcement {
     deletedByUserId Int?      @map("deleted_by_user_id")
 
     @@index([authorId])
+    @@index([createdAt])
+    @@map("announcements")
 }
 
 model AuditLog {
@@ -158,11 +157,12 @@ model AuditLog {
     userId      Int      @map("user_id")
     userName    String   @map("user_name")
     createdAt   DateTime @default(now()) @map("created_at")
-    //NOTE: State is saved only in updated action.
+    //NOTE: State is saved only in update action.
     stateBefore Json?    @map("state_before")
     stateAfter  Json?    @map("state_after")
 
     @@index([userId])
     @@index([entity, entityId])
     @@index([createdAt])
+    @@map("audit_logs")
 }
