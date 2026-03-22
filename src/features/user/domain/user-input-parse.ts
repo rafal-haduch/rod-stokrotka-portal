@@ -6,12 +6,14 @@ import { validatePlotIds } from '@/features/plot/domain/plot-validation';
 
 import { validateUserName, validateRole } from '@/features/user/domain/user-validation';
 
-// === USE CASE: CREATE USER ===
+// --- USE CASE: CREATE USER --
 
 interface CreateUserFormInput {
     name: string;
     role: UserRole;
-    plotIds: number[];
+    ownedPlotIds: number[];
+    coOwnedPlotIds: number[];
+    usedPlotIds: number[];
 }
 
 /**
@@ -25,13 +27,17 @@ interface CreateUserFormInput {
 export function parseCreateUserInput(formData: FormData): CreateUserFormInput {
     const nameRaw = formData.get('name');
     const roleRaw = formData.get('role');
-    const plotIdsRaw = formData.getAll('plotIds');
+    const ownedPlotIdRaw = formData.getAll('ownedPlotIds');
+    const coOwnedPlotIdRaw = formData.getAll('coOwnedPlotIds');
+    const usedPlotIdRaw = formData.getAll('usedPlotIds');
 
     const name = validateUserName(nameRaw);
     const role = validateRole(roleRaw);
-    const plotIds = validatePlotIds(plotIdsRaw);
+    const ownedPlotIds = validatePlotIds(ownedPlotIdRaw);
+    const coOwnedPlotIds = validatePlotIds(coOwnedPlotIdRaw);
+    const usedPlotIds = validatePlotIds(usedPlotIdRaw);
 
-    return { name, role, plotIds };
+    return { name, role, ownedPlotIds, coOwnedPlotIds, usedPlotIds };
 }
 
 // === USE CASE: UPDATE USER ===

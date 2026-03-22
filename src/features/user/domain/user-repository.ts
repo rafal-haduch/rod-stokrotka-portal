@@ -1,4 +1,4 @@
-import { UserRole } from '@prisma/client';
+import { PlotRole, UserRole } from '@prisma/client';
 
 import { prisma } from '@/shared/lib/prisma';
 
@@ -13,17 +13,21 @@ import {
 
 interface CreateUserDbInput {
     name: string;
-    plotIds: number[];
     role: UserRole;
     login: string;
     passwordHash: string;
+    ownedPlotIds: number[];
+    coOwnedPlotIds: number[];
+    usedPlotIds: number[];
 }
 
 interface UpdateUserDbInput {
     id: number;
     name: string;
-    plotIds: number[];
     role: UserRole;
+    ownedPlotIds: number[];
+    coOwnedPlotIds: number[];
+    usedPlotIds: number[];
 }
 
 // === USER REPOSITORY ===
@@ -37,7 +41,15 @@ export const userRepository = {
      * This operation is executed inside a transaction.
      * @returns The newly created user including assigned plots.
      */
-    async create({ name, plotIds, role, login, passwordHash }: CreateUserDbInput) {
+    async create({
+        name,
+        role,
+        login,
+        passwordHash,
+        ownedPlotIds,
+        coOwnedPlotIds,
+        usedPlotIds,
+    }: CreateUserDbInput) {
         return prisma.$transaction(async (tx) => {
             const user = await tx.user.create({
                 data: {
@@ -47,23 +59,56 @@ export const userRepository = {
                     role: role,
                 },
             });
-            if (plotIds.length > 0) {
+
+            if (ownedPlotIds.length > 0) {
+                await tx.plot.updateMany({
+                    where: {
+                        id: {
+                            in: ownedPlotIds,
+                        },
+                    },
+                    data: {
+                        ownerId: user.id,
+                    },
+                });
+            }
+
+            if (coOwnedPlotIds.length > 0) {
                 await tx.userPlot.createMany({
-                    data: plotIds.map((id) => ({
+                    data: coOwnedPlotIds.map((id) => ({
                         userId: user.id,
                         plotId: id,
+                        role: PlotRole.CO_OWNER,
                     })),
                 });
             }
+
+            if (usedPlotIds.length > 0) {
+                await tx.userPlot.createMany({
+                    data: usedPlotIds.map((id) => ({
+                        userId: user.id,
+                        plotId: id,
+                        role: PlotRole.USER,
+                    })),
+                });
+            }
+
             return tx.user.findUniqueOrThrow({
                 where: { id: user.id },
                 include: {
-                    plots: {
+                    ownedPlots: {
                         select: {
+                            id: true,
+                            number: true,
+                        },
+                    },
+                    plotMemberships: {
+                        select: {
+                            role: true,
                             plot: {
                                 select: {
                                     id: true,
-                                    plotNumber: true,
+                                    number: true,
                                 },
                             },
                         },
@@ -79,29 +124,79 @@ export const userRepository = {
      * This operation is executed inside a transaction.
      * @returns The updated user including assigned plots.
      */
-    async update({ id, name, plotIds, role }: UpdateUserDbInput) {
+    async update({ id, name, role, ownedPlotIds, coOwnedPlotIds, usedPlotIds }: UpdateUserDbInput) {
         return prisma.$transaction(async (tx) => {
             await tx.user.update({
                 where: { id },
                 data: { name, role },
             });
+
+            await tx.plot.updateMany({
+                where: {
+                    id: {
+                        in: ownedPlotIds,
+                    },
+                },
+                data: {
+                    ownerId: null,
+                },
+            });
+
             await tx.userPlot.deleteMany({
                 where: { userId: id },
             });
-            if (plotIds.length > 0) {
+
+            if (ownedPlotIds.length > 0) {
+                await tx.plot.updateMany({
+                    where: {
+                        id: {
+                            in: ownedPlotIds,
+                        },
+                    },
+                    data: {
+                        ownerId: id,
+                    },
+                });
+            }
+
+            if (coOwnedPlotIds.length > 0) {
                 await tx.userPlot.createMany({
-                    data: plotIds.map((plotId) => ({
+                    data: coOwnedPlotIds.map((id) => ({
                         userId: id,
-                        plotId: plotId,
+                        plotId: id,
+                        role: PlotRole.CO_OWNER,
                     })),
                 });
             }
+
+            if (usedPlotIds.length > 0) {
+                await tx.userPlot.createMany({
+                    data: usedPlotIds.map((id) => ({
+                        userId: id,
+                        plotId: id,
+                        role: PlotRole.USER,
+                    })),
+                });
+            }
+
             return tx.user.findUniqueOrThrow({
-                where: { id },
+                where: { id: id },
                 include: {
-                    plots: {
-                        include: {
-                            plot: true,
+                    ownedPlots: {
+                        select: {
+                            id: true,
+                            number: true,
+                        },
+                    },
+                    plotMemberships: {
+                        select: {
+                            role: true,
+                            plot: {
+                                select: {
+                                    id: true,
+                                    number: true,
+                                },
+                            },
                         },
                     },
                 },
@@ -145,11 +240,23 @@ export const userRepository = {
      */
     async findByIdWithPlots(id: number) {
         return prisma.user.findUnique({
-            where: { id },
+            where: { id: id },
             include: {
-                plots: {
-                    include: {
-                        plot: true,
+                ownedPlots: {
+                    select: {
+                        id: true,
+                        number: true,
+                    },
+                },
+                plotMemberships: {
+                    select: {
+                        role: true,
+                        plot: {
+                            select: {
+                                id: true,
+                                number: true,
+                            },
+                        },
                     },
                 },
             },
@@ -169,9 +276,21 @@ export const userRepository = {
     async findManyWithPlots() {
         return prisma.user.findMany({
             include: {
-                plots: {
-                    include: {
-                        plot: true,
+                ownedPlots: {
+                    select: {
+                        id: true,
+                        number: true,
+                    },
+                },
+                plotMemberships: {
+                    select: {
+                        role: true,
+                        plot: {
+                            select: {
+                                id: true,
+                                number: true,
+                            },
+                        },
                     },
                 },
             },

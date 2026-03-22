@@ -10,7 +10,6 @@ export interface UserProfile {
     name: string;
     login: string;
     role: UserRole;
-    plots: PlotMinimalReference[];
 }
 
 /**
@@ -20,7 +19,9 @@ export interface UserTableRow {
     id: number;
     name: string;
     role: UserRole;
-    plots: PlotMinimalReference[];
     createdAt: Date;
     lastLogin: Date | null;
+    ownedPlots: PlotMinimalReference[];
+    coOwnedPlots: PlotMinimalReference[];
+    usedPlots: PlotMinimalReference[];
 }

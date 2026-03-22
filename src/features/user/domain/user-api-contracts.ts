@@ -24,12 +24,14 @@ export type GetUserTableRowsResponse = UserTableRow[];
 export interface CreateUserData {
     id: number;
     name: string;
-    plots: PlotMinimalReference[];
     role: UserRole;
     login: string;
     password: string;
     createdAt: Date;
     lastLogin: null;
+    ownedPlots: PlotMinimalReference[];
+    coOwnedPlots: PlotMinimalReference[];
+    usedPlots: PlotMinimalReference[];
 }
 
 /**
@@ -38,10 +40,12 @@ export interface CreateUserData {
 export interface UpdateUserData {
     id: number;
     name: string;
-    plots: PlotMinimalReference[];
     role: UserRole;
     createdAt: Date;
     lastLogin: Date | null;
+    ownedPlots: PlotMinimalReference[];
+    coOwnedPlots: PlotMinimalReference[];
+    usedPlots: PlotMinimalReference[];
 }
 
 /**

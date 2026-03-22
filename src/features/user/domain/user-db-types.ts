@@ -1,4 +1,5 @@
 import { User, UserPlot, Plot, Prisma } from '@prisma/client';
+import { truncate } from 'node:fs';
 
 // === TYPES WITH RELATIONS (INCLUDE) ===
 
@@ -36,16 +37,6 @@ export const userProfileSelect = Prisma.validator<Prisma.UserDefaultArgs>()({
         name: true,
         login: true,
         role: true,
-        plots: {
-            select: {
-                plot: {
-                    select: {
-                        id: true,
-                        plotNumber: true,
-                    },
-                },
-            },
-        },
     },
 });
 
@@ -64,12 +55,19 @@ export const userTableRowsSelect = Prisma.validator<Prisma.UserDefaultArgs>()({
         role: true,
         createdAt: true,
         lastLogin: true,
-        plots: {
+        ownedPlots: {
             select: {
+                id: true,
+                number: true,
+            },
+        },
+        plotMemberships: {
+            select: {
+                role: true,
                 plot: {
                     select: {
                         id: true,
-                        plotNumber: true,
+                        number: true,
                     },
                 },
             },

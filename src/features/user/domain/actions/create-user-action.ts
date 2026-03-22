@@ -24,7 +24,8 @@ export async function createUser(formData: FormData): Promise<ActionResult<Creat
             throw new DomainError(ErrorCode.NO_PERMISSION);
         }
 
-        const { name, role, plotIds } = parseCreateUserInput(formData);
+        const { name, role, ownedPlotIds, coOwnedPlotIds, usedPlotIds } =
+            parseCreateUserInput(formData);
 
         const login = generateLogin(name);
         const password = generatePassword();
@@ -32,10 +33,12 @@ export async function createUser(formData: FormData): Promise<ActionResult<Creat
 
         const result = await userRepository.create({
             name,
-            plotIds,
             role,
             login,
             passwordHash,
+            ownedPlotIds,
+            coOwnedPlotIds,
+            usedPlotIds,
         });
 
         revalidateTag('users');

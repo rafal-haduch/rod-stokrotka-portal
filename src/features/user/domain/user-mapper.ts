@@ -1,3 +1,5 @@
+import { PlotRole } from '@prisma/client';
+
 import { CreateUserData, UpdateUserData } from '@/features/user/domain/user-api-contracts';
 import { UserProfileFromDb, UserTableRowsFromDb } from '@/features/user/domain/user-db-types';
 import { UserProfile, UserTableRow } from '@/features/user/domain/user-read-models';
@@ -13,10 +15,6 @@ export function mapToUserProfile(input: UserProfileFromDb): UserProfile {
         name: input.name,
         role: input.role,
         login: input.login,
-        plots: input.plots.map((p) => ({
-            id: p.plot.id,
-            plotNumber: p.plot.plotNumber,
-        })),
     };
 }
 
@@ -28,11 +26,15 @@ export function mapToUserTableRows(input: UserTableRowsFromDb): UserTableRow[] {
         id: userRow.id,
         name: userRow.name,
         role: userRow.role,
-        plots: userRow.plots.map((userPlot) => {
-            return { id: userPlot.plot.id, plotNumber: userPlot.plot.plotNumber };
-        }),
         createdAt: userRow.createdAt,
         lastLogin: userRow.lastLogin,
+        ownedPlots: userRow.ownedPlots.map((p) => ({ id: p.id, plotNumber: p.number })),
+        coOwnedPlots: userRow.plotMemberships
+            .filter((m) => m.role === PlotRole.CO_OWNER)
+            .map((p) => ({ id: p.plot.id, plotNumber: p.plot.number })),
+        usedPlots: userRow.plotMemberships
+            .filter((m) => m.role === PlotRole.USER)
+            .map((p) => ({ id: p.plot.id, plotNumber: p.plot.number })),
     }));
 }
 
@@ -48,12 +50,18 @@ export function mapToCreatedUserData(
     return {
         id: input.id,
         name: input.name,
-        plots: input.plots.map((p) => ({ id: p.plot.id, plotNumber: p.plot.plotNumber })),
         role: input.role,
         login: input.login,
         password: password,
         createdAt: input.createdAt,
         lastLogin: null,
+        ownedPlots: input.ownedPlots.map((p) => ({ id: p.id, plotNumber: p.number })),
+        coOwnedPlots: input.plotMemberships
+            .filter((m) => m.role === PlotRole.CO_OWNER)
+            .map((p) => ({ id: p.plot.id, plotNumber: p.plot.number })),
+        usedPlots: input.plotMemberships
+            .filter((m) => m.role === PlotRole.USER)
+            .map((p) => ({ id: p.plot.id, plotNumber: p.plot.number })),
     };
 }
 
@@ -66,9 +74,15 @@ export function mapToUpdatedUserData(
     return {
         id: input.id,
         name: input.name,
-        plots: input.plots.map((p) => ({ id: p.plot.id, plotNumber: p.plot.plotNumber })),
         role: input.role,
         createdAt: input.createdAt,
         lastLogin: input.lastLogin,
+        ownedPlots: input.ownedPlots.map((p) => ({ id: p.id, plotNumber: p.number })),
+        coOwnedPlots: input.plotMemberships
+            .filter((m) => m.role === PlotRole.CO_OWNER)
+            .map((p) => ({ id: p.plot.id, plotNumber: p.plot.number })),
+        usedPlots: input.plotMemberships
+            .filter((m) => m.role === PlotRole.USER)
+            .map((p) => ({ id: p.plot.id, plotNumber: p.plot.number })),
     };
 }
