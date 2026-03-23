@@ -1,9 +1,6 @@
-import { redirect } from 'next/navigation';
 import { Metadata } from 'next';
 
-import { getUserSession } from '@/shared/lib/next-auth/get-user-session';
-import { ROUTES } from '@/shared/config/routes';
-import { isAdminOrBoard } from '@/shared/auth/is-admin-or-board';
+import { requireAdminOrBoardRole, requireSession } from '@/shared/auth/guards';
 
 import { CMSPanelHeader } from '@/app/(auth)/cms/_components/cms-panel-header';
 
@@ -13,8 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default async function CMSLayout({ children }: { children: React.ReactNode }) {
-    const session = await getUserSession();
-    if (!session || !isAdminOrBoard(session.UserRole)) redirect(ROUTES.MY_PROFILE.path);
+    const session = await requireSession();
+    requireAdminOrBoardRole(session.role);
 
     return (
         <main

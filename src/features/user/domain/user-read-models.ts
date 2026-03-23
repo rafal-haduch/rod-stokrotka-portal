@@ -1,27 +1,19 @@
-import { UserRole } from '@prisma/client';
-
-import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
+import { UserBase, PlotsAssignedToUser } from '@/features/user/domain/user-types';
 
 /**
  * Read model representing the current user's profile data.
  * Used for displaying personal account information.
  */
-export interface UserProfile {
-    name: string;
+export interface UserProfile extends UserBase {
     login: string;
-    role: UserRole;
+    createdAt: Date;
 }
 
 /**
  * Represents a single user entry and contains only the fields required for overview and administration.
  */
-export interface UserTableRow {
-    id: number;
-    name: string;
-    role: UserRole;
+export interface UserTableRow extends UserBase, PlotsAssignedToUser {
+    plots: number;
     createdAt: Date;
     lastLogin: Date | null;
-    ownedPlots: PlotMinimalReference[];
-    coOwnedPlots: PlotMinimalReference[];
-    usedPlots: PlotMinimalReference[];
 }

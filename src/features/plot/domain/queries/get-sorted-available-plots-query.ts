@@ -6,7 +6,13 @@ import { GetAvailablePlotsResponse } from '@/features/plot/domain/plot-api-contr
 import { plotRepository } from '@/features/plot/domain/plot-repository';
 
 /**
- * Fetches sorted only the fields needed for the multi-select dropdown inputs from the database.
+ * Fetches plot options for UI select inputs and transforms them into a simplified structure.
+ *
+ * Returns both:
+ * - all plots (as minimal references)
+ * - plots without an assigned owner
+ *
+ * Database-specific fields (e.g. ownerId) are not exposed to the client.
  *
  * This function is cached on the server using Next.js App Router `unstable_cache`.
  *
@@ -14,7 +20,20 @@ import { plotRepository } from '@/features/plot/domain/plot-repository';
  */
 export const getSortedAvailablePlots: () => Promise<GetAvailablePlotsResponse> = unstable_cache(
     async () => {
-        return await plotRepository.getPlotOptions();
+        const availablePlotsWithOwner = await plotRepository.getAvailablePlotsWithOwner();
+
+        return {
+            availablePlots: availablePlotsWithOwner.map((p) => ({
+                id: p.id,
+                number: p.number,
+            })),
+            withoutOwner: availablePlotsWithOwner
+                .filter((p) => p.ownerId === null)
+                .map((p) => ({
+                    id: p.id,
+                    number: p.number,
+                })),
+        };
     },
     ['available-plots'],
     {

@@ -31,16 +31,14 @@ export function PlotsTable({ data, onEdit, onDelete }: Props) {
             <tbody>
                 {data.map((rowPlot) => (
                     <tr key={rowPlot.id} className="hover:bg-theme-bg-secondary">
-                        <td>{rowPlot.plotNumber}</td>
-                        <td>{formatPlotCode(rowPlot.plotNumber)}</td>
+                        <td>{rowPlot.number}</td>
+                        <td>{formatPlotCode(rowPlot.number)}</td>
                         <td>
                             {rowPlot.area !== null && rowPlot.area !== undefined
                                 ? rowPlot.area
                                 : '—'}
                         </td>
-                        <td>
-                            {rowPlot.ownersNames.length > 0 ? rowPlot.ownersNames.join(', ') : '—'}
-                        </td>
+                        <td>{rowPlot.ownerName.length > 0 ? rowPlot.ownerName.join(', ') : '—'}</td>
                         <td className="px-4 align-middle">
                             <CustomButton
                                 type="button"

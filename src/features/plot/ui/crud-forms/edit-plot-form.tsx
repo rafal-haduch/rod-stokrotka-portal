@@ -34,7 +34,7 @@ export function EditPlotForm({ plotData, onSubmit, loading, errorMsg }: Props) {
                         <input
                             type="text"
                             name="plotNumber"
-                            defaultValue={plotData.plotNumber}
+                            defaultValue={plotData.number}
                             required
                             className="input-form"
                         />

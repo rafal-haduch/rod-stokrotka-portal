@@ -1,7 +1,6 @@
-import { User, UserPlot, Plot, Prisma } from '@prisma/client';
-import { truncate } from 'node:fs';
-
-// === TYPES WITH RELATIONS (INCLUDE) ===
+import { AssignmentPlotToUser } from '@/features/plot/domain/plot-db-types';
+import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
+import { User, UserPlot, Plot, Prisma, PlotRole } from '@prisma/client';
 
 /**
  * Represents a user row from the database.
@@ -9,34 +8,52 @@ import { truncate } from 'node:fs';
 export type UserFromDb = User;
 
 /**
- * Represents a user with all assigned plots included.
- */
-export type UserWithPlotsFromDb = User & {
-    plots: (UserPlot & {
-        plot: Plot;
-    })[];
-};
-
-/**
  * Array of users from the database.
  */
-export type UsersFromDb = User[];
+export type UsersFromDb = UserFromDb[];
+
+export const userWithPlotsInclude = Prisma.validator<Prisma.UserDefaultArgs>()({
+    include: {
+        ownedPlots: {
+            select: {
+                id: true,
+                number: true,
+            },
+        },
+        plotMemberships: {
+            select: {
+                role: true,
+                plot: {
+                    select: {
+                        id: true,
+                        number: true,
+                    },
+                },
+            },
+        },
+    },
+});
 
 /**
- * Array of users with plots included.
+ * Represents a user with all assigned plots included.
+ */
+export type UserWithPlotsFromDb = Prisma.UserGetPayload<typeof userWithPlotsInclude>;
+
+/**
+ * Array of users with  all assigned plots included.
  */
 export type UsersWithPlotsFromDb = UserWithPlotsFromDb[];
-
-// ===  SELECTED FIELDS TYPES (SELECT)  ===
 
 /**
  * Selection for retrieving a user's profile for user profile panel view
  */
 export const userProfileSelect = Prisma.validator<Prisma.UserDefaultArgs>()({
     select: {
+        id: true,
         name: true,
         login: true,
         role: true,
+        createdAt: true,
     },
 });
 

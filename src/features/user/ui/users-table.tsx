@@ -1,6 +1,6 @@
 'use client';
 
-import { Pencil, Trash2 } from 'lucide-react';
+import { Pencil, Search, Trash2 } from 'lucide-react';
 
 import { CRUDModalType } from '@/shared/types/crud-modal';
 
@@ -24,42 +24,44 @@ export default function UsersTable({ data, onEdit, onDelete }: Props) {
             >
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>lp.</th>
                         <th>Osoba</th>
-                        <th>Działka</th>
                         <th>Rola</th>
-                        <th>Dodano</th>
+                        <th>Ilość działek</th>
                         <th>Logowanie</th>
+                        <th>Szczegóły</th>
                         <th>Edytuj</th>
                         <th>Usuń</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((rowUser) => (
-                        <tr key={rowUser.id}>
-                            <td>{rowUser.id}</td>
-                            <td>{rowUser.name}</td>
+                    {data.map((userRow, i) => (
+                        <tr key={userRow.id}>
+                            <td>{i + 1}</td>
+                            <td>{userRow.name}</td>
+                            <td>{getUserRoleLabel(userRow.role)}</td>
+                            <td>{userRow.plots}</td>
                             <td>
-                                {rowUser.plots.length > 0
-                                    ? rowUser.plots
-                                          .map((plot) => {
-                                              return plot.plotNumber;
-                                          })
-                                          .join(', ')
-                                    : '—'}
-                            </td>
-                            <td>{getUserRoleLabel(rowUser.role)}</td>
-                            <td>{new Date(rowUser.createdAt).toLocaleDateString('pl-PL')}</td>
-                            <td>
-                                {rowUser.lastLogin
-                                    ? new Date(rowUser.lastLogin).toLocaleDateString('pl-PL')
+                                {userRow.lastLogin
+                                    ? new Date(userRow.lastLogin).toLocaleDateString('pl-PL')
                                     : '—'}
                             </td>
                             <td>
                                 <CustomButton
                                     type="button"
+                                    title="Zobacz szczegóły konta"
+                                    onClick={() => onEdit('edit', userRow)}
+                                    context="table"
+                                    variant="action"
+                                >
+                                    <Search aria-hidden="true" />
+                                </CustomButton>
+                            </td>
+                            <td>
+                                <CustomButton
+                                    type="button"
                                     title="Edytuj dane konta"
-                                    onClick={() => onEdit('edit', rowUser)}
+                                    onClick={() => onEdit('edit', userRow)}
                                     context="table"
                                     variant="action"
                                 >
@@ -70,7 +72,7 @@ export default function UsersTable({ data, onEdit, onDelete }: Props) {
                                 <CustomButton
                                     type="button"
                                     title="Usuń konto"
-                                    onClick={() => onDelete('delete', rowUser)}
+                                    onClick={() => onDelete('delete', userRow)}
                                     context="table"
                                     variant="danger"
                                 >

@@ -3,7 +3,7 @@
 import { revalidateTag } from 'next/cache';
 
 import { ActionResult } from '@/shared/contracts/action-result';
-import { requireSession } from '@/shared/auth/require-session';
+import { requireSession } from '@/shared/auth/guards';
 import { isAdminOrBoard } from '@/shared/auth/is-admin-or-board';
 import { DomainError } from '@/shared/error/domain-error';
 import { ErrorCode } from '@/shared/error/error-codes';
@@ -22,9 +22,17 @@ export async function updateUser(formData: FormData): Promise<ActionResult<Updat
             throw new DomainError(ErrorCode.NO_PERMISSION);
         }
 
-        const { id, name, role, plotIds } = parseUpdateUserInput(formData);
+        const { id, name, role, ownedPlotIds, coOwnedPlotIds, usedPlotIds } =
+            parseUpdateUserInput(formData);
 
-        const result = await userRepository.update({ id, name, plotIds, role });
+        const result = await userRepository.update({
+            id,
+            name,
+            role,
+            ownedPlotIds,
+            coOwnedPlotIds,
+            usedPlotIds,
+        });
 
         revalidateTag('users');
 

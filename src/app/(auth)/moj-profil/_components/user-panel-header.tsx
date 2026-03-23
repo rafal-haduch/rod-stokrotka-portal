@@ -18,13 +18,13 @@ const navItems = routes
 
 export default function UserPanelHeader() {
     const pathname = usePathname();
-
+    //FIXME: no types, add some helper function for session in frontend?
     const { data } = useSession();
     //REVIEW: async or some template or loading?
     if (!data?.user) return null;
 
     const user = data.user;
-    const isCMSAvailable = isAdminOrBoard(user.UserUserRole);
+    const isCMSAvailable = isAdminOrBoard(user.role);
 
     return (
         <header

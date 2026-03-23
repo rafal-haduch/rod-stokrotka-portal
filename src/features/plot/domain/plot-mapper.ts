@@ -9,9 +9,9 @@ import { PlotTableRow } from '@/features/plot/domain/plot-read-models';
 export function mapToPlotTableRows(input: PlotTableRowsFromDb): PlotTableRow[] {
     return input.map((plotRow) => ({
         id: plotRow.id,
-        plotNumber: plotRow.plotNumber,
+        number: plotRow.number,
         area: plotRow.area,
-        ownersNames: plotRow.ownersId.map((userPlot) => userPlot.user.name),
+        ownerName: plotRow.owner?.name ?? null,
     }));
 }
 
@@ -23,8 +23,8 @@ export function mapToCreatedPlotData(
 ): CreatePlotData {
     return {
         id: input.id,
-        plotNumber: input.plotNumber,
-        area: input.area,
+        plotNumber: input.number,
+        area: input?.area ?? null,
     };
 }
 
@@ -36,7 +36,7 @@ export function mapToUpdatedPlotData(
 ): UpdatePlotData {
     return {
         id: input.id,
-        plotNumber: input.plotNumber,
-        area: input.area,
+        number: input.number,
+        area: input?.area ?? null,
     };
 }

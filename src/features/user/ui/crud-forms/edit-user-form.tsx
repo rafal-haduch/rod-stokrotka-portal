@@ -80,7 +80,7 @@ export function EditUserForm({ userData, plotsOptions, onSubmit, loading, errorM
                             name="plotIds"
                             options={plotsOptions.map((p) => ({
                                 id: p.id,
-                                label: `${p.plotNumber}`,
+                                label: `${p.number}`,
                             }))}
                             initialSelectedIds={userData.plots?.map((plot) => {
                                 return plot.id;

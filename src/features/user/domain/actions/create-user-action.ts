@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt';
 import { DomainError } from '@/shared/error/domain-error';
 import { ErrorCode } from '@/shared/error/error-codes';
 import { ActionResult } from '@/shared/contracts/action-result';
-import { requireSession } from '@/shared/auth/require-session';
+import { requireSession } from '@/shared/auth/guards';
 import { isAdminOrBoard } from '@/shared/auth/is-admin-or-board';
 import { handleActionError } from '@/shared/error/handle-action-error';
 
@@ -42,6 +42,7 @@ export async function createUser(formData: FormData): Promise<ActionResult<Creat
         });
 
         revalidateTag('users');
+        revalidateTag('plots');
 
         // NOTE: The login and password are returned because they are needed to be passed on to the user for whom the account was created.
         return {

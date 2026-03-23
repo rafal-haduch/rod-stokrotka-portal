@@ -11,16 +11,16 @@ export const authOptions: AuthOptions = {
     },
     providers: [
         Credentials({
-            credentials: { login: { type: 'text' }, passwordHash: { type: 'password' } },
+            credentials: { login: { type: 'text' }, password: { type: 'password' } },
             authorize: async (credentials) => {
-                if (!credentials?.login || !credentials.passwordHash) return null;
+                if (!credentials?.login || !credentials.password) return null;
 
                 const user = await prisma.user.findUnique({
                     where: { login: credentials.login },
                 });
                 if (!user) return null;
 
-                const ok = await bcrypt.compare(credentials.passwordHash, user.passwordHash);
+                const ok = await bcrypt.compare(credentials.password, user.passwordHash);
                 if (!ok) return null;
 
                 return {
@@ -44,7 +44,7 @@ export const authOptions: AuthOptions = {
             if (session.user) {
                 session.user.id = Number(token.id);
                 session.user.name = token.name!;
-                session.user.UserUserRole = token.UserUserRole as UserRole;
+                session.user.role = token.role;
             }
             return session;
         },

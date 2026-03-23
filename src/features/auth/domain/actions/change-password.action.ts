@@ -3,7 +3,7 @@
 import bcrypt from 'bcrypt';
 
 import { ActionResult } from '@/shared/contracts/action-result';
-import { requireSession } from '@/shared/auth/require-session';
+import { requireSession } from '@/shared/auth/guards';
 import { DomainError } from '@/shared/error/domain-error';
 import { ErrorCode } from '@/shared/error/error-codes';
 import { handleActionError } from '@/shared/error/handle-action-error';
@@ -25,7 +25,7 @@ export async function changePassword(formData: FormData): Promise<ActionResult<v
 
         enforcePasswordPolicy(newPassword, role);
 
-        const result = await userRepository.getUserPassword(id);
+        const result = await userRepository.getPasswordHash(id);
         if (!result?.passwordHash) {
             throw new DomainError(ErrorCode.USER_NOT_FOUND);
         }

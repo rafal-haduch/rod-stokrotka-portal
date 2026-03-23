@@ -7,6 +7,7 @@ import {
     userProfileSelect,
     UserTableRowsFromDb,
     userTableRowsSelect,
+    userWithPlotsInclude,
 } from '@/features/user/domain/user-db-types';
 
 // === TYPES FOR DB OPERATIONS ===
@@ -95,25 +96,7 @@ export const userRepository = {
 
             return tx.user.findUniqueOrThrow({
                 where: { id: user.id },
-                include: {
-                    ownedPlots: {
-                        select: {
-                            id: true,
-                            number: true,
-                        },
-                    },
-                    plotMemberships: {
-                        select: {
-                            role: true,
-                            plot: {
-                                select: {
-                                    id: true,
-                                    number: true,
-                                },
-                            },
-                        },
-                    },
-                },
+                ...userWithPlotsInclude,
             });
         });
     },
@@ -161,9 +144,9 @@ export const userRepository = {
 
             if (coOwnedPlotIds.length > 0) {
                 await tx.userPlot.createMany({
-                    data: coOwnedPlotIds.map((id) => ({
+                    data: coOwnedPlotIds.map((plotId) => ({
                         userId: id,
-                        plotId: id,
+                        plotId: plotId,
                         role: PlotRole.CO_OWNER,
                     })),
                 });
@@ -171,35 +154,17 @@ export const userRepository = {
 
             if (usedPlotIds.length > 0) {
                 await tx.userPlot.createMany({
-                    data: usedPlotIds.map((id) => ({
+                    data: usedPlotIds.map((plotId) => ({
                         userId: id,
-                        plotId: id,
+                        plotId: plotId,
                         role: PlotRole.USER,
                     })),
                 });
             }
 
             return tx.user.findUniqueOrThrow({
-                where: { id: id },
-                include: {
-                    ownedPlots: {
-                        select: {
-                            id: true,
-                            number: true,
-                        },
-                    },
-                    plotMemberships: {
-                        select: {
-                            role: true,
-                            plot: {
-                                select: {
-                                    id: true,
-                                    number: true,
-                                },
-                            },
-                        },
-                    },
-                },
+                where: { id },
+                ...userWithPlotsInclude,
             });
         });
     },
@@ -241,25 +206,7 @@ export const userRepository = {
     async findByIdWithPlots(id: number) {
         return prisma.user.findUnique({
             where: { id: id },
-            include: {
-                ownedPlots: {
-                    select: {
-                        id: true,
-                        number: true,
-                    },
-                },
-                plotMemberships: {
-                    select: {
-                        role: true,
-                        plot: {
-                            select: {
-                                id: true,
-                                number: true,
-                            },
-                        },
-                    },
-                },
-            },
+            ...userWithPlotsInclude,
         });
     },
 
@@ -275,25 +222,7 @@ export const userRepository = {
      */
     async findManyWithPlots() {
         return prisma.user.findMany({
-            include: {
-                ownedPlots: {
-                    select: {
-                        id: true,
-                        number: true,
-                    },
-                },
-                plotMemberships: {
-                    select: {
-                        role: true,
-                        plot: {
-                            select: {
-                                id: true,
-                                number: true,
-                            },
-                        },
-                    },
-                },
-            },
+            ...userWithPlotsInclude,
         });
     },
 
@@ -324,7 +253,7 @@ export const userRepository = {
      * @param id - User ID.
      * @returns Object containing password hash or null if not found.
      */
-    async getUserPassword(id: number) {
+    async getPasswordHash(id: number) {
         return await prisma.user.findUnique({
             where: { id },
             select: { passwordHash: true },

@@ -80,7 +80,7 @@ export function DeletePlotModal({ plot, onCloseModal, onPlotDeleted }: Props) {
                                     className="text-theme-foreground-content mb-4 text-center"
                                 >
                                     Czy na pewno chcesz usunąć działkę numer{' '}
-                                    <strong className="whitespace-nowrap">{plot.plotNumber}</strong>
+                                    <strong className="whitespace-nowrap">{plot.number}</strong>
                                     ? <br /> Tę operację może cofnąć jedynie administrator strony!
                                 </p>
                                 <DeletePlotForm

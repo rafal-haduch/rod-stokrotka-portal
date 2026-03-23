@@ -4,27 +4,27 @@ import { PlotTableRowsFromDb, plotTableRowsSelect } from '@/features/plot/domain
 import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
 interface CreatePlotData {
-    plotNumber: string;
+    number: string;
     area: number | null;
 }
 
 interface UpdatePlotData {
     id: number;
-    plotNumber: string;
+    number: string;
     area: number | null;
 }
 
 export const plotRepository = {
-    async create({ plotNumber, area }: CreatePlotData) {
+    async create({ number, area }: CreatePlotData) {
         return await prisma.plot.create({
-            data: { plotNumber, area },
+            data: { number, area },
         });
     },
 
-    async update({ id, plotNumber, area }: UpdatePlotData) {
+    async update({ id, number, area }: UpdatePlotData) {
         return await prisma.plot.update({
             where: { id },
-            data: { plotNumber, area },
+            data: { number, area },
         });
     },
 
@@ -46,13 +46,14 @@ export const plotRepository = {
         });
     },
 
-    async findByIdWithOwners(id: number) {
+    async findByIdWithOwner(id: number) {
         return prisma.plot.findUnique({
             where: { id },
             include: {
-                ownersId: {
-                    include: {
-                        user: true,
+                owner: {
+                    select: {
+                        id: true,
+                        name: true,
                     },
                 },
             },
@@ -63,12 +64,13 @@ export const plotRepository = {
         return prisma.plot.findMany();
     },
 
-    async findManyWithOwners() {
+    async findManyWithOwner() {
         return prisma.plot.findMany({
             include: {
-                ownersId: {
-                    include: {
-                        user: true,
+                owner: {
+                    select: {
+                        id: true,
+                        name: true,
                     },
                 },
             },
@@ -79,12 +81,15 @@ export const plotRepository = {
     // === Special for queries ===
     // ===========================
 
-    async getPlotOptions(): Promise<PlotMinimalReference[]> {
+    async getAvailablePlotsWithOwner(): Promise<
+        (PlotMinimalReference & { ownerId: number | null })[]
+    > {
         return prisma.plot.findMany({
-            orderBy: { plotNumber: 'asc' },
+            orderBy: { number: 'asc' },
             select: {
                 id: true,
-                plotNumber: true,
+                number: true,
+                ownerId: true,
             },
         });
     },

@@ -3,7 +3,7 @@
 import { revalidateTag } from 'next/cache';
 
 import { ActionResult } from '@/shared/contracts/action-result';
-import { requireSession } from '@/shared/auth/require-session';
+import { requireSession } from '@/shared/auth/guards';
 import { isAdminOrBoard } from '@/shared/auth/is-admin-or-board';
 import { DomainError } from '@/shared/error/domain-error';
 import { ErrorCode } from '@/shared/error/error-codes';

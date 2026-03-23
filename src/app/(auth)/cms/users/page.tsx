@@ -5,7 +5,13 @@ import CMSUsersView from '@/features/user/ui/cms-users-view';
 
 export default async function CMSUsersPage() {
     const userTableRows = await getUserTableRows();
-    const availablePlots = await getSortedAvailablePlots();
+    const { availablePlots, withoutOwner } = await getSortedAvailablePlots();
 
-    return <CMSUsersView userTableRows={userTableRows} plotOptions={availablePlots} />;
+    return (
+        <CMSUsersView
+            userTableRows={userTableRows}
+            availablePlotOptions={availablePlots}
+            plotOptionsWithoutOwner={withoutOwner}
+        />
+    );
 }

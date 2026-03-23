@@ -3,6 +3,7 @@ import { UserRole } from '@prisma/client';
 import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
 import { UserProfile, UserTableRow } from '@/features/user/domain/user-read-models';
+import { PlotsAssignedToUser, UserBase } from '@/features/user/domain/user-types';
 
 // === FOR QUERIES ===
 
@@ -21,31 +22,19 @@ export type GetUserTableRowsResponse = UserTableRow[];
 /**
  * API contract representing data returned by the create user action upon successful completion.
  */
-export interface CreateUserData {
-    id: number;
-    name: string;
-    role: UserRole;
+export interface CreateUserData extends UserBase, PlotsAssignedToUser {
     login: string;
     password: string;
     createdAt: Date;
     lastLogin: null;
-    ownedPlots: PlotMinimalReference[];
-    coOwnedPlots: PlotMinimalReference[];
-    usedPlots: PlotMinimalReference[];
 }
 
 /**
  * API contract representing data returned by the update user action upon successful completion.
  */
-export interface UpdateUserData {
-    id: number;
-    name: string;
-    role: UserRole;
+export interface UpdateUserData extends UserBase, PlotsAssignedToUser {
     createdAt: Date;
     lastLogin: Date | null;
-    ownedPlots: PlotMinimalReference[];
-    coOwnedPlots: PlotMinimalReference[];
-    usedPlots: PlotMinimalReference[];
 }
 
 /**

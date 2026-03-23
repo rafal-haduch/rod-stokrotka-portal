@@ -4,10 +4,9 @@ import { useState } from 'react';
 import { Plus } from 'lucide-react';
 
 import { CRUDModalType } from '@/shared/types/crud-modal';
+import { ComponentPropsWithPlotOptions } from '@/shared/models/plot-options-props';
 
 import { CustomButton } from '@/components/custom-button';
-
-import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
 import {
     CreateUserData,
@@ -21,12 +20,15 @@ import { EditUserModal } from '@/features/user/ui/crud-modals/edit-user-modal';
 import DeleteUserModal from '@/features/user/ui/crud-modals/delete-user-modal';
 import UsersTable from '@/features/user/ui/users-table';
 
-interface Props {
+interface Props extends ComponentPropsWithPlotOptions {
     userTableRows: UserTableRow[];
-    plotOptions: PlotMinimalReference[];
 }
 
-export default function CMSUsersView({ userTableRows, plotOptions }: Props) {
+export default function CMSUsersView({
+    userTableRows,
+    availablePlotOptions,
+    plotOptionsWithoutOwner,
+}: Props) {
     //NOTE: Copy user table rows into state for local update after server action mutation.
     const [userRows, setUserRows] = useState<UserTableRow[]>(userTableRows);
     const [activeModal, setActiveModal] = useState<CRUDModalType>(null);
@@ -42,27 +44,46 @@ export default function CMSUsersView({ userTableRows, plotOptions }: Props) {
         setSelectedUser(null);
     };
 
-    // FIXME: widok nie powiniem dodakowo mapowac/zmieniac danych domenowych (data)
     const addUserInTable = (createdUser: CreateUserData) => {
         const newUser: UserTableRow = {
             id: createdUser.id,
             name: createdUser.name,
             role: createdUser.role,
-            plots: createdUser.plots,
-            createdAt: new Date(createdUser.createdAt),
+            plots:
+                createdUser.ownedPlots.length +
+                createdUser.coOwnedPlots.length +
+                createdUser.usedPlots.length,
+            ownedPlots: createdUser.ownedPlots,
+            coOwnedPlots: createdUser.coOwnedPlots,
+            usedPlots: createdUser.usedPlots,
+            createdAt: createdUser.createdAt,
             lastLogin: createdUser.lastLogin,
         };
 
         setUserRows((prev) => [newUser, ...prev]);
     };
 
-    //REVIEW: Is this a good approach? (different interface with same fields)
     const updateUserInTable = (updatedUser: UpdateUserData) => {
-        setUserRows((prev) => prev.map((u) => (u.id === updatedUser.id ? updatedUser : u)));
+        const editedUser: UserTableRow = {
+            id: updatedUser.id,
+            name: updatedUser.name,
+            role: updatedUser.role,
+            plots:
+                updatedUser.ownedPlots.length +
+                updatedUser.coOwnedPlots.length +
+                updatedUser.usedPlots.length,
+            ownedPlots: updatedUser.ownedPlots,
+            coOwnedPlots: updatedUser.coOwnedPlots,
+            usedPlots: updatedUser.usedPlots,
+            createdAt: updatedUser.createdAt,
+            lastLogin: updatedUser.lastLogin,
+        };
+
+        setUserRows((prev) => prev.map((u) => (u.id === editedUser.id ? editedUser : u)));
     };
 
-    const removeUserFromTable = (userId: number) => {
-        setUserRows((prev) => prev.filter((u) => u.id !== userId));
+    const removeUserFromTable = (deletedUserId: number) => {
+        setUserRows((prev) => prev.filter((u) => u.id !== deletedUserId));
     };
 
     return (
@@ -84,7 +105,8 @@ export default function CMSUsersView({ userTableRows, plotOptions }: Props) {
 
             {activeModal === 'create' && (
                 <CreateUserModal
-                    plotOptions={plotOptions}
+                    availablePlotOptions={availablePlotOptions}
+                    plotOptionsWithoutOwner={plotOptionsWithoutOwner}
                     onCloseModal={() => {
                         closeModal();
                     }}
@@ -97,7 +119,7 @@ export default function CMSUsersView({ userTableRows, plotOptions }: Props) {
             {activeModal === 'edit' && selectedUser && (
                 <EditUserModal
                     user={selectedUser}
-                    plotOptions={plotOptions}
+                    plotOptions={availablePlotOptions}
                     onCloseModal={() => closeModal()}
                     onUpdatedUser={(updatedUser: UpdateUserData) => {
                         closeModal();

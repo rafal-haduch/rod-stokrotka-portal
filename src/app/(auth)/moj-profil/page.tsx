@@ -4,7 +4,7 @@ import { KeyRound } from 'lucide-react';
 
 import { ROUTES } from '@/shared/config/routes';
 
-import { requireSession } from '@/shared/auth/require-session';
+import { requireSession } from '@/shared/auth/guards';
 import { getUserRoleLabel } from '@/features/user/domain/user-helpers';
 import { getUserProfile } from '@/features/user/domain/queries/get-user-profile-query';
 

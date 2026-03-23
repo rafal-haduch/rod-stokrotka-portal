@@ -1,18 +1,33 @@
-import { User, UserPlot, Plot, Prisma } from '@prisma/client';
+import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
+import { User, UserPlot, Plot, Prisma, PlotRole } from '@prisma/client';
 
 // === TYPES WITH RELATIONS (INCLUDE) ===
 
 export type PlotFromDb = Plot;
 
-export type PlotWithOwnersFromDb = Plot & {
-    ownersId: (UserPlot & {
-        user: User;
-    })[];
+export type PlotMembershipFromDb = {
+    role: PlotRole;
+    user: {
+        id: number;
+        name: string;
+    };
 };
 
-export type PlotsFromDb = Plot[];
+export type PlotWithMembersFromDb = Plot & {
+    members: PlotMembershipFromDb[];
+};
 
-export type PlotsWithOwnersFromDb = PlotWithOwnersFromDb[];
+/**
+ * Represents a single plot assignment to a user from the database.
+ */
+export type AssignmentPlotToUser = {
+    role: PlotRole;
+    plot: PlotMinimalReference;
+};
+
+export type PlotsFromDb = PlotFromDb[];
+
+export type PlotsWithMembersFromDb = PlotWithMembersFromDb[];
 
 // ===  SELECTED FIELDS TYPES (SELECT)  ===
 
@@ -22,15 +37,11 @@ export type PlotsWithOwnersFromDb = PlotWithOwnersFromDb[];
 export const plotTableRowsSelect = Prisma.validator<Prisma.PlotDefaultArgs>()({
     select: {
         id: true,
-        plotNumber: true,
+        number: true,
         area: true,
-        ownersId: {
+        owner: {
             select: {
-                user: {
-                    select: {
-                        name: true,
-                    },
-                },
+                name: true,
             },
         },
     },

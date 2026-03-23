@@ -7,10 +7,9 @@ import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
 import { ActionResult } from '@/shared/contracts/action-result';
 import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
 import { safeAction } from '@/shared/utils/safe-action';
+import { ComponentPropsWithPlotOptions } from '@/shared/models/plot-options-props';
 
 import { Portal } from '@/components/portal';
-
-import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
 import { createUser } from '@/features/user/domain/actions/create-user-action';
 import { CreateUserData } from '@/features/user/domain/user-api-contracts';
@@ -18,13 +17,17 @@ import { CreateUserData } from '@/features/user/domain/user-api-contracts';
 import { CreateUserForm } from '@/features/user/ui/crud-forms/create-user-form';
 import { CreateUserSuccess } from '@/features/user/ui/crud-modals/create-user-success';
 
-interface Props {
-    plotOptions: PlotMinimalReference[];
+interface Props extends ComponentPropsWithPlotOptions {
     onCloseModal: () => void;
     onUserCreated: (newUserData: CreateUserData) => void;
 }
 
-export function CreateUserModal({ plotOptions, onCloseModal, onUserCreated }: Props) {
+export function CreateUserModal({
+    availablePlotOptions,
+    plotOptionsWithoutOwner,
+    onCloseModal,
+    onUserCreated,
+}: Props) {
     const [result, setResult] = useState<ActionResult<CreateUserData> | TechnicalError | null>(
         null
     );
@@ -61,7 +64,7 @@ export function CreateUserModal({ plotOptions, onCloseModal, onUserCreated }: Pr
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
                 <div
                     aria-label="Okno dodawania nowego konta działkowca"
-                    className="panel surface-elevated mx-auto max-w-xl rounded-xl shadow-lg"
+                    className="panel surface-elevated mx-auto w-fit max-w-3xl rounded-xl shadow-lg"
                 >
                     <button
                         type="button"
@@ -79,7 +82,8 @@ export function CreateUserModal({ plotOptions, onCloseModal, onUserCreated }: Pr
                     ) : (
                         <CreateUserForm
                             onSubmit={handleSubmit}
-                            plotsOptions={plotOptions}
+                            availablePlotOptions={availablePlotOptions}
+                            plotOptionsWithoutOwner={plotOptionsWithoutOwner}
                             loading={loading}
                             errorMsg={errorMsg}
                         />

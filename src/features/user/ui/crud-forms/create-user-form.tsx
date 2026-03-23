@@ -3,33 +3,38 @@
 import { UserRole } from '@prisma/client';
 import { CirclePlus, X } from 'lucide-react';
 
+import { ComponentPropsWithPlotOptions } from '@/shared/models/plot-options-props';
+
 import { CustomButton } from '@/components/custom-button';
 import { TooltipIcon } from '@/components/tooltip-icon';
 import { MultiSelectDropdown } from '@/components/multi-select-plots-dropdown';
 
-import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
-
 import { ASSIGNABLE_USER_ROLES } from '@/features/user/domain/user-constants';
 import { getUserRoleLabel } from '@/features/user/domain/user-helpers';
 
-interface Props {
+interface Props extends ComponentPropsWithPlotOptions {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-    plotsOptions: PlotMinimalReference[];
     loading: boolean;
     errorMsg: string | null;
 }
 
-export function CreateUserForm({ onSubmit, plotsOptions, loading, errorMsg }: Props) {
+export function CreateUserForm({
+    availablePlotOptions,
+    plotOptionsWithoutOwner,
+    onSubmit,
+    loading,
+    errorMsg,
+}: Props) {
     return (
         <form
             onSubmit={onSubmit}
             aria-labelledby="create-user-form-heading"
-            className="px-2 pb-6 sm:px-6"
+            className="w-full px-2 pb-6 sm:px-6"
         >
             <p id="create-user-form-heading" className="mb-4 text-center text-xl font-semibold">
                 Stwórz nowe konto działkowca
             </p>
-            <fieldset className="flex flex-col gap-3">
+            <fieldset className="flex w-full flex-col gap-3">
                 {/* Name  */}
                 <div className="flex w-full items-center gap-4">
                     <label className="flex w-1/4 justify-end text-base">*Osoba:</label>
@@ -46,11 +51,11 @@ export function CreateUserForm({ onSubmit, plotsOptions, loading, errorMsg }: Pr
                     </div>
                 </div>
 
-                {/* UserRole  */}
+                {/* Role  */}
                 <div className="flex w-full items-center gap-4">
                     <label className="flex w-1/4 justify-end text-base">*Rola:</label>
                     <select
-                        name="UserRole"
+                        name="role"
                         defaultValue={UserRole.ALLOTMENT_GARDENER}
                         className="input-form w-3/4"
                     >
@@ -62,15 +67,49 @@ export function CreateUserForm({ onSubmit, plotsOptions, loading, errorMsg }: Pr
                     </select>
                 </div>
 
-                {/* Plot  */}
+                <div className="w-full gap-4">
+                    <p className="text-center font-semibold">Działki:</p>
+                </div>
+
+                {/* Owned Plots  */}
                 <div className="flex w-full items-center gap-4">
-                    <label className="flex w-1/4 justify-end text-base">Działka:</label>
-                    <div className="flex w-3/4">
+                    <label className="flex w-1/4 justify-end text-base">Posiada:</label>
+                    <div className="w-3/4">
                         <MultiSelectDropdown
-                            name="plotIds"
-                            options={plotsOptions.map((p) => ({
+                            name="ownedPlotIds"
+                            options={plotOptionsWithoutOwner.map((p) => ({
                                 id: p.id,
-                                label: `${p.plotNumber}`,
+                                label: `${p.number}`,
+                            }))}
+                            className="input-form"
+                        />
+                    </div>
+                </div>
+
+                {/* Coowned Plots */}
+                <div className="flex w-full items-center gap-4">
+                    <label className="flex w-1/4 justify-end text-base">Współposiada:</label>
+                    <div className="w-3/4">
+                        <MultiSelectDropdown
+                            name="coOwnedPlotIds"
+                            options={availablePlotOptions.map((p) => ({
+                                id: p.id,
+                                label: `${p.number}`,
+                            }))}
+                            className="input-form"
+                        />
+                    </div>
+                </div>
+
+                {/* Used Plots  */}
+                <div className="flex w-full items-center gap-4">
+                    <label className="flex w-1/4 justify-end text-base">Współużytkuje:</label>
+                    <div className="w-3/4">
+                        <MultiSelectDropdown
+                            name="usedPlotIds"
+                            options={availablePlotOptions.map((p) => ({
+                                id: p.id,
+                                label: `${p.number}`,
                             }))}
                             className="input-form"
                         />

@@ -78,6 +78,7 @@ model Plot {
     @@map("plots")
 }
 
+//TODO: add id?
 model UserPlot {
     userId Int      @map("user_id")
     plotId Int      @map("plot_id")

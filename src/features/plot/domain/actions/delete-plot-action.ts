@@ -5,7 +5,7 @@ import { revalidateTag } from 'next/cache';
 import { ActionResult } from '@/shared/contracts/action-result';
 import { canPerform } from '@/shared/auth/can-perform';
 import { PERMISSION_KEYS } from '@/shared/auth/permissions';
-import { requireSession } from '@/shared/auth/require-session';
+import { requireSession } from '@/shared/auth/guards';
 import { DomainError } from '@/shared/error/domain-error';
 import { ErrorCode } from '@/shared/error/error-codes';
 import { handleActionError } from '@/shared/error/handle-action-error';

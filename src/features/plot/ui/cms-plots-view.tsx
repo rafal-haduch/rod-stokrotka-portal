@@ -42,9 +42,9 @@ export function CMSPlotsView({ plotTableRows }: Props) {
     const addPlotInTable = (createdPlot: CreatePlotData) => {
         const newPlot: PlotTableRow = {
             id: createdPlot.id,
-            plotNumber: createdPlot.plotNumber,
+            number: createdPlot.plotNumber,
             area: createdPlot.area,
-            ownersNames: [], // NOTE: It's empty because the plot has just been added and the user is assigned to an existing plot in the users section in CMS.
+            ownerName: [], // NOTE: It's empty because the plot has just been added and the user is assigned to an existing plot in the users section in CMS.
         };
 
         setPlotRows((prev) => [newPlot, ...prev]);
@@ -55,7 +55,7 @@ export function CMSPlotsView({ plotTableRows }: Props) {
         setPlotRows((prev) =>
             prev.map((p) =>
                 p.id === updatedPlot.id
-                    ? { ...p, plotNumber: updatedPlot.plotNumber, area: updatedPlot.area }
+                    ? { ...p, number: updatedPlot.plotNumber, area: updatedPlot.area }
                     : p
             )
         );
