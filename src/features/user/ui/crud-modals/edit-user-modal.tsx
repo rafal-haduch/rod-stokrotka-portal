@@ -17,6 +17,7 @@ import { UserTableRow } from '@/features/user/domain/user-read-models';
 import { UpdateUserData } from '@/features/user/domain/user-api-contracts';
 
 import { EditUserForm } from '@/features/user/ui/crud-forms/edit-user-form';
+import { CRUDModal } from '@/components/crud-modal';
 
 interface Props {
     user: UserTableRow;
@@ -59,28 +60,20 @@ export function EditUserModal({ user, plotOptions, onCloseModal, onUpdatedUser }
 
     return (
         <Portal>
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-                <div
-                    aria-label="Okno dodawania nowego konta działkowca"
-                    className="panel surface-elevated mx-auto max-w-xl"
-                >
-                    <button
-                        type="button"
-                        onClick={onCloseModal}
-                        title="Zamknij okno edycji danych konta działkowca"
-                        className="ml-auto flex p-2 hover:cursor-pointer"
-                    >
-                        <X className="h-8 w-8" />
-                    </button>
-                    <EditUserForm
-                        userData={user}
-                        plotsOptions={plotOptions}
-                        onSubmit={handleSubmit}
-                        loading={loading}
-                        errorMsg={errorMsg}
-                    />
-                </div>
-            </div>
+            <CRUDModal
+                ariaLabel="Okno edytowania konta działkowca"
+                titleCloseButton="Zamknij okno"
+                resetResult={() => setResult(null)}
+                onCloseModal={onCloseModal}
+            >
+                <EditUserForm
+                    userData={user}
+                    plotsOptions={plotOptions}
+                    onSubmit={handleSubmit}
+                    loading={loading}
+                    errorMsg={errorMsg}
+                />
+            </CRUDModal>
         </Portal>
     );
 }

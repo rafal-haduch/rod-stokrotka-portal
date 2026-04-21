@@ -1,6 +1,6 @@
 # TODOS:
 
-- refactor repositorys afeter impproved model data
+- fix create update user form (extract crud-modal as single component) and add show details user modal
 
 - add fee feature
 

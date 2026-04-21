@@ -26,38 +26,31 @@ export function CreateUserForm({
     errorMsg,
 }: Props) {
     return (
-        <form
-            onSubmit={onSubmit}
-            aria-labelledby="create-user-form-heading"
-            className="w-full px-2 pb-6 sm:px-6"
-        >
+        <form onSubmit={onSubmit} aria-labelledby="create-user-form-heading" className="w-full">
             <p id="create-user-form-heading" className="mb-4 text-center text-xl font-semibold">
                 Stwórz nowe konto działkowca
             </p>
             <fieldset className="flex w-full flex-col gap-3">
-                {/* Name  */}
-                <div className="flex w-full items-center gap-4">
-                    <label className="flex w-1/4 justify-end text-base">*Osoba:</label>
-                    <div className="relative w-3/4">
-                        <input type="text" name="name" required className="input-form" />
+                {/* Grid wrapper dla wszystkich wierszy label + input */}
+                <div className="grid w-full grid-cols-[max-content_1fr] items-center gap-x-4 gap-y-3">
+                    {/* Name */}
+                    <label className="justify-self-end text-base">*Osoba:</label>
+                    <div className="relative">
+                        <input type="text" name="name" required className="input-form w-full" />
                         <div className="absolute top-1/2 right-0 z-50 flex h-full w-auto -translate-y-1/2 items-center justify-center px-1">
                             <TooltipIcon
-                                helperText={
-                                    'Dopuszczalna forma zapisu to imię + pierwsza litera nazwiska.'
-                                }
+                                helperText="Dopuszczalna forma zapisu to imię + pierwsza litera nazwiska."
                                 example={'osoba -> Jan Kowalski \nzapis -> Jan K.'}
                             />
                         </div>
                     </div>
-                </div>
 
-                {/* Role  */}
-                <div className="flex w-full items-center gap-4">
-                    <label className="flex w-1/4 justify-end text-base">*Rola:</label>
+                    {/* Role */}
+                    <label className="justify-self-end text-base">*Rola:</label>
                     <select
                         name="role"
                         defaultValue={UserRole.ALLOTMENT_GARDENER}
-                        className="input-form w-3/4"
+                        className="input-form w-full"
                     >
                         {ASSIGNABLE_USER_ROLES.map((role) => (
                             <option key={role} value={role}>
@@ -65,67 +58,54 @@ export function CreateUserForm({
                             </option>
                         ))}
                     </select>
-                </div>
 
-                <div className="w-full gap-4">
-                    <p className="text-center font-semibold">Działki:</p>
-                </div>
+                    {/* Sekcja "Działki" — pełna szerokość */}
+                    <div className="col-span-2 pt-1 text-center font-semibold">Działki:</div>
 
-                {/* Owned Plots  */}
-                <div className="flex w-full items-center gap-4">
-                    <label className="flex w-1/4 justify-end text-base">Posiada:</label>
-                    <div className="w-3/4">
-                        <MultiSelectDropdown
-                            name="ownedPlotIds"
-                            options={plotOptionsWithoutOwner.map((p) => ({
-                                id: p.id,
-                                label: `${p.number}`,
-                            }))}
-                            className="input-form"
-                        />
-                    </div>
-                </div>
+                    {/* Owned Plots */}
+                    <label className="justify-self-end text-base">Posiada:</label>
+                    <MultiSelectDropdown
+                        name="ownedPlotIds"
+                        options={plotOptionsWithoutOwner.map((p) => ({
+                            id: p.id,
+                            label: `${p.number}`,
+                        }))}
+                        className="input-form w-full"
+                    />
 
-                {/* Coowned Plots */}
-                <div className="flex w-full items-center gap-4">
-                    <label className="flex w-1/4 justify-end text-base">Współposiada:</label>
-                    <div className="w-3/4">
-                        <MultiSelectDropdown
-                            name="coOwnedPlotIds"
-                            options={availablePlotOptions.map((p) => ({
-                                id: p.id,
-                                label: `${p.number}`,
-                            }))}
-                            className="input-form"
-                        />
-                    </div>
-                </div>
+                    {/* Coowned Plots */}
+                    <label className="justify-self-end text-base">Współposiada:</label>
+                    <MultiSelectDropdown
+                        name="coOwnedPlotIds"
+                        options={availablePlotOptions.map((p) => ({
+                            id: p.id,
+                            label: `${p.number}`,
+                        }))}
+                        className="input-form w-full"
+                    />
 
-                {/* Used Plots  */}
-                <div className="flex w-full items-center gap-4">
-                    <label className="flex w-1/4 justify-end text-base">Współużytkuje:</label>
-                    <div className="w-3/4">
-                        <MultiSelectDropdown
-                            name="usedPlotIds"
-                            options={availablePlotOptions.map((p) => ({
-                                id: p.id,
-                                label: `${p.number}`,
-                            }))}
-                            className="input-form"
-                        />
-                    </div>
+                    {/* Used Plots */}
+                    <label className="justify-self-end text-base">Współużytkuje:</label>
+                    <MultiSelectDropdown
+                        name="usedPlotIds"
+                        options={availablePlotOptions.map((p) => ({
+                            id: p.id,
+                            label: `${p.number}`,
+                        }))}
+                        className="input-form w-full"
+                    />
                 </div>
 
                 {/* Info */}
-                <p className="col-span-4 text-center text-sm">* wymagane pola.</p>
+                <p className="text-center text-sm">* wymagane pola.</p>
 
-                {/* Error  */}
-                <div className="col-span-4 min-h-10 text-center sm:min-h-4">
+                {/* Error */}
+                <div className="min-h-10 text-center sm:min-h-4">
                     {errorMsg && <p className="text-red-500">{errorMsg}</p>}
                 </div>
 
-                {/* Submit Button */}
-                <div className="col-span-4 flex justify-center gap-14">
+                {/* Submit */}
+                <div className="flex justify-center">
                     <CustomButton
                         type="submit"
                         title="Dodaj nowe konto"

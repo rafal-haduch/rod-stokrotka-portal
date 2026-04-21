@@ -31,7 +31,7 @@ export function EditUserForm({ userData, plotsOptions, onSubmit, loading, errorM
                 Zmień dane konta:
             </p>
             <fieldset className="flex flex-col gap-3">
-                {/* ID  */}
+                {/* ID (hidden) */}
                 <input type="hidden" name="id" value={userData.id} />
 
                 {/* Name  */}
@@ -82,7 +82,7 @@ export function EditUserForm({ userData, plotsOptions, onSubmit, loading, errorM
                                 id: p.id,
                                 label: `${p.number}`,
                             }))}
-                            initialSelectedIds={userData.plots?.map((plot) => {
+                            initialSelectedIds={userData?.map((plot) => {
                                 return plot.id;
                             })}
                             className="input-form w-full"

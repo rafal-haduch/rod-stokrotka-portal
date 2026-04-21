@@ -15,7 +15,8 @@ import { createUser } from '@/features/user/domain/actions/create-user-action';
 import { CreateUserData } from '@/features/user/domain/user-api-contracts';
 
 import { CreateUserForm } from '@/features/user/ui/crud-forms/create-user-form';
-import { CreateUserSuccess } from '@/features/user/ui/crud-modals/create-user-success';
+import { CreateUserSuccess } from '@/features/user/ui/crud-views/create-user-success';
+import { CRUDModal } from '@/components/crud-modal';
 
 interface Props extends ComponentPropsWithPlotOptions {
     onCloseModal: () => void;
@@ -61,35 +62,24 @@ export function CreateUserModal({
 
     return (
         <Portal>
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-                <div
-                    aria-label="Okno dodawania nowego konta działkowca"
-                    className="panel surface-elevated mx-auto w-fit max-w-3xl rounded-xl shadow-lg"
-                >
-                    <button
-                        type="button"
-                        onClick={() => {
-                            setResult(null);
-                            onCloseModal();
-                        }}
-                        title="Zamknij okno dodawania nowego działkowca"
-                        className="ml-auto flex p-2 hover:cursor-pointer"
-                    >
-                        <X className="h-8 w-8" />
-                    </button>
-                    {result !== TECHNICAL_ERROR && result?.success && result.data ? (
-                        <CreateUserSuccess result={result.data} />
-                    ) : (
-                        <CreateUserForm
-                            onSubmit={handleSubmit}
-                            availablePlotOptions={availablePlotOptions}
-                            plotOptionsWithoutOwner={plotOptionsWithoutOwner}
-                            loading={loading}
-                            errorMsg={errorMsg}
-                        />
-                    )}
-                </div>
-            </div>
+            <CRUDModal
+                ariaLabel="Okno tworzenia nowego konta dla działkowca"
+                titleCloseButton="Zamknij okno"
+                resetResult={() => setResult(null)}
+                onCloseModal={onCloseModal}
+            >
+                {result !== TECHNICAL_ERROR && result?.success && result.data ? (
+                    <CreateUserSuccess result={result.data} />
+                ) : (
+                    <CreateUserForm
+                        onSubmit={handleSubmit}
+                        availablePlotOptions={availablePlotOptions}
+                        plotOptionsWithoutOwner={plotOptionsWithoutOwner}
+                        loading={loading}
+                        errorMsg={errorMsg}
+                    />
+                )}
+            </CRUDModal>
         </Portal>
     );
 }

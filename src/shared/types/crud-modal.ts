@@ -1,1 +1,1 @@
-export type CRUDModalType = 'create' | 'edit' | 'delete' | null;
+export type CRUDModalType = 'create' | 'read' | 'edit' | 'delete' | null;

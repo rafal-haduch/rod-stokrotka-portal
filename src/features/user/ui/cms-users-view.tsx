@@ -19,6 +19,7 @@ import { CreateUserModal } from '@/features/user/ui/crud-modals/create-user-moda
 import { EditUserModal } from '@/features/user/ui/crud-modals/edit-user-modal';
 import DeleteUserModal from '@/features/user/ui/crud-modals/delete-user-modal';
 import UsersTable from '@/features/user/ui/users-table';
+import { DetailsUserModal } from '@/features/user/ui/crud-modals/details-user-modal';
 
 interface Props extends ComponentPropsWithPlotOptions {
     userTableRows: UserTableRow[];
@@ -101,7 +102,12 @@ export default function CMSUsersView({
                 <Plus />
             </CustomButton>
 
-            <UsersTable data={userRows} onEdit={openModal} onDelete={openModal} />
+            <UsersTable
+                data={userRows}
+                onDetails={openModal}
+                onEdit={openModal}
+                onDelete={openModal}
+            />
 
             {activeModal === 'create' && (
                 <CreateUserModal
@@ -114,6 +120,10 @@ export default function CMSUsersView({
                         addUserInTable(createdUser);
                     }}
                 />
+            )}
+
+            {activeModal === 'read' && selectedUser && (
+                <DetailsUserModal user={selectedUser} onCloseModal={() => closeModal()} />
             )}
 
             {activeModal === 'edit' && selectedUser && (

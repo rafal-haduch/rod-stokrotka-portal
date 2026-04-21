@@ -24,10 +24,7 @@ export function CreateUserSuccess({ result }: Props) {
         setTimeout(() => setCopied(false), 3000);
     }
     return (
-        <div
-            aria-labelledby="success-heading"
-            className="flex flex-col gap-4 px-2 pb-2 sm:px-6 sm:pb-6"
-        >
+        <div aria-labelledby="success-heading" className="flex flex-col gap-4">
             <p id="success-heading" className="text-center text-xl font-semibold text-green-500">
                 Konto zostało utworzone
             </p>
@@ -68,10 +65,11 @@ export function CreateUserSuccess({ result }: Props) {
                 </p>
                 <div className="bg-theme-background-main mx-auto flex flex-col items-center border-2 border-red-500 p-1">
                     <TriangleAlert aria-hidden="true" className="text-red-500" />
-                    <p className="text-theme-foreground-content text-center">
-                        Pamiętaj, aby przekazać dane do logowania osobie, dla której zostało
-                        założone konto. Możesz kliknąć powyższy przycisk "Kopiuj", aby je wygodnie
-                        skopiować i wysłać.
+                    <p className="text-theme-foreground-content">
+                        Pamiętaj, aby przekazać dane do logowania osobie, <br />
+                        dla której zostało założone konto. <br /> Możesz kliknąć powyższy przycisk
+                        "Kopiuj",
+                        <br /> aby je wygodnie skopiować i wysłać.
                     </p>
                 </div>
             </div>
