@@ -23,7 +23,6 @@ export function PlotsTable({ data, onEdit, onDelete }: Props) {
                     <th>Numer</th>
                     <th>Kod</th>
                     <th>Powierzchnia</th>
-                    <th>Użytkuje</th>
                     <th>Edytuj</th>
                     <th>Usuń</th>
                 </tr>
@@ -35,15 +34,14 @@ export function PlotsTable({ data, onEdit, onDelete }: Props) {
                         <td>{formatPlotCode(rowPlot.number)}</td>
                         <td>
                             {rowPlot.area !== null && rowPlot.area !== undefined
-                                ? rowPlot.area
+                                ? rowPlot.area.toString()
                                 : '—'}
                         </td>
-                        <td>{rowPlot.ownerName.length > 0 ? rowPlot.ownerName.join(', ') : '—'}</td>
                         <td className="px-4 align-middle">
                             <CustomButton
                                 type="button"
                                 title="Edytuj dane działki"
-                                onClick={() => onEdit('edit', rowPlot)}
+                                onClick={() => onEdit('update', rowPlot)}
                                 context="table"
                                 variant="action"
                             >

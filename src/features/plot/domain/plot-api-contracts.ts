@@ -1,5 +1,4 @@
 import { PlotMinimalReference, PlotTableRow } from '@/features/plot/domain/plot-read-models';
-import { Decimal } from 'generated/prisma/internal/prismaNamespace';
 
 // === FOR QUERIES ===
 
@@ -7,8 +6,7 @@ import { Decimal } from 'generated/prisma/internal/prismaNamespace';
  * API contract representing data returned by the get available plot query.
  */
 export type GetAvailablePlotsResponse = {
-    availablePlots: PlotMinimalReference[];
-    withoutOwner: PlotMinimalReference[];
+    plotOptions: PlotMinimalReference[];
 };
 
 /**
@@ -23,8 +21,8 @@ export type GetPlotTableRowsResponse = PlotTableRow[];
  */
 export interface CreatePlotData {
     id: number;
-    plotNumber: string;
-    area: Decimal | null;
+    number: string;
+    area: string | null;
 }
 
 /**
@@ -33,7 +31,7 @@ export interface CreatePlotData {
 export interface UpdatePlotData {
     id: number;
     number: string;
-    area: Decimal | null;
+    area: string | null;
 }
 
 /**

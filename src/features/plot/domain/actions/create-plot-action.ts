@@ -23,9 +23,9 @@ export async function createPlot(formData: FormData): Promise<ActionResult<Creat
             throw new DomainError(ErrorCode.NO_PERMISSION);
         }
 
-        const { plotNumber, area } = parseCreatePlotInput(formData);
+        const { number, area } = parseCreatePlotInput(formData);
 
-        const result = await plotRepository.create({ plotNumber, area });
+        const result = await plotRepository.create({ number, area });
 
         revalidateTag('plots');
 

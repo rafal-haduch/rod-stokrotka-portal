@@ -62,15 +62,12 @@ export const userRepository = {
             });
 
             if (ownedPlotIds.length > 0) {
-                await tx.plot.updateMany({
-                    where: {
-                        id: {
-                            in: ownedPlotIds,
-                        },
-                    },
-                    data: {
-                        ownerId: user.id,
-                    },
+                await tx.userPlot.createMany({
+                    data: ownedPlotIds.map((id) => ({
+                        userId: user.id,
+                        plotId: id,
+                        role: PlotRole.OWNER,
+                    })),
                 });
             }
 
@@ -114,31 +111,17 @@ export const userRepository = {
                 data: { name, role },
             });
 
-            await tx.plot.updateMany({
-                where: {
-                    id: {
-                        in: ownedPlotIds,
-                    },
-                },
-                data: {
-                    ownerId: null,
-                },
-            });
-
             await tx.userPlot.deleteMany({
                 where: { userId: id },
             });
 
             if (ownedPlotIds.length > 0) {
-                await tx.plot.updateMany({
-                    where: {
-                        id: {
-                            in: ownedPlotIds,
-                        },
-                    },
-                    data: {
-                        ownerId: id,
-                    },
+                await tx.userPlot.createMany({
+                    data: ownedPlotIds.map((plotId) => ({
+                        userId: id,
+                        plotId: plotId,
+                        role: PlotRole.OWNER,
+                    })),
                 });
             }
 

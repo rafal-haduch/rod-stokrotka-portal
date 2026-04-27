@@ -12,11 +12,11 @@ import { getUserRoleLabel } from '@/features/user/domain/user-helpers';
 interface Props {
     data: UserTableRow[];
     onDetails: (type: CRUDModalType, user: UserTableRow) => void;
-    onEdit: (type: CRUDModalType, user: UserTableRow) => void;
+    onUpdate: (type: CRUDModalType, user: UserTableRow) => void;
     onDelete: (type: CRUDModalType, user: UserTableRow) => void;
 }
 
-export default function UsersTable({ data, onDetails, onEdit, onDelete }: Props) {
+export default function UsersTable({ data, onDetails, onUpdate, onDelete }: Props) {
     return (
         <div className="overflow-x-auto">
             <table
@@ -62,7 +62,7 @@ export default function UsersTable({ data, onDetails, onEdit, onDelete }: Props)
                                 <CustomButton
                                     type="button"
                                     title="Edytuj dane konta"
-                                    onClick={() => onEdit('edit', userRow)}
+                                    onClick={() => onUpdate('update', userRow)}
                                     context="table"
                                     variant="action"
                                 >

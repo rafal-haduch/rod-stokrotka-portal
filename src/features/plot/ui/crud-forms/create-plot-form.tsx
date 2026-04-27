@@ -25,7 +25,7 @@ export function CreatePlotForm({ onSubmit, loading, errorMsg }: Props) {
                 <div className="flex w-full items-center gap-4">
                     <label className="flex w-1/4 justify-end text-base">*Numer:</label>
                     <div className="w-3/4">
-                        <input type="text" name="plotNumber" required className="input-form" />
+                        <input type="text" name="number" required className="input-form" />
                     </div>
                 </div>
 

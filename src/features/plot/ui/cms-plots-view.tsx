@@ -42,23 +42,21 @@ export function CMSPlotsView({ plotTableRows }: Props) {
     const addPlotInTable = (createdPlot: CreatePlotData) => {
         const newPlot: PlotTableRow = {
             id: createdPlot.id,
-            number: createdPlot.plotNumber,
+            number: createdPlot.number,
             area: createdPlot.area,
-            ownerName: [], // NOTE: It's empty because the plot has just been added and the user is assigned to an existing plot in the users section in CMS.
         };
 
         setPlotRows((prev) => [newPlot, ...prev]);
     };
 
-    //REVIEW: Is this a good approach? (no types?)
     const updatePlotInTable = (updatedPlot: UpdatePlotData) => {
-        setPlotRows((prev) =>
-            prev.map((p) =>
-                p.id === updatedPlot.id
-                    ? { ...p, number: updatedPlot.plotNumber, area: updatedPlot.area }
-                    : p
-            )
-        );
+        const editedPlot: PlotTableRow = {
+            id: updatedPlot.id,
+            number: updatedPlot.number,
+            area: updatedPlot.area,
+        };
+
+        setPlotRows((prev) => prev.map((p) => (p.id === updatedPlot.id ? editedPlot : p)));
     };
 
     const removePlotFromTable = (plotId: number) => {
@@ -94,7 +92,7 @@ export function CMSPlotsView({ plotTableRows }: Props) {
                 />
             )}
 
-            {activeModal === 'edit' && selectedPlot && (
+            {activeModal === 'update' && selectedPlot && (
                 <EditPlotModal
                     plot={selectedPlot}
                     onCloseModal={() => {

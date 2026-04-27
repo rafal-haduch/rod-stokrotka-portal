@@ -19,8 +19,7 @@ interface Props extends ComponentPropsWithPlotOptions {
 }
 
 export function CreateUserForm({
-    availablePlotOptions,
-    plotOptionsWithoutOwner,
+    plotOptions: availablePlotOptions,
     onSubmit,
     loading,
     errorMsg,
@@ -66,7 +65,7 @@ export function CreateUserForm({
                     <label className="justify-self-end text-base">Posiada:</label>
                     <MultiSelectDropdown
                         name="ownedPlotIds"
-                        options={plotOptionsWithoutOwner.map((p) => ({
+                        options={availablePlotOptions.map((p) => ({
                             id: p.id,
                             label: `${p.number}`,
                         }))}

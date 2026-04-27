@@ -14,7 +14,7 @@ import { mapToPlotTableRows } from '@/features/plot/domain/plot-mapper';
  */
 export const getPlotTableRows: () => Promise<GetPlotTableRowsResponse> = unstable_cache(
     async () => {
-        const result = await plotRepository.getUserTableRows();
+        const result = await plotRepository.getPlotTableRows();
         return mapToPlotTableRows(result);
     },
     ['plot-table-rows'],

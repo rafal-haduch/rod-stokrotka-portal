@@ -4,7 +4,7 @@ import { UserRole } from '@prisma/client';
  * Mapping UserRoles to Polish UI labels.
  */
 export const USER_ROLE_LABEL: Record<UserRole, string> = {
-    [UserRole.ADMIN]: 'Administrator strony',
+    [UserRole.ADMIN]: 'Administrator',
     [UserRole.PRESIDENT]: 'Prezes',
     [UserRole.DEPUTY_PRESIDENT]: 'Zastępca Prezesa',
     [UserRole.SECRETARY]: 'Sekretarz',

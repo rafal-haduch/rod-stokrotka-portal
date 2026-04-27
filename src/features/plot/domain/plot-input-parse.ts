@@ -4,19 +4,19 @@ import { validatePlotArea, validatePlotNumber } from '@/features/plot/domain/plo
 
 // CREATE PLOT ACTION
 export interface CreatePlotInput {
-    plotNumber: string;
+    number: string;
     area: number | null;
 }
 
 export function parseCreatePlotInput(formData: FormData): CreatePlotInput {
-    const plotNumberRaw = formData.get('plotNumber');
+    const numberRow = formData.get('number');
     const areaRaw = formData.get('area');
 
-    const plotNumber = validatePlotNumber(plotNumberRaw);
+    const number = validatePlotNumber(numberRow);
     const area = validatePlotArea(areaRaw);
 
     return {
-        plotNumber,
+        number,
         area,
     };
 }

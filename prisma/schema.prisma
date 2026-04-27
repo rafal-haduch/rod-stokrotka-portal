@@ -18,6 +18,7 @@ enum UserRole {
 }
 
 enum PlotRole {
+    OWNER
     CO_OWNER
     USER
 }
@@ -43,68 +44,67 @@ enum Entity {
 }
 
 model User {
-    id              Int       @id @default(autoincrement())
-    name            String
-    role            UserRole  @default(ALLOTMENT_GARDENER)
-    login           String    @unique
-    passwordHash    String    @map("password_hash")
-    lastLogin       DateTime? @map("last_login")
-    createdAt       DateTime  @default(now()) @map("created_at")
-    updatedAt       DateTime? @map("updated_at")
-    deletedAt       DateTime? @map("deleted_at")
-    deletedByUserId Int?      @map("deleted_by_user_id")
+    id           Int       @id @default(autoincrement())
+    name         String
+    role         UserRole  @default(ALLOTMENT_GARDENER)
+    login        String    @unique
+    passwordHash String    @map("password_hash")
+    lastLogin    DateTime? @map("last_login")
 
-    ownedPlots      Plot[]     @relation("PlotOwner")
+    createdAt DateTime  @default(now()) @map("created_at")
+    updatedAt DateTime? @map("updated_at")
+    deletedAt DateTime? @map("deleted_at")
+
     plotMemberships UserPlot[]
 
     @@map("users")
 }
 
 model Plot {
-    id              Int       @id @default(autoincrement())
-    number          String    @unique @db.VarChar(10)
-    area            Decimal?  @db.Decimal(6, 2)
-    ownerId         Int?      @map("owner_id")
-    createdAt       DateTime  @default(now()) @map("created_at")
-    updatedAt       DateTime  @updatedAt @map("updated_at")
-    deletedAt       DateTime? @map("deleted_at")
-    deletedByUserId Int?      @map("deleted_by_user_id")
+    id     Int      @id @default(autoincrement())
+    number String   @unique @db.VarChar(10)
+    area   Decimal? @db.Decimal(6, 2)
 
-    owner   User?      @relation("PlotOwner", fields: [ownerId], references: [id])
+    createdAt DateTime  @default(now()) @map("created_at")
+    updatedAt DateTime  @updatedAt @map("updated_at")
+    deletedAt DateTime? @map("deleted_at")
+
     members UserPlot[]
     fees    Fee[]
 
-    @@index([ownerId])
     @@map("plots")
 }
 
-//TODO: add id?
 model UserPlot {
+    id     Int      @id @default(autoincrement())
     userId Int      @map("user_id")
     plotId Int      @map("plot_id")
     role   PlotRole
 
+    createdAt DateTime @default(now()) @map("created_at")
+
     user User @relation(fields: [userId], references: [id])
     plot Plot @relation(fields: [plotId], references: [id])
 
-    @@id([userId, plotId])
+    @@unique([userId, plotId])
+    @@index([userId])
     @@index([plotId])
     @@map("user_plots")
 }
 
 model Fee {
-    id              Int       @id @default(autoincrement())
-    plotId          Int       @map("plot_id")
-    year            Int
-    paid            Boolean   @default(false)
-    plotAreaFee     Decimal   @map("plot_area_fee") @db.Decimal(10, 2)
-    wasteFee        Decimal   @map("waste_fee") @db.Decimal(10, 2)
-    membershipFee   Decimal   @map("membership_fee") @db.Decimal(10, 2)
-    electricityFee  Decimal?  @map("electricity_fee") @db.Decimal(10, 2)
-    createdAt       DateTime  @default(now()) @map("created_at")
-    updatedAt       DateTime  @updatedAt @map("updated_at")
-    deletedAt       DateTime? @map("deleted_at")
-    deletedByUserId Int?      @map("deleted_by_user_id")
+    id             Int      @id @default(autoincrement())
+    plotId         Int      @map("plot_id")
+    year           Int
+    paid           Boolean  @default(false)
+    plotAreaFee    Decimal  @map("plot_area_fee") @db.Decimal(10, 2)
+    wasteFee       Decimal  @map("waste_fee") @db.Decimal(10, 2)
+    membershipFee  Decimal  @map("membership_fee") @db.Decimal(10, 2)
+    electricityFee Decimal? @map("electricity_fee") @db.Decimal(10, 2)
+
+    createdAt DateTime  @default(now()) @map("created_at")
+    updatedAt DateTime  @updatedAt @map("updated_at")
+    deletedAt DateTime? @map("deleted_at")
 
     plot    Plot     @relation(fields: [plotId], references: [id])
     payment Payment?
@@ -122,8 +122,8 @@ model Payment {
     method             PaymentMethod
     receivedByUserId   Int           @map("received_by_user_id")
     receivedByUserName String        @map("received_by_user_name")
-    deletedAt          DateTime?     @map("deleted_at")
-    deletedByUserId    Int?          @map("deleted_by_user_id")
+
+    deletedAt DateTime? @map("deleted_at")
 
     fee Fee @relation(fields: [feeId], references: [id])
 
@@ -132,16 +132,15 @@ model Payment {
 }
 
 model Announcement {
-    id         Int      @id @default(autoincrement())
+    id         Int    @id @default(autoincrement())
     title      String
     content    String
-    createdAt  DateTime @default(now()) @map("created_at")
-    authorId   Int      @map("author_id")
-    authorName String   @map("author_name")
+    authorId   Int    @map("author_id")
+    authorName String @map("author_name")
 
-    updatedAt       DateTime  @updatedAt @map("updated_at")
-    deletedAt       DateTime? @map("deleted_at")
-    deletedByUserId Int?      @map("deleted_by_user_id")
+    createdAt DateTime  @default(now()) @map("created_at")
+    updatedAt DateTime  @updatedAt @map("updated_at")
+    deletedAt DateTime? @map("deleted_at")
 
     @@index([authorId])
     @@index([createdAt])

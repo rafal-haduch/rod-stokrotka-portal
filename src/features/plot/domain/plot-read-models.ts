@@ -1,4 +1,4 @@
-import { Decimal } from "generated/prisma/internal/prismaNamespace";
+import { Decimal } from '@prisma/client/runtime/binary';
 
 /**
  * Read model representing a single plot entry in plot listings.
@@ -7,8 +7,7 @@ import { Decimal } from "generated/prisma/internal/prismaNamespace";
 export interface PlotTableRow {
     id: number;
     number: string;
-    area: Decimal | null;
-    ownerName: string | null;
+    area: string | null;
 }
 
 /**

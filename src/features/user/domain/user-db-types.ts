@@ -14,12 +14,6 @@ export type UsersFromDb = UserFromDb[];
 
 export const userWithPlotsInclude = Prisma.validator<Prisma.UserDefaultArgs>()({
     include: {
-        ownedPlots: {
-            select: {
-                id: true,
-                number: true,
-            },
-        },
         plotMemberships: {
             select: {
                 role: true,
@@ -72,12 +66,6 @@ export const userTableRowsSelect = Prisma.validator<Prisma.UserDefaultArgs>()({
         role: true,
         createdAt: true,
         lastLogin: true,
-        ownedPlots: {
-            select: {
-                id: true,
-                number: true,
-            },
-        },
         plotMemberships: {
             select: {
                 role: true,

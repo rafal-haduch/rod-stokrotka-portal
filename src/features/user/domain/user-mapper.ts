@@ -15,11 +15,12 @@ import { AssignmentPlotToUser } from '@/features/plot/domain/plot-db-types';
  * owned, co-owned, and used plot collections based on their roles.
  */
 export function mapUserPlotsAssignment(
-    ownedPlotsDb: PlotMinimalReference[],
     plotMembershipsDb: AssignmentPlotToUser[]
 ): PlotsAssignedToUser {
     return {
-        ownedPlots: ownedPlotsDb.map((p) => ({ id: p.id, number: p.number })),
+        ownedPlots: plotMembershipsDb
+            .filter((m) => m.role === PlotRole.OWNER)
+            .map((m) => ({ id: m.plot.id, number: m.plot.number })),
         coOwnedPlots: plotMembershipsDb
             .filter((m) => m.role === PlotRole.CO_OWNER)
             .map((m) => ({ id: m.plot.id, number: m.plot.number })),
@@ -52,8 +53,8 @@ export function mapToUserTableRows(input: UserTableRowsFromDb): UserTableRow[] {
         role: userRow.role,
         createdAt: userRow.createdAt,
         lastLogin: userRow.lastLogin,
-        plots: userRow.ownedPlots.length + userRow.plotMemberships.length,
-        ...mapUserPlotsAssignment(userRow.ownedPlots, userRow.plotMemberships),
+        plots: userRow.plotMemberships.length,
+        ...mapUserPlotsAssignment(userRow.plotMemberships),
     }));
 }
 
@@ -72,7 +73,7 @@ export function mapToCreatedUserData(
         password: password,
         createdAt: input.createdAt,
         lastLogin: null,
-        ...mapUserPlotsAssignment(input.ownedPlots, input.plotMemberships),
+        ...mapUserPlotsAssignment(input.plotMemberships),
     };
 }
 
@@ -88,6 +89,6 @@ export function mapToUpdatedUserData(
         role: input.role,
         createdAt: input.createdAt,
         lastLogin: input.lastLogin,
-        ...mapUserPlotsAssignment(input.ownedPlots, input.plotMemberships),
+        ...mapUserPlotsAssignment(input.plotMemberships),
     };
 }

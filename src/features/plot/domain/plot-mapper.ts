@@ -10,8 +10,7 @@ export function mapToPlotTableRows(input: PlotTableRowsFromDb): PlotTableRow[] {
     return input.map((plotRow) => ({
         id: plotRow.id,
         number: plotRow.number,
-        area: plotRow.area,
-        ownerName: plotRow.owner?.name ?? null,
+        area: plotRow.area ? plotRow.area.toString() : null,
     }));
 }
 
@@ -23,8 +22,8 @@ export function mapToCreatedPlotData(
 ): CreatePlotData {
     return {
         id: input.id,
-        plotNumber: input.number,
-        area: input?.area ?? null,
+        number: input.number,
+        area: input.area ? input.area.toString() : null,
     };
 }
 
@@ -37,6 +36,6 @@ export function mapToUpdatedPlotData(
     return {
         id: input.id,
         number: input.number,
-        area: input?.area ?? null,
+        area: input.area ? input.area.toString() : null,
     };
 }

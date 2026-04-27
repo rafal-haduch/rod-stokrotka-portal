@@ -24,8 +24,7 @@ interface Props extends ComponentPropsWithPlotOptions {
 }
 
 export function CreateUserModal({
-    availablePlotOptions,
-    plotOptionsWithoutOwner,
+    plotOptions: availablePlotOptions,
     onCloseModal,
     onUserCreated,
 }: Props) {
@@ -73,8 +72,7 @@ export function CreateUserModal({
                 ) : (
                     <CreateUserForm
                         onSubmit={handleSubmit}
-                        availablePlotOptions={availablePlotOptions}
-                        plotOptionsWithoutOwner={plotOptionsWithoutOwner}
+                        plotOptions={availablePlotOptions}
                         loading={loading}
                         errorMsg={errorMsg}
                     />

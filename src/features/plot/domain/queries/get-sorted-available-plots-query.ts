@@ -20,19 +20,13 @@ import { plotRepository } from '@/features/plot/domain/plot-repository';
  */
 export const getSortedAvailablePlots: () => Promise<GetAvailablePlotsResponse> = unstable_cache(
     async () => {
-        const availablePlotsWithOwner = await plotRepository.getAvailablePlotsWithOwner();
+        const result = await plotRepository.getAvailablePlotsMinimalReference();
 
         return {
-            availablePlots: availablePlotsWithOwner.map((p) => ({
+            plotOptions: result.map((p) => ({
                 id: p.id,
                 number: p.number,
             })),
-            withoutOwner: availablePlotsWithOwner
-                .filter((p) => p.ownerId === null)
-                .map((p) => ({
-                    id: p.id,
-                    number: p.number,
-                })),
         };
     },
     ['available-plots'],

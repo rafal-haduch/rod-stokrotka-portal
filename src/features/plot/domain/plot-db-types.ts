@@ -39,11 +39,6 @@ export const plotTableRowsSelect = Prisma.validator<Prisma.PlotDefaultArgs>()({
         id: true,
         number: true,
         area: true,
-        owner: {
-            select: {
-                name: true,
-            },
-        },
     },
 });
 

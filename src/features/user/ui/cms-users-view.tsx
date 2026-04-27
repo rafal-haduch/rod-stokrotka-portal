@@ -16,22 +16,24 @@ import {
 import { UserTableRow } from '@/features/user/domain/user-read-models';
 
 import { CreateUserModal } from '@/features/user/ui/crud-modals/create-user-modal';
-import { EditUserModal } from '@/features/user/ui/crud-modals/edit-user-modal';
+import { UpdateUserModal } from '@/features/user/ui/crud-modals/update-user-modal';
 import DeleteUserModal from '@/features/user/ui/crud-modals/delete-user-modal';
 import UsersTable from '@/features/user/ui/users-table';
-import { DetailsUserModal } from '@/features/user/ui/crud-modals/details-user-modal';
+import { ReadUserModal } from '@/features/user/ui/crud-modals/read-user-modal';
 
 interface Props extends ComponentPropsWithPlotOptions {
     userTableRows: UserTableRow[];
 }
 
-export default function CMSUsersView({
-    userTableRows,
-    availablePlotOptions,
-    plotOptionsWithoutOwner,
-}: Props) {
+export default function CMSUsersView({ userTableRows, plotOptions }: Props) {
     //NOTE: Copy user table rows into state for local update after server action mutation.
-    const [userRows, setUserRows] = useState<UserTableRow[]>(userTableRows);
+    const [userRows, setUserRows] = useState<UserTableRow[]>(
+        userTableRows.map((u) => ({
+            ...u,
+            createdAt: new Date(u.createdAt),
+            lastLogin: u.lastLogin ? new Date(u.lastLogin) : null,
+        }))
+    );
     const [activeModal, setActiveModal] = useState<CRUDModalType>(null);
     const [selectedUser, setSelectedUser] = useState<UserTableRow | null>(null);
 
@@ -105,14 +107,13 @@ export default function CMSUsersView({
             <UsersTable
                 data={userRows}
                 onDetails={openModal}
-                onEdit={openModal}
+                onUpdate={openModal}
                 onDelete={openModal}
             />
 
             {activeModal === 'create' && (
                 <CreateUserModal
-                    availablePlotOptions={availablePlotOptions}
-                    plotOptionsWithoutOwner={plotOptionsWithoutOwner}
+                    plotOptions={plotOptions}
                     onCloseModal={() => {
                         closeModal();
                     }}
@@ -123,13 +124,13 @@ export default function CMSUsersView({
             )}
 
             {activeModal === 'read' && selectedUser && (
-                <DetailsUserModal user={selectedUser} onCloseModal={() => closeModal()} />
+                <ReadUserModal user={selectedUser} onCloseModal={() => closeModal()} />
             )}
 
-            {activeModal === 'edit' && selectedUser && (
-                <EditUserModal
+            {activeModal === 'update' && selectedUser && (
+                <UpdateUserModal
                     user={selectedUser}
-                    plotOptions={availablePlotOptions}
+                    plotOptions={plotOptions}
                     onCloseModal={() => closeModal()}
                     onUpdatedUser={(updatedUser: UpdateUserData) => {
                         closeModal();

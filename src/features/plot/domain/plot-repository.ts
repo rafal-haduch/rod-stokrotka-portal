@@ -46,55 +46,23 @@ export const plotRepository = {
         });
     },
 
-    async findByIdWithOwner(id: number) {
-        return prisma.plot.findUnique({
-            where: { id },
-            include: {
-                owner: {
-                    select: {
-                        id: true,
-                        name: true,
-                    },
-                },
-            },
-        });
-    },
-
     async findMany() {
         return prisma.plot.findMany();
     },
 
-    async findManyWithOwner() {
-        return prisma.plot.findMany({
-            include: {
-                owner: {
-                    select: {
-                        id: true,
-                        name: true,
-                    },
-                },
-            },
-        });
-    },
+    // --- Special for queries ---
 
-    // ===========================
-    // === Special for queries ===
-    // ===========================
-
-    async getAvailablePlotsWithOwner(): Promise<
-        (PlotMinimalReference & { ownerId: number | null })[]
-    > {
+    async getAvailablePlotsMinimalReference(): Promise<PlotMinimalReference[]> {
         return prisma.plot.findMany({
             orderBy: { number: 'asc' },
             select: {
                 id: true,
                 number: true,
-                ownerId: true,
             },
         });
     },
 
-    async getUserTableRows(): Promise<PlotTableRowsFromDb> {
+    async getPlotTableRows(): Promise<PlotTableRowsFromDb> {
         return await prisma.plot.findMany(plotTableRowsSelect);
     },
 };

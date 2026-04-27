@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { X } from 'lucide-react';
 
 import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
 import { ActionResult } from '@/shared/contracts/action-result';
@@ -23,10 +22,10 @@ interface Props {
     user: UserTableRow;
     plotOptions: PlotMinimalReference[];
     onCloseModal: () => void;
-    onUpdatedUser: (updatedUserRow: UserTableRow) => void;
+    onUpdatedUser: (updatedUserRow: UpdateUserData) => void;
 }
 
-export function EditUserModal({ user, plotOptions, onCloseModal, onUpdatedUser }: Props) {
+export function UpdateUserModal({ user, plotOptions, onCloseModal, onUpdatedUser }: Props) {
     const [result, setResult] = useState<ActionResult<UpdateUserData> | TechnicalError | null>(
         null
     );
