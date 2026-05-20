@@ -1,12 +1,12 @@
-export default function GeneralMeetingArticle() {
+export default function GeneralMeetingSection() {
     return (
-        <article>
+        <section>
             <h3 className="text-center">Walne zebranie Członków ROD Stokrotka w Sanoku</h3>
             <p>
-                Corocznie na początku sezonu (koniec kwietnia / początek maja) odbywa się spotkanie
+                Corocznie na początku sezonu (zazwyczaj początek maja) odbywa się spotkanie
                 wszystkich członków ogrodu Stokrotka w Sanoku. Obecność jest obowiązkowa. Omawiane
-                są zmiany, dyskusje o ogrodzie oraz propozycje Działkowców.
+                są zmiany, dyskusje o ogrodzie oraz propozycje działkowców.
             </p>
-        </article>
+        </section>
     );
 }
