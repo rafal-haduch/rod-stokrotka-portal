@@ -8,8 +8,9 @@ import LineSeparator from '@/components/LineSeparator';
 import AnimateOnView from '@/components/AnimatedH2';
 
 import FeesTypesTable from './components/FeesTypesTable';
-import FeesTable from './components/FeesTabel';
+import FeeStatusTable from './components/FeeStatusTable';
 import NoArrears from './components/NoArrears';
+import FeesTable from '@/app/fees/components/FeesTable';
 
 export default function PaymentsPage() {
     return (
@@ -71,9 +72,8 @@ export default function PaymentsPage() {
 
             <section>
                 <AnimateOnView className="h2-animate">
-                    <h2>Bilans opłat za 2025 rok</h2>
+                    <h2>Tabela opłat na 2026 rok</h2>
                 </AnimateOnView>
-                <h3 className="text-center">Stan na: {paymentStatusAsOf}</h3>
                 <FeesTable />
             </section>
 

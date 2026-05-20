@@ -6,7 +6,7 @@ import { plotsFeesStatus } from '@/data/plotFeesStatus';
 import { cn } from '@/utils/cn';
 import { Check, X } from 'lucide-react';
 
-export default function FeesTable() {
+export default function FeeStatusTable() {
     return (
         <>
             <table className={cn('mx-auto mb-4 w-full max-w-2xl', 'text-md text-center')}>
