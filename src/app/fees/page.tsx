@@ -79,13 +79,6 @@ export default function PaymentsPage() {
 
             <LineSeparator />
 
-            <section>
-                <AnimateOnView className="h2-animate">
-                    <h2>Zaległości wpłat za 2024 rok</h2>
-                </AnimateOnView>
-                <NoArrears />
-            </section>
-
             <ImageSeparator />
         </article>
     );
