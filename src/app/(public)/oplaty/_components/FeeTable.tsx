@@ -1,9 +1,6 @@
+import { FEES } from '@/content/data/fees';
+import { cn } from '@/shared/utils/cn';
 import React from 'react';
-
-import { plotsFeesStatus } from '@/data/plotFeesStatus';
-import { cn } from '@/utils/cn';
-import { Check, X } from 'lucide-react';
-import { FEES } from '@/data/fees';
 
 //TODO: move into another place?
 
@@ -13,7 +10,7 @@ const MEMBERSHIP_FEE = 25; //zł
 
 const pln = (amount: number) => `${amount.toFixed(2)} zł`;
 
-export default function FeesTable() {
+export default function FeeTable() {
     return (
         <div className="overflow-x-auto">
             <table className={cn('mx-auto mb-4 w-full max-w-2xl', 'text-md text-center')}>

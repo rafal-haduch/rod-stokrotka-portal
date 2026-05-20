@@ -9,9 +9,10 @@ import { LineSeparator } from '@/components/line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
 
 import FeesInfoSection from './_components/fees-info-section';
-import FeesTypesTable from './_components/fees-types-table';
 import FeesTable from './_components/fees-tabel';
 import NoArrears from './_components/noA-arears';
+import FeeTable from '@/app/(public)/oplaty/_components/FeeTable';
+import FeesTypesTable from '@/app/(public)/oplaty/_components/fees-types-table';
 
 export const metadata = buildMetadata(ROUTES.FEES);
 
@@ -36,22 +37,19 @@ export default function PaymentsPage() {
 
             <section>
                 <AnimateOnView className="h2-animate">
-                    <h2>Bilans opłat za 2025 rok</h2>
+                    <h2>Opłaty działek za 2026 rok</h2>
                 </AnimateOnView>
-                <p className="text-center">
-                    <strong>(Stan na: {paymentStatusAsOf})</strong>
-                </p>
-                <FeesTable />
+                <FeeTable />
             </section>
 
             <LineSeparator />
 
-            <section>
+            {/* <section>
                 <AnimateOnView className="h2-animate">
                     <h2>Zaległości wpłat za 2024 rok</h2>
                 </AnimateOnView>
                 <NoArrears />
-            </section>
+            </section> */}
         </article>
     );
 }
