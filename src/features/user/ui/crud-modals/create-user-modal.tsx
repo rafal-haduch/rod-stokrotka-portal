@@ -1,13 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { X } from 'lucide-react';
 
 import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
 import { ActionResult } from '@/shared/contracts/action-result';
 import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
 import { safeAction } from '@/shared/utils/safe-action';
-import { ComponentPropsWithPlotOptions } from '@/shared/models/plot-options-props';
+import { ComponentWithPlotOptionsProps } from '@/shared/models/plot-options-props';
 
 import { Portal } from '@/components/portal';
 
@@ -18,16 +17,12 @@ import { CreateUserForm } from '@/features/user/ui/crud-forms/create-user-form';
 import { CreateUserSuccess } from '@/features/user/ui/crud-views/create-user-success';
 import { CRUDModal } from '@/components/crud-modal';
 
-interface Props extends ComponentPropsWithPlotOptions {
+interface Props extends ComponentWithPlotOptionsProps {
     onCloseModal: () => void;
     onUserCreated: (newUserData: CreateUserData) => void;
 }
 
-export function CreateUserModal({
-    plotOptions: availablePlotOptions,
-    onCloseModal,
-    onUserCreated,
-}: Props) {
+export function CreateUserModal({ plotOptions, onCloseModal, onUserCreated }: Props) {
     const [result, setResult] = useState<ActionResult<CreateUserData> | TechnicalError | null>(
         null
     );
@@ -72,7 +67,7 @@ export function CreateUserModal({
                 ) : (
                     <CreateUserForm
                         onSubmit={handleSubmit}
-                        plotOptions={availablePlotOptions}
+                        plotOptions={plotOptions}
                         loading={loading}
                         errorMsg={errorMsg}
                     />

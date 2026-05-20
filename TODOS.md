@@ -1,6 +1,6 @@
 # TODOS:
 
-- fix create update user form (extract crud-modal as single component) and add show details user modal
+- refactor: user feature, fix and refactor: plot feature (add usera in tabl;e as in user table)
 
 - add fee feature
 

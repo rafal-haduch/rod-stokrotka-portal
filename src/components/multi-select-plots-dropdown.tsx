@@ -11,13 +11,20 @@ export interface MultiSelectOption {
 }
 
 interface Props {
-    name: string; // np. "plotIds"
+    id: string; //html attribute
+    name: string; //html form field
     options: MultiSelectOption[]; // lista dostępnych opcji
     initialSelectedIds?: number[]; // już przypisane
     className?: string;
 }
 
-export function MultiSelectDropdown({ name, options, initialSelectedIds = [], className }: Props) {
+export function MultiSelectDropdown({
+    id,
+    name,
+    options,
+    initialSelectedIds = [],
+    className,
+}: Props) {
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState<number[]>(initialSelectedIds);
     const ref = useRef<HTMLDivElement>(null);
@@ -70,6 +77,7 @@ export function MultiSelectDropdown({ name, options, initialSelectedIds = [], cl
                             className={`flex items-center gap-2 px-3 py-1 text-slate-700 ${opt.disabled ? 'opacity-50' : 'cursor-pointer hover:bg-gray-100'}`}
                         >
                             <input
+                                id={id}
                                 type="checkbox"
                                 disabled={opt.disabled}
                                 checked={selected.includes(opt.id)}

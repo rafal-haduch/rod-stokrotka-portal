@@ -4,8 +4,21 @@ import { getUserTableRows } from '@/features/user/domain/queries/get-user-table-
 import CMSUsersView from '@/features/user/ui/cms-users-view';
 
 export default async function CMSUsersPage() {
-    const userTableRows = await getUserTableRows();
-    const availablePlots = await getSortedAvailablePlots();
+    const [userTableRows, availablePlots] = await Promise.all([
+        getUserTableRows(),
+        getSortedAvailablePlots(),
+    ]);
 
-    return <CMSUsersView userTableRows={userTableRows} plotOptions={availablePlots.plotOptions} />;
+    const mappedUserTableRows = userTableRows.map((u) => ({
+        ...u,
+        createdAt: new Date(u.createdAt),
+        lastLogin: u.lastLogin ? new Date(u.lastLogin) : null,
+    }));
+
+    return (
+        <CMSUsersView
+            userTableRows={mappedUserTableRows}
+            plotOptions={availablePlots.plotOptions}
+        />
+    );
 }

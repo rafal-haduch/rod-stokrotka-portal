@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Plus } from 'lucide-react';
 
 import { CRUDModalType } from '@/shared/types/crud-modal';
-import { ComponentPropsWithPlotOptions } from '@/shared/models/plot-options-props';
+import { ComponentWithPlotOptionsProps } from '@/shared/models/plot-options-props';
 
 import { CustomButton } from '@/components/custom-button';
 
@@ -21,19 +21,13 @@ import DeleteUserModal from '@/features/user/ui/crud-modals/delete-user-modal';
 import UsersTable from '@/features/user/ui/users-table';
 import { ReadUserModal } from '@/features/user/ui/crud-modals/read-user-modal';
 
-interface Props extends ComponentPropsWithPlotOptions {
+interface Props extends ComponentWithPlotOptionsProps {
     userTableRows: UserTableRow[];
 }
 
 export default function CMSUsersView({ userTableRows, plotOptions }: Props) {
     //NOTE: Copy user table rows into state for local update after server action mutation.
-    const [userRows, setUserRows] = useState<UserTableRow[]>(
-        userTableRows.map((u) => ({
-            ...u,
-            createdAt: new Date(u.createdAt),
-            lastLogin: u.lastLogin ? new Date(u.lastLogin) : null,
-        }))
-    );
+    const [userRows, setUserRows] = useState<UserTableRow[]>(userTableRows);
     const [activeModal, setActiveModal] = useState<CRUDModalType>(null);
     const [selectedUser, setSelectedUser] = useState<UserTableRow | null>(null);
 
