@@ -38,6 +38,9 @@ export default function PaymentsPage() {
             <section>
                 <AnimateOnView className="h2-animate">
                     <h2>Opłaty działek za 2026 rok</h2>
+                    <p className="text-center sm:hidden">
+                        Przesuń palcem w bok aby zobaczyć całą tabelkę.
+                    </p>
                 </AnimateOnView>
                 <FeeTable />
             </section>
