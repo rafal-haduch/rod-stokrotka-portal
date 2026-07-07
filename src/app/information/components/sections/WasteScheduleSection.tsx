@@ -3,7 +3,7 @@ import { wasteCollectionSchedule } from '@/data/wasteCollectionSchedule';
 export default function WasteScheduleSection() {
     return (
         <section>
-            <h3 className="text-center">Harmonogram wywozu odpadów komunalnych na 2025 rok</h3>
+            <h3 className="text-center">Harmonogram wywozu odpadów komunalnych na 2026 rok</h3>
             <table className="text-md mx-auto w-full max-w-2xl table-fixed text-center">
                 <thead>
                     <tr>
