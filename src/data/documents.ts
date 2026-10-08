@@ -37,6 +37,10 @@ export const templatesAndForms: Document[] = [
 
 export const minutesAndReports: Document[] = [
     {
+        name: 'Protokół_Zebrania_08.05.2026.pdf',
+        href: '/documents/Protokol_Zebrania_08.05.2026.pdf',
+    },
+    {
         name: 'Protokół_Zebrania_17.05.2025.pdf',
         href: '/documents/Protokol_Zebrania_17.05.2025.pdf',
     },
