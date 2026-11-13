@@ -9,8 +9,6 @@ import { LineSeparator } from '@/components/line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
 import { CustomButton } from '@/components/custom-button';
 
-//import MainSlider from './components/MainSlider';
-
 export default function HomePage() {
     return (
         <>

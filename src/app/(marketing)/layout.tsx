@@ -1,24 +1,16 @@
-import { Navbar } from '@/components/navbar';
-import { Hero } from '@/components/hero';
-import { PreFooter } from '@/components/pre-footer';
-import { Footer } from '@/components/footer';
-import { ImageSeparator } from '@/components/image-separator';
+import type { ReactNode } from 'react';
 
-export default function MarketingLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
+import { Hero } from '@/components/hero';
+import { ImageSeparator } from '@/components/image-separator';
+import { PreFooter } from '@/components/pre-footer';
+
+export default function MarketingLayout({ children }: { children: ReactNode }) {
     return (
         <>
-            <Navbar />
             <Hero />
-            <main className="overflow-x-hidden px-4 sm:px-6 lg:px-8">
-                {children}
-                <ImageSeparator />
-            </main>
+            {children}
+            <ImageSeparator />
             <PreFooter />
-            <Footer />
         </>
     );
 }

@@ -11,8 +11,8 @@ import { AnimateOnView } from '@/components/animated-h2';
 import FeesInfoSection from './_components/fees-info-section';
 import FeesTable from './_components/fees-tabel';
 import NoArrears from './_components/noA-arears';
-import FeeTable from '@/app/(public)/oplaty/_components/FeeTable';
-import FeesTypesTable from '@/app/(public)/oplaty/_components/fees-types-table';
+import FeeTable from '@/app/(garden-info)/oplaty/_components/FeeTable';
+import FeesTypesTable from '@/app/(garden-info)/oplaty/_components/fees-types-table';
 
 export const metadata = buildMetadata(ROUTES.FEES);
 

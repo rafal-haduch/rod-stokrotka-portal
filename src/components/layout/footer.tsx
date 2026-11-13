@@ -9,7 +9,7 @@ import { ROUTES } from '@/shared/config/routes';
 import { SeasonalThemesToggle } from '@/features/theme/ui/seasonal-themes-toggle';
 import { SeasonalThemeSelector } from '@/features/theme/ui/seasonal-theme-selector';
 
-export function Footer() {
+export default function Footer() {
     const startYear = 2025;
     const [yearDisplay, setYearDisplay] = useState(`${startYear}`);
 

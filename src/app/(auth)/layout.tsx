@@ -1,16 +1,9 @@
+import type { ReactNode } from 'react';
+
 import { requireSession } from '@/shared/auth/guards';
 
-import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
-
-export default async function LoggedLayout({ children }: { children: React.ReactNode }) {
+export default async function LoggedLayout({ children }: { children: ReactNode }) {
     await requireSession();
 
-    return (
-        <>
-            <Navbar />
-            {children}
-            <Footer />
-        </>
-    );
+    return <>{children}</>;
 }
