@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 import { LogIn, User } from 'lucide-react';
 
 import { cn } from '@/shared/utils/cn';
-import { MAIN_NAV_ITEMS, ROUTES } from '@/config/routes';
+import { PUBLIC_NAV_ITEMS, ROUTES } from '@/config/routes';
 
 export default function Navbar() {
     const { status } = useSession();
@@ -74,7 +74,7 @@ export default function Navbar() {
                 className="font-nav hidden text-lg font-bold xl:flex"
             >
                 <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3">
-                    {MAIN_NAV_ITEMS.map((item) => (
+                    {PUBLIC_NAV_ITEMS.map((item) => (
                         <li
                             key={item.path}
                             className={cn(
@@ -91,11 +91,11 @@ export default function Navbar() {
             {/* Sign In / My Profile */}
             {isLoggedIn ? (
                 <Link
-                    href={ROUTES.MY_PROFILE.path}
+                    href={ROUTES.MY_ACCOUNT.path}
                     className="hidden cursor-pointer flex-col items-center text-white hover:underline xl:flex"
                 >
                     <User size={42} />
-                    <p className="text-lg font-bold whitespace-nowrap">{ROUTES.MY_PROFILE.label}</p>
+                    <p className="text-lg font-bold whitespace-nowrap">{ROUTES.MY_ACCOUNT.label}</p>
                 </Link>
             ) : (
                 <Link
@@ -156,7 +156,7 @@ export default function Navbar() {
                         )}
                     >
                         <ul className="mx-auto h-full space-y-4 overflow-x-auto overflow-y-auto pb-8 whitespace-nowrap">
-                            {MAIN_NAV_ITEMS.map((item, i) => (
+                            {PUBLIC_NAV_ITEMS.map((item, i) => (
                                 <li
                                     key={item.path}
                                     className={cn(
@@ -174,7 +174,7 @@ export default function Navbar() {
                             <li>
                                 {isLoggedIn ? (
                                     <Link
-                                        href={ROUTES.MY_PROFILE.path}
+                                        href={ROUTES.MY_ACCOUNT.path}
                                         onClick={() => setIsOpen(false)}
                                         className={cn(
                                             'flex items-center justify-center space-x-2',
@@ -184,7 +184,7 @@ export default function Navbar() {
                                     >
                                         <User size={42} />
                                         <span className="text-xl font-bold">
-                                            {ROUTES.MY_PROFILE.label}
+                                            {ROUTES.MY_ACCOUNT.label}
                                         </span>
                                     </Link>
                                 ) : (

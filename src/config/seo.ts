@@ -1,7 +1,7 @@
-import { PageKey, ROUTES } from '@/config/routes';
+import { RouteNames, ROUTES } from '@/config/routes';
 import { Metadata } from 'next';
 
-type SeoPageKey = Exclude<PageKey, 'HOME'>;
+type SeoPageKey = Exclude<RouteNames, 'HOME'>;
 
 export const SEO = {
     ABOUT_US: {
@@ -102,18 +102,17 @@ export const SEO = {
             canonical: ROUTES.LOGIN.path,
         },
     },
-    MY_PROFILE: { robots: { index: false, follow: false } },
+    MY_ACCOUNT: { robots: { index: false, follow: false } },
     MY_PLOTS: { robots: { index: false, follow: false } },
     MY_PAYMENTS: { robots: { index: false, follow: false } },
     MY_SURVEYS: { robots: { index: false, follow: false } },
     CHANGE_PASSWORD: { robots: { index: false, follow: false } },
-    CMS: { robots: { index: false, follow: false } },
-    DASHBOARD: { robots: { index: false, follow: false } },
-    CMS_USERS: { robots: { index: false, follow: false } },
-    CMS_PLOTS: { robots: { index: false, follow: false } },
-    CMS_FEES: { robots: { index: false, follow: false } },
-    CMS_PAYMENTS: { robots: { index: false, follow: false } },
-    CMS_ANNOUNCEMENTS: { robots: { index: false, follow: false } },
-    CMS_DOCUMENTS: { robots: { index: false, follow: false } },
-    CMS_SURVEYS: { robots: { index: false, follow: false } },
+    PANEL: { robots: { index: false, follow: false } },
+    PANEL_USERS: { robots: { index: false, follow: false } },
+    PANEL_PLOTS: { robots: { index: false, follow: false } },
+    PANEL_FEES: { robots: { index: false, follow: false } },
+    PANEL_PAYMENTS: { robots: { index: false, follow: false } },
+    PANEL_ANNOUNCEMENTS: { robots: { index: false, follow: false } },
+    PANEL_DOCUMENTS: { robots: { index: false, follow: false } },
+    PANEL_SURVEYS: { robots: { index: false, follow: false } },
 } satisfies Record<SeoPageKey, Metadata>;

@@ -36,6 +36,6 @@ export async function requireSession(): Promise<UserSession> {
  */
 export function requireAdminOrBoardRole(role: UserRole) {
     if (!isAdminOrBoard(role)) {
-        redirect(ROUTES.MY_PROFILE.path);
+        redirect(ROUTES.MY_ACCOUNT.path);
     }
 }

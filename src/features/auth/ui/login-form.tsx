@@ -26,7 +26,7 @@ export default function LoginForm() {
             else setMessage('Błąd logowania!');
         } else if (loginResult?.ok) {
             setMessage('');
-            window.location.href = ROUTES.MY_PROFILE.path;
+            window.location.href = ROUTES.MY_ACCOUNT.path;
         }
     };
 

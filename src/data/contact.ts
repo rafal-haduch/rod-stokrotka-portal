@@ -2,7 +2,7 @@ import { COMPANY_NAME } from '@/data/site-and-company';
 
 // --- Phone ---
 
-const PHONE_NUMBER = '123 123 123' as const;
+const PHONE_NUMBER = '123 123 123';
 
 export const PHONE = {
     number: PHONE_NUMBER,
@@ -11,7 +11,7 @@ export const PHONE = {
 
 // --- Email ---
 
-export const EMAIL = 'EMAIL@DOMENA.PL' as const;
+export const EMAIL = 'EMAIL@DOMENA.PL';
 
 // --- Address ---
 
@@ -21,7 +21,7 @@ export const ADDRESS = {
     postalCode: '12-345',
 } as const;
 
-const FULL_ADDRESS = `${ADDRESS.street}, ${ADDRESS.postalCode} ${ADDRESS.town}`;
+const FULL_ADDRESS = `${ADDRESS.street}, ${ADDRESS.postalCode} ${ADDRESS.town}` as const;
 
 // --- Contact Links ---
 

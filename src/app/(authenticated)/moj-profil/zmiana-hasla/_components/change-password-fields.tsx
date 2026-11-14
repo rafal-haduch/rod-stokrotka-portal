@@ -54,7 +54,7 @@ export default function UpdateUserFields({ loading, errorMsg }: Props) {
             {/* Buttons */}
             <div className="col-span-4 flex justify-center gap-14">
                 <Link
-                    href={ROUTES.MY_PROFILE.path}
+                    href={ROUTES.MY_ACCOUNT.path}
                     title="Anuluj zmianę hasla"
                     className="btn btn-sm btn-theme"
                 >

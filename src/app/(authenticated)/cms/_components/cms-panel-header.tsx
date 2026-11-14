@@ -1,16 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft, CircleUserRound, LayoutDashboard, X } from 'lucide-react';
+import { ArrowLeft, CircleUserRound, X } from 'lucide-react';
 
-import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/config/routes';
+import { PANEL_NAV_ITEMS, ROUTES } from '@/config/routes';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/shared/utils/cn';
 import { useEffect, useState } from 'react';
 import { CustomButton } from '@/components/custom-button';
-
-const routes = ROUTE_LIST as AppRouteBase[];
-const navItems = routes.filter((r) => r.cmsNav).sort((a, b) => a.cmsNav!.order - b.cmsNav!.order);
 
 export function CMSPanelHeader() {
     const path = usePathname();
@@ -62,7 +59,7 @@ export function CMSPanelHeader() {
             </div>
 
             <CustomButton
-                href={ROUTES.MY_PROFILE.path}
+                href={ROUTES.MY_ACCOUNT.path}
                 size="md"
                 variant="primary"
                 className="mx-auto my-4"
@@ -75,7 +72,7 @@ export function CMSPanelHeader() {
             {/* Desktop menu */}
             <nav aria-label="Nawigacja panelu do zarządzania" className="hidden sm:flex">
                 <ul className="font-nav flex flex-wrap justify-center gap-x-6 gap-y-3 font-semibold">
-                    {navItems.map((item) => (
+                    {PANEL_NAV_ITEMS.map((item) => (
                         <li
                             key={item.path}
                             className={cn(
@@ -85,7 +82,7 @@ export function CMSPanelHeader() {
                                     : ''
                             )}
                         >
-                            <Link href={item.path}>{item.cmsNav?.label}</Link>
+                            <Link href={item.path}>{item.label}</Link>
                         </li>
                     ))}
                 </ul>
@@ -124,7 +121,7 @@ export function CMSPanelHeader() {
                         </button>
 
                         <ul className="font-nav mx-auto items-center justify-center space-y-6 gap-x-6 text-center font-semibold">
-                            {navItems.map((item) => (
+                            {PANEL_NAV_ITEMS.map((item) => (
                                 <li
                                     key={item.path}
                                     className={cn(
@@ -134,7 +131,7 @@ export function CMSPanelHeader() {
                                             : ''
                                     )}
                                 >
-                                    <Link href={item.path}>{item.cmsNav?.label}</Link>
+                                    <Link href={item.path}>{item.label}</Link>
                                 </li>
                             ))}
                         </ul>

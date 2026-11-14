@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 import { requireAdminOrBoardRole, requireSession } from '@/shared/auth/guards';
 
-import { CMSPanelHeader } from '@/app/(auth)/cms/_components/cms-panel-header';
+import { CMSPanelHeader } from '@/app/(authenticated)/cms/_components/cms-panel-header';
 
 export const metadata: Metadata = {
     title: 'Panel zarządzania',

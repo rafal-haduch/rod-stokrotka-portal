@@ -1,5 +1,5 @@
 /**
- * Navigation item links.
+ * Navigation menu links.
  */
 interface NavItem {
     /** Sort order in navigation (ascending). */
@@ -10,100 +10,100 @@ interface NavItem {
  * Application route definition.
  */
 interface AppRoute {
+    /** URL path for the route. */
     path: string;
     /** Display text in navigation menu or link buttons. */
     label: string;
 
     parent?: string; //TODO: change to key of const ROUTES
 
-    mainNav?: NavItem;
-    authNav?: NavItem;
-    cmsNav?: NavItem;
+    publicNav?: NavItem;
+    accountNav?: NavItem;
+    panelNav?: NavItem;
 }
 
-/**
- * Route with required navigation metadata.
- * Used for type-safe filtering of navigable routes.
- */
-interface MainNavRoute extends AppRoute {
-    mainNav: NavItem;
+/** Route included in the public menu. */
+interface PublicNavRoute extends AppRoute {
+    publicNav: NavItem;
 }
 
-interface AuthNavRoute extends AppRoute {
-    authNav: NavItem;
+/** Route included in the account menu. */
+interface AccountNavRoute extends AppRoute {
+    accountNav: NavItem;
 }
 
-interface CMSNavRoute extends AppRoute {
-    cmsNav: NavItem;
+/** Route included in the panel menu. */
+interface PanelNavRoute extends AppRoute {
+    panelNav: NavItem;
 }
 
-// Routes
+/** Central routing configuration for the application. */
 export const ROUTES = {
     // --- Public ---
     HOME: {
         path: '/',
         label: 'Strona główna',
-        mainNav: { order: 1 },
+        publicNav: { order: 1 },
     },
     ABOUT_US: {
         path: '/o-nas',
         label: 'O nas',
-        mainNav: { order: 2 },
+        publicNav: { order: 2 },
     },
     GARDEN_MAP: {
         path: '/mapa-ogrodu',
         label: 'Mapa',
-        mainNav: { order: 3 },
+        publicNav: { order: 3 },
     },
     GALLERY: {
         path: '/galeria',
         label: 'Galeria',
-        mainNav: { order: 4 },
+        publicNav: { order: 4 },
     },
     CONTACT: {
         path: '/kontakt',
         label: 'Kontakt',
-        mainNav: { order: 5 },
+        publicNav: { order: 5 },
     },
     GARDENING_GUIDE: {
         path: '/porady-ogrodowe',
         label: 'Porady ogrodowe',
-        mainNav: { order: 6 },
+        publicNav: { order: 6 },
     },
     GOVERNANCE: {
         path: '/wladze',
         label: 'Władze',
-        mainNav: { order: 7 },
+        publicNav: { order: 7 },
     },
     DOCUMENTS: {
         path: '/dokumenty',
         label: 'Dokumenty',
-        mainNav: { order: 8 },
+        publicNav: { order: 8 },
     },
     FEES: {
         path: '/oplaty',
         label: 'Opłaty',
-        mainNav: { order: 9 },
+        publicNav: { order: 9 },
     },
     INFORMATIONS: {
         path: '/informacje',
         label: 'Informacje',
-        mainNav: { order: 10 },
+        publicNav: { order: 10 },
     },
     ANNOUNCEMENTS: {
         path: '/ogloszenia',
         label: 'Ogłoszenia',
-        mainNav: { order: 11 },
+        publicNav: { order: 11 },
     },
     MEMORIES: {
         path: '/wspomnienia',
         label: 'Wspomnienia',
-        mainNav: { order: 12 },
+        publicNav: { order: 12 },
     },
     INVESTMENTS: {
         path: '/inwestycje',
         label: 'Inwestycje',
-        mainNav: { order: 13 },
+        publicNav: { order: 13 },
     },
     PRIVACY_POLICY: {
         path: '/polityka-prywatnosci',
@@ -113,121 +113,105 @@ export const ROUTES = {
         path: '/logowanie',
         label: 'Logowanie',
     },
-    // --- Auth ---
-    MY_PROFILE: {
-        path: '/moj-profil',
+    // --- Account ---
+    MY_ACCOUNT: {
+        path: '/moje-konto',
         label: 'Profil',
-        authNav: { order: 1 },
+        accountNav: { order: 1 },
     },
     MY_PLOTS: {
-        path: '/moj-profil/dzialki',
+        path: '/moje-konto/dzialki',
         label: 'Działki',
-        authNav: { order: 2 },
-        parent: 'MY_PROFILE',
+        accountNav: { order: 2 },
+        parent: 'MY_ACCOUNT',
     },
     MY_PAYMENTS: {
-        path: '/moj-profil/platnosci',
+        path: '/moje-konto/platnosci',
         label: 'Płatności',
-        authNav: { order: 3 },
-        parent: 'MY_PROFILE',
+        accountNav: { order: 3 },
+        parent: 'MY_ACCOUNT',
     },
     MY_SURVEYS: {
-        path: '/moj-profil/ankiety',
+        path: '/moje-konto/ankiety',
         label: 'Ankiety',
-        authNav: { order: 4 },
-        parent: 'MY_PROFILE',
+        accountNav: { order: 4 },
+        parent: 'MY_ACCOUNT',
     },
     CHANGE_PASSWORD: {
-        path: '/moj-profil/zmiana-hasla',
+        path: '/moje-konto/zmiana-hasla',
         label: 'Zmień hasło',
-        parent: 'MY_PROFILE',
+        parent: 'MY_ACCOUNT',
     },
-    // --- CMS ---
-    CMS: {
-        path: '/cms',
+    // --- Panel ---
+    PANEL: {
+        path: '/panel',
         label: 'Panel zarządzania',
     },
-    DASHBOARD: {
-        path: '/cms/dashboard',
-        label: 'Panel zarządzania',
-        parent: 'CMS',
+    PANEL_USERS: {
+        path: '/panel/czlonkowie',
+        label: 'Działkowcy',
+        panelNav: { order: 1 },
+        parent: 'PANEL',
     },
-    CMS_USERS: {
-        path: '/cms/users',
-        label: 'Tabela działkowców',
-        cmsNav: { order: 1 },
-        parent: 'CMS',
+    PANEL_PLOTS: {
+        path: '/panel/dzialki',
+        label: 'Działki',
+        panelNav: { order: 2 },
+        parent: 'PANEL',
     },
-    CMS_PLOTS: {
-        path: '/cms/plots',
-        label: 'Tabela działek',
-        cmsNav: { order: 2 },
-        parent: 'CMS',
+    PANEL_FEES: {
+        path: '/panel/oplaty',
+        label: 'Opłaty',
+        panelNav: { order: 3 },
+        parent: 'PANEL',
     },
-    CMS_FEES: {
-        path: '/cms/fees',
-        label: 'Tabela opłat',
-        cmsNav: { order: 3 },
-        parent: 'CMS',
+    PANEL_PAYMENTS: {
+        path: '/panel/platnosci',
+        label: 'Płatności',
+        panelNav: { order: 4 },
+        parent: 'PANEL',
     },
-    CMS_PAYMENTS: {
-        path: '/cms/payments',
-        label: 'Tabela płatności',
-        cmsNav: { order: 4 },
-        parent: 'CMS',
-    },
-    CMS_ANNOUNCEMENTS: {
-        path: '/cms/announcements',
+    PANEL_ANNOUNCEMENTS: {
+        path: '/panel/ogloszenia',
         label: 'Ogłoszenia',
-        cmsNav: { order: 5 },
-        parent: 'CMS',
+        panelNav: { order: 5 },
+        parent: 'PANEL',
     },
-    CMS_DOCUMENTS: {
-        path: '/cms/documents',
+    PANEL_DOCUMENTS: {
+        path: '/panel/dokumenty',
         label: 'Dokumenty',
-        cmsNav: { order: 6 },
-        parent: 'CMS',
+        panelNav: { order: 6 },
+        parent: 'PANEL',
     },
-    CMS_SURVEYS: {
-        path: '/cms/surveys',
+    PANEL_SURVEYS: {
+        path: '/panel/ankiety',
         label: 'Ankiety',
-        cmsNav: { order: 7 },
-        parent: 'CMS',
+        panelNav: { order: 7 },
+        parent: 'PANEL',
     },
 } as const satisfies Record<string, AppRoute>;
 
 /**
  * Union type of all route keys.
- * Use in: Type-safe route references, SEO metadata mapping with `Record<PageKey, Metadata>`.
  */
-export type PageKey = keyof typeof ROUTES;
+export type RouteNames = keyof typeof ROUTES;
 
 /**
- * Flat list of all routes.
- * Use in: SEO metadata mapping, loop-based metadata generation.
+ * List of all routes.
  */
-export const ROUTE_LIST: AppRoute[] = Object.values(ROUTES);
+const ROUTE_LIST: AppRoute[] = Object.values(ROUTES);
 
-/**
- * Routes from the site's main navigation menu.
- * For use in the main navigation components.
- */
-export const MAIN_NAV_ITEMS: MainNavRoute[] = ROUTE_LIST.filter(
-    (r): r is MainNavRoute => r.mainNav != null
-).sort((a, b) => a.mainNav.order - b.mainNav.order);
+/** Items for the public navigation menu. */
+export const PUBLIC_NAV_ITEMS: PublicNavRoute[] = ROUTE_LIST.filter(
+    (r): r is PublicNavRoute => r.publicNav != null
+).sort((a, b) => a.publicNav.order - b.publicNav.order);
 
-/**
- * Routes from the navigation menu in auth section.
- * For use in the auth navigation.
- */
-export const AUTH_NAV_ITEMS: AuthNavRoute[] = ROUTE_LIST.filter(
-    (r): r is AuthNavRoute => r.authNav != null
-).sort((a, b) => a.authNav.order - b.authNav.order);
+/** Items for the account navigation menu. */
+export const ACCOUNT_NAV_ITEMS: AccountNavRoute[] = ROUTE_LIST.filter(
+    (r): r is AccountNavRoute => r.accountNav != null
+).sort((a, b) => a.accountNav.order - b.accountNav.order);
 
-/**
- * Routes from the navigation menu in CMS.
- * For use in the CMS navigation.
- */
-export const CMS_NAV_ITEMS: CMSNavRoute[] = ROUTE_LIST.filter(
-    (r): r is CMSNavRoute => r.cmsNav != null
-).sort((a, b) => a.cmsNav.order - b.cmsNav.order);
+/** Items for the panel navigation menu. */
+export const PANEL_NAV_ITEMS: PanelNavRoute[] = ROUTE_LIST.filter(
+    (r): r is PanelNavRoute => r.panelNav != null
+).sort((a, b) => a.panelNav.order - b.panelNav.order);

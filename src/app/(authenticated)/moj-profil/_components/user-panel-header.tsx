@@ -6,15 +6,10 @@ import { signOut, useSession } from 'next-auth/react';
 import { CircleUserRound, LayoutDashboard, LogOut } from 'lucide-react';
 
 import { cn } from '@/shared/utils/cn';
-import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/config/routes';
+import { ACCOUNT_NAV_ITEMS, ROUTES } from '@/config/routes';
 import { isAdminOrBoard } from '@/shared/auth/is-admin-or-board';
 
 import { CustomButton } from '@/components/custom-button';
-
-const routes = ROUTE_LIST as AppRouteBase[];
-const navItems = routes
-    .filter((r) => r.profileNav)
-    .sort((a, b) => a.profileNav!.order - b.profileNav!.order);
 
 export default function UserPanelHeader() {
     const pathname = usePathname();
@@ -77,7 +72,7 @@ export default function UserPanelHeader() {
             {/* Second row */}
             <nav aria-label="Nawigacja panelu działkowca" className="font-nav py-0 sm:py-2 md:py-4">
                 <ul className="flex flex-wrap justify-around gap-4 text-base font-semibold whitespace-nowrap sm:text-lg">
-                    {navItems.map((item) => (
+                    {ACCOUNT_NAV_ITEMS.map((item) => (
                         <li
                             key={item.path}
                             className={cn(
@@ -87,7 +82,7 @@ export default function UserPanelHeader() {
                                     : ''
                             )}
                         >
-                            <Link href={item.path}>{item.profileNav?.label}</Link>
+                            <Link href={item.path}>{item.label}</Link>
                         </li>
                     ))}
                 </ul>
