@@ -1,6 +1,6 @@
 import { buildMetadata } from '@/shared/utils/build-metadata';
 import ChangePasswordForm from './_components/change-password-form';
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/config/routes';
 
 export const metadata = buildMetadata(ROUTES.CHANGE_PASSWORD);
 

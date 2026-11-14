@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { UserRole } from '@prisma/client';
 
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/config/routes';
 import { getUserSession } from '@/shared/lib/next-auth/get-user-session';
 import { isAdminOrBoard } from '@/shared/auth/is-admin-or-board';
 

@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/config/routes';
 
 import { PhotoWithTitle } from '@/shared/models/photo';
 

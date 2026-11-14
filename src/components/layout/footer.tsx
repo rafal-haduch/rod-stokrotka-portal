@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import { cn } from '@/shared/utils/cn';
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/config/routes';
 
 import { SeasonalThemesToggle } from '@/features/theme/ui/seasonal-themes-toggle';
 import { SeasonalThemeSelector } from '@/features/theme/ui/seasonal-theme-selector';

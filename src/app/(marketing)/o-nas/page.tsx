@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/config/routes';
 
 import { buildMetadata } from '@/shared/utils/build-metadata';
 

@@ -1,6 +1,6 @@
 import { buildMetadata } from '@/shared/utils/build-metadata';
 
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/config/routes';
 
 import { NotFoundContent } from '@/components/not-found-content';
 

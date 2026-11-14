@@ -619,11 +619,11 @@
     }
 
     body {
-        @apply font-body bg-theme-background-body text-theme-foreground-content;
+        @apply font-body bg-theme-background-body text-theme-foreground-content antialiased;
     }
 
     main {
-        @apply bg-theme-background-main mx-auto min-h-screen max-w-7xl py-8;
+        @apply bg-theme-background-main;
     }
 
     h1,

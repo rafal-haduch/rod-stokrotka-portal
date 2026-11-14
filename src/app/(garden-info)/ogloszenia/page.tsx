@@ -1,4 +1,4 @@
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/config/routes';
 
 import { buildMetadata } from '@/shared/utils/build-metadata';
 

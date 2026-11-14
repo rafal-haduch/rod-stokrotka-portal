@@ -6,7 +6,7 @@ import { signOut, useSession } from 'next-auth/react';
 import { CircleUserRound, LayoutDashboard, LogOut } from 'lucide-react';
 
 import { cn } from '@/shared/utils/cn';
-import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/shared/config/routes';
+import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/config/routes';
 import { isAdminOrBoard } from '@/shared/auth/is-admin-or-board';
 
 import { CustomButton } from '@/components/custom-button';

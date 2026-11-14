@@ -7,14 +7,8 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { LogIn, User } from 'lucide-react';
 
-import { AppRouteBase, ROUTE_LIST, ROUTES } from '@/shared/config/routes';
-
 import { cn } from '@/shared/utils/cn';
-
-const routes = ROUTE_LIST as AppRouteBase[];
-const navItems = routes
-    .filter((r) => r.mainNav)
-    .sort((a, b) => a.mainNav!.order - b.mainNav!.order);
+import { MAIN_NAV_ITEMS, ROUTES } from '@/config/routes';
 
 export default function Navbar() {
     const { status } = useSession();
@@ -80,7 +74,7 @@ export default function Navbar() {
                 className="font-nav hidden text-lg font-bold xl:flex"
             >
                 <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3">
-                    {navItems.map((item) => (
+                    {MAIN_NAV_ITEMS.map((item) => (
                         <li
                             key={item.path}
                             className={cn(
@@ -88,7 +82,7 @@ export default function Navbar() {
                                 pathname === item.path ? 'text-theme-on-ui-bar-hover underline' : ''
                             )}
                         >
-                            <Link href={item.path}>{item.mainNav?.label}</Link>
+                            <Link href={item.path}>{item.label}</Link>
                         </li>
                     ))}
                 </ul>
@@ -101,7 +95,7 @@ export default function Navbar() {
                     className="hidden cursor-pointer flex-col items-center text-white hover:underline xl:flex"
                 >
                     <User size={42} />
-                    <p className="text-lg font-bold whitespace-nowrap">MÓJ PROFIL</p>
+                    <p className="text-lg font-bold whitespace-nowrap">{ROUTES.MY_PROFILE.label}</p>
                 </Link>
             ) : (
                 <Link
@@ -109,7 +103,7 @@ export default function Navbar() {
                     className="hidden cursor-pointer flex-col items-center text-white hover:underline xl:flex"
                 >
                     <LogIn size={42} />
-                    <p className="text-xl font-bold">LOGOWANIE</p>
+                    <p className="text-xl font-bold">{ROUTES.LOGIN.label}</p>
                 </Link>
             )}
 
@@ -162,7 +156,7 @@ export default function Navbar() {
                         )}
                     >
                         <ul className="mx-auto h-full space-y-4 overflow-x-auto overflow-y-auto pb-8 whitespace-nowrap">
-                            {navItems.map((item, i) => (
+                            {MAIN_NAV_ITEMS.map((item, i) => (
                                 <li
                                     key={item.path}
                                     className={cn(
@@ -171,7 +165,7 @@ export default function Navbar() {
                                     )}
                                 >
                                     <Link href={item.path} onClick={() => setIsOpen(false)}>
-                                        {item.mainNav?.label}
+                                        {item.label}
                                     </Link>
                                 </li>
                             ))}
@@ -189,7 +183,9 @@ export default function Navbar() {
                                         )}
                                     >
                                         <User size={42} />
-                                        <span className="text-xl font-bold">MÓJ PROFIL</span>
+                                        <span className="text-xl font-bold">
+                                            {ROUTES.MY_PROFILE.label}
+                                        </span>
                                     </Link>
                                 ) : (
                                     <Link
@@ -202,7 +198,9 @@ export default function Navbar() {
                                         )}
                                     >
                                         <LogIn size={42} />
-                                        <span className="text-xl font-bold">LOGOWANIE</span>
+                                        <span className="text-xl font-bold">
+                                            {ROUTES.LOGIN.label}
+                                        </span>
                                     </Link>
                                 )}
                             </li>

@@ -1,6 +1,6 @@
 import { buildMetadata } from '@/shared/utils/build-metadata';
 
-import { ROUTES } from '@/shared/config/routes';
+import { ROUTES } from '@/config/routes';
 
 import { ImageSeparator } from '@/components/image-separator';
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
