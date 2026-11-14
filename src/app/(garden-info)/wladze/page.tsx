@@ -1,6 +1,4 @@
-import { ROUTES } from '@/config/routes';
-
-import { buildMetadata } from '@/shared/utils/build-metadata';
+import { SEO } from '@/config/seo';
 
 import {
     governanceAssociationStructureAsOf,
@@ -14,7 +12,7 @@ import { LineSeparator } from '@/components/line-separator';
 
 import { GovernanceSection } from './_components/governance-section';
 
-export const metadata = buildMetadata(ROUTES.GOVERNANCE);
+export const metadata = SEO.GOVERNANCE;
 
 export default function GovernanceAssociation() {
     return (

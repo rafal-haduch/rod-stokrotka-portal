@@ -3,10 +3,13 @@ import Link from 'next/link';
 import { KeyRound } from 'lucide-react';
 
 import { ROUTES } from '@/config/routes';
+import { SEO } from '@/config/seo';
 
 import { requireSession } from '@/shared/auth/guards';
 import { getUserRoleLabel } from '@/features/user/domain/user-helpers';
 import { getUserProfile } from '@/features/user/domain/queries/get-user-profile-query';
+
+export const metadata = SEO.MY_PROFILE;
 
 export default async function MyProfilePage() {
     const session = await requireSession();

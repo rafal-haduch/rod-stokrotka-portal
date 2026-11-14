@@ -1,6 +1,4 @@
-import { ROUTES } from '@/config/routes';
-
-import { buildMetadata } from '@/shared/utils/build-metadata';
+import { SEO } from '@/config/seo';
 
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
@@ -9,7 +7,7 @@ import ImageLightbox from './_components/image-lightbox';
 import { Download } from 'lucide-react';
 import { CustomButton } from '@/components/custom-button';
 
-export const metadata = buildMetadata(ROUTES.GARDEN_MAP);
+export const metadata = SEO.GARDEN_MAP;
 
 export default function GardenMapPage() {
     return (

@@ -1,6 +1,4 @@
-import { ROUTES } from '@/config/routes';
-
-import { buildMetadata } from '@/shared/utils/build-metadata';
+import { SEO } from '@/config/seo';
 
 import { recommendedSites } from '@/content/data/recommended-sites';
 
@@ -9,7 +7,7 @@ import { LineSeparator } from '@/components/line-separator';
 import { WorkInProgress } from '@/components/work-in-progress';
 import { AnimateOnView } from '@/components/animated-h2';
 
-export const metadata = buildMetadata(ROUTES.GARDENING_GUIDE);
+export const metadata = SEO.GARDENING_GUIDE;
 
 export default function GardeningGuidePage() {
     return (

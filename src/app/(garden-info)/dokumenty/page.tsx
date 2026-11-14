@@ -1,6 +1,4 @@
-import { ROUTES } from '@/config/routes';
-
-import { buildMetadata } from '@/shared/utils/build-metadata';
+import { SEO } from '@/config/seo';
 
 import { importantDocuments, minutesAndReports, templatesAndForms } from '@/content/data/documents';
 
@@ -10,12 +8,9 @@ import { LineSeparator } from '@/components/line-separator';
 
 import ListOfDocuments from './_components/list-of-documents';
 
-export const metadata = buildMetadata(ROUTES.DOCUMENTS);
+export const metadata = SEO.DOCUMENTS;
 
 export default function DocumentsPage() {
-    {
-        /* REVIEW: add arialabelledby in section?*/
-    }
     return (
         <article>
             <h1>Dokumenty</h1>

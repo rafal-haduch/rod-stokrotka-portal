@@ -1,9 +1,7 @@
-import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 import { ROUTES } from '@/config/routes';
-
-import { buildMetadata } from '@/shared/utils/build-metadata';
+import { SEO } from '@/config/seo';
 
 import { GoogleMaps } from '@/components/google-maps';
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
@@ -15,7 +13,7 @@ import GalleryPreview from './_components/gallery-preview';
 import DescriptionSection from './_components/description-section';
 import { CustomButton } from '@/components/custom-button';
 
-export const metadata = buildMetadata(ROUTES.ABOUT_US);
+export const metadata = SEO.ABOUT_US;
 
 export default function AboutUsPage() {
     return (

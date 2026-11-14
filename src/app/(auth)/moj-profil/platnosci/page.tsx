@@ -1,9 +1,8 @@
-import { prisma } from '@/shared/lib/prisma';
-import { getUserSession } from '@/shared/lib/next-auth/get-user-session';
-import { buildMetadata } from '@/shared/utils/build-metadata';
-import { ROUTES } from '@/config/routes';
+import { SEO } from '@/config/seo';
 
-export const metadata = buildMetadata(ROUTES.MY_PAYMENTS);
+import { getUserSession } from '@/shared/lib/next-auth/get-user-session';
+
+export const metadata = SEO.MY_PAYMENTS;
 
 export default async function PaymentsUserPage() {
     const user = await getUserSession();

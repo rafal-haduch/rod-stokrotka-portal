@@ -1,8 +1,8 @@
-import { buildMetadata } from '@/shared/utils/build-metadata';
-import ChangePasswordForm from './_components/change-password-form';
-import { ROUTES } from '@/config/routes';
+import { SEO } from '@/config/seo';
 
-export const metadata = buildMetadata(ROUTES.CHANGE_PASSWORD);
+import ChangePasswordForm from './_components/change-password-form';
+
+export const metadata = SEO.CHANGE_PASSWORD;
 
 export default function ChangePasswordPage() {
     return (

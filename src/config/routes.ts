@@ -105,15 +105,15 @@ export const ROUTES = {
         label: 'Inwestycje',
         mainNav: { order: 13 },
     },
-    LOGIN: {
-        path: '/logowanie',
-        label: 'Logowanie',
-    },
     PRIVACY_POLICY: {
         path: '/polityka-prywatnosci',
         label: 'Polityka prywatności',
     },
-    // --- AUTH ---
+    LOGIN: {
+        path: '/logowanie',
+        label: 'Logowanie',
+    },
+    // --- Auth ---
     MY_PROFILE: {
         path: '/moj-profil',
         label: 'Profil',
@@ -194,7 +194,7 @@ export const ROUTES = {
         cmsNav: { order: 7 },
         parent: 'CMS',
     },
-} satisfies Record<string, AppRoute>;
+} as const satisfies Record<string, AppRoute>;
 
 /**
  * Union type of all route keys.

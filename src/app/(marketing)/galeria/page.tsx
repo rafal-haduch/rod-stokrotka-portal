@@ -1,17 +1,15 @@
 import path from 'path';
 import fs from 'fs';
 
-import { ROUTES } from '@/config/routes';
+import { SEO } from '@/config/seo';
 
 import { PhotoWithTitle } from '@/shared/models/photo';
-
-import { buildMetadata } from '@/shared/utils/build-metadata';
 
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
 import { PhotoGallery } from '@/components/photo-gallery';
 
-export const metadata = buildMetadata(ROUTES.GALLERY);
+export const metadata = SEO.GALLERY;
 
 export default function GalleryPage() {
     const filePath = path.join(process.cwd(), 'src/content/data/gallery.json');

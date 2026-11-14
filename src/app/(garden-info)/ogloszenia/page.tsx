@@ -1,12 +1,10 @@
-import { ROUTES } from '@/config/routes';
-
-import { buildMetadata } from '@/shared/utils/build-metadata';
+import { SEO } from '@/config/seo';
 
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { WorkInProgress } from '@/components/work-in-progress';
 import { AnimateOnView } from '@/components/animated-h2';
 
-export const metadata = buildMetadata(ROUTES.ANNOUNCEMENTS);
+export const metadata = SEO.ANNOUNCEMENTS;
 
 export default function AnnouncementsPage() {
     return (

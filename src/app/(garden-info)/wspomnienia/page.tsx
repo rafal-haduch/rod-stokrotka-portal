@@ -1,13 +1,11 @@
-import { ROUTES } from '@/config/routes';
-
-import { buildMetadata } from '@/shared/utils/build-metadata';
+import { SEO } from '@/config/seo';
 
 import { AnimateOnView } from '@/components/animated-h2';
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 
 import MemoriesList from './_components/memories-list';
 
-export const metadata = buildMetadata(ROUTES.MEMORIES);
+export const metadata = SEO.MEMORIES;
 
 export default function MemoriesPage() {
     return (

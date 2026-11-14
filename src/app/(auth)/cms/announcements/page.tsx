@@ -1,3 +1,7 @@
+import { SEO } from '@/config/seo';
+
+export const metadata = SEO.CMS_ANNOUNCEMENTS;
+
 export default async function CMSAnnouncementsPage() {
     return (
         <section>

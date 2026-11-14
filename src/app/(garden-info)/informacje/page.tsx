@@ -1,8 +1,5 @@
-import { buildMetadata } from '@/shared/utils/build-metadata';
+import { SEO } from '@/config/seo';
 
-import { ROUTES } from '@/config/routes';
-
-import { ImageSeparator } from '@/components/image-separator';
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
 import { LineSeparator } from '@/components/line-separator';
@@ -15,13 +12,11 @@ import GeneralMeetingArticle from './_components/general-meeting-article';
 import GardenEntranceArticle from './_components/garden-entrance-article';
 import GardenPhotosArticle from './_components/garden-photos-article';
 
-export const metadata = buildMetadata(ROUTES.INFORMATIONS);
+export const metadata = SEO.INFORMATIONS;
 
 export default function InformationsPage() {
     const my = 'my-10 sm:my-20';
-    {
-        /* REVIEW: change into one bigger header and delete section?*/
-    }
+
     return (
         <>
             <h1>Informacje</h1>

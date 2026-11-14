@@ -1,10 +1,8 @@
-import { buildMetadata } from '@/shared/utils/build-metadata';
-
-import { ROUTES } from '@/config/routes';
+import { SEO } from '@/config/seo';
 
 import { NotFoundContent } from '@/components/not-found-content';
 
-export const metadata = buildMetadata(ROUTES.MY_SURVEYS);
+export const metadata = SEO.MY_SURVEYS;
 
 export default function SurveysUserPage() {
     return (

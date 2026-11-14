@@ -1,12 +1,11 @@
-import { ROUTES } from '@/config/routes';
-
-import { buildMetadata } from '@/shared/utils/build-metadata';
+import { SEO } from '@/config/seo';
 
 import { associationEmail } from '@/content/data/association';
 
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 
-export const metadata = buildMetadata(ROUTES.PRIVACY_POLICY);
+export const metadata = SEO.PRIVACY_POLICY;
+
 export default function PrivacyPolicyPage() {
     return (
         <article>

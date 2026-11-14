@@ -1,13 +1,11 @@
-import { ROUTES } from '@/config/routes';
-
-import { buildMetadata } from '@/shared/utils/build-metadata';
+import { SEO } from '@/config/seo';
 
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
 
 import InvestmentsList from './_components/investments-list';
 
-export const metadata = buildMetadata(ROUTES.INVESTMENTS);
+export const metadata = SEO.INVESTMENTS;
 
 export default function InvestmentsPage() {
     return (

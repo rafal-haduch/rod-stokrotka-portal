@@ -1,5 +1,8 @@
-export const COMPANY_NAME = 'COMPANY_NAME' as const;
+export const COMPANY_NAME = 'Stowarzyszenie Ogrodowe Stokrotka Sanok' as const;
 
-export const SITE_NAME = 'SITE_NAME' as const;
+export const FULL_SITE_NAME = 'Rodzinne Ogrody Działkowe "Stokrotka" w Sanoku' as const;
 
+export const SHORT_SITE_NAME = 'ROD "Stokrotka" Sanok' as const;
+
+//REVIEW
 export const BASE_URL = 'https://www.domain.pl' as const;

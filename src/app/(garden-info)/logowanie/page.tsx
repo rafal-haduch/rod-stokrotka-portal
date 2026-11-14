@@ -1,13 +1,11 @@
-import { ROUTES } from '@/config/routes';
-
-import { buildMetadata } from '@/shared/utils/build-metadata';
+import { SEO } from '@/config/seo';
 
 import { LineSeparator } from '@/components/line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
 
-import LoginForm from '../../../features/auth/ui/login-form';
+import LoginForm from '@/features/auth/ui/login-form';
 
-export const metadata = buildMetadata(ROUTES.LOGIN);
+export const metadata = SEO.LOGIN;
 
 export default function LoginPage() {
     return (

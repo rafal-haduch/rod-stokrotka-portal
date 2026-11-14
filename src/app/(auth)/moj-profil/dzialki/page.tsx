@@ -1,3 +1,7 @@
+import { SEO } from '@/config/seo';
+
+export const metadata = SEO.MY_PLOTS;
+
 export default function PlotsUserPage() {
     return (
         <section>

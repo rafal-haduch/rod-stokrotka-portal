@@ -1,22 +1,16 @@
-import { buildMetadata } from '@/shared/utils/build-metadata';
-
-import { ROUTES } from '@/config/routes';
-
-import { paymentStatusAsOf } from '@/content/data/plot-fees-status';
+import { SEO } from '@/config/seo';
 
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { LineSeparator } from '@/components/line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
 
 import FeesInfoSection from './_components/fees-info-section';
-import FeesTable from './_components/fees-tabel';
-import NoArrears from './_components/noA-arears';
 import FeeTable from '@/app/(garden-info)/oplaty/_components/FeeTable';
 import FeesTypesTable from '@/app/(garden-info)/oplaty/_components/fees-types-table';
 
-export const metadata = buildMetadata(ROUTES.FEES);
+export const metadata = SEO.FEES;
 
-export default function PaymentsPage() {
+export default function FeesPage() {
     return (
         <article>
             <h1>Opłaty</h1>
