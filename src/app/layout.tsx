@@ -3,13 +3,15 @@ import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/next';
 import { Nunito, Fleur_De_Leah, Aboreto, Merriweather } from 'next/font/google';
 
-import { FULL_SITE_NAME, SHORT_SITE_NAME } from '@/data/site-and-company';
+import { BASE_URL, FULL_SITE_NAME, SHORT_SITE_NAME } from '@/data/site';
 
 import AppProvider from '@/app/app-provider';
 
 import AppShell from '@/components/layout/app-shell';
 
 import './globals.css';
+import { ADDRESS, EMAIL } from '@/data/contact';
+import { ASSOCIATION_NAME } from '@/data/association';
 
 const nunito = Nunito({
     weight: ['400', '600', '700'],
@@ -41,7 +43,7 @@ const merriweather = Merriweather({
 });
 
 export const metadata: Metadata = {
-    metadataBase: new URL('https://rod-stokrotka-sanok.vercel.app'),
+    metadataBase: new URL(BASE_URL),
     title: {
         default: FULL_SITE_NAME,
         template: `%s | ${SHORT_SITE_NAME}`,
@@ -53,18 +55,12 @@ export const metadata: Metadata = {
     },
     openGraph: {
         type: 'website',
-        url: 'https://rod-stokrotka-sanok.vercel.app',
+        url: BASE_URL,
         title: FULL_SITE_NAME,
         description:
             'Strona Internetowa Rodzinnych Ogrodów Działkowych "Stokrotka" w Sanoku. Publikujemy tutaj ogłoszenia, informacje organizacyjne i aktualności dotyczące życia naszego ogrodu.',
         siteName: FULL_SITE_NAME,
-        images: [
-            {
-                url: 'https://rod-stokrotka-sanok.vercel.app/og-image.png',
-                width: 1200,
-                height: 630,
-            },
-        ],
+        images: ['/og-image.png'],
         locale: 'pl_PL',
     },
     keywords: [
@@ -90,22 +86,22 @@ const jsonLdOrganization = {
     '@graph': [
         {
             '@type': 'Organization',
-            name: 'Rodzinne Ogrody Działkowe „Stokrotka” w Sanoku',
-            url: 'https://rod-stokrotka-sanok.vercel.app',
-            logo: 'https://rod-stokrotka-sanok.vercel.app/logo.png',
-            email: 'rod.stokrotka.sanok@gmail.com',
+            name: ASSOCIATION_NAME,
+            url: BASE_URL,
+            logo: `${BASE_URL}/logo.png`,
+            email: EMAIL,
             address: {
                 '@type': 'PostalAddress',
-                streetAddress: 'ul. Wolna 12/8',
-                addressLocality: 'Sanok',
-                postalCode: '38-500',
+                streetAddress: ADDRESS.street,
+                addressLocality: ADDRESS.town,
+                postalCode: ADDRESS.postalCode,
                 addressCountry: 'PL',
             },
         },
         {
             '@type': 'WebSite',
-            name: 'Rodzinne Ogrody Działkowe „Stokrotka” w Sanoku',
-            url: 'https://rod-stokrotka-sanok.vercel.app',
+            name: FULL_SITE_NAME,
+            url: BASE_URL,
         },
     ],
 };

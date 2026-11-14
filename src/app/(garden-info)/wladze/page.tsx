@@ -1,11 +1,11 @@
 import { SEO } from '@/config/seo';
 
 import {
-    governanceAssociationStructureAsOf,
+    governanceElectedOn,
     associationBoard,
     auditCommittee,
-    arbitrationCommission,
-} from '@/content/data/association';
+    arbitrationCommittee,
+} from '@/data/governance';
 
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { LineSeparator } from '@/components/line-separator';
@@ -19,19 +19,15 @@ export default function GovernanceAssociation() {
         <article>
             <h1>Władze</h1>
             <MainHeadingLineSeparator />
+            <p className="mb-10 text-center">
+                Wybrano: <time dateTime={governanceElectedOn}>{governanceElectedOn}</time>
+            </p>
 
             <GovernanceSection title="Zarząd" members={associationBoard} />
 
             <GovernanceSection title="Komisja Rewizyjna" members={auditCommittee} />
 
-            <GovernanceSection title="Komisja Rozjemcza" members={arbitrationCommission} />
-
-            <p className="mb-10 text-center">
-                Stan na dzień:{' '}
-                <time dateTime={governanceAssociationStructureAsOf}>
-                    {governanceAssociationStructureAsOf}
-                </time>
-            </p>
+            <GovernanceSection title="Komisja Rozjemcza" members={arbitrationCommittee} />
 
             <LineSeparator my="my-10" />
 

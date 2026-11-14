@@ -1,13 +1,6 @@
-import {
-    associationLegalData,
-    associationEmail,
-    associationPhoneNumber,
-    associationOfficeStreet,
-    associationOfficePostalCode,
-    associationOfficeCity,
-} from '@/content/data/association';
-
 import { AnimateOnView } from '@/components/animated-h2';
+import { associationLegalData } from '@/data/association';
+import { ADDRESS, CONTACT_LINKS, EMAIL, PHONE } from '@/data/contact';
 
 export default function AssociationInfoSection() {
     return (
@@ -48,8 +41,8 @@ export default function AssociationInfoSection() {
                         <dt>Adres siedziby:</dt>
                         <dd>
                             <strong>
-                                {associationOfficeStreet} <br />
-                                {associationOfficePostalCode}, {associationOfficeCity} <br />
+                                {ADDRESS.street} <br />
+                                {ADDRESS.postalCode}, {ADDRESS.town} <br />
                                 Polska
                             </strong>
                         </dd>
@@ -60,12 +53,12 @@ export default function AssociationInfoSection() {
                     <dl>
                         <dt>Numer telefonu:</dt>
                         <dd className="mb-4">
-                            <span className="font-bold">{associationPhoneNumber}</span>
+                            <span className="font-bold">{PHONE.number}</span>
                         </dd>
                         <dt>Adres e-mail:</dt>
                         <dd>
-                            <a href={`mailto:${associationEmail}`} className="font-bold">
-                                {associationEmail}
+                            <a href={CONTACT_LINKS.MAIL} className="font-bold">
+                                {EMAIL}
                             </a>
                         </dd>
                     </dl>

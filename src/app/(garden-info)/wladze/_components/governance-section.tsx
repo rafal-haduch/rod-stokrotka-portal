@@ -1,9 +1,9 @@
 import { AnimateOnView } from '@/components/animated-h2';
-import { GovernanceAssociationStructure } from '@/content/data/association';
+import { BoardPosition, CommitteePosition, GovernanceMember } from '@/data/governance';
 
 interface GovernanceSectionProps {
     title: string;
-    members: GovernanceAssociationStructure[];
+    members: GovernanceMember<BoardPosition | CommitteePosition>[];
 }
 
 export function GovernanceSection({ title, members }: GovernanceSectionProps) {
@@ -16,10 +16,10 @@ export function GovernanceSection({ title, members }: GovernanceSectionProps) {
             <dl className="mb-10 [counter-reset:members]">
                 {members.map((member) => (
                     <div
-                        key={member.person}
+                        key={member.name}
                         className="flex justify-center gap-1 [counter-increment:members] before:mr-1 before:content-[counter(members)'.']"
                     >
-                        <dt>{member.person}</dt> {'-'} <dd>{member.position}</dd>
+                        <dt>{member.name}</dt> {'-'} <dd>{member.position}</dd>
                     </div>
                 ))}
             </dl>
