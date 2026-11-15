@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { Check, X } from 'lucide-react';
-import { plotsFeesStatus } from '@/content/data/plot-fees-status';
+import { annualFeePaymentStatuses } from '@/content/annual-fee-payment-statuses';
 import { cn } from '@/shared/utils/cn';
 
 export default function FeeStatusTable() {
@@ -17,7 +17,7 @@ export default function FeeStatusTable() {
                     </tr>
                 </thead>
                 <tbody>
-                    {plotsFeesStatus.map((item) => (
+                    {annualFeePaymentStatuses.map((item) => (
                         <tr key={item.id} className="hover:bg-theme-bg-secondary">
                             <td className="px-3 py-1">{item.id}</td>
                             <td

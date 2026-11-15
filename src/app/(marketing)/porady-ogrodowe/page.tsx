@@ -1,6 +1,6 @@
 import { SEO } from '@/config/seo';
 
-import { recommendedSites } from '@/content/data/recommended-sites';
+import { recommendedSites } from '@/content/recommended-sites';
 
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { LineSeparator } from '@/components/line-separator';

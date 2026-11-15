@@ -1,5 +1,6 @@
-import { associationEmail } from '@/content/data/association';
 import Link from 'next/link';
+
+import { EMAIL } from '@/data/contact';
 
 export default function GardenPhotosArticle() {
     return (
@@ -14,7 +15,7 @@ export default function GardenPhotosArticle() {
                 </Link>
                 . Przesyłać zdjęcia można w dowolnej chwili. Najlepiej poprzez naszą wspólną grupę
                 na WhatsApp lub na adres e-mail Stowarzyszenia:{' '}
-                <span className="font-bold">{associationEmail}</span>
+                <span className="font-bold">{EMAIL}</span>
             </p>
         </article>
     );

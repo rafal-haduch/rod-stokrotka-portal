@@ -4,11 +4,10 @@ import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
-import { PhotoWithTitle } from '@/shared/models/photo';
-import { PhotoWithoutTitle } from '@/shared/models/photo';
+import { Photo } from '@/shared/models/photo';
 
 interface PhotoGalleryProps {
-    photos: PhotoWithTitle[] | PhotoWithoutTitle[];
+    photos: readonly Photo[];
 }
 
 export function PhotoGallery(props: PhotoGalleryProps) {

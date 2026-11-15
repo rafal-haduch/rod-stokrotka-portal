@@ -1,4 +1,4 @@
-import { FEES } from '@/content/data/fees';
+import { dataForFeeSchedule } from '@/content/fees';
 import { cn } from '@/shared/utils/cn';
 import React from 'react';
 
@@ -18,7 +18,7 @@ export default function FeeTable() {
                     <tr>
                         <th className="px-3 py-2">Nr działki</th>
                         <th className="px-3 py-2">Powierzchnia</th>
-                        <th className="px-3 py-2">Kwota</th>
+                        <th className="px-3 py-2">Kwota (0.70zł/m2)</th>
                         <th className="px-3 py-2">Nieczystości</th>
                         <th className="px-3 py-2">Składka członkowska</th>
                         <th className="px-3 py-2">Energia</th>
@@ -26,9 +26,9 @@ export default function FeeTable() {
                     </tr>
                 </thead>
                 <tbody>
-                    {FEES.map((row) => {
-                        const areaCost = row.plotNumber === '60' ? 0 : row.area * RATE_PER_M2;
-                        const energy = row.current ?? 0;
+                    {dataForFeeSchedule.map((row) => {
+                        const areaCost = row.plotNumber === '60' ? 0 : row.plotArea * RATE_PER_M2;
+                        const energy = row.electricityChargeAmount ?? 0;
                         const total =
                             row.plotNumber === '35'
                                 ? areaCost + WASTE_FEE + energy
@@ -40,7 +40,7 @@ export default function FeeTable() {
                                 className="hover:bg-theme-bg-secondary whitespace-nowrap"
                             >
                                 <td className="px-3 py-1">{row.plotNumber}</td>
-                                <td className="px-3 py-1">{row.area} m²</td>
+                                <td className="px-3 py-1">{row.plotArea} m²</td>
                                 <td className="px-3 py-1">{pln(areaCost)}</td>
                                 <td className="px-3 py-1">{pln(WASTE_FEE)}</td>
                                 <td className="px-3 py-1">{pln(MEMBERSHIP_FEE)}</td>

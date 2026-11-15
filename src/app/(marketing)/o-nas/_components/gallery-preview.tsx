@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import { PhotoWithoutTitle } from '@/shared/models/photo';
+import { Photo } from '@/shared/models/photo';
 
 const galleryPreviewImagesURL = '/images/gallery-preview-slider/' as const;
-export const galleryPreviewImages: PhotoWithoutTitle[] = [
+export const galleryPreviewImages: Photo[] = [
     { src: `${galleryPreviewImagesURL}photo-1.jpg`, alt: 'alt' },
     { src: `${galleryPreviewImagesURL}photo-2.jpg`, alt: 'alt' },
     { src: `${galleryPreviewImagesURL}photo-3.jpg`, alt: 'alt' },

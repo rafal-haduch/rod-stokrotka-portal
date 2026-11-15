@@ -1,9 +1,11 @@
-import { treasurersDuties } from '@/content/data/treasurers-duties';
+import { treasurerDutySchedule } from '@/content/treasurers-duties';
 
 export default function TreasurersDutiesSection() {
     return (
         <section id="dyzury-skarbnika">
-            <h3 className="text-center">Dyżury Skarbnika (działka 25) 2026 rok</h3>
+            <h3 className="text-center">
+                Dyżury Skarbnika (działka 25) na {treasurerDutySchedule.year} rok
+            </h3>
             <p>
                 W związku ze zbliżającym się końcem sezonu działkowego w 2026 roku informujemy, że
                 dyżury skarbnika nie będą już planowane. W przypadku konieczności uregulowania
@@ -11,9 +13,12 @@ export default function TreasurersDutiesSection() {
                 skarbnikiem.
             </p>
             <ul className="text-center">
-                {treasurersDuties.map((item, i) => (
+                {treasurerDutySchedule.appointments.map((item, i) => (
                     <li key={i}>
-                        <span>{item.date}</span>
+                        <span>
+                            {item.dayOfMonth}.{treasurerDutySchedule.month} w godzinach:{' '}
+                            {item.startTime}-{item.endTime}
+                        </span>
                     </li>
                 ))}
             </ul>

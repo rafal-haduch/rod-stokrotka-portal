@@ -1,14 +1,17 @@
-import { wasteCollectionSchedule } from '@/content/data/waste-collection-schedule';
+import { getMonthName } from '@/shared/utils/get-month-name';
+
+import { wasteCollectionSchedule } from '@/content/waste-collection-schedule';
 
 export default function WasteScheduleArticle() {
+    const { year, dates } = wasteCollectionSchedule;
+    const title = `Harmonogram wywozu odpadów komunalnych na ${year} rok`;
+
     return (
         <article>
-            <h3 className="text-center">Harmonogram wywozu odpadów komunalnych na 2025 rok</h3>
+            <h3 className="text-center">{title}</h3>
 
             <table className="max-w-2xl sm:table-fixed">
-                <caption className="sr-only">
-                    Harmonogram wywozu odpadów komunalnych na 2025 rok
-                </caption>
+                <caption className="sr-only">{title}</caption>
                 <thead>
                     <tr>
                         <th scope="col">Miesiąc</th>
@@ -17,11 +20,11 @@ export default function WasteScheduleArticle() {
                     </tr>
                 </thead>
                 <tbody>
-                    {wasteCollectionSchedule.map((item) => (
+                    {dates.map((item) => (
                         <tr key={item.month}>
-                            <th scope="row">{item.month}</th>
-                            <td>{item.mixedWasteCollectionDay.join(', ')}</td>
-                            <td>{item.sortedWasteCollectionDay.join(', ')}</td>
+                            <th scope="row">{getMonthName(item.month)}</th>
+                            <td>{item.mixedWasteCollectionDays.join(', ')}</td>
+                            <td>{item.sortedWasteCollectionDays.join(', ')}</td>
                         </tr>
                     ))}
                 </tbody>

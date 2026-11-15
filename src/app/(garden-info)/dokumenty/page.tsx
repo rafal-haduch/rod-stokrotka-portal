@@ -1,6 +1,10 @@
 import { SEO } from '@/config/seo';
 
-import { importantDocuments, minutesAndReports, templatesAndForms } from '@/content/data/documents';
+import {
+    governingAndGardenDocuments,
+    meetingMinutes,
+    formsAndAgreements,
+} from '@/content/documents';
 
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
@@ -20,7 +24,7 @@ export default function DocumentsPage() {
                 <AnimateOnView>
                     <h2 className="text-center">Ważne i przydatne dokumenty</h2>
                 </AnimateOnView>
-                <ListOfDocuments documents={importantDocuments} />
+                <ListOfDocuments documents={governingAndGardenDocuments} />
             </section>
 
             <LineSeparator my={'my-10'} />
@@ -29,7 +33,7 @@ export default function DocumentsPage() {
                 <AnimateOnView>
                     <h2 className="text-center">Wzory i formularze</h2>
                 </AnimateOnView>
-                <ListOfDocuments documents={templatesAndForms} />
+                <ListOfDocuments documents={formsAndAgreements} />
             </section>
 
             <LineSeparator my={'my-10'} />
@@ -38,7 +42,7 @@ export default function DocumentsPage() {
                 <AnimateOnView>
                     <h2 className="text-center">Protokoły i sprawozdania</h2>
                 </AnimateOnView>
-                <ListOfDocuments documents={minutesAndReports} />
+                <ListOfDocuments documents={meetingMinutes} />
             </section>
         </article>
     );

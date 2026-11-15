@@ -8,14 +8,11 @@ import { PhotoWithTitle } from '@/shared/models/photo';
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
 import { PhotoGallery } from '@/components/photo-gallery';
+import { galleryPhotos } from '@/content/gallery-photos';
 
 export const metadata = SEO.GALLERY;
 
 export default function GalleryPage() {
-    const filePath = path.join(process.cwd(), 'src/content/data/gallery.json');
-    const file = fs.readFileSync(filePath, 'utf8');
-    const photos: PhotoWithTitle[] = JSON.parse(file);
-
     return (
         <article>
             <h1>Galeria Ogrodu</h1>
@@ -36,7 +33,7 @@ export default function GalleryPage() {
 
             <section>
                 <h2 className="sr-only">Galeria zdjęć</h2>
-                <PhotoGallery photos={photos} />
+                <PhotoGallery photos={galleryPhotos} />
             </section>
         </article>
     );

@@ -1,4 +1,4 @@
-import { typesOfFees } from '@/content/data/types-of-fees';
+import { annualFeeItems } from '@/content/types-of-fees';
 
 export default function FeesTypesTable() {
     return (
@@ -13,10 +13,10 @@ export default function FeesTypesTable() {
                 </tr>
             </thead>
             <tbody>
-                {typesOfFees.map((item) => (
-                    <tr key={item.fee}>
-                        <th scope="row">{item.fee}</th>
-                        <td>{item.amount}</td>
+                {annualFeeItems.map((item) => (
+                    <tr key={item.label}>
+                        <th scope="row">{item.label}</th>
+                        <td>{item.amountDescription}</td>
                     </tr>
                 ))}
             </tbody>

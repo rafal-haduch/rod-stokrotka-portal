@@ -1,10 +1,15 @@
-interface recommendedSites {
+interface RecommendedSite {
+    /** Name of the recommended site. */
     name: string;
+
+    /** Human-readable text displayed instead of the destination URL. */
     linkContext: string;
+
+    /** Destination URL of the recommended site. */
     url: string;
 }
 
-export const recommendedSites: recommendedSites[] = [
+export const recommendedSites = [
     {
         name: 'Program Maja w ogrodzie',
         linkContext: 'www.player.pl/maja-w-ogrodzie',
@@ -25,4 +30,4 @@ export const recommendedSites: recommendedSites[] = [
         linkContext: 'www.forumogrodnicze.pl',
         url: 'https://forumogrodnicze.info/',
     },
-] as const;
+] as const satisfies readonly RecommendedSite[];

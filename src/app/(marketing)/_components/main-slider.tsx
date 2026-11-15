@@ -3,11 +3,11 @@
 import { useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import { PhotoWithoutTitle } from '@/shared/models/photo';
+import { Photo } from '@/shared/models/photo';
 
 //TODO: change alts
 const mainSliderImagesURL = '/images/main-slider/' as const;
-export const mainSliderImages: PhotoWithoutTitle[] = [
+export const mainSliderImages: Photo[] = [
     { src: `${mainSliderImagesURL}placeholder-slide-1.jpg`, alt: 'alt' },
     { src: `${mainSliderImagesURL}placeholder-slide-2.jpg`, alt: 'alt' },
     { src: `${mainSliderImagesURL}placeholder-slide-3.jpg`, alt: 'alt' },

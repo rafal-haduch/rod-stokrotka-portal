@@ -1,13 +1,16 @@
-type FeeStatus = 'Opłacone' | 'Nieopłacone' | '...';
+type AnnualFeePaymentStatus = 'Opłacone' | 'Nieopłacone' | '...';
 
-interface PlotFees {
+interface PlotAnnualFeePaymentStatus {
+    /** Internal plot code (e.g. `D001` or `D23A`) to comply with the RODO. */
     id: string;
-    status: FeeStatus;
+
+    /** Whether the annual fee has been paid. */
+    status: AnnualFeePaymentStatus;
 }
 
-export const paymentStatusAsOf = '02.11.2025' as const;
+export const annualFeeStatusAsOf = '02.11.2025';
 
-export const plotsFeesStatus: PlotFees[] = [
+export const annualFeePaymentStatuses = [
     { id: 'D000', status: 'Opłacone' },
     { id: 'D001', status: 'Opłacone' },
     { id: 'D002', status: 'Opłacone' },
@@ -20,7 +23,7 @@ export const plotsFeesStatus: PlotFees[] = [
     { id: 'D009', status: 'Opłacone' },
     { id: 'D010', status: 'Opłacone' },
     { id: 'D011', status: 'Opłacone' },
-    { id: 'D012', status: 'Nieopłacone' },
+    { id: 'D012', status: 'Opłacone' },
     { id: 'D013', status: 'Opłacone' },
     { id: 'D014', status: 'Opłacone' },
     { id: 'D015', status: 'Opłacone' },
@@ -72,4 +75,4 @@ export const plotsFeesStatus: PlotFees[] = [
     { id: 'D058', status: 'Opłacone' },
     { id: 'D059', status: 'Opłacone' },
     { id: 'D060', status: 'Opłacone' },
-] as const;
+] as const satisfies readonly PlotAnnualFeePaymentStatus[];

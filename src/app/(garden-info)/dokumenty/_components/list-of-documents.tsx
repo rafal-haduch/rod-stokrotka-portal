@@ -1,10 +1,10 @@
 import { Download, ExternalLink, FileText } from 'lucide-react';
 
-import { Document } from '@/content/data/documents';
+import { DownloadableDocument } from '@/content/documents';
 import { NotFoundContent } from '@/components/not-found-content';
 import { CustomButton } from '@/components/custom-button';
 
-export default function ListOfDocuments({ documents }: { documents: Document[] }) {
+export default function ListOfDocuments({ documents }: { documents: DownloadableDocument[] }) {
     if (documents.length === 0) return <NotFoundContent />;
 
     return (
@@ -19,13 +19,13 @@ export default function ListOfDocuments({ documents }: { documents: Document[] }
                             className="flex w-fit items-center hover:underline sm:hidden"
                         >
                             <FileText size={32} color="var(--color-theme-divider)" />
-                            {item.name}
+                            {item.title}
                         </a>
                         {/* Desktop View */}
                         <div className="hidden w-full gap-4 sm:flex sm:justify-between">
                             <div className="flex items-center gap-1">
                                 <FileText size={32} color="var(--color-theme-divider)" />
-                                {item.name}
+                                {item.title}
                             </div>
                             <div className="flex gap-4">
                                 <CustomButton

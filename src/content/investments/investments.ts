@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 
-import { PhotoWithoutTitle } from '@/shared/models/photo';
+import { Photo } from '@/shared/models/photo';
 
 const investmentsDir = path.join(process.cwd(), 'src/content/investments');
 
@@ -46,7 +46,7 @@ export interface Investment {
     date: string;
     cover: string;
     content: string;
-    photos: PhotoWithoutTitle[];
+    photos: Photo[];
 }
 
 /**

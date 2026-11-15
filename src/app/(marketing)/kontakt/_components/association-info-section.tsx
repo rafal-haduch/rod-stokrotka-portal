@@ -1,5 +1,5 @@
 import { AnimateOnView } from '@/components/animated-h2';
-import { associationLegalData } from '@/data/association';
+import { associationRegistrationNumbers } from '@/data/association';
 import { ADDRESS, CONTACT_LINKS, EMAIL, PHONE } from '@/data/contact';
 
 export default function AssociationInfoSection() {
@@ -25,11 +25,11 @@ export default function AssociationInfoSection() {
                 <div className="max-w-sm space-y-4 text-center md:[grid-area:left]">
                     <p className="mb-0">Dane rejestrowe:</p>
                     <dl>
-                        {associationLegalData.map((item) => (
+                        {associationRegistrationNumbers.map((item) => (
                             <div key={item.label} className="flex gap-1">
                                 <dt>{item.label}:</dt>
                                 <dd>
-                                    <strong>{item.data}</strong>
+                                    <strong>{item.value}</strong>
                                 </dd>
                             </div>
                         ))}
