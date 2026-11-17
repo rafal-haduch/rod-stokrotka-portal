@@ -1,17 +1,18 @@
 import { notFound } from 'next/navigation';
 
-import { pathToMemoriesPostFiles } from '@/features/blog/domain/post-constants';
+import { memoriesPostsDirectoryPath } from '@/features/blog/domain/blog-constants';
 import { getPostByPath } from '@/features/blog/domain/get-post-by-path';
+
 import PostArticle from '@/features/blog/ui/post-article';
 
-type MemoryPageProps = {
+interface MemoryPostPageProps {
     params: Promise<{ slug: string }>;
-};
+}
 
-export default async function MemoryPage({ params }: MemoryPageProps) {
+export default async function MemoryPostPage({ params }: MemoryPostPageProps) {
     const { slug } = await params;
-    const path = `${pathToMemoriesPostFiles}/${slug}.md`;
-    const post = await getPostByPath(path);
+    const pathToPostFile = `${memoriesPostsDirectoryPath}/${slug}.md`;
+    const post = await getPostByPath(pathToPostFile);
 
     if (!post) return notFound();
 

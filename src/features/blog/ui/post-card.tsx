@@ -5,7 +5,7 @@ import { formatDate } from '@/shared/utils/format-date';
 
 import { RoutePath } from '@/config/routes';
 
-import { PostListItem } from '@/features/blog/domain/post-types';
+import { PostListItem } from '@/features/blog/domain/blog-types';
 import Link from 'next/link';
 
 interface PostCardProps {

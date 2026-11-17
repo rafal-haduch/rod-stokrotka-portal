@@ -1,25 +1,14 @@
 import { SEO } from '@/config/seo';
 
-import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
-import { AnimateOnView } from '@/components/animated-h2';
+import { investmentPostsDirectoryPath } from '@/features/blog/domain/blog-constants';
+import { getPostsFromDirectory } from '@/features/blog/domain/get-posts-from-directory';
 
-import InvestmentsList from './_components/investments-list';
+import InvestmentsPostsSection from '@/app/(garden-info)/inwestycje/_components/investments-posts-section';
 
 export const metadata = SEO.INVESTMENTS;
 
 export default function InvestmentsPage() {
-    return (
-        <>
-            <h1>Inwestycje</h1>
-            <MainHeadingLineSeparator />
+    const posts = getPostsFromDirectory(investmentPostsDirectoryPath);
 
-            <section>
-                <AnimateOnView className="h2-animate">
-                    <h2>Prace i modernizacje wykonane w naszym ogrodzie</h2>
-                </AnimateOnView>
-
-                <InvestmentsList />
-            </section>
-        </>
-    );
+    return <InvestmentsPostsSection posts={posts} />;
 }

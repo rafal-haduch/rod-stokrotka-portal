@@ -9,24 +9,22 @@ import { NotFoundContent } from '@/components/not-found-content';
 import PostCard from '@/features/blog/ui/post-card';
 import { useState } from 'react';
 import { sortPostsByDate } from '@/features/blog/domain/sort-posts-list';
-import { PostListItem } from '@/features/blog/domain/post-types';
+import { PostListItem, SortOrder } from '@/features/blog/domain/blog-types';
 
 interface PostsListProps {
     posts: PostListItem[];
     refTo: RoutePath;
 }
 
-type SortByDate = 'ascending' | 'descending';
-
 export default function PostsList({ posts, refTo }: PostsListProps) {
-    const [sortByDate, setSortByDate] = useState<SortByDate>('descending');
+    const [sortByDate, setSortByDate] = useState<SortOrder>('descending');
 
     if (posts.length === 0) return <NotFoundContent />;
 
     const sortedPosts =
         sortByDate === 'descending'
-            ? sortPostsByDate(posts, 'desc')
-            : sortPostsByDate(posts, 'asc');
+            ? sortPostsByDate(posts, 'descending')
+            : sortPostsByDate(posts, 'ascending');
 
     return (
         <div>
@@ -37,7 +35,7 @@ export default function PostsList({ posts, refTo }: PostsListProps) {
                 <select
                     id="sort-by-date"
                     value={sortByDate}
-                    onChange={(event) => setSortByDate(event.target.value as SortByDate)}
+                    onChange={(event) => setSortByDate(event.target.value as SortOrder)}
                 >
                     <option value="descending">Najnowsze</option>
                     <option value="ascending">Najstarsze</option>

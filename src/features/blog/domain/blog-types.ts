@@ -1,5 +1,7 @@
 import { Photo } from '@/shared/models/photo';
 
+export type SortOrder = 'ascending' | 'descending';
+
 export interface PostListItem {
     slug: string;
     title: string;
@@ -9,6 +11,6 @@ export interface PostListItem {
 }
 
 export interface Post extends PostListItem {
-    content: string;
+    htmlContent: string;
     photos: Photo[] | null;
 }

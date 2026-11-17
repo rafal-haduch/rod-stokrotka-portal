@@ -2,10 +2,10 @@ import path from 'path';
 import fs from 'fs';
 import matter from 'gray-matter';
 
-import { PostListItem } from '@/features/blog/domain/post-types';
+import { PostListItem } from '@/features/blog/domain/blog-types';
 
 /**
- * Gets a list of all investment posts from markdown files.
+ * Reads post metadata from Markdown files in a directory.
  */
 export function getPostsFromDirectory(pathToDirectoryPostFiles: string): PostListItem[] {
     const fileNames = fs.readdirSync(pathToDirectoryPostFiles);
