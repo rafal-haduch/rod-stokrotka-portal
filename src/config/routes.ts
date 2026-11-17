@@ -197,6 +197,11 @@ export const ROUTES = {
 export type RouteNames = keyof typeof ROUTES;
 
 /**
+ * JSDoc
+ */
+export type RoutePath = (typeof ROUTES)[keyof typeof ROUTES]['path'];
+
+/**
  * List of all routes.
  */
 const ROUTE_LIST: AppRoute[] = Object.values(ROUTES);

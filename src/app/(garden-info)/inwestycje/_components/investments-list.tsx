@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 
-import { getAllInvestments } from '@/content/investments/investments';
+import { getAllInvestments, InvestmentInList } from '@/content/investments/investments';
 import { formatDate } from '@/shared/utils/format-date';
 
 import { NotFoundContent } from '@/components/not-found-content';

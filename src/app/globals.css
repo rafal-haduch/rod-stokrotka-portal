@@ -647,10 +647,6 @@
         @apply text-xl font-semibold sm:text-2xl;
     }
 
-    p {
-        @apply text-base;
-    }
-
     address {
         @apply not-italic;
     }
@@ -771,7 +767,7 @@
     }
 
     .navbar {
-        @apply from-theme-ui-bar-light to-theme-ui-bar-dark border-theme-ui-bar-border text-theme-on-ui-bar border-b-4 bg-linear-to-b shadow-xl;
+        @apply from-theme-ui-bar-light to-theme-ui-bar-dark border-theme-ui-bar-border text-theme-on-ui-bar border-b-4 bg-linear-to-b shadow-lg;
     }
 
     .mobile-navbar {

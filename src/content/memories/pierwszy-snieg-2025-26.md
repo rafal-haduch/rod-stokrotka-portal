@@ -1,6 +1,7 @@
 ---
 title: "Pierwszy śnieg w sezonie zimowym 2025/26"
-date: "2025.11.23"
+publicationDate: "2025.11.23"
+author: "Rafał Haduch"
 cover: "https://res.cloudinary.com/dc3xn9rpm/image/upload/v1763947871/cover_uwkncg.jpg"
 photos:
   - src: "https://res.cloudinary.com/dc3xn9rpm/image/upload/v1763947871/cover_uwkncg.jpg"

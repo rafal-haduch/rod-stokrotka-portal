@@ -8,7 +8,7 @@ import { useTheme } from '@/features/theme/ui/theme-provider';
 export function SeasonalThemeSelector() {
     const { activeTheme, setActiveTheme, seasonalThemeEnabled: seasonalThemesEnabled } = useTheme();
 
-    const showSeasonalTheme = process.env.NEXT_PUBLIC_ENABLE_MANUAL_SEASONAL_THEME === 'true';
+    const showSeasonalTheme = process.env.NEXT_PUBLIC_SHOW_SEASONAL_THEME === 'true';
     if (!showSeasonalTheme) return null;
 
     return (

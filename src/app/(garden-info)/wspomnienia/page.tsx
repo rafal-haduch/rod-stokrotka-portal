@@ -1,25 +1,14 @@
 import { SEO } from '@/config/seo';
 
-import { AnimateOnView } from '@/components/animated-h2';
-import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
+import { pathToMemoriesPostFiles } from '@/features/blog/domain/post-constants';
+import { getPostsFromDirectory } from '@/features/blog/domain/get-posts-from-directory';
 
-import MemoriesList from './_components/memories-list';
+import MemoriesSection from '@/app/(garden-info)/wspomnienia/_components/memories-section';
 
 export const metadata = SEO.MEMORIES;
 
 export default function MemoriesPage() {
-    return (
-        <>
-            <h1>Wspomnienia</h1>
-            <MainHeadingLineSeparator />
+    const posts = getPostsFromDirectory(pathToMemoriesPostFiles);
 
-            <section>
-                <AnimateOnView className="h2-animate">
-                    <h2>Wydarzenia z życia naszego ogrodu</h2>
-                </AnimateOnView>
-
-                <MemoriesList />
-            </section>
-        </>
-    );
+    return <MemoriesSection posts={posts} />;
 }

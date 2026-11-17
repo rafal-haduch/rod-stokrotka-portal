@@ -1,8 +1,7 @@
 import { SEO } from '@/config/seo';
 
-import { associationEmail } from '@/content/data/association';
-
 import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
+import { EMAIL } from '@/data/contact';
 
 export const metadata = SEO.PRIVACY_POLICY;
 
@@ -22,7 +21,7 @@ export default function PrivacyPolicyPage() {
                         <p>
                             Administratorem danych osobowych jest Stowarzyszenie Ogrodowe
                             „Stokrotka” w Sanoku, z siedzibą w Sanoku. <br />
-                            Kontakt: {associationEmail}
+                            Kontakt: {EMAIL}
                         </p>
                     </li>
                     <li>
