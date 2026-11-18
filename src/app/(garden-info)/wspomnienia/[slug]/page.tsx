@@ -1,9 +1,17 @@
 import { notFound } from 'next/navigation';
 
 import { memoriesPostsDirectoryPath } from '@/features/blog/domain/blog-constants';
+import { getPostsFromDirectory } from '@/features/blog/domain/get-posts-from-directory';
 import { getPostByPath } from '@/features/blog/domain/get-post-by-path';
 
 import PostArticle from '@/features/blog/ui/post-article';
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+    const posts = getPostsFromDirectory(memoriesPostsDirectoryPath);
+    return posts.map(({ slug }) => ({ slug }));
+}
 
 interface MemoryPostPageProps {
     params: Promise<{ slug: string }>;
