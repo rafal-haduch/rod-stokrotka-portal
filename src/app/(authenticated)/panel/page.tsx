@@ -3,7 +3,7 @@ import { getUserRoleLabel } from '@/features/user/domain/user-helpers';
 
 import { getUserSession } from '@/shared/lib/next-auth/get-user-session';
 
-export const metadata = SEO.CMS;
+export const metadata = SEO.PANEL;
 
 export default async function CMSPage() {
     const user = await getUserSession();

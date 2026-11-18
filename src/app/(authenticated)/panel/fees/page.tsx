@@ -1,7 +1,3 @@
-import { ROUTES } from '@/config/routes';
-import { Plus } from 'lucide-react';
-import Link from 'next/link';
-
 export default async function CMSFeesPage() {
     return (
         <section>

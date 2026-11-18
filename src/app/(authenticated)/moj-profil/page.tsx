@@ -9,7 +9,7 @@ import { requireSession } from '@/shared/auth/guards';
 import { getUserRoleLabel } from '@/features/user/domain/user-helpers';
 import { getUserProfile } from '@/features/user/domain/queries/get-user-profile-query';
 
-export const metadata = SEO.MY_PROFILE;
+export const metadata = SEO.MY_ACCOUNT;
 
 export default async function MyProfilePage() {
     const session = await requireSession();

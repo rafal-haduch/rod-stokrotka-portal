@@ -2,15 +2,14 @@
 
 import { useState } from 'react';
 
-import { ChangePasswordResult } from '@/shared/contracts/user-actions';
-
 import { changePassword } from '@/features/auth/domain/actions/change-password.action';
 
 import ChangePasswordFields from './change-password-fields';
 import ChangePasswordSuccess from './change-password-success';
+import { ActionResult, ActionResultSuccessVoid } from '@/shared/contracts/action-result';
 
 export default function ChangePasswordForm() {
-    const [result, setResult] = useState<ChangePasswordResult | null>(null);
+    const [result, setResult] = useState<ActionResult<void> | null>(null);
     const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {

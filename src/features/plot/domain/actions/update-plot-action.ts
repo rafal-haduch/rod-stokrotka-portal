@@ -25,7 +25,7 @@ export async function updatePlot(formData: FormData): Promise<ActionResult<Updat
 
         const { id, plotNumber, area } = parseUpdatePlotInput(formData);
 
-        const result = await plotRepository.update({ id, plotNumber, area });
+        const result = await plotRepository.update({ id, number: plotNumber, area });
 
         revalidateTag('plots');
 

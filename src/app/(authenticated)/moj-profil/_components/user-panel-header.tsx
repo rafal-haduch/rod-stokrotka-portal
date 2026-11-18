@@ -51,7 +51,7 @@ export default function UserPanelHeader() {
                         </CustomButton>
                         {isCMSAvailable && (
                             <CustomButton
-                                href={ROUTES.CMS.path}
+                                href={ROUTES.PANEL.path}
                                 title="Panel zarządu"
                                 size="sm"
                                 variant="primary"

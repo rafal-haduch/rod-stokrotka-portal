@@ -2,7 +2,7 @@
 
 import bcrypt from 'bcrypt';
 
-import { ActionResult } from '@/shared/contracts/action-result';
+import { ActionResult, ActionResultSuccessVoid } from '@/shared/contracts/action-result';
 import { requireSession } from '@/shared/auth/guards';
 import { DomainError } from '@/shared/error/domain-error';
 import { ErrorCode } from '@/shared/error/error-codes';

@@ -1,6 +1,6 @@
 import { SEO } from '@/config/seo';
 
-export const metadata = SEO.CMS_ANNOUNCEMENTS;
+export const metadata = SEO.PANEL_ANNOUNCEMENTS;
 
 export default async function CMSAnnouncementsPage() {
     return (

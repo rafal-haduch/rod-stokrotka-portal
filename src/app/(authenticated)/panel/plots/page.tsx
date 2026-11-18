@@ -4,7 +4,7 @@ import { getPlotTableRows } from '@/features/plot/domain/queries/get-plot-table-
 
 import { CMSPlotsView } from '@/features/plot/ui/cms-plots-view';
 
-export const metadata = SEO.CMS_PLOTS;
+export const metadata = SEO.PANEL_PLOTS;
 
 export default async function CMSPlotsPage() {
     const plotTableRows = await getPlotTableRows();

@@ -4,14 +4,14 @@ import { Analytics } from '@vercel/analytics/next';
 import { Nunito, Fleur_De_Leah, Aboreto, Merriweather } from 'next/font/google';
 
 import { BASE_URL, FULL_SITE_NAME, SHORT_SITE_NAME } from '@/data/site';
+import { ADDRESS, EMAIL } from '@/data/contact';
+import { ASSOCIATION_NAME } from '@/data/association';
 
 import AppProvider from '@/app/app-provider';
 
 import AppShell from '@/components/layout/app-shell';
 
 import './globals.css';
-import { ADDRESS, EMAIL } from '@/data/contact';
-import { ASSOCIATION_NAME } from '@/data/association';
 
 const nunito = Nunito({
     weight: ['400', '600', '700'],

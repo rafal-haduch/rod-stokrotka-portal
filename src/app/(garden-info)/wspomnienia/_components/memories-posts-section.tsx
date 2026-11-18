@@ -26,7 +26,7 @@ export default function MemoriesPostsSection({ posts }: MemoriesSectionProps) {
                 z naszy ogrodem.
             </p>
 
-            <PostsList posts={posts} refTo={ROUTES.MEMORIES.path} />
+            <PostsList posts={posts} postBasePath={ROUTES.MEMORIES.path} />
         </PageSection>
     );
 }

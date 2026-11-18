@@ -26,7 +26,7 @@ export default function InvestmentsPostsSection({ posts }: InvestmentsPostsSecti
                 terenie naszego ogrodu.
             </p>
 
-            <PostsList posts={posts} refTo={ROUTES.INVESTMENTS.path} />
+            <PostsList posts={posts} postBasePath={ROUTES.INVESTMENTS.path} />
         </PageSection>
     );
 }

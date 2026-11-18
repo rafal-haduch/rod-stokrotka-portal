@@ -4,7 +4,11 @@ import { DownloadableDocument } from '@/content/documents';
 import { NotFoundContent } from '@/components/not-found-content';
 import { CustomButton } from '@/components/custom-button';
 
-export default function ListOfDocuments({ documents }: { documents: DownloadableDocument[] }) {
+interface ListOfDocumentsProps {
+    documents: ReadonlyArray<DownloadableDocument>;
+}
+
+export default function ListOfDocuments({ documents }: ListOfDocumentsProps) {
     if (documents.length === 0) return <NotFoundContent />;
 
     return (

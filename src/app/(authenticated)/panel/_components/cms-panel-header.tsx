@@ -48,7 +48,7 @@ export function CMSPanelHeader() {
             className="panel surface-elevated mx-auto flex w-full max-w-5xl flex-col justify-between overflow-x-hidden p-4 pb-0 sm:pb-4"
         >
             <div>
-                <Link href={ROUTES.CMS.path}>
+                <Link href={ROUTES.PANEL.path}>
                     <p
                         id="cms-context-heading"
                         className="font-heading text-theme-ui-foreground-primary text-center text-4xl font-semibold sm:text-5xl md:text-6xl"

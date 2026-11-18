@@ -1,22 +1,25 @@
 'use client';
 
+import { useState } from 'react';
+
 import { cn } from '@/shared/utils/cn';
 
 import { RoutePath } from '@/config/routes';
 
 import { NotFoundContent } from '@/components/not-found-content';
 
-import PostCard from '@/features/blog/ui/post-card';
-import { useState } from 'react';
 import { sortPostsByDate } from '@/features/blog/domain/sort-posts-list';
 import { PostListItem, SortOrder } from '@/features/blog/domain/blog-types';
 
+import PostCard from '@/features/blog/ui/post-card';
+
 interface PostsListProps {
     posts: PostListItem[];
-    refTo: RoutePath;
+    /** Base route used to build links to posts. */
+    postBasePath: RoutePath;
 }
 
-export default function PostsList({ posts, refTo }: PostsListProps) {
+export default function PostsList({ posts, postBasePath }: PostsListProps) {
     const [sortByDate, setSortByDate] = useState<SortOrder>('descending');
 
     if (posts.length === 0) return <NotFoundContent />;
@@ -51,7 +54,7 @@ export default function PostsList({ posts, refTo }: PostsListProps) {
             >
                 {sortedPosts.map((post, i) => (
                     <article key={i} className="w-full max-w-xl">
-                        <PostCard post={post} referTo={refTo} />
+                        <PostCard post={post} postBasePath={postBasePath} />
                     </article>
                 ))}
             </div>

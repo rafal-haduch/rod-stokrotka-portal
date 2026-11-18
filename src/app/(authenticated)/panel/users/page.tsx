@@ -4,7 +4,7 @@ import { getSortedAvailablePlots } from '@/features/plot/domain/queries/get-sort
 import { getUserTableRows } from '@/features/user/domain/queries/get-user-table-rows-query';
 import CMSUsersView from '@/features/user/ui/cms-users-view';
 
-export const metadata = SEO.CMS_USERS;
+export const metadata = SEO.PANEL_USERS;
 
 export default async function CMSUsersPage() {
     const [userTableRows, availablePlots] = await Promise.all([

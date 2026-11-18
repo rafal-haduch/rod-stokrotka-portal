@@ -75,6 +75,7 @@ export function EditUserForm({ userData, plotsOptions, onSubmit, loading, errorM
                     {/* Owned Plots */}
                     <label className="justify-self-end text-base">Posiada:</label>
                     <MultiSelectDropdown
+                        id="ownedPlotIds"
                         name="ownedPlotIds"
                         initialSelectedIds={userData.ownedPlots.map((plot) => plot.id)}
                         options={plotsOptions.map((p) => ({
@@ -87,6 +88,7 @@ export function EditUserForm({ userData, plotsOptions, onSubmit, loading, errorM
                     {/* Coowned Plots */}
                     <label className="justify-self-end text-base">Współposiada:</label>
                     <MultiSelectDropdown
+                        id="coOwnedPlotIds"
                         name="coOwnedPlotIds"
                         initialSelectedIds={userData.coOwnedPlots.map((plot) => plot.id)}
                         options={plotsOptions.map((p) => ({
@@ -99,6 +101,7 @@ export function EditUserForm({ userData, plotsOptions, onSubmit, loading, errorM
                     {/* Used Plots */}
                     <label className="justify-self-end text-base">Współużytkuje:</label>
                     <MultiSelectDropdown
+                        id="usedPlotIds"
                         name="usedPlotIds"
                         initialSelectedIds={userData.usedPlots.map((plot) => plot.id)}
                         options={plotsOptions.map((p) => ({

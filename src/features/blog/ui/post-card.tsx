@@ -10,13 +10,14 @@ import Link from 'next/link';
 
 interface PostCardProps {
     post: PostListItem;
-    referTo: RoutePath;
+    /** Base route used to build this post's URL. */
+    postBasePath: RoutePath;
 }
 
-export default function PostCard({ post, referTo }: PostCardProps) {
+export default function PostCard({ post, postBasePath }: PostCardProps) {
     return (
         <Link
-            href={`${referTo}/${post.slug}`}
+            href={`${postBasePath}/${post.slug}`}
             className="group post-card surface mx-auto block max-w-xl overflow-hidden"
         >
             <div className="relative h-64">

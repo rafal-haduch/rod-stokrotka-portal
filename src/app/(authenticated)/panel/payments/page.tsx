@@ -1,6 +1,6 @@
 import { SEO } from '@/config/seo';
 
-export const metadata = SEO.CMS_PAYMENTS;
+export const metadata = SEO.PANEL_PAYMENTS;
 
 export default async function CMSPaymentsPage() {
     return (
