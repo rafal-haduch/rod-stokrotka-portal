@@ -1,6 +1,7 @@
-import { BrandColorRole, SizeScale } from '@/shared/types/scale';
+import type { HTMLAttributes, ReactNode } from 'react';
+
+import { SizeScale } from '@/shared/types/scale';
 import { cn } from '@/shared/utils/cn';
-import React, { ReactNode } from 'react';
 
 type SectionPadding = SizeScale | 'none';
 
@@ -27,23 +28,18 @@ const pageSectionHorizontalPaddingStyles: Record<SectionPadding, string> = {
     large: 'px-12 md:px-16',
 };
 
-interface PageSectionStyleOptions {
-    /** Sets the section's top padding. */
+interface PageSectionStylesOptions {
     topPadding: SectionPadding;
-
-    /** Sets the section's bottom padding. */
     bottomPadding: SectionPadding;
-
-    /** Sets the section's horizontal padding. */
     horizontalPadding: SectionPadding;
 }
 
-/** Combines the section's vertical padding and background classes. */
+/** Builds a section's classes by `cn()` from the provided options. */
 function pageSectionStyles({
     topPadding,
     bottomPadding,
     horizontalPadding,
-}: PageSectionStyleOptions) {
+}: PageSectionStylesOptions) {
     return cn(
         pageSectionTopPaddingStyles[topPadding],
         pageSectionBottomPaddingStyles[bottomPadding],
@@ -52,7 +48,7 @@ function pageSectionStyles({
 }
 
 /**
- * Predefined vertical padding combinations for common section positions.
+ * Predefined vertical padding combinations for typical section positions on a page
  */
 export const PAGE_SECTION_PRESETS = {
     first: {
@@ -71,23 +67,17 @@ export const PAGE_SECTION_PRESETS = {
         topPadding: 'small',
         bottomPadding: 'large',
     },
-} satisfies Record<PageSectionPreset, Partial<PageSectionStyleOptions>>;
+} satisfies Record<PageSectionPreset, Partial<PageSectionStylesOptions>>;
 
-interface PageSectionProps extends React.HTMLAttributes<HTMLElement> {
-    /** Vertical padding above the section content. Defaults to `lg`. */
+interface PageSectionProps extends HTMLAttributes<HTMLElement> {
     topPadding?: SectionPadding;
-
-    /** Vertical padding below the section content. Defaults to `lg`. */
     bottomPadding?: SectionPadding;
-
-    /** Vertical padding  section content. Defaults to `lg`. */
     horizontalPadding?: SectionPadding;
-
     children: ReactNode;
 }
 
 /**
- * Constrains a page section's vertical padding and background.
+ * Constrains a page section's vertical and horizontal padding .
  * Use a preset from {@link PAGE_SECTION_PRESETS} for a predefined padding combination.
  *
  * @example

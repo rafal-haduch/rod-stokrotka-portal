@@ -19,7 +19,7 @@ export default function Footer() {
     }, []);
 
     return (
-        <footer className={cn('px-4 py-8', 'text-lg', 'footer')}>
+        <footer className="from-footer-gradient-from to-footer-gradient-to border-footer-border text-content-on-footer border-t-4 bg-linear-to-b px-4 py-8 text-lg">
             <div className="gap-y-8 contain-layout">
                 {/* First Row */}
                 <div

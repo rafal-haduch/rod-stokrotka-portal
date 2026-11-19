@@ -1,629 +1,618 @@
 @import 'tailwindcss';
 
-/* ================ */
-/* === Theme Scopes === */
-/* ================ */
-
 .theme-default {
-    /* Primary color palette */
-    --primary-color-50: theme(colors.emerald.50);
-    --primary-color-100: theme(colors.emerald.100);
-    --primary-color-200: theme(colors.emerald.200);
-    --primary-color-300: theme(colors.emerald.300);
-    --primary-color-400: theme(colors.emerald.400);
-    --primary-color-500: theme(colors.emerald.500);
-    --primary-color-600: theme(colors.emerald.600);
-    --primary-color-700: theme(colors.emerald.700);
-    --primary-color-800: theme(colors.emerald.800);
-    --primary-color-900: theme(colors.emerald.900);
-    --primary-color-950: theme(colors.green.950);
+    /* --- Primary brand color palette --- */
+    --brand-primary-50: var(--color-emerald-50);
+    --brand-primary-100: var(--color-emerald-100);
+    --brand-primary-200: var(--color-emerald-200);
+    --brand-primary-300: var(--color-emerald-300);
+    --brand-primary-400: var(--color-emerald-400);
+    --brand-primary-500: var(--color-emerald-500);
+    --brand-primary-600: var(--color-emerald-600);
+    --brand-primary-700: var(--color-emerald-700);
+    --brand-primary-800: var(--color-emerald-800);
+    --brand-primary-900: var(--color-emerald-900);
+    --brand-primary-950: var(--color-emerald-950);
 
-    /* Secondary color palette */
-    --secondary-color-50: theme(colors.slate.50);
-    --secondary-color-100: theme(colors.slate.100);
-    --secondary-color-200: theme(colors.slate.200);
-    --secondary-color-300: theme(colors.slate.300);
-    --secondary-color-400: theme(colors.slate.400);
-    --secondary-color-500: theme(colors.slate.500);
-    --secondary-color-600: theme(colors.slate.600);
-    --secondary-color-700: theme(colors.slate.700);
-    --secondary-color-800: theme(colors.slate.800);
-    --secondary-color-900: theme(colors.slate.900);
-    --secondary-color-950: theme(colors.slate.950);
+    /* --- Secondary brand color palette --- */
+    --brand-secondary-50: var(--color-slate-50);
+    --brand-secondary-100: var(--color-slate-100);
+    --brand-secondary-200: var(--color-slate-200);
+    --brand-secondary-300: var(--color-slate-300);
+    --brand-secondary-400: var(--color-slate-400);
+    --brand-secondary-500: var(--color-slate-500);
+    --brand-secondary-600: var(--color-slate-600);
+    --brand-secondary-700: var(--color-slate-700);
+    --brand-secondary-800: var(--color-slate-800);
+    --brand-secondary-900: var(--color-slate-900);
+    --brand-secondary-950: var(--color-slate-950);
 
-    /* Layout layer */
-    --background-body: var(--secondary-color-100);
-    --background-main: var(--secondary-color-50);
+    /*--- Main brand colors ---*/
+    --main-brand-primary: var(--brand-primary-400);
+    --main-brand-secondary: var(--brand-secondary-400);
 
-    --foreground-heading: theme(colors.slate.800);
-    --foreground-content: theme(colors.slate.700);
-    --foreground-muted: theme(colors.slate.500);
+    /*--- Backgrounds ---*/
+    --background-brand-primary-soft: var(--brand-primary-200);
+    --background-brand-secondary-soft: var(--brand-secondary-200);
 
-    /* Content layer */
-    --surface: var(--primary-color-50);
-    --surface-hover: var(--primary-color-100);
+    --background-brand-primary-accent: var(--main-brand-primary);
+    --background-brand-secondary-accent: var(--main-brand-secondary);
 
-    --surface-border: var(--primary-color-400);
+    --background-brand-primary-strong: var(--brand-primary-600);
+    --background-brand-secondary-strong: var(--brand-secondary-600);
 
-    --on-surface: var(--primary-color-600);
+    /*--- Foregrounds ---*/
+    --foreground-primary: var(--color-slate-800);
+    --foreground-secondary: var(--color-slate-700);
+    --foreground-muted: var(--color-slate-500);
+    --foreground-inverted: var(--color-white);
 
-    /* Elevated layer */
-    --surface-elevated-light: var(--primary-color-50);
-    --surface-elevated-dark: var(--primary-color-50);
+    --foreground-brand-primary-soft: var(--brand-primary-200);
+    --foreground-brand-primary-accent: var(--main-brand-primary);
+    --foreground-brand-primary-strong: var(--brand-primary-600);
+    --foreground-brand-primary-inverted: var(--brand-primary-50);
 
-    --surface-elevated-border: var(--primary-color-400);
-    --surface-elevated-border-hover: var(--primary-color-400);
+    --foreground-brand-secondary-soft: var(--brand-secondary-200);
+    --foreground-brand-secondary-accent: var(--main-brand-secondary);
+    --foreground-brand-secondary-strong: var(--brand-secondary-600);
+    --foreground-brand-secondary-inverted: var(--brand-primary-50);
 
-    --on-surface-elevated: var(--primary-color-600);
-    --on-surface-elevated-hover: var(--primary-color-700);
+    /* --- Surface --- */
 
-    /* Inverted layer */
-    --surface-inverted-light: var(--primary-color-400);
-    --surface-inverted-dark: var(--primary-color-600);
+    /* Neutral color surface */
+    --surface: var(--color-white);
+    --surface-hover: var(--color-neutral-50);
+    --surface-border: var(--color-neutral-200);
+    --content-on-surface: var(--color-slate-800);
 
-    --surface-inverted-border: var(--primary-color-800);
+    /* Primary brand color surface */
+    --surface-brand-primary-soft: var(--background-soft-brand-primary);
+    --surface-brand-primary-soft-hover: var(--brand-primary-300);
+    --surface-brand-primary-soft-border: var(--main-brand-primary);
+    --content-on-surface-brand-primary-soft: var(--foreground-brand-primary-accent);
 
-    --on-surface-inverted: var(--primary-color-50);
-    --on-surface-inverted-hover: var(--primary-color-100);
+    --surface-brand-primary: var(--main-brand-primary);
+    --surface-brand-primary-hover: var(--brand-primary-500);
+    --surface-brand-primary-border: var(--brand-primary-600);
+    --content-on-surface-brand-primary: var(--foreground-brand-primary-strong);
 
-    /* UI bars */
-    --ui-bar-light: var(--primary-color-200);
-    --ui-bar-dark: var(--primary-color-200);
+    --surface-brand-primary-strong: var(--primary-color-600);
+    --surface-brand-primary-strong-hover: var(--primary-color-500);
+    --surface-brand-primary-strong-border: var(--primary-color-400);
+    --content-on-surface-brand-primary-strong: var(--foreground-brand-primary-inverted);
 
-    --ui-bar-border: var(--primary-color-200);
+    /* --- UI layout elements --- */
+    --navbar-gradient-from: var(--brand-primary-50);
+    --navbar-gradient-to: var(--brand-primary-300);
+    --navbar-border: var(--main-brand-primary);
+    --content-on-navbar: var(--foreground-brand-secondary-accent);
+    --content-on-navbar-hover: var(--foreground-brand-secondary-strong);
 
-    --on-ui-bar: var(--primary-color-600);
-    --on-ui-bar-hover: var(--primary-color-700);
-
-    /* Accent */
-    --accent: var(--primary-color-200);
-    --accent-hover: var(--primary-color-300);
-
-    --accent-border: var(--primary-color-500);
-
-    --on-accent: var(--primary-color-600);
-
-    /* Accent strong */
-    --accent-strong: var(--primary-color-500);
-    --accent-strong-hover: var(--primary-color-600);
-
-    --accent-strong-border: var(--primary-color-700);
-
-    --on-accent-strong: var(--primary-color-800);
-
-    /* Links */
-    --link: var(--primary-color-400);
-    --link-hover: var(--primary-color-500);
-
-    /* Dividers */
-    --divider-subtle: var(--primary-color-300);
-    --divider: var(--primary-color-400);
-    --divider-strong: var(--primary-color-500);
-    --divider-inverted: var(--secondary-color-50);
-
-    /* Table */
-    --table-head: var(--primary-color-100);
-    --table-body-row-hover: var(--primary-color-50);
+    --footer-gradient-from: var(--brand-primary-50);
+    --footer-gradient-to: var(--brand-primary-300);
+    --footer-border: var(--main-brand-primary);
+    --content-on-footer: var(--foreground-brand-secondary-accent);
+    --content-on-footer-hover: var(--foreground-brand-secondary-strong);
 }
 
 .theme-spring {
-    /* Primary color palette */
-    --primary-color-50: theme(colors.lime.50);
-    --primary-color-100: theme(colors.lime.100);
-    --primary-color-200: theme(colors.lime.200);
-    --primary-color-300: theme(colors.lime.300);
-    --primary-color-400: theme(colors.lime.400);
-    --primary-color-500: theme(colors.lime.500);
-    --primary-color-600: theme(colors.lime.600);
-    --primary-color-700: theme(colors.lime.700);
-    --primary-color-800: theme(colors.lime.800);
-    --primary-color-900: theme(colors.lime.900);
-    --primary-color-950: theme(colors.lime.950);
+    /* --- Primary brand color palette --- */
+    --brand-primary-50: var(--color-lime-50);
+    --brand-primary-100: var(--color-lime-100);
+    --brand-primary-200: var(--color-lime-200);
+    --brand-primary-300: var(--color-lime-300);
+    --brand-primary-400: var(--color-lime-400);
+    --brand-primary-500: var(--color-lime-500);
+    --brand-primary-600: var(--color-lime-600);
+    --brand-primary-700: var(--color-lime-700);
+    --brand-primary-800: var(--color-lime-800);
+    --brand-primary-900: var(--color-lime-900);
+    --brand-primary-950: var(--color-lime-950);
 
-    /* Secondary color palette */
-    --secondary-color-50: theme(colors.green.50);
-    --secondary-color-100: theme(colors.green.100);
-    --secondary-color-200: theme(colors.green.200);
-    --secondary-color-300: theme(colors.green.300);
-    --secondary-color-400: theme(colors.green.400);
-    --secondary-color-500: theme(colors.green.500);
-    --secondary-color-600: theme(colors.green.600);
-    --secondary-color-700: theme(colors.green.700);
-    --secondary-color-800: theme(colors.green.800);
-    --secondary-color-900: theme(colors.green.900);
-    --secondary-color-950: theme(colors.green.950);
+    /* --- Secondary brand color palette --- */
+    --brand-secondary-50: var(--color-green-50);
+    --brand-secondary-100: var(--color-green-100);
+    --brand-secondary-200: var(--color-green-200);
+    --brand-secondary-300: var(--color-green-300);
+    --brand-secondary-400: var(--color-green-400);
+    --brand-secondary-500: var(--color-green-500);
+    --brand-secondary-600: var(--color-green-600);
+    --brand-secondary-700: var(--color-green-700);
+    --brand-secondary-800: var(--color-green-800);
+    --brand-secondary-900: var(--color-green-900);
+    --brand-secondary-950: var(--color-green-950);
 
-    /* Layout layer */
-    --background-body: var(--primary-color-100);
-    --background-main: var(--primary-color-50);
+    /*--- Main brand colors ---*/
+    --main-brand-primary: var(--brand-primary-400);
+    --main-brand-secondary: var(--brand-secondary-400);
 
-    --foreground-heading: theme(colors.slate.800);
-    --foreground-content: theme(colors.slate.700);
-    --foreground-muted: theme(colors.slate.500);
+    /*--- Backgrounds ---*/
+    --background-primary: var(--color-white);
+    --background-secondary: var(--color-neutral-100);
 
-    /* Content layer */
-    --surface: var(--primary-color-200);
-    --surface-hover: var(--background-body);
+    --background-brand-primary-soft: var(--brand-primary-200);
+    --background-brand-secondary-soft: var(--brand-secondary-200);
 
-    --surface-border: var(--primary-color-300);
+    --background-brand-primary-accent: var(--main-brand-primary);
+    --background-brand-secondary-accent: var(--main-brand-secondary);
 
-    --on-surface: var(--primary-color-500);
+    --background-brand-primary-strong: var(--brand-primary-600);
+    --background-brand-secondary-strong: var(--brand-secondary-600);
 
-    /* Elevated layer */
-    --surface-elevated-light: var(--primary-color-100);
-    --surface-elevated-dark: var(--primary-color-200);
+    /*--- Foregrounds ---*/
+    --foreground-primary: var(--color-slate-800);
+    --foreground-secondary: var(--color-slate-700);
+    --foreground-muted: var(--color-slate-500);
+    --foreground-inverted: var(--color-white);
 
-    --surface-elevated-border: var(--primary-color-400);
-    --surface-elevated-border-hover: var(--primary-color-600);
+    --foreground-brand-primary-soft: var(--brand-primary-200);
+    --foreground-brand-primary-accent: var(--main-brand-primary);
+    --foreground-brand-primary-strong: var(--brand-primary-600);
+    --foreground-brand-primary-inverted: var(--brand-primary-50);
 
-    --on-surface-elevated: var(--secondary-color-500);
-    --on-surface-elevated-hover: var(--secondary-color-600);
+    --foreground-brand-secondary-soft: var(--brand-secondary-200);
+    --foreground-brand-secondary-accent: var(--main-brand-secondary);
+    --foreground-brand-secondary-strong: var(--brand-secondary-600);
+    --foreground-brand-secondary-inverted: var(--brand-primary-50);
 
-    /* Inverted layer */
-    --surface-inverted-light: var(--primary-color-400);
-    --surface-inverted-dark: var(--primary-color-600);
+    /* --- Surface --- */
 
-    --surface-inverted-border: var(--primary-color-800);
+    /* Neutral color surface */
+    --surface: var(--color-white);
+    --surface-hover: var(--color-neutral-50);
+    --surface-border: var(--color-neutral-200);
+    --content-on-surface: var(--color-slate-800);
 
-    --on-surface-inverted: var(--primary-color-50);
-    --on-surface-inverted-hover: var(--primary-color-100);
+    /* Primary brand color surface */
+    --surface-brand-primary-soft: var(--background-soft-brand-primary);
+    --surface-brand-primary-soft-hover: var(--brand-primary-300);
+    --surface-brand-primary-soft-border: var(--main-brand-primary);
+    --content-on-surface-brand-primary-soft: var(--foreground-brand-primary-accent);
 
-    /* UI bars */
-    --ui-bar-light: var(--primary-color-100);
-    --ui-bar-dark: var(--primary-color-300);
+    --surface-brand-primary: var(--main-brand-primary);
+    --surface-brand-primary-hover: var(--brand-primary-500);
+    --surface-brand-primary-border: var(--brand-primary-600);
+    --content-on-surface-brand-primary: var(--foreground-brand-primary-strong);
 
-    --ui-bar-border: var(--primary-color-400);
+    --surface-brand-primary-strong: var(--primary-color-600);
+    --surface-brand-primary-strong-hover: var(--primary-color-500);
+    --surface-brand-primary-strong-border: var(--primary-color-400);
+    --content-on-surface-brand-primary-strong: var(--foreground-brand-primary-inverted);
 
-    --on-ui-bar: var(--secondary-color-600);
-    --on-ui-bar-hover: var(--secondary-color-800);
+    /* --- UI layout elements --- */
+    --navbar-gradient-from: var(--brand-primary-50);
+    --navbar-gradient-to: var(--brand-primary-300);
+    --navbar-border: var(--main-brand-primary);
+    --content-on-navbar: var(--foreground-brand-secondary-accent);
+    --content-on-navbar-hover: var(--foreground-brand-secondary-strong);
 
-    /* Accent */
-    --accent: var(--primary-color-300);
-    --accent-hover: var(--primary-color-200);
-
-    --accent-border: var(--secondary-color-500);
-
-    --on-accent: var(--secondary-color-600);
-
-    /* Accent strong */
-    --accent-strong: var(--primary-color-500);
-    --accent-strong-hover: var(--primary-color-400);
-
-    --accent-strong-border: var(--primary-color-700);
-
-    --on-accent-strong: var(--primary-color-800);
-
-    /* Links */
-    --link: var(--primary-color-500);
-    --link-hover: var(--primary-color-600);
-
-    /* Dividers */
-    --divider-subtle: var(--primary-color-300);
-    --divider: var(--primary-color-500);
-    --divider-strong: var(--primary-color-700);
-    --divider-inverted: var(--primary-color-100);
-
-    /* Table */
-    --table-head: var(--primary-color-200);
-    --table-body-row-hover: var(--primary-color-100);
+    --footer-gradient-from: var(--brand-primary-50);
+    --footer-gradient-to: var(--brand-primary-300);
+    --footer-border: var(--main-brand-primary);
+    --content-on-footer: var(--foreground-brand-secondary-accent);
+    --content-on-footer-hover: var(--foreground-brand-secondary-strong);
 }
 
 .theme-summer {
-    /* Primary color palette */
-    --primary-color-50: theme(colors.green.50);
-    --primary-color-100: theme(colors.green.100);
-    --primary-color-200: theme(colors.green.200);
-    --primary-color-300: theme(colors.green.300);
-    --primary-color-400: theme(colors.green.400);
-    --primary-color-500: theme(colors.green.500);
-    --primary-color-600: theme(colors.green.600);
-    --primary-color-700: theme(colors.green.700);
-    --primary-color-800: theme(colors.green.800);
-    --primary-color-900: theme(colors.green.900);
-    --primary-color-950: theme(colors.green.950);
+    /* --- Primary brand color palette --- */
+    --brand-primary-50: var(--color-green-50);
+    --brand-primary-100: var(--color-green-100);
+    --brand-primary-200: var(--color-green-200);
+    --brand-primary-300: var(--color-green-300);
+    --brand-primary-400: var(--color-green-400);
+    --brand-primary-500: var(--color-green-500);
+    --brand-primary-600: var(--color-green-600);
+    --brand-primary-700: var(--color-green-700);
+    --brand-primary-800: var(--color-green-800);
+    --brand-primary-900: var(--color-green-900);
+    --brand-primary-950: var(--color-green-950);
 
-    /* Secondary color palette */
-    --secondary-color-50: theme(colors.emerald.50);
-    --secondary-color-100: theme(colors.emerald.100);
-    --secondary-color-200: theme(colors.emerald.200);
-    --secondary-color-300: theme(colors.emerald.300);
-    --secondary-color-400: theme(colors.emerald.400);
-    --secondary-color-500: theme(colors.emerald.500);
-    --secondary-color-600: theme(colors.emerald.600);
-    --secondary-color-700: theme(colors.emerald.700);
-    --secondary-color-800: theme(colors.emerald.800);
-    --secondary-color-900: theme(colors.emerald.900);
-    --secondary-color-950: theme(colors.emerald.950);
+    /* --- Secondary brand color palette --- */
+    --brand-secondary-50: var(--color-emerald-50);
+    --brand-secondary-100: var(--color-emerald-100);
+    --brand-secondary-200: var(--color-emerald-200);
+    --brand-secondary-300: var(--color-emerald-300);
+    --brand-secondary-400: var(--color-emerald-400);
+    --brand-secondary-500: var(--color-emerald-500);
+    --brand-secondary-600: var(--color-emerald-600);
+    --brand-secondary-700: var(--color-emerald-700);
+    --brand-secondary-800: var(--color-emerald-800);
+    --brand-secondary-900: var(--color-emerald-900);
+    --brand-secondary-950: var(--color-emerald-950);
 
-    /* Layout layer */
-    --background-body: var(--primary-color-100);
-    --background-main: var(--primary-color-50);
+    /*--- Main brand colors ---*/
+    --main-brand-primary: var(--brand-primary-400);
+    --main-brand-secondary: var(--brand-secondary-400);
 
-    --foreground-heading: theme(colors.slate.800);
-    --foreground-content: theme(colors.slate.700);
-    --foreground-muted: theme(colors.slate.500);
+    /*--- Backgrounds ---*/
+    --background-primary: var(--color-white);
+    --background-secondary: var(--color-neutral-100);
 
-    /* Content layer */
-    --surface: var(--primary-color-200);
-    --surface-hover: var(--background-body);
+    --background-brand-primary-soft: var(--brand-primary-200);
+    --background-brand-secondary-soft: var(--brand-secondary-200);
 
-    --surface-border: var(--primary-color-300);
+    --background-brand-primary-accent: var(--main-brand-primary);
+    --background-brand-secondary-accent: var(--main-brand-secondary);
 
-    --on-surface: var(--primary-color-500);
+    --background-brand-primary-strong: var(--brand-primary-600);
+    --background-brand-secondary-strong: var(--brand-secondary-600);
 
-    /* Elevated layer */
-    --surface-elevated-light: var(--primary-color-100);
-    --surface-elevated-dark: var(--primary-color-200);
+    /*--- Foregrounds ---*/
+    --foreground-primary: var(--color-slate-800);
+    --foreground-secondary: var(--color-slate-700);
+    --foreground-muted: var(--color-slate-500);
+    --foreground-inverted: var(--color-white);
 
-    --surface-elevated-border: var(--primary-color-400);
-    --surface-elevated-border-hover: var(--primary-color-600);
+    --foreground-brand-primary-soft: var(--brand-primary-200);
+    --foreground-brand-primary-accent: var(--main-brand-primary);
+    --foreground-brand-primary-strong: var(--brand-primary-600);
+    --foreground-brand-primary-inverted: var(--brand-primary-50);
 
-    --on-surface-elevated: var(--secondary-color-500);
-    --on-surface-elevated-hover: var(--secondary-color-600);
+    --foreground-brand-secondary-soft: var(--brand-secondary-200);
+    --foreground-brand-secondary-accent: var(--main-brand-secondary);
+    --foreground-brand-secondary-strong: var(--brand-secondary-600);
+    --foreground-brand-secondary-inverted: var(--brand-primary-50);
 
-    /* Inverted layer */
-    --surface-inverted-light: var(--primary-color-400);
-    --surface-inverted-dark: var(--primary-color-600);
+    /* --- Surface --- */
 
-    --surface-inverted-border: var(--primary-color-800);
+    /* Neutral color surface */
+    --surface: var(--color-white);
+    --surface-hover: var(--color-neutral-50);
+    --surface-border: var(--color-neutral-200);
+    --content-on-surface: var(--color-slate-800);
 
-    --on-surface-inverted: var(--primary-color-50);
-    --on-surface-inverted-hover: var(--primary-color-100);
+    /* Primary brand color surface */
+    --surface-brand-primary-soft: var(--background-soft-brand-primary);
+    --surface-brand-primary-soft-hover: var(--brand-primary-300);
+    --surface-brand-primary-soft-border: var(--main-brand-primary);
+    --content-on-surface-brand-primary-soft: var(--foreground-brand-primary-accent);
 
-    /* UI bars */
-    --ui-bar-light: var(--primary-color-200);
-    --ui-bar-dark: var(--primary-color-400);
+    --surface-brand-primary: var(--main-brand-primary);
+    --surface-brand-primary-hover: var(--brand-primary-500);
+    --surface-brand-primary-border: var(--brand-primary-600);
+    --content-on-surface-brand-primary: var(--foreground-brand-primary-strong);
 
-    --ui-bar-border: var(--primary-color-500);
+    --surface-brand-primary-strong: var(--primary-color-600);
+    --surface-brand-primary-strong-hover: var(--primary-color-500);
+    --surface-brand-primary-strong-border: var(--primary-color-400);
+    --content-on-surface-brand-primary-strong: var(--foreground-brand-primary-inverted);
 
-    --on-ui-bar: var(--secondary-color-700);
-    --on-ui-bar-hover: var(--secondary-color-800);
+    /* --- UI layout elements --- */
+    --navbar-gradient-from: var(--brand-primary-50);
+    --navbar-gradient-to: var(--brand-primary-300);
+    --navbar-border: var(--main-brand-primary);
+    --content-on-navbar: var(--foreground-brand-secondary-accent);
+    --content-on-navbar-hover: var(--foreground-brand-secondary-strong);
 
-    /* Accent */
-    --accent: var(--primary-color-300);
-    --accent-hover: var(--primary-color-200);
-
-    --accent-border: var(--secondary-color-500);
-
-    --on-accent: var(--secondary-color-600);
-
-    /* Accent strong */
-    --accent-strong: var(--primary-color-500);
-    --accent-strong-hover: var(--primary-color-600);
-
-    --accent-strong-border: var(--primary-color-700);
-
-    --on-accent-strong: var(--primary-color-800);
-
-    /* Links */
-    --link: var(--primary-color-500);
-    --link-hover: var(--primary-color-600);
-
-    /* Dividers */
-    --divider-subtle: var(--primary-color-300);
-    --divider: var(--primary-color-500);
-    --divider-strong: var(--primary-color-700);
-    --divider-inverted: var(--primary-color-100);
-
-    /* Table */
-    --table-head: var(--primary-color-200);
-    --table-body-row-hover: var(--primary-color-100);
+    --footer-gradient-from: var(--brand-primary-50);
+    --footer-gradient-to: var(--brand-primary-300);
+    --footer-border: var(--main-brand-primary);
+    --content-on-footer: var(--foreground-brand-secondary-accent);
+    --content-on-footer-hover: var(--foreground-brand-secondary-strong);
 }
 
 .theme-autumn {
-    /* Primary color palette */
-    --primary-color-50: theme(colors.orange.50);
-    --primary-color-100: theme(colors.orange.100);
-    --primary-color-200: theme(colors.orange.200);
-    --primary-color-300: theme(colors.orange.300);
-    --primary-color-400: theme(colors.orange.400);
-    --primary-color-500: theme(colors.orange.500);
-    --primary-color-600: theme(colors.orange.600);
-    --primary-color-700: theme(colors.orange.700);
-    --primary-color-800: theme(colors.orange.800);
-    --primary-color-900: theme(colors.orange.900);
-    --primary-color-950: theme(colors.orange.950);
+    /* --- Primary brand color palette --- */
+    --brand-primary-50: var(--color-orange-50);
+    --brand-primary-100: var(--color-orange-100);
+    --brand-primary-200: var(--color-orange-200);
+    --brand-primary-300: var(--color-orange-300);
+    --brand-primary-400: var(--color-orange-400);
+    --brand-primary-500: var(--color-orange-500);
+    --brand-primary-600: var(--color-orange-600);
+    --brand-primary-700: var(--color-orange-700);
+    --brand-primary-800: var(--color-orange-800);
+    --brand-primary-900: var(--color-orange-900);
+    --brand-primary-950: var(--color-orange-950);
 
-    /* Secondary color palette */
-    --secondary-color-50: theme(colors.red.50);
-    --secondary-color-100: theme(colors.red.100);
-    --secondary-color-200: theme(colors.red.200);
-    --secondary-color-300: theme(colors.red.300);
-    --secondary-color-400: theme(colors.red.400);
-    --secondary-color-500: theme(colors.red.500);
-    --secondary-color-600: theme(colors.red.600);
-    --secondary-color-700: theme(colors.red.700);
-    --secondary-color-800: theme(colors.red.800);
-    --secondary-color-900: theme(colors.red.900);
-    --secondary-color-950: theme(colors.red.950);
+    /* --- Secondary brand color palette --- */
+    --brand-secondary-50: var(--color-red-50);
+    --brand-secondary-100: var(--color-red-100);
+    --brand-secondary-200: var(--color-red-200);
+    --brand-secondary-300: var(--color-red-300);
+    --brand-secondary-400: var(--color-red-400);
+    --brand-secondary-500: var(--color-red-500);
+    --brand-secondary-600: var(--color-red-600);
+    --brand-secondary-700: var(--color-red-700);
+    --brand-secondary-800: var(--color-red-800);
+    --brand-secondary-900: var(--color-red-900);
+    --brand-secondary-950: var(--color-red-950);
 
-    /* Layout layer */
-    --background-body: var(--primary-color-100);
-    --background-main: var(--primary-color-50);
+    /*--- Main brand colors ---*/
+    --main-brand-primary: var(--brand-primary-400);
+    --main-brand-secondary: var(--brand-secondary-400);
 
-    --foreground-heading: theme(colors.slate.800);
-    --foreground-content: theme(colors.slate.700);
-    --foreground-muted: theme(colors.slate.500);
+    /*--- Backgrounds ---*/
+    --background-primary: var(--color-white);
+    --background-secondary: var(--color-neutral-100);
 
-    /* Content layer */
-    --surface: var(--primary-color-200);
-    --surface-hover: var(--background-body);
+    --background-brand-primary-soft: var(--brand-primary-200);
+    --background-brand-secondary-soft: var(--brand-secondary-200);
 
-    --surface-border: var(--primary-color-300);
+    --background-brand-primary-accent: var(--main-brand-primary);
+    --background-brand-secondary-accent: var(--main-brand-secondary);
 
-    --on-surface: var(--primary-color-500);
+    --background-brand-primary-strong: var(--brand-primary-600);
+    --background-brand-secondary-strong: var(--brand-secondary-600);
 
-    /* Elevated layer */
-    --surface-elevated-light: var(--primary-color-100);
-    --surface-elevated-dark: var(--primary-color-200);
+    /*--- Foregrounds ---*/
+    --foreground-primary: var(--color-slate-800);
+    --foreground-secondary: var(--color-slate-700);
+    --foreground-muted: var(--color-slate-500);
+    --foreground-inverted: var(--color-white);
 
-    --surface-elevated-border: var(--primary-color-400);
-    --surface-elevated-border-hover: var(--primary-color-600);
+    --foreground-brand-primary-soft: var(--brand-primary-200);
+    --foreground-brand-primary-accent: var(--main-brand-primary);
+    --foreground-brand-primary-strong: var(--brand-primary-600);
+    --foreground-brand-primary-inverted: var(--brand-primary-50);
 
-    --on-surface-elevated: var(--secondary-color-500);
-    --on-surface-elevated-hover: var(--secondary-color-600);
+    --foreground-brand-secondary-soft: var(--brand-secondary-200);
+    --foreground-brand-secondary-accent: var(--main-brand-secondary);
+    --foreground-brand-secondary-strong: var(--brand-secondary-600);
+    --foreground-brand-secondary-inverted: var(--brand-primary-50);
 
-    /* Inverted layer */
-    --surface-inverted-light: var(--primary-color-400);
-    --surface-inverted-dark: var(--primary-color-600);
+    /* --- Surface --- */
 
-    --surface-inverted-border: var(--primary-color-800);
+    /* Neutral color surface */
+    --surface: var(--color-white);
+    --surface-hover: var(--color-neutral-50);
+    --surface-border: var(--color-neutral-200);
+    --content-on-surface: var(--color-slate-800);
 
-    --on-surface-inverted: var(--primary-color-50);
-    --on-surface-inverted-hover: var(--primary-color-100);
+    /* Primary brand color surface */
+    --surface-brand-primary-soft: var(--background-soft-brand-primary);
+    --surface-brand-primary-soft-hover: var(--brand-primary-300);
+    --surface-brand-primary-soft-border: var(--main-brand-primary);
+    --content-on-surface-brand-primary-soft: var(--foreground-brand-primary-accent);
 
-    /* UI bars */
-    --ui-bar-light: var(--primary-color-100);
-    --ui-bar-dark: var(--primary-color-300);
+    --surface-brand-primary: var(--main-brand-primary);
+    --surface-brand-primary-hover: var(--brand-primary-500);
+    --surface-brand-primary-border: var(--brand-primary-600);
+    --content-on-surface-brand-primary: var(--foreground-brand-primary-strong);
 
-    --ui-bar-border: var(--primary-color-400);
+    --surface-brand-primary-strong: var(--primary-color-600);
+    --surface-brand-primary-strong-hover: var(--primary-color-500);
+    --surface-brand-primary-strong-border: var(--primary-color-400);
+    --content-on-surface-brand-primary-strong: var(--foreground-brand-primary-inverted);
 
-    --on-ui-bar: var(--primary-color-600);
-    --on-ui-bar-hover: var(--primary-color-700);
+    /* --- UI layout elements --- */
+    --navbar-gradient-from: var(--brand-primary-50);
+    --navbar-gradient-to: var(--brand-primary-300);
+    --navbar-border: var(--main-brand-primary);
+    --content-on-navbar: var(--foreground-brand-secondary-accent);
+    --content-on-navbar-hover: var(--foreground-brand-secondary-strong);
 
-    /* Accent */
-    --accent: var(--primary-color-300);
-    --accent-hover: var(--primary-color-200);
-
-    --accent-border: var(--secondary-color-500);
-
-    --on-accent: var(--secondary-color-600);
-
-    /* Accent strong */
-    --accent-strong: var(--primary-color-400);
-    --accent-strong-hover: var(--primary-color-300);
-
-    --accent-strong-border: var(--primary-color-600);
-
-    --on-accent-strong: var(--primary-color-800);
-
-    /* Links */
-    --link: var(--primary-color-500);
-    --link-hover: var(--primary-color-600);
-
-    /* Dividers */
-    --divider-subtle: var(--primary-color-300);
-    --divider: var(--primary-color-500);
-    --divider-strong: var(--primary-color-700);
-    --divider-inverted: var(--primary-color-100);
-
-    /* Table */
-    --table-head: var(--primary-color-200);
-    --table-body-row-hover: var(--primary-color-100);
+    --footer-gradient-from: var(--brand-primary-50);
+    --footer-gradient-to: var(--brand-primary-300);
+    --footer-border: var(--main-brand-primary);
+    --content-on-footer: var(--foreground-brand-secondary-accent);
+    --content-on-footer-hover: var(--foreground-brand-secondary-strong);
 }
 
 .theme-winter {
-    /* Primary color palette */
-    --primary-color-50: theme(colors.sky.50);
-    --primary-color-100: theme(colors.sky.100);
-    --primary-color-200: theme(colors.sky.200);
-    --primary-color-300: theme(colors.sky.300);
-    --primary-color-400: theme(colors.sky.400);
-    --primary-color-500: theme(colors.sky.500);
-    --primary-color-600: theme(colors.sky.600);
-    --primary-color-700: theme(colors.sky.700);
-    --primary-color-800: theme(colors.sky.800);
-    --primary-color-900: theme(colors.sky.900);
-    --primary-color-950: theme(colors.sky.950);
+    /* --- Primary brand color palette --- */
+    --brand-primary-50: var(--color-sky-50);
+    --brand-primary-100: var(--color-sky-100);
+    --brand-primary-200: var(--color-sky-200);
+    --brand-primary-300: var(--color-sky-300);
+    --brand-primary-400: var(--color-sky-400);
+    --brand-primary-500: var(--color-sky-500);
+    --brand-primary-600: var(--color-sky-600);
+    --brand-primary-700: var(--color-sky-700);
+    --brand-primary-800: var(--color-sky-800);
+    --brand-primary-900: var(--color-sky-900);
+    --brand-primary-950: var(--color-sky-950);
 
-    /* Secondary color palette */
-    --secondary-color-50: theme(colors.blue.50);
-    --secondary-color-100: theme(colors.blue.100);
-    --secondary-color-200: theme(colors.blue.200);
-    --secondary-color-300: theme(colors.blue.300);
-    --secondary-color-400: theme(colors.blue.400);
-    --secondary-color-500: theme(colors.blue.500);
-    --secondary-color-600: theme(colors.blue.600);
-    --secondary-color-700: theme(colors.blue.700);
-    --secondary-color-800: theme(colors.blue.800);
-    --secondary-color-900: theme(colors.blue.900);
-    --secondary-color-950: theme(colors.blue.950);
+    /* --- Secondary brand color palette --- */
+    --brand-secondary-50: var(--color-blue-50);
+    --brand-secondary-100: var(--color-blue-100);
+    --brand-secondary-200: var(--color-blue-200);
+    --brand-secondary-300: var(--color-blue-300);
+    --brand-secondary-400: var(--color-blue-400);
+    --brand-secondary-500: var(--color-blue-500);
+    --brand-secondary-600: var(--color-blue-600);
+    --brand-secondary-700: var(--color-blue-700);
+    --brand-secondary-800: var(--color-blue-800);
+    --brand-secondary-900: var(--color-blue-900);
+    --brand-secondary-950: var(--color-blue-950);
 
-    /* Layout layer */
-    --background-body: var(--primary-color-100);
-    --background-main: var(--primary-color-50);
+    /*--- Main brand colors ---*/
+    --main-brand-primary: var(--brand-primary-400);
+    --main-brand-secondary: var(--brand-secondary-400);
 
-    --foreground-heading: theme(colors.slate.800);
-    --foreground-content: theme(colors.slate.700);
-    --foreground-muted: theme(colors.slate.500);
+    /*--- Backgrounds ---*/
+    --background-primary: var(--color-white);
+    --background-secondary: var(--color-neutral-100);
 
-    /* Content layer */
-    --surface: var(--primary-color-200);
-    --surface-hover: var(--background-body);
+    --background-brand-primary-soft: var(--brand-primary-200);
+    --background-brand-secondary-soft: var(--brand-secondary-200);
 
-    --surface-border: var(--primary-color-300);
+    --background-brand-primary-accent: var(--main-brand-primary);
+    --background-brand-secondary-accent: var(--main-brand-secondary);
 
-    --on-surface: var(--primary-color-500);
+    --background-brand-primary-strong: var(--brand-primary-600);
+    --background-brand-secondary-strong: var(--brand-secondary-600);
 
-    /* Elevated layer */
-    --surface-elevated-light: var(--primary-color-100);
-    --surface-elevated-dark: var(--primary-color-200);
+    /*--- Foregrounds ---*/
+    --foreground-primary: var(--color-slate-800);
+    --foreground-secondary: var(--color-slate-700);
+    --foreground-muted: var(--color-slate-500);
+    --foreground-inverted: var(--color-white);
 
-    --surface-elevated-border: var(--primary-color-400);
-    --surface-elevated-border-hover: var(--primary-color-600);
+    --foreground-brand-primary-soft: var(--brand-primary-200);
+    --foreground-brand-primary-accent: var(--main-brand-primary);
+    --foreground-brand-primary-strong: var(--brand-primary-600);
+    --foreground-brand-primary-inverted: var(--brand-primary-50);
 
-    --on-surface-elevated: var(--secondary-color-500);
-    --on-surface-elevated-hover: var(--secondary-color-700);
+    --foreground-brand-secondary-soft: var(--brand-secondary-200);
+    --foreground-brand-secondary-accent: var(--main-brand-secondary);
+    --foreground-brand-secondary-strong: var(--brand-secondary-600);
+    --foreground-brand-secondary-inverted: var(--brand-primary-50);
 
-    /* Inverted layer */
-    --surface-inverted-light: var(--primary-color-400);
-    --surface-inverted-dark: var(--primary-color-600);
+    /* --- Surface --- */
 
-    --surface-inverted-border: var(--primary-color-800);
+    /* Neutral color surface */
+    --surface: var(--color-white);
+    --surface-hover: var(--color-neutral-50);
+    --surface-border: var(--color-neutral-200);
+    --content-on-surface: var(--color-slate-800);
 
-    --on-surface-inverted: var(--primary-color-50);
-    --on-surface-inverted-hover: var(--primary-color-100);
+    /* Primary brand color surface */
+    --surface-brand-primary-soft: var(--background-soft-brand-primary);
+    --surface-brand-primary-soft-hover: var(--brand-primary-300);
+    --surface-brand-primary-soft-border: var(--main-brand-primary);
+    --content-on-surface-brand-primary-soft: var(--foreground-brand-primary-accent);
 
-    /* UI bars */
-    --ui-bar-light: var(--primary-color-100);
-    --ui-bar-dark: var(--primary-color-300);
+    --surface-brand-primary: var(--main-brand-primary);
+    --surface-brand-primary-hover: var(--brand-primary-500);
+    --surface-brand-primary-border: var(--brand-primary-600);
+    --content-on-surface-brand-primary: var(--foreground-brand-primary-strong);
 
-    --ui-bar-border: var(--primary-color-400);
+    --surface-brand-primary-strong: var(--primary-color-600);
+    --surface-brand-primary-strong-hover: var(--primary-color-500);
+    --surface-brand-primary-strong-border: var(--primary-color-400);
+    --content-on-surface-brand-primary-strong: var(--foreground-brand-primary-inverted);
 
-    --on-ui-bar: var(--primary-color-600);
-    --on-ui-bar-hover: var(--primary-color-800);
+    /* --- UI layout elements --- */
+    --navbar-gradient-from: var(--brand-primary-50);
+    --navbar-gradient-to: var(--brand-primary-300);
+    --navbar-border: var(--main-brand-primary);
+    --content-on-navbar: var(--foreground-brand-secondary-accent);
+    --content-on-navbar-hover: var(--foreground-brand-secondary-strong);
 
-    /* Accent */
-    --accent: var(--primary-color-300);
-    --accent-hover: var(--primary-color-200);
-
-    --accent-border: var(--secondary-color-500);
-
-    --on-accent: var(--secondary-color-600);
-
-    /* Accent strong */
-    --accent-strong: var(--primary-color-500);
-    --accent-strong-hover: var(--primary-color-400);
-
-    --accent-strong-border: var(--secondary-color-600);
-
-    --on-accent-strong: var(--secondary-color-800);
-
-    /* Links */
-    --link: var(--primary-color-500);
-    --link-hover: var(--primary-color-600);
-
-    /* Dividers */
-    --divider-subtle: var(--primary-color-300);
-    --divider: var(--primary-color-500);
-    --divider-strong: var(--primary-color-700);
-    --divider-inverted: var(--primary-color-100);
-
-    /* Table */
-    --table-head: var(--primary-color-200);
-    --table-body-row-hover: var(--primary-color-100);
+    --footer-gradient-from: var(--brand-primary-50);
+    --footer-gradient-to: var(--brand-primary-300);
+    --footer-border: var(--main-brand-primary);
+    --content-on-footer: var(--foreground-brand-secondary-accent);
+    --content-on-footer-hover: var(--foreground-brand-secondary-strong);
 }
 
-/* =================== */
-/* === Semantic Mapping === */
-/* =================== */
-
 @theme {
-    /* Base fonts */
-    --font-sans:
+    /* Main font for content */
+    --font-nunito:
         var(--font-nunito), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial,
         sans-serif;
+
+    /* Decorative font mainly for h1 */
+    --font-fleur-de-leah:
+        var(--font-fleur-de-leah), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial,
+        sans-serif;
+
+    /* Decorative font for subheading and nav. */
+    --font-merriweather:
+        var(--font-merriweather), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial,
+        sans-serif;
+
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-    /* Semantic fonts */
-    --font-body: var(--font-sans);
-    --font-heading: var(--font-fleur-de-leah), cursive;
-    --font-subheading: var(--font-merriweather), Georgia, serif;
-    --font-nav: var(--font-aboreto), serif;
+    /* --- SEMANTIC TOKEN CLASSES PROVIDED BY TAILWIND FOR STYLING IN JSX.  --- */
 
-    /* ======================================== */
-    /* === Own System Design for Themes Colors Management === */
-    /* ======================================== */
+    /* --- Primary brand color palette --- */
+    --color-brand-primary-50: var(--brand-primary-50);
+    --color-brand-primary-100: var(--brand-primary-100);
+    --color-brand-primary-200: var(--brand-primary-200);
+    --color-brand-primary-300: var(--brand-primary-300);
+    --color-brand-primary-400: var(--brand-primary-400);
+    --color-brand-primary-500: var(--brand-primary-500);
+    --color-brand-primary-600: var(--brand-primary-600);
+    --color-brand-primary-700: var(--brand-primary-700);
+    --color-brand-primary-800: var(--brand-primary-800);
+    --color-brand-primary-900: var(--brand-primary-900);
+    --color-brand-primary-950: var(--brand-primary-950);
 
-    /* IMPORTANT: When styling inline components in JSX, use ONLY these semantic classes. You can extend them with new classes as needed, while maintaining the same pattern. */
+    /* --- Secondary brand color palette --- */
+    --color-brand-secondary-50: var(--brand-secondary-50);
+    --color-brand-secondary-100: var(--brand-secondary-100);
+    --color-brand-secondary-200: var(--brand-secondary-200);
+    --color-brand-secondary-300: var(--brand-secondary-300);
+    --color-brand-secondary-400: var(--brand-secondary-400);
+    --color-brand-secondary-500: var(--brand-secondary-500);
+    --color-brand-secondary-600: var(--brand-secondary-600);
+    --color-brand-secondary-700: var(--brand-secondary-700);
+    --color-brand-secondary-800: var(--brand-secondary-800);
+    --color-brand-secondary-900: var(--brand-secondary-900);
+    --color-brand-secondary-950: var(--brand-secondary-950);
 
-    /* Classes for layout layer (base content in pages) */
-    /* NOTE: Example of use: page bg, sections, headings, paragraphs e.t.c. */
-    --color-theme-background-body: var(--background-body);
-    --color-theme-background-main: var(--background-main);
+    /* --- Main brand colors --- */
+    --color-main-brand-primary: var(--main-brand-primary);
+    --color-main-brand-secondary: var(--main-brand-secondary);
 
-    --color-theme-foreground-heading: var(--foreground-heading);
-    --color-theme-foreground-content: var(--foreground-content);
-    --color-theme-foreground-muted: var(--foreground-muted);
+    /* --- Backgrounds --- */
+    --color-background-primary: var(--color-white);
+    --color-background-secondary: var(--color-neutral-100);
 
-    /* Classes for content layer (interactive content in pages) */
-    /* NOTE: Example of use: cards, tables, sliders e.t.c. */
-    --color-theme-surface: var(--surface);
-    --color-theme-surface-hover: var(--surface-hover);
+    --color-background-brand-primary-soft: var(--background-brand-primary-soft);
+    --color-background-brand-secondary-soft: var(--background-brand-secondary-soft);
 
-    --color-theme-surface-border: var(--surface-border);
+    --color-background-brand-primary-accent: var(--background-brand-primary-accent);
+    --color-background-brand-secondary-accent: var(--background-brand-secondary-accent);
 
-    --color-theme-on-surface: var(--on-surface);
+    --color-background-brand-primary-strong: var(--background-brand-primary-strong);
+    --color-background-brand-secondary-strong: var(--background-brand-secondary-strong);
 
-    /* Classes for elevated layer (default UI elements) */
-    /* NOTE: Example of use: background linear in UI elements like forms, panels, modals e.t.c. */
-    --color-theme-surface-elevated-light: var(--surface-elevated-light);
-    --color-theme-surface-elevated-dark: var(--surface-elevated-dark);
+    /* --- Foregrounds --- */
+    --color-foreground-primary: var(--color-slate-800);
+    --fcolor-oreground-secondary: var(--color-slate-700);
+    --color-foreground-muted: var(--color-slate-500);
+    --color-foreground-inverted: var(--color-white);
 
-    --color-theme-surface-elevated-border: var(--surface-elevated-border);
-    --color-theme-surface-elevated-border-hover: var(--surface-elevated-border-hover);
+    --color-foreground-brand-primary-soft: var(--foreground-brand-primary-soft);
+    --color-foreground-brand-primary-accent: var(--foreground-brand-primary-accent);
+    --color-foreground-brand-primary-strong: var(--foreground-brand-primary-strong);
+    --color-foreground-brand-primary-inverted: var(--foreground-brand-primary-inverted);
 
-    --color-theme-on-surface-elevated: var(--on-surface-elevated);
-    --color-theme-on-surface-elevated-hover: var(--on-surface-elevated-hover);
+    --color-foreground-brand-secondary-soft: var(--foreground-brand-secondary-soft);
+    --color-foreground-brand-secondary-accent: var(--foreground-brand-secondary-accent);
+    --color-foreground-brand-secondary-strong: var(--foreground-brand-secondary-strong);
+    --color-foreground-brand-secondary-inverted: var(--foreground-brand-secondary-inverted);
 
-    /* Classes for inverted layer (dark UI elements) */
-    /* NOTE: Example of use: background linear in UI elements like forms, panels, modals e.t.c. */
-    --color-theme-surface-inverted-light: var(--surface-inverted-light);
-    --color-theme-surface-inverted-dark: var(--surface-inverted-dark);
+    /* --- Surface --- */
 
-    --color-theme-surface-inverted-border: var(--surface-inverted-border);
+    /* Neutral color surface */
+    --color-surface: var(--color-white);
+    --color-surface-hover: var(--color-neutral-50);
+    --color-surface-border: var(--color-neutral-200);
+    --color-content-on-surface: var(--color-slate-800);
 
-    --color-theme-on-surface-inverted: var(--on-surface-inverted);
-    --color-theme-on-surface-inverted-hover: var(--on-surface-inverted-hover);
+    /* Primary brand color surface */
+    --color-surface-brand-primary-soft: var(--surface-brand-primary-soft);
+    --color-surface-brand-primary-soft-hover: var(--surface-brand-primary-soft-hover);
+    --color-surface-brand-primary-soft-border: var(--surface-brand-primary-soft-border);
+    --color-content-on-surface-brand-primary-soft: var(--content-on-surface-brand-primary-soft);
 
-    /* Classes for UI bars */
-    /* NOTE: Example of use: only in navbar and footer. */
-    --color-theme-ui-bar-light: var(--ui-bar-light);
-    --color-theme-ui-bar-dark: var(--ui-bar-dark);
+    --color-surface-brand-primary-accent: var(--surface-brand-primary-accent);
+    --color-surface-brand-primary-accent-hover: var(--surface-brand-primary-accent-hover);
+    --color-surface-brand-primary-accent-border: var(--surface-brand-primary-accent-border);
+    --color-content-on-surface-brand-primary-accent: var(
+        --color-content-on-surface-brand-primary-accent
+    );
 
-    --color-theme-ui-bar-border: var(--ui-bar-border);
+    --color-surface-brand-primary-strong: var(--surface-brand-primary-strong);
+    --color-surface-brand-primary-strong-hover: var(--surface-brand-primary-strong-hover);
+    --color-surface-brand-primary-strong-border: var(--surface-brand-primary-strong-border);
+    --color-content-on-surface-brand-primary-strong: var(--content-on-surface-brand-primary-strong);
 
-    --color-theme-on-ui-bar: var(--on-ui-bar);
-    --color-theme-on-ui-bar-hover: var(--on-ui-bar-hover);
+    /* --- UI layout elements --- */
+    --color-navbar-gradient-from: var(--navbar-gradient-from);
+    --color-navbar-gradient-to: var(--navbar-gradient-to);
+    --color-navbar-border: var(--navbar-border);
+    --color-content-on-navbar: var(--content-on-navbar);
+    --color-content-on-navbar-hover: var(--content-on-navbar-hover);
 
-    /* Classes for primary buttons (or possible other important interactive UI elements)*/
-    --color-theme-accent: var(--accent);
-    --color-theme-accent-hover: var(--accent-hover);
-
-    --color-theme-accent-border: var(--accent-border);
-
-    --color-theme-on-accent: var(--on-accent);
-
-    /* Classes for primary action buttons in CMS (or possible other important interactive UI elements) */
-    --color-theme-accent-strong: var(--accent-strong);
-    --color-theme-accent-strong-hover: var(--accent-strong-hover);
-
-    --color-theme-accent-strong-border: var(--accent-strong-border);
-
-    --color-theme-on-accent-strong: var(--on-accent-strong);
-
-    /* Classes for links */
-    --color-theme-link: var(--link);
-    --color-theme-link-hover: var(--link-hover);
-
-    /* Classes for content line separator */
-    --color-theme-divider-subtle: var(--divider-subtle);
-    --color-theme-divider: var(--divider);
-    --color-theme-divider-strong: var(--divider-strong);
-    --color-theme-divider-inverted: var(--divider-inverted);
+    --color-footer-gradient-from: var(--footer-gradient-from);
+    --color-footer-gradient-from: var(--footer-gradient-to);
+    --color-footer-border: var(--footer-border);
+    --color-content-on-footer: var(--content-on-footer);
+    --color-content-on-footer-hover: var(--content-on-footer-hover);
 }
 
 @layer base {
-    html {
-        color-scheme: light;
-    }
-
     body {
-        @apply font-body bg-theme-background-body text-theme-foreground-content antialiased;
+        @apply font-nunito bg-background-secondary text-foreground-primary antialiased;
     }
 
     main {
-        @apply bg-theme-background-main;
+        @apply bg-background-primary;
     }
 
     h1,
@@ -632,15 +621,15 @@
     h4,
     h5,
     h6 {
-        @apply text-theme-foreground-heading;
+        @apply text-foreground-primary;
     }
 
     h1 {
-        @apply font-heading text-center text-6xl font-bold;
+        @apply font-fleur-de-leah text-center text-6xl font-bold;
     }
 
     h2 {
-        @apply font-subheading mb-4 text-center text-2xl uppercase sm:text-3xl;
+        @apply font-merriweather mb-4 text-center text-2xl uppercase sm:text-3xl;
     }
 
     h3 {
@@ -656,20 +645,20 @@
     }
 
     thead {
-        background-color: var(--table-head);
+        @apply bg-surface-brand-primary-accent;
     }
 
     thead th {
-        @apply border-theme-surface-elevated-border-hover border border-b-0 px-1 py-2;
+        @apply border-surface-brand-primary-accent-border border border-b-0 p-1;
     }
 
     tbody tr:hover {
-        background-color: var(--table-body-row-hover);
+        @apply bg-background-brand-primary-soft;
     }
 
     tbody th,
     td {
-        @apply border-theme-surface-elevated-border-hover border px-1 py-1 font-normal;
+        @apply border-surface-brand-primary-accent-border border p-1;
     }
 
     td {
@@ -678,109 +667,15 @@
 }
 
 @layer components {
-    /* NOTE: Use for styling when it is necessary to maintain correct semantics on the page. */
-    .h1 {
-        font-family: var(--font-fleurdeleah);
-        @apply text-center text-6xl font-bold;
-    }
-
-    /* NOTE: Use for styling when it is necessary to maintain correct semantics on the page. */
-    .h2 {
-        font-family: var(--font-merriweather);
-        @apply mb-4 text-center text-2xl font-normal uppercase sm:text-3xl;
-    }
-
-    /* NOTE: Use for styling when it is necessary to maintain correct semantics on the page. */
-    .h3 {
-        font-family: var(--font-nunito);
-        @apply text-xl font-normal sm:text-2xl;
-    }
-
     .link-context {
-        @apply text-theme-link hover:text-theme-link-hover font-semibold hover:underline;
+        @apply text-foreground-brand-primary-accent hover:text-foreground-brand-primary-soft font-semibold hover:underline;
     }
 
     .link-visible {
-        @apply text-theme-link hover:text-theme-link-hover underline;
+        @apply text-foreground-brand-primary-accent hover:text-foreground-brand-primary-soft underline;
     }
 
-    /* ===================== */
-    /* === COMPONENT SYSTEM === */
-    /* ===================== */
-
-    /* Surface Layers */
-
-    .surface {
-        @apply bg-theme-surface text-theme-on-surface border-theme-surface-border;
-    }
-
-    .surface-hover {
-        @apply bg-theme-surface text-theme-on-surface border-theme-surface-border hover:bg-theme-surface-hover;
-    }
-
-    .surface-elevated-subtle {
-        @apply from-theme-background-body via-theme-background-main to-theme-background-body border-theme-surface-border bg-linear-to-br;
-    }
-
-    .surface-elevated {
-        @apply from-theme-surface-elevated-dark via-theme-surface-elevated-light to-theme-surface-elevated-dark text-theme-on-surface-elevated border-theme-surface-elevated-border bg-linear-to-br;
-    }
-
-    .surface-inverted {
-        @apply from-theme-surface-inverted-dark via-theme-surface-inverted-light to-theme-surface-inverted-dark text-theme-on-surface-inverted border-theme-surface-inverted-border bg-linear-to-br;
-    }
-
-    /* Types of Components */
-
-    /* NOTE:  For consistency, use with the surface class. */
-    .card {
-        @apply rounded-2xl border-4 shadow-lg;
-    }
-
-    /* NOTE:  For consistency, use with the surface-hover class. */
-    .card-interactive {
-        @apply rounded-2xl border-4 shadow-lg transition hover:scale-105 hover:shadow-xl;
-    }
-
-    /* NOTE:  For consistency, use with the surface-hover class. */
-    .post-card {
-        @apply rounded-xl border-0 shadow-lg transition hover:shadow-xl;
-    }
-
-    /* NOTE: For consistency, use with the surface-elevated class. */
-    .form {
-        @apply rounded-xl border-2 shadow-lg;
-    }
-
-    .input-form {
-        @apply bg-theme-background-main border-theme-surface-elevated-border focus:border-theme-surface-elevated-border-hover text-theme-foreground-content w-full rounded-md border p-2 shadow-sm focus:shadow-md focus:outline-none;
-    }
-
-    /* NOTE: For consistency, use with the surface-elevated class. */
-    .modal {
-        @apply rounded-xl border-2 shadow-lg;
-    }
-
-    /* NOTE: For consistency, use with the surface-elevated-subtle/surface-elevated class. */
-    .panel {
-        @apply rounded-xl border-3 shadow-lg;
-    }
-
-    .navbar {
-        @apply from-theme-ui-bar-light to-theme-ui-bar-dark border-theme-ui-bar-border text-theme-on-ui-bar border-b-4 bg-linear-to-b shadow-lg;
-    }
-
-    .mobile-navbar {
-        @apply from-theme-ui-bar-dark via-theme-ui-bar-light to-theme-ui-bar-dark border-theme-ui-bar-border text-theme-on-ui-bar border-b-4 bg-linear-to-r;
-    }
-
-    .footer {
-        @apply from-theme-ui-bar-light to-theme-ui-bar-dark border-theme-ui-bar-border text-theme-on-ui-bar border-t-4 bg-linear-to-t;
-    }
-
-    /* ================== */
-    /* === BUTTON SYSTEM === */
-    /* ================== */
+    /* --- Button Design --- */
 
     .btn {
         @apply flex w-fit items-center justify-center gap-1 rounded-lg whitespace-nowrap transition hover:cursor-pointer;
@@ -825,24 +720,24 @@
     /* Button - Visual Variants */
 
     .btn-primary {
-        @apply bg-theme-accent border-theme-accent-border hover:bg-theme-accent-hover text-theme-on-accent;
+        @apply bg-main-brand-primary border-surface-brand-primary-accent-border hover:bg-brand-primary-300 text-foreground-brand-primary-strong;
     }
 
     .btn-secondary {
-        @apply text-theme-foreground-content border-gray-700 bg-gray-200 hover:bg-gray-300;
+        @apply text-foreground-primary border-gray-700 bg-gray-200 hover:bg-gray-300;
     }
 
     .btn-outline {
-        @apply hover:bg-theme-surface border-theme-accent-border text-theme-on-accent bg-theme-surface-hover;
+        @apply hover:bg-surface-brand-primary-soft border-surface-brand-primary-accent-border text-foreground-brand-primary-accent bg-surface-brand-primary-accent-hover;
     }
 
     .btn-ghost {
-        @apply hover:bg-theme-surface border-theme-accent-border text-theme-on-accent bg-transparent;
+        @apply hover:bg-background-brand-primary-accent border-surface-brand-primary-accent-border text-foreground-brand-primary-accent border bg-transparent;
     }
 
     /* NOTE: Use for action buttons in the CMS. */
     .btn-action {
-        @apply bg-theme-accent-strong border-theme-accent-border hover:bg-theme-accent-strong-hover text-white;
+        @apply bg-background-brand-primary-accent border-surface-brand-primary-strong-border hover:bg-background-brand-primary-strong text-white;
     }
 
     /* NOTE: Use for danger action buttons in the CMS. */

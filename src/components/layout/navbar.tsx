@@ -50,11 +50,7 @@ export default function Navbar() {
     return (
         <header
             aria-label="Główny baner strony"
-            className={cn(
-                'sticky top-0 z-50 h-22',
-                'flex items-center justify-between p-2',
-                'navbar'
-            )}
+            className="font-merriweather from-navbar-gradient-from to-navbar-gradient-to border-navbar-border text-content-on-navbar sticky top-0 z-50 flex h-22 items-center justify-between border-b-4 bg-linear-to-b p-2 text-lg font-bold uppercase shadow-lg"
         >
             {/* Logo - always visible */}
             <Link href="/" className="z-50 h-22 w-auto sm:shrink-0">
@@ -69,17 +65,16 @@ export default function Navbar() {
             </Link>
 
             {/* ============ Desktop Menu ============ */}
-            <nav
-                aria-label="Główna nawigacja strony"
-                className="font-nav hidden text-lg font-bold xl:flex"
-            >
+            <nav aria-label="Główna nawigacja strony" className="hidden xl:flex">
                 <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3">
                     {PUBLIC_NAV_ITEMS.map((item) => (
                         <li
                             key={item.path}
                             className={cn(
-                                'hover:text-theme-on-ui-bar-hover cursor-pointer transition hover:underline',
-                                pathname === item.path ? 'text-theme-on-ui-bar-hover underline' : ''
+                                'hover:text-content-on-navbar-hover cursor-pointer transition hover:underline',
+                                pathname === item.path
+                                    ? 'text-content-on-navbar-hover underline'
+                                    : ''
                             )}
                         >
                             <Link href={item.path}>{item.label}</Link>
@@ -147,13 +142,7 @@ export default function Navbar() {
                 <>
                     <nav
                         aria-label="Główna nawigacja strony"
-                        className={cn(
-                            'fixed inset-0 z-40',
-                            'pt-24',
-                            'font-nav text-center text-lg font-bold',
-                            'mobile-navbar',
-                            'transition-transform duration-500'
-                        )}
+                        className="font-nav from-theme-ui-bar-dark via-theme-ui-bar-light to-theme-ui-bar-dark border-theme-ui-bar-border text-theme-on-ui-bar fixed inset-0 z-40 border-b-4 bg-linear-to-r pt-24 text-center text-lg font-bold transition-transform duration-500"
                     >
                         <ul className="mx-auto h-full space-y-4 overflow-x-auto overflow-y-auto pb-8 whitespace-nowrap">
                             {PUBLIC_NAV_ITEMS.map((item, i) => (
