@@ -32,6 +32,9 @@
     --main-brand-secondary: var(--brand-secondary-400);
 
     /*--- Backgrounds ---*/
+    --background-primary: var(--color-white);
+    --background-secondary: var(--color-neutral-50);
+
     --background-brand-primary-soft: var(--brand-primary-200);
     --background-brand-secondary-soft: var(--brand-secondary-200);
 
@@ -82,17 +85,17 @@
     --content-on-surface-brand-primary-strong: var(--foreground-brand-primary-inverted);
 
     /* --- UI layout elements --- */
-    --navbar-gradient-from: var(--brand-primary-50);
-    --navbar-gradient-to: var(--brand-primary-300);
+    --navbar-gradient-from: var(--background-brand-primary-accent);
+    --navbar-gradient-to: var(--background-brand-primary-accent);
     --navbar-border: var(--main-brand-primary);
-    --content-on-navbar: var(--foreground-brand-secondary-accent);
-    --content-on-navbar-hover: var(--foreground-brand-secondary-strong);
+    --content-on-navbar: var(--color-white);
+    --content-on-navbar-hover: var(--color-white);
 
-    --footer-gradient-from: var(--brand-primary-50);
-    --footer-gradient-to: var(--brand-primary-300);
-    --footer-border: var(--main-brand-primary);
-    --content-on-footer: var(--foreground-brand-secondary-accent);
-    --content-on-footer-hover: var(--foreground-brand-secondary-strong);
+    --footer-gradient-from: var(--background-brand-primary-strong);
+    --footer-gradient-to: var(--background-brand-primary-strong);
+    --footer-border: var(--background-brand-primary-strong);
+    --content-on-footer: var(--foreground-brand-primary-inverted);
+    --content-on-footer-hover: var(--color-white);
 }
 
 .theme-spring {
@@ -128,7 +131,7 @@
 
     /*--- Backgrounds ---*/
     --background-primary: var(--color-white);
-    --background-secondary: var(--color-neutral-100);
+    --background-secondary: var(--brand-primary-50);
 
     --background-brand-primary-soft: var(--brand-primary-200);
     --background-brand-secondary-soft: var(--brand-secondary-200);
@@ -226,7 +229,7 @@
 
     /*--- Backgrounds ---*/
     --background-primary: var(--color-white);
-    --background-secondary: var(--color-neutral-100);
+    --background-secondary: var(--brand-primary-50);
 
     --background-brand-primary-soft: var(--brand-primary-200);
     --background-brand-secondary-soft: var(--brand-secondary-200);
@@ -324,7 +327,7 @@
 
     /*--- Backgrounds ---*/
     --background-primary: var(--color-white);
-    --background-secondary: var(--color-neutral-100);
+    --background-secondary: var(--brand-primary-50);
 
     --background-brand-primary-soft: var(--brand-primary-200);
     --background-brand-secondary-soft: var(--brand-secondary-200);
@@ -422,7 +425,7 @@
 
     /*--- Backgrounds ---*/
     --background-primary: var(--color-white);
-    --background-secondary: var(--color-neutral-100);
+    --background-secondary: var(--brand-primary-50);
 
     --background-brand-primary-soft: var(--brand-primary-200);
     --background-brand-secondary-soft: var(--brand-secondary-200);
@@ -488,12 +491,14 @@
 }
 
 @theme {
-    /* Main font for content */
+    /* --- Fonts --- */
+
+    /* Main font for content. */
     --font-nunito:
         var(--font-nunito), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial,
         sans-serif;
 
-    /* Decorative font mainly for h1 */
+    /* Decorative font mainly for h1. */
     --font-fleur-de-leah:
         var(--font-fleur-de-leah), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial,
         sans-serif;
@@ -538,8 +543,8 @@
     --color-main-brand-secondary: var(--main-brand-secondary);
 
     /* --- Backgrounds --- */
-    --color-background-primary: var(--color-white);
-    --color-background-secondary: var(--color-neutral-100);
+    --color-background-primary: var(--background-primary);
+    --color-background-secondary: var(--background-secondary);
 
     --color-background-brand-primary-soft: var(--background-brand-primary-soft);
     --color-background-brand-secondary-soft: var(--background-brand-secondary-soft);
@@ -552,7 +557,7 @@
 
     /* --- Foregrounds --- */
     --color-foreground-primary: var(--color-slate-800);
-    --fcolor-oreground-secondary: var(--color-slate-700);
+    --color-foreground-secondary: var(--color-slate-700);
     --color-foreground-muted: var(--color-slate-500);
     --color-foreground-inverted: var(--color-white);
 
@@ -600,7 +605,7 @@
     --color-content-on-navbar-hover: var(--content-on-navbar-hover);
 
     --color-footer-gradient-from: var(--footer-gradient-from);
-    --color-footer-gradient-from: var(--footer-gradient-to);
+    --color-footer-gradient-to: var(--footer-gradient-to);
     --color-footer-border: var(--footer-border);
     --color-content-on-footer: var(--content-on-footer);
     --color-content-on-footer-hover: var(--content-on-footer-hover);
@@ -608,7 +613,7 @@
 
 @layer base {
     body {
-        @apply font-nunito bg-background-secondary text-foreground-primary antialiased;
+        @apply font-nunito bg-background-secondary text-foreground-secondary antialiased;
     }
 
     main {
@@ -668,11 +673,11 @@
 
 @layer components {
     .link-context {
-        @apply text-foreground-brand-primary-accent hover:text-foreground-brand-primary-soft font-semibold hover:underline;
+        @apply text-foreground-brand-primary-accent hover:text-foreground-brand-primary-strong font-semibold hover:underline;
     }
 
     .link-visible {
-        @apply text-foreground-brand-primary-accent hover:text-foreground-brand-primary-soft underline;
+        @apply text-foreground-brand-primary-accent hover:text-foreground-brand-primary-strong underline;
     }
 
     /* --- Button Design --- */
