@@ -1,11 +1,11 @@
 import { SEO } from '@/config/seo';
 
-import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
 
 import ImageLightbox from './_components/image-lightbox';
 import { Download } from 'lucide-react';
 import { CustomButton } from '@/components/custom-button';
+import { DecorativeLine } from '@/components/decorative-line';
 
 export const metadata = SEO.GARDEN_MAP;
 
@@ -13,7 +13,7 @@ export default function GardenMapPage() {
     return (
         <article>
             <h1>Mapa Ogrodu</h1>
-            <MainHeadingLineSeparator />
+            <DecorativeLine variant="forHeading" />
 
             <section>
                 <AnimateOnView className="h2-animate">

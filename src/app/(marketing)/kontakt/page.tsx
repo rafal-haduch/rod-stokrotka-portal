@@ -1,7 +1,6 @@
 import { SEO } from '@/config/seo';
 
-import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
-import { LineSeparator } from '@/components/line-separator';
+import { DecorativeLine } from '@/components/decorative-line';
 import { AnimateOnView } from '@/components/animated-h2';
 
 import AssociationInfoSection from './_components/association-info-section';
@@ -13,11 +12,11 @@ export default function ContactPage() {
     return (
         <article>
             <h1>Dane Kontaktowe</h1>
-            <MainHeadingLineSeparator />
+            <DecorativeLine variant="forHeading" />
 
             <AssociationInfoSection />
 
-            <LineSeparator />
+            <DecorativeLine variant="forContent" />
 
             <section>
                 <AnimateOnView className="h2-animate">

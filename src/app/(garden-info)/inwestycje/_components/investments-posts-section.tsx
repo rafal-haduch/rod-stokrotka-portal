@@ -1,11 +1,12 @@
 import { ROUTES } from '@/config/routes';
 
 import PageSection, { PAGE_SECTION_PRESETS } from '@/components/layout/page-section';
-import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
+
 import { AnimateOnView } from '@/components/animated-h2';
 
 import { PostListItem } from '@/features/blog/domain/blog-types';
 import PostsList from '@/features/blog/ui/posts-list';
+import { DecorativeLine } from '@/components/decorative-line';
 
 interface InvestmentsPostsSectionProps {
     posts: PostListItem[];
@@ -15,7 +16,7 @@ export default function InvestmentsPostsSection({ posts }: InvestmentsPostsSecti
     return (
         <PageSection {...PAGE_SECTION_PRESETS.single} aria-labelledby="memories-section-title">
             <h1 id="memories-section-title">Inwestycje</h1>
-            <MainHeadingLineSeparator />
+            <DecorativeLine variant="forHeading" />
 
             <AnimateOnView className="h2-animate">
                 <h2>Prace i modernizacje wykonane w naszym ogrodzie</h2>

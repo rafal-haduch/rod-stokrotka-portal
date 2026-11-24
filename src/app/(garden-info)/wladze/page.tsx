@@ -7,8 +7,7 @@ import {
     arbitrationCommittee,
 } from '@/data/governance';
 
-import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
-import { LineSeparator } from '@/components/line-separator';
+import { DecorativeLine } from '@/components/decorative-line';
 
 import { GovernanceSection } from './_components/governance-section';
 
@@ -18,7 +17,7 @@ export default function GovernanceAssociation() {
     return (
         <article>
             <h1>Władze</h1>
-            <MainHeadingLineSeparator />
+            <DecorativeLine variant="forHeading" />
             <p className="mb-10 text-center">
                 Wybrano: <time dateTime={governanceElectedOn}>{governanceElectedOn}</time>
             </p>
@@ -29,7 +28,7 @@ export default function GovernanceAssociation() {
 
             <GovernanceSection title="Komisja Rozjemcza" members={arbitrationCommittee} />
 
-            <LineSeparator my="my-10" />
+            <DecorativeLine my="my-10" />
 
             <section className="text-center">
                 <dl>

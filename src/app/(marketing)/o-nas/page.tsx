@@ -4,8 +4,8 @@ import { ROUTES } from '@/config/routes';
 import { SEO } from '@/config/seo';
 
 import { GoogleMaps } from '@/components/google-maps';
-import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
-import { LineSeparator } from '@/components/line-separator';
+
+import { DecorativeLine } from '@/components/decorative-line';
 import { AnimateOnView } from '@/components/animated-h2';
 
 import GardenStats from './_components/garden-stats';
@@ -19,11 +19,11 @@ export default function AboutUsPage() {
     return (
         <article>
             <h1>O Nas</h1>
-            <MainHeadingLineSeparator />
+            <DecorativeLine variant="forHeading" />
 
             <DescriptionSection />
 
-            <LineSeparator />
+            <DecorativeLine variant="forContent" />
 
             <section>
                 <AnimateOnView className="h2-animate">
@@ -32,7 +32,7 @@ export default function AboutUsPage() {
                 <GardenStats />
             </section>
 
-            <LineSeparator />
+            <DecorativeLine variant="forContent" />
 
             <section>
                 <AnimateOnView className="h2-animate">
@@ -49,7 +49,7 @@ export default function AboutUsPage() {
                 </CustomButton>
             </section>
 
-            <LineSeparator />
+            <DecorativeLine variant="forContent" />
 
             <section>
                 <AnimateOnView className="h2-animate">

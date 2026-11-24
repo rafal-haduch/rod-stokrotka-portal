@@ -5,10 +5,10 @@ import { SEO } from '@/config/seo';
 
 import { PhotoWithTitle } from '@/shared/models/photo';
 
-import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
 import { PhotoGallery } from '@/components/photo-gallery';
 import { galleryPhotos } from '@/content/gallery-photos';
+import { DecorativeLine } from '@/components/decorative-line';
 
 export const metadata = SEO.GALLERY;
 
@@ -16,7 +16,7 @@ export default function GalleryPage() {
     return (
         <article>
             <h1>Galeria Ogrodu</h1>
-            <MainHeadingLineSeparator />
+            <DecorativeLine variant="forHeading" />
 
             <section className="mb-12">
                 <AnimateOnView className="h2-animate">

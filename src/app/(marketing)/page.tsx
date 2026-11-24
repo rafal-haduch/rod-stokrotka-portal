@@ -3,9 +3,8 @@ import { ArrowRight } from 'lucide-react';
 
 import { ROUTES } from '@/config/routes';
 
-import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { WorkInProgress } from '@/components/work-in-progress';
-import { LineSeparator } from '@/components/line-separator';
+import { DecorativeLine } from '@/components/decorative-line';
 import { AnimateOnView } from '@/components/animated-h2';
 import { CustomButton } from '@/components/custom-button';
 
@@ -13,7 +12,7 @@ export default function HomePage() {
     return (
         <>
             <h1>Strona Główna</h1>
-            <MainHeadingLineSeparator />
+            <DecorativeLine variant="forHeading" />
 
             <section>
                 <AnimateOnView className="h2-animate">
@@ -38,17 +37,12 @@ export default function HomePage() {
                     pielęgnacji działek.
                 </p>
 
-                <CustomButton
-                    href={ROUTES.ABOUT_US.path}
-                    size="lg"
-                    variant="primary"
-                    className="mx-auto"
-                >
+                <Link href={ROUTES.ABOUT_US.path} className="btn btn-lg btn-primary mx-auto">
                     Dowiedz się więcej o nas <ArrowRight />
-                </CustomButton>
+                </Link>
             </section>
 
-            <LineSeparator />
+            <DecorativeLine variant="forContent" />
 
             <section>
                 <AnimateOnView className="h2-animate">
@@ -66,7 +60,7 @@ export default function HomePage() {
                 </CustomButton>
             </section>
 
-            <LineSeparator />
+            <DecorativeLine variant="forContent" />
 
             <section>
                 <AnimateOnView className="h2-animate">

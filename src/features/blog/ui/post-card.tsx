@@ -18,7 +18,7 @@ export default function PostCard({ post, postBasePath }: PostCardProps) {
     return (
         <Link
             href={`${postBasePath}/${post.slug}`}
-            className="group post-card surface mx-auto block max-w-xl overflow-hidden"
+            className="group text-surface-content from-surface-gradient-from to-surface-gradient-to hover:from-surface-gradient-from-hover hover:to-surface-gradient-to-hover mx-auto block max-w-xl overflow-hidden bg-linear-to-br"
         >
             <div className="relative h-64">
                 <Image src={post.cover} alt={post.title} fill className="object-cover" />
@@ -28,7 +28,7 @@ export default function PostCard({ post, postBasePath }: PostCardProps) {
                 </div>
             </div>
             <div className="flex flex-col gap-4 px-4 py-2">
-                <h3 className="text-theme-on-surface text-center text-xl font-semibold group-hover:underline">
+                <h3 className="text-surface-content text-center text-xl font-semibold">
                     {post.title}
                 </h3>
                 <div className="flex justify-between">

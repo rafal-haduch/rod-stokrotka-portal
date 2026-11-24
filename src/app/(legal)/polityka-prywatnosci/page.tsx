@@ -1,6 +1,6 @@
+import { DecorativeLine } from '@/components/decorative-line';
 import { SEO } from '@/config/seo';
 
-import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { EMAIL } from '@/data/contact';
 
 export const metadata = SEO.PRIVACY_POLICY;
@@ -10,7 +10,7 @@ export default function PrivacyPolicyPage() {
         <article>
             <header>
                 <h1>Polityka Prywatności</h1>
-                <MainHeadingLineSeparator />
+                <DecorativeLine variant="forHeading" />
             </header>
 
             <section>

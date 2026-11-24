@@ -1,6 +1,6 @@
 import { SEO } from '@/config/seo';
 
-import { LineSeparator } from '@/components/line-separator';
+import { DecorativeLine } from '@/components/decorative-line';
 import { AnimateOnView } from '@/components/animated-h2';
 
 import LoginForm from '@/features/auth/ui/login-form';
@@ -30,7 +30,7 @@ export default function LoginPage() {
                 </div>
             </section>
 
-            <LineSeparator />
+            <DecorativeLine variant="forContent" />
 
             <section>
                 <AnimateOnView className="h2-animate">

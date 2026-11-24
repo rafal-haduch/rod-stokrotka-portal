@@ -2,8 +2,7 @@ import { SEO } from '@/config/seo';
 
 import { recommendedSites } from '@/content/recommended-sites';
 
-import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
-import { LineSeparator } from '@/components/line-separator';
+import { DecorativeLine } from '@/components/decorative-line';
 import { WorkInProgress } from '@/components/work-in-progress';
 import { AnimateOnView } from '@/components/animated-h2';
 
@@ -14,7 +13,7 @@ export default function GardeningGuidePage() {
         <article>
             <header>
                 <h1>Porady Ogrodowe</h1>
-                <MainHeadingLineSeparator />
+                <DecorativeLine variant="forHeading" />
                 <AnimateOnView className="h2-animate">
                     <h2>Porady, wskazówki i inspiracje dla ogrodu</h2>
                 </AnimateOnView>
@@ -40,7 +39,7 @@ export default function GardeningGuidePage() {
                 </ul>
             </section>
 
-            <LineSeparator my="my-10" />
+            <DecorativeLine my="my-10" />
 
             <section className="text-center">
                 <h3>Wybrane artykuły:</h3>

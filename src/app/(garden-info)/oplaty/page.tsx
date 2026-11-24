@@ -1,7 +1,6 @@
 import { SEO } from '@/config/seo';
 
-import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
-import { LineSeparator } from '@/components/line-separator';
+import { DecorativeLine } from '@/components/decorative-line';
 import { AnimateOnView } from '@/components/animated-h2';
 
 import FeesInfoSection from './_components/fees-info-section';
@@ -14,11 +13,11 @@ export default function FeesPage() {
     return (
         <article>
             <h1>Opłaty</h1>
-            <MainHeadingLineSeparator />
+            <DecorativeLine variant="forHeading" />
 
             <FeesInfoSection />
 
-            <LineSeparator />
+            <DecorativeLine variant="forContent" />
 
             <section>
                 <AnimateOnView className="h2-animate">
@@ -27,7 +26,7 @@ export default function FeesPage() {
                 <FeesTypesTable />
             </section>
 
-            <LineSeparator />
+            <DecorativeLine variant="forContent" />
 
             <section>
                 <AnimateOnView className="h2-animate">
@@ -39,7 +38,7 @@ export default function FeesPage() {
                 <FeeTable />
             </section>
 
-            <LineSeparator />
+            <DecorativeLine variant="forContent" />
 
             {/* <section>
                 <AnimateOnView className="h2-animate">

@@ -1,6 +1,5 @@
 import { formatDate } from '@/shared/utils/format-date';
 
-import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { PhotoGallery } from '@/components/photo-gallery';
 
 import { Post } from '@/features/blog/domain/blog-types';
@@ -13,7 +12,7 @@ export default function PostArticle({ post }: PostArticleProps) {
     return (
         <article className="mx-auto px-4 py-8">
             <h1>{post.title}</h1>
-            <MainHeadingLineSeparator />
+            <LineSeparator variant="forHeading" />
             <div className="mx-auto mb-4 flex max-w-2xl justify-between gap-8 text-xl font-semibold sm:mb-8">
                 <p>
                     <time dateTime={new Date(post.publicationDate).toISOString()}>

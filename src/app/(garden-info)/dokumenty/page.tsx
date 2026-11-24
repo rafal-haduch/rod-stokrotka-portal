@@ -6,9 +6,8 @@ import {
     formsAndAgreements,
 } from '@/content/documents';
 
-import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
-import { LineSeparator } from '@/components/line-separator';
+import { DecorativeLine } from '@/components/decorative-line';
 
 import ListOfDocuments from './_components/list-of-documents';
 
@@ -18,7 +17,7 @@ export default function DocumentsPage() {
     return (
         <article>
             <h1>Dokumenty</h1>
-            <MainHeadingLineSeparator />
+            <DecorativeLine variant="forHeading" />
 
             <section>
                 <AnimateOnView>
@@ -27,7 +26,7 @@ export default function DocumentsPage() {
                 <ListOfDocuments documents={governingAndGardenDocuments} />
             </section>
 
-            <LineSeparator my={'my-10'} />
+            <DecorativeLine my={'my-10'} />
 
             <section>
                 <AnimateOnView>
@@ -36,7 +35,7 @@ export default function DocumentsPage() {
                 <ListOfDocuments documents={formsAndAgreements} />
             </section>
 
-            <LineSeparator my={'my-10'} />
+            <DecorativeLine my={'my-10'} />
 
             <section>
                 <AnimateOnView>

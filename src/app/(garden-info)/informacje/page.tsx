@@ -1,8 +1,7 @@
 import { SEO } from '@/config/seo';
 
-import { MainHeadingLineSeparator } from '@/components/main-heading-line-separator';
 import { AnimateOnView } from '@/components/animated-h2';
-import { LineSeparator } from '@/components/line-separator';
+import { DecorativeLine } from '@/components/decorative-line';
 
 import ContactArticle from './_components/contact-article';
 import WasteScheduleArticle from './_components/waste-schedule-article';
@@ -20,7 +19,7 @@ export default function InformationsPage() {
     return (
         <>
             <h1>Informacje</h1>
-            <MainHeadingLineSeparator />
+            <DecorativeLine variant="forHeading" />
 
             <section aria-labelledby="org-info-heading">
                 <AnimateOnView className="h2-animate">
@@ -28,35 +27,35 @@ export default function InformationsPage() {
                 </AnimateOnView>
 
                 <div className="mx-auto max-w-3xl">
-                    <LineSeparator my={my} />
+                    <DecorativeLine my={my} />
 
                     <WasteScheduleArticle />
 
-                    <LineSeparator my={my} />
+                    <DecorativeLine my={my} />
 
                     <TreasurersDutiesArticle />
 
-                    <LineSeparator my={my} />
+                    <DecorativeLine my={my} />
 
                     <WhatsAppArticle />
 
-                    <LineSeparator my={my} />
+                    <DecorativeLine my={my} />
 
                     <ContactArticle />
 
-                    <LineSeparator my={my} />
+                    <DecorativeLine my={my} />
 
                     <GeneralMeetingArticle />
 
-                    <LineSeparator my={my} />
+                    <DecorativeLine my={my} />
 
                     <GardenEntranceArticle />
 
-                    <LineSeparator my={my} />
+                    <DecorativeLine my={my} />
 
                     <GardenPhotosArticle />
 
-                    <LineSeparator my={my} />
+                    <DecorativeLine my={my} />
                 </div>
             </section>
         </>
