@@ -1,6 +1,6 @@
 'use client';
 
-import { Power, PowerOff } from 'lucide-react';
+import { Palette, Power, PowerOff, SunSnow } from 'lucide-react';
 
 import { cn } from '@/shared/utils/cn';
 
@@ -12,37 +12,45 @@ import { useTheme } from '@/features/theme/ui/theme-provider';
  * Displays a switch with an icon indicating the current state.
  * Interacts with ThemeProvider to update seasonal theme preference.
  */
-export function SeasonalThemesToggle() {
+export default function SeasonalThemesToggle() {
     const {
         seasonalThemeEnabled: seasonalThemesEnabled,
         toggleSeasonalThemePreference: toggleSeasonalThemesPreference,
     } = useTheme();
 
     return (
-        <div className="flex gap-2">
-            <p>Motywy sezonowe</p>
+        <div className="flex flex-col items-center gap-2">
+            <div title="Motywy wyglądu strony: domyślny lub sezonowe.">
+                <Palette size={32} className="text-white" />
+            </div>
             <button
                 type="button"
-                title={seasonalThemesEnabled ? 'Wyłącz motywy sezonowe' : 'Włącz motywy sezonowe'}
+                title={seasonalThemesEnabled ? 'Wyłącz motyw sezonowy' : 'Włącz motyw sezonowy'}
                 onClick={() => toggleSeasonalThemesPreference(!seasonalThemesEnabled)}
                 className={cn(
-                    'relative inline-flex h-6 w-12 items-center rounded-full',
+                    'relative inline-flex h-5 w-10 items-center rounded-full',
                     'transition-colors hover:cursor-pointer',
-                    'ring-theme-txt ring-2'
+                    'ring-2 ring-white',
+                    seasonalThemesEnabled ? 'bg-white' : ''
                 )}
             >
                 <div
                     className={cn(
-                        'absolute top-0 left-0 flex h-6 w-6 items-center justify-center rounded-full',
+                        'absolute top-0 left-0 flex h-5 w-5 items-center justify-center rounded-full',
                         'bg-white',
                         'transition-transform',
-                        seasonalThemesEnabled ? 'translate-x-6' : 'translate-x-0'
+                        seasonalThemesEnabled
+                            ? 'border-color-surface-border translate-x-5 border-2'
+                            : 'translate-x-0'
                     )}
                 >
                     {seasonalThemesEnabled ? (
-                        <Power aria-hidden="true" className="h-4 w-4" />
+                        <SunSnow aria-hidden="true" className="h-4 w-4" />
                     ) : (
-                        <PowerOff aria-hidden="true" className="h-4 w-4" />
+                        <PowerOff
+                            aria-hidden="true"
+                            className="text-foreground-brand-primary-accent h-4 w-4"
+                        />
                     )}
                 </div>
             </button>

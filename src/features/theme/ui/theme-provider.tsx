@@ -11,7 +11,6 @@ import {
     getSeasonalThemePreference,
     setSeasonalThemePreference,
 } from '@/features/theme/domain/theme.storage';
-import { ThemePreferencePrompt } from '@/features/theme/ui/theme-preference-prompt';
 
 interface ThemeContextValue {
     activeTheme: ThemeType;
@@ -84,12 +83,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     if (!initialized) return null;
 
-    return (
-        <ThemeContext.Provider value={value}>
-            <ThemePreferencePrompt />
-            {children}
-        </ThemeContext.Provider>
-    );
+    return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
 
 /**

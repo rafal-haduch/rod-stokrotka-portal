@@ -110,8 +110,8 @@
     --footer-gradient-from: var(--background-brand-primary-strong);
     --footer-gradient-to: var(--background-brand-primary-strong);
     --footer-border: var(--background-brand-primary-strong);
-    --content-on-footer: var(--foreground-brand-primary-inverted);
-    --content-on-footer-hover: var(--color-white);
+    --content-on-footer: var(--color-white);
+    --content-on-footer-hover: var(--foreground-brand-primary-inverted);
 
     --button-gradient-from: var(--main-brand-primary);
     --button-gradient-from-hover: var(--brand-primary-500);
@@ -553,21 +553,16 @@
     /* --- Fonts --- */
 
     /* Main font for content. */
-    --font-nunito:
-        var(--font-nunito), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial,
-        sans-serif;
+    --font-sans: var(--font-nunito), system-ui, sans-serif;
 
     /* Decorative font mainly for h1. */
-    --font-fleur-de-leah:
-        var(--font-fleur-de-leah), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial,
-        sans-serif;
+    --font-display: var(--font-fleur-de-leah), cursive;
 
     /* Decorative font for subheading and nav. */
-    --font-merriweather:
-        var(--font-merriweather), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial,
-        sans-serif;
+    --font-serif: var(--font-merriweather), Georgia, serif;
 
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    /* Fixed-width code and text. */
+    --font-mono: ui-monospace, monospace;
 
     /*
     * Tailwind theme mapping - 
@@ -687,15 +682,11 @@
 
 @layer base {
     body {
-        @apply font-nunito bg-background-secondary text-foreground-secondary antialiased;
+        @apply bg-background-secondary text-foreground-secondary font-sans antialiased;
     }
 
     main {
         @apply bg-background-primary;
-    }
-
-    h1 {
-        @apply text-h1-color;
     }
 
     h2,
@@ -707,11 +698,11 @@
     }
 
     h1 {
-        @apply font-fleur-de-leah text-center text-6xl font-bold;
+        @apply text-h1-color font-display text-center text-6xl font-bold;
     }
 
     h2 {
-        @apply font-merriweather mb-4 text-center text-2xl uppercase sm:text-3xl;
+        @apply mb-4 text-center font-serif text-2xl uppercase sm:text-3xl;
     }
 
     h3 {

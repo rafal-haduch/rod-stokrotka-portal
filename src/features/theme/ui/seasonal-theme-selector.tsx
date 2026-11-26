@@ -5,7 +5,7 @@ import { cn } from '@/shared/utils/cn';
 import { SEASONAL_THEME_OPTIONS } from '@/features/theme/domain/theme.constants';
 import { useTheme } from '@/features/theme/ui/theme-provider';
 
-export function SeasonalThemeSelector() {
+export default function SeasonalThemeSelector() {
     const { activeTheme, setActiveTheme, seasonalThemeEnabled: seasonalThemesEnabled } = useTheme();
 
     const showSeasonalTheme = process.env.NEXT_PUBLIC_SHOW_SEASONAL_THEME === 'true';

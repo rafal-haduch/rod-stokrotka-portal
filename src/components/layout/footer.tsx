@@ -5,9 +5,10 @@ import { useEffect, useState } from 'react';
 
 import { cn } from '@/shared/utils/cn';
 import { ROUTES } from '@/config/routes';
+import { FULL_SITE_NAME } from '@/data/site';
 
-import { SeasonalThemesToggle } from '@/features/theme/ui/seasonal-themes-toggle';
-import { SeasonalThemeSelector } from '@/features/theme/ui/seasonal-theme-selector';
+import SeasonalThemesToggle from '@/features/theme/ui/seasonal-themes-toggle';
+import SeasonalThemeSelector from '@/features/theme/ui/seasonal-theme-selector';
 
 export default function Footer() {
     const startYear = 2025;
@@ -21,7 +22,7 @@ export default function Footer() {
     return (
         <footer className="from-footer-gradient-from to-footer-gradient-to border-footer-border text-content-on-footer border-t-4 bg-linear-to-t px-4 py-8 text-lg">
             <div className="gap-y-8 contain-layout">
-                {/* First Row */}
+                {/* --- First Row --- */}
                 <div
                     className={cn(
                         'mx-auto mb-4 flex max-w-5xl flex-col items-center justify-between md:flex-row',
@@ -36,21 +37,20 @@ export default function Footer() {
                             'order-2 md:order-1'
                         )}
                     >
-                        Polityka prywatności
+                        {ROUTES.PRIVACY_POLICY.label}
                     </Link>
-                    {/* Author */}
-                    <p className="order-3 md:order-2">Realizacja: Rafał Haduch</p>
                     {/* Theme */}
-                    <div className="order-1 flex flex-col items-center gap-2 md:order-3">
+                    <div className="order-1 flex flex-col items-center gap-2 md:order-2">
                         <SeasonalThemesToggle />
                         <SeasonalThemeSelector />
                     </div>
+                    {/* Author */}
+                    <p className="order-3 md:order-3">Realizacja: Rafał Haduch</p>
                 </div>
-
-                {/* Second Row */}
+                {/* --- Second Row --- */}
                 <div>
                     <p className="text-center text-lg">
-                        © {yearDisplay} Stowarzyszenie Ogrodowe „Stokrotka” w Sanoku
+                        © {yearDisplay} {FULL_SITE_NAME}.
                     </p>
                 </div>
             </div>
