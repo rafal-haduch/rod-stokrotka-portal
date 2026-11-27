@@ -6,6 +6,7 @@ import { AnimateOnView } from '@/components/animated-h2';
 import { PostListItem } from '@/features/blog/domain/blog-types';
 import PostsList from '@/features/blog/ui/posts-list';
 import { DecorativeLine } from '@/components/decorative-line';
+import Buttons from '@/components/dev-only/buttons';
 
 interface MemoriesSectionProps {
     posts: PostListItem[];
@@ -27,6 +28,8 @@ export default function MemoriesPostsSection({ posts }: MemoriesSectionProps) {
             </p>
 
             <PostsList posts={posts} postBasePath={ROUTES.MEMORIES.path} />
+            <div className="my-20"></div>
+            <Buttons />
         </PageSection>
     );
 }

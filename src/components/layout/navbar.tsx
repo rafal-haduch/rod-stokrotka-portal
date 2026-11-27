@@ -114,7 +114,7 @@ export default function Navbar() {
             {isOpen && (
                 <nav
                     aria-label="Główna nawigacja strony"
-                    className="from-navbar-gradient-from to-navbar-gradient-to fixed inset-0 top-22 z-40 overflow-x-auto overflow-y-auto border-b-4 bg-linear-to-br pt-8 pb-10 text-center font-serif text-lg font-bold transition-transform duration-500"
+                    className="from-navbar-gradient-from to-navbar-gradient-to fixed inset-0 top-22 z-40 flex flex-col justify-evenly overflow-x-auto overflow-y-auto border-b-4 bg-linear-to-br pt-8 pb-10 text-center font-serif text-lg font-bold transition-transform duration-500"
                 >
                     <ul className="mx-auto mb-4 space-y-4 whitespace-nowrap">
                         {PUBLIC_NAV_ITEMS.map((item, i) => (
@@ -131,7 +131,7 @@ export default function Navbar() {
                             </li>
                         ))}
                     </ul>
-                    <div className="mx-auto flex max-w-md items-center justify-between px-4">
+                    <div className="mx-auto flex w-full max-w-md items-center justify-between px-4">
                         <SeasonalThemesToggle />
                         <SignInOrMyAccountLink onClick={() => setIsOpen(false)} />
                     </div>

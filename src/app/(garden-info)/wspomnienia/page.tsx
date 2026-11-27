@@ -10,7 +10,5 @@ export const metadata = SEO.MEMORIES;
 export default function MemoriesPage() {
     const posts = getPostsFromDirectory(memoriesPostsDirectoryPath);
 
-    console.log(memoriesPostsDirectoryPath);
-
     return <MemoriesPostsSection posts={posts} />;
 }

@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-/*
+/* ---------------------------------------------------------------------------------/
  * Seasonal theme tokens
  *
  * Each .theme-* selector defines the same set of CSS custom properties.
@@ -10,7 +10,7 @@
  * Token layers:
  * 1. brand-primary-* and brand-secondary-* define the theme's color scales.
  * 2. main-brand-* select the key shades used by other semantic tokens.
- * 3. background-* and foreground-* describe background and text roles.
+ * 3. background-* and foreground-* describe background or border etc. and text roles.
  * 4. UI tokens define colors for the navbar, footer, buttons, surfaces,
  *    and decorative elements.
  *
@@ -20,9 +20,7 @@
  * Keep the variable names and set of variables identical across all five
  * theme selectors. When adding or removing a token, update every theme
  * and its mapping in @theme.
- */
-
-/* Each class selects a set of theme values for its subtree. */
+ * ---------------------------------------------------------------------------------*/
 
 .theme-default {
     /* --- Primary brand scale: source values for the brand-primary-* Tailwind utilities. --- */
@@ -65,13 +63,14 @@
     --background-secondary: var(--color-neutral-50);
 
     --background-brand-primary-soft: var(--brand-primary-200);
-    --background-brand-secondary-soft: var(--brand-secondary-200);
-
     --background-brand-primary-accent: var(--main-brand-primary);
-    --background-brand-secondary-accent: var(--main-brand-secondary);
-
     --background-brand-primary-strong: var(--brand-primary-600);
+    --background-brand-primary-inverted: var(--brand-primary-50);
+
+    --background-brand-secondary-soft: var(--brand-secondary-200);
+    --background-brand-secondary-accent: var(--main-brand-secondary);
     --background-brand-secondary-strong: var(--brand-secondary-600);
+    --background-brand-secondary-inverted: var(--brand-secondary-50);
 
     /* --- Foregrounds: page text colors and text colors intended for use on brand-colored backgrounds. --- */
     --foreground-primary: var(--color-slate-800);
@@ -103,9 +102,9 @@
     */
     --navbar-gradient-from: var(--background-brand-primary-accent);
     --navbar-gradient-to: var(--background-brand-primary-accent);
-    --navbar-border: var(--main-brand-primary);
+    --navbar-border: var(--background-brand-primary-accent);
     --content-on-navbar: var(--color-white);
-    --content-on-navbar-hover: var(--color-white);
+    --content-on-navbar-hover: var(--foreground-brand-primary-inverted);
 
     --footer-gradient-from: var(--background-brand-primary-strong);
     --footer-gradient-to: var(--background-brand-primary-strong);
@@ -113,11 +112,11 @@
     --content-on-footer: var(--color-white);
     --content-on-footer-hover: var(--foreground-brand-primary-inverted);
 
-    --button-gradient-from: var(--main-brand-primary);
+    --button-gradient-from: var(--background-brand-primary-accent);
     --button-gradient-from-hover: var(--brand-primary-500);
-    --button-gradient-to: var(--main-brand-primary);
+    --button-gradient-to: var(--background-brand-primary-accent);
     --button-gradient-to-hover: var(--brand-primary-500);
-    --button-border: var(--main-brand-primary);
+    --button-border: var(--background-brand-primary-accent);
     --button-content: var(--foreground-brand-primary-accent);
     --button-primary-content: var(--color-white);
 
@@ -125,12 +124,12 @@
     --surface-gradient-from-hover: var(--brand-primary-300);
     --surface-gradient-to: var(--background-brand-primary-soft);
     --surface-gradient-to-hover: var(--brand-primary-300);
-    --surface-border: var(--brand-primary-400);
+    --surface-border: var(--background-brand-primary-accent);
     --surface-content: var(--foreground-brand-primary-strong);
 
     --h1-color: var(--foreground-primary);
 
-    --decorative-line-color: var(--main-brand-primary);
+    --decorative-line-color: var(--background-brand-primary-accent);
 }
 
 .theme-spring {
@@ -161,21 +160,22 @@
     --brand-secondary-950: var(--color-emerald-950);
 
     /* --- Main brand shades: selected from the scales above and used by other tokens. --- */
-    --main-brand-primary: var(--brand-primary-400);
-    --main-brand-secondary: var(--brand-secondary-400);
+    --main-brand-primary: var(--brand-primary-300);
+    --main-brand-secondary: var(--brand-secondary-500);
 
     /* --- Backgrounds: page and surface components background colors. --- */
     --background-primary: var(--color-white);
     --background-secondary: var(--brand-primary-50);
 
     --background-brand-primary-soft: var(--brand-primary-200);
-    --background-brand-secondary-soft: var(--brand-secondary-200);
-
     --background-brand-primary-accent: var(--main-brand-primary);
-    --background-brand-secondary-accent: var(--main-brand-secondary);
-
     --background-brand-primary-strong: var(--brand-primary-600);
+    --background-brand-primary-inverted: var(--brand-primary-50);
+
+    --background-brand-secondary-soft: var(--brand-secondary-200);
+    --background-brand-secondary-accent: var(--main-brand-secondary);
     --background-brand-secondary-strong: var(--brand-secondary-600);
+    --background-brand-secondary-inverted: var(--brand-secondary-50);
 
     /* --- Foregrounds: page text colors and text colors intended for use on brand-colored backgrounds. --- */
     --foreground-primary: var(--color-slate-800);
@@ -205,36 +205,37 @@
     * and a brand color in seasonal themes. Keep component-specific tokens
     * here when their appearance is intentionally theme-dependent.
     */
+
     --navbar-gradient-from: var(--brand-primary-50);
-    --navbar-gradient-to: var(--brand-primary-300);
-    --navbar-border: var(--main-brand-secondary);
+    --navbar-gradient-to: var(--background-brand-primary-accent);
+    --navbar-border: var(--background-brand-secondary-accent);
     --content-on-navbar: var(--foreground-brand-secondary-accent);
     --content-on-navbar-hover: var(--foreground-brand-secondary-strong);
 
     --footer-gradient-from: var(--brand-primary-50);
-    --footer-gradient-to: var(--brand-primary-300);
-    --footer-border: var(--main-brand-secondary);
+    --footer-gradient-to: var(--background-brand-primary-accent);
+    --footer-border: var(--background-brand-secondary-accent);
     --content-on-footer: var(--foreground-brand-secondary-accent);
     --content-on-footer-hover: var(--foreground-brand-secondary-strong);
 
     --button-gradient-from: var(--brand-primary-50);
     --button-gradient-from-hover: var(--brand-primary-100);
-    --button-gradient-to: var(--main-brand-primary);
-    --button-gradient-to-hover: var(--brand-primary-500);
-    --button-border: var(--main-brand-secondary);
-    --button-content: var(--foreground-brand-secondary-strong);
-    --button-primary-content: var(--foreground-brand-secondary-strong);
+    --button-gradient-to: var(--background-brand-primary-accent);
+    --button-gradient-to-hover: var(--brand-primary-400);
+    --button-border: var(--background-brand-secondary-accent);
+    --button-content: var(--foreground-brand-secondary-accent);
+    --button-primary-content: var(--foreground-brand-secondary-accent);
 
     --surface-gradient-from: var(--brand-primary-50);
     --surface-gradient-from-hover: var(--brand-primary-100);
-    --surface-gradient-to: var(--main-brand-primary);
-    --surface-gradient-to-hover: var(--brand-primary-500);
-    --surface-border: var(--brand-primary-400);
-    --surface-content: var(--foreground-brand-secondary-strong);
+    --surface-gradient-to: var(--background-brand-primary-accent);
+    --surface-gradient-to-hover: var(--brand-primary-400);
+    --surface-border: var(--background-brand-secondary-accent);
+    --surface-content: var(--foreground-brand-secondary-accent);
 
     --h1-color: var(--foreground-brand-secondary-accent);
 
-    --decorative-line-color: var(--foreground-brand-secondary-strong);
+    --decorative-line-color: var(--foreground-brand-secondary-accent);
 }
 
 .theme-summer {
@@ -266,20 +267,21 @@
 
     /* --- Main brand shades: selected from the scales above and used by other tokens. --- */
     --main-brand-primary: var(--brand-primary-400);
-    --main-brand-secondary: var(--brand-secondary-400);
+    --main-brand-secondary: var(--brand-secondary-600);
 
     /* --- Backgrounds: page and surface components background colors. --- */
     --background-primary: var(--color-white);
     --background-secondary: var(--brand-primary-50);
 
     --background-brand-primary-soft: var(--brand-primary-200);
-    --background-brand-secondary-soft: var(--brand-secondary-200);
-
     --background-brand-primary-accent: var(--main-brand-primary);
-    --background-brand-secondary-accent: var(--main-brand-secondary);
-
     --background-brand-primary-strong: var(--brand-primary-600);
-    --background-brand-secondary-strong: var(--brand-secondary-600);
+    --background-brand-primary-inverted: var(--brand-primary-50);
+
+    --background-brand-secondary-soft: var(--brand-secondary-200);
+    --background-brand-secondary-accent: var(--main-brand-secondary);
+    --background-brand-secondary-strong: var(--brand-secondary-700);
+    --background-brand-secondary-inverted: var(--brand-secondary-50);
 
     /* --- Foregrounds: page text colors and text colors intended for use on brand-colored backgrounds. --- */
     --foreground-primary: var(--color-slate-800);
@@ -294,7 +296,7 @@
 
     --foreground-brand-secondary-soft: var(--brand-secondary-200);
     --foreground-brand-secondary-accent: var(--main-brand-secondary);
-    --foreground-brand-secondary-strong: var(--brand-secondary-600);
+    --foreground-brand-secondary-strong: var(--brand-secondary-700);
     --foreground-brand-secondary-inverted: var(--brand-primary-50);
 
     /*
@@ -310,35 +312,35 @@
     * here when their appearance is intentionally theme-dependent.
     */
     --navbar-gradient-from: var(--brand-primary-50);
-    --navbar-gradient-to: var(--brand-primary-300);
-    --navbar-border: var(--main-brand-primary);
+    --navbar-gradient-to: var(--background-brand-primary-accent);
+    --navbar-border: var(--background-brand-secondary-accent);
     --content-on-navbar: var(--foreground-brand-secondary-accent);
     --content-on-navbar-hover: var(--foreground-brand-secondary-strong);
 
     --footer-gradient-from: var(--brand-primary-50);
-    --footer-gradient-to: var(--brand-primary-300);
-    --footer-border: var(--main-brand-primary);
+    --footer-gradient-to: var(--background-brand-primary-accent);
+    --footer-border: var(--background-brand-secondary-accent);
     --content-on-footer: var(--foreground-brand-secondary-accent);
     --content-on-footer-hover: var(--foreground-brand-secondary-strong);
 
     --button-gradient-from: var(--brand-primary-50);
     --button-gradient-from-hover: var(--brand-primary-100);
-    --button-gradient-to: var(--main-brand-primary);
+    --button-gradient-to: var(--background-brand-primary-accent);
     --button-gradient-to-hover: var(--brand-primary-500);
-    --button-border: var(--main-brand-primary);
-    --button-content: var(--foreground-brand-secondary-strong);
-    --button-primary-content: var(--foreground-brand-secondary-strong);
+    --button-border: var(--background-brand-secondary-accent);
+    --button-content: var(--foreground-brand-secondary-accent);
+    --button-primary-content: var(--foreground-brand-secondary-accent);
 
     --surface-gradient-from: var(--brand-primary-50);
     --surface-gradient-from-hover: var(--brand-primary-100);
-    --surface-gradient-to: var(--main-brand-primary);
+    --surface-gradient-to: var(--background-brand-primary-accent);
     --surface-gradient-to-hover: var(--brand-primary-500);
-    --surface-border: var(--brand-primary-400);
-    --surface-content: var(--foreground-brand-secondary-strong);
+    --surface-border: var(--background-brand-secondary-accent);
+    --surface-content: var(--foreground-brand-secondary-accent);
 
     --h1-color: var(--foreground-brand-secondary-accent);
 
-    --decorative-line-color: var(--foreground-brand-secondary-strong);
+    --decorative-line-color: var(--background-brand-secondary-accent);
 }
 
 .theme-autumn {
@@ -370,124 +372,21 @@
 
     /* --- Main brand shades: selected from the scales above and used by other tokens. --- */
     --main-brand-primary: var(--brand-primary-300);
-    --main-brand-secondary: var(--brand-secondary-400);
+    --main-brand-secondary: var(--brand-secondary-500);
 
     /* --- Backgrounds: page and surface components background colors. --- */
     --background-primary: var(--color-white);
     --background-secondary: var(--brand-primary-50);
 
     --background-brand-primary-soft: var(--brand-primary-200);
-    --background-brand-secondary-soft: var(--brand-secondary-200);
-
     --background-brand-primary-accent: var(--main-brand-primary);
-    --background-brand-secondary-accent: var(--main-brand-secondary);
-
     --background-brand-primary-strong: var(--brand-primary-600);
-    --background-brand-secondary-strong: var(--brand-secondary-600);
+    --background-brand-primary-inverted: var(--brand-primary-50);
 
-    /* --- Foregrounds: page text colors and text colors intended for use on brand-colored backgrounds. --- */
-    --foreground-primary: var(--color-slate-800);
-    --foreground-secondary: var(--color-slate-700);
-    --foreground-muted: var(--color-slate-500);
-    --foreground-inverted: var(--color-white);
-
-    --foreground-brand-primary-soft: var(--brand-primary-200);
-    --foreground-brand-primary-accent: var(--brand-secondary-400);
-    --foreground-brand-primary-strong: var(--brand-primary-600);
-    --foreground-brand-primary-inverted: var(--brand-primary-50);
-
-    --foreground-brand-secondary-soft: var(--brand-secondary-200);
-    --foreground-brand-secondary-accent: var(--main-brand-secondary);
-    --foreground-brand-secondary-strong: var(--brand-secondary-600);
-    --foreground-brand-secondary-inverted: var(--brand-primary-50);
-
-    /*
-    * --- UI component tokens ---
-    *
-    * Use these tokens for UI elements whose colors may vary by theme.
-    * If a component element needs different colors in the default and seasonal
-    * themes, define a dedicated token for it in all five .theme-* selectors,
-    * then map that token in @theme for use through Tailwind utilities.
-    *
-    * For example, --table-head can use a neutral color in .theme-default
-    * and a brand color in seasonal themes. Keep component-specific tokens
-    * here when their appearance is intentionally theme-dependent.
-    */
-    --navbar-gradient-from: var(--brand-primary-50);
-    --navbar-gradient-to: var(--main-brand-primary);
-    --navbar-border: var(--brand-primary-400);
-    --content-on-navbar: var(--foreground-brand-secondary-accent);
-    --content-on-navbar-hover: var(--foreground-brand-secondary-strong);
-
-    --footer-gradient-from: var(--brand-primary-50);
-    --footer-gradient-to: var(--main-brand-primary);
-    --footer-border: var(--brand-primary-400);
-    --content-on-footer: var(--foreground-brand-secondary-accent);
-    --content-on-footer-hover: var(--foreground-brand-secondary-strong);
-
-    --button-gradient-from: var(--brand-primary-50);
-    --button-gradient-from-hover: var(--brand-primary-100);
-    --button-gradient-to: var(--main-brand-primary);
-    --button-gradient-to-hover: var(--brand-primary-400);
-    --button-border: var(--brand-primary-400);
-    --button-content: var(--foreground-brand-secondary-strong);
-    --button-primary-content: var(--foreground-brand-secondary-strong);
-
-    --surface-gradient-from: var(--brand-primary-50);
-    --surface-gradient-from-hover: var(--brand-primary-100);
-    --surface-gradient-to: var(--main-brand-primary);
-    --surface-gradient-to-hover: var(--brand-primary-400);
-    --surface-border: var(--brand-primary-400);
-    --surface-content: var(--foreground-brand-secondary-strong);
-
-    --h1-color: var(--foreground-brand-secondary-accent);
-
-    --decorative-line-color: var(--foreground-brand-secondary-strong);
-}
-
-.theme-winter {
-    /* --- Primary brand scale: source values for the brand-primary-* Tailwind utilities. --- */
-    --brand-primary-50: var(--color-sky-50);
-    --brand-primary-100: var(--color-sky-100);
-    --brand-primary-200: var(--color-sky-200);
-    --brand-primary-300: var(--color-sky-300);
-    --brand-primary-400: var(--color-sky-400);
-    --brand-primary-500: var(--color-sky-500);
-    --brand-primary-600: var(--color-sky-600);
-    --brand-primary-700: var(--color-sky-700);
-    --brand-primary-800: var(--color-sky-800);
-    --brand-primary-900: var(--color-sky-900);
-    --brand-primary-950: var(--color-sky-950);
-
-    /* --- Secondary brand scale: commonly used for text and details on brand-colored backgrounds. --- */
-    --brand-secondary-50: var(--color-blue-50);
-    --brand-secondary-100: var(--color-blue-100);
-    --brand-secondary-200: var(--color-blue-200);
-    --brand-secondary-300: var(--color-blue-300);
-    --brand-secondary-400: var(--color-blue-400);
-    --brand-secondary-500: var(--color-blue-500);
-    --brand-secondary-600: var(--color-blue-600);
-    --brand-secondary-700: var(--color-blue-700);
-    --brand-secondary-800: var(--color-blue-800);
-    --brand-secondary-900: var(--color-blue-900);
-    --brand-secondary-950: var(--color-blue-950);
-
-    /* --- Main brand shades: selected from the scales above and used by other tokens. --- */
-    --main-brand-primary: var(--brand-primary-400);
-    --main-brand-secondary: var(--brand-secondary-400);
-
-    /* --- Backgrounds: page and surface components background colors. --- */
-    --background-primary: var(--color-white);
-    --background-secondary: var(--brand-primary-50);
-
-    --background-brand-primary-soft: var(--brand-primary-200);
     --background-brand-secondary-soft: var(--brand-secondary-200);
-
-    --background-brand-primary-accent: var(--main-brand-primary);
     --background-brand-secondary-accent: var(--main-brand-secondary);
-
-    --background-brand-primary-strong: var(--brand-primary-600);
     --background-brand-secondary-strong: var(--brand-secondary-600);
+    --background-brand-secondary-inverted: var(--brand-secondary-50);
 
     /* --- Foregrounds: page text colors and text colors intended for use on brand-colored backgrounds. --- */
     --foreground-primary: var(--color-slate-800);
@@ -518,35 +417,140 @@
     * here when their appearance is intentionally theme-dependent.
     */
     --navbar-gradient-from: var(--brand-primary-50);
-    --navbar-gradient-to: var(--brand-primary-300);
-    --navbar-border: var(--main-brand-primary);
+    --navbar-gradient-to: var(--main-brand-primary);
+    --navbar-border: var(--background-brand-secondary-accent);
     --content-on-navbar: var(--foreground-brand-secondary-accent);
     --content-on-navbar-hover: var(--foreground-brand-secondary-strong);
 
     --footer-gradient-from: var(--brand-primary-50);
-    --footer-gradient-to: var(--brand-primary-300);
-    --footer-border: var(--main-brand-primary);
+    --footer-gradient-to: var(--main-brand-primary);
+    --footer-border: var(--background-brand-secondary-accent);
     --content-on-footer: var(--foreground-brand-secondary-accent);
     --content-on-footer-hover: var(--foreground-brand-secondary-strong);
 
     --button-gradient-from: var(--brand-primary-50);
     --button-gradient-from-hover: var(--brand-primary-100);
     --button-gradient-to: var(--main-brand-primary);
-    --button-gradient-to-hover: var(--brand-primary-500);
-    --button-border: var(--brand-primary-400);
-    --button-content: var(--foreground-brand-secondary-strong);
-    --button-primary-content: var(--foreground-brand-secondary-strong);
+    --button-gradient-to-hover: var(--brand-primary-400);
+    --button-border: var(--background-brand-secondary-accent);
+    --button-content: var(--foreground-brand-secondary-accent);
+    --button-primary-content: var(--foreground-brand-secondary-accent);
+
+    --surface-gradient-from: var(--brand-primary-50);
+    --surface-gradient-from-hover: var(--brand-primary-100);
+    --surface-gradient-to: var(--background-brand-primary-accent);
+    --surface-gradient-to-hover: var(--brand-primary-400);
+    --surface-border: var(--background-brand-secondary-accent);
+    --surface-content: var(--foreground-brand-secondary-accent);
+
+    --h1-color: var(--foreground-brand-secondary-accent);
+
+    --decorative-line-color: var(--background-brand-secondary-accent);
+}
+
+.theme-winter {
+    /* --- Primary brand scale: source values for the brand-primary-* Tailwind utilities. --- */
+    --brand-primary-50: var(--color-sky-50);
+    --brand-primary-100: var(--color-sky-100);
+    --brand-primary-200: var(--color-sky-200);
+    --brand-primary-300: var(--color-sky-300);
+    --brand-primary-400: var(--color-sky-400);
+    --brand-primary-500: var(--color-sky-500);
+    --brand-primary-600: var(--color-sky-600);
+    --brand-primary-700: var(--color-sky-700);
+    --brand-primary-800: var(--color-sky-800);
+    --brand-primary-900: var(--color-sky-900);
+    --brand-primary-950: var(--color-sky-950);
+
+    /* --- Secondary brand scale: commonly used for text and details on brand-colored backgrounds. --- */
+    --brand-secondary-50: var(--color-blue-50);
+    --brand-secondary-100: var(--color-blue-100);
+    --brand-secondary-200: var(--color-blue-200);
+    --brand-secondary-300: var(--color-blue-300);
+    --brand-secondary-400: var(--color-blue-400);
+    --brand-secondary-500: var(--color-blue-500);
+    --brand-secondary-600: var(--color-blue-600);
+    --brand-secondary-700: var(--color-blue-700);
+    --brand-secondary-800: var(--color-blue-800);
+    --brand-secondary-900: var(--color-blue-900);
+    --brand-secondary-950: var(--color-blue-950);
+
+    /* --- Main brand shades: selected from the scales above and used by other tokens. --- */
+    --main-brand-primary: var(--brand-primary-300);
+    --main-brand-secondary: var(--brand-secondary-500);
+
+    /* --- Backgrounds: page and surface components background colors. --- */
+    --background-primary: var(--color-white);
+    --background-secondary: var(--brand-primary-50);
+
+    --background-brand-primary-soft: var(--brand-primary-200);
+    --background-brand-primary-accent: var(--main-brand-primary);
+    --background-brand-primary-strong: var(--brand-primary-600);
+    --background-brand-primary-inverted: var(--brand-primary-50);
+
+    --background-brand-secondary-soft: var(--brand-secondary-200);
+    --background-brand-secondary-accent: var(--main-brand-secondary);
+    --background-brand-secondary-strong: var(--brand-secondary-600);
+    --background-brand-secondary-inverted: var(--brand-secondary-50);
+
+    /* --- Foregrounds: page text colors and text colors intended for use on brand-colored backgrounds. --- */
+    --foreground-primary: var(--color-slate-800);
+    --foreground-secondary: var(--color-slate-700);
+    --foreground-muted: var(--color-slate-500);
+    --foreground-inverted: var(--color-white);
+
+    --foreground-brand-primary-soft: var(--brand-primary-200);
+    --foreground-brand-primary-accent: var(--main-brand-primary);
+    --foreground-brand-primary-strong: var(--brand-primary-600);
+    --foreground-brand-primary-inverted: var(--brand-primary-50);
+
+    --foreground-brand-secondary-soft: var(--brand-secondary-200);
+    --foreground-brand-secondary-accent: var(--main-brand-secondary);
+    --foreground-brand-secondary-strong: var(--brand-secondary-600);
+    --foreground-brand-secondary-inverted: var(--brand-primary-50);
+
+    /*
+    * --- UI component tokens ---
+    *
+    * Use these tokens for UI elements whose colors may vary by theme.
+    * If a component element needs different colors in the default and seasonal
+    * themes, define a dedicated token for it in all five .theme-* selectors,
+    * then map that token in @theme for use through Tailwind utilities.
+    *
+    * For example, --table-head can use a neutral color in .theme-default
+    * and a brand color in seasonal themes. Keep component-specific tokens
+    * here when their appearance is intentionally theme-dependent.
+    */
+    --navbar-gradient-from: var(--brand-primary-50);
+    --navbar-gradient-to: var(--background-brand-primary-accent);
+    --navbar-border: var(--background-brand-secondary-accent);
+    --content-on-navbar: var(--foreground-brand-secondary-accent);
+    --content-on-navbar-hover: var(--foreground-brand-secondary-strong);
+
+    --footer-gradient-from: var(--brand-primary-50);
+    --footer-gradient-to: var(--background-brand-primary-accent);
+    --footer-border: var(--background-brand-secondary-accent);
+    --content-on-footer: var(--foreground-brand-secondary-accent);
+    --content-on-footer-hover: var(--foreground-brand-secondary-strong);
+
+    --button-gradient-from: var(--brand-primary-50);
+    --button-gradient-from-hover: var(--brand-primary-100);
+    --button-gradient-to: var(--background-brand-primary-accent);
+    --button-gradient-to-hover: var(--brand-primary-400);
+    --button-border: var(--background-brand-secondary-accent);
+    --button-content: var(--foreground-brand-secondary-accent);
+    --button-primary-content: var(--foreground-brand-secondary-accent);
 
     --surface-gradient-from: var(--brand-primary-50);
     --surface-gradient-from-hover: var(--brand-primary-100);
     --surface-gradient-to: var(--main-brand-primary);
     --surface-gradient-to-hover: var(--brand-primary-500);
-    --surface-border: var(--brand-primary-400);
+    --surface-border: var(--background-brand-secondary-accent);
     --surface-content: var(--foreground-brand-secondary-strong);
 
     --h1-color: var(--foreground-brand-secondary-accent);
 
-    --decorative-line-color: var(--foreground-brand-secondary-strong);
+    --decorative-line-color: var(--background-brand-secondary-accent);
 }
 
 @theme {
@@ -564,8 +568,9 @@
     /* Fixed-width code and text. */
     --font-mono: ui-monospace, monospace;
 
-    /*
-    * Tailwind theme mapping - 
+    /*-------------------------------------------------------------------------------/
+    * Tailwind themes system mapping
+    *
     * Map seasonal theme tokens to Tailwind utilities for use in JSX and CSS.
     *
     * This section exposes seasonal theme tokens as Tailwind utilities
@@ -576,7 +581,7 @@
     * above and mapped here. Tokens that do not need seasonal variations,
     * such as info and error state colors, can be defined directly in this
     * section with fixed values.
-    */
+    *--------------------------------------------------------------------------------*/
 
     /* --- Primary Brand Color Palette --- */
     --color-brand-primary-50: var(--brand-primary-50);
@@ -613,13 +618,14 @@
     --color-background-secondary: var(--background-secondary);
 
     --color-background-brand-primary-soft: var(--background-brand-primary-soft);
-    --color-background-brand-secondary-soft: var(--background-brand-secondary-soft);
-
     --color-background-brand-primary-accent: var(--background-brand-primary-accent);
-    --color-background-brand-secondary-accent: var(--background-brand-secondary-accent);
-
     --color-background-brand-primary-strong: var(--background-brand-primary-strong);
+    --color-background-brand-primary-inverted: var(--background-brand-primary-inverted);
+
+    --color-background-brand-secondary-soft: var(--background-brand-secondary-soft);
+    --color-background-brand-secondary-accent: var(--background-brand-secondary-accent);
     --color-background-brand-secondary-strong: var(--background-brand-secondary-strong);
+    --color-background-brand-secondary-inverted: var(--background-brand-secondary-inverted);
 
     /* --- Foregrounds --- */
     --color-foreground-primary: var(--color-slate-800);
@@ -796,9 +802,7 @@
         @apply bg-pink-400;
     }
 
-    /* ============== */
-    /* === Animations === */
-    /* ============== */
+    /* --- Animations --- */
 
     .h2-animate {
         opacity: 0;
@@ -811,12 +815,12 @@
 
 @layer utilities {
     .no-scrollbar::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera */
+        display: none; /*NOTE: Chrome, Safari, Opera */
     }
 
     .no-scrollbar {
-        -ms-overflow-style: none; /* IE, Edge */
-        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* NOTE: IE, Edge */
+        scrollbar-width: none; /* NOTE: Firefox */
     }
 }
 

@@ -1,11 +1,12 @@
 # TODOS:
--improve navbar (add seasonal theme switch and selection of theme in preview or dev env)
 
+- clean up all pages.tsx and add section page component, fix old jsx styles with new seasonem theme tokens system, remove custom button
 
-- clean up all pages.tsx and add section page component, fix old jsx styles with new seasonem theme tokens system
+- improve dialog (modal, banner, drawer) components
 
+- add seasonal theme selector into only dev component (button + modal)
 
-- theme provider (ui components by them or by appui?)
+- refactor auth section
 
 # REVIEWS:
 
