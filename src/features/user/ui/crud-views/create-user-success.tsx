@@ -5,7 +5,7 @@ import { Copy, TriangleAlert } from 'lucide-react';
 
 import { cn } from '@/shared/utils/cn';
 
-import { CustomButton } from '@/components/custom-button';
+import { CustomButton } from '@/components/ui/custom-button';
 
 import { getUserRoleLabel } from '@/features/user/domain/user-helpers';
 import { CreateUserData } from '@/features/user/domain/user-api-contracts';

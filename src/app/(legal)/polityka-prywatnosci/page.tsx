@@ -1,4 +1,4 @@
-import { DecorativeLine } from '@/components/decorative-line';
+import DecorativeLine from '@/components/layout/decorative-line';
 import { SEO } from '@/config/seo';
 
 import { EMAIL } from '@/data/contact';

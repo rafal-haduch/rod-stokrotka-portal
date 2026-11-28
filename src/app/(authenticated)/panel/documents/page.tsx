@@ -1,6 +1,6 @@
 import { SEO } from '@/config/seo';
 
-import { NotFoundContent } from '@/components/not-found-content';
+import { NotFoundContent } from '@/components/layout/not-found-content';
 
 export const metadata = SEO.PANEL_DOCUMENTS;
 

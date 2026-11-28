@@ -1,5 +1,5 @@
-import { CRUDModal } from '@/components/crud-modal';
-import { Portal } from '@/components/portal';
+import { CRUDModal } from '@/components/ui/crud-modal';
+import { Portal } from '@/components/ui/portal';
 import { UserTableRow } from '@/features/user/domain/user-read-models';
 import { DetailsUser } from '@/features/user/ui/crud-views/details-user';
 

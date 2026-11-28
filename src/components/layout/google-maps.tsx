@@ -1,4 +1,4 @@
-export function GoogleMaps() {
+export default function GoogleMaps() {
     return (
         <div className="flex w-full items-center justify-center">
             <div className="relative h-112.5 w-full max-w-4xl overflow-hidden rounded-2xl shadow-xl">

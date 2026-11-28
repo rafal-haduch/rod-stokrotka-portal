@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { Download, X } from 'lucide-react';
+import { X } from 'lucide-react';
 
-export default function ImageLightbox() {
-    // Lightbox and zoom control states
+export default function GardenMapImgLightbox() {
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [zoom, setZoom] = useState(1);
     const [offsetY, setOffsetY] = useState(0);

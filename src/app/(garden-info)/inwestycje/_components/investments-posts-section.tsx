@@ -2,11 +2,11 @@ import { ROUTES } from '@/config/routes';
 
 import PageSection, { PAGE_SECTION_PRESETS } from '@/components/layout/page-section';
 
-import { AnimateOnView } from '@/components/animated-h2';
+import AnimateOnView from '@/components/layout/animated-h2';
 
 import { PostListItem } from '@/features/blog/domain/blog-types';
 import PostsList from '@/features/blog/ui/posts-list';
-import { DecorativeLine } from '@/components/decorative-line';
+import DecorativeLine from '@/components/layout/decorative-line';
 
 interface InvestmentsPostsSectionProps {
     posts: PostListItem[];

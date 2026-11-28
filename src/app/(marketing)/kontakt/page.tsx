@@ -1,30 +1,18 @@
 import { SEO } from '@/config/seo';
 
-import { DecorativeLine } from '@/components/decorative-line';
-import { AnimateOnView } from '@/components/animated-h2';
+import DecorativeLine from '@/components/layout/decorative-line';
 
-import AssociationInfoSection from './_components/association-info-section';
-import ContactForm from './_components/contact-form';
+import ContactFormSection from '@/app/(marketing)/kontakt/_components/contact-form-section';
+import AssociationDetailsSection from '@/app/(marketing)/kontakt/_components/association-details-section';
 
 export const metadata = SEO.CONTACT;
 
 export default function ContactPage() {
     return (
-        <article>
-            <h1>Dane Kontaktowe</h1>
-            <DecorativeLine variant="forHeading" />
-
-            <AssociationInfoSection />
-
+        <>
+            <AssociationDetailsSection />
             <DecorativeLine variant="forContent" />
-
-            <section>
-                <AnimateOnView className="h2-animate">
-                    <h2>Formularz kontaktowy</h2>
-                </AnimateOnView>
-
-                <ContactForm />
-            </section>
-        </article>
+            <ContactFormSection />
+        </>
     );
 }

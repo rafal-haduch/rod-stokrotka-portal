@@ -4,19 +4,20 @@ import { useEffect, useRef, useState } from 'react';
 
 import { cn } from '@/shared/utils/cn';
 
-interface GardenStat {
+interface GardenStatsItem {
     id: number;
     label: string;
     value: number;
 }
 
-const gardenStats: GardenStat[] = [
+const gardenStats = [
     { id: 0, label: 'Liczba działek', value: 63 },
     { id: 1, label: 'Liczba członków', value: 63 },
     { id: 2, label: 'Rok założenia', value: 1977 },
-];
-// REVIEW: zrozumiec
-export default function GardenStats() {
+] as const satisfies GardenStatsItem[];
+
+// REVIEW: understand the code
+export default function GardenStatCards() {
     const [counts, setCounts] = useState<number[]>(gardenStats.map(() => 0));
     const [hasAnimated, setHasAnimated] = useState(false);
     const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -29,7 +30,7 @@ export default function GardenStats() {
                     setHasAnimated(true);
                 }
             },
-            { threshold: 0.4 } // 40% widoczności sekcji
+            { threshold: 0.4 }
         );
 
         if (sectionRef.current) {
@@ -44,9 +45,9 @@ export default function GardenStats() {
     useEffect(() => {
         if (!hasAnimated) return;
 
-        const duration = 1500; // czas trwania animacji (ms)
+        const animationDuration = 1500; // ms
         const frameRate = 30;
-        const totalFrames = Math.round((duration / 1000) * frameRate);
+        const totalFrames = Math.round((animationDuration / 1000) * frameRate);
 
         gardenStats.forEach((stat, i) => {
             let frame = 0;
@@ -74,11 +75,11 @@ export default function GardenStats() {
                 <div
                     key={item.id}
                     className={cn(
-                        'surface-hover card w-full max-w-xs p-6',
+                        'from-surface-gradient-from to-surface-gradient-to border-surface-border w-full max-w-xs rounded-lg border-2 bg-linear-to-br p-6 shadow-md',
                         item.id === 2 ? 'col-span-2' : ''
                     )}
                 >
-                    <p className="text-theme-ui-foreground-primary flex flex-col items-center">
+                    <p className="text-surface-content flex flex-col items-center">
                         <span className="mb-2 text-5xl font-bold">{counts[item.id]}</span>
                         <span className="font-semibold">{item.label}</span>
                     </p>

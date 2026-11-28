@@ -23,9 +23,9 @@ const pageSectionBottomPaddingStyles: Record<SectionPadding, string> = {
 
 const pageSectionHorizontalPaddingStyles: Record<SectionPadding, string> = {
     none: 'px-0',
-    small: 'px-4',
-    medium: 'px-8',
-    large: 'px-12 md:px-16',
+    small: 'px-2',
+    medium: 'px-4',
+    large: 'px-6',
 };
 
 interface PageSectionStylesOptions {
@@ -93,20 +93,18 @@ export default function PageSection({
     ...props
 }: PageSectionProps) {
     return (
-        <>
-            <section
-                className={cn(
-                    pageSectionStyles({
-                        topPadding,
-                        bottomPadding,
-                        horizontalPadding,
-                    }),
-                    props.className
-                )}
-                {...props}
-            >
-                {children}
-            </section>
-        </>
+        <section
+            className={cn(
+                pageSectionStyles({
+                    topPadding,
+                    bottomPadding,
+                    horizontalPadding,
+                }),
+                props.className
+            )}
+            {...props}
+        >
+            {children}
+        </section>
     );
 }

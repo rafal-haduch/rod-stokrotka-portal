@@ -5,7 +5,7 @@ import { Pencil, Trash2 } from 'lucide-react';
 import { CRUDModalType } from '@/shared/types/crud-modal';
 import { formatPlotCode } from '@/shared/utils/format-plot-code';
 
-import { CustomButton } from '@/components/custom-button';
+import { CustomButton } from '@/components/ui/custom-button';
 
 import { PlotTableRow } from '@/features/plot/domain/plot-read-models';
 

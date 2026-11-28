@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { AnimateOnView } from '@/components/animated-h2';
+import AnimateOnView from '@/components/layout/animated-h2';
 
 export default function FeesInfoSection() {
     return (

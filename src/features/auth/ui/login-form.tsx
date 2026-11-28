@@ -5,7 +5,7 @@ import { signIn } from 'next-auth/react';
 import { Eye, EyeOff } from 'lucide-react';
 
 import { ROUTES } from '@/config/routes';
-import { CustomButton } from '@/components/custom-button';
+import { CustomButton } from '@/components/ui/custom-button';
 
 export default function LoginForm() {
     const [login, setLogin] = useState('');

@@ -2,9 +2,9 @@
 
 import { Save } from 'lucide-react';
 
-import { TooltipIcon } from '@/components/tooltip-icon';
-import { CustomButton } from '@/components/custom-button';
-import { MultiSelectDropdown } from '@/components/multi-select-plots-dropdown';
+import { TooltipIcon } from '@/components/ui/tooltip-icon';
+import { CustomButton } from '@/components/ui/custom-button';
+import { MultiSelectDropdown } from '@/components/ui/multi-select-plots-dropdown';
 
 import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 

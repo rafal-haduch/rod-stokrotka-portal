@@ -11,7 +11,7 @@ interface AnimateOnViewProps {
     visibleClassName?: string; // active animation class applied when element enters viewport
 }
 
-export function AnimateOnView({
+export default function AnimateOnView({
     children,
     className = '',
     visibleClassName = 'in-view',

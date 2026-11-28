@@ -7,7 +7,7 @@ import { ActionResult } from '@/shared/contracts/action-result';
 import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
 import { safeAction } from '@/shared/utils/safe-action';
 
-import { Portal } from '@/components/portal';
+import { Portal } from '@/components/ui/portal';
 
 import { PlotMinimalReference } from '@/features/plot/domain/plot-read-models';
 
@@ -16,7 +16,7 @@ import { UserTableRow } from '@/features/user/domain/user-read-models';
 import { UpdateUserData } from '@/features/user/domain/user-api-contracts';
 
 import { EditUserForm } from '@/features/user/ui/crud-forms/edit-user-form';
-import { CRUDModal } from '@/components/crud-modal';
+import { CRUDModal } from '@/components/ui/crud-modal';
 
 interface Props {
     user: UserTableRow;

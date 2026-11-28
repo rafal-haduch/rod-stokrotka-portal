@@ -1,10 +1,17 @@
-import { AnimateOnView } from '@/components/animated-h2';
-import { associationRegistrationNumbers } from '@/data/association';
 import { ADDRESS, CONTACT_LINKS, EMAIL, PHONE } from '@/data/contact';
+import { associationRegistrationNumbers } from '@/data/association';
 
-export default function AssociationInfoSection() {
+import AnimateOnView from '@/components/layout/animated-h2';
+import DecorativeLine from '@/components/layout/decorative-line';
+import PageSection, { PAGE_SECTION_PRESETS } from '@/components/layout/page-section';
+
+//TODO: Refactor
+
+export default function AssociationDetailsSection() {
     return (
-        <section>
+        <PageSection {...PAGE_SECTION_PRESETS.first} aria-labelledby="association-details-title">
+            <h1 id="association-details-title">Dane Kontaktowe</h1>
+            <DecorativeLine variant="forHeading" />
             <AnimateOnView className="h2-animate">
                 <h2>Dane Stowarzyszenia Ogrodowego ,,Stokrotka" w Sanoku</h2>
             </AnimateOnView>
@@ -64,6 +71,6 @@ export default function AssociationInfoSection() {
                     </dl>
                 </address>
             </div>
-        </section>
+        </PageSection>
     );
 }

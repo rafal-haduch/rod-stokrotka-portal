@@ -2,7 +2,7 @@
 
 import { Save } from 'lucide-react';
 
-import { CustomButton } from '@/components/custom-button';
+import { CustomButton } from '@/components/ui/custom-button';
 
 import { PlotTableRow } from '@/features/plot/domain/plot-read-models';
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { CustomButton } from '@/components/custom-button';
+import { CustomButton } from '@/components/ui/custom-button';
 
 import { UserTableRow } from '@/features/user/domain/user-read-models';
 
@@ -14,7 +14,6 @@ interface Props {
 export function DeleteUserForm({ userData, onSubmit, onCloseModal, loading }: Props) {
     return (
         <form onSubmit={onSubmit} aria-labelledby="delete-user-form-heading">
-            
             <input type="hidden" name="userId" value={userData.id}></input>
             <div className="flex flex-row items-center justify-evenly gap-4 sm:gap-0">
                 <CustomButton type="submit" disabled={loading} size="md" variant="danger">

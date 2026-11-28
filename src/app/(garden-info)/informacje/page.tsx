@@ -1,7 +1,7 @@
 import { SEO } from '@/config/seo';
 
-import { AnimateOnView } from '@/components/animated-h2';
-import { DecorativeLine } from '@/components/decorative-line';
+import AnimateOnView from '@/components/layout/animated-h2';
+import DecorativeLine from '@/components/layout/decorative-line';
 
 import ContactArticle from './_components/contact-article';
 import WasteScheduleArticle from './_components/waste-schedule-article';

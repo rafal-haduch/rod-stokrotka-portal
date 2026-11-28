@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 import { CRUDModalType } from '@/shared/types/crud-modal';
 
-import { CustomButton } from '@/components/custom-button';
+import { CustomButton } from '@/components/ui/custom-button';
 
 import {
     CreatePlotData,

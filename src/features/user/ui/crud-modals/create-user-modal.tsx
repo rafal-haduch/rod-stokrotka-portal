@@ -8,14 +8,14 @@ import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error'
 import { safeAction } from '@/shared/utils/safe-action';
 import { ComponentWithPlotOptionsProps } from '@/shared/models/plot-options-props';
 
-import { Portal } from '@/components/portal';
+import { Portal } from '@/components/ui/portal';
 
 import { createUser } from '@/features/user/domain/actions/create-user-action';
 import { CreateUserData } from '@/features/user/domain/user-api-contracts';
 
 import { CreateUserForm } from '@/features/user/ui/crud-forms/create-user-form';
 import { CreateUserSuccess } from '@/features/user/ui/crud-views/create-user-success';
-import { CRUDModal } from '@/components/crud-modal';
+import { CRUDModal } from '@/components/ui/crud-modal';
 
 interface Props extends ComponentWithPlotOptionsProps {
     onCloseModal: () => void;

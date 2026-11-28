@@ -5,7 +5,6 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { Photo } from '@/shared/models/photo';
 
-//TODO: change alts
 const mainSliderImagesURL = '/images/main-slider/' as const;
 export const mainSliderImages: Photo[] = [
     { src: `${mainSliderImagesURL}placeholder-slide-1.jpg`, alt: 'alt' },
@@ -19,7 +18,7 @@ export const mainSliderImages: Photo[] = [
     { src: `${mainSliderImagesURL}placeholder-slide-9.jpg`, alt: 'alt' },
 ] as const;
 
-export default function MainSlider() {
+export default function GallerySlider() {
     const [current, setCurrent] = useState(0);
 
     const prevSlide = () => {
@@ -41,7 +40,7 @@ export default function MainSlider() {
 
     return (
         <div className="relative z-0 mx-auto mb-16 w-full max-w-3xl overflow-hidden rounded-lg shadow-xl shadow-neutral-400">
-            {/* Slides */}
+            {/* --- Slides --- */}
             <div
                 className="flex transition-transform duration-500"
                 style={{ transform: `translateX(-${current * 100}%)` }}
@@ -50,8 +49,7 @@ export default function MainSlider() {
                     <img key={i} src={slide.src} alt={slide.alt} className="w-full shrink-0" />
                 ))}
             </div>
-
-            {/* Controls */}
+            {/* --- Controls --- */}
             <button
                 onClick={prevSlide}
                 className="absolute top-1/2 left-2 min-w-12 -translate-y-1/2 transform rounded-full bg-black p-2 text-white opacity-60 hover:cursor-pointer hover:opacity-100"

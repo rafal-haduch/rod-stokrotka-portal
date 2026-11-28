@@ -1,62 +1,24 @@
-import { ArrowRight } from 'lucide-react';
-
-import { ROUTES } from '@/config/routes';
 import { SEO } from '@/config/seo';
 
-import { GoogleMaps } from '@/components/google-maps';
+import DecorativeLine from '@/components/layout/decorative-line';
 
-import { DecorativeLine } from '@/components/decorative-line';
-import { AnimateOnView } from '@/components/animated-h2';
-
-import GardenStats from './_components/garden-stats';
-import GalleryPreview from './_components/gallery-preview';
-import DescriptionSection from './_components/description-section';
-import { CustomButton } from '@/components/custom-button';
+import AboutUsSection from '@/app/(marketing)/o-nas/_components/about-us-section';
+import GardenStatsSection from '@/app/(marketing)/o-nas/_components/garden-stats-section';
+import GalleryPreviewSection from '@/app/(marketing)/o-nas/_components/gallery-preview-section';
+import GardenLocationSection from '@/app/(marketing)/o-nas/_components/garden-location-section';
 
 export const metadata = SEO.ABOUT_US;
 
 export default function AboutUsPage() {
     return (
-        <article>
-            <h1>O Nas</h1>
-            <DecorativeLine variant="forHeading" />
-
-            <DescriptionSection />
-
+        <>
+            <AboutUsSection />
             <DecorativeLine variant="forContent" />
-
-            <section>
-                <AnimateOnView className="h2-animate">
-                    <h2>Nasz ogród w liczbach</h2>
-                </AnimateOnView>
-                <GardenStats />
-            </section>
-
+            <GardenStatsSection />
             <DecorativeLine variant="forContent" />
-
-            <section>
-                <AnimateOnView className="h2-animate">
-                    <h2>Nasz ogród na zdjęciach</h2>
-                </AnimateOnView>
-                <GalleryPreview />
-                <CustomButton
-                    href={ROUTES.GALLERY.path}
-                    size="lg"
-                    variant="primary"
-                    className="mx-auto"
-                >
-                    Zobacz wszystkie <ArrowRight />
-                </CustomButton>
-            </section>
-
+            <GalleryPreviewSection />
             <DecorativeLine variant="forContent" />
-
-            <section>
-                <AnimateOnView className="h2-animate">
-                    <h2>Nasz ogród na mapie</h2>
-                </AnimateOnView>
-                <GoogleMaps />
-            </section>
-        </article>
+            <GardenLocationSection />
+        </>
     );
 }

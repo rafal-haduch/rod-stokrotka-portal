@@ -18,7 +18,7 @@ export const galleryPreviewImages: Photo[] = [
     { src: `${galleryPreviewImagesURL}photo-8.jpg`, alt: 'alt' },
 ] as const;
 
-export default function GalleryPreview() {
+export default function GalleryPreviewSlider() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -49,7 +49,7 @@ export default function GalleryPreview() {
         const containerRect = container.getBoundingClientRect();
         const thumbnailRect = activeThumbnail.getBoundingClientRect();
 
-        // Jeśli miniatura wychodzi poza widok, przewiń tak, by ją wyrównać
+        // If a thumbnail moves out of view, it scrolls to bring it into alignment.
         if (thumbnailRect.left < containerRect.left) {
             container.scrollBy({
                 left: thumbnailRect.left - containerRect.left - 10,
@@ -65,9 +65,9 @@ export default function GalleryPreview() {
 
     return (
         <div className="mb-8 flex flex-col items-center">
-            {/* Główne zdjęcie */}
+            {/* --- Container for the displayed photo --- */}
             <div className="relative aspect-video w-full max-w-3xl">
-                {/* Strzałki */}
+                {/* --- Arrows --- */}
                 <button
                     onClick={() => prevImg()}
                     className="absolute top-1/2 left-4 z-10 h-20 -translate-y-1/2 rounded-full bg-white/60 p-2 shadow hover:cursor-pointer hover:bg-white"
@@ -87,10 +87,9 @@ export default function GalleryPreview() {
                     className="rounded-t-2xl object-cover shadow-lg"
                 />
             </div>
-
-            {/* Pasek miniatur z przewijaniem */}
+            {/* --- Thumbnail container -- */}
             <div className="relative w-full max-w-3xl rounded-b-2xl bg-slate-200 px-6 py-4">
-                {/* Strzałki */}
+                {/* --- Arrows --- */}
                 <button
                     onClick={() => scroll('left')}
                     className="absolute top-1/2 left-0 z-10 -translate-y-1/2 rounded-full bg-white/70 p-2 shadow hover:cursor-pointer hover:bg-white"
@@ -103,8 +102,7 @@ export default function GalleryPreview() {
                 >
                     <ChevronRight size={20} />
                 </button>
-
-                {/* Miniatury */}
+                {/* --- Thumbnails --- */}
                 <div
                     ref={scrollRef}
                     className="no-scrollbar flex gap-2 overflow-x-auto scroll-smooth"

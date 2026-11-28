@@ -4,7 +4,7 @@ import { Pencil, Search, Trash2 } from 'lucide-react';
 
 import { CRUDModalType } from '@/shared/types/crud-modal';
 
-import { CustomButton } from '@/components/custom-button';
+import { CustomButton } from '@/components/ui/custom-button';
 
 import { UserTableRow } from '@/features/user/domain/user-read-models';
 import { getUserRoleLabel } from '@/features/user/domain/user-helpers';

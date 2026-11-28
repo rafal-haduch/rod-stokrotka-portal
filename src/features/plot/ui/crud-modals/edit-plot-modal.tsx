@@ -8,7 +8,7 @@ import { SYSTEM_MESSAGES } from '@/shared/constants/system-messages';
 import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
 import { safeAction } from '@/shared/utils/safe-action';
 
-import { Portal } from '@/components/portal';
+import { Portal } from '@/components/ui/portal';
 
 import { updatePlot } from '@/features/plot/domain/actions/update-plot-action';
 import { UpdatePlotData } from '@/features/plot/domain/plot-api-contracts';

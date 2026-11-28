@@ -7,7 +7,7 @@ import {
     arbitrationCommittee,
 } from '@/data/governance';
 
-import { DecorativeLine } from '@/components/decorative-line';
+import DecorativeLine from '@/components/layout/decorative-line';
 
 import { GovernanceSection } from './_components/governance-section';
 

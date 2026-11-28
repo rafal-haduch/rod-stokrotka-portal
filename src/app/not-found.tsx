@@ -1,5 +1,5 @@
-import { ImageSeparator } from '@/components/image-separator';
-import { DecorativeLine } from '@/components/decorative-line';
+import { ImageSeparator } from '@/components/layout/image-separator';
+import DecorativeLine from '@/components/layout/decorative-line';
 
 export default function NotFound() {
     return (

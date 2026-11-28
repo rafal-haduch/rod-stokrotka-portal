@@ -1,6 +1,6 @@
 import { SEO } from '@/config/seo';
 
-import { WorkInProgress } from '@/components/work-in-progress';
+import { WorkInProgress } from '@/components/layout/work-in-progress';
 
 export const metadata = SEO.PANEL_SURVEYS;
 

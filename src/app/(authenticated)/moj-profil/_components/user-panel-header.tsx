@@ -9,7 +9,7 @@ import { cn } from '@/shared/utils/cn';
 import { ACCOUNT_NAV_ITEMS, ROUTES } from '@/config/routes';
 import { isAdminOrBoard } from '@/shared/auth/is-admin-or-board';
 
-import { CustomButton } from '@/components/custom-button';
+import { CustomButton } from '@/components/ui/custom-button';
 
 export default function UserPanelHeader() {
     const pathname = usePathname();

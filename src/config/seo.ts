@@ -26,7 +26,7 @@ export const SEO = {
         },
     },
     CONTACT: {
-        title: 'Kontakt ze stowarzyszeniem',
+        title: 'Dane kontaktowe',
         description: '...',
         alternates: {
             canonical: ROUTES.CONTACT.path,

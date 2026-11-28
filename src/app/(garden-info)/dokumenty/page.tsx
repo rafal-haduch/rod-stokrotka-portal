@@ -6,8 +6,8 @@ import {
     formsAndAgreements,
 } from '@/content/documents';
 
-import { AnimateOnView } from '@/components/animated-h2';
-import { DecorativeLine } from '@/components/decorative-line';
+import AnimateOnView from '@/components/layout/animated-h2';
+import DecorativeLine from '@/components/layout/decorative-line';
 
 import ListOfDocuments from './_components/list-of-documents';
 

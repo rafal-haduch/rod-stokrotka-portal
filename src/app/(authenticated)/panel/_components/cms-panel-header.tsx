@@ -7,7 +7,7 @@ import { PANEL_NAV_ITEMS, ROUTES } from '@/config/routes';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/shared/utils/cn';
 import { useEffect, useState } from 'react';
-import { CustomButton } from '@/components/custom-button';
+import { CustomButton } from '@/components/ui/custom-button';
 
 export function CMSPanelHeader() {
     const path = usePathname();

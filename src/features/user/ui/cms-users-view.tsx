@@ -6,7 +6,7 @@ import { Plus } from 'lucide-react';
 import { CRUDModalType } from '@/shared/types/crud-modal';
 import { ComponentWithPlotOptionsProps } from '@/shared/models/plot-options-props';
 
-import { CustomButton } from '@/components/custom-button';
+import { CustomButton } from '@/components/ui/custom-button';
 
 import {
     CreateUserData,

@@ -1,8 +1,8 @@
 import { Download, ExternalLink, FileText } from 'lucide-react';
 
 import { DownloadableDocument } from '@/content/documents';
-import { NotFoundContent } from '@/components/not-found-content';
-import { CustomButton } from '@/components/custom-button';
+import { NotFoundContent } from '@/components/layout/not-found-content';
+import { CustomButton } from '@/components/ui/custom-button';
 
 interface ListOfDocumentsProps {
     documents: ReadonlyArray<DownloadableDocument>;

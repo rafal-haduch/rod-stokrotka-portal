@@ -1,6 +1,6 @@
 import { formatDate } from '@/shared/utils/format-date';
 
-import { PhotoGallery } from '@/components/photo-gallery';
+import { PhotoGallery } from '@/components/ui/photo-gallery';
 
 import { Post } from '@/features/blog/domain/blog-types';
 

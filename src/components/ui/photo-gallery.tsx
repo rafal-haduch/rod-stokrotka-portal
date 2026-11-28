@@ -10,7 +10,7 @@ interface PhotoGalleryProps {
     photos: readonly Photo[];
 }
 
-export function PhotoGallery(props: PhotoGalleryProps) {
+export default function PhotoGallery(props: PhotoGalleryProps) {
     const [currentIndex, setCurrentIndex] = useState<number | null>(null);
     const scrollRef = useRef<HTMLDivElement | null>(null);
 

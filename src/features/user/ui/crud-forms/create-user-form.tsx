@@ -5,9 +5,9 @@ import { CirclePlus } from 'lucide-react';
 
 import { ComponentWithPlotOptionsProps } from '@/shared/models/plot-options-props';
 
-import { CustomButton } from '@/components/custom-button';
-import { TooltipIcon } from '@/components/tooltip-icon';
-import { MultiSelectDropdown } from '@/components/multi-select-plots-dropdown';
+import { CustomButton } from '@/components/ui/custom-button';
+import { TooltipIcon } from '@/components/ui/tooltip-icon';
+import { MultiSelectDropdown } from '@/components/ui/multi-select-plots-dropdown';
 
 import { ASSIGNABLE_USER_ROLES } from '@/features/user/domain/user-constants';
 import { getUserRoleLabel } from '@/features/user/domain/user-helpers';

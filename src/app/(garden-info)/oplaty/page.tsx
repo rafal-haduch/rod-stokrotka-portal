@@ -1,7 +1,7 @@
 import { SEO } from '@/config/seo';
 
-import { DecorativeLine } from '@/components/decorative-line';
-import { AnimateOnView } from '@/components/animated-h2';
+import DecorativeLine from '@/components/layout/decorative-line';
+import AnimateOnView from '@/components/layout/animated-h2';
 
 import FeesInfoSection from './_components/fees-info-section';
 import FeeTable from '@/app/(garden-info)/oplaty/_components/FeeTable';

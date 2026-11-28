@@ -6,7 +6,7 @@ import { cn } from '@/shared/utils/cn';
 
 import { RoutePath } from '@/config/routes';
 
-import { NotFoundContent } from '@/components/not-found-content';
+import { NotFoundContent } from '@/components/layout/not-found-content';
 
 import { sortPostsByDate } from '@/features/blog/domain/sort-posts-list';
 import { PostListItem, SortOrder } from '@/features/blog/domain/blog-types';

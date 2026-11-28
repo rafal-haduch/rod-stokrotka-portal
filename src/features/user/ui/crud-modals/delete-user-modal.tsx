@@ -8,14 +8,14 @@ import { ActionResult } from '@/shared/contracts/action-result';
 import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
 import { safeAction } from '@/shared/utils/safe-action';
 
-import { Portal } from '@/components/portal';
+import { Portal } from '@/components/ui/portal';
 
 import { UserTableRow } from '@/features/user/domain/user-read-models';
 import { deleteUser } from '@/features/user/domain/actions/delete-user-action';
 import { DeleteUserData } from '@/features/user/domain/user-api-contracts';
 
 import { DeleteUserForm } from '@/features/user/ui/crud-forms/delete-user-form';
-import { CRUDModal } from '@/components/crud-modal';
+import { CRUDModal } from '@/components/ui/crud-modal';
 
 interface Props {
     user: UserTableRow;

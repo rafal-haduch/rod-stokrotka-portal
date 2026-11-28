@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ChevronDown, ChevronUp, SendHorizontal } from 'lucide-react';
 
-import { Popup } from '@/components/popup';
-import { CustomButton } from '@/components/custom-button';
+import { Popup } from '@/components/ui/popup';
+import { CustomButton } from '@/components/ui/custom-button';
+
+//TODO: Refactor
 
 export default function ContactForm() {
     const shortText = (

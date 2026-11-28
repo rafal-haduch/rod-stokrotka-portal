@@ -8,7 +8,7 @@ import { ActionResult } from '@/shared/contracts/action-result';
 import { TECHNICAL_ERROR, TechnicalError } from '@/shared/error/technical-error';
 import { safeAction } from '@/shared/utils/safe-action';
 
-import { Portal } from '@/components/portal';
+import { Portal } from '@/components/ui/portal';
 
 import { deletePlot } from '@/features/plot/domain/actions/delete-plot-action';
 import { DeletePlotData } from '@/features/plot/domain/plot-api-contracts';

@@ -6,7 +6,7 @@ interface DecorativeLineProps {
     variant: 'forHeading' | 'forContent';
 }
 
-export function DecorativeLine({ variant }: DecorativeLineProps) {
+export default function DecorativeLine({ variant }: DecorativeLineProps) {
     if (variant === 'forHeading')
         return (
             <div

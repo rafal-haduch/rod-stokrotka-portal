@@ -1,8 +1,8 @@
 import { SEO } from '@/config/seo';
 
-import { WorkInProgress } from '@/components/work-in-progress';
-import { AnimateOnView } from '@/components/animated-h2';
-import { DecorativeLine } from '@/components/decorative-line';
+import { WorkInProgress } from '@/components/layout/work-in-progress';
+import AnimateOnView from '@/components/layout/animated-h2';
+import DecorativeLine from '@/components/layout/decorative-line';
 
 export const metadata = SEO.ANNOUNCEMENTS;
 
